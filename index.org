@@ -1,6 +1,6 @@
 #+TITLE:       首页
-#+AUTHOR:      Kelvin Hu
-#+EMAIL:       ini.kelvin@gmail.com
+#+AUTHOR:      chang wei
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2012-11-27 Tue
 #+URI:         /
 #+KEYWORDS:    Lisp, Scheme, Emacs, Linux, Archlinux, Java, C++, Org-page, Programming, Blog, Kelvin Hu, ini_always, 博客, 编程, 生活, 骑行
