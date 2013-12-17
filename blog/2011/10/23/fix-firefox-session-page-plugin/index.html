@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>让Session Page插件能在高版本的firefox中使用 - Kelvin的胡言乱语</title>
+    <title>让Session Page插件能在高版本的firefox中使用 - org-page</title>
     <meta charset="utf-8" />
     <meta name="author" content="Kelvin Hu" />
     <meta name="description" content="make session page available in high version firefox" />
@@ -11,19 +11,20 @@
   <body class="container">
     <div>
       <header class="masthead">
-        <h1 class="masthead-title"><a href="/">Kelvin的胡言乱语</a></h1>
-        <p>==============&gt; 重剑无锋，大巧不工。</p>
+        <h1 class="masthead-title"><a href="/">org-page</a></h1>
+        <p>static site generator</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
           <li><a href="/tags/">Tags</a></li>
           <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/kelvinh">GitHub</a></li>
+          <li><a href="https://github.com/kelvinh/org-page">GitHub</a></li>
           <li><a href="/rss.xml">RSS</a></li>
         </ul>
         <form method="get" id="searchform" action="http://www.google.com/search">
           <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="q" value="site:kelvinh.github.io">
+          <input type="hidden" name="q" value="site:your.personal.site.com">
         </form>
       </header>
     </div>
@@ -63,11 +64,11 @@
 
 <div class="org-src-container">
 
-<pre class="src src-xml">&lt;<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">targetApplication</span>&gt;                                               <span style="color: #586e75; font-style: italic;">&lt;!--</span><span style="color: #657b83; font-style: italic;"> &#20195;&#34920;&#25554;&#20214;&#23433;&#35013;&#30340;&#30446;&#26631;&#31243;&#24207; </span><span style="color: #586e75; font-style: italic;">--&gt;</span>
+<pre class="src src-xml">&lt;<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">targetApplication</span>&gt;                                               <span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #839496; font-style: italic;"> &#20195;&#34920;&#25554;&#20214;&#23433;&#35013;&#30340;&#30446;&#26631;&#31243;&#24207; </span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
     &lt;<span style="color: #268bd2;">Description</span>&gt;
-        &lt;<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">id</span>&gt;{ec8030f7-c20a-464f-9b0e-13a3a9e97384}&lt;/<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">id</span>&gt;        <span style="color: #586e75; font-style: italic;">&lt;!--</span><span style="color: #657b83; font-style: italic;"> firefox&#30340;GUID&#65292;&#35828;&#26126;&#35813;&#25554;&#20214;&#26159;firefox&#25554;&#20214; </span><span style="color: #586e75; font-style: italic;">--&gt;</span>
-        &lt;<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">minVersion</span>&gt;2.0&lt;/<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">minVersion</span>&gt;                           <span style="color: #586e75; font-style: italic;">&lt;!--</span><span style="color: #657b83; font-style: italic;"> &#33021;&#23433;&#35013;&#30340;&#26368;&#20302;firefox&#29256;&#26412; </span><span style="color: #586e75; font-style: italic;">--&gt;</span>
-        &lt;<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">maxVersion</span>&gt;7.0.1&lt;/<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">maxVersion</span>&gt;                         <span style="color: #586e75; font-style: italic;">&lt;!--</span><span style="color: #657b83; font-style: italic;"> &#33021;&#23433;&#35013;&#30340;&#26368;&#39640;firefox&#29256;&#26412;&#65292;&#24050;&#20462;&#25913; </span><span style="color: #586e75; font-style: italic;">--&gt;</span>
+        &lt;<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">id</span>&gt;{ec8030f7-c20a-464f-9b0e-13a3a9e97384}&lt;/<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">id</span>&gt;        <span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #839496; font-style: italic;"> firefox&#30340;GUID&#65292;&#35828;&#26126;&#35813;&#25554;&#20214;&#26159;firefox&#25554;&#20214; </span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
+        &lt;<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">minVersion</span>&gt;2.0&lt;/<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">minVersion</span>&gt;                           <span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #839496; font-style: italic;"> &#33021;&#23433;&#35013;&#30340;&#26368;&#20302;firefox&#29256;&#26412; </span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
+        &lt;<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">maxVersion</span>&gt;7.0.1&lt;/<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">maxVersion</span>&gt;                         <span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #839496; font-style: italic;"> &#33021;&#23433;&#35013;&#30340;&#26368;&#39640;firefox&#29256;&#26412;&#65292;&#24050;&#20462;&#25913; </span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
     &lt;/<span style="color: #268bd2;">Description</span>&gt;
 &lt;/<span style="color: #6c71c4;">em</span>:<span style="color: #268bd2;">targetApplication</span>&gt;
 </pre>
@@ -176,8 +177,8 @@
         <script type="text/javascript">
           //var disqus_developer = 1;
           var disqus_identifier = "/blog/2011/10/23/fix-firefox-session-page-plugin/";
-          var disqus_url = "http://kelvinh.github.io/blog/2011/10/23/fix-firefox-session-page-plugin/";
-          var disqus_shortname = 'kelvinh';
+          var disqus_url = "http://standino.github.io/blog/2011/10/23/fix-firefox-session-page-plugin/";
+          var disqus_shortname = 'standino';
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -188,18 +189,8 @@
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-41088132-1']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.3c)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
         <p>
           Copyright &copy; 2012 - 2013 <a href="mailto:ini &lt;dot&gt; kelvin &lt;at&gt; gmail &lt;dot&gt; com">Kelvin Hu</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;

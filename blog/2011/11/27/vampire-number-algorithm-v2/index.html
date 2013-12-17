@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>对上一篇吸血鬼数算法的优化 - Kelvin的胡言乱语</title>
+    <title>对上一篇吸血鬼数算法的优化 - org-page</title>
     <meta charset="utf-8" />
     <meta name="author" content="Kelvin Hu" />
     <meta name="description" content="how to calculate vampire numbers" />
@@ -11,19 +11,20 @@
   <body class="container">
     <div>
       <header class="masthead">
-        <h1 class="masthead-title"><a href="/">Kelvin的胡言乱语</a></h1>
-        <p>==============&gt; 重剑无锋，大巧不工。</p>
+        <h1 class="masthead-title"><a href="/">org-page</a></h1>
+        <p>static site generator</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
           <li><a href="/tags/">Tags</a></li>
           <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/kelvinh">GitHub</a></li>
+          <li><a href="https://github.com/kelvinh/org-page">GitHub</a></li>
           <li><a href="/rss.xml">RSS</a></li>
         </ul>
         <form method="get" id="searchform" action="http://www.google.com/search">
           <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="q" value="site:kelvinh.github.io">
+          <input type="hidden" name="q" value="site:your.personal.site.com">
         </form>
       </header>
     </div>
@@ -116,7 +117,7 @@
             <span style="color: #859900;">return</span>;
         }
 
-        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#35813;&#32447;&#24615;&#34920;&#29992;&#20316;&#20598;&#25968;&#20301;&#25968;&#23384;&#25918;&#21015;&#34920;</span>
+        <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#35813;&#32447;&#24615;&#34920;&#29992;&#20316;&#20598;&#25968;&#20301;&#25968;&#23384;&#25918;&#21015;&#34920;</span>
         List&lt;Integer&gt; lenList = <span style="color: #859900;">new</span> <span style="color: #b58900;">ArrayList</span>&lt;Integer&gt;((elen - slen + 1) / 2 + 1);
         <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">n</span> = slen; n &lt;= elen; n++) {
             <span style="color: #859900;">if</span>(n % 2 == 0) {
@@ -124,53 +125,53 @@
             }
         }
 
-        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#24320;&#22987;&#23545;&#21015;&#34920;&#24490;&#29615;</span>
+        <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#24320;&#22987;&#23545;&#21015;&#34920;&#24490;&#29615;</span>
         <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">len</span> : lenList) {
-            <span style="color: #b58900;">int</span> <span style="color: #b58900;">begin</span> = (<span style="color: #b58900;">int</span>)Math.pow(10, len / 2 - 1);&#12288;&#12288;<span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#23545;&#24212;len&#20301;&#20598;&#25968;&#30340;&#12289;&#28385;&#36275;&#20301;&#25968;&#35201;&#27714;&#30340;&#26368;&#23567;&#20056;&#25968;</span>
-            <span style="color: #b58900;">int</span> finish = begin * 10;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#23545;&#24212;len&#20301;&#20598;&#25968;&#30340;&#12289;&#28385;&#36275;&#20301;&#25968;&#35201;&#27714;&#30340;&#26368;&#22823;&#20056;&#25968;</span>
+            <span style="color: #b58900;">int</span> <span style="color: #b58900;">begin</span> = (<span style="color: #b58900;">int</span>)Math.pow(10, len / 2 - 1);&#12288;&#12288;<span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#23545;&#24212;len&#20301;&#20598;&#25968;&#30340;&#12289;&#28385;&#36275;&#20301;&#25968;&#35201;&#27714;&#30340;&#26368;&#23567;&#20056;&#25968;</span>
+            <span style="color: #b58900;">int</span> finish = begin * 10;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#23545;&#24212;len&#20301;&#20598;&#25968;&#30340;&#12289;&#28385;&#36275;&#20301;&#25968;&#35201;&#27714;&#30340;&#26368;&#22823;&#20056;&#25968;</span>
             <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">i</span> = begin; i &lt; finish; i++) {
-                <span style="color: #b58900;">boolean</span> <span style="color: #b58900;">boundryReached</span> = <span style="color: #6c71c4;">false</span>;&#12288;&#12288;&#12288;&#12288; <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#9312;&#65288;&#35265;&#9313;&#21644;&#22788;&#9314;&#30340;&#35299;&#37322;&#65289;</span>
-                <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">j</span> = i; j &lt; finish; j++) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288; <span style="color: #586e75; font-style: italic;">//  </span><span style="color: #657b83; font-style: italic;">j&#20174;i&#24320;&#22987;&#35745;&#25968;&#65292;&#36991;&#20813;&#20986;&#29616;(i, j)&#20026;(17, 27)&#12289;(27, 17)&#36825;&#26679;&#30340;&#37325;&#22797;&#24773;&#20917;</span>
-                    <span style="color: #859900;">if</span>(i % 10 == 0 &amp;&amp; j % 10 == 0) {&#12288;&#12288;&#12288;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#20004;&#20010;&#20056;&#25968;&#26411;&#23614;&#37117;&#20026;0&#30340;&#24773;&#20917;&#19981;&#28385;&#36275;&#26465;&#20214;&#65292;&#36339;&#36807;</span>
+                <span style="color: #b58900;">boolean</span> <span style="color: #b58900;">boundryReached</span> = <span style="color: #6c71c4;">false</span>;&#12288;&#12288;&#12288;&#12288; <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#9312;&#65288;&#35265;&#9313;&#21644;&#22788;&#9314;&#30340;&#35299;&#37322;&#65289;</span>
+                <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">j</span> = i; j &lt; finish; j++) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288; <span style="color: #93a1a1; font-style: italic;">//  </span><span style="color: #839496; font-style: italic;">j&#20174;i&#24320;&#22987;&#35745;&#25968;&#65292;&#36991;&#20813;&#20986;&#29616;(i, j)&#20026;(17, 27)&#12289;(27, 17)&#36825;&#26679;&#30340;&#37325;&#22797;&#24773;&#20917;</span>
+                    <span style="color: #859900;">if</span>(i % 10 == 0 &amp;&amp; j % 10 == 0) {&#12288;&#12288;&#12288;  <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#20004;&#20010;&#20056;&#25968;&#26411;&#23614;&#37117;&#20026;0&#30340;&#24773;&#20917;&#19981;&#28385;&#36275;&#26465;&#20214;&#65292;&#36339;&#36807;</span>
                         <span style="color: #859900;">continue</span>;
                     }
 
                     <span style="color: #b58900;">int</span> <span style="color: #b58900;">value</span> = i * j;
-                    <span style="color: #859900;">if</span>(value &lt; 0 || value &gt; end) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#22914;&#26524;&#31215;&#24050;&#32463;&#28322;&#20986;&#25110;&#32773;&#36229;&#36807;&#26368;&#22823;&#20540;</span>
-                        <span style="color: #859900;">if</span>(j == i) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288; <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#9313; &#22914;&#26524;j&#31561;&#20110;i&#65292;&#35828;&#26126;&#20174;&#27492;&#20043;&#21518;&#65292;&#26080;&#35770;i&#30340;&#22686;&#38271;&#25110;&#32773;j&#30340;&#22686;&#38271;&#37117;&#19981;&#20250;&#20877;&#28385;&#36275;&#26465;&#20214;&#65292;&#25152;&#20197;&#38656;&#35201;&#36339;&#20986;&#20004;&#23618;&#24490;&#29615;&#65288;&#35265;&#9312;&#21644;&#9314;&#65289;</span>
+                    <span style="color: #859900;">if</span>(value &lt; 0 || value &gt; end) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#22914;&#26524;&#31215;&#24050;&#32463;&#28322;&#20986;&#25110;&#32773;&#36229;&#36807;&#26368;&#22823;&#20540;</span>
+                        <span style="color: #859900;">if</span>(j == i) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288; <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#9313; &#22914;&#26524;j&#31561;&#20110;i&#65292;&#35828;&#26126;&#20174;&#27492;&#20043;&#21518;&#65292;&#26080;&#35770;i&#30340;&#22686;&#38271;&#25110;&#32773;j&#30340;&#22686;&#38271;&#37117;&#19981;&#20250;&#20877;&#28385;&#36275;&#26465;&#20214;&#65292;&#25152;&#20197;&#38656;&#35201;&#36339;&#20986;&#20004;&#23618;&#24490;&#29615;&#65288;&#35265;&#9312;&#21644;&#9314;&#65289;</span>
                             boundryReached = <span style="color: #6c71c4;">true</span>;
                         }
                         <span style="color: #859900;">break</span>;
                     }
-                    <span style="color: #859900;">if</span>(value &lt; start) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#22914;&#26524;&#31215;&#23567;&#20110;&#26368;&#23567;&#20540;&#65292;&#21017;&#32487;&#32493;</span>
+                    <span style="color: #859900;">if</span>(value &lt; start) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#22914;&#26524;&#31215;&#23567;&#20110;&#26368;&#23567;&#20540;&#65292;&#21017;&#32487;&#32493;</span>
                         <span style="color: #859900;">continue</span>;
                     }
 
-                    <span style="color: #859900;">if</span>(VampireNumber.getIntegerLength(value) != len) {&#12288;&#12288;<span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#22914;&#26524;&#31215;&#30340;&#20301;&#25968;&#19981;&#26159;&#26399;&#26395;&#20301;&#25968;</span>
+                    <span style="color: #859900;">if</span>(VampireNumber.getIntegerLength(value) != len) {&#12288;&#12288;<span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#22914;&#26524;&#31215;&#30340;&#20301;&#25968;&#19981;&#26159;&#26399;&#26395;&#20301;&#25968;</span>
                         <span style="color: #859900;">continue</span>;
                     }
 
-                    <span style="color: #b58900;">int</span>[] <span style="color: #b58900;">numList</span> = <span style="color: #859900;">new</span> <span style="color: #b58900;">int</span>[10];&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#21313;&#20010;&#25968;&#23383;&#30340;&#35745;&#25968;&#25968;&#32452;&#65292;&#32034;&#24341;0~9&#20998;&#21035;&#20195;&#34920;&#25968;&#23383;0~9&#20986;&#29616;&#30340;&#27425;&#25968;</span>
-                    VampireNumber.getNumberCountList(numList, i, j);&#12288;&#12288; <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#19968;&#20010;&#25968;&#23383;&#20986;&#29616;&#20102;&#20960;&#27425;&#65292;&#23601;&#23558;&#35813;&#35745;&#25968;&#25968;&#32452;&#23545;&#24212;&#32034;&#24341;&#30340;&#20540;&#21152;1</span>
+                    <span style="color: #b58900;">int</span>[] <span style="color: #b58900;">numList</span> = <span style="color: #859900;">new</span> <span style="color: #b58900;">int</span>[10];&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#21313;&#20010;&#25968;&#23383;&#30340;&#35745;&#25968;&#25968;&#32452;&#65292;&#32034;&#24341;0~9&#20998;&#21035;&#20195;&#34920;&#25968;&#23383;0~9&#20986;&#29616;&#30340;&#27425;&#25968;</span>
+                    VampireNumber.getNumberCountList(numList, i, j);&#12288;&#12288; <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#19968;&#20010;&#25968;&#23383;&#20986;&#29616;&#20102;&#20960;&#27425;&#65292;&#23601;&#23558;&#35813;&#35745;&#25968;&#25968;&#32452;&#23545;&#24212;&#32034;&#24341;&#30340;&#20540;&#21152;1</span>
 
                     <span style="color: #859900;">while</span>(value != 0) {
-                        numList[value % 10]--;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;   <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#23558;&#31215;&#20013;&#20986;&#29616;&#30340;&#25968;&#23383;&#22312;&#25968;&#32452;&#20013;&#23545;&#24212;&#32034;&#24341;&#30340;&#20540;&#20943;1</span>
+                        numList[value % 10]--;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;   <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#23558;&#31215;&#20013;&#20986;&#29616;&#30340;&#25968;&#23383;&#22312;&#25968;&#32452;&#20013;&#23545;&#24212;&#32034;&#24341;&#30340;&#20540;&#20943;1</span>
                         value /= 10;
                     }
                     <span style="color: #b58900;">boolean</span> <span style="color: #b58900;">isVampireNumber</span> = <span style="color: #6c71c4;">true</span>;
-                    <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">a</span> = 0; a &lt; numList.length / 2 + 1; a++) {&#12288;&#12288;&#12288;&#12288;<span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#24490;&#29615;&#65292;&#29992;&#20110;&#21028;&#26029;&#35745;&#25968;&#25968;&#32452;&#30340;&#27599;&#19968;&#39033;&#26159;&#21542;&#37117;&#20026;0&#65292;&#22914;&#26524;&#37117;&#20026;0&#65292;&#35828;&#26126;&#31215;&#26159;&#21560;&#34880;&#39740;&#25968;</span>
+                    <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">a</span> = 0; a &lt; numList.length / 2 + 1; a++) {&#12288;&#12288;&#12288;&#12288;<span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#24490;&#29615;&#65292;&#29992;&#20110;&#21028;&#26029;&#35745;&#25968;&#25968;&#32452;&#30340;&#27599;&#19968;&#39033;&#26159;&#21542;&#37117;&#20026;0&#65292;&#22914;&#26524;&#37117;&#20026;0&#65292;&#35828;&#26126;&#31215;&#26159;&#21560;&#34880;&#39740;&#25968;</span>
                         <span style="color: #859900;">if</span>(numList[a] != 0 || numList[numList.length - a - 1] != 0) {
                             isVampireNumber = <span style="color: #6c71c4;">false</span>;
                             <span style="color: #859900;">break</span>;
                         }
                     }
 
-                    <span style="color: #859900;">if</span>(isVampireNumber) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#22914;&#26524;&#26159;&#21560;&#34880;&#39740;&#25968;&#65292;&#21017;&#25171;&#21360;&#20986;&#26469;</span>
+                    <span style="color: #859900;">if</span>(isVampireNumber) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#22914;&#26524;&#26159;&#21560;&#34880;&#39740;&#25968;&#65292;&#21017;&#25171;&#21360;&#20986;&#26469;</span>
                         System.out.println(<span style="color: #2aa198;">"A vampire number found: "</span> + i * j + <span style="color: #2aa198;">", ("</span> + i + <span style="color: #2aa198;">", "</span> + j + <span style="color: #2aa198;">")."</span>);
                     }
                 }
 
-                <span style="color: #859900;">if</span>(boundryReached) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#9314; &#22312;&#20986;&#29616;&#28322;&#20986;&#25110;&#32773;&#36229;&#36807;&#26368;&#22823;&#20540;&#12289;&#24182;&#19988;j&#31561;&#20110;i&#30340;&#24773;&#20917;&#19979;&#36339;&#20986;&#22806;&#23618;&#24490;&#29615;&#65292;&#22240;&#20026;&#20869;&#23618;&#24490;&#29615;&#30340;&#21021;&#22987;&#26465;&#20214;&#26159;j=i&#65292;&#25152;&#20197;&#27492;&#26102;i&#20877;&#22686;&#38271;&#30340;&#35805;&#32943;&#23450;&#20250;&#28322;&#20986;&#25110;&#32773;&#36229;&#36807;&#26368;&#22823;&#20540;&#65288;&#35265;&#9312;&#21644;&#9313;&#65289;</span>
+                <span style="color: #859900;">if</span>(boundryReached) {&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;  <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#9314; &#22312;&#20986;&#29616;&#28322;&#20986;&#25110;&#32773;&#36229;&#36807;&#26368;&#22823;&#20540;&#12289;&#24182;&#19988;j&#31561;&#20110;i&#30340;&#24773;&#20917;&#19979;&#36339;&#20986;&#22806;&#23618;&#24490;&#29615;&#65292;&#22240;&#20026;&#20869;&#23618;&#24490;&#29615;&#30340;&#21021;&#22987;&#26465;&#20214;&#26159;j=i&#65292;&#25152;&#20197;&#27492;&#26102;i&#20877;&#22686;&#38271;&#30340;&#35805;&#32943;&#23450;&#20250;&#28322;&#20986;&#25110;&#32773;&#36229;&#36807;&#26368;&#22823;&#20540;&#65288;&#35265;&#9312;&#21644;&#9313;&#65289;</span>
                     <span style="color: #859900;">break</span>;
                 }
             }
@@ -199,8 +200,8 @@
     <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">String</span>[] <span style="color: #b58900;">args</span>) {
         System.out.println(<span style="color: #2aa198;">"-------------- Now start computing... --------------"</span>);
         <span style="color: #b58900;">long</span> <span style="color: #b58900;">s</span> = System.currentTimeMillis();
-        VampireNumber.find(0, <span style="color: #6c71c4;">Integer</span>.MAX_VALUE);&#12288;&#12288;<span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#35843;&#29992;find()&#20989;&#25968;&#26469;&#27714;&#20174;0&#21040;Integer.MAX_VALUE&#20043;&#38388;&#30340;&#25152;&#26377;&#21560;&#34880;&#39740;&#25968;</span>
-        <span style="color: #586e75; font-style: italic;">//</span><span style="color: #657b83; font-style: italic;">VampireNumber.find(0, 900000);</span>
+        VampireNumber.find(0, <span style="color: #6c71c4;">Integer</span>.MAX_VALUE);&#12288;&#12288;<span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#35843;&#29992;find()&#20989;&#25968;&#26469;&#27714;&#20174;0&#21040;Integer.MAX_VALUE&#20043;&#38388;&#30340;&#25152;&#26377;&#21560;&#34880;&#39740;&#25968;</span>
+        <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #839496; font-style: italic;">VampireNumber.find(0, 900000);</span>
         <span style="color: #b58900;">long</span> f = System.currentTimeMillis();
         System.out.println(<span style="color: #2aa198;">"------- Computing finished, time used: "</span> + (f - s) + <span style="color: #2aa198;">" ms. -------"</span>);
     }
@@ -223,8 +224,8 @@
         <script type="text/javascript">
           //var disqus_developer = 1;
           var disqus_identifier = "/blog/2011/11/27/vampire-number-algorithm-v2/";
-          var disqus_url = "http://kelvinh.github.io/blog/2011/11/27/vampire-number-algorithm-v2/";
-          var disqus_shortname = 'kelvinh';
+          var disqus_url = "http://standino.github.io/blog/2011/11/27/vampire-number-algorithm-v2/";
+          var disqus_shortname = 'standino';
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -235,18 +236,8 @@
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-41088132-1']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.3c)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
         <p>
           Copyright &copy; 2012 - 2013 <a href="mailto:ini &lt;dot&gt; kelvin &lt;at&gt; gmail &lt;dot&gt; com">Kelvin Hu</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;

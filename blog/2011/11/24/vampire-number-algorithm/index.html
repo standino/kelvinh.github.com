@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>也来写一个吸血鬼数的求法 - Kelvin的胡言乱语</title>
+    <title>也来写一个吸血鬼数的求法 - org-page</title>
     <meta charset="utf-8" />
     <meta name="author" content="Kelvin Hu" />
     <meta name="description" content="how to calculate vampire numbers" />
@@ -11,19 +11,20 @@
   <body class="container">
     <div>
       <header class="masthead">
-        <h1 class="masthead-title"><a href="/">Kelvin的胡言乱语</a></h1>
-        <p>==============&gt; 重剑无锋，大巧不工。</p>
+        <h1 class="masthead-title"><a href="/">org-page</a></h1>
+        <p>static site generator</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
           <li><a href="/tags/">Tags</a></li>
           <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/kelvinh">GitHub</a></li>
+          <li><a href="https://github.com/kelvinh/org-page">GitHub</a></li>
           <li><a href="/rss.xml">RSS</a></li>
         </ul>
         <form method="get" id="searchform" action="http://www.google.com/search">
           <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="q" value="site:kelvinh.github.io">
+          <input type="hidden" name="q" value="site:your.personal.site.com">
         </form>
       </header>
     </div>
@@ -82,14 +83,14 @@
             <span style="color: #859900;">return</span>;
         }
 
-        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#26681;&#25454;&#33539;&#22260;&#30830;&#23450;&#19979;&#38754;&#24490;&#29615;&#24320;&#22987;&#21644;&#32467;&#26463;&#30340;&#25968;&#23383;</span>
+        <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#26681;&#25454;&#33539;&#22260;&#30830;&#23450;&#19979;&#38754;&#24490;&#29615;&#24320;&#22987;&#21644;&#32467;&#26463;&#30340;&#25968;&#23383;</span>
         <span style="color: #b58900;">int</span> <span style="color: #b58900;">begin</span> = (<span style="color: #b58900;">int</span>)Math.pow(10, slen / 2 - 1);
         <span style="color: #b58900;">int</span> <span style="color: #b58900;">finish</span> = (<span style="color: #b58900;">int</span>)Math.pow(10, (elen - 1) / 2);
         System.out.println(<span style="color: #2aa198;">"begin: "</span> + begin + <span style="color: #2aa198;">", finish: "</span> + finish);
 
         <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">i</span> = begin; i &lt; finish; i++) {
-            <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">j</span> = i; j &lt; finish; j++) {    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#20174;i&#24320;&#22987;&#65292;&#36991;&#20813;&#20986;&#29616;(17, 27)&#12289;(27, 17)&#36825;&#26679;&#30340;&#37325;&#22797;</span>
-                <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#22914;&#26524;&#20004;&#20010;&#25968;&#32467;&#23614;&#37117;&#26159;0&#65292;&#21017;&#32487;&#32493;</span>
+            <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">j</span> = i; j &lt; finish; j++) {    <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#20174;i&#24320;&#22987;&#65292;&#36991;&#20813;&#20986;&#29616;(17, 27)&#12289;(27, 17)&#36825;&#26679;&#30340;&#37325;&#22797;</span>
+                <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#22914;&#26524;&#20004;&#20010;&#25968;&#32467;&#23614;&#37117;&#26159;0&#65292;&#21017;&#32487;&#32493;</span>
                 <span style="color: #859900;">if</span>(i % 10 == 0 &amp;&amp; j % 10 == 0) {
                     <span style="color: #859900;">continue</span>;
                 }
@@ -102,7 +103,7 @@
                 }
 
                 <span style="color: #b58900;">int</span> <span style="color: #b58900;">value</span> = i * j;
-                <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#26816;&#27979;value&#26159;&#21542;&#24050;&#28322;&#20986;</span>
+                <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#26816;&#27979;value&#26159;&#21542;&#24050;&#28322;&#20986;</span>
                 <span style="color: #859900;">if</span>(value &lt; 0) {
                     <span style="color: #859900;">break</span>;
                 }
@@ -118,13 +119,13 @@
                     <span style="color: #859900;">continue</span>;
                 }
 
-                <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#23558;&#20004;&#20010;&#20056;&#25968;&#30340;&#25968;&#23383;&#25918;&#20837;List</span>
+                <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#23558;&#20004;&#20010;&#20056;&#25968;&#30340;&#25968;&#23383;&#25918;&#20837;List</span>
                 List&lt;Integer&gt; numList = <span style="color: #859900;">new</span> <span style="color: #b58900;">LinkedList</span>&lt;Integer&gt;();
                 VampireNumber.getNumberList(i, first, numList);
                 VampireNumber.getNumberList(j, second, numList);
 
                 <span style="color: #b58900;">boolean</span> <span style="color: #b58900;">isVampireNumber</span> = <span style="color: #6c71c4;">true</span>;
-                <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#23558;&#20056;&#31215;&#30340;&#25968;&#23383;&#21644;List&#20013;&#23384;&#25918;&#30340;&#20056;&#25968;&#30340;&#25968;&#23383;&#36827;&#34892;&#27604;&#36739;</span>
+                <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#23558;&#20056;&#31215;&#30340;&#25968;&#23383;&#21644;List&#20013;&#23384;&#25918;&#30340;&#20056;&#25968;&#30340;&#25968;&#23383;&#36827;&#34892;&#27604;&#36739;</span>
                 <span style="color: #859900;">while</span>(value != 0) {
                     <span style="color: #b58900;">int</span> <span style="color: #b58900;">current</span> = value % 10;
                     value /= 10;
@@ -135,7 +136,7 @@
                     }
                     numList.remove(<span style="color: #859900;">new</span> <span style="color: #b58900;">Integer</span>(current));
                 }
-                <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#22914;&#26524;&#20056;&#31215;&#30340;&#25968;&#23383;&#21644;List&#20013;&#23384;&#25918;&#30340;&#20056;&#25968;&#30340;&#25968;&#23383;&#21563;&#21512;&#65292;&#21017;&#26159;&#21560;&#34880;&#39740;&#25968;</span>
+                <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#22914;&#26524;&#20056;&#31215;&#30340;&#25968;&#23383;&#21644;List&#20013;&#23384;&#25918;&#30340;&#20056;&#25968;&#30340;&#25968;&#23383;&#21563;&#21512;&#65292;&#21017;&#26159;&#21560;&#34880;&#39740;&#25968;</span>
                 <span style="color: #859900;">if</span>(isVampireNumber) {
                     System.out.println(<span style="color: #2aa198;">"A vampire number found: "</span> + i * j + <span style="color: #2aa198;">", ("</span> + i + <span style="color: #2aa198;">", "</span> + j + <span style="color: #2aa198;">")."</span>);
                 }
@@ -143,7 +144,7 @@
         }
     }
 
-    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#23558;num&#30340;&#21508;&#20010;&#20301;&#30340;&#25968;&#23383;&#25918;&#20837;list</span>
+    <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#23558;num&#30340;&#21508;&#20010;&#20301;&#30340;&#25968;&#23383;&#25918;&#20837;list</span>
     <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">getNumberList</span>(<span style="color: #859900;">final</span> <span style="color: #b58900;">int</span> <span style="color: #b58900;">num</span>, <span style="color: #b58900;">int</span> <span style="color: #b58900;">length</span>, List&lt;Integer&gt; list) {
         <span style="color: #b58900;">int</span> <span style="color: #b58900;">copy</span> = num;
         <span style="color: #859900;">for</span>(<span style="color: #b58900;">int</span> <span style="color: #b58900;">i</span> = 0; i &lt; length; i++) {
@@ -152,7 +153,7 @@
         }
     }
 
-    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #657b83; font-style: italic;">&#21462;&#24471;num&#30340;&#20301;&#25968;</span>
+    <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">&#21462;&#24471;num&#30340;&#20301;&#25968;</span>
     <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">getIntegerLength</span>(<span style="color: #859900;">final</span> <span style="color: #b58900;">int</span> <span style="color: #b58900;">num</span>) {
         <span style="color: #b58900;">int</span> <span style="color: #b58900;">len</span> = 0;
         <span style="color: #b58900;">int</span> <span style="color: #b58900;">copy</span> = num;
@@ -196,8 +197,8 @@
         <script type="text/javascript">
           //var disqus_developer = 1;
           var disqus_identifier = "/blog/2011/11/24/vampire-number-algorithm/";
-          var disqus_url = "http://kelvinh.github.io/blog/2011/11/24/vampire-number-algorithm/";
-          var disqus_shortname = 'kelvinh';
+          var disqus_url = "http://standino.github.io/blog/2011/11/24/vampire-number-algorithm/";
+          var disqus_shortname = 'standino';
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -208,18 +209,8 @@
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-41088132-1']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.3c)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
         <p>
           Copyright &copy; 2012 - 2013 <a href="mailto:ini &lt;dot&gt; kelvin &lt;at&gt; gmail &lt;dot&gt; com">Kelvin Hu</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
