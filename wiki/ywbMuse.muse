@@ -1,0 +1,452 @@
+#title Emacs publish
+
+<contents>
+
+
+* 什么是 Muse
+
+如果你知道 Wiki，那一定很快就能熟悉 Muse。因为 Muse 就是一个本地的Wiki
+发布系统，它的前身就是 <literal>EmacsWiki</literal>。Muse 把 <literal>EmacsWiki</literal> 的代码重写一遍，强调
+了它的编辑(authoring) 和发布 (publishing) 功能。目标是能产生好看并且多
+种格式兼容的文档。
+
+* 特性
+
+Muse 是由 <literal>EmacsWiki</literal> 衍生的，自然 <literal>EmacsWiki</literal> 大部分的特性都保留下
+来，[[http://www.emacswiki.org/cgi-bin/wiki/EmacsWikiMode#toc1][EmacsWikiMode]] 上列举了一堆，我列一些吸引我使用 Muse 的原因：
+
+ - 标记简单，实际上也没有用到那么多标记
+ - 部分所见即所得，在 Emacs 中看到的文档很清爽
+ - 支持多种格式，你把 Muse 文档发布成 html，latex，docbook 等等多种格
+ 式，如果还有需要生成其它格式文档，可以自己写一个转换的插件
+ - 可定制，有 elisp 支持，所以很容易写出自己需要的功能或扩展
+ - 兼容 org 表格 
+ - 高亮源代码
+
+* 安装
+
+闲话少说，让我们直接进入实战吧。首先下载最新版本的 muse。如果是老手使
+用哪个版本没有关系，但是新手最好使用这时我使用的版本 [[http://mwolson.org/static/dist/muse/muse-3.12.tar.gz][muse-3.12]]，以防止
+muse 接口改变，使用一些配置不能用（当然，自己有能力研究也可以无视版本）。
+
+和一般的 emacs 包一样，你可以选择按作者提供的方式安装，也可以直接把所
+有 el 文件放到 load-path 中的某个目录中就行了。如果你在 linux 下或
+windows 上安装了一般的 unix 开发环境，比如 msys 或 cygwin，还是推荐用
+make 来安装。可以根据自己的情况修改
+Makefile.defs[1] 文件中相关参数，比较重要的安装目录参数，比如
+PREFIX，ELISPDIR。修改完后运行 <code>make</code> 和 <code>make
+install</code> 两个命令。
+
+* 基本配置
+
+Muse 文档中说在 .emacs 加上这样的基本配置：
+
+<src lang="lisp">
+
+(add-to-list 'load-path "<path to Muse>")
+
+(require 'muse-mode)     ; load authoring mode
+(require 'muse-html)     ; load publishing styles I use
+(require 'muse-latex)
+(require 'muse-texinfo)
+(require 'muse-docbook)
+(require 'muse-project)  ; publish files in projects
+
+</src>
+
+但是我推荐如果你不是每天都用 muse 写东西，还是在使用时再导入需要的库。
+方法是把你所有有关 muse 的配置写到一个 muse-init.el 文件中，放到 load-path
+下的某个目录中，然后在 .emacs 中写：
+<src lang="lisp">
+(add-to-list 'load-path "<path to Muse>")
+(add-to-list 'auto-mode-alist '("\\.muse$" . muse-mode))
+;; Tricks to load feature when needed
+(defun muse-mode ()
+  (require 'muse-init)
+  (muse-mode-choose-mode))
+</src>
+
+不要担心你这里定义了 muse-mode，因为当你导入 muse-init 时会同时导入
+muse-mode，这样 muse-mode 就重定义成真正起作用的函数了。
+
+在 muse-init.el 文件中除了加上前面一堆的 require，还有一些需要配置的东
+西，你可以选择用 M-x customize-group RET muse 一个一个设定，也可以直接
+写到 muse-init.el 文件中。我推荐的一些基本设置如下：
+
+<src lang="lisp">
+(setq
+ ;; 使用 ido 来补全
+ muse-completing-read-function 'ido-completing-read
+ ;; 使用 lisp 标签时不在打开 muse 文件时求值
+ muse-colors-evaluate-lisp-tags nil
+ ;; 设置 (muse-publishing-directive "date") 的格式
+ muse-publish-date-format "%Y 年 %m 月 %d 日"
+ ;; 单独的项目名字不会成为 wiki 链接
+ muse-wiki-ignore-bare-project-names t)
+</src>
+
+* 创建第一个 muse 文件
+
+使用上面的配置之后你就可以创建 muse 文件了。例如：
+<example>
+#title hello, Muse
+
+This is my first file in Muse.
+</example>
+
+写完后用 C-c C-t 发布所写的文档，会让你选择发布的格式和目录。如果没有
+什么意外，每种格式都是能用的[2]。你可以尝试各种标记方法，这里我就不罗
+嗦了。在你下载的 muse 安装包中的 example 目录中有 QuickStart.muse，或
+者参考翻译的[[http://www.zhyfly.org/projects/QuickStart.cn.html][中文网页]]。
+
+* 创建项目目录
+
+如果你的文件比较多，应该使用项目来管理 muse 文件。项目可以让你的 muse
+有统一的发布目录和风格，可以在各个项目中创建内部的 wiki 链接。项目由三
+部分组成：
+ - 项目名字，虽然理论上中文也可以，但是我想还是老实有 E 文好
+ - 项目源文件设置，包括源文件目录及其它
+ - 项目输出文件设置，包括输入格式，保存目录等
+
+在创建项目之前必须先考虑好项目之间的关系。虽然 muse 支持子目录发布，也就是
+说在一个目录下包括子目录都使用相同的设置，但是我不推荐这样，因为这会让
+内部的 wiki 链接很难写。使用子目录的形式唯一的好处是配置简单，可以同时
+发布所有源文件。而一个目录一个项目的好处是可以精细调整参数，wiki 链接
+写起来简单。另外在有[[#command-line][命令行发布的程序]]后，一次发布多个项目也很容易就能实
+现。
+
+这里列一些我的项目设置：
+<src lang="lisp">
+(setq muse-project-alist
+      `(("Emacs"
+         ("~/Muse/Emacs" :default "index"
+          :force-publish (,ywb-muse-recentchanges-page "WikiIndex"))
+         (:base "html" :path "~/public_html/emacs"))
+        ("ElispIntro"
+         ("~/Muse/ElispIntro" :default "index"
+          :force-publish (,ywb-muse-recentchanges-page "WikiIndex"))
+         (:base "html" :path "~/public_html/elispintro")
+         (:base "latexbook" :path "~/Muse/latex/elispintro"
+                :exclude ,(regexp-opt '("index" "RecentChanges" "WikiIndex"))))))
+</src>
+
+* 一些使用经验
+
+** 模板文件中的链接
+
+如果发布到多层目录有一个问题是在共同的模板文件，比如 muse-html-header
+文件中如何写链接，比如使用的相同的 css 文件链接或导航链接等。使用发布
+的绝对路径当然没有问题，有没有使用相对路径的解决方案呢？
+
+我写了一个 ywb-muse-relative-path 函数用于把发布文件所在的目录转换成与
+发布根目录的相对路径。这样在你的头文件中可以用：
+<example>
+<lisp>(ywb-muse-relative-path "css/style.css")</lisp>
+</example>
+
+来引用在发布根目录下的 css/style.css 文件。这样发布的 html 文件中，根
+目录下 index.html 这个链接为 "./css/style.css"，而在 emacs/index.html
+文件中这个链接为 "../css/style.css"。
+
+#command-line
+** 使用命令行发布项目
+
+如果一次要发布的页面太多，确实这个还是很有必要的。当然这要借助命令行来
+完成。在发布的源文件 examples 目录里有一个 publish-project 命令。没有
+找到没有关系，就这几行：
+
+<src lang="sh">
+#! /bin/bash
+emacs -q -batch -l muse-init.el -f muse-project-batch-publish "$@"
+</src>
+
+我稍微修改了一下 muse-project-batch-publish，可以用
+<literal>--all</literal>
+选项来发布所有定义的 project。
+
+你可以以下面的方式使用这个命令：
+
+<example>
+publish-project [--force] [--all | ProjectName1 ProjectName2 ...]
+</example>
+
+<literal>--force</literal> 参数不考虑已发布文件的修改时间与源文件的关系，强制发布全部页面。
+
+** 如何使用不同的模板
+如果想让一个项目使用不同的模板文件，最简单的办法是重新定义一种发布格式。
+看上去好像很复杂，实际上非常简单：
+<src lang="emacs-lisp">
+(muse-derive-style "my-html" "html"
+                   :header 'my-muse-html-header
+                   :footer 'my-muse-html-footer
+                   :style-sheet 'my-muse-html-style-sheet
+                   :maintainer "Ye Wenbin")
+</src>
+这里我定义一种新的发布格式 "my-html"，其中 my-muse-html-header 和
+my-muse-html-footer 同 muse-html-header 和 muse-html-footer 一样既可以
+是一个字符串，也可以是一个文件名。其它没有修改参数就和发布格式 html 完
+全一样。
+
+** 如何安排其它目录
+
+在 muse 文件中如果引用了图片或其它外部文件，muse 中的文件链接和发布文件
+中的链接的有效性是一个问题。在 linux 上很简单，创建目录的符号链接就行了。
+Windows 上我曾经研究过，相当野蛮，要修改 muse 的代码。不知道现在还能
+不能用了，所以就不贴上来了。
+
+** 高亮源代码的问题
+
+muse 实现在 html 中高亮源代码。这个功能需要 htmlize 1.34 版的。
+但是调用的 htmlize-region-for-paste 函数强制使用 inline-css，可以考虑
+修改这个函数，把 =(htmlize-output-type 'inline-css)= 这一部分
+注释了。
+
+如果你也和我一样使用 executable 来自动加入shebang 行和设置文件模式，可
+能会遇到一个问题是这些代码中可能也会自己加上 shebang 行。我的解决办法是
+在使用 executable-set-magic 之前先检查当前 buffer 是否关联文件，比如：
+
+<src lang="emacs-lisp">
+(add-hook 'cperl-mode-hook
+          (lambda ()
+            (when buffer-file-name
+              (executable-set-magic "perl" "-w" t t))))
+</src>
+
+** 方便的插入标签
+如果你用 html-mode，应该用到一个按键 C-c C-t，作用是成对的插入 html 标
+签。在 muse-mode 也可以用这个命令：
+
+<src lang="emacs-lisp">
+(autoload 'sgml-tag "sgml-mode" "" t)
+(defvar muse-tag-alist
+  '(("example")
+    ("literal")
+    ("lisp" n)
+    ("src" ("lang" ("emacs-lisp") ("perl") ("sql") ("c++") ("sh")) n))
+  "Tag list for `sgml-tag'.")
+(add-hook 'muse-mode-hook
+          (lambda ()
+            (set (make-local-variable 'sgml-tag-alist) muse-tag-alist)
+            (modify-syntax-entry ?> ")" muse-mode-syntax-table)
+            (modify-syntax-entry ?< "(" muse-mode-syntax-table)
+            (define-key muse-mode-map (kbd "C-c /") 'sgml-close-tag)
+            (define-key muse-mode-map (kbd "C-c t") 'sgml-tag)))
+</src>
+
+* 我写的一些扩展
+
+** 增加预览的方式
+
+Muse 只支持一种浏览方式，可以通过设置这个 style 的 :browser 属性实现。
+对于 html 默认是用 browser-url 打开 html 文件，我增加两种浏览方式，一种
+是直接打开 html 文件，绑定到 C-c C-c，另一种是用 w3m 打开，绑定到 C-c
+C-m。
+
+** 在 muse 源文件中高亮源代码
+
+muse 提供很方便修改 muse-mode 中高亮的接口。我写了一个函数用于在 muse-mode
+中高亮源代码，增加的一个功能是可以在 src 中使用 number 属性用于显示代
+码的行号。
+
+** 在目录索引中显示标题
+
+在文件中使用 <code><lisp>(muse-index-as-string t t t)</lisp></code> 可
+以产生项目的索引。但是这样产生的链接文字是文件名，我觉得不是很有用，所
+以写了一个兼容的函数 ywb-muse-index-as-string，可以使链接文字为实际的标
+题。
+
+** 产生最近更新页面
+
+这个功能我觉得还是比较实用，但是 muse 没有实现，我自己写了一个，效果还
+好。用法与生成目录类似，在文件中加入：
+<example>
+<lisp>(ywb-muse-generate-recentchanges)</lisp>
+</example>
+
+但是需要注意的是这个文件中最好只有这一句，因为这个函数是会修改这个文件
+的。如果有其它文字，很有可能有影响。
+
+** 显示项目文件的树状图
+
+这个扩展能直观显示所有项目的树图。在光标在节点上时，可以用鼠标或按键发
+布项目或文件。我想实现的另一个更重要的功能是能够自动提示你什么文件需要
+重新输出发布文件，然后可以很容易就能发布。暂时这个功能还没有实现。
+
+** 生成文件的 rss
+
+虽然 Muse 有一个 muse-journal 的扩展，但是我一般不写 Journal，而且
+它的那个生成 rss 的函数比较简单，不太容易扩展。
+我写了一个[[MyElisp#rss][扩展]]专门用于创建和修改 rss 文件，目前只支持 rss version 2.0。
+还没有想好如何结合 muse 使用。目前只写了一个简单的命令用于生成我的网站
+的 rss 文件。
+
+下载我的 [[../etc/muse-conf.tar.gz][Muse 配置和头文件]]。
+
+
+*  Customize xml file 
+
+We can change the value of muse-xml-header, muse-html-footer and
+muse-xml-markup-regexps
+to generate developworks xml file.
+
+<src lang="lisp">
+
+(defcustom muse-xml-header
+  "<?xml version=\"1.0\" encoding=\"<lisp>
+  (muse-xml-encoding)</lisp>\"?>
+<MUSE>
+  <pageinfo>
+    <title><lisp>(muse-publishing-directive \"title\")</lisp></title>
+    <author><lisp>(muse-publishing-directive \"author\")</lisp></author>
+    <maintainer><lisp>(muse-style-element :maintainer)</lisp></maintainer>
+    <pubdate><lisp>(muse-publishing-directive \"date\")</lisp></pubdate>
+  </pageinfo>
+  <!-- Page published by Emacs Muse begins here -->\n"
+  "Header used for publishing XML files.
+This may be text or a filename."
+  :type 'string
+  :group 'muse-xml)
+
+(defcustom muse-xml-footer "
+  <!-- Page published by Emacs Muse ends here -->
+</MUSE>\n"
+  "Footer used for publishing XML files.
+This may be text or a filename."
+  :type 'string
+  :group 'muse-xml)
+
+(defcustom muse-xml-markup-regexps
+  `(;; Beginning of doc, end of doc, or plain paragraph separator
+    (10000 ,(concat "\\(\\(\n\\(?:[" muse-regexp-blank "]*\n\\)*"
+                    "\\([" muse-regexp-blank "]*\n\\)\\)"
+                    "\\|\\`\\s-*\\|\\s-*\\'\\)")
+           ;; this is somewhat repetitive because we only require the
+           ;; line just before the paragraph beginning to be not
+           ;; read-only
+           3 muse-xml-markup-paragraph))
+  "List of markup rules for publishing a Muse page to XML.
+For more on the structure of this list, see `muse-publish-markup-regexps'."
+  :type '(repeat (choice
+                  (list :tag "Markup rule"
+                        integer
+                        (choice regexp symbol)
+                        integer
+                        (choice string function symbol))
+                  function))
+  :group 'muse-xml)
+
+(defcustom muse-xml-markup-functions
+  '((anchor . muse-xml-markup-anchor)
+    (table . muse-xml-markup-table))
+  "An alist of style types to custom functions for that kind of text.
+For more on the structure of this list, see
+`muse-publish-markup-functions'."
+  :type '(alist :key-type symbol :value-type function)
+  :group 'muse-xml)
+
+(defcustom muse-xml-markup-strings
+  '((image-with-desc . "<image href=\"%s.%s\">%s</image>")
+    (image           . "<image href=\"%s.%s\"></image>")
+    (image-link      . "<link type=\"image\" href=\"%s\">%s.%s</link>")
+    (anchor-ref      . "<link type=\"url\" href=\"#%s\">%s</link>")
+    (url             . "<link type=\"url\" href=\"%s\">%s</link>")
+    (link            . "<link type=\"url\" href=\"%s\">%s</link>")
+    (link-and-anchor . "<link type=\"url\" href=\"%s#%s\">%s</link>")
+    (email-addr      . "<link type=\"email\" href=\"%s\">%s</link>")
+    (anchor          . "<anchor id=\"%s\" />\n")
+    (emdash          . "%s--%s")
+    (comment-begin   . "<!-- ")
+    (comment-end     . " -->")
+    (rule            . "<hr />")
+    (fn-sep          . "<hr />\n")
+    (no-break-space  . "&nbsp;")
+    (line-break      . "<br>")
+    (enddots         . "....")
+    (dots            . "...")
+    (section         . "<section level=\"1\"><title>")
+    (section-end     . "</title>")
+    (subsection      . "<section level=\"2\"><title>")
+    (subsection-end  . "</title>")
+    (subsubsection   . "<section level=\"3\"><title>")
+    (subsubsection-end . "</title>")
+    (section-other   . "<section level=\"%s\"><title>")
+    (section-other-end . "</title>")
+    (section-close   . "</section>")
+    (footnote        . "<footnote>")
+    (footnote-end    . "</footnote>")
+    (begin-underline . "<format type=\"underline\">")
+    (end-underline   . "</format>")
+    (begin-literal   . "<code>")
+    (end-literal     . "</code>")
+    (begin-emph      . "<format type=\"emphasis\" level=\"1\">")
+    (end-emph        . "</format>")
+    (begin-more-emph . "<format type=\"emphasis\" level=\"2\">")
+    (end-more-emph   . "</format>")
+    (begin-most-emph . "<format type=\"emphasis\" level=\"3\">")
+    (end-most-emph   . "</format>")
+    (begin-verse     . "<verse>\n")
+    (begin-verse-line . "<line>")
+    (end-verse-line  . "</line>")
+    (empty-verse-line . "<line />")
+    (begin-last-stanza-line . "<line>")
+    (end-last-stanza-line . "</line>")
+    (end-verse       . "</verse>")
+    (begin-example   . "<example>")
+    (end-example     . "</example>")
+    (begin-center    . "<p><format type=\"center\">\n")
+    (end-center      . "\n</format></p>")
+    (begin-quote     . "<blockquote>\n")
+    (end-quote       . "\n</blockquote>")
+    (begin-cite      . "<cite>")
+    (begin-cite-author . "<cite type=\"author\">")
+    (begin-cite-year . "<cite type=\"year\">")
+    (end-cite        . "</cite>")
+    (begin-quote-item . "<p>")
+    (end-quote-item  . "</p>")
+    (begin-uli       . "<list type=\"unordered\">\n")
+    (end-uli         . "\n</list>")
+    (begin-uli-item  . "<item>")
+    (end-uli-item    . "</item>")
+    (begin-oli       . "<list type=\"ordered\">\n")
+    (end-oli         . "\n</list>")
+    (begin-oli-item  . "<item>")
+    (end-oli-item    . "</item>")
+    (begin-dl        . "<list type=\"definition\">\n")
+    (end-dl          . "\n</list>")
+    (begin-dl-item   . "<item>\n")
+    (end-dl-item     . "\n</item>")
+    (begin-ddt       . "<term>")
+    (end-ddt         . "</term>")
+    (begin-dde       . "<definition>")
+    (end-dde         . "</definition>")
+    (begin-table     . "<table%s>\n")
+    (end-table       . "</table>")
+    (begin-table-row . "    <tr>\n")
+    (end-table-row   . "    </tr>\n")
+    (begin-table-entry . "      <%s>")
+    (end-table-entry . "</%s>\n"))
+
+;;{{{  自定义图片 html 标记代码
+(setcdr (assoc 'image-with-desc muse-html-markup-strings)
+        "<div class=\"figure\">
+		<div class=\"photo\">
+	<img src=\"%1%.%2%\" alt=\"%3%\"/>	</div>
+		<p>%3%</p>
+	</div>")
+;;}}}
+
+</src>
+
+
+Footnotes: 
+[1] Makefile.defs.default 两个文件都可以，你可以拷贝
+Makefile.defs.default 成 Makefile.defs，这样修改后者可以防止错误修改文
+件中的参数
+
+[2] 可能 latex 或 pdf 有点问题，因为文件中的日期是
+中文的，如果使用 latexcjk 或 pdfcjk 的话，这个文件中没有汉字，所以无法判定文件编
+码，将使用默认编码 gb2312，如果你使用 utf-8 保存文件的话，会因为文件编
+码内文件中指定的编码不一致而出错，可以通过设置变量
+muse-latexcjk-encoding-default
+为 <code>"{UTF8}{song}"</code> 来顺利产生 latex 文件或 pdf 文件。
+

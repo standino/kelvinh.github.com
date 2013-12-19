@@ -1,0 +1,531 @@
+#title Scite
+* Scite
+
+http://www.scintilla.org/SciTEDoc.html
+
+scite汉字乱码问题,打开SciTEGlobal.properties,
+做一下修改:
+code.page=936   #Windows
+code.page=65001  #Linux UTF8
+
+<example>
+SciTE中文配置说明
+
+
+SciTE,
+非常不错的文本编辑器除了有语法高亮，标签浏览，折叠，自动完成这些功能外，还具有输出窗口（对于编程的人来说很方便的），自定义工具，最重要的是发现它
+速度相当快。不过对于新手来说，如果没有正确的配置，它就不是那么好使，比如选择中文时候出现乱码，缩进也不是你想象中的样子。所以下载回来后，我们要自
+己修改配置文件。
+运行SciTE，选择菜单“选项 >打开Global
+Options文件”，打开的就是SciTE的全局配置文件，建议不要改动这个文件，以后再改动配置的时候以这个文件作为参考和对照。然后同样打开“User
+Options文件”，空文件对不对，把Global Options文件中所有内容复制过来，意思是所有的全局配置都在User
+Options文件中改，User文件的配置会覆盖Global的配置。
+下面的这段作用是运行时窗口大小位置以及一些外观，以#开头的是注释，很好理解吧。只说WIN平台下的配置，其他的平台同样，很多配置项是注释掉的，把行首的#去掉才可以起作用。
+引用
+#SciTEGlobal.properties
+  全局配置文件,一般不去改动
+#SciTEUser.properties   用户配置文件,对全局配置要改动的地方,都写在这个文件里
+#SciTE.properties   本地配置文件,也就是针对当前目录的配置文件, 会覆盖全局和用户配置文件.
+#html.properties   特定文件类型的配置文件,比如
+html.properties就是专门针对网页文件的配置文件，au3.properties是AutoIt的配置文件
+#参数中多数情况,值设成1表示启用某个功能,设成0表示不启用某个功能
+
+#支持中文字符++++++++++++++++++++++++++++
+#支持中文 963表示简体中文
+code.page=936
+output.code.page=936
+#character.set=134不启用的话，在输出区中文可能会乱码
+#character.set=134
+#Big5:code.page=950
+#UTF8:code.page=65001
+
+#全局参数++++++++++++++++++++++++++++
+#软件工作目录
+SciteDefaultHome=d:\SciTE
+#关闭文件时提示保存
+are.you.sure=1
+#重新载入文档时提示
+are.you.sure.on.reload=1
+#重新载入文档时保留还原信息
+reload.preserves.undo=1
+#编译和运行时提示保存
+#are.you.sure.for.build=1
+#检查文档是否已经被其他软件打开
+check.if.already.open=1
+#显示最近打开的文件
+save.recent=1
+#只打开一个文件时隐藏标签卡
+tabbar.hide.one=1
+#最小化时缩小到系统托盘
+minimize.to.tray=1
+#显示工具栏
+toolbar.visible=1
+#显示状态栏
+statusbar.visible=1
+#标题栏显示1\2\3三种方式显示当前编辑文件名和文件路径
+title.full.path=1
+#最小化到屏幕下方的任务栏。如果改成1，就是最小到屏幕最右下角的托盘区域。
+minimize.to.tray=0
+#scite启动时tab栏可见
+tabbar.visible=1
+#当只打开一篇文档时隐藏tab栏
+tabbar.hide.one=0
+#tab栏启用多行模式，同时打开较多文件时，多行模式比较方便
+tabbar.multiline=1
+#打开文件路径为当前编辑文件相同目录
+open.dialog.in.file.directory=1
+#将结果输出窗口放到下方
+split.vertical=0
+#打开文件时打开的目录为当前操作文件所在目录。这个功能非常实用，否则有时文件目录很深，要打开一个文件，一级级点击进去
+open.dialog.in.file.directory=1
+#在输出区显示执行命令所用时间
+time.commands=1
+
+#替换相关设置,0时()要写成\(\)。一般设成1++++++++++++++++++++++++++++
+find.replace.regexp.posix=1
+#打开替换高级开关，可以只搜索某个样式
+find.replace.advanced=1
+#是否默认用正则表达式搜索
+find.replace.regexp=0
+#默认搜索时Wrap around
+find.replace.wrap=1
+#也就是搜索框的Transform. backslash expressions开关
+#打开这个开关，搜索时要用\\来表示\
+find.replace.escapes=0
+find.replacewith.focus=1
+#通过搜索查找到的字符颜色（用半透明显示）
+find.mark=#F14687
+
+#界面布局，字体，颜色等++++++++++++++++++++++++++++
+#软件启动时左边距,上边距,宽,高. 宽高设成-1时表示窗口最大化
+position.left=0
+position.top=0
+position.width=-1
+position.height=-1
+#缩进空白可见
+view.indentation.whitespace=1
+#设置空白符的前景色和背景色
+whitespace.fore
+whitespace.back
+#每个空白缩进单元显示一条垂直线，修改后重启Scite文本编辑器生效。
+view.indentation.guides=1
+highlight.indentation.guides=1
+#默认字体字号，这里使用了等宽字体
+font.base=font:Courier New,size:9
+font.small=font:Courier New,size:9
+#选中代码字体、背景颜色及色彩透明度
+selection.fore=#000000
+selection.back=#000080
+selection.alpha=80
+#闪烁光标的颜色
+caret.fore=#000080
+#闪烁光标的宽度1\2\3
+caret.width=2
+#光标所在行背景色
+caret.line.back=#FFFF00
+
+#缩进，换行，代码折叠++++++++++++++++++++++++++++
+#启用括号匹配检查
+braces.check=1
+braces.sloppy=1
+#tab键缩进的字符数
+tabsize=4
+#缩进字符数
+indent.size=4
+#缩进使用tab键
+use.tabs=1
+#缩进，就是自动保持前一行的缩进
+#indent.auto=1
+#智能缩进，和上面的区别就是有反缩进
+indent.automatic=1
+#代码缩进，比如大括号回车自动缩进
+indent.opening=1
+#代码反缩进，同上
+indent.closing=1
+#tab键缩进
+#tab.indents=0
+#自动换行开关，写代码一般不要打开自动换行
+#wrap=1
+#换行的风格，没用过
+#wrap.style=2
+#输出窗口自动换行
+#output.wrap=1
+#自动换行处的标记符
+wrap.visual.flags=3
+#代码折叠开关，建议打开
+fold=1
+#折叠指示，建议打开
+fold.compact=1
+#折叠代码样式1\2\3，2比较好看
+fold.symbols=2
+#代码折叠区的宽度
+fold.margin.width=16
+#代码注释折叠
+fold.comment=1
+#折叠预处理
+fold.preprocessor=1
+#鼠标到达文件末尾行后滚动条可继续下移
+end.at.last.line=0
+#显示行号
+line.margin.visible=1
+#行号显示的位数，3+表示默认3位数，不够再加
+line.margin.width=3+
+#行号缩进的宽度，最好不缩进
+margin.width=0
+#长行指示
+edge.column=200
+edge.mode=0
+edge.colour=#F9F9F9
+#设置错误行的前景色和背景色
+error.marker.fore=#0000A0
+error.marker.back=#DADAFF
+#设置书签列的前景色，背景色和透明度
+bookmark.fore=#808000
+bookmark.back=#FFFFA0
+#如果书签列被关闭，书签所在行将以指定透明度显示
+bookmark.alpha=100
+
+#语法提示及自动完成++++++++++++++++++++++++++++
+#除默认语法提示外，可自定义增加后缀名为API语法自动完成文件，$(SciteDefaultHome)表示工作目录，建议在工作目录中新建API目录专门存放自动完成文件
+api.*.asp=$(SciteDefaultHome)/api/asp.api
+#python
+api.*.py=$(SciteDefaultHome)/api/python.api
+api.*.pyw=$(SciteDefaultHome)/api/python.api
+#php
+api.*.php=$(SciteDefaultHome)/api/php.api
+#css
+api.*.css=$(SciteDefaultHome)/api/css.api
+#java
+api.*.js=$(SciteDefaultHome)/api/java.api
+
+#在文件内出现过的词都可以自动完成
+autocompleteword.automatic=1
+
+#自动补全xml及html标签
+xml.auto.close.tags=1
+#xml和html文档标签大小写不敏感
+html.tags.case.sensitive=0
+#编译错误定位到源代码
+error.select.line=1
+
+#语言菜单的配置，不希望在语言菜单的下拉菜单列表中出现语言就在这里把它注释掉（行首加#号），新加入的语言同样可以在这里添加++++++++++++++++++++++++++++
+work on GTK+.
+menu.language=\
+#FreeBasic|bas||\
+Text|txt|Shift+F11|\
+Asp|asp||\
+Ada|ads||\
+#Apache Confi&g|conf||\
+Assembler|asm||\
+#ASN.1|asn1||\
+#Avenue|ave||\
+#Baan|bc||\
+&Batch|bat||\
+#Bullant|ant||\
+&C / C++|c||\
+#CMake|cmake||\
+C&#|cs||\
+#Csound|orc||\
+CSS|css||\
+D|d||\
+&Difference|diff||\
+#&Eiffel|e||\
+#Erlang|erl||\
+&Errorlist|err||\
+#FlagShip|prg||\
+&Fortran|f90||\
+H&ypertext|html|F12|\
+#&InnoSetup|iss||\
+&Java|java||\
+Java&scrīpt|js||\
+#&Kix|kix||\
+TeX|tex||\
+Lisp|lisp||\
+#Lot|lot||\
+#Lout|lt||\
+Lu&a|lua||\
+Matlab|m.matlab||\
+&Makefile|mak|Ctrl+Shift+F11|\
+#Post|mp||\
+#MMIXAL|mms||\
+#&nnCron crontab|tab||\
+#NSIS|nsis||\
+#Objective Caml|ml||\
+#Octave|m.octave||\
+#Opal|impl||\
+Pascal|pas||\
+Pe&rl|pl||\
+P&HP|php||\
+#P&LSQL|spec||\
+&Properties|properties||\
+#P&ostscrīpt|ps||\
+#P&OV-Ray SDL|pov||\
+Pytho&n|py||\
+#Reso&urce|rc||\
+Ruby|rb||\
+Shell|sh||\
+S&QL|sql||\
+#Specman|e||\
+&TCL|tcl||\
+&VB|vb||\
+VBScr&ipt|vbs||\
+#Verilog|v||\
+#VHDL|vhd||\
+&XML|xml|Shift+F12|\
+YAML|yaml||
+
+#外部的扩展，打印和导出文档的时候有用++++++++++++++++++++++++++++
+#export.keep.ext=1（构建可执行程序支持）
+#所见即所得，可以实时预览
+export.html.wysiwyg=1
+#export.html.tabs=1（HTML tab键支持）
+#export.html.folding=1（HTML折叠支持）
+#HTML旧风格支持
+export.html.styleused=1
+#export.html.title.fullpath=1（HTML文件显示完整路径）
+#export.rtf.tabs=1（多文档RTF支持）
+#export.rtf.font.face=Arial（RTF文档的默认字体）
+#export.rtf.font.size=9（同上）
+#export.rtf.tabsize=8（同上）
+
+#输出PDF文档放大倍数
+export.pdf.magnification=0
+#PDF默认字体Font: Courier, Helvetica or Times (Courier
+line-wraps)
+export.pdf.font=Helvetica
+#Page size (in points): width, height
+#E.g. Letter 612,792; A4 595,842; maximum 14400,14400
+#PDF页面默认大小
+export.pdf.pagesize=595,842
+#PDF默认页边距Margins (in points): left, right, top, bottom
+export.pdf.margins=72,72,72,72
+#支持输出XML
+export.xml.collapse.spaces=1
+export.xml.collapse.lines=1
+
+#常用字符列表，留下英文和数字就行了，汉字感觉用不上++++++++++++++++++++++++++++
+chars.alpha=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+chars.numeric=0123456789
+
+#打开文件对话框的文件过滤配置，默认的文件类型是在source.files中定义的文件类型，把自己最常编辑的文件类型写到source.files中，如*.php;*.html;等++++++++++++++++++++++++++++
+source.files=*.asm;*.c;*.cc;*.cpp;*.cxx;*.cs;*.h;*.hh;*.hxx;*.hpp;\
+*.idl;*.odl;*.rc;*.rc2;*.dlg;*.def;\
+*.vb;*.vbs;*.bas;*.frm;*.cls;*.ctl;\
+*.java;*.js;*.php;*.py;*.pl;*.rb;*.cgi;*.lua;*.conf;\
+make*;*.mak;\
+*.properties;*.html;*.xml;*.iface;*.bat;*.e
+
+if PLAT_WIN
+all.files=All Files (*.*)|*.*|
+if PLAT_GTK
+all.files=All Files (*)|*|Hidden Files (.*)|.*|
+open.filter=\
+All Source|$(source.files)|\
+$(all.files)\
+$(filter.ada)\
+$(filter.conf)\
+$(filter.asm)\
+$(filter.asn1)\
+$(filter.ave)\
+$(filter.baan)\
+$(filter.bash)\
+$(filter.caml)\
+$(filter.cmake)\
+$(filter.cpp)\
+#$(filter.ch)\
+$(filter.css)\
+$(filter.d)\
+$(filter.eiffel)\
+$(filter.erlang)\
+$(filter.fortran)\
+$(filter.idl)\
+$(filter.inno)\
+$(filter.java)\
+$(filter.js)\
+$(filter.kix)\
+$(filter.lout)\
+$(filter.lua)\
+$(filter.matlab)\
+$(filter.post)\
+$(filter.mmixal)\
+$(filter.nncrontab)\
+$(filter.nsis)\
+$(filter.opal)\
+$(filter.pascal)\
+$(filter.perl)\
+$(filter.php)\
+$(filter.pov)\
+$(filter.prg)\
+$(filter.properties)\
+$(filter.ps)\
+$(filter.python)\
+$(filter.ruby)\
+$(filter.sql)\
+$(filter.specman)\
+$(filter.tcl)\
+$(filter.tex)\
+$(filter.text)\
+$(filter.vb)\
+$(filter.web)\
+$(filter.yaml)\
+$(filter.verilog)\
+$(filter.vhdl)
+
+#部分语言特别设置++++++++++++++++++++++++++++
+#asp的默认脚本语言，设成1时是Java, 2是VB, 3是Python
+asp.default.language=2
+#Python用的，你不用Python编程语言的话，这条不用管，大概是缩进对齐用的
+tab.timmy.whinge.level
+
+#输出区的位置，大小，及启动scite文本编辑器时输出区是否隐藏++++++++++++++++++++++++++++
+#输出区在下方
+split.vertical=0
+#output.horizontal.size=200
+#output.vertical.size=60
+#output.initial.hide=1
+#执行命令前清空输出区的内容
+clear.before.execute=1
+注:用蓝色标记的部分为经常会修改设置的内容;以上所有设置,在重启SciTE编辑器后生效.
+
+如果想进一步了解或使用SciTE,下面这几个链接会非常有帮助:
+1.SciTE主页：
+        http://www.scintilla.org/
+2.语言文件（有中文）：
+        http://scintilla.sourceforge.net/SciTETranslation.html
+下载中文语言文件,可以汉化SciTE.
+3.语法文件和API文件：
+        http://scintilla.sourceforge.net/SciTEExtras.html
+下载相应的API文件,可以像Eclipse一样,在编辑过程中对方法给出提示.
+</example>
+
+**  快捷键 
+    
+<example>
+
+  Ctrl+Keypad+ 
+  放大文字 
+
+  Ctrl+Keypad- 
+  缩小文字 
+
+  Ctrl+Keypad/ 
+  还原文字大小到默认值 
+
+  Ctrl+Tab 
+  在最近打开的两个文件间循环 
+
+  Tab 
+  缩进一个tab. 在用scite写笔记时, 每段一般按Tab缩进, 而不是按空格。 
+  从网上复制一篇文章到scite文本编辑器，全选，按一下tab, 首行标题顶格，二级标题顶部，就完成所用的文档格式化。 
+
+  Shift+Tab 
+  取消一个tab的缩进 
+
+  Ctrl+BackSpace 
+  从光标位置删除到一个词的开始处, 中文由于无法断词, 如果用的是中文标点，就变成一直删除到行首了。如果用的英文标点，就删除到上一个英文标点处 
+
+  Ctrl+Delete 
+  从光标位置删除到一个词的结束处 
+
+  Ctrl+Shift+BackSpace 
+  从光标位置删除到行首 
+
+  Ctrl+Shift+Delete 
+  从光标位置删除到行尾 
+
+  Ctrl+Home 
+  光标移动到文档开始处 
+
+  Ctrl+Shift+Home 
+  从光标处开始选择文本一直到行首 
+
+  Alt+Home 
+  到显示的行首。按End时光标只是移到行首第一个字的前面 
+
+  Alt+Shift+Home 
+  扩展选择到行首 
+
+  Ctrl+End 
+  光标移动到文档结束处 
+
+  Ctrl+Shift+End 
+  从光标处选择文本一直到文档结束处 
+
+  Alt+End 
+  光标移动到行尾 
+
+  Alt+Shift+End 
+  扩展选择到行尾 
+
+  Ctrl+Keypad* 
+  展开或收缩光标所在的折叠区域。这个很好记忆，这样理解：*号很象圆形的折叠符号 
+
+  Ctrl+F2 
+  创建或删除一条书签. 在写很长的文档或代码时, 加一个书签就很方便地可以跳来跳去 
+
+  F2 
+  跳到下一条书签 
+
+  Alt+F2 
+  扩展选择到下一条书签. 有什么用呢, 创建两条书签, 光标移动到要选中的开始处, 按快捷键, 两条书签之间的内容就选中了 
+
+  Ctrl+F3 
+  **向文档结束方向查找选中字符 
+  这个功能很好用, 要在文档内查找, 你不需象通常的那样要按Ctrl+F, 你只需要把光标放到词内部或前后, 按Ctrl+F3就自动在文档内查找 
+  如果要在文档内查找中文, 由于中文无法断词, 要先手动选择要查询的词, 再按快捷键. 
+  说点题外话,既不媚外, 也不盲目地拔高传统文化. 汉字有汉字的优点, 英文有英文的优点, 若一定要分出高下来, 是很难办到的事情. 曾看到一些对传统文化(如易经)很有偏好的人非常推崇中文, 认为是最优秀的文字, 是英文远不能比的. 
+  但在这里, 中文断词的问题怎么解决, 英文可以简单地以空格来断词, 中文怎么办? 至少在这个文内查找, 英文就比中文方便多了. 
+
+  Ctrl+Shift+F3 
+  **向文档开始方向查找选择字符 
+  英文是 Find selection backwards, 字面翻译是向后查找选中文字, 这个”向后”是比较容易引起歧义的, 译为”文档开始方向”就不存在这个问题 
+
+  Ctrl+Up 
+  Scroll up 
+
+  Ctrl+Down 
+  Scroll down 
+
+  Ctrl+L 
+  **剪切光标所在行 
+  这个很有用. 如果用记事本来写日记或文档, 剪切行就麻烦多了. 用scite来写 读书笔记什么的, 即使不作任何优化配置, 利用scite的快捷键也提高一些常用操作的效率也不错 
+  提示: 快捷键中L代表Line 这样理解了以后, 就根本不用死记, 自然记住了这个快捷键的用法. 一个聪明的人性化的程序, 所有快捷键都是可以理解而不需要记忆的, 从这里也可以看出程序作者是否别具匠心 
+
+  Ctrl+Shift+T 
+  **复制光标所在行. 应用时可以右手按Ctrl+Shift, 左手按T 
+
+  Ctrl+Shift+L 
+  **删除光标所在行 
+
+  Ctrl+T 
+  **和上一行互换位置 
+  在 SciTE4AutoIt3中, 用Ctrl+T调用Tidy整理源代码. 
+  为避免快捷键撞车, 打开 au3.properties, 找到 JdeB’s Tidy formatting program for 
+  Autoit3 条, 把快捷键改成Ctrl+Shift+Alt+T, 或者修改 Scite用户配置文件sciTEUser.properties 
+  提示: 在这里T表示transpose, 即互换位置. 
+
+  **Ctrl+D 
+  复制高亮选中字符. 如果没有高亮选择字符, 则复制光标所在行 
+  这是一个使用频率比较高的快捷键, 在用 
+  SciTE4AutoIt3写代码时, 要临时改写调试一句代码, 按Ctrl+D复制当前行, 按小键盘的-注释掉当前行. 
+  调试好后要用回原来代码, 只要Ctrl+Shift+L删除行, 再按小键盘的-取消注释符号即可, 根本用不到手动选择复制之类. 
+  提示: 在这里D表示duplicate, 使用快捷键的另一个乐处就是记住了字母所代表的单词, 对于程序来说, 多数编程资料是英文形式的, 因此务必知道各种缩写的原型, 一则更容易理解记忆, 二则从某种意义上来说, 英语从某种意义上是程序设计的基础. 
+
+  Ctrl+[ 
+  光标移动到上一段, 加Shift的话是扩展选择 
+
+  Ctrl+] 
+  光标移动到下一段, 加Shift的话是扩展选择 
+
+  Ctrl+Left 
+  光标跳到上一词. 加Shift的话是扩展选择 
+
+  Ctrl+Right 
+  光标跳到下一词. 加Shift的话是扩展选择 
+
+  Ctrl+/ 
+  光标跳到上一词部分. 加Shift的话是扩展选择 
+
+  Ctrl+\ 
+  光标跳到下一词部分. 加Shift的话是扩展选择 
+</example>

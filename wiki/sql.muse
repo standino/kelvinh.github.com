@@ -1,0 +1,6 @@
+#title DB2 Stored Procedure 
+
+<contents>
+
+对表进行任何操作都不被允许，提示SQLSTATE=57016 SQLCODE=-668 ，原因码 "7"的错误：SQL0668N Operation not allowed for reason code "7"
+on table XXX. 解决方法为：执行命令：reorg table XXX；即可。 

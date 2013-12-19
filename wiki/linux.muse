@@ -1,0 +1,3236 @@
+#title Linux
+
+
+<contents>
+
+  
+* Apache 
+
+ Start httpd in the service in redhat. 
+
+  gedit /etc/httpd/conf/
+  
+  /var/www/html/repositories
+  
+ ln -s /datad/eadftp/public/dsw_dev_tools/repositories .
+
+
+
+* can not change passwd
+
+ sudo pam-auth-update --force 
+
+* [[http://w3.ibm.com/connections/wikis/home/wiki/Wbd0c3129b6b7_4e5f_ba7d_2bb397faa12f/page/Setup%20Ubuntu%20as%20your%20primary%20workstation?lang=zh][Setup Ubuntu as your primary workstation]]
+
+[[http://w3.tap.ibm.com/w3ki03/display/linuxportal/Ubuntu+Linux+Client+Acceleration+Guide][Ubuntu Linux Client Acceleration Guide]]
+
+[[http://w3.tap.ibm.com/w3ki03/display/linuxportal/Install+PAE+Kernel+for+Machines+with+more+than+3+GB+Memory][Install PAE Kernel for Machines with more than 3 GB Memory]]
+
+** Setup Ubuntu 
+
+***  [[http://w3.tap.ibm.com/w3ki03/display/linuxportal/Ubuntu+based+OCDC+LiveCD][Ubuntu based OCDC Live CD]]
+
+*** Install online
+
+ - Download grub4dos from  http://sourceforge.net/projects/grub4dos/files/
+ - Download initrd.gz、linux and put them in C:\
+     http://software.linux.ibm.com/pub/ubuntu-repository/dists/maverick/main/installer-i386/current/images/netboot/ubuntu-installer/i386/
+     http://software.linux.ibm.com/pub/ubuntu-repository/dists/natty/main/installer-i386/current/images/netboot/ubuntu-installer/i386/
+ - Unzip grub4dos, copy grldr and  menu.lst to C:\. Edit menu.lst file， remove all the content in the file and paste below into
+menu.lst file. 
+
+<src>
+title Install Ubuntu 10.10
+find --set-root /linux
+kernel /linux
+initrd /initrd.gz
+</src>
+
+ - Edit C:\boot.ini, add one line at the bottom:  C:\grldr="Install Ubuntu"
+ - Reboot and select "Install Ubuntu 10.10" menu.   http://wiki.ubuntu.org.cn/Qref/Hardy
+ - download ocdc-repository_1.5_all.deb  from http://ocdc.hursley.ibm.com/ocdc/pool/IBM/o/ocdc-repository/ 
+
+
+** Upgrade Ubuntu
+
+ - Download ubuntu-10.10-*alternate*-i386.iso from http://software.linux.ibm.com/mount.php?browse=/pub/ubuntu/10.10/
+ - sudo mount -t iso9660 -o loop ~/ubuntu-10.04.1-alternate-i386.iso /media/cdrom0
+ - sudo gksu “sh /cdrom/cdromupgrade”
+
+
+** SSH
+
+  - sudo apt-get install openssh-server
+   
+*** Fedora 
+   
+   sudo service sshd start
+
+** FTP 
+  - sudo apt-get install filezilla
+
+** VNC
+
+*** Setup 
+ 1. sudo apt-get install vnc4server
+ 2. vncpasswd #  "pass4jazz"
+ 3. vncserver  -geometry 1600x900  -depth 24 &
+ 4. gedit ~/.vnc/xstartup 
+<src lang="sh">
+#twm 
+gnome-session &
+</src>
+
+上面的设置适用于所有程序，下面就vnc来谈
+
+在 /etc/init.d 目录下谢一个脚本vnc.sh，内容如下：
+#!/bin/bash
+#svnserve  startup
+vncserve -d
+
+然后执行：
+update-rc.d vnc.sh defaults
+
+只需两步就可以让vnc在系统启动时启动
+
+查看开机启动配置:
+
+chkconfig --list
+
+chkconfig --add xxx
+
+chkconfig --del xxx
+
+配置VNC Server自动启动
+
+编辑/etc/sysconfig/vncservers，内容如下：
+view plaincopy to clipboardprint?
+VNCSERVERS="1:user1"  
+VNCSERVERARGS[1]="-geometry 1152x864"  
+VNCSERVERS="1:user1"
+VNCSERVERARGS[1]="-geometry 1152x864" 
+然后运行sudo chkconfig --level 345 vncserver on ，让VNC Server随系统自动启动最后，运行sudo /etc/init.d/vncserver start 来启动VNC Server
+
+
+
+*** Client 
+   
+ - sudo apt-get install  remmina
+
+  [[remmina.jpg]]
+
+** Text  Editor 
+ - sudo apt-get jedit # Writing in Java ,have a lots of plugin 
+ - sudo apt-get scite # notepad ++ linux version, but need more efforts to config it
+ - UltraEdit # need licence 
+
+** Virtualbox
+
+ - sudo add-apt-repository  "deb http://download.virtualbox.org/virtualbox/debian maverick contrib #VirtualBox Offical Source"
+ - sudo apt-get update && sudo apt-get install virtualbox-4.0
+ - Download vmware image  ftp://ead@btsjazz.dyn.webahead.ibm.com/SOA/c/gov-ws-fabric-Desktop/gov-ws-fabric-Desktop.vmdk
+
+** Notes
+  sudo apt-get base-layer integrated-productivity-layer
+
+** DB2
+
+ - sudo apt-get install  libaio1 ksh  libstdc++5
+ - sudo ln -s /usr/share/fonts/truetype/arphic/uming.ttc /usr/share/fonts/truetype/arphic/uming.ttf
+ - wget ftp://ead@btsjazz.dyn.webahead.ibm.com/linux/DB2_Exp_Ed_V95_Linux_x86.tar
+ - unzip the tar file
+ - sudo ./db2setup 
+
+https://www14.software.ibm.com/webapp/dswdown/dswdown.wss/web/searchPartNumber
+
+ IBM DB2 9.7, Express Edition - CPU Option for Linux? on 32-bit AMD and Intel systems (x86) Multilingual eAssembly (CR8NRML)
+
+
+
+** WID7 and WAS 7
+
+ - wget ftp://ead@btsjazz.dyn.webahead.ibm.com/linux/IBM-Installation-Manager/agent.installer.linux.gtk.x86_1.4.1000.20100810_1125.zip
+ - unzip the zip file
+ - sudo ./install
+ - sudo  unlink /bin/sh
+ - sudo ln -s /bin/bash /bin/sh
+ - start IBMIM and set the repository to  http://btsjazz.dyn.webahead.ibm.com:8000. Please check this for more detail:  [[Notes://CSDLD01/48256F8C0020B1A3/BB2207E44A8BD1BC052566AB007D9C67/CF81F260E602C4F348257777002C5152 ]]
+ - Set Install Directory to a folder in your home (ie. /home/will/willATibm/SDP7)
+ 
+[[ubuntuwid7.jpg]]
+
+----
+
+
+* 环境变量
+
+ 
+
+(1)用文本编辑器打开/etc/profile
+
+ 
+
+(2)在profile文件末尾加入：
+
+<src lang="sh">
+JAVA_HOME=/opt/ibm/WebSphere/AppServer/java
+
+PATH=$JAVA_HOME/bin:$PATH
+
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+export JAVA_HOME
+
+export PATH
+
+export CLASSPATH 
+</src>
+文件修改并保持完以后，运行source etc/profile命令即可使修改操作立即生效
+
+* 认识系统服务 daemons
+
+http://linux-vbird.bluedata.org/linux_base/0560daemons.htm
+
+* Restart Xorg
+
+sudo /etc/init.d/gdm start
+
+
+* Mount ntfs files
+
+<src>
+ /sbin/fdisk -l
+
+mount   -o umask=0 /dev/sda3   /datad/eadftp/SOA/a/
+mount   -o umask=0 /dev/sdb1   /datad/eadftp/SOA/b/
+mount   -o umask=0 /dev/sdc1   /datad/eadftp/SOA/c/
+
+</src>
+
+* How to Mount a Remote Folder using SSH on Ubuntu
+
+Connecting to a server across the internet is much more secure using SSH. There is a way that you can mount a folder on a remove server using the SSHFS service.
+
+There are quite a few steps that you'll have to follow, so get ready and open a terminal window.
+
+First we'll install the module:
+
+sudo apt-get install sshfs
+
+Now we will use the modprobe command to load it
+
+sudo modprobe fuse
+
+We'll need to set up some permissions in order to access the utilities. Replace <username> with your username.
+
+sudo adduser <username> fuse
+
+sudo chown root:fuse /dev/fuse
+
+sudo chmod +x /dev/fusermount
+
+Since we've added ourselves to a user group, we need to logout and back in at this point before we continue.
+
+Now we'll create a directory to mount the remote folder in. I chose to create it in my home directory and call it remoteserv.
+
+mkdir ~/remoteserv
+
+Now we have the command to actually mount it. You'll be prompted to save the server key and for your remote password.
+
+sshfs <username>@<ipaddress>:/remotepath ~/remoteserv
+
+Now you should be able to cd into the directory and start using it as if it was local. 
+
+* Firewall
+** Ubuntu
+<src lang="sh>
+sudo gedit /etc/iptables.d/filter/INPUT/25-c4eb-allow.rule
+sudo /etc/init.d/iptables reset
+sudo /etc/init.d/iptables restart
+</src>
+
+** redhat
+<src lang="sh">
+# gedit  /etc/sysconfig/iptables
+iptables -A INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
+/etc/init.d/iptables stop
+/etc/init.d/iptables start
+
+
+---- 
+
+iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+
+iptables --list
+
+/sbin/service iptables save
+
+</src>
+
+** Ubuntu 12.4 
+
+*** remote connect 
+
+http://blog.csdn.net/bennyfun79/article/details/5652774
+
+sudo add-apt-repository ppa:freenx-team
+
+sudo aptitude install freenx
+
+sudo /usr/lib/nx/nxsetup --install
+
+sudo /etc/init.d/freenx-server stop
+
+sudo /etc/init.d/freenx-server start
+
+sudo apt-get install gnome-panel
+
+
+http://www.nomachine.com/download-client-windows.php
+
+remmina-plugins-nx.x86_64
+
+* [[http://mou.me.uk/2009/10/31/fixing-eclipse-in-ubuntu-9-10-karmic-koala/][ Fixing Eclipse in Ubuntu 9.10 Karmic Koala]]
+
+The fix is relatively simple. Create a file in your home folder (or wherever you want) called eclipsefix.sh – open it and add the following lines:
+
+
+export GDK_NATIVE_WINDOWS=true
+/opt/eclipse/eclipse
+
+(where /opt/eclipse/eclipse is the location of your eclipse application file).
+
+* Gnome-shell
+在gnome下运行gnome-shell --replace,就可进入
+
+* VPN proxy
+
+http://hi.baidu.com/gdhi/blog/item/cd9a6a59031fc5202834f088.html
+
+安装OpenVPN:
+sudo apt-get install openvpn
+
+下载并安装Alonweb 设置文件和安全证书, 输入使命:
+
+wget http://static.alonweb.com/downloads/alonweb.tar.gz
+
+sudo tar -C /etc -xvzf alonweb.tar.gz
+
+安装完成，启动OpenVPN 
+
+sudo  /etc/init.d/openvpn start
+
+输入你申请的用户名和密码
+
+看到[OK]说明成功了。
+
+另外，结束vpn用 sudo  /etc/init.d/openvpn stop
+
+* 开机自动执行
+
+** redhat
+
+　　.用root账号登陆Linux，vi /etc/rc.d/rc.local编辑文件，在最后加入两行需要执行的脚本程序：
+
+　　cd /home/test1 --该步不可少，否则会提示没有权限打开'test.log'文件
+
+　　su test1 -c "python /home/test1/test.py" --把要执行的命令作为一个参数传递级su
+
+/datad/rtc_data_backup/will/ideas/bts.service start
+
+<src lang="sh">
+
+# mount the SOA disk                                                                                                                                                        
+su -c "mount   -o umask=0 /dev/sda3   /datad/eadftp/SOA/a/"
+su -c "mount   -o umask=0 /dev/sdb1   /datad/eadftp/SOA/b/"
+su -c "mount   -o umask=0 /dev/sdc1   /datad/eadftp/SOA/c/"
+
+# start db2 server for RTC                                                                                                                                                  
+cd /home/db2inst1
+su db2inst1 -c "/home/db2inst1/sqllib/adm/db2start"
+
+# start vncserver for jazz user                                                                                                                                             
+cd /home/jazz
+su jazz -c "vncserver"
+
+# start the mock smtp server for plug connection reports                                                                                                                    
+su -c "mocksmtpd -f /datad/rtc_data_backup/will/ideas/mocksmtpd/connection_reports/mocksmtpd.conf"
+
+
+</src>
+
+** ubuntu
+
+<example>
+其后，我们编写一个shell脚本用来挂载xp的分区
+#!/bin/sh
+#rc.?d
+sudo mount -o iocharset=utf8 /dev/sda5 /mnt/disk_D
+sudo mount -o iocharset=utf8 /dev/sda8 /mnt/disk_E
+sudo mount -o iocharset=utf8 /dev/sda9 /mnt/disk_F
+sudo mount -o iocharset=utf8 /dev/sda10 /mnt/disk_G
+sudo mount -o iocharset=utf8 /dev/sda11 /mnt/disk_H
+exit 0
+
+保存到/ect/rc0.d~rc5.d任何一个文件夹里面，这里的文件会在开机时自动运行。
+
+ubuntu开机自动运行程序
+1.编写shell脚本
+   gedit /etc/init.d/aa
+   #!/bin/bash
+   mplayer /home/aa.avi -fs -vo fbdev -vf scale=800:600 (fs全屏，vo进入桌面前使用，        scale设置画面大小)
+2. chmod 755 /etc/init.d/aa    
+3. ubuntu默认启动级别为2加载的脚本在/etc/rc2.d/
+   ln -s /etc/init.d/aa /etc/rc2.d/s99aa (s为开始执行99为执行顺序aa为文件名)
+</example>
+
+* Swap files 
+
+如果不需要休眠的话，用交换文件就好了。下面 3 行在根目录建立一个 512 M 的交换文件 /swapfile，重启即可。
+
+<src>
+
+sudo dd if=/dev/zero of=/swapfile bs=1M count=512
+sudo mkswap /swapfile
+sudo echo "/swapfile none swap sw 0 0" >> /etc/fstab
+
+</src>
+
+* VOIP
+
+domain : 9.149.12.74
+
+* DB2 auto start
+
+/home/db2inst1/sqllib/bin/db2iauto -on db2inst1
+
+
+* Memory leak
+
+wget ftp://ftp.gnome.org/pub/GNOME/sources/memprof/0.5/memprof-0.5.1.tar.gz
+
+yum install perl-XML-Parser
+
+netstat -nlp |grep 9445 |awk '{print $7}'|awk -F / '{print $1}'
+
+ps -aux |grep -m1 3227|awk '{print $4}'|awk -F . '{print $1}'
+
+<src>
+ #!/bin/sh
+
+ #允许最大占用内存的百分比
+ ram_max=45
+
+ #服务程序所守候的端口
+ port=8180
+
+ #通过守候端口获取服务程序的pid
+ pid_ram=` netstat -nlp |grep $port|awk '{print $7}'|awk -F / '{print $1}' `
+
+ #通过服务程序的pid获取当前占用的内存百分比
+ ram=` ps -aux |grep -m1 $pid_ram|awk '{print $4}'|awk -F . '{print $1}' `
+
+ #调试程序用
+ #echo $port
+ #echo $pid_ram
+ #echo $ram
+ #echo $ram_max
+
+ #如果所占用的内存使用率大于所定义的值，则重启该服务程序
+ if expr $ram \>= $ram_max > /dev/null
+ then
+                 #所要执行的动作
+ #                echo 2
+                 echo "8180 tomcat rebooted" >>/usr/local/tomcat-5.5.9/logs/autoreboot.log
+                 echo `date` >>/usr/local/tomcat-5.5.9/logs/autoreboot.log
+                 /usr/local/tomcat-5.5.9/bin/shutdown.sh
+                 kill -9 $pid_ram
+                 /usr/local/tomcat-5.5.9/bin/startup.sh
+
+ #调试程序用
+ #else
+ # echo 1
+ fi
+</src>
+
+* SSH
+
+http://forum.ubuntu.org.cn/viewtopic.php?f=54&t=121428&start=0
+
+大家好，装了一个redhat enterprise 5.5,想用ssh，先作了以下一些操作，但是连接失败
+ 
+<example>
+ 1、把selinux设置为disabled
+ 2、service iptables stop
+ 3、配置了/etc/ssh/sshd_config 去掉了一些#,但是不知道是否去掉的正确
+ 4、通过setup 把sshd加到自动启动
+ 5、service sshd start
+
+提示OK 
+
+</example>
+
+
+* Redhat ftp
+
+http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch15_:_Linux_FTP_Server_Setup
+
+yum install vsftpd
+
+setup
+
+参考：http://bzhang.javaeye.com/blog/256414
+Ubuntu版本配置参考：http://wiki.ubuntu.org.cn/Vsftpd%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE
+
+防火墙设置：
+1、cd /etc/iptables.d/filter/INPUT/
+
+2、vi 25-c4eb-allow.rule
+添加依葫芦画瓢如下2行，使得防火墙允许20和21号端口，20号端口好像是传输数据用的
+-A INPUT -p tcp -m tcp --dport 20 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 21 -j ACCEPT
+
+3、/etc/init.d/iptables restart
+重启iptables
+
+用户创建：
+
+1、useradd -d /var/ftp -g ftp -s /sbin/nologin ftpuser1
+其中，-d指定用户主目录，-g指定用户组，-s指定此用户不能登录系统
+
+2、passwd ftpuser1
+输入两次新密码
+
+3、按照步骤1、2创建ftpuser2
+
+4、chown -R ftpuser2:ftp /var/ftp/
+将/var/ftp/所有者更改为ftpuser2
+
+
+5、chmod -R a-rwx /var/ftp/
+保证所有权限被删除
+
+6、chmod -R u+rwx /var/ftp/
+给ftpuser2创建所有权限
+
+7、chmod -R g+rx /var/ftp/
+给ftpuser2同组ftp的其他用户创建相关权限
+
+（其中第6步和第7步如果没有x权限则无法登陆，我还没有找到原因，但好像不影响使用，试了下）
+
+8、vi /etc/vsftpd/vsftpd.conf
+设置锁定用户在主目录内,将下面2行添入其中
+chroot_list_enable=YES
+chroot_local_user=YES
+
+同时vi /etc/vsftpd/chroot_list，新建一个空文件,否者会出错，此文件主要是制定那些用户不需要锁定主目录。
+注意，最好同时禁用匿名用户,设置anonymous_enable=NO即可；
+
+9、/etc/init.d/vsftpd restart 或者service vsftpd restart
+重启vsftp服务器
+
+10、如果启动vsftp服务器后，ftp客户端不能够被动模式不能够连接上
+首先，在vsftpd.conf配置文件中添加或者修改一下内容,如此，主被动模式均可连接
+vi /etc/vsftpd/vsftpd.conf +
+pasv_enable=YES
+pasv_min_port=65400
+pasv_max_port=65402
+
+同时，还需要打开被动模式需要的端口
+vi /etc/iptables.d/filter/INPUT/25-c4eb-allow.rule命令,开放防火墙的65400到65402端口，在其中添加如下内容
+-A INPUT -p tcp -m tcp --dport 65400:65402 -j ACCEPT
+
+最后，重启iptables和vsftpd即可
+
+
+
+
+* VPN
+
+** [[http://ciscovpn.watson.ibm.com/instructions.php][Emerging VPN Technologies Pilot]]
+
+  
+  rcxasa.watson.ibm.com
+  
+  sudo yum install anyconnect ibm-config-anyconnect
+
+
+    USER ID: changwei@cn.ibm.com
+    PASSWORD: nNvinW)8qUa0 Case Sensitive
+ 
+
+Category: Linux, Ubuntu Tags: Ubuntu, Ubuntu 8.10, VPN, VPNC
+Easier VPN Setup with Ubuntu 8.10
+Posted November 6th, 2008 by nazham
+
+Quite a while ago I’ve posted a way to setup your VPN access using VPNC in Ubuntu 8.04 Hardy Heron. Now with Ubuntu 8.10 Interprid Ibex, things will become much more easier, by using the NetworkManager applet in Gnome.
+
+When you have not yet installed any VPN manager, the “Add” button for VPN connections in the applet seems to be disabled. But thanks to a post in UbuntuForum here, I manage to enable the “Add” VPN connection button, and add my office’s VPN connection by a few simple clicks.
+
+1. Go to Applications -> Add/Remove.
+
+2. From the Show dropdown “All available applications”, and then enter “vpn connection” into the search box.
+
+3. Choose your choice of VPN manager. In my case it’s VPNC.
+ubuntuvpn-addremove.png
+
+4. Now you can add the VPN connection. The “Add” button is enabled now. Click on the NetworkManager applet -> VPN Connections -> Configure VPN…
+
+5. Click on the VPN tab, click “Add” button
+ubuntuvpn-add.png
+
+6. Enter your VPN connection details (Gateway, user name, passwords, etc).
+ubuntuvpn-add2.png
+
+7. Click “OK”, and Voila!, your VPN connection is available for you at your NetworkManager applet, shown below:
+ubuntuvpn-wifi.png
+
+Enjoy.
+
+
+
+* Upgrad 
+
+http://forum.ubuntu.org.cn/viewtopic.php?t=89163
+
+
+* Ubuntu中Firefox解析DNS慢问题的解决方法
+
+转：http://www.cnzzad.com/tut/60627.html
+主要参考
+
+http://www.5dlinux.com/article/1/2007/linux_9846.html
+
+http://www.debianadmin.com/local-dns-cache-for-faster-browsing-on-ubuntu-system.html
+
+下边是我从上边两篇文章中总结出来的
+
+安装 dnsmasq:
+
+sudo apt-get install dnsmasq
+
+编辑/etc/dnsmasq.conf
+
+搜索“listen-address”把注释号去掉，并修改为：listen-address=127.0.0.1
+
+搜索“resolv-file", 把注释号去掉, 并修改为：resolv-file=/etc/resolv.dnsmasq.conf
+
+编辑/etc/dhcp3/dhclient.conf，修改为：
+<src>
+#supersede domain-name “fugue.com home.vix.com”;
+
+prepend domain-name-servers 127.0.0.1;
+
+request subnet-mask, broadcast-address, time-offset, routers,
+
+domain-name, domain-name-servers, host-name,
+
+netbios-name-servers, netbios-scope;
+</src>
+编辑/etc/resolv.conf，
+
+在第一行添加        nameserver 127.0.0.1
+
+编辑   /etc/ppp/peers/provider
+
+在 usepeerdns 前面增加# ，也就是把这条语句覆盖掉。 以防，resolv.conf的设置被pppoe覆盖。
+
+重启dsnmasq:
+
+sudo /etc/init.d/dnsmasq restart
+
+我的机上的测试：
+
+dig www.gdufs.edu.cn
+
+输出：;; Query time: 1 msec
+
+再输入：dig www.gdufs.edu.cn
+
+输出：;; Query time: 0 msec
+
+可以看到，速度快了，当然，这里效果并不是很显著
+
+*  Cron Job Examples
+
+https://help.ubuntu.com/community/CronHowto
+
+http://www.chengzhidan.com.cn/read.php/127.htm
+
+
+http://www.thegeekstuff.com/2009/06/15-practical-crontab-examples/
+
+00 11,16 * * * /home/ramesh/bin/incremental-backup
+
+15. Installing Crontab From a Cron File
+Instead of directly editing the crontab file, you can also add all the entries to a cron-file first. Once you have all thoese entries in the file, you can upload or install them to the cron as shown below.
+ramesh@dev-db$ crontab -l
+no crontab for ramesh
+
+$ cat cron-file.txt
+@yearly /home/ramesh/annual-maintenance
+*/10 * * * * /home/ramesh/check-disk-space
+
+ramesh@dev-db$ crontab cron-file.txt
+
+ramesh@dev-db$ crontab -l
+@yearly /home/ramesh/annual-maintenance
+*/10 * * * * /home/ramesh/check-disk-space
+
+Note: This will install the cron-file.txt to your crontab, which will also remove your old cron entries. So, please be careful while uploading cron entries from a cron-file.txt.
+
+* Notes
+
+Q11. I keep seeing references to File -> Application -> Install or File -> Application -> Application Management, but I don't have those menu items. What do I do?
+A11. To make these menu items appear, exit Notes. Edit the plugin_customization.ini file using your favorite editor:
+
+vi /opt/ibm/lotus/notes/framework/rcp/plugin_customization.ini
+Add the following line:
+
+com.ibm.notes.branding/enable.update.ui=true
+
+
+Greetings--
+
+I had problems with both sametime-connect and sametime-blue when trying 
+to use Voice Suite. But I was able to get it to work under OCDC's Notes 
+8.5 by doing the following:
+
+1) Install Voice Suite within Notes
+
+file - application - install application
+then you add the voicesuite update site
+http://vsts1.raleigh.ibm.com/VS802/site.xml
+
+2) Disable conflicting plugins
+
+file - application - application management
+Then you disable the following 2 applications:
+
+'Partner telephony integrator'
+'Sametime telephony base feature'
+
+both are under the 3rd twistie.
+
+3) Restart Notes.
+
+4) Voice Suite should now work. Be sure to check your mixer (on my T61p 
+fresh install, it did not 'pick' some of my devices by default -- I had 
+to enable the microphones manually.
+
+Good luck. This deserves its own writeup, but it's not sufficiently 
+generalized yet, so let's build the wisdom here.
+
+--Harley 
+
+
+* Kernel 
+
+<src>
+
+update-initramfs -u -k ${MODVER}
+
+那就自己生成啊～～
+要是能进命令行的话：
+#cd /lib/modules/2.6.28-8-generic/initrd
+
+
+
+#mkinitramfs -o /boot/initrd.img-2.6.28-8-generic
+
+title        Ubuntu, kernel 2.6.15-27-686 (recovery mode)
+root        (hd0,3)
+kernel        /boot/vmlinuz-2.6.15-27-686 root=/dev/sda4 ro single
+initrd        /boot/initrd.img-2.6.15-27-686
+boot
+
+
+2.6.30-020630rc7-generic 
+
+2.6.22-14
+</src>
+
+* 密码和加密密钥
+http://ubuntuabc.com/123/?p=27
+症状：
+修改用户密码后，开机出现下面的提示：
+“应用程序‘网络管理器小程序’(/usr/bin/nm-applet)想要访问默认密钥环，但该密钥环已上锁”。
+输入新密码无效，要输入旧密码才行。
+
+解决办法：
+1、在菜单“应用程序——附件”里打开“密码和加密密钥”。
+2、点击“密码”标签。
+
+3、删除里面的密钥。
+4、提示“允许应用程序访问密钥环吗？”的时候，点“总是允许”。
+5、把里面的全部密钥都删除。
+6、重启电脑，就不用输入密钥了。(Jandy/20090510)
+
+* 解决aMule和Firefox关联
+
+可能火星了，但是可能有些人还不了解。这个方法可以解决直接点击verycd的“下载选中链接”的问题。
+
+在firefox地址栏中输入about:config
+新建一个Boolean,名字为network.protocol-handler.external.ed2k，值为true
+新建一个String，名字为network.protocol-handler.app.ed2k，值为/usr/bin/ed2k
+
+然后打开aMule。打开veryCD网站，选中一个下载，并点击”下载选中链接“，然后会弹出一个提示，点击”选择(choose)"，找到/usr/bin/ed2k，然后再勾选“记住这个选择”，点确定。看看aMule里面多了这个下载没有。有的话就成功了。
+
+最后取消每次的提示：
+新建一个Boolean,名字为network.protocol-handler.warn-external.ed2k，值为false
+
+* Skype
+
+[[http://forum.ubuntu.org.cn/viewtopic.php?f=48&t=204294&p=1281873#p1281873]]
+
+* Rime 输入法
+
+cd /etc/yum.repos.d/
+sudo wget http://heimu-packages.stor.sinaapp.com/fedora/heimu.repo
+sudo yum install ibus-rime
+
+* 小企鹅输入法(fcitx)
+
+ 小企鹅输入法(fcitx)重新回归，并且添加了“五笔拼音”码表，对我这一半五笔一半拼音的人来说，实在再方便不过。在Windows下用习惯了极点五笔，到Linux下如果没有类似的，还真是降低了文档编写效率，现在好了，小企鹅实现了，也有人做了 scim 的极点五笔，不过个人喜欢小企鹅，配置如下：
+
+　　1、安装 fcitx
+
+　　sudo apt-get install fcitx
+
+　　2、配置默认输入法为 fcitx
+
+　　im-switch -s fcitx // 注意无须加 sudo
+
+　　3、重启 x-window
+
+ 重启之后，fcitx 输入法应当正常启动，输入条将显示在屏幕最上面，不过输入框中文显示可能是 “口口”，需要小小的改动。
+
+　　4、修改配置文件
+
+　　gedit ~/.fcitx/config //如果没有配置gedit 支持GB18030编码，打开后文件会是乱码
+
+　　修改如下几项：
+
+　　显示字体(中)=YaHei Consolas Hybrid # 如果你没有安装雅黑，可使用“WenQuanYi Bitmap Song”
+
+　　Enter键行为=1 # =1表示回车时清除输入框中输入的内容，随个人喜好设置
+
+　　上一页=, # 使用 , . 翻页，随个人喜好设置
+
+　　下一页=.
+
+　　[输入法]
+
+　　使用拼音=0
+
+ 拼音名称=智能拼音
+
+　　使用双拼=0
+
+　　双拼名称=智能双拼
+
+　　默认双拼方案=自然码
+
+　　使用区位=0
+
+　　区位名称=区位
+
+　　使用码表=1
+
+　　提示词库中的词组=1
+
+　　其他输入法=
+
+　　5、修改码表文件
+
+　　sudo gedit /usr/share/fcitx/data/tables.conf
+
+　　由于五笔拼音已经完全够用，其它输入法就没必要出现了，文件中只需留下如下内容，其它配置段可以清除或注释掉。
+
+　　[码表]
+
+　　名称=五笔拼音
+
+　　码表=wbpy.mb
+
+　　调频=2
+
+　　拼音=1
+
+　　拼音键=z
+
+　　自动上屏=-1
+
+　　空码自动上屏=-1
+
+　　自动词组=1
+
+　　精确匹配=0
+
+　　提示编码=0
+
+　　6、重启 x-window
+
+　　正常情况，重启 x-window 之后，小企鹅输入法中文显示将完全正常，且只有“五笔拼音”，免去了在多个输入法中来回切换的麻烦。
+
+* 配置gedit支持中文
+
+　　虽然 vi 很方便，但也不可能不用 gedit ，而 gedit 编辑非utf8编码的文本文件时，中文会乱码，这个需要解决掉，不然需要每次加参数才能正常显示。
+
+　　按 Alt+F2，运行 gconf-editor ，在配置编辑器中，依次打开：
+
+　　apps->gedit-2->preferences->encodings
+
+　　在右侧的auto-detected上双击，点击 “添加”，填入新列表值 “GB18030”并确定保存，添加完 “GB18030”在最下面一行，将其移动到最上面一行，保存退出，完成。
+
+　　PS：如果没有权限更改上面的配置，那么在运行 gedit 时，加参数也可以正常显示中文。命令： gedit –encoding=GBK filename
+
+* Session
+
+cd ~/.config/autostart
+
+http://forum.ubuntu.org.cn/viewtopic.php?f=77&t=196208&p=1219175#p1219175
+
+https://ltc3.linux.ibm.com/wiki/LinuxDesktop
+
+http://ibmforums.ibm.com/forums/message.jspa?messageID=1326857&tstart=15
+
+http://yktgsa.ibm.com/projects/i/ibmubuntu/web/installation.shtml
+
+https://ltc3.linux.ibm.com/wiki/LTCDesktop/LUDContrib
+
+[[https://knowledgecommunity.raleigh.ibm.com/KnowledgeWeb/protect/command.wss/doUTSubmissionDisplay?ukc_session_system=WKC&icID=2214][How to install WID 6.1.2 in silent mode on Linux ]]
+
+[[../etc/yum.html][Redhat YUM]]
+
+http://dag.wieers.com/rpm/FAQ.php#B
+
+
+* Host 
+ HOWTO: Editing /etc/hosts
+Here is a quick how to, to edit your /etc/hosts file.
+The $ represents a line of code you may enter in a terminal.
+
+Open /etc/hosts with your favorite text editor. Remember to use sudo.
+
+Code:
+
+Format:
+<IP> <HOSTNAME>.<DOMAIN> <ALIAS>
+
+Example:
+127.0.0.1 localhost.localdomain localhost
+
+IP
+Replace the <IP> with the IP of your system. If your running DHCP do not worry about editing this file. To detect your IP address run
+Code:
+
+$ lsconfig
+
+Then browse for the connected interface (eth0, wlan0, etc)
+
+
+* [[http://w3.tap.ibm.com/w3ki03/display/linuxportal/Open+Client+for+Linux+Debian+Community][Open Client for Ubuntu Installation ]]
+
+ 1. Download iso file from  http://software.linux.ibm.com/pub/
+ 1. Install [[http://forum.ubuntu.org.cn/viewtopic.php?f=77&t=113376][Ubuntu 8.10]]
+ 2. Add [[http://w3.tap.ibm.com/w3ki03/display/linuxportal/OCDC+Repository][OCDC Repository]] to install IBM software.
+ 3. Install ocdc layer.
+
+
+
+ 3. Setup security according to [[../etc/UbuntuDesktop.htm]]
+
+ [[http://forum.ubuntu.org.cn/viewtopic.php?f=77&t=268355][五种ubuntu安装方法简述]]
+ 
+
+
+ 
+* Wireless 
+
+[[https://w3.tap.ibm.com/w3ki03/display/linuxportal/IBM+LEAP+Wifi+Wireless+Authentication#IBMLEAPWifiWirelessAuthentication-IBMLEAPWifiWirelessAuthenticationsteps][IBM LEAP upgrade]]
+
+https://w3.tap.ibm.com/w3ki/display/RSTL/WiFi-nonWin
+
+ - install the driver according to [[../etc/FirstTimeHowTo.html][First time how to]]
+ - sudo gedit /etc/network/interfaces 
+  <src>
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+iface dsl-provider inet ppp
+pre-up /sbin/ifconfig eth0 up # line maintained by pppoeconf
+provider dsl-provider
+
+
+auto ath0
+iface ath0 inet dhcp
+wpa-ssid IBM
+wpa-scan-ssid 1
+wpa-auth-alg OPEN
+wpa-key-mgmt IEEE8021X
+wpa-eap LEAP
+wpa-ap-scan 2
+wpa-identity changwei@cn.ibm.com
+wpa-password nNvinW)8qUa0
+
+
+  </src>
+ password for ring: institute4t60
+
+ - execute *sudo myleap up|down|bounce* to start|stop|restart wireless.
+ - 以后使用 sudo pon dsl-provider 拨号上网，使用sudo poff dsl-provider
+   下线。sudo plog查看拨号日志。 
+
+* AT&T Global Network Client
+
+Web site to get a ID for AGN: http://w3-03.ibm.com/tools/it/ittools.nsf/main/ATTNC_new_users
+<src>
+# agn
+# Tested in GUTSY/HARDY
+sudo apt-get install agnclient
+</src>
+
+
+* Connect to windows
+
+execute myremotedesk shell. 
+
+use ctrl+alt+enter to toggle full screen.
+
+
+* IE6
+
+[[../etc/UbuntuIE.html]]
+
+* Recite Word
+
+[[../etc/reciteword.html]]
+
+<src>svn co
+https://reciteword.svn.sourceforge.net/svnroot/reciteword/trunk
+reciteword</src>
+
+See install.sh for detail.
+
+
+* Dock
+
+先添加源
+deb http://repository.cairo-dock.org/ubuntu hardy cairo-dock
+导入KEY
+wget -q http://repository.cairo-dock.org/ubuntu/cairo-dock.gpg -O- | sudo apt-key add -
+然后可以通过新立得或直接在终端运行安装cairo-dock cairo-dock-plug-ins
+
+* Remove old kernel 
+
+uname -a　　＃使用这个命令可以查看当前系统使用的内核。
+dpkg --get-selections|grep linux ＃列出当前内核。带image的则是已经安装的内核，可以用以下命令卸载：sudo apt-get remove linux-image-2.6.24-11-generic ＃其中 linux-image-2.6.24-11-generic 为版本号，输全。
+
+* Generate Deb package
+
+第一个，checkinstall
+
+安装命令：sudo apt-get install checkinstall
+
+程序功能：能跟踪由“make install”或类似命令安装的所有文件，并为这些文件创建Slackware、RPM或者Debian安装包，然后把它添加到已安装软件包数据库中，以便能简便的卸载或发布安装包。
+
+例如：
+<src>
+sudo ./configure
+sudo make
+sudo make install
+</src>
+
+这个是通常的软件编译安装步骤，这样做有不好的地方就是一旦编译安装失败，文件四零八落的很难收拾，但是通过
+<src>
+sudo ./configure
+sudo make
+sudo checkinstall
+</src>
+这样生成一个包，再安装时如果失败了也可以通过新立德来卸载它。
+
+
+* Wireless Misc
+
+ 1. install the driver according to [[../etc/FirstTimeHowTo.html][First time how to]]
+ 2. 
+ 2. Click Network Manager (as pictured below) and select Connect to Other Wireless Network
+ 3. Network name is always IBM, security is LEAP. Key manager WPA-EPA
+ 4. Fill in your [[../other/index.html#sec8][username and password]] from the mail you were sent:
+   changwei@cn.ibm.com nNvinW)8qUa0
+
+
+
+[[../etc/connecting_moinmoin_wastes_my_time_by_not_handling_images_with_spaces.png]]
+
+[[../etc/Connected.png]]
+
+
+execute *sudo myleap up* to start wireless.
+
+Install wireless drivers according to
+http://madwifi.org/wiki/UserDocs/Distro/Debian/MadWifi
+
+http://forum.ubuntu.org.cn/viewtopic.php?p=735651&sid=92cb9ae9f464e795781824204190ddf3
+
+https://ltc3.linux.ibm.com/wiki/WirelessConnectivityOnLinux
+
+https://w3.tap.ibm.com/w3ki/display/UHH/Installing+Hardy+on+a+T61p
+
+
+
+exe *echo "ath_pci" | sudo tee -a /etc/modules*
+
+ start wireless drivers : modprobe ath_pci
+
+ start LED: sudo sysctl -w dev.wifi0.softled=1
+            sudo sysctl -w dev.wifi0.ledpin=1
+
+ 
+sudo gedit /etc/network/interfaces 
+<src>
+
+auto lo
+iface lo inet loopback
+
+iface dsl-provider inet ppp
+pre-up /sbin/ifconfig eth0 up # line maintained by pppoeconf
+provider dsl-provider
+
+auto eth0
+iface eth0 inet manual
+
+auto ath0
+iface ath0 inet dhcp
+wpa-ssid IBM
+wpa-scan-ssid 1
+wpa-auth-alg OPEN
+wpa-key-mgmt IEEE8021X
+wpa-eap LEAP
+wpa-ap-scan 2
+wpa-identity changwei@cn.ibm.com
+wpa-password nNvinW)8qUa0
+
+
+</src>
+
+
+
+* Setup Printer in IBM
+
+Install this package restart your Firefox and go to IBM Global Print web site to install the printer. http://w3-3.ibm.com/tools/print/index.html
+<src>
+# Tested in GUTSY
+# Restart your Firefox, after install
+sudo apt-get install lud-gpws
+</src>
+<src>
+# for ubuntu 8.04 (Hardy) create a link in
+sudo ln -s /usr/lib/firefox/plugins/lud-gpws.so /usr/lib/xulrunner-addons/plugins/ibmgpws.so
+</src>
+
+* AT&T Global Network Client Misc
+
+Web site to get a ID for AGN: http://w3-03.ibm.com/tools/it/ittools.nsf/main/ATTNC_new_users
+<src>
+# agn
+# Tested in GUTSY/HARDY
+sudo apt-get install agnclient
+</src>
+I found some problem with the agnLogArchive.tcl, after you reboot the machine execute:
+<src>
+# kill the agnLogArchive.tcl script
+killall agnclient
+sudo /etc/init.d/agnclientd stop
+sudo /etc/init.d/agnLogd stop
+sudo killall tclsh
+sudo rm /var/agns/fifo/*
+sudo /etc/init.d/agnclientd start
+sudo /etc/init.d/agnLogd start 
+</src>
+How to get the latest version of agn. This is not required, it's just here for reference:
+<src>
+# more up to date agn client
+mkdir tmp/agn ; cd tmp/agn
+wget ftp://ftp.attglobal.net/pub/client/linux/agnclient-1.0-2.0.1.3000.i386.rpm
+wget http://blog.afmacedo.com/linux/ubuntu_rpm2deb.sh
+chmod +x ubuntu_rpm2deb.sh
+./ubuntu_rpm2deb.sh --deps
+./ubuntu_rpm2deb.sh agnclient-1.0-2.0.1.3000.i386.rpm
+sudo dpkg -i agnclient-1.0-2.0.1.3000.i386.deb
+# just to make sure all dependencies are installed
+sudo apt-get install
+</src>
+
+  at&t linux website is: http://www.attnetclient.com/linux/ * Forum about ubuntu: http://attnetclient.com/forum/viewtopic.php?p=2309#2309 * How to create deb from the rpm official release: http://blog.afmacedo.com/?p=11
+
+* Repository 
+
+~/bin/sources.list:
+
+< include file="~/ideas/bin/sources.list" markup="src" lang="sh">
+
+* Gnome DO
+
+https://wiki.ubuntu.com/GnomeDo/Manual
+
+* xorg X11上面SCIM丢失焦点问题的workaround
+自己的机器上装了Debian 4，从etch换到sid，又从xfce换到gnome(这么换还真是不适应...)，SCIM丢失焦点的问题一直让我很郁闷，特别是java app，比较严重的说。当时也没找时间解决，一直用 Alt+Tab 解决大部分问题。
+不多说，先看下SCIM的架构特点， FrontEnd, Server, Config 三大部分，并且都实现了模块化, 可以通过动态模块来实现具体的功能, 支持不同的系统和环境. 大大增强了 SCIM 的灵活性和可移植性.
+在硬盘里翻来覆去找了一下，发现在
+
+    /etc/X11/xinit/xinput.d/
+
+
+下面有各个 locale 的输入法配置文件，有 default. zh_CN，zh_TW...等，这些都和系统的 LC_CTYPE 变量相关，对应什么地区就是什么配置了，要是想把对应的 locale 的默认输入法改掉，就修改对应的配置文件，设置以下两个属性:
+
+    GTK_IM_MODULE=xim
+    QT_IM_MODULE=xim
+
+想要自己喜欢的输入法就修改这两个值，GTK一般对应gnome/xfce桌面，QT为KDE。
+
+接着说焦点问题，有两种解决方法，一种是去掉xim桥接，直接在对应的 locale 中把上面两个模块参数改成SCIM，这样避免了xim的代理问题；
+或者修改
+
+    ~/.scim/config
+
+配置文件，将
+
+    /FrontEnd/X11/Dynamic = false
+
+修改为true，这样还能防止在 java app 和 flash 中失去焦点。
+
+至此焦点问题算是解决了，试用还是挺顺手的~~lol
+
+* Notes 8.5
+
+You can get the debs here: ftp://pokgsa.ibm.com/projects/o/openclient/lotus/notes/beta/8.5/latest/
+
+Download all of them and then install ibm_lotus_notes-8.5-20080819.0130.i586.deb first. This will satisfy all dependencies for the
+remaining files, which you can install either one-at-a-time or as a block. 
+
+Please note that this is not a software source that you can define in Synaptic. If there's an update to these files you will have
+to re-download them and update them manually. 
+
+* Dual monitor
+
+Quickfix: Ubuntu Hardy dual monitor with Intel 945GM troubles - can't escape Clone mode
+Posted in Linux, Quickfix by jbopensrc on April 29th, 2008
+
+Problem:
+On a Thinkpad T60 with Intel 945GM, Ubuntu 8.04 Hardy, the external VGA monitor is always cloned. Going into System->Preference->Screen Resolution lets you alter the resolution of the LCD and the external monitor, but it stays cloned whether "Clone Screens" is checked or not. Putting monitor to the left or right of the LCD does nothing (stays cloned). However, putting monitor above or below LCD does work (two desktops, one on top of the other).
+
+Cause:
+xrandr is complaining behind the scenes:
+
+xrandr: screen cannot be larger than 1600x1600 (desired size 2560x1024).
+
+The GUI offers no feedback that the operation has failed so it is quite confusing to the user. You can confirm this by trying manually, xrandr --output LVDS --left-of VGA and see if it complains.
+
+Workaround:
+NOTE: This workaround means you will lose direct rendering, so no Compiz or Google Earth. No big deal for me, but a dealbreaker for some I'm sure.
+
+Edit /etc/X11/xorg.conf, and add the following subsections into Section "Screen":
+
+EDIT: Subsection should have been SubSection. Thanks fahoo. (jb -20080501 2203 -0500)
+
+SubSection "Display"
+ Virtual 2560 1024
+EndSubSection
+
+Virtual is the resolution of your double-monitor desktop: if you have an LCD at 1280*800 and a CRT to the right of it at 1280*1024, you would put 2560*1024 as in the above example. (Think x1+x2, max(y1,y2)).
+
+Notes:
+Note that the maximum supported size of the virtual desktop for the Intel 945GM series of chipset with 3D acceleration enabled, is 2048*2048. The virtual screen can be larger but DRI will be disabled.
+
+Reference:
+ThinkWiki - Xorg RandR 1.2
+
+lspci:
+
+$ lspci |grep -e VGA -e Display
+00:02.0 VGA compatible controller: Intel Corporation Mobile 945GM/GMS, 943/940GML Express Integrated Graphics Controller (rev 03)
+00:02.1 Display controller: Intel Corporation Mobile 945GM/GMS/GME, 943/940GML Express Integrated Graphics Controller (rev 03)
+
+
+* File permission 
+
+ls –l filename
+
+如果这个文件可以为所有用户以所有方式访问，其权限显示为：rwxrwxrwx
+
+第一个三位表示文件所有者的权限，第二个表示拥有这个文件的组的权限，第三个表示其他人的权限。没有权限显示为“-”。
+
+当设置权限时，以下符号被用到：“u”（＝用户或文件所有者），“g”（拥有文件的组），“o”（其他人），“a”（所有人，如所有者，组和其他人），“=”（设置权限为），“+”（增加权限），“-”（取消权限），“r”（读文件的权限），“w”（写文件的权限，代表修改文件的权限），“x”（执行文件的权限）。
+
+例如，这个命令为所有的用户增加读文件的权限：
+
+chmod a+r junk
+
+这个命令将取消所有用户执行文件的权限：
+
+chmod o-x junk
+
+你也可以去这里，有更多的信息。 
+
+
+
+* 硬盘启动 ubuntu-8.04.1-desktop-i386.iso
+
+操作环境：win xp （vista 未试）
+
+将 ubuntu-8.04.1-desktop-i386.iso 解压至某 fat32 分区根目录（在我的电脑上，ntfs 分区也能成功，但毕竟 ntfs 是微软私有的文件系统，所以不推荐）。
+
+确保 各分区 根目录下没有 menu.lst 文件（有的话请改名或删除），否则有可能影响 ubuntu 启动 —— 这是 wubi 有待改进的一处小 bug 。
+
+双击运行 umenu.exe ，选择 演示和完全安装，选中 帮我从 CD 启动 ，点击 完成，出现 设置 CD 启动器，点击 下一步 ，将自动配置启动文件，按提示重启，出现系统选择菜单时选择 ubuntu 即可。
+
+若不能正常启动，则在屏幕左上角出现“ Press `ESC' to enter the menu ”时，按 esc 键，进入启动菜单（此时可能乱码，是个小 bug ，不必担心），选择 第二项 或 第三项 或 第四项 试试。
+
+若还是不能正常启动，请验证 iso 的 md5
+
+启动后，双击桌面上的 “安装” ，按提示进行（可参考这个帖子 viewtopic.php?t=115542 ），即可以把 ubuntu 安装到硬盘中。
+
+* [[http://forum.ubuntu.org.cn/viewtopic.php?f=54&t=85074&st=0&sk=t&sd=a][ FTP]]
+
+  	
+因为不想用WIN，不方便和周围同学共享文件，于是想在Ubuntu下建个FTP用。一阵论坛和google搜索后终于找到了正确的方法 (vsftpd,Ubuntu7.04)，至少保证周围局域网内用户可以访问。至于配置文件，内容比较少，反正对我来讲能用就ok了~不知道会不会很弱
+有一个不错的中文联机手册可以参考：http://etony.9966.org/doc/other/vsftpd-man-zh.html
+废话不说，进入正题
+
+1.安装vsftpd
+直接从源里面安装，easy
+代码:
+sudo apt-get install vsftpd
+
+安装完毕后或许会自动生成一个帐户"ftp"，/home下也会增加一个文件夹。
+如果没有生成这个用户的话可以手动来，生成了就不用了：
+代码:
+sudo useradd -m ftp
+sudo passwd ftp
+
+有"ftp"帐户后还要更改权限
+代码:
+sudo chmod 777 /home/ftp
+
+在这个目录下我建立一个文件夹专门保存需要共享的内容
+
+2.配置文件
+通过sudo gedit /etc/vsftpd.conf修改。
+配置文件比较简单，如下
+代码:
+#独立模式启动
+listen=YES
+
+#同时允许4客户端连入，每个IP最多5个进程
+max_clients=200
+max_per_ip=4
+
+#不允许匿名用户访问，允许本地（系统）用户登录
+anonymous_enable=NO
+local_enable=YES
+write_enable=NO
+
+#是否采用端口20进行数据传输
+connect_from_port_20=YES
+
+#生成日志
+xferlog_enable=YES
+
+#指定登录转向目录
+local_root=/home/ftp/ftp
+
+
+这样，在同局域网的电脑上，用我的IP地址，用帐号"ftp"和对应密码就可以登录了，密码是第一步里面passwd那句指定的。
+
+就这样就结束了，请大家拍砖！！[/code]
+
+----------------------------------
+对了，更改配置后不要忘了重启ftp服务 :D
+代码:
+sudo /etc/init.d/vsftpd restart
+
+此外还有开启关闭服务的命令
+代码:
+sudo /etc/init.d/vsftpd start
+sudo /etc/init.d/vsftpd stop
+
+* [[https://ltc3.linux.ibm.com/wiki/LinuxDesktop/Fetchnotes][fetch notes]]
+
+http://ibmforums.ibm.com/forums/thread.jspa?messageID=1315054&tstart=0&#1315054
+
+http://ibmforums.ibm.com/forums/thread.jspa?messageID=1218790&tstart=0&#1218790
+
+https://ltc3.linux.ibm.com/wiki/LinuxDesktop/Fetchnotes
+
+* Virtualbox
+
+http://forum.ubuntu.org.cn/viewtopic.php?t=45983
+
+*  Wine MS Office 教程
+
+** Installing Wine 1.2 in Ubuntu 9.10 (Karmic)
+There is a known bug when installing Wine in Ubuntu 9.10 (Karmic), documented in this bug report.  From comments I've seen it affects upgraded installations of Ubuntu rather than fresh installations.  The log shows errors similar to this:
+
+
+    error: "sys.kernel.maps_protect" is an unknown key
+    error: "net.ipv4.ip_always_defrag" is an unknown key
+
+
+
+Comment #11 on the above bug report solved the problem for me.  These are the steps I took:
+
+    * Take a backup of the file /etc/sysctl.conf
+    * Edit /etc/sysctl.conf (as root) and comment out the following lines by putting # in front of them (note that they are not all together in the file):
+
+
+    kernel.maps_protect = 1
+    net.ipv4.ip_always_defrag = 1
+    sys.kernel.maps_protect = 1
+
+
+Then install Wine using your preferred method.  Once complete, uncomment the lines again and save.
+
+I used to have Wine installed when this machine was running Jaunty but somehow Wine completely borked the upgrade from Jaunty to Karmic, necessitating a complete restore and removal of Wine.  I guess this was something to do with it.
+Techno vomit from mark at 08:51
+Hey! Let's look at more stuff about karmic, ubuntu, wine
+
+
+注意：此贴转载自Liunx桌面中文网（http://linuxdesktop.cn）
+文章地址：http://linuxdesktop.cn/2008/03/31/wine-office-2007-install-guide
+作者： TualatriX
+本文所提到的方法仅供学习与研究WINE功能。以下是正文：
+
+
+想在你的Linux上运行起Wine，先看看你的系统是不是具备以下条件：
+
+Wine 0.9.58。
+CrossOver Games。
+对，你需要最新的Wine 0.9.58和一份CrossOver Games。放心，我们不需要购买CrossOver Games，只需要下载一份它的7天试用版即可，只需要其中一个文件。
+
+Wine最新版的deb包（Debian/Ubuntu）可以访问下面的页面下载并安装：
+
+http://wine.budgetdedicated.com/archive/index.html
+
+下载CrossOver Games的7天试用版可访问：
+
+http://www.codeweavers.com/products/cxg ... oad_trial/
+
+OK，假设你一切都准备好了（包括Microsoft Office 2007的安装镜像），那么开始吧！
+
+0、创建干净的Wine环境
+
+打开终终端，运行winecfg，将会自动创建wine的运行环境。假如你之前运行过旧版本的wine，首先得rm -r ~/.wine。
+
+在winecfg中，建议设定默认屏幕分辨率，如设置成1024×768。
+
+1、设置必备dll文件
+
+首先删除~/.wine/drive_c/windows/system32/rpcrt4.dll，然后将CrossOver Games目录下（默认是/opt/cxgames）的/opt/cxgames/lib/wine/rpcrt4.dll.so复制至~/.wine /drive_c/windows/system32，命名为rpcrt4.dll。
+
+第二步删除~/.wine/drive_c/windows/system32下的msxml3.dll文件。再运行winecfg，在library页面将msxml3.dll和rpcrt4.dll加入并设置为native。
+
+确保替换和删除成功后，即可开始安装。
+
+2、安装MSXML和Office 2007
+
+
+先访问 Microsoft XML Parser (MSXML)下载Microsoft XML解析器，然后在终端下运行以下命令来安装：
+
+$ msiexec /i msxml3.msi
+
+接着，插入你的Office 2007光盘，输入以下命令挂载它：
+
+mount -t iso9660 -o unhide /dev/cdrom /media/cdrom0
+
+或者用以下命令挂载ISO：
+
+mount -t iso9660 -o loop ****.iso /media/cdrom0
+
+然后开始安装吧！
+
+$ cd /media/cdrom0
+/media/cdrom0$ wine setup.exe
+
+经过了漫长的等待以后，就到你的应用程序菜单中去运行Microsoft Office 2007吧！
+
+在我的试用下，Word和Excel运行良好，其他套件有错误不能运行。不知道是否是个别情况？
+
+
+* 伪装成Textmate的gEdit
+
+Textmate-like Gedit in few steps
+
+Textmate is really a great text-editor (almost an IDE but faster), it has even the support for latest Ruby/Rails technologies like RSpec. On the GNU/Linux side there are also similar full-featured text editor and one is Gedit.
+
+Gedit can be extended by plugins written in C or in Python, here is a tutorial how to set up a Textmate-like Gedit.
+Syntax highlight for RHTML, RJS
+
+By default Gedit supports a lot of languages php, C#, java,.. and Ruby, but Ruby embedded. To enable the sintax highlight in HTML files with embedded ruby code (.rhtml) you have to add 2 files (Thanks to Bitsbam).
+
+From the terminal:
+
+$ wget http://grigio.org/files/x-rhtml.xml; sudo mv x-rhtml.xml /usr/share/mime/packages
+
+$ wget http://grigio.org/files/rhtml.lang; sudo mv rhtml.lang /usr/share/gtksourceview-1.0/language-specs/
+
+Select the plugin you need
+
+The list of the plugins avalaible is growing fast; this is a list of plugins that work well each other.
+
+http://grigio.org/textmate_gedit_few_steps
+
+*  Mplayer
+
+<example>
+
+本文所要探讨的，除却一般的使用方法之外，更包括一些鲜为人知的提示和诀窍。相信在阅读此文后，你的多媒体播放体验将会增色不少。
+
+播放文件
+
+使用 MPlayer 播放媒体文件最简单的方式是：
+
+mplayer <somefile>
+
+MPlayer 会自动检测文件的类型并加以播放，如果是音频文件，则会在命令行中显示该播放文件的状态信息；而假如是视频文件的话，则会打开一个新的播放窗口。
+
+倒退与快进
+
+在播放文件的时候，你可以通过以下三组快捷键来对播放进程进行倒退与快进操作：
+
+ - 左方向键和右方向键：分别执行倒退 10 秒和快进 10 秒操作
+ - 下方向键和上方向键：分别执行倒退 1 分钟和快进 1 分钟操作
+ - 下翻页键和上翻页键：分别执行倒退 10 分钟和快进 10 分钟操作
+
+播放 DVD
+
+虽然 MPlayer 不支持 DVD 菜单，但是却能够播放 DVD。你可以这样播放 DVD：
+
+mplayer dvd://<titlenumber>
+
+你需要使用实际的数字来替换 <titlenumber>，如 1、2、3 等。
+
+使用字幕
+
+当播放电影文件时，你可以指定字幕文件：
+
+mplayer -sub <somesubtitlefile> <somefile>
+
+在播放 DVD 电影时，你也可以通过指定语言代码来使用字幕：
+
+mplayer dvd://<titlenumber> -slang nl,en
+
+这样，MPlayer 就会优先使用荷兰语字幕，如果该语言不可用，则再使用英语字幕。
+
+有用的快捷键
+
+以下是 MPlayer 中一些有用的快捷键：
+
+* f－当播放视频时，在全屏和窗口模式之间切换。你也可以在命令行中使用 -fs 选项，以便让 MPlayer 开始在全屏模式中播放。
+* o－在播放视频时切换 OSD（OnScreen Display）模式。
+* p 或 Space－暂停／继续播放。
+* q 或 Esc－退出 MPlayer。在 GUI 模式时，Esc 不会退出，仅停止播放。
+* / 和 * 或 9 和 0－减小或增大音量。
+* m－静音切换。
+* T（通常是 Shift + t）－播放窗口置顶切换。
+* b 和 j－在可用的字幕间循环。
+* x 和 z－调整字幕的延迟时间。
+* I（Shift + i）－显示播放电影的文件名称。
+* 1 和 2－调整对比度。
+* 3 和 4－调整亮度。
+* 5 和 6－调整色度。
+* 7 和 8－调整饱和度。
+
+生成索引
+
+有时候，有些视频文件（主要是 AVI 文件）包含损坏的索引，或者根本就没有索引。这种情况通常是由下载文件不正确或未完成造成的。幸运的是，MPlayer 能够生成正常播放文件所需的索引。通过使用 -idx 选项，你可以告诉 MPlayer 来生成索引：
+
+mplayer -idx <somefile>
+
+有时候文件虽然包含索引，但却已损坏。那样的情况，你可能需要 MPlayer 强制生成索引：
+
+mplayer -forceidx <somefile>
+
+根据视频文件的大小，生成索引需花费一定的时间。但在此后，文件应该能够正常播放。
+
+纠正错误的音频／视频同步
+
+有些视频文件（主要是 flv 文件）由于编码的问题，会给 MPlayer 带来音频／视频同步的麻烦。这有两种可能情况：
+
+* MPlayer 会尝试修复，但同步问题却更遭。
+* MPlayer 会尝试修复那些正确的，因此没有必要同步。
+
+对于第一种情况，你应当让 MPlayer 努力修复同步问题：
+
+mplayer -autosync 30 -mc 2.0 <somefile>
+
+而对于第二种情况，你不应当允许 MPlayer 去修复同步问题：
+
+mplayer -autosync 0 -mc 0 <somefile>
+
+将上述命令中的 autosync 设置为正值就会让 MPlayer 逐渐调整音频／视频的同步。值越高，MPlayer 越快地修复它。mc 选项指定 MPlayer 纠正每帧要多少秒。值越高，MPlayer 越认为接近修复音频／视频同步。设置为 0 则阻止 MPlayer 修复。
+
+在慢系统上使用 MPlayer
+
+MPlayer 允许在旧的或慢的系统上使用低 CPU 功率来播放视频文件。你可以使用 -framedrop 选项：
+
+mplayer -framedrop <somefile>
+
+当播放 MP3 或 OGG Vorbis 文件时，你可能感受到一定的缓冲，这将影响你的音乐体验。那样的话，你可以尝试使用 libmad（MP3）或 Tremor（OGG Vorbis）音频解码器。你可以这样来检测它们：
+
+对于 MP3：
+
+mplayer -ac help | grep mad
+
+如果上面的命令返回的结果像这样：
+
+mad libmad working libMAD MPEG layer 1-2-3 [libmad]
+
+那么你可以使用 libmad 播放 MP3：
+
+mplayer -ac mad <somefile>
+
+在 OGG 的情况中，你可以使用同样的技巧来检测 tremor 音频解码器是否可用：
+
+mplayer -ac help | grep tremor
+
+播放流媒体
+
+如果 MPlayer 无法自动找到播放列表或直接的流媒体文件，你可以尝试使用 -playlist 选项：
+
+mplayer -playlist <file or url>
+
+同时你也可以设置较大的缓存：
+
+mplayer -cache 8192 -playlist <file or url>
+
+指定缓存大小的单位是 KB，上面的命令将允许 MPlayer 使用 8 MB 缓存。你可以使用 -cache-min 选项来改变 MPlayer 占用缓存的百分比：
+
+mplayer -cache 8192 -cache-min 50 -playlist <file or url>
+
+循环播放
+
+如果你想让媒体文件循环播放，可以使用 -loop 选项：
+
+mplayer -loop 3 <somefile>
+
+上面的命令将播放 <somefile> 3 次，然后才退出。
+
+mplayer -loop 0 <somefile>
+
+上面的命令将永远重复播放 <somefile>。
+
+改变播放速度
+
+你可以使用 -speed 选项来改变 MPlayer 播放媒体文件的速度。值为 1.0，意味着正常速度；0.5 意味着慢两倍；2.0 意味着快两倍。像这样指定选项：
+
+mplayer -speed 2.0 <somefile>
+
+改变采样率
+
+使用 -srate 选项你可以改变 MPlayer 输出的采样率：
+
+mplayer -srate 48000 <somefile>
+
+将音频输出为 wav 文件
+
+你可以将视频文件中的音频部分输出为 wav 文件：
+
+mplayer -ao pcm <somefile>
+
+这将输出名为 audiodump.wav 的音频文件。你也可以为输出的 wav 文件指定名称：
+
+mplayer -ao pcm:file=<filename>.wav <somefile>
+
+使用 ASCII 方式观看电影
+
+虽然无用，但却很好玩。有两个库文件支持该特性：aa 和 caca。使用 libaa，你只能在黑白 ASCII 中观看电影。而 libcaca 支持色彩。然而，libaa 支持更广泛。你可以像这样使用 libaa 观看电影：
+
+mplayer -vo aa <somefile>
+
+如果你想使用 libcaca：
+
+mplayer -vo caca <somefile>
+
+将电影输出为系列图片
+
+MPlayer 也能将电影输出为一系列的图片：
+
+mplayer -vo jpeg <somefile>
+
+注意：上面的命令将产生数量巨大的 jpeg 文件。输出的 jpeg 文件名看起来像这样：00000001.jpg、00000002.jpg、00000003.jpg 等等。
+
+你也可以输出其他的格式。只需将命令中的 jpeg 替换成 ppm、png、tga 等。
+
+指定纵横比
+
+当你在宽屏中播放电影时，可能想要使用 16:9 的纵横比：
+
+mplayer -aspect 16:9 <somefile>
+
+在非宽屏中，你可以使用 4:3 的纵横比。
+
+将选项放置到 MPlayer 的配置文件中
+
+对于一般用户来说，该配置文件位于 ~/.mplayer/config；全局的配置文件在 /etc/mplayer/config。不同的值使用行分隔，如：
+
+# MPlayer config file
+srate=48000
+ao="pcm:file=dumpedaudio.wav"
+
+</example>
+
+*  Network Interfaces
+
+如果要讓更動立刻生效，最有效的辦法是重新開機，最聰明的辦法是以 root 身份下達以下指令
+
+# /etc/init.d/networking restart
+
+
+* Bash readline 的使用技巧
+
+Bash readline 的使用技巧
+
+很多人会用 Bash，但是很少有人知道 readline 是怎么回事。readline 是一个强大的库，只要使用了它的程序，都可以用同一个配置文件配置，而且用同样的方法操作命令行，让你可以方便的编辑命令行。 
+
+使用 readline 的程序现在主要有 Bash, GDB，ftp 等。readline 付予这些程序强大的 Emacs 似的命令行编辑方式，你可以随意绑定你的键盘。 
+
+术语解释 
+
+在下文中，我们经常提到 "C-x r" 这类键操作。"C-x r" 其实就是按Ctrl-x，然后按 r。同理 "C-M-@" 就是按 ctrl-alt-@(M表示meta, 在 PC 上就是 Alt 键)，但是其实 @ 是shift-2 (看看你的键盘)。所以 "C-M- @" 实际上要你按 ctrl-alt-shift-2。 
+
+但是在配置文件里的键序列中，我们把 "C-x r" 表示为 "\C-xr", 把 "C-M-@" 表示为 "\C-\M-@"，你自己看看就知道怎么回事了。同理 "Esc a" 别表示成 "\ea"。 
+
+这就是 Emacs 里的按键的通常标记方法。EMACS = Esc Meta Alt Ctrl Shift :) 
+
+技巧篇 
+
+在自己配置命令行之前，我们先来看看利用缺省的键绑定能够进行的一些巧妙的用法： 
+
+第一招：使用以前的命令行参数 
+
+你是否经常出现这种情况？你想把 ~/text-browser/ 目录下的3个.tar.gz文件搬到/usr3/software/，于是你输入： 
+
+
+
+$mv ~/text-browser/*.tar.gz /usr3/software/
+
+
+我想你一定已经知道，打入 ~/text 之后按 TAB 就可以补全text-browser这个长文件名吧？这是Bash 的基本功能。我废话？好了，就当你知道吧。不过今天我要讲的东西比这个复杂一些。 
+
+Go on! 刚刚输入到这里，你突然想起，应该在 /usr3/software/ 下先建立一个目录叫browsers，这样放进去的文件比较好管理。 
+
+于是你 Ctrl-u，删掉了这行命令。唉呀，这么长的命令一下就没了。是不是有点可惜？这还不算麻烦。然后你 
+
+
+
+mkdir /usr3/software/browser
+mv ~/text-browser/*.tar.gz /usr3/software/browser
+
+
+嗯。TAB 是帮了你不少忙。可是你实际上有更好的办法来完成这项工作。好吧，看看 readline 怎样神奇的完成你的任务： 
+
+我们回到这种情况： 
+
+
+
+$mv ~/text-browser/*.tar.gz /usr3/software/
+
+
+你刚才是按了 Ctrl-u 删除了所有输入的东西。可惜啊！你要是按 M-#(也就是按住 PC 机的 Alt 键，再按 #，实际上就是 Alt-Shift-3)，那么 Bash 就会在这样最开头插入一个 "#"，然后输入这行。这样命令就被作为一行注释载入了历史。 
+
+这有什么好处？这样你的这行命令里的内容就可以被再次利用。看着：你接着输入： 
+
+
+
+mkdir ...
+
+
+等等，你是不是想输入 /usr3/software/？你不用再敲一遍了！直接按 M-.(Alt 加句号)，看看， /usr3 /software/ 是不是出现在命令行上了？M-. 就是调用了 yank-last-arg 函数，把上一条命令的最后一个参数放在命令行上。好了，回车吧！ 
+
+你接着输入： 
+
+
+
+mv ...
+
+
+等等，这下是该输入 ~/text-browser/*.tar.gz 了。烦不烦啊？换一种方式吧。请按："M-1 M-."(把上一条命令的第一个参数放在命令行上)。这样命令行成为了： 
+
+
+
+mv /usr3/software/browser
+
+
+怎么成这样了？看看你的“上一条命令”是什么吧？是……你自己看。所以这个参数不是你想要的。那么继续再按一次 "M-."。看到了吧？你的命令行已经成为： 
+
+
+
+mv ~/text-browser/*.tar.gz
+
+
+好。打一个空格。再按一下 "M-."。命令行变成了： 
+
+
+
+mv ~/text-browser/*.tar.gz /usr3/software/browser
+
+
+这就是你想要的！ 
+
+是不是看起来你还是花了不少工夫？但是想一想，如果你是要执行这样一个命令呢？ 
+
+
+
+mv /data/ftp/pub/TUG/texmf/tex/latex/CJK/GB/GB.cap \
+ /usr/local/texlive/texmf-local/tex/latex/CJK/GB/
+
+
+嗯。记住这个有用命令：M-. ， 它的前面可以用 M-0, ... 作为数字参数。 
+
+第二招：补全命令名，文件名和变量名 
+
+你知道 TAB 可以补全命令行上很多东西。可是你遇到这种情况的时候怎么办？ 
+
+
+
+man a-very-very-long-command-name
+
+
+
+你输入了 man a-ver... 之后，按 TAB，什么反应也没有。因为 TAB 执行的是 “按情况补全”(complete)，它看到 man，知道这应该是一个命令，那么它认为： “后面应该是一个文件名参数。” 但是你想要的是命令的名字怎么办？答案：按 "M-!". 
+
+再来看：你需要设置 XMODIFIERS="@im=fcitx"。你输入了 
+
+
+
+export XM...
+
+
+按 TAB? 没有反应。为什么呢？因为 TAB 的补全想要一个文件名，而当前目录没有开头是 "XM..." 的文件。那么你怎么补全？答案："M-$"。 
+
+其实 readline 的补全方式被 Bash 扩充了很多。看看有多少吧！ 
+
+
+
+"TAB": complete
+"\M-!": complete-command
+"\M-/": complete-filename
+"\M-@": complete-hostname
+"\M-~": complete-username
+"\M-$": complete-variable
+
+
+自己试试吧！ 
+
+第三招：扩展命令行 
+
+你的一个目录里有很多类似的文件，名字叫 T12.txt, T12.log, T23.txt, T23.log, T13.txt, T13.log…… 有后缀 txt 的，也有后缀 log 的。... 你想把其中的某些 T*.txt 都移动到另外一个目录，而T*.log都不动。但是T*.txt 也不是全部都要移动。所以你想把T*.txt 都放在命令行上，然后选择其中一些。你输入： 
+
+
+
+mv T...
+
+
+接着按 "M-*"(insert-completions)。结果 T 开头的文件都被放到命令行上了。嗯。这在某些时候是有用的，可是现在它把 T*.log 的文件也放上去了。不行。我们于是继续输入： 
+
+
+
+mv T*.txt
+
+
+好了，现在我们可以使用 "C-x*"(先按ctrl-x，然后按*)。结果所有名字T*.txt 的文件都被放到了命令行上面。"C-x*" 执行的函数叫做 glob-expand-word. 
+
+配置篇 
+
+你是不是觉得那些命令很难记住？不顺手？别怕！它们都是可以改变的，就像Emacs的键绑定那样，可以被任意的改变！ 
+
+所有使用readline的程序，都使用一个配置文件来决定它的行为和键绑定。这个文件一般是 INPUTRC 环境变量确定的。如果这个环境变量没有值，那么缺省使用 ~/.inputrc。 
+
+~/.inputrc 文件很简单，只有4种语句： 
+
+1.注释 
+
+2.变量设置语句(set variable value) 
+
+3.键定("keyseq":function) 
+
+4.条件语句($if ... $endif) 
+
+我们先不说其它的，先来看看键绑定吧！ 
+
+键绑定 
+
+1.绑定语句。 
+
+你现在就可以动手设置你喜欢的控制方式。比如，我发现有些时候我需要在命令行上做上 mark(Emacs 术语)，然后把mark 和光标之间的 region(Emacs术语) 删掉，这个操作在 Emacs 里叫做kill-region. 但是我们发现这个函数在 Bash 里缺省是没有绑定的。如果我希望得到跟 Emacs 一样的绑定 C-w 的话，就把这行插入到 ~/.inputrc: 
+
+
+
+"\C-w":kill-region
+
+
+2.使绑定生效。为了使这个键绑定生效，你需要执行 re-read-init-file 函数。这个函数缺省绑定在了 "C-x C-r"。你修改 ~/.inputrc 之后在 Bash 里输入 "C-x C-r" 就可以使新的配置生效了。 
+
+3.列出可用的函数。 
+
+不过你怎么知道那些函数可以被绑定呢？readline 的 info 页列出了很多函数，可是你不会每次都去info里查询吧，很麻烦啊。其实你可以使用bash的 bind 命令来得到所有的键绑定: 
+
+
+
+$bind -p
+
+
+可以显示所有现有的已经绑定和没有绑定的函数。没有被绑定的函数被显示为 "(not bound)"，并被加上了注释。就像这样： 
+
+
+
+"\C-g": abort
+"\C-x\C-g": abort
+"\M-\C-g": abort
+"\C-j": accept-line
+"\C-m": accept-line
+# alias-expand-line (not bound)
+# arrow-key-prefix (not bound)
+# backward-byte (not bound)
+"\C-b": backward-char
+"\M-OD": backward-char
+"\C-h": backward-delete-char
+"\C-?": backward-delete-char
+
+
+你可以把这个命令的输出作为一个模板，嵌入到 ~/.inputrc 文件。把你喜欢的函数绑定到方便的按键。 
+
+其实 readline 有三个函数可以让你方便的查询函数，变量和宏的绑定情况，它们是： 
+
+
+
+dump-functions
+dump-variables
+dump-macros
+
+
+可是它们缺省都没有被绑定到任何按键。你可以为它们分别设置类似 "C-xf", "C-xv", "C-xm" 这样容易记忆的绑定。 
+
+4.如果忘了绑定…… 
+
+这样你就可以设置你需要的绑定啦！但是你还是有可能在需要的时候突然记不起哪些键绑定可以补全。这时候你输入： 
+
+
+
+$bind -p | grep compl
+得到结果： 
+"\C-i": complete
+"\M-\e": complete
+"TAB": complete
+"\M-!": complete-command
+"\M-/": complete-filename
+"\M-@": complete-hostname
+"\M-{": complete-into-braces
+"\M-~": complete-username
+"\M-$": complete-variable
+"\M-\C-i": dynamic-complete-history
+"\M-g": glob-complete-word
+"\M-*": insert-completions
+.......
+
+
+这样你记不住一个键的时候就可以方便的查询，这样几次之后，你就会把自己需要的按键都记住了。 
+
+配置变量 
+
+1.体验： 
+
+Bash 的 readline 有一些变量可以控制它的行为。比如: 
+
+bell-style 可以控制出错时是 audible(发出响声)，visible(闪动屏幕)，还是none(什么都不做)；editing-mode 可以控制你是用 Emacs 的输入方式还是用 vi 的； 
+
+completion-query-times 的值控制在补全的个数超过多少N时，bash 提示： “Display all N possibilities? (y or n)”； 
+
+如果我设置 expand-tilde 为 on，当输入“ls ~/doc”，按 TAB 时，命令行会自动变成 "ls /home/wy/doc". 
+
+如果把 visible-stats 设置为 on，那么列出补全的时候，目录，可执行文件，符号连接，会被分别使用 /, *, @ 来标记，就像 ls -F 的到的结果。 
+
+2.设置： 
+
+设置的方法极其简单，就在 ~/.inputrc 文件里写入类似语句： 
+
+
+
+set visible-stats on
+
+
+然后 "C-x C-r" 使设置生效。 
+
+3.怎样知道有哪些设置？ 
+
+可以设置的参数是很多的。使用命令 
+
+
+
+$bind -v
+
+
+就可以得到所有这些可以设置的变量和它们的值了。
+
+* 警报声
+
+系统－－》首选项－－》音效
+
+去掉 “播放警告声音” 的勾。
+
+
+* 窗口关闭按钮的位置修改
+
+<src>
+gconftool-2 --set /apps/metacity/general/button_layout --type string "menu:minimize,maximize,close"
+</src>
+
+* sed常用命令整理
+<src>
+sed '1,3d' file //删除1-3行
+sed -n '/[Aa]bc/p' file //打印包含Abc或者abc的行
+sed '/ABC/d' //删除包含ABC的行
+sed '/ABC/!d' //不删除包含ABC的行
+sed '5,$d' //从第五行到最后一行全部删除
+sed 1q  //显示第一行
+sed 's/$/.../g' //每行的最后面添加 ...
+sed 's/d.\(sk\)/\1&/g' //满足d*sk的单词,在单词前添加sk
+sed 's/<[^>]*>//g' //去除html标签
+sed '/ABC/a\123' //在包含ABC的行后面添加一行数值为123的行
+sed '/ABC/i\123' //跟a\不同的是i\是插入当前行的前面
+sed '/ABC/c\123' //包含ABC的行将更改为123
+sed '/ABC/{n;s/123/ABC/g}' //精确匹配包含ABC的下一行,将123全部替换成ABC
+sed '/ABC/{s/A/a/}' //在包含ABC的行将A替换成a
+sed -e '/ABC/h' -e '$g' //将包含ABC的行复制,在最后一行添加.
+sed -e '/ABC/{h;d}' -e '/123/G' //将包含ABC的行复制并删除,在包含123的行后添加.
+g等于在当前行覆盖,G是在符合条件的行后新增加一行.
+sed 's/^/ /g' //每行前面增加一个空格
+sed 's/.\(.\)$/*\1/' //将倒数第二位换成*
+sed '/ABC/!s/1/*/g' //在不包含ABC的行里,将所有的1替换成*
+sed 's/1\|2\|3/*/g' //在GNU里将不管是1或2或者是3替换成*
+</src>
+
+
+* awesome
+
+<src>
+当然你可以通过修改配置文件来更改这些键位。这里的Mod4可以在配置文件中定义，默认是Windows键。
+
+Mod4 + Return
+打开一个终端
+Mod4 + F1
+运行命令
+Mod4 + Shift + c
+关掉当前窗口
+Mod4 + Control + r
+重启awesome
+Mod4 + Shift + q
+退出awesome
+
+Mod4 + j
+切换到下一个窗口
+Mod4 + k
+切换到前一个窗口
+Mod4 + Left
+查看前一个tag
+Mod4 + Right
+查看后一个tag
+Mod4 + 1-9
+切换到tag 1-9
+Mod4 + Control + j
+切换到下一个屏幕
+Mod4 + Control + k
+切换到前一个屏幕
+
+Mod4 + Shift + j
+当前窗口和前一个窗口互换位置
+Mod4 + Shift + k
+当前窗口和后一个窗口互换位置
+Mod4 + h
+把主区域(master width)的宽度增大5%
+Mod4 + l
+把主区域(master width)的宽度减少5%
+Mod4 + Shift + h
+增加主区域窗口的数量
+Mod4 + Shift + l
+减少主区域窗口的数量
+Mod4 + Control + h
+增加非主区域窗口的数量
+Mod4 + Control + l
+减少非主区域窗口的数量
+Mod4 + space
+把当前tag更换为下一种布局
+Mod4 + Shift + space
+把当前tag更换为前一种布局
+Mod4 + Control + space
+切换当前窗口是否为浮动的
+
+Mod4 + Shift + i
+显示当前窗口的class和instance。这在写脚本的时候尤其有用
+
+Mod4 + Shift + r
+重绘当前窗口
+
+
+</src>
+
+* Linux网卡配置文件的含义
+
+/etc/sysconfig/network-scripts/ifcfg-interfacename
+
+配置文件ifcfg-interface-name包含了初始化接口所需的大部分详细信息。其中interface-name将根据网卡的类型和排序而不同，一般其名字为eth0、eth1、ppp0等，其中eth表示以太（eth0）类型网卡，0表示第一块网卡，1表示第二块网卡，而ppp0则表示第一个point-to-poirt protocol网络接口。在ifcfg文件中定义的各项目取决于接口类型。
+
+（1）下面的值较问常见：
+
+》DEVICE=name ，其中，name是物理设备名。
+
+》IPADDR=addr，其中，addr是IP地址。
+
+》NETMASK=mask，其中，mask是网络掩码值。
+
+》NETWORK=addr，其中addr是网络地址。
+
+》BROADCAST=addr，其中，addr是广播地址。
+
+》GATEWAY=addr，其中addr是网关地址。
+
+》ONBOOT=answer，其中，answer是yes（引导时激活设备）或no（引导时不激活设备）
+
+》USERCTL=answer，其中，answer是yes（非root用户可以控制该设备）或no
+
+》BOOTPROTO=proto，其中，proto取下列值之一：none，引导时不使用协议；static静态分配地址；bootp，使用BOOTP协议，或dhcp，使用DHCP协议。
+
+
+* DNS
+
+http://kbase.redhat.com/faq/docs/DOC-13668
+
+<src>
+[jazz@dswdev3 ~]$ cat /etc/sysconfig/network-scripts/ifcfg-eth1
+DEVICE=eth1
+BOOTPROTO=static
+HWADDR=00:11:25:40:81:33
+IPADR=9.125.242.49
+NETMASK=255.255.255.0
+ONBOOT=yes
+TYPE=Ethernet
+IPADDR=9.125.242.49
+GATEWAY=9.125.242.1
+USERCTL=yes
+IPV6INIT=no
+PEERDNS=yes
+DNS1=9.181.2.101
+DNS2=9.181.2.102
+DOMAIN=dswdev3
+</src>
+
+
+* Golden dict
+
+I put the setup script in myapt. 
+
+http://www.babylon.com/free-dictionaries/languages/Babylon-English-Chinese-%28S%29/912.html
+
+http://www.babylon.com/free-dictionaries/languages/chinese/
+
+
+* [[http://forum.ubuntu.org.cn/viewtopic.php?f=77&t=290844][使用wubi-hd在windows下不用光驱硬盘安装ubuntu(发现的最简单硬盘安装方法]]）
+
+windows下使用wubi-hd硬盘安装ubuntu，适合ubuntu各个版本包括8.04,8.10,9.04,9.10,10.04以及衍生版等
+
+
+下面说明以D为例，E,F等盘均可以，ubuntu10.04.1为例
+
+
+D盘空闲5G以上,建议使用NTFS分区，磁盘标识使用英文
+1.在D盘新建文件夹iso，将wubi-hd.exe、ubuntu10.04.1.iso放到iso目录下；
+2.将ubuntu10.04.1.iso改名为installation.iso；
+3.双击wubi-hd.exe进行安装，选择安装到任意盘符下，比如D盘等，这并不重要，只是将你的硬盘当光驱用而已。选择稍后重起，因为需要重要的第四步；
+4. 提取ISO文件里面casper\initrd.lz放到D:\ubuntu-install\install\boot下（选E盘则在E: \ubuntu-install\install\boot下，以此类推），并修改名字为initrd.gz ，这一步非常重要，否则安装无法进行，会提示此文件not found,不信可以试试。
+5.现在重起你的计算机；
+6.重启后选择，在系统选择菜单中就会出现“ubuntu”,选择进入“ubuntu”，这时会进入到live-cd模式，不要进行其他任何操作，先在“终端”（终端打开方式 ctrl+alt+F2,退出终端ctrl+alt+F7）中输入sudo umount -l /isodevice按回车，然后退出终端，这一步操作非常重要，如果不执行上一步操作，将不能顺利安装。
+7.双击桌面上的”安装“就可以安装了，共有至少7步：选择语言→选择时区→选择键盘→选择安装方式（与windows共存,使用最大连续空闲空间，高级自定义）→（后面步骤会因你的选择而改变，自己看不用我说了）。重点前面6步做好，不用刻碟，不用光驱安装ubuntu。如果刻碟就不用前面6步的。呵呵。
+
+补充：进入 windows,D盘（你所选择的盘）多一个buntu-install文件夹，不要直接删除，进控制面版→添加和删除程序里面卸载（程序名称 ubuntu)。不卸载的话windows启动选项里会有ubuntu，进入后还是live-cd模式。这步相当于刻碟安装后把cd从光驱里面拿出来。要是不卸载在windows启动菜单进去有点想wubi安装的，注意：wubi-hd非wubi，有区别。wubi-hd属于真正的硬盘安装，此种安装方式牵扯到硬盘分区的步骤,用户需要具备一定的磁盘操作能力,以防对硬盘已有数据造成损坏.本人安装是先wingdows下用pq在C盘后面分出一个10G的空闲空间，然后安装ubuntu时选择使用最大连续空闲空间。
+
+本文提到的ubuntu-10.04.1.iso即从官网下载的 ubuntu-10.04.1-desktop-i386.iso或其他版本的iso,为打字方便。此为本人在xp下亲测成功，很完美，人格保证，windows7下没有系统未亲测，应该相差不大，网上也有类似教程，发现不刻碟此方法最简单。
+
+
+
+*  add-apt-repository
+
+Step 1: On the PPA's overview page, look for the heading that reads Adding this PPA to your system. Make a note of the PPA's location, which looks like:
+
+ppa:gwibber-daily/ppa
+
+Step 2: Open a terminal and enter:
+
+sudo add-apt-repository ppa:user/ppa-name
+
+Replace ppa:user/ppa-name with the PPA's location that you noted above. 
+
+* Setup script
+
+< include file="~/ideas/bin/myinstall" markup="src" lang="sh">
+
+
+* IPv6
+
+<  include file="/home/will/ideas/Muse/tools/ipaddress.txt" markup="src" >
+
+
+* Printer 
+
+ http://w3.tap.ibm.com/w3ki03/display/linuxportal/Open+Client+Linux+Global+Printing+Guide
+
+
+* AIX
+
+** 要确定您安装的 AIX 的级别，请运行以下命令：
+
+# oslevel
+或
+# uname -vr
+
+要确定发行版的维护包，请运行以下命令：
+
+
+# oslevel -r
+
+要确定特定的 LPP 或文件集的级别，请运行以下命令：
+
+
+# lslpp -L
+
+要确定所有 LPP 或文件集的级别，请运行以下命令：
+
+
+# lslpp -L | pg
+
+
+有什么硬件？
+要显示有关您系统上的硬件信息，请运行以下命令：
+
+# lscfg -vp | pg
+
+另外用prtconf|pg可以较全的列出系统及硬件信息 
+
+** wget 
+
+ http://computer-refuge.org/classiccmp/aixpdslib/pub/wget/RISC/5.3/exec/
+
+<src>
+
+ gzip -dc wget.1.10.2.tar.Z | tar -xvf -
+
+ gzip -dc wget-1.12.tar.gz | tar -xvf -
+
+gzip -dc curl.7.15.3.tar.Z | tar -xvf -
+
+gzip -dc  gcc.4.1.1.tar.Z | tar -xvf -
+
+gzip -dc  grep.2.5.1.tar.Z | tar -xvf -
+
+</src>
+
+* Remote run ssh 
+
+ssh -l changwei etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src/log4j.properties"
+
+ssh  changwei@etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src/log4j.properties"
+
+scp id_rsa.pub changwei@etlbdswws01.etl.ibm.com:/home/changwei/.ssh/authorized_keys2
+
+./checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote2 -f 2011-06-09 -t 2011-06-10 -c PRICING -u changwei@cn.ibm.com -p
+t5y6u7i8
+
+/home/fvtoper/quotelogtool/checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote4 -f 2011-06-09 -t 2011-06-10 -c PRICING -u changwei@cn.ibm.com 
+
+* FreeNX --- faster vnc
+
+https://help.ubuntu.com/community/FreeNX
+
+https://wiki.archlinux.org/index.php/FreeNX
+
+CTR+ALT+F          Toggles full-screen mode. 
+
+<src>
+sudo add-apt-repository ppa:freenx-team
+
+sudo sed -i 's/natty/lucid/g' freenx-team-ppa-natty.list 
+
+wget https://bugs.launchpad.net/freenx-server/+bug/576359/+attachment/1378450/+files/nxsetup.tar.gz
+
+tar -xvf nxsetup.tar.gz
+
+sudo cp nxsetup /usr/lib/nx/nxsetup
+
+sudo /usr/lib/nx/nxsetup --install 
+
+</src>
+
+
+
+* E: Sub-process /usr/bin/dpkg returned an error code (1)
+此时可以这样解决：
+cd /var/lib/dpkg
+sudo mv info info.bak
+sudo mkdir info
+重新安装，在此为：
+sudo apt-get --reinstall install ttf-dustin khangman kdeedu kde
+
+
+* A copy of the C library was found in an unexpected directory:
+  '/lib/i386-linux-gnu/libm-2.13.so'
+It is not safe to upgrade the C library in this situation;
+please remove that copy of the C library or get it out of
+'/lib/i386-linux-gnu' and try again.
+
+
+问题终于解决了，多谢各位弟兄！！特别多谢chaisave兄！
+移动库文件到动态库目录的思路的正确的！但是，由于libpthread是一个指向其他文件的软链接文件，所以要拷贝实际文件、改名并且转移到库目录中去。
+比如， libpthread.so.0 -> libpthread-0.10.so
+需要
+cp /usr/lib/libpthread-0.10.so /tmp/lib/libpthread.so.0
+mv /usr/lib/libpthread.so.0 /bak
+
+# mv /lib/libdl.so.2 /lib/libpthread.so.0 /tmp/lib
+# LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/tmp/lib apt-get upgrade
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/usr/lib:/tmp/lib
+cp libm-2.13.so /tmp/lib/libm.so.6
+mv libm-2.13.so /home/will/backup
+
+ls -ls | grep libpthread-2.13.so
+cp libpthread-2.13.so /tmp/lib/libpthread.so.0
+sudo mv libpthread-2.13.so /home/will/backup
+sudo rm libpthread.so.0
+sudo cp /tmp/lib/libpthread.so.0 . 
+
+
+* Notes setup
+
+gedit ~/.local/share/applications/mimeapps.list 
+
+<src>
+
+[Default Applications]
+x-scheme-handler/notes=notesplugin.desktop
+x-scheme-handler/nsf=notesplugin.desktop
+x-scheme-handler/ntf=notesplugin.desktop
+x-scheme-handler/ndl=notesplugin.desktop
+x-scheme-handler/eml=notesplugin.desktop
+x-scheme-handler/messages=notesplugin.desktop
+
+</src>
+
+sudo gedit /usr/share/applications/notesplugin.desktop
+
+<src>
+Exec='/opt/ibm/lotus/notes/notes' %U
+</src>
+
+
+* RSA
+
+** Can't find libstdc++ 
+
+http://ibmforums.ibm.com/forums/thread.jspa?threadID=577740&tstart=100
+
+for 64
+
+cd /usr/lib64
+ln -s ../lib/x86_64-linux-gnu/libstdc++.so.6 .
+
+for 32
+
+cd /usr/lib
+sudo ln -s ../lib/i386-linux-gnu/libstdc++.so.6 .
+
+
+* Mount
+
+<src>
+will@will-ThinkPad-T420:/media$ cat /etc/fstab
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+proc            /proc           proc    nodev,noexec,nosuid 0       0
+# / was on /dev/sda5 during installation
+UUID=653cc2de-1549-4472-a8a8-beec519f8886 /               ext4    errors=remount-ro 0       1
+# swap was on /dev/sda6 during installation
+UUID=fe5ba2a6-b9b1-4d55-8300-302e4096c07b none            swap    sw              0       0
+# windows 7
+UUID=4305604E4A5B9CB8 /media/win7               ntfs    errors=remount-ro,auto,exec,rw,user 0       0
+</src>
+
+* Fedaro
+
+https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/%28optional%29%20Add%20additional%20repositories
+
+<src>
+sudo yum install http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
+
+sudo yum install flash-plugin
+
+su -c 'yum localinstall --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm'
+
+sudo yum install agnclient
+
+sudo yum grouplist|grep IBM
+
+sudo yum groupinstall "IBM Client Java" "IBM Lotus Notes" "IBM Sametime" 
+
+sudo yum install ibus.x86_64 ibus-gtk2.i686 filezilla.x86_64 emacs.x86_64
+
+sudo yum install xulrunner-compat.i386 rubygem-Platform.noarch ruby.x86_64
+
+sudo yum install mercurial.x86_6 emacs-mercurial-el.x86_64 aspell aspell-en
+</src>
+
+** Flash
+
+sudo yum install gnash-plugin.x86_64
+
+** Input method in notes or sametime
+
+http://ibmforums.ibm.com/forums/thread.jspa?messageID=1921274&tstart=0&#1921274
+
+
+sudo yum install ibus-gtk2.i686 
+
+** DB2
+
+
+IBM DB2 Enterprise Server Edition 9.7 for Linux® on AMD64 and Intel® EM64T systems (x64) English (CZ19NEN)	
+
+
+Wei Chang/China/IBM
+
+D23M0037/23/M/IBM
+
+
+** 美化
+
+
+sudo rpm -Uvh http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm
+sudo yum install freetype-infinality fontconfig-infinality
+sudo yum install libXft-infinality
+
+编辑infinality的配置
+
+    sudo gedit /etc/profile.d/infinality-settings.sh
+
+更改USE_STYLE为 OSX
+ 
+
+    USE_STYLE="OSX"
+
+** Installation 
+
+http://docs.fedoraproject.org/en-US/Fedora/17/html/Installation_Guide/pt-install-info-x86.html
+
+   1. Download the LiveUSB Creator program for Windows from http://fedorahosted.org/liveusb-creator.
+   2. LiveUSB Creator can create live USB media either from an image file that you downloaded previously, as described in Section 2.1.3, “Which Files Do I Download?”, or it can download an image file from the Internet. Either:
+        click the Browse button under the Use existing LiveCD label, browse to the location where you previously downloaded a Fedora Live ISO file, and select that file.
+        select a Fedora Live ISO file from the drop-down menu that LiveUSB Creator presents under the Download Fedora label. Note that image files are large and that it is probably impractical to use LiveUSB Creator to download an image file if you do not have a broadband connection to the Internet. 
+   3. Click Create Live USB. 
+
+** Fix sudo issue
+
+reboot and login recovery mod
+
+chmod 777 /etc/sudoers
+vi  /etc/sudoers
+
+Change the last line to 
+
+## Allows members of the desktop_admin_r group to run Sudo
+
+%desktop_admin_r        ALL=(ALL)   NOPASSWD: ALL
+
+
+chmod 440 /etc/sudoers
+
+** Updgrad
+
+
+#注意操作前记得备份数据噢。
+
+#以root用户运行以下命令：
+
+yum update rpm
+
+yum -y update
+
+#清除yum cache
+
+yum clean all
+
+#安装preupgrade
+
+yum install upgrade
+
+yum install preupgrade
+
+preupgrade #服务器的话运行preupgrade -cli
+
+upgrade 完成后，reboot 一下，That`s all。
+
+
+** Upgrade with fedup
+
+sudo fedup-cli --network 19 --instrepo http://alt.fedoraproject.org/pub/fedora/linux/development/19/x86_64/os/
+
+sudo fedup-cli --network 19 --instrepo ftp://software.linux.ibm.com/pub/fedora/releases/19/Fedora/x86_64/os/
+sudo fedup-cli --network 19 --instrepo  http://software.linux.ibm.com/pub/fedora/releases/19/Fedora/x86_64/os/
+
+sudo fedup-cli --network 19 --instrepo http://mirrors.163.com/fedora/releases/19/Fedora/x86_64/os/
+
+
+sudo fedup-cli --iso /home/will/Downloads/Fedora-19-x86_64-DVD.iso
+
+sudo package-cleanup --orphans >/home/will/backup/f19upgrade.sh
+
+
+
+http://alensiljak.blogspot.hk/2013/04/upgrading-fedora-18-19-with-fedup.html
+
+** RTC 3.0 p2 install 
+
+
+** 在Fedora14下的latex+CJK中文安装
+
+http://hi.baidu.com/w176177082/blog/item/e5b874345bad9659241f1402.html
+
+http://www.linuxidc.com/Linux/2012-06/62070.htm
+
+<src>
+
+然后从 http://www.ctan.org/tex-archive/systems/texlive/Images/ 下载 texlive 2010的完整安装包iso格式的
+假定将镜像文件下载至 /opt 目录下，将其挂载到 /mnt/cdrom，并进入该目录：
+# mount -t iso9660 -o loop /opt/texliv.....iso /mnt/cdrom
+# cd /mnt/cdrom
+运行 /mnt/cdrom 目录中的 install脚本，进入 TeXLive 安装选单： 
+# ./install-tl.sh
+输入 S，选择 full 安装，然后输入 R 返回主选单。 
+输入 L，选择安装的语言: 
+输入 -，所有的语言均不选中 
+输入 d，选择英语和汉语
+输入 R，返回主菜单 
+输入 I，开始安装。
+安装结束后
+$ vi ~/.bash_profile 修改PATH为:
+PATH=/usr/local/texlive/2010/bin/i386-linux:$PATH:$HOME/bin
+
+</src>
+
+<src>
+
+[will@will willATibm]$ sudo rpm -i http://jnovy.fedorapeople.org/texlive/2012/packages.fc17/texlive-release.noarch.rpm
+[will@will willATibm]$ sudo yum install texlive
+
+</src>
+3)下载中文库包
+
+Url：http://bj.soulinfo.com/~hugang/tex/tex2007/YueWang-zhfonts-final_1.01.tar.bz2
+
+解压后取出texmf-var，将里面的内容分别复制到/usr/share/texlive/texmf-local和/usr/share/texlive/texmf-var里面
+然后执行sudo texhash,重新建立数据库
+
+
+* FTP setup 
+
+------
+
+yum install proftpd proftpd-ldap openssl
+
+
+Below is the real working proftpd.conf
+
+<src>
+AuthOrder                        mod_auth_file.c. mod_ldap.c
+LoadModule mod_ldap.c                                                                                                                                                           
+#LoadModule mod_auth_file.c                                                                                                                                                     
+LDAPServer bluepages.ibm.com
+LDAPDoAuth on "ou=bluepages,o=ibm.com" "(&(mail=%v)(objectclass=person))"
+LDAPDefaultUID 40
+LDAPDefaultGID 49
+CreateHome on
+LDAPGenerateHomedir on
+LDAPGenerateHomedirPrefix /home/eadftp
+RequireValidShell no
+LDAPAttr uid mail
+LDAPGenerateHomedirPrefixNoUsername on
+
+</src>
+
+/etc/init.d/proftpd restart
+
+** Reference 
+
+ [[http://www.worldhello.net/2010/06/29/1384.html][LDAP 做为fpt认证源]]
+
+http://www.worldhello.net/2010/06/29/1384.html
+http://www.cyberciti.biz/tips/linux-installing-configuring-proftpd-ftp-server.html
+http://bbs.chinaunix.net/thread-1769917-1-1.html
+https://w3-connections.ibm.com/forums/html/topic?id=77777777-0000-0000-0000-000000979974#26c947a9-364a-4120-85d3-8fdcb6536d66
+http://www.kreci.net/linux/proftpd-virtual-user-quick-howto/
+http://www.crsay.com/wiki/wiki.php/server/proftp/install-virtualuser-manage
+
+LDAPServer ldap://bluepages.ibm.com:389
+LDAPBindDN "c=cn,ou=bluepages,o=ibm.com" "admin_password"
+LDAPUsers c=cn,ou=bluepages,o=ibm.com (mail=%u) 
+
+
+
+LDAPServer bluepages.ibm.com
+LDAPDoAuth on "ou=bluepages,o=ibm.com" "(&(mail=%v)(objectclass=person))"
+LDAPDefaultUID 40
+LDAPDefaultGID 49
+CreateHome on
+LDAPGenerateHomedir on
+LDAPGenerateHomedirPrefix /home/eadftp
+RequireValidShell no
+LDAPAttr uid mail
+LDAPGenerateHomedirPrefixNoUsername on
+
+# No LDAPDNInfo directive!
+
+
+/etc/init.d/proftpd restart
+
+redhat vsftpd http://hi.baidu.com/iloverobot/item/49276f26fe1e9e0a76272c94
+
+
+wget http://www.castaglia.org/proftpd/contrib/ftpasswd
+chmod 755 ftpasswd
+
+./ftpasswd --passwd --name eadftp --file /etc/ftpd.passwd --uid 5001 --gid 5001 --home /home/eadftp/ --shell /bin/false
+./ftpasswd --group --name ftpcbz –file /etc/ftpd.group --gid 5000 --member eadftp
+
+add to /etc/proftpd.conf
+
+RequireValidShell  off
+AuthUserFile  /etc/ftpd.passwd
+AuthGroupFile /etc/ftpd.group
+
+
+* Download Linxu setup image 
+
+ 1. http://software.linux.ibm.com/pub/
+
+
+* SSH
+
+ http://www.jonathanmoeller.com/screed/?p=3606
+
+* xulrunner
+
+https://w3-connections.ibm.com/forums/html/topic?id=a0cb48ab-d7a7-4354-9e3b-e1d03d5c6a45#172d9087-2454-4031-a17a-8d08aa8eb74d
+
+Finally after much google keyword juggling I found http://www-01.ibm.com/support/docview.wss?uid=swg21598554.
+For anyone out there that hits the same problem the 64bit xulrunner that is updated with fedora is far too high a level for eclipse to use, has to be between v1.8.1.3 - v3.6.
+So the resolution is to download http://ftp.mozilla.org/pub/mozilla.org/xulrunner/nightly/2010/12/2010-12-01-03-mozilla-1.9.2/xulrunner-1.9.2.13.en-US.linux-x86_64.tar.bz2
+Extract it to /opt/ibm
+add a -Dorg.eclipse.swt.browser.XULRunnerPath=/opt/ibm/xulrunner to the eclipse.ini of your rational install dir.
+
+
+
+ https://w3-connections.ibm.com/forums/html/topic?id=77777777-0000-0000-0000-000002053706
+
+eclipse.ini
+<src>
+ -Dorg.eclipse.swt.browser.XULRunnerPath=/opt/ibm/lotus/Sametime/rcp/eclipse/plugins/com.ibm.rcp.xulrunner.runtime.linux.x86_6.2.3.20110414-1652/xulrunner
+-Dorg.eclipse.swt.browser.DefaultType=webkit
+-Dorg.eclipse.swt.browser.UseWebKitGTK=true
+</src>
+
+/usr/bin/xulrunner
+/usr/lib/xulrunner-compat
+/usr/lib/xulrunner-compat/xulrunner
+
+/usr/lib64/xulrunner-2
+/usr/lib64/firefox/xulrunner
+/opt/IBM/SDPShared/plugins/com.ibm.etools.webedit.xulrunner_1.0.0.v20101018_1437/xulrunner
+
+<src>
+[will@will ~]$ cat .bashrc
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+
+# The following three lines have been added by UDB DB2.
+if [ -f /home/will/sqllib/db2profile ]; then
+    . /home/will/sqllib/db2profile
+fi
+
+
+AddRemoveString PATH /home/will/willATibm/apache-maven-3.0.4/bin a
+export PATH
+export LD_LIBRARY_PATH=/usr/lib/xulrunner-compat
+export LD_PRELOAD=/usr/lib64/libfreetype.so.6 
+</src>
+*  [[http://linuxtoy.org/archives/a-tour-through-open-source-creative-tools.html][开源创作工具一览]]
+
+来自 Red Hat 的 Máirín Duffy 在前段时间的峰会上快速演示了大量 Linux 平台上的众多创作工具。
+
+本文中所有介绍的工具均可在 Fedora 17 仓库中找到。
+
+GIMP 2.8
+
+常见的位图编辑工具，不再赘述。新的 2.8 版本增加了单窗口模式，层分组等功能。
+
+Fedora 17 安装：pkcon install gimp
+
+MyPaint
+
+好用的画图工具，具备很多不错的涂刷效果。
+
+Fedora 17 安装：pkcon install mypaint
+
+Krita
+
+画图工具，具备层混合管理，纹理绘制等功能。
+
+Fedora 17 安装：pkcon install calligra-krita
+
+darktable
+
+RAW 文件处理数码暗房，包含很多特效。
+
+Fedora 17 安装：pkcon install darktable
+
+Inkscape
+
+好用的矢量图片编辑工具，和 Adobe Illustrator 类似。
+
+Fedora 17 安装：pkcon install inkscape
+
+xournal
+
+在 PDF 文件上进行笔记记录，画草图并支持保存的工具。
+
+Fedora 17 安装：pkcon install xournal
+
+Calligra Flow
+
+类似于 Visio 的流程图绘制工具。
+
+Fedora 17 安装：pkcon install calligra-flow
+
+Scribus
+
+用于海报等出版物的出版工具，类似 Adobe InDesign，具备 CMYK 色彩空间支持。
+
+Fedora 17 安装：pkcon install scribus
+
+CMYKTool
+
+用于将 RGB 色彩空间的图片转换成 CMYK 色彩空间的图形化工具。
+
+Fedora 17 安装：pkcon install cmyktool
+
+Audacity
+
+好用的跨平台音频编辑软件，支持分轨编辑和混合。
+
+Fedora 17 安装(启用 rpmfusion 仓库后)：pkcon install audacity-freeworld
+
+Hydrogen
+
+数字化鼓点模拟工具，模拟击鼓效果。
+
+Fedora 17 安装：pkcon install hydrogen
+
+Mixxx
+
+备受称赞的专业级 DJ 软件。
+
+Fedora 17 安装(启用 rpmfusion 仓库后)：pkcon install mixxx
+
+Blender
+
+著名的开源 3D 建模工具，在最近的 2.5.X 版本中大幅度改善了界面设计。
+
+Fedora 17 安装：pkcon install blender
+
+Synfig
+
+基于向量的 2D 动画绘制软件，本站对此有大量报道。
+
+Fedora 17 安装：pkcon install synfigstudio
+
+PiTiVi
+
+易用的非线性视频编辑软件。
+
+Fedora 17 安装：pkcon install pitivi
+
+Kdenlive
+
+运行在 KDE 桌面环境下的非线性视频编辑软件。
+
+Fedora 17 安装(启用 rpmfusion 仓库后)：pkcon install kdenlive
+
+GNOME Color Manager
+
+适用于 GNOME 桌面环境的色彩管理器，可以配合开源色度计 ColorHug 使用。
+
+默认已经在 Fedora 17 中安装。
+
+Sparkleshare
+
+一个基于 Git 的文件分享工具，类似 Dropbox。
+
+Fedora 17 安装：pkcon install sparkleshare
+
+
+ok
+
+
+*  fedora 中文输入法 REMI
+
+<src>
+$ sudo yum install cmake gtest-devel boost-devel yaml-cpp-devel kyotocabinet-devel opencc-devel ibus-devel libnotify-devel zlib-devel gcc-c++ fcitx fcitx-devel glog-devel.x86_64
+$ wget https://rimeime.googlecode.com/files/librime-0.9.4.tar.gz
+$ wget https://rimeime.googlecode.com/files/ibus-rime-0.9.4.tar.gz
+$ wget https://rimeime.googlecode.com/files/brise-0.13.tar.gz
+$ tar xzf librime-0.9.4.tar.gz
+$ tar xzf ibus-rime-0.9.4.tar.gz
+$ tar xzf brise-0.13.tar.gz
+$ cd ibus-rime
+$ sudo ldconfig
+$ ./install.sh
+</src>
+
+* Apahce
+
+** Ubuntu
+
+sudo apt-get install apache2
+
+sudo /etc/init.d/apache2 restart
+
+sudo nano /etc/apache2/sites-available/default
+
+* Ubuntu backup iso
+
+http://www.geekconnection.org/remastersys/ubuntu.html
+
+* Awesome
+
+ http://blog.csdn.net/wearenoth/article/details/7489157
+
+<example>
+切换程序 
+切换到下一个程序：Mod4 + j
+切换到上一个程序：Mod4 + k
+切换到主窗口中的第一个程序：Mod4 + Ctrl + Return
+
+切换tag 
+切换到上一个选择的tag：Mod4 + Esc
+切换到某个指定的tag：Mod4 + 1-9
+切换到前一个tag：Mod4 + Left
+切换到下一个tag：Mod4 + Right
+
+程序窗口状态修改 
+最大化/非最大化：Mod4 + m
+浮动/平铺：Mod4 + Ctrl + Space
+最小化：Mod4 + n
+从最小化中恢复：Mod4 + Ctrl + n
+关闭程序：Mod4 + Shift + C
+
+程序窗口的转移和显示 
+转移到某个tag：Mod4 + Shift + 1-9（或在某个tag名上按Mod4+鼠标左键）
+增加到某些tag：Mod4 + Shift + Ctrl + 1-9
+转移到下一个窗口中的位置：Mod4 + Shift + j
+转移到上一个窗口中的位置：Mod4 + Shift + k
+
+布局修改 
+当前程序窗口宽度增加5％：Mod4 + Shift + h
+当前程序窗口宽度减少5％：Mod4 + Shift + l
+切换到下一种布局方式：Mod4 + Space
+切换到上一种布局方式：Mod4 + Ctrl + Space
+
+窗口管理 
+重启awesome：Mod4 + Ctrl + r
+退出awesome：Mod4 + Shift + q
+运行某个命令：Mod4 + r
+打开awesome菜单：Mod4 + w
+
+多显示器下的操作 
+切换到下一个屏幕：Mod4 + Ctrl + j
+切换到上一个屏幕：Mod4 + Ctrl + k
+将程序发送到下一个屏幕：Mod4 + o
+
+还需要寻找的操作： 
+关机
+锁定屏幕
+
+
+第一点需要知道程序的class类型。打开一个自己要的程序。在终端输入：
+[html] view plaincopy
+minghe@minghe-Inspiron-1420:~$ xprop   
+然后用鼠标点一下你打开的那个程序。比如我打开了一个zim，然后输入xprop后点了zim一下，终端中就会有很多信息跳出来。找到
+[html] view plaincopy
+WM_CLASS(STRING) = "zim", "Zim"  
+
+
+</example>
+
+
+* FDUP
+
+ 1. http://fedoraproject.org/wiki/Upgrading
+
+
+
+
+
+* Chrome 
+
+[fedora-chromium]
+name=Chromium web browser and deps
+baseurl=http://repos.fedorapeople.org/repos/spot/chromium/fedora-$releasever/$basearch/
+enabled=1
+gpgcheck=0
+
+[fedora-chromium-source]
+name=Chromium web browser and deps - Source
+baseurl=http://repos.fedorapeople.org/repos/spot/chromium/fedora-$releasever/SRPMS/
+enabled=0
+gpgcheck=0 
+
+
+* [[http://ocfedora.hursley.ibm.com/][Open Client Fedora Community Repositories]]
+
+*i3wm
+
+http://i3wm.org/
+
+* Stop firewalld in fedora 18
+
+
+sudo systemctl stop firewalld.service
+
+sudo systemctl status firewalld.service
+
+* WIKI热点
+
+http://blog.csdn.net/qihuanfengyun/article/details/6790990
+http://www.cnblogs.com/heart-runner/archive/2011/12/14/2287370.html
+
+* ISAM
+
+disable firewalld to allow isam to upload the scan resluts. 
+
+先关闭firewalld, 在isam 里面启动scan,然后看Ｌog，如果看到启动wst, 立刻启动firewalld. 
+
+sudo systemctl stop firewalld.service  
+
+* [[https://w3-connections.ibm.com/wikis/home?lang=zh_CN#!/wiki/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/Installed%20IBM%20Notes%209%20-%20SUT%20doesn't%20work][Installed IBM Notes 9 - SUT doesn't work]]
+
+Problem
+After having installed IBM Notes V9 Gold (Code Drop Link) and installing the IBM template (IBM Template), the SUT functionality does not work anymore.
+()
+Solution
+Change in the the following file:
+		/opt/ibm/notes/framework/rcp/plugin_customization.ini
+to add the following lines:
+		com.ibm.collaboration.realtime/enableSUT=true
+		com.ibm.collaboration.realtime/enablePhoneStatus=true
+		com.ibm.collaboration.realtime/enableExtendedStatus=true
+And restart Notes
+References
+Notes forum
+IBM Notes 9 Reference
+
+
+* gnome plugin 
+
+gnome-tweak-tool
+
+* Java
+
+http://www.if-not-true-then-false.com/2010/install-sun-oracle-java-jdk-jre-6-on-fedora-centos-red-hat-rhel/
+
+http://www.if-not-true-then-false.com/2010/install-sun-oracle-java-jdk-jre-7-on-fedora-centos-red-hat-rhel/
+
+* Add user 
+
+useradd -groot ead
+
+
+* 字体美化
+
+第一步我就不多说了。我说要说的就是丑的字体AR UMING系列。由于这一系列的字体里面含有中文，且名字是A开头的，排在前面。所以系统里面的中文字用的就是这个字体。只要把这个字体删除就没事了。
+删除方法：
+
+/usr/share/fonts/里面有一个名陈以cjk开头的目录，把这个目录移走，然后注销就行了
+
+
+* VM Setup 
+
+** Apahce 
+
+<src>
+apachectl start
+
+[root@bxv5v1053 www]# cd html
+[root@bxv5v1053 html]# ls
+[root@bxv5v1053 html]# ls
+[root@bxv5v1053 html]# ln -s /home/eadftp/public/dsw_dev_tools/repositories/ .
+[root@bxv5v1053 html]# ls
+repositories
+</src>
+
+** FTP 
+
+
+edit /etc/proftpd.conf
+
+<src>
+
+AuthOrder			 mod_auth_file.c. mod_ldap.c
+# ...
+
+# LDAP support (requires proftpd-ldap package)
+# (http://www.proftpd.org/docs/directives/linked/config_ref_mod_ldap.html)
+LoadModule mod_ldap.c
+#LoadModule mod_auth_file.c
+LDAPServer bluepages.ibm.com
+LDAPDoAuth on "ou=bluepages,o=ibm.com" "(&(mail=%v)(objectclass=person))"
+LDAPDefaultUID 40
+LDAPDefaultGID 49
+CreateHome on
+LDAPGenerateHomedir on
+LDAPGenerateHomedirPrefix /home/eadftp
+RequireValidShell no
+LDAPAttr uid mail
+LDAPGenerateHomedirPrefixNoUsername on
+
+</src>
+
+** [[https://pic.dhe.ibm.com/infocenter/cchelp/v7r1m0/index.jsp?topic=/com.ibm.rational.clearcase.cc_ms_install.doc/topics/c_packaging_intro_rsar.htm][IBM Packaging Utility]]
+
+** repository 
+
+
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-40.el6.centos.noarch.rpm 
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm   
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.30-14.el6.noarch.rpm
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm 
+
+vi /etc/yum.repos.d/rhel-debuginfo.repo
+
+内容为：
+
+[base]
+name=CentOS-$releasever - Base
+baseurl=http://mirrors.163.com/centos/6/os/$basearch/
+gpgcheck=1
+gpgkey=http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-6
+
+#released updates
+[updates]
+name=CentOS-$releasever - Updates
+baseurl=http://mirrors.163.com/centos/6/updates/$basearch/
+gpgcheck=1
+gpgkey=http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-6
+
+#packages used/produced in the build but not released
+#[addons]
+#name=CentOS-$releasever - Addons
+#baseurl=http://mirrors.163.com/centos/$releasever/addons/$basearch/
+#gpgcheck=1
+#gpgkey=http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-6
+#additional packages that may be useful
+[extras]
+name=CentOS-$releasever - Extras
+baseurl=http://mirrors.163.com/centos/6/extras/$basearch/
+gpgcheck=1
+gpgkey=http://mirrors.163.com/centos/RPM-GPG-KEY-CentOS-6
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-$releasever - Plus
+baseurl=http://mirrors.163.com/centos/6/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+
+
+
+[rhel_6_iso]
+name=local iso 
+baseurl=file:///media/RHEL_6.3\ x86_64\ Disc\ 1/
+gpgcheck=1
+gpgkey=file:///media/RHEL_6.3\ x86_64\ Disc\ 1/RPM-GPG-KEY-redhat-release
+
+
+----
+
+
+rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+
+#rpm -Uvh http://download1.rpmfusion.org/free/el/updates/6/i386/rpmfusion-free-release-6-1.noarch.rpm http://download1.rpmfusion.org/nonfree/el/updates/6/i386/rpmfusion-nonfree-release-6-1.noarch.rpm
+yum localinstall --nogpgcheck http://download1.rpmfusion.org/free/el/updates/6/i386/rpmfusion-free-release-6-1.noarch.rpm http://download1.rpmfusion.org/nonfree/el/updates/6/i386/rpmfusion-nonfree-release-6-1.noarch.rpm
+
+
+** VNC
+
+*** Install 
+
+http://ithelpblog.com/os/linux/redhat/centos-redhat/howto-install-and-configure-vnc-server-on-centos-6-3-or-redhat-rhel/
+
+
+ - yum -y groupinstall “GNOME Desktop Environment”
+ - yum -y install vnc-server tigervnc-server
+ - su ead
+ - vncpasswd # pass4jazz
+ - vi /etc/sysconfig/vncservers 
+VNCSERVERS=”2:ead”
+VNCSERVERARGS[2]=”-geometry 1600x900 -nolisten tcp -localhost” 
+
+
+ - root@dhcppc1 ~]# vncserver
+
+ - [root@dhcppc1 ~]# chkconfig vncserver on 
+
+在linux中执行vncconfig -nowin&
+ 
+在linux选中文字后，无需其他按键，直接在windows中可以黏贴。
+
+
+*** Setup 
+ 1. sudo apt-get install vnc4server # http://www.walkernews.net/2007/07/05/how-to-setup-linux-vnc-server/
+ 2. vncpasswd #  "pass4jazz"
+ 3. vncserver  -geometry 1600x900  -depth 24 &
+ 4. gedit ~/.vnc/xstartup 
+<src lang="sh">
+#twm 
+gnome-session &
+</src>
+
+上面的设置适用于所有程序，下面就vnc来谈
+
+在 /etc/init.d 目录下谢一个脚本vnc.sh，内容如下：
+#!/bin/bash
+#svnserve  startup
+vncserve -d
+
+然后执行：
+update-rc.d vnc.sh defaults
+
+只需两步就可以让vnc在系统启动时启动
+
+查看开机启动配置:
+
+chkconfig --list
+
+chkconfig --add xxx
+
+chkconfig --del xxx
+
+配置VNC Server自动启动
+
+编辑/etc/sysconfig/vncservers，内容如下：
+view plaincopy to clipboardprint?
+VNCSERVERS="1:user1"  
+VNCSERVERARGS[1]="-geometry 1152x864"  
+VNCSERVERS="1:user1"
+VNCSERVERARGS[1]="-geometry 1152x864" 
+然后运行sudo chkconfig --level 345 vncserver on ，让VNC Server随系统自动启动最后，运行sudo /etc/init.d/vncserver start 来启动VNC Server
+
+
+
+* Remove notes Error in PREUN scriptlet \u2026 file was supposed to be removed but is not
+
+
+
+To fix the problem run:
+
+yum --setopt=tsflags=noscripts remove stlinux23-sh4_uclibc-which.sh4_uclibc
+
+You can add more than one package file to the end of the command.
+
+
+* Redhat 6 Chrome
+
+http://jfbcb.com/article/detail/how-to-install-chrome-latest-version-on-centos64/
+
+* Redhat 113 DNS
+
+[root@bxv5v1054 network-scripts]# cat ifcfg-Auto_eth1 
+TYPE=Ethernet
+BOOTPROTO=none
+IPADDR=9.110.82.113
+PREFIX=24
+GATEWAY=9.110.82.1
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME="Auto eth1"
+UUID=0a231697-295f-4eda-b4c4-ca7577bef0b9
+ONBOOT=yes
+NETMASK=255.255.255.0
+DEVICE=Auto_eth1
+USERCTL=no
+HWADDR=00:50:56:AA:53:75
+LAST_CONNECT=1369120609
+DNS1=9.181.2.101
+DNS2=9.181.2.102
+
+
+* is not in the sudoers file
+
+$visudo 
+your_user_name ALL=(ALL)  ALL
+
+* 查看Linux下端口被哪个进程占用
+
+今天配置mfs服务器时遇到问题，发现9425端口被占用，为了查明是哪个进程在用此端口，可用如下命令：
+lsof -i:9425
+显示结果中PID对应的就是进程号，要想杀死该进程，可用如下命令：
+kill -9 PID  （其中PID就写要杀死进程的具体进程号即可）
+
+
+* Setup Java  in Fedora 
+<example>
+1.到oracle官网下载
+jdk-7u4-linux-x64.rpm
+以下在root权限下:
+2.#rpm -ivh jdk-7u4-linux-x64.rpm
+3.#vi /etc/profile
+4.添加以下内容:
+#install jdk config
+export JAVA_HOME=/usr/java/jdk1.7.0_04
+export CLASSPATH=.:$JAVA_HOME/lib.dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$PATH:$JAVA_HOME/bin
+
+5.修改java配置，使用现有安装jdk，按步骤运行以下命令：
+    1#/usr/sbin/alternatives --config java
+    2#/usr/sbin/alternatives --install /usr/bin/java java /usr/java/jdk1.7.0_04/bin/java 2
+    3#./usr/sbin/alternatives --config java
+         输入:   2
+6.验证：
+#java
+#javac
+#java -version
+-------------------------若命令可以运行，且版本号正确，证明安装成功。
+
+</example>
+
