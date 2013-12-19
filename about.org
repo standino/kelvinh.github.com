@@ -8,4 +8,14 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+DESCRIPTION: About Will Chang
 
-工作已有十余载，混过国企，呆过外企，现就业职于电子商务企。
+Smart, Quick learning, hardworking.
+
+Familiar with J2EE & web service related technology.
+
+Have 10+ years experience on J2EE development
+
+Have 2+ years experience on DB2 development.
+
+Designed and developed enterprise applications with different architecture.
+
+Familiar with Scrum (Agile methodology) to manage projects.
