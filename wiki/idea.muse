@@ -1,0 +1,5 @@
+#title IDEA 开发工具
+
+
+ - http://gqsunrise.iteye.com/blog/1885116
+ - [[http://henrikwarne.com/2012/06/17/programmer-productivity-emacs-versus-intellij-idea/][快捷键]]
