@@ -1,7 +1,16 @@
-#author Will Chang
-#title Eclipse notes
+#+TITLE:       Eclipse
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/eclipse
+#+KEYWORDS:    eclipse
+#+TAGS:        :eclipse:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: eclipse
 
-<contents>
+
+
 
 
  - [[http://www.eclipse.org/webtools/releases/2.0/newandnoteworthy/server.php][Tomcat Publishing Options]]
