@@ -1,5 +1,15 @@
-#author Will Chang
-#title Cygwin
+#+TITLE:       cygwin.org
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/cygwin
+#+KEYWORDS:    cygwin
+#+TAGS:        :cygwin:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: cygwin
+
+
 
 <contents>
 ----

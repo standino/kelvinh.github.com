@@ -1,3 +1,14 @@
-#title 简易MDA工具
+#+TITLE:       easymda.org
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/easymda
+#+KEYWORDS:    mda
+#+TAGS:        :mda:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: <TODO: insert your description here>
 
-用小乌龟从 http://svn.code.sf.net/p/andromda/svn/trunk 拿到了所有的代码
+#title 录貌脪脳MDA鹿陇戮脽
+
+脫脙脨隆脦脷鹿锚麓脫 http://svn.code.sf.net/p/andromda/svn/trunk 脛脙碌陆脕脣脣霉脫脨碌脛麓煤脗毛

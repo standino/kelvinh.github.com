@@ -1,16 +1,16 @@
-#title Programing
+#+TITLE:       programming 
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/pro
+#+KEYWORDS:    programming
+#+TAGS:        :programming:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Programing
 
-<div id="childIndex">
 
-目录
 
-<contents>
-
-子文档
-
-    <lisp>(muse-pretty-index-as-string t t t)</lisp>
-
-</div>
 
 
 * 关注的编程语言

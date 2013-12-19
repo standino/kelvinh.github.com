@@ -1,4 +1,13 @@
-#title MySQL数据库
+#+TITLE:       mysql.org
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/mysql
+#+KEYWORDS:    mysql,sql
+#+TAGS:        :mysql:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  MySQL数据库
 
 
  - [[http://blog.csdn.net/adparking/article/details/6676571][mysql中的load data infile用法]]

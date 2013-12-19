@@ -1,6 +1,14 @@
-#title IBM software
+#+TITLE:       IBM.org
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/ibm
+#+KEYWORDS:    ibm
+#+TAGS:        :ibm:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: ibm
 
-<contents>
 
 * RSA V9
 

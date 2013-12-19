@@ -1,4 +1,13 @@
-#title Confluence 
+#+TITLE:       confluence.org
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/confluence
+#+KEYWORDS:    wiki
+#+TAGS:        :wiki:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Confluence 
 
 
  - [[http://www.zzbaike.com/wiki/Confluence/Windows%E4%B8%8BConfluence%E5%AE%89%E8%A3%85][Confluence/Windows下Confluence安装]]

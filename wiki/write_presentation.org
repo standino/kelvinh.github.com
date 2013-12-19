@@ -1,6 +1,15 @@
-#title How to Write Good Presentations
+#+TITLE:        How to Write Good Presentations
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/goodpresentation
+#+KEYWORDS:    ppt
+#+TAGS:        :ppt:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  How to Write Good Presentations
 
-<contents>
+
 
 * How to Write Presentation
 

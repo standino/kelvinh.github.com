@@ -1,4 +1,15 @@
-#title Portal ¿ò¼Ü
+#+TITLE:       jeetspeed.org
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/jeetspeed
+#+KEYWORDS:    portal
+#+TAGS:        :portal:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: <TODO: insert your description here>
+
+
 
 
  - http://portals.apache.org/jetspeed-2/deployguide/guide-jetui.html

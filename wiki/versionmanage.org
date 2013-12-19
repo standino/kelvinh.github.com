@@ -1,7 +1,15 @@
-#author Will Chang
-#title Version control
+#+TITLE:       versionmanage.org
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/vesionmanage
+#+KEYWORDS:    svn,cvs,git,hg
+#+TAGS:        :svn:cvs:git:hg:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Version control
 
-<contents>
+
 
 * SVN
 

@@ -1,17 +1,13 @@
-#author Will Chang
-#title Tools
-
-<div id="childIndex">
-
-子文档
-
-    <lisp>(muse-pretty-index-as-string t t t)</lisp>
-
-目录
-
-<contents>
-
-</div>
+#+TITLE:      Tools
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/tool
+#+KEYWORDS:    tool
+#+TAGS:        :tool:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Tools
 
 * 开发环境安装手册
 

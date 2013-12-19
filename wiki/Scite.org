@@ -1,4 +1,15 @@
-#title Scite
+#+TITLE:       Scite.org
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/scite
+#+KEYWORDS:    scite,editor
+#+TAGS:        :scite:editor:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: scite
+
+ 
 * Scite
 
 http://www.scintilla.org/SciTEDoc.html

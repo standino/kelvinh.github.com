@@ -1,7 +1,14 @@
-#author Will Chang
-#title Learning ruby 
+#+TITLE:       ruby.org
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/ruby
+#+KEYWORDS:    ruby
+#+TAGS:        :ruby:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Learning ruby 
 
-<contents>
 
 * 数学计算
 

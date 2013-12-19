@@ -1,7 +1,15 @@
-#author Will Chang
-#title Java Tips
+#+TITLE:       JAVA.org
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/java
+#+KEYWORDS:    java
+#+TAGS:        :java:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Java Tips
      
-     <contents>
+
 
 * cxf工具生成webservice客户端方法
 
