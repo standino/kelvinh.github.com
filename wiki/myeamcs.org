@@ -1,5 +1,3 @@
-#+STARTUP: content
-#+STARTUP: indent
 #+TITLE:       Emacs 使用笔记
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
@@ -233,15 +231,11 @@ http_proxy=http://127.0.0.1:8087 emacs -nw
 - All items to discuss in a meeting with Sarah and Peter
    TAG search for "Sarah|Peter"
 
-#+BEGIN_SRC 
 
-
-Check box: - [ ] 
+Check box: <example>- [ ] </example>
 
 create table: <code>|Name|Phone|Age <RET> |- <TAB>. </code>
-
-
-M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
+org-shiftmetaup) and M-S-down (org-shift-metadown),
 
    | Action                        | Command                                 | Shortcut  | Alternative     |
    |-------------------------------+-----------------------------------------+-----------+-----------------|
