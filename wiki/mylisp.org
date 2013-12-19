@@ -9,9 +9,6 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: Lisp Programing 
 
-
-
-
 * Date and Time
 
 
@@ -19,10 +16,14 @@
  -   http://www.emacswiki.org/emacs/ElispCookbook#toc25
 
 * String
-
+#+BEGIN_SRC 
 (concat "http://us.php.net/" myword)
+#+END_SRC
+
 
 * Array
+
+#+BEGIN_SRC 
 
 > (setq v1 (make-array '(3)))
 #(NIL NIL NIL)
@@ -30,12 +31,17 @@
 #("lisp is good" "lisp is good" "lisp is good" "lisp is good")
 > (setq v3 #(1 2 3 4 "cat" '(99 100)))
 #(1 2 3 4 "cat" '(99 100))
+#+END_SRC
 
 The function aref can be used to access any element in an array:
+
+
+#+BEGIN_SRC 
 
 > (aref v3 3)
 4
 > (aref v3 5)
+#+END_SRC
 
 * Lisp Programing 
 
@@ -43,8 +49,7 @@ Kill-append and kill-new can put text into kill,
 
 * Define Function 
 
-<src>
-
+#+BEGIN_SRC 
 
 01  (defun my-switch-buffer () 
 02    "Like switch-buffer but in the opposite direction" 
@@ -52,17 +57,19 @@ Kill-append and kill-new can put text into kill,
 04    (other-window -1) 
 05  ) 
 
-</src>
+#+END_SRC
 
 ** Anonymous Functions 
 With the previous method for defining hooks, you often find that you need a new name for a function, with the only reason that the function needs a name is so that you can give it to the add-hook declaration. With an anonymous function you can save time and avoid having to find a name for the function. Anonymous functions are defined with the keyword lambda instead of the keyword defun, as can be seen in the following example:
 
-
+#+BEGIN_SRC 
 (add-hook 'c-mode-hook 
   (lambda () 
     (setq fill-column 100) 
     (turn-on-auto-fill) 
 )) 
+
+#+END_SRC
 
 ** Code Characters for interactive
 
@@ -74,7 +81,8 @@ With the previous method for defining hooks, you often find that you need a new 
 
  [[http://gigamonkeys.com/book/][Practical Common Lisp]]
 
-<example>
+
+#+BEGIN_EXAMPLE
 
 This page contains snippets of code that demonstrate basic elisp programming operations in the spirit of the o’reilly cookbook series of books. For every task addressed, a worked-out solution is presented as a short, focused, directly usable piece of code.
 
@@ -563,7 +571,7 @@ Call function bound to key
   or
   (call-interactively (key-binding (kbd "M-TAB")))
 
-</example>
+#+END_EXAMPLE
 
 
 
