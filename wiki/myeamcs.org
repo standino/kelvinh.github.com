@@ -1,5 +1,5 @@
 #+TITLE:       Emacs 使用笔记
-#+AUTHOR:      chang wei
+#+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2012-11-27 Tue
 #+URI:         /wiki/myemacs/
@@ -21,7 +21,7 @@
 
 ** Shell
 
-*find-dired* : Find a file <code> -iname d_qt_quote.sql</code> 运行外部命令 find , 产生文件列表，然后进入 dired 模式。
+*find-dired* : Find a file : -iname d_qt_quote.sql 运行外部命令 find , 产生文件列表，然后进入 dired 模式。
 
 *find-grep-dired* : 运行外部命令 find，用 grep 过滤文件， ls 产生目录列表，然后进入 dired 模式，这样列出所有包含某些字符的文件列表。
 可以使用 dired-do-query-replace-regexp 在文件列表中查找并替换。可以递归所有子目录。可以用各种条件过滤文件，详细可以查看 [[shell.html#find][find]] 命令
@@ -66,25 +66,22 @@ lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索�
 ----
 
 * [[https://github.com/kelvinh/org-page][org-page]]
-
-
-
-
-
  - [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org][一年成为Emacs高手(像神一样使用编辑器)]]
  - [[https://github.com/redguardtoo/emacs.d][试一试这个配置]]
 
 * 在cygwin中安装emacs 
 
 ** [[https://github.com/cfg/apt-cyg][apt-cyg]]
-
- curl -o /usr/bin/apt-cyg https://raw.github.com/cfg/apt-cyg/master/apt-cyg
+#+BEGIN_SRC 
+curl -o /usr/bin/apt-cyg https://raw.github.com/cfg/apt-cyg/master/apt-cyg
 
 chmod +x /usr/bin/apt-cyg
 
 git clone https://github.com/standino/emacs.d.git ~/.emacs.d
 
 http_proxy=http://127.0.0.1:8087 emacs -nw
+
+#+END_SRC
 
 
 * Emacs key mapping
@@ -108,9 +105,6 @@ http_proxy=http://127.0.0.1:8087 emacs -nw
 | A-h                 | mark-paragraph    | Put point at beginning of this paragraph, mark at end. |     |
 | <C-down>, M-}       | forward-paragraph | Move forward to end of paragraph.                      |     |
 
-** HotKey
-
-<include file="~/../emacs/lib/cw-hotkey.el" markup="src" lang="lisp">
 
 ** Basic editing
 | key                        | function                   | knows about                                                                                                                                                                                                                                                                                                                                    | C-u |
@@ -314,7 +308,7 @@ M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
 |                   |          |                                                          |     |
 
 
-<include file="orgcard.txt" markup="src" lang="">
+
 
 *** Ref
 
@@ -327,7 +321,7 @@ M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
 | C-c C-t |          | publish     | publish unchanged files |
 |         |          |             |                         |
 
-** CVS 
+** 版本管理
 
 
 快捷键 ||	 命令名 ||	 动作          
@@ -1399,7 +1393,9 @@ that will be filled with the previoous context information.
 
 * [[http://jdee.sourceforge.net/][ JDEE]]
 
-<src>
+#+BEGIN_SRC 
+
+
 ;; This .emacs file illustrates the minimul setup
 
 ;; required to run the JDE. 
@@ -1487,7 +1483,8 @@ that will be filled with the previoous context information.
 (if (boundp ''''w32-quote-process-args)
 
   (setq w32-quote-process-args ?\")) ;; Include only for MS Windows.
-</src>
+
+#+END_SRC
 
 * Folding
 http://stackoverflow.com/questions/1208622/code-folding-in-emacs 
@@ -2449,3 +2446,48 @@ You can also browse the repository at:
 
   svn co svn://svn.sv.gnu.org/emacswiki/emacswikipages
 
+
+
+* 矩形操作
+
+  Emacs所有跟矩形操作的命令都是以 =C-x r= 为前缀，其区域选择与普通的区域选择的快捷键一样： =C-space= ，只是在执行矩形操作时，Emacs会将选择的起点和终点作为对角，其中的内容作为矩形区域。常用快捷键：
+
+  | C-space | set-mark-command | 标记矩形区块的一个角（光标标记其相对的角）。                                       |
+  | C-x r t | string-rectangle | 用字符串填充矩形区域                                                               |
+  | C-x r k | kill-rectangle   | 剪切当前的矩形区块，并将其保存在一个特殊的矩形区块缓冲区中。                       |
+  | C-x r d | delete-rectangle | 删除当前的矩形区块，并不为粘贴而保存它。                                           |
+  | C-x r c | clear-rectangle  | 清除当前的矩形区块，使用空白字符替换整个区域。                                     |
+  | C-x r o | open-rectangle   | 打开当前的矩形区块，使用空白字符填充整个区域，并将该矩形区块的所有文本移动到右边。 |
+  | C-x r y | yank-rectangle   | 在光标处，粘贴上一次剪切的矩形区块的内容，将所有的现有文本移动到右边。             |
+
+* 寄存器操作
+
+  - 文本操作：
+
+  | C-x r s R   | 保存选中的区域到寄存器R         |
+  | C-x r r R   | 保存矩形区域                    |
+  | C-x r i R   | 读取寄存器R的内容并插入到光标处 |
+
+  - Buffer/Window/Frame操作：
+
+  | C-x r SPC R | 保存Buffer及光标位置            |
+  | C-x r w R   | 保存当前Window的配置            |
+  | C-x r f R   | 保存当前Frame的配置             |
+  | C-x r j R   | 恢复寄存器R的内容               |
+
+  : M-x list-registers    ; 显示所有寄存器中的内容
+  : M-x view-register R   ; 查看寄存器R中的内容
+
+* 书签操作：
+
+  | C-x r m Bookmark | bookmark-set         | 设置一个名为 Bookmark 的书签。              |
+  | C-x r l          | bookmarks-bmenu-list | 列出所有已保存的书签。                      |
+  |                  | bookmark-delete      | 删除一个书签。                              |
+  | C-x r b Bookmark | bookmark-jump        | 跳转至名为 Bookmark 的书签中所设置的位置。  |
+  |                  | bookmark-save        | 将所有的书签保存到书签文件 ~/.emac.bmk 中。 |
+
+* 删除空行：
+
+  : M-x flush-lines RET ^$ RET
+
+  =flush-lines= 命令的本意是删除buffer中match随后的regexp的行，而 =^$= 就代表空行，于是这就是删除空行的操作。
