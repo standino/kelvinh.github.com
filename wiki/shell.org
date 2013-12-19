@@ -1,7 +1,13 @@
-#author Will Chang
-#title Shell Notes
-     
-<contents>
+#+TITLE:       shell Notes
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/shell
+#+KEYWORDS:    shell
+#+TAGS:        :shell:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: shell notes
 
 
 http://www.ibm.com/developerworks/library/l-bash.html
@@ -16,11 +22,9 @@ http://fanqiang.chinaunix.net/program/shell/index.shtml
 
 * awk
 
-<src lang="sh">
+#+BEGIN_SRC 
  cat test.txt  | awk '{ if ($1=="memory") my=$3; else {if ($1=="pg") my=my" "$4}; if($1=="pg") print my  }' 
-</src>
 
-<src lang="sh">
 
 #!/bin/ksh
 
@@ -39,14 +43,11 @@ for i in $filelist ; do
     echo "$i ---" 
 done 
 
-</src>
-
-<src lang="sh">
  ps -f -A | grep java | grep CVT-DSW-SQO2 
 
 kill -9  `ps -f -A | grep java | grep CVT-DSW-SQO2 | awk '{print $2}'`  
-</src>
 
+#+END_SRC
 * delete duplicate lines from a file and keep the order of the other lines from Command-Line-Fu
 
 <src lang="sh">
@@ -506,3 +507,8 @@ find . -type f -name  "pom.xml" -execdir sed -i -e '/-SNAPSHOT/d' '{}' \;
 <src lang="sh">
 find . -name "*.el" -exec grep -H "org-defvaralias" {} \;
 </src>
+
+* 批量改名字
+  rename .old .new  *  
+
+  http://bbs.chinaunix.net/thread-554405-1-1.html

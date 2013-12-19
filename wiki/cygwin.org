@@ -1,14 +1,8 @@
-#+TITLE:       cygwin
-#+AUTHOR:      Will Chang
-#+EMAIL:       changwei.cn@gmail.com
-#+DATE:        2013-12-19 周四
-#+URI:         /wiki/cygwin
-#+KEYWORDS:    cygwin,linux
-#+TAGS:        :cygwin:linux:
-#+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
-#+DESCRIPTION: cygwin的使用技巧
---------------------------------------------------------------------------
+#author Will Chang
+#title Cygwin
+
+<contents>
+----
 
 * 设置时区
 
@@ -93,11 +87,10 @@ http://pigtail.net/LRP/printsrv/cygwin-sshd.html
 
 http://www.webalice.it/angelo.graziosi/cygwin/emacs/Emacs.html
 
-* 显示中文
-  在cygwin的控制台上点击右键，选择Text.
-  Locale 选CN 和 GBK
+* Display Chinese words
 
-#+BEGIN_SRC 
+<example>
+
    1. .bashrc
       # 中文环境
       export LANG=en_US.UTF-8
@@ -112,8 +105,8 @@ http://www.webalice.it/angelo.graziosi/cygwin/emacs/Emacs.html
       set convert-meta off
       set input-meta on
       set output-meta on
-#+END_SRC
 
+</example>
 
 * Shell
 
@@ -236,9 +229,6 @@ The mount command can set the POSIX root / to any directory in the Windows file 
 http://software.jessies.org/salma-hayek/cygwin-setup.html
 
 http://download.linuxaudio.org/lilypond/binaries/cygwin/cyg-apt
-
-
-
 
 
 
