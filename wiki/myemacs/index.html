@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Will Chang" />
     <meta name="description" content="Emacs 使用笔记" />
-    <meta name="keywords" content="Lisp, Scheme, Emacs, Linux, cygwin, Java,  Org-page, Programming,  编程" />
+    <meta name="keywords" content="Lisp, Scheme, Emacs, Linux, cygwin, Java,  Org-page, Programming,编程" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
   </head>
   <body class="container">
@@ -162,6 +162,7 @@ http_proxy=http://127.0.0.1:8087 emacs -nw
 </div>
 </div>
 </div>
+
 
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">Emacs key mapping</h2>
@@ -1071,10 +1072,7 @@ Check box: &lt;example&gt;- [ ] &lt;/example&gt;
 
 <p>
 create table: &lt;code&gt;|Name|Phone|Age &lt;RET&gt; |- &lt;TAB&gt;. &lt;/code&gt;
-</p>
-
-<p>
-M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
+org-shiftmetaup) and M-S-down (org-shift-metadown),
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -3638,97 +3636,185 @@ that will be filled with the previoous context information.
 <div id="outline-container-sec-52" class="outline-2">
 <h2 id="sec-52"><a href="http://jdee.sourceforge.net/"> JDEE</a></h2>
 <div class="outline-text-2" id="text-52">
-<pre class="example">
+<p>
 ;; This .emacs file illustrates the minimul setup
+</p>
 
+<p>
 ;; required to run the JDE. 
+</p>
 
+<p>
 ;; Set the debug option to enable a backtrace when a
+</p>
 
+<p>
 ;; problem occurs.
+</p>
 
+<p>
 (setq debug-on-error t) 
+</p>
 
+<p>
 ;; Update the Emacs load-path to include the path to
+</p>
 
+<p>
 ;; the JDE and its require packages. This code assumes
+</p>
 
+<p>
 ;; that you have installed the packages in the emacs/site
+</p>
 
+<p>
 ;; subdirectory of your home directory.
+</p>
 
+<p>
 (add-to-list ''''load-path (expand-file-name "~/emacs/site/jde/lisp"))
+</p>
 
+<p>
 (add-to-list ''''load-path (expand-file-name "~/emacs/site/cedet/common"))
+</p>
 
+<p>
 (add-to-list ''''load-path (expand-file-name "~/emacs/site/elib")) 
+</p>
 
+<p>
 ;; Initialize CEDET.
+</p>
 
+<p>
 (load-file (expand-file-name "~/emacs/site/cedet/common/cedet.el")) 
+</p>
 
+<p>
 ;; If you want Emacs to defer loading the JDE until you open a
+</p>
 
+<p>
 ;; Java file, edit the following line
+</p>
 
+<p>
 (setq defer-loading-jde nil)
+</p>
 
+<p>
 ;; to read:
+</p>
 
+<p>
 ;;
+</p>
 
+<p>
 ;;  (setq defer-loading-jde t)
+</p>
 
+<p>
 ;; 
+</p>
 
+<p>
 (if defer-loading-jde
+</p>
 
-    (progn
+<p>
+(progn
+</p>
 
-      (autoload ''''jde-mode "jde" "JDE mode." t)
+<p>
+(autoload ''''jde-mode "jde" "JDE mode." t)
+</p>
 
-      (setq auto-mode-alist
+<p>
+(setq auto-mode-alist
+</p>
 
-           (append
+<p>
+(append
+</p>
 
-            ''''(("\\.java\\''''" . jde-mode))
+<p>
+''''(("\\.java\\''''" . jde-mode))
+</p>
 
-            auto-mode-alist)))
+<p>
+auto-mode-alist)))
+</p>
 
-  (require ''''jde)) 
+<p>
+(require ''''jde)) 
+</p>
 
+<p>
 ;; Sets the basic indentation for Java source files
+</p>
 
+<p>
 ;; to two spaces.
+</p>
 
+<p>
 (defun my-jde-mode-hook ()
+</p>
 
-  (setq c-basic-offset 2))
+<p>
+(setq c-basic-offset 2))
+</p>
 
+<p>
 (add-hook ''''jde-mode-hook ''''my-jde-mode-hook) 
+</p>
 
+<p>
 ;; Include the following only if you want to run
+</p>
 
+<p>
 ;; bash as your shell. 
+</p>
 
+<p>
 ;; Setup Emacs to run bash as its primary shell.
+</p>
 
+<p>
 (setq shell-file-name "bash")
+</p>
 
+<p>
 (setq shell-command-switch "-c")
+</p>
 
+<p>
 (setq explicit-shell-file-name shell-file-name)
+</p>
 
+<p>
 (setenv "SHELL" shell-file-name)
+</p>
 
+<p>
 (setq explicit-sh-args ''''("-login" "-i"))
+</p>
 
+<p>
 (if (boundp ''''w32-quote-process-args)
+</p>
 
-  (setq w32-quote-process-args ?\")) ;; Include only for MS Windows.
-</pre>
+<p>
+(setq w32-quote-process-args ?\")) ;; Include only for MS Windows.
+</p>
 </div>
 </div>
+
+
 <div id="outline-container-sec-53" class="outline-2">
 <h2 id="sec-53">Folding</h2>
 <div class="outline-text-2" id="text-53">
@@ -5506,7 +5592,8 @@ M-x flush-lines RET ^$ RET
 </pre>
 
 <p>
-<code>flush-lines</code> 命令的本意是删除buffer中match随后的regexp的行，而 <code>^$</code> 就代表空行，于是这就是删除空行的操作。
+  <code>flush-lines</code> 命令的本意是删除buffer中match随后的regexp的行，而 <code>^$</code> 就代表空行，于是这就是删除空行的操作。
+#+END_SRC
 </p>
 </div>
 </div>

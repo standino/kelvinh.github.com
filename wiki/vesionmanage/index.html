@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>versionmanage.org - Keep going</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="U-360BUYAD\changwei" />
+    <meta name="description" content="Version control" />
+    <meta name="keywords" content="svn,cvs,git,hg" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>虽然还是比较迷茫，但是请不要忘记努力超越自己！</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>versionmanage.org</h1>
+
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">SVN</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="http://www.subversion.org.cn/svnbook/">http://www.subversion.org.cn/svnbook/</a>
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">web svn</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+<a href="http://www.sventon.org/">http://www.sventon.org/</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">CVS</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">CVS merge</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+<a href="http://wiki.aasimon.org/doku.php?id=cvs:merge">http://wiki.aasimon.org/doku.php?id=cvs:merge</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">hg</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<a href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide by Bryan O'Sullivan</a>
+</p>
+
+<p>
+<a href="http://wiki.alliedmods.net/Mercurial_Tutorial">http://wiki.alliedmods.net/Mercurial_Tutorial</a>
+</p>
+
+<p>
+<a href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html">Mercurial: The Definitive Guide</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><a href="http://www.javaforge.com/project/HGE">MercurialEclipse</a></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+MercurialEclipse is a plugin providing support for the highly popular Mercurial distributed version control system within the Eclipse IDE.
+</p>
+
+<p>
+MercurialEclipse supports:
+</p>
+
+<ul class="org-ul">
+<li>cloning repositories and importing them as Eclipse projects
+</li>
+<li>push, pull and convenient syncronization
+</li>
+<li>working with branches (branch, merge and rebase)
+</li>
+<li>tags
+</li>
+<li>undo (backout, rollback and strip)
+</li>
+<li>diffs
+</li>
+<li>histories
+</li>
+<li>patches
+</li>
+<li>Mercurial extensions (mqueue, transplant and such) 
+</li>
+</ul>
+</div>
+
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Big file</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+<a href="http://mercurial.selenic.com/wiki/BigfilesExtension">http://mercurial.selenic.com/wiki/BigfilesExtension</a>
+</p>
+
+<p>
+<a href="http://mercurial.selenic.com/wiki/HandlingLargeFiles">http://mercurial.selenic.com/wiki/HandlingLargeFiles</a>
+</p>
+
+<p>
+Usage
+</p>
+
+<ol class="org-ol">
+<li>'hg add', ignoring the size warning.
+</li>
+<li>hg bstat
+</li>
+<li>hg bupdate
+</li>
+</ol>
+
+<p>
+&lt;src&gt;
+</p>
+<ul class="org-ul">
+<li>The extension overrides 'hg update', so that it can compare contents of '.bigfiles' before and after the update to remove and fetch appropriate big files.
+</li>
+<li>The directory storing versions of big files can be synced with the remote one (the extension doesn't do this, but tells the list of the necessary files). The versions corresponding to old changesets can be removed to save space.
+</li>
+<li>To add a new big file, use normal 'hg add', ignoring the size warning.
+</li>
+<li>To remove a tracked big file, just delete it.
+</li>
+<li>'hg bstatus' - to examine state of big files in working directory.
+</li>
+<li>'hg brefresh' - to refresh '.bigfiles' and versions directory with added,
+o removed and modified big files. 
+</li>
+<li>'hg bupdate' - to fetch files from versions directory as recorded in
+o '.bigfiles', and get a list of necessary files missing in the version directory. 
+</li>
+</ul>
+<p>
+&lt;/src&gt;
+Configuration
+</p>
+
+<p>
+Configure your .hgrc to enable the extension by adding following lines:
+&lt;src&gt;
+[extensions]
+bigfiles = path/to/bigfiles.py
+</p>
+
+<p>
+[bigfiles]
+repo = path/to/versions/dir 
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">How to manage my files with hg</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+home  with branch cygwin and ubuntu
+</p>
+
+<p>
+---ideas with branch idea
+</p>
+
+<p>
+I think I need  project --- ideas. 
+</p>
+
+<p>
+The project "will" is related with os: ubuntu, cygwin and windows. I can pull the will in cygwin from desktop to laptop. So I can
+backup will project.
+</p>
+
+<p>
+The project "ideas" on laptop should be same with the one on desktop. 
+</p>
+
+<p>
+I can write a shell script to start the will project on port 8000 and ideas project on 8002, then I pull all them to desktop to
+backup the data.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">Branch and tags</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+hg clone myproject myproject-merge
+</p>
+
+<p>
+hg branches
+</p>
+
+<p>
+hg branch foo
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><a href="http://pypi.python.org/pypi/hgsvn">hgsvn</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+&lt;src&gt;
+$ mkdir nose &amp;&amp; cd nose
+</p>
+<p>
+$ hgimportsvn <a href="http://python-nose.googlecode.com/svn/trunk">http://python-nose.googlecode.com/svn/trunk</a>
+hgimportsvn svn://changwei.dyn.webahead.ibm.com
+$ cd trunk
+</p>
+<p>
+$ hgpullsvn
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">My Projects layout</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+There should be three type of project. 
+</p>
+
+<p>
+One is the configurations, this is for the different system.Usually, it should be the home folder.
+</p>
+
+<p>
+Another is the source code they are platform independent. But need some branches.
+</p>
+
+<p>
+The last on is the documentation and books. They just need update, and need not worry about the platform or version. 
+</p>
+
+<p>
+&lt;src&gt;
+</p>
+
+<p>
+-ideas  所有的个人项目，需要使用 hg 进行版本管理
+-- projectA
+---    win
+---    cygwin
+---    ubuntu
+</p>
+
+<p>
+-netsyncdisc  网络同步盘 个人文档，图书，个人开发项目使用的工具
+-- books
+-- software
+-- openSourceProjects
+</p>
+
+<p>
+-work 暂定，存放公司项目开发的代码，文档和工具。
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">subversion</h2>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">1 create repos</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+&lt;src&gt;
+$ svnadmin create /path/to/repos
+$ ls <i>path/to/repos
+conf</i>  dav/  db/  format  hooks/  locks/  README.txt
+</p>
+
+
+
+<p>
+<i>tmp/project/branches</i>
+<i>tmp/project/tags</i>
+<i>tmp/project/trunk</i>
+               foo.c
+               bar.c
+               Makefile
+               ¡­
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">2 Import projects</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+&lt;src&gt;
+</p>
+
+<p>
+svn mkdir svn://changwei.dyn.webahead.ibm.com/bin/ubuntu  -m "init mk"
+</p>
+
+<p>
+svn co -N  svn://changwei.dyn.webahead.ibm.com/bin/ubuntu  bin
+</p>
+
+<p>
+svn import eu4db  svn://www.standino.com/trunk/standino/ideas/eu4db/ -m "initial import"
+</p>
+
+<p>
+svn import Will  svn://www.standino.com/cygwin/trunk/Will/ -m "initial import"
+</p>
+
+<p>
+svn import software svn://www.standino.com/software/trunk/ -m "initial import"
+</p>
+
+<p>
+svn co -N svn://www.standino.com/software/trunk/ software
+</p>
+
+<p>
+svn checkout -N svn://www.standino.com/trunk/standino/
+Checked out revision 10.
+</p>
+
+<p>
+svn co svn://www.standino.com/cygwin/trunk/Will/
+</p>
+
+<p>
+cd c:\standino
+</p>
+
+
+<p>
+svn cp svn://www.standino.com/trunk/standino/ideas/myscripts/emacs
+svn://www.standino.com/cygwin/trunk/Will/ideas/emacs -m "move emacs to
+a high level"
+</p>
+
+<p>
+will@will-laptop:~/ideas/newlogistics$ svn mv <a href="https://newlogistics.googlecode.com/svn/trunk/logistics">https://newlogistics.googlecode.com/svn/trunk/logistics</a>  <a href="https://newlogistics.googlecode.com/svn/branches/log_0_1">https://newlogistics.googlecode.com/svn/branches/log_0_1</a> -m "bakup old code"
+</p>
+
+
+<p>
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Export repos</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+svn export <a href="file:////c:/archive/svn/repository">file:////c:/archive/svn/repository</a> my-export20080505
+</p>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Check out project</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+svn co svn://www.standino.com/trunk/standino/ideas/eu4db/ 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">View log</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+svn log -v
+</p>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">view the old file</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+&lt;src&gt;
+svn cat --revision 2 rules.txt 
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">EXTERNAL</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+C:\standino\ideas&gt;svn propedit svn:externals .
+</p>
+
+
+<p>
+C:\standino\ideas\logistics\web\src\main\jsp&gt;svn propset svn:externals "dojo_trunk
+<a href="http://svn.dojotoolkit.org/dojo/view/anon/all/trunk">http://svn.dojotoolkit.org/dojo/view/anon/all/trunk</a>" dojo
+</p>
+
+<p>
+logic.war <a href="https://newlogistics.googlecode.com/svn/new">https://newlogistics.googlecode.com/svn/new</a>
+</p>
+
+<p>
+logistics  <a href="https://newlogistics.googlecode.com/svn/trunk">https://newlogistics.googlecode.com/svn/trunk</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">Make a branch</h2>
+</div>
+
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">Using emacs as editor</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+update .bahrc
+</p>
+
+<p>
+&lt;src&gt;
+</p>
+
+<p>
+export EDITOR="emacs-nox.exe -q"
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17">svn export — Export a clean directory tree.</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+&lt;example&gt;
+Synopsis
+</p>
+
+<p>
+svn export [-r REV] URL [PATH]
+</p>
+
+<p>
+svn export PATH1 PATH2
+</p>
+
+<p>
+Description
+</p>
+
+<p>
+The first form exports a clean directory tree from the repository specified by URL, at revision REV if it is given, otherwise at HEAD, into PATH. If PATH is omitted, the last component of the URL is used for the local directory name.
+</p>
+
+<p>
+The second form exports a clean directory tree from the working copy specified by PATH1 into PATH2. All local changes will be preserved, but files not under version control will not be copied.
+Alternate Names
+</p>
+
+<p>
+None
+Changes
+</p>
+
+<p>
+Local disk
+Accesses Repository
+</p>
+
+<p>
+Only if exporting from a URL
+Switches
+</p>
+
+<p>
+--revision (-r) REV
+--quiet (-q)
+--force
+--username USER
+--password PASS
+--no-auth-cache
+--non-interactive
+--config-dir DIR
+</p>
+
+<p>
+Examples
+</p>
+
+<p>
+Export from your working copy (doesn't print every file and directory):
+</p>
+
+<p>
+$ svn export a-wc my-export
+Export complete.
+</p>
+
+<p>
+Export directly from the repository (prints every file and directory):
+</p>
+
+<p>
+$ svn export <a href="file:////tmp/repos">file:////tmp/repos</a> my-export
+A  my-export/test
+A  my-export/quiz
+…
+Exported revision 15.
+&lt;/example&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18">Cygwin环境下使用Subversion和SSH (Not verified)</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+Subversion既可以和Apache相结合通过http协议存取，也可以通过ssh协议来存取。本文主要介绍在Cygwin下如何配置Subversion和SSH服务器。
+</p>
+</div>
+
+<div id="outline-container-sec-18-1" class="outline-3">
+<h3 id="sec-18-1">配置SSH服务器</h3>
+<div class="outline-text-3" id="text-18-1">
+<p>
+首先从<a href="http://www.cygwin.com下载Cygwin安装程序，安装过程中一定要选择以下包，其他安装包可以根据需要来选择">http://www.cygwin.com下载Cygwin安装程序，安装过程中一定要选择以下包，其他安装包可以根据需要来选择</a>。
+</p>
+
+<p>
+Admin-&gt;cygrunsrv
+Devel-&gt;subversion
+Net-&gt;openssh
+</p>
+
+<p>
+Cygwin安装完毕后，接着配置sshd服务器，在Cygwin Shell中运行命令：
+</p>
+
+<p>
+ssh-host-config -y
+</p>
+
+<p>
+提示”CYGWIN=”时输入：
+</p>
+
+<p>
+tty ntsec
+</p>
+
+<p>
+至此，ssh服务器已经配置完毕，可以通过Windows服务管理器来启动或停止ssh服务，也可以通过命令行 net [start|stop] sshd来控制。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-18-2" class="outline-3">
+<h3 id="sec-18-2">配置访问Svbversion服务器</h3>
+<div class="outline-text-3" id="text-18-2">
+<p>
+Subversion的具体使用方法可以参考<a href="http://www.subversion.org.cn/svnbook/">使用手册</a>。通过ssh访问SubVersion的方法：
+</p>
+
+<p>
+svn co svn+ssh://servername/project
+</p>
+
+<p>
+其他任何机器都可以通过ssh客户端来访问此Subversion服务器，用户名和密码就是这台Windows系统的用户名和密码。如果不想输入用户名和密码，可以通过配置SSH的密钥验证来实现。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19">Git</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+<a href="http://git.or.cz/course/svn.html">Git - SVN Crash Course</a>
+</p>
+
+<p>
+<a href="http://eagain.net/articles/git-for-computer-scientists/">Tv's cobweb: Git for Computer Scientists</a>
+</p>
+
+<p>
+<a href="http://github.com/">git repository hosting</a>
+</p>
+
+<p>
+<a href="http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsGit.html">Work with Git from Emacs</a>
+</p>
+
+<p>
+如果发现git status 发现所有的中文文件名被换成\123\223\145\333.doc文件时，可以使用
+</p>
+
+<p>
+git config --global core.quotepath false
+</p>
+</div>
+</div>
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20">SVN Layout</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+&lt;example&gt;
+www.standino.com/
+                mp3
+                book
+                software/trunk
+&lt;/example&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21">HG</h2>
+<div class="outline-text-2" id="text-21">
+</div><div id="outline-container-sec-21-1" class="outline-3">
+<h3 id="sec-21-1">方便的安装。</h3>
+<div class="outline-text-3" id="text-21-1">
+<p>
+不论是mac, linux还是windows，不论你是命令行的爱好者还是乌龟的忠实粉丝，你总能找到一款适合你的。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-21-2" class="outline-3">
+<h3 id="sec-21-2">2个命令创建一个Mercuria仓库，</h3>
+<div class="outline-text-3" id="text-21-2">
+<p>
+&gt; hg init
+&gt; hg serve，
+通过这两个命令你就可以拥有一个通过HTTP协议访问的mercurial仓库， 你可以方便的通过客户端通过命令访问，或者你可以轻松的使用浏览器来浏览当前的代码。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-21-3" class="outline-3">
+<h3 id="sec-21-3">方便的分布式功能</h3>
+<div class="outline-text-3" id="text-21-3">
+<p>
+上一次在印度我想在一台新电脑上安装源代码，无奈网络速度太慢，于是乎，我找到一个存有源码的机器，hg serve，这样我得到了一个本地服务器，通过它，我在1分钟内拿到了代码，然后将hgrc(一个mercurial的配置文件)的URL指向在中国的服务器，继续更新后面的几个patch。 将一个1个小时的操作变成2分钟的操作。
+</p>
+
+<p>
+如果你急需要某个patch, 但是你的同事还没来得及提交到服务器上去，没关系，你大可以将自己的workingcopy指向同事的电脑， 运行hg pull就可以从他那里及时的拿到最新的代码。
+</p>
+
+<p>
+没有branch的痛苦, 没有branch是因为每个人都是一个branch -_-!!!
+</p>
+</div>
+</div>
+<div id="outline-container-sec-21-4" class="outline-3">
+<h3 id="sec-21-4">便捷的本地提交</h3>
+<div class="outline-text-3" id="text-21-4">
+<p>
+使用Mercurial，你可以在没有网络的情况下通过
+&gt; hg ci
+进行本地提交，再也无需因为没有网络时候患上“写代码没有SCM恐惧症”，你也可以通过这个命令在日常开发中即达到小步前进，又不用每10分钟非得跑一遍测试。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-21-5" class="outline-3">
+<h3 id="sec-21-5">离线操作</h3>
+<div class="outline-text-3" id="text-21-5">
+<p>
+不论是Mercurial的提交或者是diff，rollback，strip, merge都可以在没有网络的情况下进行，想像一下在中国开发，服务器在美国的痛苦：那缓慢爬行的小乌龟。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-21-6" class="outline-3">
+<h3 id="sec-21-6">速度优势</h3>
+<div class="outline-text-3" id="text-21-6">
+<p>
+Mercurial是增量存储，并且它会每隔一段时间进行对整个Repository打一个快照，这样当你去clone repository(相当于svn checkout)的时候，它可以找到最近的一个快照，并在它的基础上应用后续的patch。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-21-7" class="outline-3">
+<h3 id="sec-21-7">基于patch的管理</h3>
+<div class="outline-text-3" id="text-21-7">
+<p>
+Mercurial将你的提交作为一个patch管理， 你可以很容易拿到别人的patch，通过hg客户端或者linux上的 patch命令将别人最新的修正打在你的工作目录里面。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-21-8" class="outline-3">
+<h3 id="sec-21-8">更多的便捷操作</h3>
+<div class="outline-text-3" id="text-21-8">
+<p>
+你想将本地的某些提交取消? hg strip
+你想将server上的某些changeset取消？hg backout
+你想订制hg log的输出方式？定义自己的hg template。
+</p>
+
+
+<p>
+这个工具在国内很少人使用，所以中文资料匮乏．只有官方的website上有一些少得可怜的中文资料了．不过总体上来说，hg还是比较好用的。
+</p>
+
+<p>
+这里绍一下hg服务器的配置。关于hg在基本用法参见mercrial的官方网站。在做以下操作时，请到 <a href="http://www.selenic.com/mercurial/下载安装hg">http://www.selenic.com/mercurial/下载安装hg</a>.
+</p>
+
+<p>
+1.建立用户hgrepo
+</p>
+
+<p>
+其它用户将用这个账户用hg服务器push代码。
+</p>
+
+<p>
+useradd hgrepo -d /home/hgrepo # add user hgrepo
+passwd hgrepo
+</p>
+
+<p>
+2.建立hg代码仓库
+</p>
+
+<p>
+如果代码仓库名称为project.hg,则可用如下命令。
+</p>
+
+<p>
+cd /home/hgrepo
+mkdir project.hg
+cd project.hg
+hg init # 初始化代码仓库
+建立一个测试文件
+</p>
+
+<p>
+echo "hello, mercurial" &gt; sample.txt
+hg add  # add
+hg ci     # check in
+</p>
+
+<ol class="org-ol">
+<li>打开http
+</li>
+</ol>
+
+<p>
+打开一个端口，让远程用户可以clone仓库中的代码.
+在打开端口前请确定文件权限正确。
+</p>
+
+<p>
+更改文件权限
+chown hgrepo.hgrepo /home/hgrepo/project.hg -R
+chmod og+rw /home/hgrepo/project.hg -R
+打开端口
+</p>
+
+<p>
+cd  /home/hgrepo/project.hg -R
+hg serve -p 8002 &amp;
+可将上面两行加入/etc/rc.local这样就可以在开机的时候自动运行了。
+</p>
+
+<p>
+4.使用hg
+</p>
+
+<p>
+完成步骤3以后，我们就可以使用了。
+</p>
+
+<p>
+clone到本地
+</p>
+
+<p>
+例如你的服务器的名字为test.
+</p>
+
+<p>
+hg clone <a href="http://test:8002">http://test:8002</a>
+然后在本地目录就会出现一个project.hg的一个copy.
+</p>
+
+<p>
+修改Client端的配置
+</p>
+
+<p>
+更改.hg/hgrc，加上default-push和username
+&lt;src&gt;
+[paths]
+default = <a href="http://test:8002">http://test:8002</a>
+default-push = ssh://hgrepo@test//home/hgrepo/project.hg/
+[ui]
+username=shaohui.zheng
+</p>
+
+<p>
+[paths]
+default = <a href="http://9.123.157.55:8000">http://9.123.157.55:8000</a>
+default-push = ssh://will@9.123.157.55//home/will/ideas/
+default-push = <a href="https://standino@bitbucket.org/standino/my-private-rep">https://standino@bitbucket.org/standino/my-private-rep</a>
+</p>
+
+
+<p>
+[ui]
+username=will
+</p>
+
+<p>
+&lt;/src&gt;
+这样你就可用hg push 向服务器提交code了。这时服务器会问你passward,这个password就是用户hgrepo的password.
+</p>
+
+<p>
+Good Luck.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22">My setup</h2>
+<div class="outline-text-2" id="text-22">
+<p>
+hg clone <a href="http://changweilaptop.dyn.webahead.ibm.com:8000/">http://changweilaptop.dyn.webahead.ibm.com:8000/</a> ideas
+</p>
+
+
+<p>
+hg clone <a href="http://9.186.119.53:8000/">http://9.186.119.53:8000/</a> ideas
+</p>
+</div>
+</div>
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23">How to use Emacs to work with Mercurial</h2>
+<div class="outline-text-2" id="text-23">
+<p>
+<a href="http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html">http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html</a>
+</p>
+</div>
+
+
+<div id="outline-container-sec-23-1" class="outline-3">
+<h3 id="sec-23-1">revert files</h3>
+<div class="outline-text-3" id="text-23-1">
+<p>
+hg revert .amsn/ -r 385
+</p>
+
+<p>
+首先，使用hg grep找到被删除的文件恢复。此命令的输出将显示该文件的最新版本是目前的，以及对已删除文件的路径。二，运行hg revert -r
+&lt;revision number&gt; &lt;path to deleted file&gt;被删除的文件现在在你的工作拷贝，准备送回头部。  
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24">My remote Hg repository <a href="https://bitbucket.org/">https://bitbucket.org/</a></h2>
+<div class="outline-text-2" id="text-24">
+<p>
+hg push <a href="https://standino@bitbucket.org/standino/my-private-rep">https://standino@bitbucket.org/standino/my-private-rep</a>
+</p>
+</div>
+
+
+<div id="outline-container-sec-24-1" class="outline-3">
+<h3 id="sec-24-1">4.2. How to declare trust</h3>
+<div class="outline-text-3" id="text-24-1">
+<p>
+Users can add settings to their $HOME/.hgrc to tell Mercurial to trust other users. For instance, if Bob has decided he can trust Alice not to try to delete his files when he looks at her repository, he could add:
+</p>
+
+<p>
+[trusted]
+users = alice, carl, dan
+</p>
+
+<p>
+Alternately, Bob can decide to trust a group of people (as specified in an operating system group)
+</p>
+
+<p>
+[trusted]
+groups = dev-team
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25">比较两个 branch</h2>
+<div class="outline-text-2" id="text-25">
+<p>
+<a href="http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial">http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial</a>
+</p>
+
+
+<p>
+&lt;src&gt;
+  109  hg branches
+  110  hg branch
+  111  hg branch '多维度设置采购计划控制参数'
+  112  hg branch
+  113  hg bookmark '多维度设置采购计划控制参数'
+  114  hg bookmark '多维度设置采购计划控制参数init'
+  115  hg branchdiff .
+  116  hg st
+  117  hg branchdiff .
+  118  hg ci -m "测试branch之间的比较"
+  119  hg branchdiff .
+  120  hg update default
+  121  hg branches
+  126  hg merge  '多维度设置采购计划控制参数'
+&lt;/src&gt;
+</p>
+
+<p>
+In your specific example I think you could get a list of of just d and e using:
+</p>
+
+<p>
+hg log -r "branch('foo') - branch('default')"
+where that - is defined as:
+</p>
+
+<p>
+"x - y"
+      Changesets in x but not in y.
+Getting the diff from a to e could be done as:
+</p>
+
+<p>
+hg diff -r "ancestor(default, foo)" -r foo
+</p>
+
+
+<p>
+Another way to do this, useful also for branches that you have already merged to default is:
+</p>
+
+<p>
+hg diff -r "max(ancestors(foo) and branch(default)):foo"
+Though that can be a pit of a pain, so i'd recommend setting up an alias by adding something like:
+</p>
+
+<p>
+[alias]
+branchdiff = diff -r "max(ancestors('$1') and branch(default)):'$1'"
+To your Mercurial.INI/hgrc which you can then use like this:
+</p>
+
+<p>
+hg branchdiff &lt;branch name&gt;
+or
+</p>
+
+<p>
+hg branchdiff .
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2013-12-19</span>
+        <span title="last modification date" class="post-info">2013-12-19</span>
+        <span title="tags" class="post-info"><a href="/tags/svn/">svn</a>, <a href="/tags/cvs/">cvs</a>, <a href="/tags/git/">git</a>, <a href="/tags/hg/">hg</a></span>
+        <span title="author" class="post-info">U-360BUYAD\changwei</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/wiki/vesionmanage";
+          var disqus_url = "http://standino.github.io/wiki/vesionmanage";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;at&gt; BJXX-CHANGWEI &lt;dot&gt; 360buyAD &lt;dot&gt; local">U-360BUYAD\changwei</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
