@@ -1,3 +1,5 @@
+#+STARTUP: content
+#+STARTUP: indent
 #+TITLE:       Emacs 使用笔记
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
@@ -231,10 +233,13 @@ http_proxy=http://127.0.0.1:8087 emacs -nw
 - All items to discuss in a meeting with Sarah and Peter
    TAG search for "Sarah|Peter"
 
+#+BEGIN_SRC 
 
-Check box: <example>- [ ] </example>
+
+Check box: - [ ] 
 
 create table: <code>|Name|Phone|Age <RET> |- <TAB>. </code>
+
 
 M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
 
@@ -1393,7 +1398,7 @@ that will be filled with the previoous context information.
 
 * [[http://jdee.sourceforge.net/][ JDEE]]
 
-#+BEGIN_SRC 
+
 
 
 ;; This .emacs file illustrates the minimul setup
@@ -1484,7 +1489,7 @@ that will be filled with the previoous context information.
 
   (setq w32-quote-process-args ?\")) ;; Include only for MS Windows.
 
-#+END_SRC
+
 
 * Folding
 http://stackoverflow.com/questions/1208622/code-folding-in-emacs 
@@ -2491,3 +2496,4 @@ You can also browse the repository at:
   : M-x flush-lines RET ^$ RET
 
   =flush-lines= 命令的本意是删除buffer中match随后的regexp的行，而 =^$= 就代表空行，于是这就是删除空行的操作。
+#+END_SRC
