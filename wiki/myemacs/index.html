@@ -3,7 +3,7 @@
   <head>
     <title>Emacs 使用笔记 - Keep going</title>
     <meta charset="utf-8" />
-    <meta name="author" content="chang wei" />
+    <meta name="author" content="Will Chang" />
     <meta name="description" content="Emacs 使用笔记" />
     <meta name="keywords" content="Lisp, Scheme, Emacs, Linux, cygwin, Java,  Org-page, Programming,  编程" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
@@ -12,7 +12,7 @@
     <div>
       <header class="masthead">
         <h1 class="masthead-title"><a href="/">Keep going</a></h1>
-        <p>个人资料</p>
+        <p>虽然还是比较迷茫，但是请不要忘记努力超越自己！</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/wiki/">Wiki</a></li>
@@ -56,7 +56,7 @@
 <h3 id="sec-1-2">Shell</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-<b>find-dired</b> : Find a file &lt;code&gt; -iname d_qt_quote.sql&lt;/code&gt; 运行外部命令 find , 产生文件列表，然后进入 dired 模式。
+<b>find-dired</b> : Find a file : -iname d_qt_quote.sql 运行外部命令 find , 产生文件列表，然后进入 dired 模式。
 </p>
 
 <p>
@@ -150,21 +150,15 @@ lgrep:         提示内容与rgrep的都一样，唯一不同的是，lgrep只�
 </div><div id="outline-container-sec-3-1" class="outline-3">
 <h3 id="sec-3-1"><a href="https://github.com/cfg/apt-cyg">apt-cyg</a></h3>
 <div class="outline-text-3" id="text-3-1">
-<p>
-curl -o /usr/bin/apt-cyg <a href="https://raw.github.com/cfg/apt-cyg/master/apt-cyg">https://raw.github.com/cfg/apt-cyg/master/apt-cyg</a>
-</p>
+<pre class="example">
+curl -o /usr/bin/apt-cyg https://raw.github.com/cfg/apt-cyg/master/apt-cyg
 
-<p>
 chmod +x /usr/bin/apt-cyg
-</p>
 
-<p>
-git clone <a href="https://github.com/standino/emacs.d.git">https://github.com/standino/emacs.d.git</a> ~/.emacs.d
-</p>
+git clone https://github.com/standino/emacs.d.git ~/.emacs.d
 
-<p>
-http_proxy=<a href="http://127.0.0.1:8087">http://127.0.0.1:8087</a> emacs -nw
-</p>
+http_proxy=http://127.0.0.1:8087 emacs -nw
+</pre>
 </div>
 </div>
 </div>
@@ -297,17 +291,10 @@ http_proxy=<a href="http://127.0.0.1:8087">http://127.0.0.1:8087</a> emacs -nw
 </table>
 </div>
 </div>
+
 <div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2">HotKey</h3>
+<h3 id="sec-4-2">Basic editing</h3>
 <div class="outline-text-3" id="text-4-2">
-<p>
-&lt;include file="~/../emacs/lib/cw-hotkey.el" markup="src" lang="lisp"&gt;
-</p>
-</div>
-</div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3">Basic editing</h3>
-<div class="outline-text-3" id="text-4-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -894,12 +881,12 @@ http_proxy=<a href="http://127.0.0.1:8087">http://127.0.0.1:8087</a> emacs -nw
 </div>
 
 
-<div id="outline-container-sec-4-4" class="outline-3">
-<h3 id="sec-4-4"><a href="http://orgmode.org/">Org mode</a></h3>
-<div class="outline-text-3" id="text-4-4">
-</div><div id="outline-container-sec-4-4-1" class="outline-4">
-<h4 id="sec-4-4-1">Tags</h4>
-<div class="outline-text-4" id="text-4-4-1">
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><a href="http://orgmode.org/">Org mode</a></h3>
+<div class="outline-text-3" id="text-4-3">
+</div><div id="outline-container-sec-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1">Tags</h4>
+<div class="outline-text-4" id="text-4-3-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1172,9 +1159,9 @@ M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
 </div>
 
 
-<div id="outline-container-sec-4-4-2" class="outline-4">
-<h4 id="sec-4-4-2">Date</h4>
-<div class="outline-text-4" id="text-4-4-2">
+<div id="outline-container-sec-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2">Date</h4>
+<div class="outline-text-4" id="text-4-3-2">
 <p>
 <b>Inserting dates</b>
 </p>
@@ -1494,16 +1481,14 @@ M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
 </tr>
 </tbody>
 </table>
-
-
-<p>
-&lt;include file="orgcard.txt" markup="src" lang=""&gt;
-</p>
 </div>
 </div>
-<div id="outline-container-sec-4-4-3" class="outline-4">
-<h4 id="sec-4-4-3">Ref</h4>
-<div class="outline-text-4" id="text-4-4-3">
+
+
+
+<div id="outline-container-sec-4-3-3" class="outline-4">
+<h4 id="sec-4-3-3">Ref</h4>
+<div class="outline-text-4" id="text-4-3-3">
 <ul class="org-ul">
 <li><a href="http://www.360doc.com/content/10/0327/12/155970_20456107.shtml">使用Org-Mode来GTD</a>
 </li>
@@ -1511,9 +1496,9 @@ M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4-5" class="outline-3">
-<h3 id="sec-4-5">Muse</h3>
-<div class="outline-text-3" id="text-4-5">
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">Muse</h3>
+<div class="outline-text-3" id="text-4-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1552,9 +1537,9 @@ M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
 </table>
 </div>
 </div>
-<div id="outline-container-sec-4-6" class="outline-3">
-<h3 id="sec-4-6">CVS</h3>
-<div class="outline-text-3" id="text-4-6">
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5">版本管理</h3>
+<div class="outline-text-3" id="text-4-5">
 <p>
 快捷键 ||         命令名 ||         动作          
 </p>
@@ -1663,9 +1648,9 @@ M-S-up (org-shiftmetaup) and M-S-down (org-shift-metadown),
 </div>
 </div>
 
-<div id="outline-container-sec-4-7" class="outline-3">
-<h3 id="sec-4-7">Dired</h3>
-<div class="outline-text-3" id="text-4-7">
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6">Dired</h3>
+<div class="outline-text-3" id="text-4-6">
 <p>
 <a href="http://jamesthornton.com/emacs/node/emacs_396.html">http://jamesthornton.com/emacs/node/emacs_396.html</a>
 </p>
@@ -2040,9 +2025,9 @@ dired-jump-other-window 在另一个窗口中跳转到当前缓冲所在目录
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4-8" class="outline-3">
-<h3 id="sec-4-8">Abbrevs</h3>
-<div class="outline-text-3" id="text-4-8">
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7">Abbrevs</h3>
+<div class="outline-text-3" id="text-4-7">
 <p>
 <a href="http://www.emacs.cn/Doc/Abbrevs">http://www.emacs.cn/Doc/Abbrevs</a>
 </p>
@@ -3653,183 +3638,95 @@ that will be filled with the previoous context information.
 <div id="outline-container-sec-52" class="outline-2">
 <h2 id="sec-52"><a href="http://jdee.sourceforge.net/"> JDEE</a></h2>
 <div class="outline-text-2" id="text-52">
-<p>
-&lt;src&gt;
+<pre class="example">
 ;; This .emacs file illustrates the minimul setup
-</p>
 
-<p>
 ;; required to run the JDE. 
-</p>
 
-<p>
 ;; Set the debug option to enable a backtrace when a
-</p>
 
-<p>
 ;; problem occurs.
-</p>
 
-<p>
 (setq debug-on-error t) 
-</p>
 
-<p>
 ;; Update the Emacs load-path to include the path to
-</p>
 
-<p>
 ;; the JDE and its require packages. This code assumes
-</p>
 
-<p>
 ;; that you have installed the packages in the emacs/site
-</p>
 
-<p>
 ;; subdirectory of your home directory.
-</p>
 
-<p>
 (add-to-list ''''load-path (expand-file-name "~/emacs/site/jde/lisp"))
-</p>
 
-<p>
 (add-to-list ''''load-path (expand-file-name "~/emacs/site/cedet/common"))
-</p>
 
-<p>
 (add-to-list ''''load-path (expand-file-name "~/emacs/site/elib")) 
-</p>
 
-<p>
 ;; Initialize CEDET.
-</p>
 
-<p>
 (load-file (expand-file-name "~/emacs/site/cedet/common/cedet.el")) 
-</p>
 
-<p>
 ;; If you want Emacs to defer loading the JDE until you open a
-</p>
 
-<p>
 ;; Java file, edit the following line
-</p>
 
-<p>
 (setq defer-loading-jde nil)
-</p>
 
-<p>
 ;; to read:
-</p>
 
-<p>
 ;;
-</p>
 
-<p>
 ;;  (setq defer-loading-jde t)
-</p>
 
-<p>
 ;; 
-</p>
 
-<p>
 (if defer-loading-jde
-</p>
 
-<p>
-(progn
-</p>
+    (progn
 
-<p>
-(autoload ''''jde-mode "jde" "JDE mode." t)
-</p>
+      (autoload ''''jde-mode "jde" "JDE mode." t)
 
-<p>
-(setq auto-mode-alist
-</p>
+      (setq auto-mode-alist
 
-<p>
-(append
-</p>
+           (append
 
-<p>
-''''(("\\.java\\''''" . jde-mode))
-</p>
+            ''''(("\\.java\\''''" . jde-mode))
 
-<p>
-auto-mode-alist)))
-</p>
+            auto-mode-alist)))
 
-<p>
-(require ''''jde)) 
-</p>
+  (require ''''jde)) 
 
-<p>
 ;; Sets the basic indentation for Java source files
-</p>
 
-<p>
 ;; to two spaces.
-</p>
 
-<p>
 (defun my-jde-mode-hook ()
-</p>
 
-<p>
-(setq c-basic-offset 2))
-</p>
+  (setq c-basic-offset 2))
 
-<p>
 (add-hook ''''jde-mode-hook ''''my-jde-mode-hook) 
-</p>
 
-<p>
 ;; Include the following only if you want to run
-</p>
 
-<p>
 ;; bash as your shell. 
-</p>
 
-<p>
 ;; Setup Emacs to run bash as its primary shell.
-</p>
 
-<p>
 (setq shell-file-name "bash")
-</p>
 
-<p>
 (setq shell-command-switch "-c")
-</p>
 
-<p>
 (setq explicit-shell-file-name shell-file-name)
-</p>
 
-<p>
 (setenv "SHELL" shell-file-name)
-</p>
 
-<p>
 (setq explicit-sh-args ''''("-login" "-i"))
-</p>
 
-<p>
 (if (boundp ''''w32-quote-process-args)
-</p>
 
-<p>
   (setq w32-quote-process-args ?\")) ;; Include only for MS Windows.
-&lt;/src&gt;
-</p>
+</pre>
 </div>
 </div>
 <div id="outline-container-sec-53" class="outline-2">
@@ -5413,6 +5310,206 @@ svn co svn://svn.sv.gnu.org/emacswiki/emacswikipages
 </div>
 </div>
 </div>
+
+
+<div id="outline-container-sec-73" class="outline-2">
+<h2 id="sec-73">矩形操作</h2>
+<div class="outline-text-2" id="text-73">
+<p>
+Emacs所有跟矩形操作的命令都是以 <code>C-x r</code> 为前缀，其区域选择与普通的区域选择的快捷键一样： <code>C-space</code> ，只是在执行矩形操作时，Emacs会将选择的起点和终点作为对角，其中的内容作为矩形区域。常用快捷键：
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-space</td>
+<td class="left">set-mark-command</td>
+<td class="left">标记矩形区块的一个角（光标标记其相对的角）。</td>
+</tr>
+
+<tr>
+<td class="left">C-x r t</td>
+<td class="left">string-rectangle</td>
+<td class="left">用字符串填充矩形区域</td>
+</tr>
+
+<tr>
+<td class="left">C-x r k</td>
+<td class="left">kill-rectangle</td>
+<td class="left">剪切当前的矩形区块，并将其保存在一个特殊的矩形区块缓冲区中。</td>
+</tr>
+
+<tr>
+<td class="left">C-x r d</td>
+<td class="left">delete-rectangle</td>
+<td class="left">删除当前的矩形区块，并不为粘贴而保存它。</td>
+</tr>
+
+<tr>
+<td class="left">C-x r c</td>
+<td class="left">clear-rectangle</td>
+<td class="left">清除当前的矩形区块，使用空白字符替换整个区域。</td>
+</tr>
+
+<tr>
+<td class="left">C-x r o</td>
+<td class="left">open-rectangle</td>
+<td class="left">打开当前的矩形区块，使用空白字符填充整个区域，并将该矩形区块的所有文本移动到右边。</td>
+</tr>
+
+<tr>
+<td class="left">C-x r y</td>
+<td class="left">yank-rectangle</td>
+<td class="left">在光标处，粘贴上一次剪切的矩形区块的内容，将所有的现有文本移动到右边。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-74" class="outline-2">
+<h2 id="sec-74">寄存器操作</h2>
+<div class="outline-text-2" id="text-74">
+<ul class="org-ul">
+<li>文本操作：
+</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x r s R</td>
+<td class="left">保存选中的区域到寄存器R</td>
+</tr>
+
+<tr>
+<td class="left">C-x r r R</td>
+<td class="left">保存矩形区域</td>
+</tr>
+
+<tr>
+<td class="left">C-x r i R</td>
+<td class="left">读取寄存器R的内容并插入到光标处</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Buffer/Window/Frame操作：
+</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x r SPC R</td>
+<td class="left">保存Buffer及光标位置</td>
+</tr>
+
+<tr>
+<td class="left">C-x r w R</td>
+<td class="left">保存当前Window的配置</td>
+</tr>
+
+<tr>
+<td class="left">C-x r f R</td>
+<td class="left">保存当前Frame的配置</td>
+</tr>
+
+<tr>
+<td class="left">C-x r j R</td>
+<td class="left">恢复寄存器R的内容</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="example">
+M-x list-registers    ; 显示所有寄存器中的内容
+M-x view-register R   ; 查看寄存器R中的内容
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-75" class="outline-2">
+<h2 id="sec-75">书签操作：</h2>
+<div class="outline-text-2" id="text-75">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">C-x r m Bookmark</td>
+<td class="left">bookmark-set</td>
+<td class="left">设置一个名为 Bookmark 的书签。</td>
+</tr>
+
+<tr>
+<td class="left">C-x r l</td>
+<td class="left">bookmarks-bmenu-list</td>
+<td class="left">列出所有已保存的书签。</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">bookmark-delete</td>
+<td class="left">删除一个书签。</td>
+</tr>
+
+<tr>
+<td class="left">C-x r b Bookmark</td>
+<td class="left">bookmark-jump</td>
+<td class="left">跳转至名为 Bookmark 的书签中所设置的位置。</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">bookmark-save</td>
+<td class="left">将所有的书签保存到书签文件 ~/.emac.bmk 中。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-76" class="outline-2">
+<h2 id="sec-76">删除空行：</h2>
+<div class="outline-text-2" id="text-76">
+<pre class="example">
+M-x flush-lines RET ^$ RET
+</pre>
+
+<p>
+<code>flush-lines</code> 命令的本意是删除buffer中match随后的regexp的行，而 <code>^$</code> 就代表空行，于是这就是删除空行的操作。
+</p>
+</div>
+</div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
@@ -5429,9 +5526,9 @@ svn co svn://svn.sv.gnu.org/emacswiki/emacswikipages
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2012-11-27</span>
-        <span title="last modification date" class="post-info">2013-12-18</span>
+        <span title="last modification date" class="post-info">2013-12-19</span>
         <span title="tags" class="post-info"><a href="/tags/emacs/">Emacs</a></span>
-        <span title="author" class="post-info">chang wei</span>
+        <span title="author" class="post-info">Will Chang</span>
       </div>
       <section>
         <h1>Comments</h1>
@@ -5464,7 +5561,7 @@ svn co svn://svn.sv.gnu.org/emacswiki/emacswikipages
       <div class="footer">
         <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
         <p>
-          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">chang wei</a>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
         </p>
