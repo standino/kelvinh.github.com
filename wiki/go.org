@@ -1,4 +1,4 @@
-#+TITLE:       go.org
+#+TITLE:       go
 #+AUTHOR:      U-360BUYAD\changwei
 #+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
 #+DATE:        2013-12-19 Thu

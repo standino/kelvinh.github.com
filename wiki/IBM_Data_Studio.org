@@ -1,0 +1,179 @@
+#+TITLE:       IBM Data Studio Introduction 
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-20 Fri
+#+URI:         /wiki/ibmdatastudiointroduction
+#+KEYWORDS:    ibm,db2,ide
+#+TAGS:        :ibm:db2:ide:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: IBM Data Studio Introduction 
+
+
+
+
+* IBM Data Studio  Introduction 
+
+I will cover the following features to demonstrate using IBM data studio to develop db2 stored procedure. 
+
+** Connect to DB2 and Run SQL
+
+We will create a database connection, run some SQL statements and stored procedures.
+
+** Validate Statement Syntax
+
+IBM Data Studio can validate our SQL statements and display a red line under the error syntax.
+
+** Content Assist
+
+Content assist is an editing tool that provides us with helpful information as we type an SQL statement. 
+For example, after we type the dot that follows a schema qualifier in an SQL statement, content assist supplies a list of the tables in the schema.
+
+** Code Template
+
+We can define some templates to help us write SQL effectively. 
+
+** Visual Explain
+
+We can use Visual Explain for routines to view the explained SQL statements as a graph. 
+We can use the information available from the graph to tune our SQL queries for better performance.
+
+** Deploy and  Debug Stored Procedure
+
+This feature only works when connect to db2 v9 database. 
+We can load stored procedure and set break points to debug it using the integrated debugger.
+It helps us to find bugs in the stored procedures.
+
+** Data web service
+
+IBM Data Studio lets us create Web services using a drag-and-drop interface.
+Drag and drop any DML operation or stored procedure call into a Web service 
+container to create ready-to-deploy Web services.
+
+----
+* Demo
+----
+Now let's begin the demo. Open IBM data studio. Data studio is an eclipse plug-in.  
+
+** Create new connection and update password settings
+
+If you have installed DB2 client on our machine, IBM Data Studio can get the DB2 connections from your DB2 client.
+All the db2 connections in your db2 client will list in the Database Explorer view. 
+Also, we can create a new connection:
+ 1. Right-click in the Database Explorer. 
+ 1. Select New Connection from the pop-up menu. 
+ 1. On the first page of the wizard, specify other connection details: host, port number, user name and password. 
+ 1. A new connection will be added to database explorer. 
+
+IBM Data Studio can remember our user name and password if we update the password settings. Go to the preference page, set password information to "persistence scope".
+
+** Create Data Project
+
+Next, Let's create a data project. 
+ 1. Right-click in the Data Project Explorer, and select "New Data development project", 
+ 1. Specify the name, then click next;
+ 1. On the next page, specify a database connection to link to the project,
+ 1. Click Finish. 
+
+The data development project is displayed in the Data Project Explorer view. 
+
+We can store and develop the following types of objects in a database development project:
+ - Stored procedures 
+ - User-defined functions 
+ - SQL scripts 
+ - XML artifacts 
+ - Web services 
+
+
+
+** Run SQL 
+
+Next, We will insert some data into web_quote table by calling I_QT_QUOTE.
+
+These are the scripts to insert data.  
+ 1. Select the SQL statement, 
+ 1. Right-click, select Run SQL in the pop-up menu. 
+
+We can see the results from Data output view.
+
+Now let's query the data from web_quote. 
+ 1. Type: select * from EBIZ one dot, 
+ 1. After we type dot, content assist provides a pop-up list which display all the tables in the schema ebiz one. 
+ 1. Select web_quote table. 
+ 1. Right-click, Run SQL. 
+
+We can view the results in the Data Output view.
+
+** Switch Database
+
+If we want to run the SQL on another database, We can:
+ 1. Right click the SQL Editor, 
+ 1. Select "Use Database Connection..." in the pop-up menu, 
+ 1. Then select the database we want to use.
+
+Now we can run the SQL statement on duke.
+
+** Using Code Template
+
+Let's create a stored procedure using template.
+
+We can define the template easily. 
+ 1. Go to the preference window, expand the Data node and the SQL Editor node. 
+ 1. On the SQL Editor - Templates page, select the template that you want to change, and then click Edit.
+ 1. Also we can import or export these templates.
+
+Create Stored procedure S_QT_Quote in SQL scripts folder.
+
+ 1. In the SQL editor, type the template name, 
+ 1. Right click on SQL editor, select "Content Assist", 
+ 1. Select the template in the pop-up list, then the code of template was inserted into the SQL editor. 
+ 1. Update the stored procedure's name, parameters and  the business logic. 
+ 1. Select Run SQL. 
+
+And this is how we write a stored procedure using template.
+
+We should put the SQL which we often use into templates and share with each other. This should reduce a lot of typing to write stored procedures.
+
+** Visual Explain
+
+Getting visual explain is very easy:
+ 1. Highlight the SQL statement, 
+ 1. Then right click, select "Visual Explain".
+
+After a while, an access plan window will show up.
+
+** Debug Stored Procedure
+
+Next, Let's try to debug the stored procedure I_QT_QUOTE. 
+
+Drag I_QT_QUOTE from database explorer to project explorer.
+
+In order to debug this stored procedure, we must redeploy it with debug option.
+
+ 1. Double click on I_QT_QUOTE; 
+ 1. Set a break point; 
+ 1. Right click I_QT_QUOTE in data project explorer; 
+ 1. Select debug;  
+ 1. Edit argument list, click debug; 
+ 1. Just like debug java code, We can set break points, step over and watch the variables.
+
+** Data Web Service
+
+OK. Now let's show the last feature: data web service.
+
+ 1. Right click web service, Select "New web service",
+ 1. Specify the name, Click finish. 
+ 1. Drag S_QT_QUOTE from Database explorer and drop it to getQuoteService.
+ 1. Right click getQuoteService, Select Build and deploy. 
+ 1. Select server, 
+ 1. Select Launch web service explorer after deployment, 
+ 1. Click finish. 
+
+WASCE will start, and web service will be deployed. 
+
+Let's invoke the service in the web service explorer. Click Go button, then we can see the stored procedure results will be returned by the web service.
+
+OK. That's all. Thanks.
+
+
+
