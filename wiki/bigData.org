@@ -8,3 +8,8 @@
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 研究互联网用到的大数据技术
+
+* redis
+ 1. [[http://langgufu.iteye.com/blog/1434408][Redis介绍及常用命令]]
+ 2. [[http://blog.nosqlfan.com/html/3537.html][Redis资料汇总专题]]
+ 3. [[http://blog.nosqlfan.com/books][books]]
