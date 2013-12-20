@@ -1,6 +1,6 @@
-#+TITLE:       versionmanage.org
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+TITLE:       版本管理工具
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/vesionmanage
 #+KEYWORDS:    svn,cvs,git,hg
@@ -437,9 +437,6 @@ username=shaohui.zheng
 [paths]
 default = http://9.123.157.55:8000
 default-push = ssh://will@9.123.157.55//home/will/ideas/
-default-push = https://standino@bitbucket.org/standino/my-private-rep
-
-
 [ui]
 username=will
 
@@ -466,10 +463,6 @@ hg revert .amsn/ -r 385
 
 首先，使用hg grep找到被删除的文件恢复。此命令的输出将显示该文件的最新版本是目前的，以及对已删除文件的路径。二，运行hg revert -r
 <revision number> <path to deleted file>被删除的文件现在在你的工作拷贝，准备送回头部。  
-
-* My remote Hg repository https://bitbucket.org/
-
- hg push https://standino@bitbucket.org/standino/my-private-rep
 
 
 ** 4.2. How to declare trust

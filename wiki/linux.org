@@ -1,6 +1,6 @@
 #+TITLE:       linux.org
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/linux
 #+KEYWORDS:    linux
@@ -553,47 +553,7 @@ vi /etc/iptables.d/filter/INPUT/25-c4eb-allow.rule命令,开放防火墙的65400
 
 * VPN
 
-** [[http://ciscovpn.watson.ibm.com/instructions.php][Emerging VPN Technologies Pilot]]
-
-  
-  rcxasa.watson.ibm.com
-  
-  sudo yum install anyconnect ibm-config-anyconnect
-
-
-    USER ID: changwei@cn.ibm.com
-    PASSWORD: nNvinW)8qUa0 Case Sensitive
  
-
-Category: Linux, Ubuntu Tags: Ubuntu, Ubuntu 8.10, VPN, VPNC
-Easier VPN Setup with Ubuntu 8.10
-Posted November 6th, 2008 by nazham
-
-Quite a while ago I’ve posted a way to setup your VPN access using VPNC in Ubuntu 8.04 Hardy Heron. Now with Ubuntu 8.10 Interprid Ibex, things will become much more easier, by using the NetworkManager applet in Gnome.
-
-When you have not yet installed any VPN manager, the “Add” button for VPN connections in the applet seems to be disabled. But thanks to a post in UbuntuForum here, I manage to enable the “Add” VPN connection button, and add my office’s VPN connection by a few simple clicks.
-
-1. Go to Applications -> Add/Remove.
-
-2. From the Show dropdown “All available applications”, and then enter “vpn connection” into the search box.
-
-3. Choose your choice of VPN manager. In my case it’s VPNC.
-ubuntuvpn-addremove.png
-
-4. Now you can add the VPN connection. The “Add” button is enabled now. Click on the NetworkManager applet -> VPN Connections -> Configure VPN…
-
-5. Click on the VPN tab, click “Add” button
-ubuntuvpn-add.png
-
-6. Enter your VPN connection details (Gateway, user name, passwords, etc).
-ubuntuvpn-add2.png
-
-7. Click “OK”, and Voila!, your VPN connection is available for you at your NetworkManager applet, shown below:
-ubuntuvpn-wifi.png
-
-Enjoy.
-
-
 
 * Upgrad 
 
