@@ -1,6 +1,6 @@
 #+TITLE:      Tools
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/tool
 #+KEYWORDS:    tool
@@ -332,66 +332,6 @@ supported by Evernote.  Any problems you encounter will not be corrected by them
 this software at your own risk.People have used this with both 64 & 32 bit versions of Linux as well as OpenJDK & Sun's Java
 and(so far) have not encountered any problems with these different environments.You can download NeverNote here.  All the
 installation information as well as known problemsand currently supported features are located within this public notebook. 
-
-
-* MSDN Subscriptions Benefit Access Number
-
-
-
-[[http://csdld01.cn.ibm.com/ITweb.nsf/ContentDocsByTitle/MSDN+For+CDL ][Apply MSDN Subscriptions]]
-
-It’s Time to Activate your MSDN Subscription!
-
-Dear Wei Chang,
-
-An administrator for your company has assigned an MSDN Subscription to you. Now is the time to activate so you can start downloading software and using your support benefits.
-
-[[https://msdn.microsoft.com/zh-cn/subscriptions/add][Activate your MSDN Subscription Now]]
-
-You’ll just need to enter your name, email, and Subscriber ID (as shown to the right) after you sign in with your Windows Live ID. You only need to do this once; then sign in to the MSDN Subscription site with the same Windows Live ID each time you visit.
-		
-
-Subscription Details:
-First Name: Wei
-Last Name: Chang
-Email: changwei@cn.ibm.com
-Subscriber ID: MVL9AD52A2F2
-
-[[https://msdn.microsoft.com/zh-cn/subscriptions/add][Activate Now]]
-
-Have questions about your subscription or need assistance? Contact us
-
-Please save this email for your records.
-
-Expression Professional Subscribers can activate here
-
-After you’ve activated your subscription benefits, you can:
-
-   1. Download software from [[https://msdn.microsoft.com/zh-cn/subscriptions/downloads][MSDN Subscriber Downloads*]]
-   2. Sign up for the MSDN Magazine. Visit the [[https://msdn.microsoft.com/zh-cn/subscriptions/manage][My Account]] page and click the link to sign up. (make sure to temporarily allow pop-ups)
-   3. Get Technical Support* when you encounter break-fix issues outside of production environments. (production-only issues can be raised through pay-per-incident Technical Support)
-   4. Sign up for the MSDN Flash newsletter to stay up to date on the latest development news from Microsoft. 
-
-Best wishes for your software development projects.
-
-The MSDN Subscriptions Team
-
-
- your administrator may have chosen to not enable Subscriber Downloads or Technical Support benefits on your account. If these
-are not listed on the My Account page, please contact your company's administrator to enable the benefits.  
-
-** Win 7
-
-
-
- http://csdld01.cn.ibm.com/ITweb.nsf/ContentDocsByTitle/KMS+Activation+Service
-
-  - Win7 http://hi.baidu.com/shuimuyulin/blog/category/win7%CF%B5%CD%B3
-
-
-
-
-
 
 
 * [[http://voicechatter.org/quickstart.php][Voice Chatter]]

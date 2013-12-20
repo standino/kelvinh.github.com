@@ -912,53 +912,6 @@ Then browse for the connected interface (eth0, wlan0, etc)
 
 
  
-* Wireless 
-
-[[https://w3.tap.ibm.com/w3ki03/display/linuxportal/IBM+LEAP+Wifi+Wireless+Authentication#IBMLEAPWifiWirelessAuthentication-IBMLEAPWifiWirelessAuthenticationsteps][IBM LEAP upgrade]]
-
-https://w3.tap.ibm.com/w3ki/display/RSTL/WiFi-nonWin
-
- - install the driver according to [[../etc/FirstTimeHowTo.html][First time how to]]
- - sudo gedit /etc/network/interfaces 
-  <src>
-auto lo
-iface lo inet loopback
-
-auto eth0
-iface eth0 inet dhcp
-
-iface dsl-provider inet ppp
-pre-up /sbin/ifconfig eth0 up # line maintained by pppoeconf
-provider dsl-provider
-
-
-auto ath0
-iface ath0 inet dhcp
-wpa-ssid IBM
-wpa-scan-ssid 1
-wpa-auth-alg OPEN
-wpa-key-mgmt IEEE8021X
-wpa-eap LEAP
-wpa-ap-scan 2
-wpa-identity changwei@cn.ibm.com
-wpa-password nNvinW)8qUa0
-
-
-  </src>
- password for ring: institute4t60
-
- - execute *sudo myleap up|down|bounce* to start|stop|restart wireless.
- - 以后使用 sudo pon dsl-provider 拨号上网，使用sudo poff dsl-provider
-   下线。sudo plog查看拨号日志。 
-
-* AT&T Global Network Client
-
-Web site to get a ID for AGN: http://w3-03.ibm.com/tools/it/ittools.nsf/main/ATTNC_new_users
-<src>
-# agn
-# Tested in GUTSY/HARDY
-sudo apt-get install agnclient
-</src>
 
 
 * Connect to windows
@@ -1020,125 +973,10 @@ sudo checkinstall
 这样生成一个包，再安装时如果失败了也可以通过新立德来卸载它。
 
 
-* Wireless Misc
-
- 1. install the driver according to [[../etc/FirstTimeHowTo.html][First time how to]]
- 2. 
- 2. Click Network Manager (as pictured below) and select Connect to Other Wireless Network
- 3. Network name is always IBM, security is LEAP. Key manager WPA-EPA
- 4. Fill in your [[../other/index.html#sec8][username and password]] from the mail you were sent:
-   changwei@cn.ibm.com nNvinW)8qUa0
 
 
 
-[[../etc/connecting_moinmoin_wastes_my_time_by_not_handling_images_with_spaces.png]]
 
-[[../etc/Connected.png]]
-
-
-execute *sudo myleap up* to start wireless.
-
-Install wireless drivers according to
-http://madwifi.org/wiki/UserDocs/Distro/Debian/MadWifi
-
-http://forum.ubuntu.org.cn/viewtopic.php?p=735651&sid=92cb9ae9f464e795781824204190ddf3
-
-https://ltc3.linux.ibm.com/wiki/WirelessConnectivityOnLinux
-
-https://w3.tap.ibm.com/w3ki/display/UHH/Installing+Hardy+on+a+T61p
-
-
-
-exe *echo "ath_pci" | sudo tee -a /etc/modules*
-
- start wireless drivers : modprobe ath_pci
-
- start LED: sudo sysctl -w dev.wifi0.softled=1
-            sudo sysctl -w dev.wifi0.ledpin=1
-
- 
-sudo gedit /etc/network/interfaces 
-<src>
-
-auto lo
-iface lo inet loopback
-
-iface dsl-provider inet ppp
-pre-up /sbin/ifconfig eth0 up # line maintained by pppoeconf
-provider dsl-provider
-
-auto eth0
-iface eth0 inet manual
-
-auto ath0
-iface ath0 inet dhcp
-wpa-ssid IBM
-wpa-scan-ssid 1
-wpa-auth-alg OPEN
-wpa-key-mgmt IEEE8021X
-wpa-eap LEAP
-wpa-ap-scan 2
-wpa-identity changwei@cn.ibm.com
-wpa-password nNvinW)8qUa0
-
-
-</src>
-
-
-
-* Setup Printer in IBM
-
-Install this package restart your Firefox and go to IBM Global Print web site to install the printer. http://w3-3.ibm.com/tools/print/index.html
-<src>
-# Tested in GUTSY
-# Restart your Firefox, after install
-sudo apt-get install lud-gpws
-</src>
-<src>
-# for ubuntu 8.04 (Hardy) create a link in
-sudo ln -s /usr/lib/firefox/plugins/lud-gpws.so /usr/lib/xulrunner-addons/plugins/ibmgpws.so
-</src>
-
-* AT&T Global Network Client Misc
-
-Web site to get a ID for AGN: http://w3-03.ibm.com/tools/it/ittools.nsf/main/ATTNC_new_users
-<src>
-# agn
-# Tested in GUTSY/HARDY
-sudo apt-get install agnclient
-</src>
-I found some problem with the agnLogArchive.tcl, after you reboot the machine execute:
-<src>
-# kill the agnLogArchive.tcl script
-killall agnclient
-sudo /etc/init.d/agnclientd stop
-sudo /etc/init.d/agnLogd stop
-sudo killall tclsh
-sudo rm /var/agns/fifo/*
-sudo /etc/init.d/agnclientd start
-sudo /etc/init.d/agnLogd start 
-</src>
-How to get the latest version of agn. This is not required, it's just here for reference:
-<src>
-# more up to date agn client
-mkdir tmp/agn ; cd tmp/agn
-wget ftp://ftp.attglobal.net/pub/client/linux/agnclient-1.0-2.0.1.3000.i386.rpm
-wget http://blog.afmacedo.com/linux/ubuntu_rpm2deb.sh
-chmod +x ubuntu_rpm2deb.sh
-./ubuntu_rpm2deb.sh --deps
-./ubuntu_rpm2deb.sh agnclient-1.0-2.0.1.3000.i386.rpm
-sudo dpkg -i agnclient-1.0-2.0.1.3000.i386.deb
-# just to make sure all dependencies are installed
-sudo apt-get install
-</src>
-
-  at&t linux website is: http://www.attnetclient.com/linux/ * Forum about ubuntu: http://attnetclient.com/forum/viewtopic.php?p=2309#2309 * How to create deb from the rpm official release: http://blog.afmacedo.com/?p=11
-
-* Repository 
-
-~/bin/sources.list:
-
-< include file="~/ideas/bin/sources.list" markup="src" lang="sh">
 
 * Gnome DO
 
@@ -1172,15 +1010,6 @@ https://wiki.ubuntu.com/GnomeDo/Manual
 
 至此焦点问题算是解决了，试用还是挺顺手的~~lol
 
-* Notes 8.5
-
-You can get the debs here: ftp://pokgsa.ibm.com/projects/o/openclient/lotus/notes/beta/8.5/latest/
-
-Download all of them and then install ibm_lotus_notes-8.5-20080819.0130.i586.deb first. This will satisfy all dependencies for the
-remaining files, which you can install either one-at-a-time or as a block. 
-
-Please note that this is not a software source that you can define in Synaptic. If there's an update to these files you will have
-to re-download them and update them manually. 
 
 * Dual monitor
 
@@ -2352,9 +2181,6 @@ su -c 'yum localinstall --nogpgcheck http://download1.rpmfusion.org/free/fedora/
 
 sudo yum install agnclient
 
-sudo yum grouplist|grep IBM
-
-sudo yum groupinstall "IBM Client Java" "IBM Lotus Notes" "IBM Sametime" 
 
 sudo yum install ibus.x86_64 ibus-gtk2.i686 filezilla.x86_64 emacs.x86_64
 
@@ -2368,10 +2194,6 @@ sudo yum install mercurial.x86_6 emacs-mercurial-el.x86_64 aspell aspell-en
 sudo yum install gnash-plugin.x86_64
 
 ** Input method in notes or sametime
-
-http://ibmforums.ibm.com/forums/thread.jspa?messageID=1921274&tstart=0&#1921274
-
-
 sudo yum install ibus-gtk2.i686 
 
 ** DB2
@@ -2379,10 +2201,6 @@ sudo yum install ibus-gtk2.i686
 
 IBM DB2 Enterprise Server Edition 9.7 for Linux® on AMD64 and Intel® EM64T systems (x64) English (CZ19NEN)	
 
-
-Wei Chang/China/IBM
-
-D23M0037/23/M/IBM
 
 
 ** 美化
@@ -2901,14 +2719,6 @@ sudo systemctl status firewalld.service
 http://blog.csdn.net/qihuanfengyun/article/details/6790990
 http://www.cnblogs.com/heart-runner/archive/2011/12/14/2287370.html
 
-* ISAM
-
-disable firewalld to allow isam to upload the scan resluts. 
-
-先关闭firewalld, 在isam 里面启动scan,然后看Ｌog，如果看到启动wst, 立刻启动firewalld. 
-
-sudo systemctl stop firewalld.service  
-
 * [[https://w3-connections.ibm.com/wikis/home?lang=zh_CN#!/wiki/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/Installed%20IBM%20Notes%209%20-%20SUT%20doesn't%20work][Installed IBM Notes 9 - SUT doesn't work]]
 
 Problem
@@ -3138,27 +2948,6 @@ You can add more than one package file to the end of the command.
 
 http://jfbcb.com/article/detail/how-to-install-chrome-latest-version-on-centos64/
 
-* Redhat 113 DNS
-
-[root@bxv5v1054 network-scripts]# cat ifcfg-Auto_eth1 
-TYPE=Ethernet
-BOOTPROTO=none
-IPADDR=9.110.82.113
-PREFIX=24
-GATEWAY=9.110.82.1
-DEFROUTE=yes
-IPV4_FAILURE_FATAL=yes
-IPV6INIT=no
-NAME="Auto eth1"
-UUID=0a231697-295f-4eda-b4c4-ca7577bef0b9
-ONBOOT=yes
-NETMASK=255.255.255.0
-DEVICE=Auto_eth1
-USERCTL=no
-HWADDR=00:50:56:AA:53:75
-LAST_CONNECT=1369120609
-DNS1=9.181.2.101
-DNS2=9.181.2.102
 
 
 * is not in the sudoers file

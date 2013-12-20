@@ -1,6 +1,6 @@
 #+TITLE:       programming 
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/pro
 #+KEYWORDS:    programming
