@@ -12,7 +12,7 @@
     <div>
       <header class="masthead">
         <h1 class="masthead-title"><a href="/">Keep going</a></h1>
-        <p>虽然还是比较迷茫，但是请不要忘记努力超越自己！</p>
+        <p>努力超越自己！</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/wiki/">Wiki</a></li>
@@ -252,59 +252,14 @@ $ hgpullsvn
 </p>
 </div>
 </div>
+
+
 <div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">My Projects layout</h2>
-<div class="outline-text-2" id="text-6">
-<p>
-There should be three type of project. 
-</p>
-
-<p>
-One is the configurations, this is for the different system.Usually, it should be the home folder.
-</p>
-
-<p>
-Another is the source code they are platform independent. But need some branches.
-</p>
-
-<p>
-The last on is the documentation and books. They just need update, and need not worry about the platform or version. 
-</p>
-
-<p>
-&lt;src&gt;
-</p>
-
-<p>
--ideas  所有的个人项目，需要使用 hg 进行版本管理
--- projectA
----    win
----    cygwin
----    ubuntu
-</p>
-
-<p>
--netsyncdisc  网络同步盘 个人文档，图书，个人开发项目使用的工具
--- books
--- software
--- openSourceProjects
-</p>
-
-<p>
--work 暂定，存放公司项目开发的代码，文档和工具。
-</p>
-
-<p>
-&lt;/src&gt;
-</p>
-</div>
+<h2 id="sec-6">subversion</h2>
 </div>
 <div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">subversion</h2>
-</div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">1 create repos</h2>
-<div class="outline-text-2" id="text-8">
+<h2 id="sec-7">1 create repos</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 &lt;src&gt;
 $ svnadmin create /path/to/repos
@@ -329,9 +284,9 @@ conf</i>  dav/  db/  format  hooks/  locks/  README.txt
 </p>
 </div>
 </div>
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">2 Import projects</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">2 Import projects</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 &lt;src&gt;
 </p>
@@ -390,33 +345,33 @@ will@will-laptop:~/ideas/newlogistics$ svn mv <a href="https://newlogistics.goog
 </p>
 </div>
 </div>
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">Export repos</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Export repos</h2>
+<div class="outline-text-2" id="text-9">
 <p>
 svn export <a href="file:////c:/archive/svn/repository">file:////c:/archive/svn/repository</a> my-export20080505
 </p>
 </div>
 </div>
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11">Check out project</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Check out project</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 svn co svn://www.standino.com/trunk/standino/ideas/eu4db/ 
 </p>
 </div>
 </div>
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">View log</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">View log</h2>
+<div class="outline-text-2" id="text-11">
 <p>
 svn log -v
 </p>
 </div>
 </div>
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">view the old file</h2>
-<div class="outline-text-2" id="text-13">
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">view the old file</h2>
+<div class="outline-text-2" id="text-12">
 <p>
 &lt;src&gt;
 svn cat --revision 2 rules.txt 
@@ -424,9 +379,9 @@ svn cat --revision 2 rules.txt
 </p>
 </div>
 </div>
-<div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14">EXTERNAL</h2>
-<div class="outline-text-2" id="text-14">
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">EXTERNAL</h2>
+<div class="outline-text-2" id="text-13">
 <p>
 C:\standino\ideas&gt;svn propedit svn:externals .
 </p>
@@ -446,13 +401,13 @@ logistics  <a href="https://newlogistics.googlecode.com/svn/trunk">https://newlo
 </p>
 </div>
 </div>
-<div id="outline-container-sec-15" class="outline-2">
-<h2 id="sec-15">Make a branch</h2>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">Make a branch</h2>
 </div>
 
-<div id="outline-container-sec-16" class="outline-2">
-<h2 id="sec-16">Using emacs as editor</h2>
-<div class="outline-text-2" id="text-16">
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">Using emacs as editor</h2>
+<div class="outline-text-2" id="text-15">
 <p>
 update .bahrc
 </p>
@@ -474,9 +429,9 @@ export EDITOR="emacs-nox.exe -q"
 
 
 
-<div id="outline-container-sec-17" class="outline-2">
-<h2 id="sec-17">svn export — Export a clean directory tree.</h2>
-<div class="outline-text-2" id="text-17">
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">svn export — Export a clean directory tree.</h2>
+<div class="outline-text-2" id="text-16">
 <p>
 &lt;example&gt;
 Synopsis
@@ -557,17 +512,17 @@ Exported revision 15.
 </div>
 </div>
 
-<div id="outline-container-sec-18" class="outline-2">
-<h2 id="sec-18">Cygwin环境下使用Subversion和SSH (Not verified)</h2>
-<div class="outline-text-2" id="text-18">
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17">Cygwin环境下使用Subversion和SSH (Not verified)</h2>
+<div class="outline-text-2" id="text-17">
 <p>
 Subversion既可以和Apache相结合通过http协议存取，也可以通过ssh协议来存取。本文主要介绍在Cygwin下如何配置Subversion和SSH服务器。
 </p>
 </div>
 
-<div id="outline-container-sec-18-1" class="outline-3">
-<h3 id="sec-18-1">配置SSH服务器</h3>
-<div class="outline-text-3" id="text-18-1">
+<div id="outline-container-sec-17-1" class="outline-3">
+<h3 id="sec-17-1">配置SSH服务器</h3>
+<div class="outline-text-3" id="text-17-1">
 <p>
 首先从<a href="http://www.cygwin.com下载Cygwin安装程序，安装过程中一定要选择以下包，其他安装包可以根据需要来选择">http://www.cygwin.com下载Cygwin安装程序，安装过程中一定要选择以下包，其他安装包可以根据需要来选择</a>。
 </p>
@@ -599,9 +554,9 @@ tty ntsec
 </p>
 </div>
 </div>
-<div id="outline-container-sec-18-2" class="outline-3">
-<h3 id="sec-18-2">配置访问Svbversion服务器</h3>
-<div class="outline-text-3" id="text-18-2">
+<div id="outline-container-sec-17-2" class="outline-3">
+<h3 id="sec-17-2">配置访问Svbversion服务器</h3>
+<div class="outline-text-3" id="text-17-2">
 <p>
 Subversion的具体使用方法可以参考<a href="http://www.subversion.org.cn/svnbook/">使用手册</a>。通过ssh访问SubVersion的方法：
 </p>
@@ -617,9 +572,9 @@ svn co svn+ssh://servername/project
 </div>
 </div>
 
-<div id="outline-container-sec-19" class="outline-2">
-<h2 id="sec-19">Git</h2>
-<div class="outline-text-2" id="text-19">
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18">Git</h2>
+<div class="outline-text-2" id="text-18">
 <p>
 <a href="http://git.or.cz/course/svn.html">Git - SVN Crash Course</a>
 </p>
@@ -645,9 +600,9 @@ git config --global core.quotepath false
 </p>
 </div>
 </div>
-<div id="outline-container-sec-20" class="outline-2">
-<h2 id="sec-20">SVN Layout</h2>
-<div class="outline-text-2" id="text-20">
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19">SVN Layout</h2>
+<div class="outline-text-2" id="text-19">
 <p>
 &lt;example&gt;
 www.standino.com/
@@ -658,20 +613,20 @@ www.standino.com/
 </p>
 </div>
 </div>
-<div id="outline-container-sec-21" class="outline-2">
-<h2 id="sec-21">HG</h2>
-<div class="outline-text-2" id="text-21">
-</div><div id="outline-container-sec-21-1" class="outline-3">
-<h3 id="sec-21-1">方便的安装。</h3>
-<div class="outline-text-3" id="text-21-1">
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20">HG</h2>
+<div class="outline-text-2" id="text-20">
+</div><div id="outline-container-sec-20-1" class="outline-3">
+<h3 id="sec-20-1">方便的安装。</h3>
+<div class="outline-text-3" id="text-20-1">
 <p>
 不论是mac, linux还是windows，不论你是命令行的爱好者还是乌龟的忠实粉丝，你总能找到一款适合你的。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-21-2" class="outline-3">
-<h3 id="sec-21-2">2个命令创建一个Mercuria仓库，</h3>
-<div class="outline-text-3" id="text-21-2">
+<div id="outline-container-sec-20-2" class="outline-3">
+<h3 id="sec-20-2">2个命令创建一个Mercuria仓库，</h3>
+<div class="outline-text-3" id="text-20-2">
 <p>
 &gt; hg init
 &gt; hg serve，
@@ -679,9 +634,9 @@ www.standino.com/
 </p>
 </div>
 </div>
-<div id="outline-container-sec-21-3" class="outline-3">
-<h3 id="sec-21-3">方便的分布式功能</h3>
-<div class="outline-text-3" id="text-21-3">
+<div id="outline-container-sec-20-3" class="outline-3">
+<h3 id="sec-20-3">方便的分布式功能</h3>
+<div class="outline-text-3" id="text-20-3">
 <p>
 上一次在印度我想在一台新电脑上安装源代码，无奈网络速度太慢，于是乎，我找到一个存有源码的机器，hg serve，这样我得到了一个本地服务器，通过它，我在1分钟内拿到了代码，然后将hgrc(一个mercurial的配置文件)的URL指向在中国的服务器，继续更新后面的几个patch。 将一个1个小时的操作变成2分钟的操作。
 </p>
@@ -695,9 +650,9 @@ www.standino.com/
 </p>
 </div>
 </div>
-<div id="outline-container-sec-21-4" class="outline-3">
-<h3 id="sec-21-4">便捷的本地提交</h3>
-<div class="outline-text-3" id="text-21-4">
+<div id="outline-container-sec-20-4" class="outline-3">
+<h3 id="sec-20-4">便捷的本地提交</h3>
+<div class="outline-text-3" id="text-20-4">
 <p>
 使用Mercurial，你可以在没有网络的情况下通过
 &gt; hg ci
@@ -705,33 +660,33 @@ www.standino.com/
 </p>
 </div>
 </div>
-<div id="outline-container-sec-21-5" class="outline-3">
-<h3 id="sec-21-5">离线操作</h3>
-<div class="outline-text-3" id="text-21-5">
+<div id="outline-container-sec-20-5" class="outline-3">
+<h3 id="sec-20-5">离线操作</h3>
+<div class="outline-text-3" id="text-20-5">
 <p>
 不论是Mercurial的提交或者是diff，rollback，strip, merge都可以在没有网络的情况下进行，想像一下在中国开发，服务器在美国的痛苦：那缓慢爬行的小乌龟。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-21-6" class="outline-3">
-<h3 id="sec-21-6">速度优势</h3>
-<div class="outline-text-3" id="text-21-6">
+<div id="outline-container-sec-20-6" class="outline-3">
+<h3 id="sec-20-6">速度优势</h3>
+<div class="outline-text-3" id="text-20-6">
 <p>
 Mercurial是增量存储，并且它会每隔一段时间进行对整个Repository打一个快照，这样当你去clone repository(相当于svn checkout)的时候，它可以找到最近的一个快照，并在它的基础上应用后续的patch。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-21-7" class="outline-3">
-<h3 id="sec-21-7">基于patch的管理</h3>
-<div class="outline-text-3" id="text-21-7">
+<div id="outline-container-sec-20-7" class="outline-3">
+<h3 id="sec-20-7">基于patch的管理</h3>
+<div class="outline-text-3" id="text-20-7">
 <p>
 Mercurial将你的提交作为一个patch管理， 你可以很容易拿到别人的patch，通过hg客户端或者linux上的 patch命令将别人最新的修正打在你的工作目录里面。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-21-8" class="outline-3">
-<h3 id="sec-21-8">更多的便捷操作</h3>
-<div class="outline-text-3" id="text-21-8">
+<div id="outline-container-sec-20-8" class="outline-3">
+<h3 id="sec-20-8">更多的便捷操作</h3>
+<div class="outline-text-3" id="text-20-8">
 <p>
 你想将本地的某些提交取消? hg strip
 你想将server上的某些changeset取消？hg backout
@@ -864,9 +819,9 @@ Good Luck.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-22" class="outline-2">
-<h2 id="sec-22">My setup</h2>
-<div class="outline-text-2" id="text-22">
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21">My setup</h2>
+<div class="outline-text-2" id="text-21">
 <p>
 hg clone <a href="http://changweilaptop.dyn.webahead.ibm.com:8000/">http://changweilaptop.dyn.webahead.ibm.com:8000/</a> ideas
 </p>
@@ -877,18 +832,18 @@ hg clone <a href="http://9.186.119.53:8000/">http://9.186.119.53:8000/</a> ideas
 </p>
 </div>
 </div>
-<div id="outline-container-sec-23" class="outline-2">
-<h2 id="sec-23">How to use Emacs to work with Mercurial</h2>
-<div class="outline-text-2" id="text-23">
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22">How to use Emacs to work with Mercurial</h2>
+<div class="outline-text-2" id="text-22">
 <p>
 <a href="http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html">http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html</a>
 </p>
 </div>
 
 
-<div id="outline-container-sec-23-1" class="outline-3">
-<h3 id="sec-23-1">revert files</h3>
-<div class="outline-text-3" id="text-23-1">
+<div id="outline-container-sec-22-1" class="outline-3">
+<h3 id="sec-22-1">revert files</h3>
+<div class="outline-text-3" id="text-22-1">
 <p>
 hg revert .amsn/ -r 385
 </p>
@@ -900,18 +855,18 @@ hg revert .amsn/ -r 385
 </div>
 </div>
 </div>
-<div id="outline-container-sec-24" class="outline-2">
-<h2 id="sec-24">My remote Hg repository <a href="https://bitbucket.org/">https://bitbucket.org/</a></h2>
-<div class="outline-text-2" id="text-24">
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23">My remote Hg repository <a href="https://bitbucket.org/">https://bitbucket.org/</a></h2>
+<div class="outline-text-2" id="text-23">
 <p>
 hg push <a href="https://standino@bitbucket.org/standino/my-private-rep">https://standino@bitbucket.org/standino/my-private-rep</a>
 </p>
 </div>
 
 
-<div id="outline-container-sec-24-1" class="outline-3">
-<h3 id="sec-24-1">4.2. How to declare trust</h3>
-<div class="outline-text-3" id="text-24-1">
+<div id="outline-container-sec-23-1" class="outline-3">
+<h3 id="sec-23-1">4.2. How to declare trust</h3>
+<div class="outline-text-3" id="text-23-1">
 <p>
 Users can add settings to their $HOME/.hgrc to tell Mercurial to trust other users. For instance, if Bob has decided he can trust Alice not to try to delete his files when he looks at her repository, he could add:
 </p>
@@ -933,9 +888,9 @@ groups = dev-team
 </div>
 </div>
 
-<div id="outline-container-sec-25" class="outline-2">
-<h2 id="sec-25">比较两个 branch</h2>
-<div class="outline-text-2" id="text-25">
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24">比较两个 branch</h2>
+<div class="outline-text-2" id="text-24">
 <p>
 <a href="http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial">http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial</a>
 </p>
@@ -1011,7 +966,7 @@ hg branchdiff .
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2013-12-19</span>
+        <span title="last modification date" class="post-info">2013-12-20</span>
         <span title="tags" class="post-info"><a href="/tags/svn/">svn</a>, <a href="/tags/cvs/">cvs</a>, <a href="/tags/git/">git</a>, <a href="/tags/hg/">hg</a></span>
         <span title="author" class="post-info">U-360BUYAD\changwei</span>
       </div>

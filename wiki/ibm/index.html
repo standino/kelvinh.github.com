@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>IBM.org - Keep going</title>
+    <title>IBM产品的使用 - Keep going</title>
     <meta charset="utf-8" />
     <meta name="author" content="Will Chang" />
     <meta name="description" content="ibm" />
@@ -12,7 +12,7 @@
     <div>
       <header class="masthead">
         <h1 class="masthead-title"><a href="/">Keep going</a></h1>
-        <p>虽然还是比较迷茫，但是请不要忘记努力超越自己！</p>
+        <p>努力超越自己！</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/wiki/">Wiki</a></li>
@@ -30,152 +30,72 @@
 
 <div>
 <div class="post">
-<h1>IBM.org</h1>
-
+<h1>IBM产品的使用</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">RTC 301</a></li>
+<li><a href="#sec-2">Jazz</a></li>
+<li><a href="#sec-3">DB2</a></li>
+<li><a href="#sec-4">WAS</a>
+<ul>
+<li><a href="#sec-4-1">java.lang.NoClassDefFoundError: com.ibm.websphere.cluster.topography.DescriptionManagerFactory (initialization failure)</a></li>
+<li><a href="#sec-4-2">how to generate javacore, heapdump manually with wsadmin</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">LDAP</a></li>
+<li><a href="#sec-6">Mail Server</a></li>
+<li><a href="#sec-7">Jazz SCM</a></li>
+<li><a href="#sec-8">Websphere出现“打开过多的文件”异常</a></li>
+<li><a href="#sec-9">WID 6.2 on ubuntu</a></li>
+<li><a href="#sec-10">DB2 XQuery学习笔记</a></li>
+<li><a href="#sec-11">DB2联合数据库(Federated Database)</a></li>
+<li><a href="#sec-12">关 键 词： * informix * windows * switch * access * 连接数据库</a></li>
+<li><a href="#sec-13">Windows下使用C语言＋嵌入SQL实现DB2开发</a></li>
+<li><a href="#sec-14">RQM</a></li>
+<li><a href="#sec-15">Can not start WAS in RSA linux</a>
+<ul>
+<li><a href="#sec-15-1">Ｈow to fix</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">RSA V9</h2>
+<h2 id="sec-1">RTC 301</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-CZ7E5ML,CIM88ML,CIM89ML,CIM8AML,CIM8BML,CIM8CML
+/opt/ibm/WebSphere/AppServer/profiles/AppSrv06/bin/wsadmin.sh -f deploy.py -lang jython -user xxx@cn.ibm.com -password qaz1wsx2
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">RTC</h2>
+<h2 id="sec-2">Jazz</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-Jazz
-Connect to BF
-SCM tools
-Template
-Install
-DB2
-Uninstall DB2 on ubuntu
-Installation
-WAS
-RTC
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Mail Server</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-Bluepage LDAP
-使用 Rational Team Concert 构建团队
-Reporstory
-Cron job
-Jazz SCM
-Websphere Integration Developer
-Download Setup Files
-Profile on ubuntu
-Websphere出现“打开过多的文件”异常
-Publish Error on RAD 7.5 + WAS 7.0
-IBM WebSphere Application Server V7 Administration on Windows
-Hot deployment and dynamic reloading
-WID 6.2 on ubuntu
-Create profile
-Setup db2 connection
-IBM Packaging Utility
-Repo
-Setup SQO
-Remote debug
-create profile
-WAS admin setup
-Change pass word
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">DB2 Skill</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1">DB2联合数据库(Federated Database)</h3>
-<div class="outline-text-3" id="text-4-1">
-<p>
-DB2 data backup
-Add generated column
-DB2中有关日期和时间的函数，及应用
-With
-SQL0437W Performance of this complex query may be sub-optimal.
-在Windows环境下使用Cygwin中的gcc编译器实现DB2的嵌入SQL编程
-Contact
-Net search
-Code page
-Rebind SP
-Reset sequence
-How to start the db2 on windows
-Performance tuning
-WINDOWS下如何知道DB2的端口号?
-get ref of column
-Sametime
-ILog
-Notes
-Speed up
-Build forge
-Start build forge in Linux
-How can I update my new database password in IBM Rational Build Forge?
-RQM
-Setup WAS profile
-Tomcat
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">RSA 没有修改的文件也显示星号</h2>
-<div class="outline-text-2" id="text-5">
-<p>
-RTC 301
-/opt/ibm/WebSphere/AppServer/profiles/AppSrv06/bin/wsadmin.sh -f deploy.py -lang jython -user changwei@cn.ibm.com -password qaz1wsx2
-Hi Bob,
-We are migrating all the DSW projects from cvs to jazz scm. Buildforege does not support RTC 2.0 very well. We need a lot of work to setup and configure them, we also need to update the ant scripts. IGA RTC will be upgraded to RTC 3.0 in June or July. We may need to setup and configure it again after the upgrade.
-According to the teams which have used Jazz scm and RTC build engine, RTC build engine works well and we do not see any urgent need to use buildforge to do the build.
-If we use new buildforge, we need to create projects and update scripts and test. We already have a lot works in DSW 10.4 and
-</p>
-<ol class="org-ol">
-<li>We should not add more efforts to DSW 10.4/10.5. So we think we should reconsider it after all the projects migrate to jazz scm.
-</li>
-</ol>
-</div>
-</div>
-
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">Jazz</h2>
-<div class="outline-text-2" id="text-6">
-<p>
-Admin Console
-Jazz setup
-RTC Web
-使用 Rational Team Concert 与 BIRT 为数据处理创建定制报表，第 2 部分: 为报表创建数据源和数据集
-Blue Group
-Connect to BF
 Create a RTC build engine : "RationalBuildForgeConnector"
 <a href="http://jazz.net/forums/viewtopic.php?p=46073&sid=405b9ce85df26eb93a3bfc0569b1ffc7#46073">http://jazz.net/forums/viewtopic.php?p=46073&sid=405b9ce85df26eb93a3bfc0569b1ffc7#46073</a>
 <a href="https://jazz.net/wiki/bin/view/Main/RationalBuildForge/IntegrationWithRTC#Setup_an_RTC_Run_As_user_for_ass">https://jazz.net/wiki/bin/view/Main/RationalBuildForge/IntegrationWithRTC#Setup_an_RTC_Run_As_user_for_ass</a>
 The example is installed with the Build System Toolkit; it can be found at <i>opt/ibm/TeamConcertBuild/buildsystem/buildtoolkit/examples/standalone</i>. The build.xml file in that directory contains the steps to follow to run the example.
+</p>
+
+<p>
 SCM tools
 cp /datad/eadftp/public/dsw_dev_tools/repositories/native/scmtools_0.7.0.I20091211-1048.zip .
 Use below command line to check out source code.
-scm login -r <a href="https://btsjazz.dyn.webahead.ibm.com:9445/jazz">https://btsjazz.dyn.webahead.ibm.com:9445/jazz</a> -u changwei@cn.ibm.com -P qaz1wsx2
+scm login -r <a href="https://btsjazz.dyn.webahead.ibm.com:9445/jazz">https://btsjazz.dyn.webahead.ibm.com:9445/jazz</a> -u xxx@cn.ibm.com -P qaz1wsx2
 scm load -d . -r <a href="https://btsjazz.dyn.webahead.ibm.com:9445/jazz">https://btsjazz.dyn.webahead.ibm.com:9445/jazz</a> "Build on SQO Head Workspace"
 modify scm.ini to set jre path.
 Template
 Getting Started with Project Areas and Process in Rational Team Concert 2.0
-Install
-Notes://CSDLD01/48256F8C0020B1A3/BB2207E44A8BD1BC052566AB007D9C67/8A403106499593E24825760400128B93
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">DB2</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">DB2</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 Setup
 Uninstall DB2 on ubuntu
@@ -312,32 +232,28 @@ default max size of queue (bytes) = 65536
 </div>
 </div>
 
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">WAS</h2>
-</div>
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9"><a href="http://www.ibm.com/developerworks/forums/thread.jspa?messageID=14625012&tstart=0">java.lang.NoClassDefFoundError: com.ibm.websphere.cluster.topography.DescriptionManagerFactory (initialization failure)</a></h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">WAS</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><a href="http://www.ibm.com/developerworks/forums/thread.jspa?messageID=14625012&tstart=0">java.lang.NoClassDefFoundError: com.ibm.websphere.cluster.topography.DescriptionManagerFactory (initialization failure)</a></h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 add your hostname into /etc/hosts
-&lt;src&gt;
 </p>
 
-<p>
+<pre class="example">
 will@will IBM$ hostname
 will
 will@will IBM$ sudo gedit /etc/hosts
-</p>
-
-<p>
-&lt;/src&gt;
-</p>
+</pre>
+</div>
 </div>
 
 
-<div id="outline-container-sec-9-1" class="outline-3">
-<h3 id="sec-9-1">how to generate javacore, heapdump manually with wsadmin</h3>
-<div class="outline-text-3" id="text-9-1">
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">how to generate javacore, heapdump manually with wsadmin</h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
 一、generate javacore file
 </p>
@@ -371,20 +287,7 @@ will@will IBM$ sudo gedit /etc/hosts
 </li>
 <li>analyze the heapdump file with IBM tooling
 </li>
-</ol>
 
-
-<p>
-some experts from WAS team
-</p>
-
-<p>
-Tao N Zhang/China/IBM, — Good knowledge at WAS cache mechanism at least I know. Very kind to land you a hand - this is the guy told me who is the expert on wsadmin/jython and help us solve the scripts issue.
-Jun Guo Ku/China/IBM, — Good knowledge at wsadmin tooling at least I know.
-Peng Fei Sui/China/IBM, — Seems the owner of Javacore Analyzer Tool from alphawork. Expert on performance issue.
-Xue Xiang Cui/China/IBM, — Expert on troubleshotting
-</p>
-<ol class="org-ol">
 <li>Please see following suggestion to avoid any permission issue:
 </li>
 </ol>
@@ -411,9 +314,9 @@ file=C1FZ6ML
 </div>
 </div>
 </div>
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">LDAP</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">LDAP</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Users and Groups —&gt; Administrative user roles
 uid=917904672,c=cn,ou=bluepages,o=ibm.com
@@ -437,9 +340,9 @@ Download from  <a href="https://www14.software.ibm.com/webapp/dswdown/dswdown.ws
 </div>
 </div>
 
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11">Mail Server</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Mail Server</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 internet1.lotus.com
 <a href="https://localhost:9443/jazz/setup">https://localhost:9443/jazz/setup</a> AMDIN/ADMIN
@@ -493,16 +396,16 @@ HOME=/
 </p>
 </div>
 </div>
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">Jazz SCM</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Jazz SCM</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 Jazz SCM FAQ:
 import from SVN or CVS
 Importing data from Subversion and CVS into Jazz SCM
 An instruction to import source code.
 3.75G in cvs server
-jbe -repository <a href="https://localhost:9445/jazz">https://localhost:9445/jazz</a> -engineId dsw -userId changwei@cn.ibm.com -pass myemacs12
+jbe -repository <a href="https://localhost:9445/jazz">https://localhost:9445/jazz</a> -engineId dsw -userId xxx@cn.ibm.com -pass password
 testjazz.txt
 Websphere Integration Developer
 Change WAS ports
@@ -523,9 +426,9 @@ will@will-laptop:/opt/ibm2/WID7_WTE/runtimes/bi_v7/bin/ProfileManagement$ ./pmt.
 </div>
 </div>
 
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">Websphere出现“打开过多的文件”异常</h2>
-<div class="outline-text-2" id="text-13">
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Websphere出现“打开过多的文件”异常</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 <a href="http://shjy-nicholas.javaeye.com/blog/413483">http://shjy-nicholas.javaeye.com/blog/413483</a>
 vi /etc/security/limits.conf
@@ -590,9 +493,9 @@ Hot deployment and dynamic reloading
 </div>
 </div>
 
-<div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14">WID 6.2 on ubuntu</h2>
-<div class="outline-text-2" id="text-14">
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">WID 6.2 on ubuntu</h2>
+<div class="outline-text-2" id="text-9">
 <p>
 C1Q24ML, C1Q25ML, C1Q26ML, C1Q28ML
 Installing WebSphere Application Server 6.1 on Ubuntu
@@ -1092,9 +995,9 @@ SQL and XQuery tutorial series for IBM DB2
 </div>
 </div>
 
-<div id="outline-container-sec-15" class="outline-2">
-<h2 id="sec-15">DB2 XQuery学习笔记</h2>
-<div class="outline-text-2" id="text-15">
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">DB2 XQuery学习笔记</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 Java操作DB2 XML数据实践
 XQuery samples
@@ -1618,9 +1521,9 @@ PASSING companydocs AS "x")~
 </div>
 </div>
 
-<div id="outline-container-sec-16" class="outline-2">
-<h2 id="sec-16">DB2联合数据库(Federated Database)</h2>
-<div class="outline-text-2" id="text-16">
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">DB2联合数据库(Federated Database)</h2>
+<div class="outline-text-2" id="text-11">
 <p>
 <a href="http://blog.csdn.net/dark_agent/archive/2005/06/11/392128.aspx">http://blog.csdn.net/dark_agent/archive/2005/06/11/392128.aspx</a>
 <a href="http://www.ibm.com/developerworks/cn/db2/library/techarticles/0304lurie/0304lurie.html">http://www.ibm.com/developerworks/cn/db2/library/techarticles/0304lurie/0304lurie.html</a>
@@ -1630,65 +1533,9 @@ PASSING companydocs AS "x")~
 <a href="http://www.ibm.com/developerworks/cn/views/db2/tutorials.jsp?cv_doc_id=85523">http://www.ibm.com/developerworks/cn/views/db2/tutorials.jsp?cv_doc_id=85523</a>
 DB2 data backup
 <a href="http://oraclecaicai.itpub.net/post/40820/493298">http://oraclecaicai.itpub.net/post/40820/493298</a>
-2009-12-15
-上午10:29:56: changwei@cn.ibm.com - Wei Chang/China/IBM: Hi
-上午10:30:22: Dan Yang Zhu: yes
-上午10:30:37: changwei@cn.ibm.com - Wei Chang/China/IBM:  你能告诉我，你们是怎么做数据库备份的吗？
-上午10:30:59: Dan Yang Zhu: 用db2的backup命令, 在线备份
-上午10:31:26: changwei@cn.ibm.com - Wei Chang/China/IBM: 你们应该是做了一些job吧？
-上午10:31:53: Dan Yang Zhu: 嗯, 写的korn shell
-上午10:32:10: changwei@cn.ibm.com - Wei Chang/China/IBM: 能把那些脚本发给我吗？
-上午10:32:26: changwei@cn.ibm.com - Wei Chang/China/IBM: 我需要定期备份一个数据库
-上午10:32:37: Dan Yang Zhu: en
-上午10:32:44: Dan Yang Zhu: 好
-上午10:32:48: changwei@cn.ibm.com - Wei Chang/China/IBM: 谢谢
-上午10:33:13: Dan Yang Zhu: V9的库吧
-上午10:33:17: changwei@cn.ibm.com - Wei Chang/China/IBM: 对
-上午10:33:21: changwei@cn.ibm.com - Wei Chang/China/IBM: 9.1
-上午10:33:56: changwei@cn.ibm.com - Wei Chang/China/IBM: 我备份不会有什么副作用吧？
-上午10:35:28: Dan Yang Zhu: 什么意思?
-上午10:35:42: changwei@cn.ibm.com - Wei Chang/China/IBM: 就是不会对运行的数据有影响
-上午10:35:46: Dan Yang Zhu: 我们的脚本判断逻辑较多
-上午10:35:47: changwei@cn.ibm.com - Wei Chang/China/IBM: 导致数据库出问题
-上午10:36:05: Dan Yang Zhu: 你参考一下吧
-上午10:36:08: changwei@cn.ibm.com - Wei Chang/China/IBM: 好的
-上午10:36:09: Dan Yang Zhu: 发给你了
-上午10:36:20: Dan Yang Zhu: 在线备份会有一些表空间锁
-上午10:36:39: Dan Yang Zhu: 备份的时候可能会有些transaction 等待锁
-上午10:36:48: Dan Yang Zhu: 其它还好吧
-上午10:36:51: changwei@cn.ibm.com - Wei Chang/China/IBM: ok, thx
-上午10:41:17: Dan Yang Zhu: 脚本有点复杂,
-上午10:41:23: Dan Yang Zhu: 不用研究了
-上午10:41:27: Dan Yang Zhu: 基本命令就是 -
-上午10:41:28: Dan Yang Zhu: backup database ${DB} online to
-上午10:41:55: Dan Yang Zhu: backup database ${DB} online to A_DIR
-上午10:42:05: changwei@cn.ibm.com - Wei Chang/China/IBM: ok, thx
-上午10:42:19: Dan Yang Zhu: 需要先修改几个参数
-上午10:42:32: Dan Yang Zhu: 你知道吧, logretain
-上午10:42:48: changwei@cn.ibm.com - Wei Chang/China/IBM: 不知道，怎么改？
-上午10:42:51: Dan Yang Zhu: 日志设置为归档日志模式,
-上午10:42:58: Dan Yang Zhu: 你check 一下网上吧
-上午10:43:00: changwei@cn.ibm.com - Wei Chang/China/IBM: 好
-上午10:43:03: Dan Yang Zhu: 多的是文档说这个
-上午10:43:12: Dan Yang Zhu: 一个DB 配置参数
-上午10:43:24: changwei@cn.ibm.com - Wei Chang/China/IBM: 找你们这些专家不是更安全一些。:)
-上午10:44:17: Dan Yang Zhu: lol
-上午10:46:48: Dan Yang Zhu: 最简单的设置方法
-上午10:46:54: Dan Yang Zhu: 你就修改一个参数
-上午10:47:01: Dan Yang Zhu: 连接到你的DB后,
-上午10:47:22: Dan Yang Zhu: db2 update db cfg using LOGARCHMETH1 DISK:/db2_archive/
-上午10:47:31: Dan Yang Zhu: 就启用了归档日志模式了
-上午10:47:41: Dan Yang Zhu: 然后做一个全备,
-上午10:47:52: Dan Yang Zhu: backup db DB_name to xxx,
-上午10:48:06: Dan Yang Zhu: 之后就可以用我刚才给你的带online 参数的命令了
-上午10:48:23: Dan Yang Zhu: 我给你的路径名是个sample啊, 注意
-上午10:48:30: changwei@cn.ibm.com - Wei Chang/China/IBM: en
-上午10:48:32: changwei@cn.ibm.com - Wei Chang/China/IBM: 好
-上午10:48:49: Dan Yang Zhu: 注意一个
-上午10:49:31: Dan Yang Zhu: 修改了那个LOGARCHMETH1  参数后, 整个库就挂起了, 必须做一个离线全备
-上午10:55:29: changwei@cn.ibm.com - Wei Chang/China/IBM: 好，那我下午做吧
-上午10:55:44: Dan Yang Zhu: 嗯
-上午10:56:04: Dan Yang Zhu: 对, 最好等大家都不用的时候, 在做这个事情
+</p>
+
+<p>
 Add generated column
 SET INTEGRITY FOR SODS2.IBM_EMP OFF alter table SODS2.IBM_EMP add EMAIL_ADR_LCASE varchar(80) GENERATED AS (lower(EMAIL_ADR)) SET INTEGRITY FOR SODS2.IBM_EMP immediate checked FORCE GENERATED
 DB2中有关日期和时间的函数，及应用
@@ -1863,43 +1710,8 @@ WEEK_ISO 返回参数中一年的第几周，用范围在 1-53 的整数值表�
 
 <p>
 (<a href="http://www.fanqiang.com">http://www.fanqiang.com</a>)
-With
-WITH RPL (PID, ID, name) AS ( SELECT ROOT.PID, ROOT.ID, ROOT.Name FROM regr ROOT WHERE ROOT.PID = 8. UNION ALL ...
 </p>
 
-
-
-<p>
-with quotedata(WEB_QUOTE_NUM, PROG_CODE, ACQRTN_CODE, QUOTE_STAGE_CODE, QUOTE_TYPE_CODE, MOD_DATE,  licount) as (
-select wq.WEB_QUOTE_NUM, wq.PROG_CODE, wq.ACQRTN_CODE, wq.QUOTE_STAGE_CODE, wq.QUOTE_TYPE_CODE, month(wq.MOD_DATE), count(wqli.PART_NUM) licount
-from ebiz1.web_quote_line_item wqli
-, ebiz1.web_quote wq
-where wqli.WEB_QUOTE_NUM = wq.WEB_QUOTE_NUM
-and date(wq.MOD_DATE) &gt;= '2008-01-01'
-and date(wq.MOD_DATE) &lt; '2009-01-01'
-group by wq.WEB_QUOTE_NUM, wq.PROG_CODE, wq.ACQRTN_CODE, wq.QUOTE_STAGE_CODE, wq.QUOTE_TYPE_CODE, wq.MOD_DATE
-order by licount desc
-) select max(licount),MOD_DATE from quotedata where licount&gt;=100 group by MOD_DATE
---and  QUOTE_STAGE_CODE in ('SAPSBQT','SAPQUOTE')
-@
-with quotedata(WEB_QUOTE_NUM, PROG_CODE, ACQRTN_CODE, QUOTE_STAGE_CODE, QUOTE_TYPE_CODE, MOD_DATE,  licount) as (
-select wq.WEB_QUOTE_NUM, wq.PROG_CODE, wq.ACQRTN_CODE, wq.QUOTE_STAGE_CODE, wq.QUOTE_TYPE_CODE, month(wq.MOD_DATE), count(wqli.PART_NUM) licount
-from ebiz1.web_quote_line_item wqli
-, ebiz1.web_quote wq
-where wqli.WEB_QUOTE_NUM = wq.WEB_QUOTE_NUM
-and date(wq.MOD_DATE) &gt;= '2008-01-01'
-and date(wq.MOD_DATE) &lt; '2009-01-01'
-group by wq.WEB_QUOTE_NUM, wq.PROG_CODE, wq.ACQRTN_CODE, wq.QUOTE_STAGE_CODE, wq.QUOTE_TYPE_CODE, wq.MOD_DATE
-order by licount desc
-)
-select double(sum(licount))/double(count(1)), MOD_DATE from quotedata  group by MOD_DATE
---and  QUOTE_STAGE_CODE in ('SAPSBQT','SAPQUOTE')
-@
-</p>
-
-<p>
-@
-</p>
 
 <p>
 SQL0437W Performance of this complex query may be sub-optimal.
@@ -1913,12 +1725,12 @@ The statement may achieve sub-optimal performance since the complexity of the qu
 </div>
 </div>
 
-<div id="outline-container-sec-17" class="outline-2">
-<h2 id="sec-17">关 键 词： * informix * windows * switch * access * 连接数据库</h2>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">关 键 词： * informix * windows * switch * access * 连接数据库</h2>
 </div>
-<div id="outline-container-sec-18" class="outline-2">
-<h2 id="sec-18">Windows下使用C语言＋嵌入SQL实现DB2开发</h2>
-<div class="outline-text-2" id="text-18">
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">Windows下使用C语言＋嵌入SQL实现DB2开发</h2>
+<div class="outline-text-2" id="text-13">
 <p>
 Cygwin,gcc的介绍和安装在前面的文章有将过，请参考
 在Windows中使用Cygwin环境下的gcc编译器编译Informix ESQ/C程序
@@ -1937,8 +1749,9 @@ printf("OK = [%s] \n", firstnme);
 EXEC SQL DISCONNECT CURRENT;
 return(0); }
 Contact
-王东明 wangdm@cn.ibm.com 82453401
-冯吉松 fengjis@cn.ibm.com 82452521
+</p>
+
+<p>
 Net search
 <a href="http://www.ibm.com/developerworks/forums/message.jspa?messageID=2798439">http://www.ibm.com/developerworks/forums/message.jspa?messageID=2798439</a>
 db2 select * from SODS2.customer cp where (CONTAINS(cp.cust_name_uprcse, '\"DEMO%\"') = 1)
@@ -2009,9 +1822,9 @@ db_password 5918axxxxxxxxadc168e34e63aca6d29caeec965c23
 </div>
 </div>
 
-<div id="outline-container-sec-19" class="outline-2">
-<h2 id="sec-19">RQM</h2>
-<div class="outline-text-2" id="text-19">
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">RQM</h2>
+<div class="outline-text-2" id="text-14">
 <p>
 Setup WAS profile
 admin console user name and password: admin/pass
@@ -2077,9 +1890,9 @@ RTC 301
 </div>
 </div>
 
-<div id="outline-container-sec-20" class="outline-2">
-<h2 id="sec-20">Can not start WAS in RSA linux</h2>
-<div class="outline-text-2" id="text-20">
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">Can not start WAS in RSA linux</h2>
+<div class="outline-text-2" id="text-15">
 <p>
 WSVR0501E: 创建组件 com.ibm.ws.cluster.runtime.ProcessRuntimeImpl 时出错
 java.lang.NoClassDefFoundError: com.ibm.websphere.cluster.topography.DescriptionManagerFactory (initialization failure)
@@ -2175,15 +1988,15 @@ Caused by: java.lang.NullPointerException
 </p>
 </div>
 
-<div id="outline-container-sec-20-1" class="outline-3">
-<h3 id="sec-20-1">Ｈow to fix</h3>
-<div class="outline-text-3" id="text-20-1">
+<div id="outline-container-sec-15-1" class="outline-3">
+<h3 id="sec-15-1">Ｈow to fix</h3>
+<div class="outline-text-3" id="text-15-1">
 <p>
 use hostname command to get the host name
 </p>
 
 <p>
-edit /etc/hosts, to add the hostname. 
+edit /etc/hosts and add the hostname to the file. 
 </p>
 </div>
 </div>
@@ -2194,7 +2007,7 @@ edit /etc/hosts, to add the hostname.
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2013-12-19</span>
+        <span title="last modification date" class="post-info">2013-12-20</span>
         <span title="tags" class="post-info"><a href="/tags/ibm/">ibm</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
