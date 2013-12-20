@@ -130,32 +130,7 @@ $ hgpullsvn
 
 </src>
 
-* My Projects layout
 
-There should be three type of project. 
-
-One is the configurations, this is for the different system.Usually, it should be the home folder.
-
-Another is the source code they are platform independent. But need some branches.
-
-The last on is the documentation and books. They just need update, and need not worry about the platform or version. 
-
-<src>
-
--ideas  所有的个人项目，需要使用 hg 进行版本管理
--- projectA
----    win
----    cygwin
----    ubuntu
-
--netsyncdisc  网络同步盘 个人文档，图书，个人开发项目使用的工具
--- books
--- software
--- openSourceProjects
-
--work 暂定，存放公司项目开发的代码，文档和工具。
-
-</src>
 	
 * subversion 	
 * 1 create repos

@@ -4,7 +4,7 @@
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/go
 #+KEYWORDS:    go,programming language
-#+TAGS:        :go:
+#+TAGS:        :go:programming language:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: go

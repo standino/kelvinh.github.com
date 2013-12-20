@@ -1,4 +1,4 @@
-#+TITLE:       IBM.org
+#+TITLE:       IBM产品的使用
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
@@ -6,107 +6,29 @@
 #+KEYWORDS:    ibm
 #+TAGS:        :ibm:
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: ibm
 
+* RTC 301
 
-* RSA V9
+/opt/ibm/WebSphere/AppServer/profiles/AppSrv06/bin/wsadmin.sh -f deploy.py -lang jython -user xxx@cn.ibm.com -password qaz1wsx2
 
-CZ7E5ML,CIM88ML,CIM89ML,CIM8AML,CIM8BML,CIM8CML
-
-
-* RTC
-
-
-Jazz
-Connect to BF
-SCM tools
-Template
-Install
-DB2
-Uninstall DB2 on ubuntu
-Installation
-WAS
-RTC
-*  Mail Server
-Bluepage LDAP
-使用 Rational Team Concert 构建团队
-Reporstory
-Cron job
-Jazz SCM
-Websphere Integration Developer
-Download Setup Files
-Profile on ubuntu
-Websphere出现“打开过多的文件”异常
-Publish Error on RAD 7.5 + WAS 7.0
-IBM WebSphere Application Server V7 Administration on Windows
-Hot deployment and dynamic reloading
-WID 6.2 on ubuntu
-Create profile
-Setup db2 connection
-IBM Packaging Utility
-Repo
-Setup SQO
-Remote debug
-create profile
-WAS admin setup
-Change pass word
-*  DB2 Skill
-** DB2联合数据库(Federated Database)
-DB2 data backup
-Add generated column
-DB2中有关日期和时间的函数，及应用
-With
-SQL0437W Performance of this complex query may be sub-optimal.
-在Windows环境下使用Cygwin中的gcc编译器实现DB2的嵌入SQL编程
-Contact
-Net search
-Code page
-Rebind SP
-Reset sequence
-How to start the db2 on windows
-Performance tuning
-WINDOWS下如何知道DB2的端口号?
-get ref of column
-Sametime
-ILog
-Notes
-Speed up
-Build forge
-Start build forge in Linux
-How can I update my new database password in IBM Rational Build Forge?
-RQM
-Setup WAS profile
-Tomcat
-* RSA 没有修改的文件也显示星号
-RTC 301
-/opt/ibm/WebSphere/AppServer/profiles/AppSrv06/bin/wsadmin.sh -f deploy.py -lang jython -user changwei@cn.ibm.com -password qaz1wsx2
-Hi Bob,
-We are migrating all the DSW projects from cvs to jazz scm. Buildforege does not support RTC 2.0 very well. We need a lot of work to setup and configure them, we also need to update the ant scripts. IGA RTC will be upgraded to RTC 3.0 in June or July. We may need to setup and configure it again after the upgrade.
-According to the teams which have used Jazz scm and RTC build engine, RTC build engine works well and we do not see any urgent need to use buildforge to do the build.
-If we use new buildforge, we need to create projects and update scripts and test. We already have a lot works in DSW 10.4 and
-5. We should not add more efforts to DSW 10.4/10.5. So we think we should reconsider it after all the projects migrate to jazz scm.
 * Jazz
-Admin Console
-Jazz setup
-RTC Web
-使用 Rational Team Concert 与 BIRT 为数据处理创建定制报表，第 2 部分: 为报表创建数据源和数据集
-Blue Group
-Connect to BF
+
 Create a RTC build engine : "RationalBuildForgeConnector"
 http://jazz.net/forums/viewtopic.php?p=46073&sid=405b9ce85df26eb93a3bfc0569b1ffc7#46073
 https://jazz.net/wiki/bin/view/Main/RationalBuildForge/IntegrationWithRTC#Setup_an_RTC_Run_As_user_for_ass
 The example is installed with the Build System Toolkit; it can be found at /opt/ibm/TeamConcertBuild/buildsystem/buildtoolkit/examples/standalone/. The build.xml file in that directory contains the steps to follow to run the example.
+
 SCM tools
 cp /datad/eadftp/public/dsw_dev_tools/repositories/native/scmtools_0.7.0.I20091211-1048.zip .
 Use below command line to check out source code.
-scm login -r https://btsjazz.dyn.webahead.ibm.com:9445/jazz -u changwei@cn.ibm.com -P qaz1wsx2
+scm login -r https://btsjazz.dyn.webahead.ibm.com:9445/jazz -u xxx@cn.ibm.com -P qaz1wsx2
 scm load -d . -r https://btsjazz.dyn.webahead.ibm.com:9445/jazz "Build on SQO Head Workspace"
 modify scm.ini to set jre path.
 Template
 Getting Started with Project Areas and Process in Rational Team Concert 2.0
-Install
-Notes://CSDLD01/48256F8C0020B1A3/BB2207E44A8BD1BC052566AB007D9C67/8A403106499593E24825760400128B93
+
 * DB2
 Setup
 Uninstall DB2 on ubuntu
@@ -202,17 +124,17 @@ default max size of queue (bytes) = 65536
 1.   进入/usr/WebSphere/AppServer/_uninst，执行uninstall，卸载WebSphere。
 2.   进入/usr中，删除WebSphere、IBMHttpServer两个文件夹。
 * WAS
-* [[http://www.ibm.com/developerworks/forums/thread.jspa?messageID=14625012&tstart=0][java.lang.NoClassDefFoundError: com.ibm.websphere.cluster.topography.DescriptionManagerFactory (initialization failure)]]
+** [[http://www.ibm.com/developerworks/forums/thread.jspa?messageID=14625012&tstart=0][java.lang.NoClassDefFoundError: com.ibm.websphere.cluster.topography.DescriptionManagerFactory (initialization failure)]]
 
 add your hostname into /etc/hosts
-<src>
 
+#+BEGIN_SRC 
 will@will IBM$ hostname
 will
 will@will IBM$ sudo gedit /etc/hosts
+#+END_SRC
 
-</src>
- 
+
 
 ** how to generate javacore, heapdump manually with wsadmin
 
@@ -233,13 +155,6 @@ will@will IBM$ sudo gedit /etc/hosts
 4. WAS will generate heapdump file at WebSphere\AppServer\profiles\your profile(for example:heapdump.20090804.113353.2632.phd)
 5. analyze the heapdump file with IBM tooling
 
-
-some experts from WAS team
-
-Tao N Zhang/China/IBM, — Good knowledge at WAS cache mechanism at least I know. Very kind to land you a hand - this is the guy told me who is the expert on wsadmin/jython and help us solve the scripts issue.
-Jun Guo Ku/China/IBM, — Good knowledge at wsadmin tooling at least I know.
-Peng Fei Sui/China/IBM, — Seems the owner of Javacore Analyzer Tool from alphawork. Expert on performance issue.
-Xue Xiang Cui/China/IBM, — Expert on troubleshotting
 1. Please see following suggestion to avoid any permission issue:
 Maybe teams can resolve this problem forever with adding the following options in build scripts: -javaoption "-Dcachedir.permission=775"
 Use the following command to stop the firewall, so we can access the was from remote.
@@ -324,7 +239,7 @@ import from SVN or CVS
 Importing data from Subversion and CVS into Jazz SCM
 An instruction to import source code.
 3.75G in cvs server
-jbe -repository https://localhost:9445/jazz -engineId dsw -userId changwei@cn.ibm.com -pass myemacs12
+jbe -repository https://localhost:9445/jazz -engineId dsw -userId xxx@cn.ibm.com -pass password
 testjazz.txt
 Websphere Integration Developer
 Change WAS ports
@@ -1121,65 +1036,7 @@ http://www.ibm.com/developerworks/cn/db2/library/techarticles/mag_02q2eaton/eato
 http://www.ibm.com/developerworks/cn/views/db2/tutorials.jsp?cv_doc_id=85523
 DB2 data backup
 http://oraclecaicai.itpub.net/post/40820/493298
-2009-12-15
-上午10:29:56: changwei@cn.ibm.com - Wei Chang/China/IBM: Hi
-上午10:30:22: Dan Yang Zhu: yes
-上午10:30:37: changwei@cn.ibm.com - Wei Chang/China/IBM:  你能告诉我，你们是怎么做数据库备份的吗？
-上午10:30:59: Dan Yang Zhu: 用db2的backup命令, 在线备份
-上午10:31:26: changwei@cn.ibm.com - Wei Chang/China/IBM: 你们应该是做了一些job吧？
-上午10:31:53: Dan Yang Zhu: 嗯, 写的korn shell
-上午10:32:10: changwei@cn.ibm.com - Wei Chang/China/IBM: 能把那些脚本发给我吗？
-上午10:32:26: changwei@cn.ibm.com - Wei Chang/China/IBM: 我需要定期备份一个数据库
-上午10:32:37: Dan Yang Zhu: en
-上午10:32:44: Dan Yang Zhu: 好
-上午10:32:48: changwei@cn.ibm.com - Wei Chang/China/IBM: 谢谢
-上午10:33:13: Dan Yang Zhu: V9的库吧
-上午10:33:17: changwei@cn.ibm.com - Wei Chang/China/IBM: 对
-上午10:33:21: changwei@cn.ibm.com - Wei Chang/China/IBM: 9.1
-上午10:33:56: changwei@cn.ibm.com - Wei Chang/China/IBM: 我备份不会有什么副作用吧？
-上午10:35:28: Dan Yang Zhu: 什么意思?
-上午10:35:42: changwei@cn.ibm.com - Wei Chang/China/IBM: 就是不会对运行的数据有影响
-上午10:35:46: Dan Yang Zhu: 我们的脚本判断逻辑较多
-上午10:35:47: changwei@cn.ibm.com - Wei Chang/China/IBM: 导致数据库出问题
-上午10:36:05: Dan Yang Zhu: 你参考一下吧
-上午10:36:08: changwei@cn.ibm.com - Wei Chang/China/IBM: 好的
-上午10:36:09: Dan Yang Zhu: 发给你了
-上午10:36:20: Dan Yang Zhu: 在线备份会有一些表空间锁
-上午10:36:39: Dan Yang Zhu: 备份的时候可能会有些transaction 等待锁
-上午10:36:48: Dan Yang Zhu: 其它还好吧
-上午10:36:51: changwei@cn.ibm.com - Wei Chang/China/IBM: ok, thx
-上午10:41:17: Dan Yang Zhu: 脚本有点复杂,
-上午10:41:23: Dan Yang Zhu: 不用研究了
-上午10:41:27: Dan Yang Zhu: 基本命令就是 -
-上午10:41:28: Dan Yang Zhu: backup database ${DB} online to
-上午10:41:55: Dan Yang Zhu: backup database ${DB} online to A_DIR
-上午10:42:05: changwei@cn.ibm.com - Wei Chang/China/IBM: ok, thx
-上午10:42:19: Dan Yang Zhu: 需要先修改几个参数
-上午10:42:32: Dan Yang Zhu: 你知道吧, logretain
-上午10:42:48: changwei@cn.ibm.com - Wei Chang/China/IBM: 不知道，怎么改？
-上午10:42:51: Dan Yang Zhu: 日志设置为归档日志模式,
-上午10:42:58: Dan Yang Zhu: 你check 一下网上吧
-上午10:43:00: changwei@cn.ibm.com - Wei Chang/China/IBM: 好
-上午10:43:03: Dan Yang Zhu: 多的是文档说这个
-上午10:43:12: Dan Yang Zhu: 一个DB 配置参数
-上午10:43:24: changwei@cn.ibm.com - Wei Chang/China/IBM: 找你们这些专家不是更安全一些。:)
-上午10:44:17: Dan Yang Zhu: lol
-上午10:46:48: Dan Yang Zhu: 最简单的设置方法
-上午10:46:54: Dan Yang Zhu: 你就修改一个参数
-上午10:47:01: Dan Yang Zhu: 连接到你的DB后,
-上午10:47:22: Dan Yang Zhu: db2 update db cfg using LOGARCHMETH1 DISK:/db2_archive/
-上午10:47:31: Dan Yang Zhu: 就启用了归档日志模式了
-上午10:47:41: Dan Yang Zhu: 然后做一个全备,
-上午10:47:52: Dan Yang Zhu: backup db DB_name to xxx,
-上午10:48:06: Dan Yang Zhu: 之后就可以用我刚才给你的带online 参数的命令了
-上午10:48:23: Dan Yang Zhu: 我给你的路径名是个sample啊, 注意
-上午10:48:30: changwei@cn.ibm.com - Wei Chang/China/IBM: en
-上午10:48:32: changwei@cn.ibm.com - Wei Chang/China/IBM: 好
-上午10:48:49: Dan Yang Zhu: 注意一个
-上午10:49:31: Dan Yang Zhu: 修改了那个LOGARCHMETH1  参数后, 整个库就挂起了, 必须做一个离线全备
-上午10:55:29: changwei@cn.ibm.com - Wei Chang/China/IBM: 好，那我下午做吧
-上午10:55:44: Dan Yang Zhu: 嗯
-上午10:56:04: Dan Yang Zhu: 对, 最好等大家都不用的时候, 在做这个事情
+
 Add generated column
 SET INTEGRITY FOR SODS2.IBM_EMP OFF alter table SODS2.IBM_EMP add EMAIL_ADR_LCASE varchar(80) GENERATED AS (lower(EMAIL_ADR)) SET INTEGRITY FOR SODS2.IBM_EMP immediate checked FORCE GENERATED
 DB2中有关日期和时间的函数，及应用
@@ -1306,38 +1163,7 @@ WEEK_ISO 返回参数中一年的第几周，用范围在 1-53 的整数值表�
 
 
 (http://www.fanqiang.com)
-With
-WITH RPL (PID, ID, name) AS ( SELECT ROOT.PID, ROOT.ID, ROOT.Name FROM regr ROOT WHERE ROOT.PID = 8. UNION ALL ...
 
-
-
-with quotedata(WEB_QUOTE_NUM, PROG_CODE, ACQRTN_CODE, QUOTE_STAGE_CODE, QUOTE_TYPE_CODE, MOD_DATE,  licount) as (
-select wq.WEB_QUOTE_NUM, wq.PROG_CODE, wq.ACQRTN_CODE, wq.QUOTE_STAGE_CODE, wq.QUOTE_TYPE_CODE, month(wq.MOD_DATE), count(wqli.PART_NUM) licount
-from ebiz1.web_quote_line_item wqli
-, ebiz1.web_quote wq
-where wqli.WEB_QUOTE_NUM = wq.WEB_QUOTE_NUM
-and date(wq.MOD_DATE) >= '2008-01-01'
-and date(wq.MOD_DATE) < '2009-01-01'
-group by wq.WEB_QUOTE_NUM, wq.PROG_CODE, wq.ACQRTN_CODE, wq.QUOTE_STAGE_CODE, wq.QUOTE_TYPE_CODE, wq.MOD_DATE
-order by licount desc
-) select max(licount),MOD_DATE from quotedata where licount>=100 group by MOD_DATE
---and  QUOTE_STAGE_CODE in ('SAPSBQT','SAPQUOTE')
-@
-with quotedata(WEB_QUOTE_NUM, PROG_CODE, ACQRTN_CODE, QUOTE_STAGE_CODE, QUOTE_TYPE_CODE, MOD_DATE,  licount) as (
-select wq.WEB_QUOTE_NUM, wq.PROG_CODE, wq.ACQRTN_CODE, wq.QUOTE_STAGE_CODE, wq.QUOTE_TYPE_CODE, month(wq.MOD_DATE), count(wqli.PART_NUM) licount
-from ebiz1.web_quote_line_item wqli
-, ebiz1.web_quote wq
-where wqli.WEB_QUOTE_NUM = wq.WEB_QUOTE_NUM
-and date(wq.MOD_DATE) >= '2008-01-01'
-and date(wq.MOD_DATE) < '2009-01-01'
-group by wq.WEB_QUOTE_NUM, wq.PROG_CODE, wq.ACQRTN_CODE, wq.QUOTE_STAGE_CODE, wq.QUOTE_TYPE_CODE, wq.MOD_DATE
-order by licount desc
-)
-select double(sum(licount))/double(count(1)), MOD_DATE from quotedata  group by MOD_DATE
---and  QUOTE_STAGE_CODE in ('SAPSBQT','SAPQUOTE')
-@
-
-@
 
 SQL0437W Performance of this complex query may be sub-optimal.
 Reason code: "1". SQLSTATE=01602.
@@ -1365,8 +1191,7 @@ printf("OK = [%s] \n", firstnme);
 EXEC SQL DISCONNECT CURRENT;
 return(0); }
 Contact
-王东明 wangdm@cn.ibm.com 82453401
-冯吉松 fengjis@cn.ibm.com 82452521
+
 Net search
 http://www.ibm.com/developerworks/forums/message.jspa?messageID=2798439
 db2 select * from SODS2.customer cp where (CONTAINS(cp.cust_name_uprcse, '\"DEMO%\"') = 1)
@@ -1592,5 +1417,5 @@ Caused by: java.lang.NullPointerException
 
  use hostname command to get the host name
 
-edit /etc/hosts, to add the hostname. 
+ edit /etc/hosts and add the hostname to the file. 
 
