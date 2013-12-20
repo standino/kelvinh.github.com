@@ -65,6 +65,15 @@ lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索�
 
 ----
 
+
+*  拷贝到Emacs中的中文是乱码
+
+(set-language-environment 'Chinese-GB) 
+(set-keyboard-coding-system 'chinese-iso-8bit) 
+(set-terminal-coding-system 'chinese-iso-8bit) 
+(set-clipboard-coding-system 'chinese-iso-8bit) 
+(set-selection-coding-system 'chinese-iso-8bit)
+
 * [[https://github.com/kelvinh/org-page][org-page]]
  - [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org][一年成为Emacs高手(像神一样使用编辑器)]]
  - [[https://github.com/redguardtoo/emacs.d][试一试这个配置]]
