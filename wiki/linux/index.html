@@ -3,7 +3,7 @@
   <head>
     <title>linux.org - Keep going</title>
     <meta charset="utf-8" />
-    <meta name="author" content="U-360BUYAD\changwei" />
+    <meta name="author" content="Will Chang" />
     <meta name="description" content="linux" />
     <meta name="keywords" content="linux" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
@@ -14,6 +14,7 @@
         <h1 class="masthead-title"><a href="/">Keep going</a></h1>
         <p>努力超越自己！</p>
         <ul>
+          <li><a href="/%appdata%/">%appdata%</a></li>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/wiki/">Wiki</a></li>
           <li><a href="/tags/">Tags</a></li>
@@ -1013,86 +1014,8 @@ vi /etc/iptables.d/filter/INPUT/25-c4eb-allow.rule命令,开放防火墙的65400
 
 <div id="outline-container-sec-20" class="outline-2">
 <h2 id="sec-20">VPN</h2>
-<div class="outline-text-2" id="text-20">
-</div><div id="outline-container-sec-20-1" class="outline-3">
-<h3 id="sec-20-1"><a href="http://ciscovpn.watson.ibm.com/instructions.php">Emerging VPN Technologies Pilot</a></h3>
-<div class="outline-text-3" id="text-20-1">
-<p>
-rcxasa.watson.ibm.com
-</p>
-
-<p>
-sudo yum install anyconnect ibm-config-anyconnect
-</p>
-
-
-<p>
-USER ID: changwei@cn.ibm.com
-PASSWORD: nNvinW)8qUa0 Case Sensitive
-</p>
-
-
-<p>
-Category: Linux, Ubuntu Tags: Ubuntu, Ubuntu 8.10, VPN, VPNC
-Easier VPN Setup with Ubuntu 8.10
-Posted November 6th, 2008 by nazham
-</p>
-
-<p>
-Quite a while ago I’ve posted a way to setup your VPN access using VPNC in Ubuntu 8.04 Hardy Heron. Now with Ubuntu 8.10 Interprid Ibex, things will become much more easier, by using the NetworkManager applet in Gnome.
-</p>
-
-<p>
-When you have not yet installed any VPN manager, the “Add” button for VPN connections in the applet seems to be disabled. But thanks to a post in UbuntuForum here, I manage to enable the “Add” VPN connection button, and add my office’s VPN connection by a few simple clicks.
-</p>
-
-<ol class="org-ol">
-<li>Go to Applications -&gt; Add/Remove.
-</li>
-
-<li>From the Show dropdown “All available applications”, and then enter “vpn connection” into the search box.
-</li>
-
-<li>Choose your choice of VPN manager. In my case it’s VPNC.
-</li>
-</ol>
-<p>
-ubuntuvpn-addremove.png
-</p>
-
-<ol class="org-ol">
-<li>Now you can add the VPN connection. The “Add” button is enabled now. Click on the NetworkManager applet -&gt; VPN Connections -&gt; Configure VPN…
-</li>
-
-<li>Click on the VPN tab, click “Add” button
-</li>
-</ol>
-<p>
-ubuntuvpn-add.png
-</p>
-
-<ol class="org-ol">
-<li>Enter your VPN connection details (Gateway, user name, passwords, etc).
-</li>
-</ol>
-<p>
-ubuntuvpn-add2.png
-</p>
-
-<ol class="org-ol">
-<li>Click “OK”, and Voila!, your VPN connection is available for you at your NetworkManager applet, shown below:
-</li>
-</ol>
-<p>
-ubuntuvpn-wifi.png
-</p>
-
-<p>
-Enjoy.
-</p>
 </div>
-</div>
-</div>
+
 
 
 <div id="outline-container-sec-21" class="outline-2">
@@ -1758,86 +1681,11 @@ Then browse for the connected interface (eth0, wlan0, etc)
 
 
 
+
+
 <div id="outline-container-sec-35" class="outline-2">
-<h2 id="sec-35">Wireless</h2>
+<h2 id="sec-35">Connect to windows</h2>
 <div class="outline-text-2" id="text-35">
-<p>
-<a href="https://w3.tap.ibm.com/w3ki03/display/linuxportal/IBM+LEAP+Wifi+Wireless+Authentication#IBMLEAPWifiWirelessAuthentication-IBMLEAPWifiWirelessAuthenticationsteps">IBM LEAP upgrade</a>
-</p>
-
-<p>
-<a href="https://w3.tap.ibm.com/w3ki/display/RSTL/WiFi-nonWin">https://w3.tap.ibm.com/w3ki/display/RSTL/WiFi-nonWin</a>
-</p>
-
-<ul class="org-ul">
-<li>install the driver according to <a href="../etc/FirstTimeHowTo.html">First time how to</a>
-</li>
-<li>sudo gedit /etc/network/interfaces 
-&lt;src&gt;
-</li>
-</ul>
-<p>
-auto lo
-iface lo inet loopback
-</p>
-
-<p>
-auto eth0
-iface eth0 inet dhcp
-</p>
-
-<p>
-iface dsl-provider inet ppp
-pre-up /sbin/ifconfig eth0 up # line maintained by pppoeconf
-provider dsl-provider
-</p>
-
-
-<p>
-auto ath0
-iface ath0 inet dhcp
-wpa-ssid IBM
-wpa-scan-ssid 1
-wpa-auth-alg OPEN
-wpa-key-mgmt IEEE8021X
-wpa-eap LEAP
-wpa-ap-scan 2
-wpa-identity changwei@cn.ibm.com
-wpa-password nNvinW)8qUa0
-</p>
-
-
-<p>
- &lt;/src&gt;
-password for ring: institute4t60
-</p>
-
-<ul class="org-ul">
-<li>execute <b>sudo myleap up|down|bounce</b> to start|stop|restart wireless.
-</li>
-<li>以后使用 sudo pon dsl-provider 拨号上网，使用sudo poff dsl-provider
-下线。sudo plog查看拨号日志。 
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-36" class="outline-2">
-<h2 id="sec-36">AT&amp;T Global Network Client</h2>
-<div class="outline-text-2" id="text-36">
-<p>
-Web site to get a ID for AGN: <a href="http://w3-03.ibm.com/tools/it/ittools.nsf/main/ATTNC_new_users">http://w3-03.ibm.com/tools/it/ittools.nsf/main/ATTNC_new_users</a>
-&lt;src&gt;
-</p>
-<p>
-sudo apt-get install agnclient
-&lt;/src&gt;
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-37" class="outline-2">
-<h2 id="sec-37">Connect to windows</h2>
-<div class="outline-text-2" id="text-37">
 <p>
 execute myremotedesk shell. 
 </p>
@@ -1848,17 +1696,17 @@ use ctrl+alt+enter to toggle full screen.
 </div>
 </div>
 
-<div id="outline-container-sec-38" class="outline-2">
-<h2 id="sec-38">IE6</h2>
-<div class="outline-text-2" id="text-38">
+<div id="outline-container-sec-36" class="outline-2">
+<h2 id="sec-36">IE6</h2>
+<div class="outline-text-2" id="text-36">
 <p>
 <a href="../etc/UbuntuIE.html">../etc/UbuntuIE.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-39" class="outline-2">
-<h2 id="sec-39">Recite Word</h2>
-<div class="outline-text-2" id="text-39">
+<div id="outline-container-sec-37" class="outline-2">
+<h2 id="sec-37">Recite Word</h2>
+<div class="outline-text-2" id="text-37">
 <p>
 <a href="../etc/reciteword.html">../etc/reciteword.html</a>
 </p>
@@ -1875,9 +1723,9 @@ See install.sh for detail.
 </div>
 </div>
 
-<div id="outline-container-sec-40" class="outline-2">
-<h2 id="sec-40">Dock</h2>
-<div class="outline-text-2" id="text-40">
+<div id="outline-container-sec-38" class="outline-2">
+<h2 id="sec-38">Dock</h2>
+<div class="outline-text-2" id="text-38">
 <p>
 先添加源
 deb <a href="http://repository.cairo-dock.org/ubuntu">http://repository.cairo-dock.org/ubuntu</a> hardy cairo-dock
@@ -1887,18 +1735,18 @@ wget -q <a href="http://repository.cairo-dock.org/ubuntu/cairo-dock.gpg">http://
 </p>
 </div>
 </div>
-<div id="outline-container-sec-41" class="outline-2">
-<h2 id="sec-41">Remove old kernel</h2>
-<div class="outline-text-2" id="text-41">
+<div id="outline-container-sec-39" class="outline-2">
+<h2 id="sec-39">Remove old kernel</h2>
+<div class="outline-text-2" id="text-39">
 <p>
 uname -a　　＃使用这个命令可以查看当前系统使用的内核。
 dpkg --get-selections|grep linux ＃列出当前内核。带image的则是已经安装的内核，可以用以下命令卸载：sudo apt-get remove linux-image-2.6.24-11-generic ＃其中 linux-image-2.6.24-11-generic 为版本号，输全。
 </p>
 </div>
 </div>
-<div id="outline-container-sec-42" class="outline-2">
-<h2 id="sec-42">Generate Deb package</h2>
-<div class="outline-text-2" id="text-42">
+<div id="outline-container-sec-40" class="outline-2">
+<h2 id="sec-40">Generate Deb package</h2>
+<div class="outline-text-2" id="text-40">
 <p>
 第一个，checkinstall
 </p>
@@ -1932,201 +1780,22 @@ sudo checkinstall
 </div>
 </div>
 
-<div id="outline-container-sec-43" class="outline-2">
-<h2 id="sec-43">Wireless Misc</h2>
-<div class="outline-text-2" id="text-43">
-<ol class="org-ol">
-<li>install the driver according to <a href="../etc/FirstTimeHowTo.html">First time how to</a>
-</li>
-<li></li>
-<li>Click Network Manager (as pictured below) and select Connect to Other Wireless Network
-</li>
-<li>Network name is always IBM, security is LEAP. Key manager WPA-EPA
-</li>
-<li>Fill in your <a href="../other/index.html#sec8">username and password</a> from the mail you were sent:
-changwei@cn.ibm.com nNvinW)8qUa0
-</li>
-</ol>
 
 
 
 
-<div class="figure">
-<p><img src="../etc/connecting_moinmoin_wastes_my_time_by_not_handling_images_with_spaces.png" alt="connecting_moinmoin_wastes_my_time_by_not_handling_images_with_spaces.png" />
-</p>
-</div>
 
-
-<div class="figure">
-<p><img src="../etc/Connected.png" alt="Connected.png" />
-</p>
-</div>
-
-
-<p>
-execute <b>sudo myleap up</b> to start wireless.
-</p>
-
-<p>
-Install wireless drivers according to
-<a href="http://madwifi.org/wiki/UserDocs/Distro/Debian/MadWifi">http://madwifi.org/wiki/UserDocs/Distro/Debian/MadWifi</a>
-</p>
-
-<p>
-<a href="http://forum.ubuntu.org.cn/viewtopic.php?p=735651&sid=92cb9ae9f464e795781824204190ddf3">http://forum.ubuntu.org.cn/viewtopic.php?p=735651&sid=92cb9ae9f464e795781824204190ddf3</a>
-</p>
-
-<p>
-<a href="https://ltc3.linux.ibm.com/wiki/WirelessConnectivityOnLinux">https://ltc3.linux.ibm.com/wiki/WirelessConnectivityOnLinux</a>
-</p>
-
-<p>
-<a href="https://w3.tap.ibm.com/w3ki/display/UHH/Installing+Hardy+on+a+T61p">https://w3.tap.ibm.com/w3ki/display/UHH/Installing+Hardy+on+a+T61p</a>
-</p>
-
-
-
-<p>
-exe <b>echo "ath_pci" | sudo tee -a /etc/modules</b>
-</p>
-
-<p>
-start wireless drivers : modprobe ath_pci
-</p>
-
-<p>
-start LED: sudo sysctl -w dev.wifi0.softled=1
-           sudo sysctl -w dev.wifi0.ledpin=1
-</p>
-
-
-<p>
-sudo gedit /etc/network/interfaces 
-&lt;src&gt;
-</p>
-
-<p>
-auto lo
-iface lo inet loopback
-</p>
-
-<p>
-iface dsl-provider inet ppp
-pre-up /sbin/ifconfig eth0 up # line maintained by pppoeconf
-provider dsl-provider
-</p>
-
-<p>
-auto eth0
-iface eth0 inet manual
-</p>
-
-<p>
-auto ath0
-iface ath0 inet dhcp
-wpa-ssid IBM
-wpa-scan-ssid 1
-wpa-auth-alg OPEN
-wpa-key-mgmt IEEE8021X
-wpa-eap LEAP
-wpa-ap-scan 2
-wpa-identity changwei@cn.ibm.com
-wpa-password nNvinW)8qUa0
-</p>
-
-
-<p>
-&lt;/src&gt;
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-sec-44" class="outline-2">
-<h2 id="sec-44">Setup Printer in IBM</h2>
-<div class="outline-text-2" id="text-44">
-<p>
-Install this package restart your Firefox and go to IBM Global Print web site to install the printer. <a href="http://w3-3.ibm.com/tools/print/index.html">http://w3-3.ibm.com/tools/print/index.html</a>
-&lt;src&gt;
-</p>
-<p>
-sudo apt-get install lud-gpws
-&lt;/src&gt;
-&lt;src&gt;
-</p>
-<p>
-sudo ln -s /usr/lib/firefox/plugins/lud-gpws.so /usr/lib/xulrunner-addons/plugins/ibmgpws.so
-&lt;/src&gt;
-</p>
-</div>
-</div>
-<div id="outline-container-sec-45" class="outline-2">
-<h2 id="sec-45">AT&amp;T Global Network Client Misc</h2>
-<div class="outline-text-2" id="text-45">
-<p>
-Web site to get a ID for AGN: <a href="http://w3-03.ibm.com/tools/it/ittools.nsf/main/ATTNC_new_users">http://w3-03.ibm.com/tools/it/ittools.nsf/main/ATTNC_new_users</a>
-&lt;src&gt;
-</p>
-<p>
-sudo apt-get install agnclient
-&lt;/src&gt;
-I found some problem with the agnLogArchive.tcl, after you reboot the machine execute:
-&lt;src&gt;
-</p>
-<p>
-killall agnclient
-sudo /etc/init.d/agnclientd stop
-sudo /etc/init.d/agnLogd stop
-sudo killall tclsh
-sudo rm /var/agns/fifo/*
-sudo /etc/init.d/agnclientd start
-sudo /etc/init.d/agnLogd start 
-&lt;/src&gt;
-How to get the latest version of agn. This is not required, it's just here for reference:
-&lt;src&gt;
-</p>
-<p>
-mkdir tmp/agn ; cd tmp/agn
-wget <a href="ftp://ftp.attglobal.net/pub/client/linux/agnclient-1.0-2.0.1.3000.i386.rpm">ftp://ftp.attglobal.net/pub/client/linux/agnclient-1.0-2.0.1.3000.i386.rpm</a>
-wget <a href="http://blog.afmacedo.com/linux/ubuntu_rpm2deb.sh">http://blog.afmacedo.com/linux/ubuntu_rpm2deb.sh</a>
-chmod +x ubuntu_rpm2deb.sh
-./ubuntu_rpm2deb.sh --deps
-./ubuntu_rpm2deb.sh agnclient-1.0-2.0.1.3000.i386.rpm
-sudo dpkg -i agnclient-1.0-2.0.1.3000.i386.deb
-</p>
-<p>
-sudo apt-get install
-&lt;/src&gt;
-</p>
-
-<p>
-at&amp;t linux website is: <a href="http://www.attnetclient.com/linux/">http://www.attnetclient.com/linux/</a> * Forum about ubuntu: <a href="http://attnetclient.com/forum/viewtopic.php?p=2309#2309">http://attnetclient.com/forum/viewtopic.php?p=2309#2309</a> * How to create deb from the rpm official release: <a href="http://blog.afmacedo.com/?p=11">http://blog.afmacedo.com/?p=11</a>
-</p>
-</div>
-</div>
-<div id="outline-container-sec-46" class="outline-2">
-<h2 id="sec-46">Repository</h2>
-<div class="outline-text-2" id="text-46">
-<p>
-~/bin/sources.list:
-</p>
-
-<p>
-&lt; include file="~/ideas/bin/sources.list" markup="src" lang="sh"&gt;
-</p>
-</div>
-</div>
-<div id="outline-container-sec-47" class="outline-2">
-<h2 id="sec-47">Gnome DO</h2>
-<div class="outline-text-2" id="text-47">
+<div id="outline-container-sec-41" class="outline-2">
+<h2 id="sec-41">Gnome DO</h2>
+<div class="outline-text-2" id="text-41">
 <p>
 <a href="https://wiki.ubuntu.com/GnomeDo/Manual">https://wiki.ubuntu.com/GnomeDo/Manual</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-48" class="outline-2">
-<h2 id="sec-48">xorg X11上面SCIM丢失焦点问题的workaround</h2>
-<div class="outline-text-2" id="text-48">
+<div id="outline-container-sec-42" class="outline-2">
+<h2 id="sec-42">xorg X11上面SCIM丢失焦点问题的workaround</h2>
+<div class="outline-text-2" id="text-42">
 <p>
 自己的机器上装了Debian 4，从etch换到sid，又从xfce换到gnome(这么换还真是不适应...)，SCIM丢失焦点的问题一直让我很郁闷，特别是java app，比较严重的说。当时也没找时间解决，一直用 Alt+Tab 解决大部分问题。
 不多说，先看下SCIM的架构特点， FrontEnd, Server, Config 三大部分，并且都实现了模块化, 可以通过动态模块来实现具体的功能, 支持不同的系统和环境. 大大增强了 SCIM 的灵活性和可移植性.
@@ -2177,27 +1846,10 @@ QT_IM_MODULE=xim
 </p>
 </div>
 </div>
-<div id="outline-container-sec-49" class="outline-2">
-<h2 id="sec-49">Notes 8.5</h2>
-<div class="outline-text-2" id="text-49">
-<p>
-You can get the debs here: <a href="ftp://pokgsa.ibm.com/projects/o/openclient/lotus/notes/beta/8.5/latest/">ftp://pokgsa.ibm.com/projects/o/openclient/lotus/notes/beta/8.5/latest/</a>
-</p>
 
-<p>
-Download all of them and then install ibm_lotus_notes-8.5-20080819.0130.i586.deb first. This will satisfy all dependencies for the
-remaining files, which you can install either one-at-a-time or as a block. 
-</p>
-
-<p>
-Please note that this is not a software source that you can define in Synaptic. If there's an update to these files you will have
-to re-download them and update them manually. 
-</p>
-</div>
-</div>
-<div id="outline-container-sec-50" class="outline-2">
-<h2 id="sec-50">Dual monitor</h2>
-<div class="outline-text-2" id="text-50">
+<div id="outline-container-sec-43" class="outline-2">
+<h2 id="sec-43">Dual monitor</h2>
+<div class="outline-text-2" id="text-43">
 <p>
 Quickfix: Ubuntu Hardy dual monitor with Intel 945GM troubles - can't escape Clone mode
 Posted in Linux, Quickfix by jbopensrc on April 29th, 2008
@@ -2266,9 +1918,9 @@ $ lspci |grep -e VGA -e Display
 </div>
 </div>
 
-<div id="outline-container-sec-51" class="outline-2">
-<h2 id="sec-51">File permission</h2>
-<div class="outline-text-2" id="text-51">
+<div id="outline-container-sec-44" class="outline-2">
+<h2 id="sec-44">File permission</h2>
+<div class="outline-text-2" id="text-44">
 <p>
 ls –l filename
 </p>
@@ -2308,9 +1960,9 @@ chmod o-x junk
 </div>
 
 
-<div id="outline-container-sec-52" class="outline-2">
-<h2 id="sec-52">硬盘启动 ubuntu-8.04.1-desktop-i386.iso</h2>
-<div class="outline-text-2" id="text-52">
+<div id="outline-container-sec-45" class="outline-2">
+<h2 id="sec-45">硬盘启动 ubuntu-8.04.1-desktop-i386.iso</h2>
+<div class="outline-text-2" id="text-45">
 <p>
 操作环境：win xp （vista 未试）
 </p>
@@ -2340,9 +1992,9 @@ chmod o-x junk
 </p>
 </div>
 </div>
-<div id="outline-container-sec-53" class="outline-2">
-<h2 id="sec-53"><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=54&t=85074&st=0&sk=t&sd=a"> FTP</a></h2>
-<div class="outline-text-2" id="text-53">
+<div id="outline-container-sec-46" class="outline-2">
+<h2 id="sec-46"><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=54&t=85074&st=0&sk=t&sd=a"> FTP</a></h2>
+<div class="outline-text-2" id="text-46">
 <p>
 因为不想用WIN，不方便和周围同学共享文件，于是想在Ubuntu下建个FTP用。一阵论坛和google搜索后终于找到了正确的方法 (vsftpd,Ubuntu7.04)，至少保证周围局域网内用户可以访问。至于配置文件，内容比较少，反正对我来讲能用就ok了~不知道会不会很弱
 有一个不错的中文联机手册可以参考：<a href="http://etony.9966.org/doc/other/vsftpd-man-zh.html">http://etony.9966.org/doc/other/vsftpd-man-zh.html</a>
@@ -2435,9 +2087,9 @@ sudo /etc/init.d/vsftpd stop
 </p>
 </div>
 </div>
-<div id="outline-container-sec-54" class="outline-2">
-<h2 id="sec-54"><a href="https://ltc3.linux.ibm.com/wiki/LinuxDesktop/Fetchnotes">fetch notes</a></h2>
-<div class="outline-text-2" id="text-54">
+<div id="outline-container-sec-47" class="outline-2">
+<h2 id="sec-47"><a href="https://ltc3.linux.ibm.com/wiki/LinuxDesktop/Fetchnotes">fetch notes</a></h2>
+<div class="outline-text-2" id="text-47">
 <p>
 <a href="http://ibmforums.ibm.com/forums/thread.jspa?messageID=1315054&tstart=0&#1315054">http://ibmforums.ibm.com/forums/thread.jspa?messageID=1315054&tstart=0&#1315054</a>
 </p>
@@ -2451,20 +2103,20 @@ sudo /etc/init.d/vsftpd stop
 </p>
 </div>
 </div>
-<div id="outline-container-sec-55" class="outline-2">
-<h2 id="sec-55">Virtualbox</h2>
-<div class="outline-text-2" id="text-55">
+<div id="outline-container-sec-48" class="outline-2">
+<h2 id="sec-48">Virtualbox</h2>
+<div class="outline-text-2" id="text-48">
 <p>
 <a href="http://forum.ubuntu.org.cn/viewtopic.php?t=45983">http://forum.ubuntu.org.cn/viewtopic.php?t=45983</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-56" class="outline-2">
-<h2 id="sec-56">Wine MS Office 教程</h2>
-<div class="outline-text-2" id="text-56">
-</div><div id="outline-container-sec-56-1" class="outline-3">
-<h3 id="sec-56-1">Installing Wine 1.2 in Ubuntu 9.10 (Karmic)</h3>
-<div class="outline-text-3" id="text-56-1">
+<div id="outline-container-sec-49" class="outline-2">
+<h2 id="sec-49">Wine MS Office 教程</h2>
+<div class="outline-text-2" id="text-49">
+</div><div id="outline-container-sec-49-1" class="outline-3">
+<h3 id="sec-49-1">Installing Wine 1.2 in Ubuntu 9.10 (Karmic)</h3>
+<div class="outline-text-3" id="text-49-1">
 <p>
 There is a known bug when installing Wine in Ubuntu 9.10 (Karmic), documented in this bug report.  From comments I've seen it affects upgraded installations of Ubuntu rather than fresh installations.  The log shows errors similar to this:
 </p>
@@ -2622,9 +2274,9 @@ $ cd /media/cdrom0
 </div>
 </div>
 
-<div id="outline-container-sec-57" class="outline-2">
-<h2 id="sec-57">伪装成Textmate的gEdit</h2>
-<div class="outline-text-2" id="text-57">
+<div id="outline-container-sec-50" class="outline-2">
+<h2 id="sec-50">伪装成Textmate的gEdit</h2>
+<div class="outline-text-2" id="text-50">
 <p>
 Textmate-like Gedit in few steps
 </p>
@@ -2667,9 +2319,9 @@ The list of the plugins avalaible is growing fast; this is a list of plugins tha
 </p>
 </div>
 </div>
-<div id="outline-container-sec-58" class="outline-2">
-<h2 id="sec-58">Mplayer</h2>
-<div class="outline-text-2" id="text-58">
+<div id="outline-container-sec-51" class="outline-2">
+<h2 id="sec-51">Mplayer</h2>
+<div class="outline-text-2" id="text-51">
 <p>
 &lt;example&gt;
 </p>
@@ -2760,48 +2412,48 @@ mplayer dvd://&lt;titlenumber&gt; -slang nl,en
 </p>
 </div>
 </div>
+<div id="outline-container-sec-52" class="outline-2">
+<h2 id="sec-52">f－当播放视频时，在全屏和窗口模式之间切换。你也可以在命令行中使用 -fs 选项，以便让 MPlayer 开始在全屏模式中播放。</h2>
+</div>
+<div id="outline-container-sec-53" class="outline-2">
+<h2 id="sec-53">o－在播放视频时切换 OSD（OnScreen Display）模式。</h2>
+</div>
+<div id="outline-container-sec-54" class="outline-2">
+<h2 id="sec-54">p 或 Space－暂停／继续播放。</h2>
+</div>
+<div id="outline-container-sec-55" class="outline-2">
+<h2 id="sec-55">q 或 Esc－退出 MPlayer。在 GUI 模式时，Esc 不会退出，仅停止播放。</h2>
+</div>
+<div id="outline-container-sec-56" class="outline-2">
+<h2 id="sec-56">/ 和 * 或 9 和 0－减小或增大音量。</h2>
+</div>
+<div id="outline-container-sec-57" class="outline-2">
+<h2 id="sec-57">m－静音切换。</h2>
+</div>
+<div id="outline-container-sec-58" class="outline-2">
+<h2 id="sec-58">T（通常是 Shift + t）－播放窗口置顶切换。</h2>
+</div>
 <div id="outline-container-sec-59" class="outline-2">
-<h2 id="sec-59">f－当播放视频时，在全屏和窗口模式之间切换。你也可以在命令行中使用 -fs 选项，以便让 MPlayer 开始在全屏模式中播放。</h2>
+<h2 id="sec-59">b 和 j－在可用的字幕间循环。</h2>
 </div>
 <div id="outline-container-sec-60" class="outline-2">
-<h2 id="sec-60">o－在播放视频时切换 OSD（OnScreen Display）模式。</h2>
+<h2 id="sec-60">x 和 z－调整字幕的延迟时间。</h2>
 </div>
 <div id="outline-container-sec-61" class="outline-2">
-<h2 id="sec-61">p 或 Space－暂停／继续播放。</h2>
+<h2 id="sec-61">I（Shift + i）－显示播放电影的文件名称。</h2>
 </div>
 <div id="outline-container-sec-62" class="outline-2">
-<h2 id="sec-62">q 或 Esc－退出 MPlayer。在 GUI 模式时，Esc 不会退出，仅停止播放。</h2>
+<h2 id="sec-62">1 和 2－调整对比度。</h2>
 </div>
 <div id="outline-container-sec-63" class="outline-2">
-<h2 id="sec-63">/ 和 * 或 9 和 0－减小或增大音量。</h2>
+<h2 id="sec-63">3 和 4－调整亮度。</h2>
 </div>
 <div id="outline-container-sec-64" class="outline-2">
-<h2 id="sec-64">m－静音切换。</h2>
+<h2 id="sec-64">5 和 6－调整色度。</h2>
 </div>
 <div id="outline-container-sec-65" class="outline-2">
-<h2 id="sec-65">T（通常是 Shift + t）－播放窗口置顶切换。</h2>
-</div>
-<div id="outline-container-sec-66" class="outline-2">
-<h2 id="sec-66">b 和 j－在可用的字幕间循环。</h2>
-</div>
-<div id="outline-container-sec-67" class="outline-2">
-<h2 id="sec-67">x 和 z－调整字幕的延迟时间。</h2>
-</div>
-<div id="outline-container-sec-68" class="outline-2">
-<h2 id="sec-68">I（Shift + i）－显示播放电影的文件名称。</h2>
-</div>
-<div id="outline-container-sec-69" class="outline-2">
-<h2 id="sec-69">1 和 2－调整对比度。</h2>
-</div>
-<div id="outline-container-sec-70" class="outline-2">
-<h2 id="sec-70">3 和 4－调整亮度。</h2>
-</div>
-<div id="outline-container-sec-71" class="outline-2">
-<h2 id="sec-71">5 和 6－调整色度。</h2>
-</div>
-<div id="outline-container-sec-72" class="outline-2">
-<h2 id="sec-72">7 和 8－调整饱和度。</h2>
-<div class="outline-text-2" id="text-72">
+<h2 id="sec-65">7 和 8－调整饱和度。</h2>
+<div class="outline-text-2" id="text-65">
 <p>
 生成索引
 </p>
@@ -2835,12 +2487,12 @@ mplayer -forceidx &lt;somefile&gt;
 </p>
 </div>
 </div>
-<div id="outline-container-sec-73" class="outline-2">
-<h2 id="sec-73">MPlayer 会尝试修复，但同步问题却更遭。</h2>
+<div id="outline-container-sec-66" class="outline-2">
+<h2 id="sec-66">MPlayer 会尝试修复，但同步问题却更遭。</h2>
 </div>
-<div id="outline-container-sec-74" class="outline-2">
-<h2 id="sec-74">MPlayer 会尝试修复那些正确的，因此没有必要同步。</h2>
-<div class="outline-text-2" id="text-74">
+<div id="outline-container-sec-67" class="outline-2">
+<h2 id="sec-67">MPlayer 会尝试修复那些正确的，因此没有必要同步。</h2>
+<div class="outline-text-2" id="text-67">
 <p>
 对于第一种情况，你应当让 MPlayer 努力修复同步问题：
 </p>
@@ -3079,18 +2731,18 @@ ao="pcm:file=dumpedaudio.wav"
 </p>
 </div>
 </div>
-<div id="outline-container-sec-75" class="outline-2">
-<h2 id="sec-75">Network Interfaces</h2>
-<div class="outline-text-2" id="text-75">
+<div id="outline-container-sec-68" class="outline-2">
+<h2 id="sec-68">Network Interfaces</h2>
+<div class="outline-text-2" id="text-68">
 <p>
 如果要讓更動立刻生效，最有效的辦法是重新開機，最聰明的辦法是以 root 身份下達以下指令
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-76" class="outline-2">
-<h2 id="sec-76">Bash readline 的使用技巧</h2>
-<div class="outline-text-2" id="text-76">
+<div id="outline-container-sec-69" class="outline-2">
+<h2 id="sec-69">Bash readline 的使用技巧</h2>
+<div class="outline-text-2" id="text-69">
 <p>
 Bash readline 的使用技巧
 </p>
@@ -3561,9 +3213,9 @@ $bind -v
 </p>
 </div>
 </div>
-<div id="outline-container-sec-77" class="outline-2">
-<h2 id="sec-77">警报声</h2>
-<div class="outline-text-2" id="text-77">
+<div id="outline-container-sec-70" class="outline-2">
+<h2 id="sec-70">警报声</h2>
+<div class="outline-text-2" id="text-70">
 <p>
 系统－－》首选项－－》音效
 </p>
@@ -3574,9 +3226,9 @@ $bind -v
 </div>
 </div>
 
-<div id="outline-container-sec-78" class="outline-2">
-<h2 id="sec-78">窗口关闭按钮的位置修改</h2>
-<div class="outline-text-2" id="text-78">
+<div id="outline-container-sec-71" class="outline-2">
+<h2 id="sec-71">窗口关闭按钮的位置修改</h2>
+<div class="outline-text-2" id="text-71">
 <p>
 &lt;src&gt;
 gconftool-2 --set /apps/metacity/general/button_layout --type string "menu:minimize,maximize,close"
@@ -3584,9 +3236,9 @@ gconftool-2 --set /apps/metacity/general/button_layout --type string "menu:minim
 </p>
 </div>
 </div>
-<div id="outline-container-sec-79" class="outline-2">
-<h2 id="sec-79">sed常用命令整理</h2>
-<div class="outline-text-2" id="text-79">
+<div id="outline-container-sec-72" class="outline-2">
+<h2 id="sec-72">sed常用命令整理</h2>
+<div class="outline-text-2" id="text-72">
 <p>
 &lt;src&gt;
 sed '1,3d' file //删除1-3行
@@ -3615,9 +3267,9 @@ sed 's/1\|2\|3/*/g' //在GNU里将不管是1或2或者是3替换成*
 </div>
 </div>
 
-<div id="outline-container-sec-80" class="outline-2">
-<h2 id="sec-80">awesome</h2>
-<div class="outline-text-2" id="text-80">
+<div id="outline-container-sec-73" class="outline-2">
+<h2 id="sec-73">awesome</h2>
+<div class="outline-text-2" id="text-73">
 <p>
 &lt;src&gt;
 当然你可以通过修改配置文件来更改这些键位。这里的Mod4可以在配置文件中定义，默认是Windows键。
@@ -3694,9 +3346,9 @@ Mod4 + Shift + r
 </p>
 </div>
 </div>
-<div id="outline-container-sec-81" class="outline-2">
-<h2 id="sec-81">Linux网卡配置文件的含义</h2>
-<div class="outline-text-2" id="text-81">
+<div id="outline-container-sec-74" class="outline-2">
+<h2 id="sec-74">Linux网卡配置文件的含义</h2>
+<div class="outline-text-2" id="text-74">
 <p>
 /etc/sysconfig/network-scripts/ifcfg-interfacename
 </p>
@@ -3747,9 +3399,9 @@ Mod4 + Shift + r
 </div>
 </div>
 
-<div id="outline-container-sec-82" class="outline-2">
-<h2 id="sec-82">DNS</h2>
-<div class="outline-text-2" id="text-82">
+<div id="outline-container-sec-75" class="outline-2">
+<h2 id="sec-75">DNS</h2>
+<div class="outline-text-2" id="text-75">
 <p>
 <a href="http://kbase.redhat.com/faq/docs/DOC-13668">http://kbase.redhat.com/faq/docs/DOC-13668</a>
 </p>
@@ -3777,9 +3429,9 @@ DOMAIN=dswdev3
 </div>
 </div>
 
-<div id="outline-container-sec-83" class="outline-2">
-<h2 id="sec-83">Golden dict</h2>
-<div class="outline-text-2" id="text-83">
+<div id="outline-container-sec-76" class="outline-2">
+<h2 id="sec-76">Golden dict</h2>
+<div class="outline-text-2" id="text-76">
 <p>
 I put the setup script in myapt. 
 </p>
@@ -3794,9 +3446,9 @@ I put the setup script in myapt.
 </div>
 </div>
 
-<div id="outline-container-sec-84" class="outline-2">
-<h2 id="sec-84"><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=77&t=290844">使用wubi-hd在windows下不用光驱硬盘安装ubuntu(发现的最简单硬盘安装方法</a>）</h2>
-<div class="outline-text-2" id="text-84">
+<div id="outline-container-sec-77" class="outline-2">
+<h2 id="sec-77"><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=77&t=290844">使用wubi-hd在windows下不用光驱硬盘安装ubuntu(发现的最简单硬盘安装方法</a>）</h2>
+<div class="outline-text-2" id="text-77">
 <p>
 windows下使用wubi-hd硬盘安装ubuntu，适合ubuntu各个版本包括8.04,8.10,9.04,9.10,10.04以及衍生版等
 </p>
@@ -3834,9 +3486,9 @@ D盘空闲5G以上,建议使用NTFS分区，磁盘标识使用英文
 </div>
 
 
-<div id="outline-container-sec-85" class="outline-2">
-<h2 id="sec-85">add-apt-repository</h2>
-<div class="outline-text-2" id="text-85">
+<div id="outline-container-sec-78" class="outline-2">
+<h2 id="sec-78">add-apt-repository</h2>
+<div class="outline-text-2" id="text-78">
 <p>
 Step 1: On the PPA's overview page, look for the heading that reads Adding this PPA to your system. Make a note of the PPA's location, which looks like:
 </p>
@@ -3858,39 +3510,39 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-86" class="outline-2">
-<h2 id="sec-86">Setup script</h2>
-<div class="outline-text-2" id="text-86">
+<div id="outline-container-sec-79" class="outline-2">
+<h2 id="sec-79">Setup script</h2>
+<div class="outline-text-2" id="text-79">
 <p>
 &lt; include file="~/ideas/bin/myinstall" markup="src" lang="sh"&gt;
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-87" class="outline-2">
-<h2 id="sec-87">IPv6</h2>
-<div class="outline-text-2" id="text-87">
+<div id="outline-container-sec-80" class="outline-2">
+<h2 id="sec-80">IPv6</h2>
+<div class="outline-text-2" id="text-80">
 <p>
 &lt;  include file="/home/will/ideas/Muse/tools/ipaddress.txt" markup="src" &gt;
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-88" class="outline-2">
-<h2 id="sec-88">Printer</h2>
-<div class="outline-text-2" id="text-88">
+<div id="outline-container-sec-81" class="outline-2">
+<h2 id="sec-81">Printer</h2>
+<div class="outline-text-2" id="text-81">
 <p>
 <a href="http://w3.tap.ibm.com/w3ki03/display/linuxportal/Open+Client+Linux+Global+Printing+Guide">http://w3.tap.ibm.com/w3ki03/display/linuxportal/Open+Client+Linux+Global+Printing+Guide</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-89" class="outline-2">
-<h2 id="sec-89">AIX</h2>
-<div class="outline-text-2" id="text-89">
-</div><div id="outline-container-sec-89-1" class="outline-3">
-<h3 id="sec-89-1">要确定您安装的 AIX 的级别，请运行以下命令：</h3>
-<div class="outline-text-3" id="text-89-1">
+<div id="outline-container-sec-82" class="outline-2">
+<h2 id="sec-82">AIX</h2>
+<div class="outline-text-2" id="text-82">
+</div><div id="outline-container-sec-82-1" class="outline-3">
+<h3 id="sec-82-1">要确定您安装的 AIX 的级别，请运行以下命令：</h3>
+<div class="outline-text-3" id="text-82-1">
 <p>
 或
 </p>
@@ -3919,9 +3571,9 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-89-2" class="outline-3">
-<h3 id="sec-89-2">wget</h3>
-<div class="outline-text-3" id="text-89-2">
+<div id="outline-container-sec-82-2" class="outline-3">
+<h3 id="sec-82-2">wget</h3>
+<div class="outline-text-3" id="text-82-2">
 <p>
 <a href="http://computer-refuge.org/classiccmp/aixpdslib/pub/wget/RISC/5.3/exec/">http://computer-refuge.org/classiccmp/aixpdslib/pub/wget/RISC/5.3/exec/</a>
 </p>
@@ -3956,9 +3608,9 @@ gzip -dc  grep.2.5.1.tar.Z | tar -xvf -
 </div>
 </div>
 </div>
-<div id="outline-container-sec-90" class="outline-2">
-<h2 id="sec-90">Remote run ssh</h2>
-<div class="outline-text-2" id="text-90">
+<div id="outline-container-sec-83" class="outline-2">
+<h2 id="sec-83">Remote run ssh</h2>
+<div class="outline-text-2" id="text-83">
 <p>
 ssh -l changwei etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src/log4j.properties"
 </p>
@@ -3981,9 +3633,9 @@ t5y6u7i8
 </p>
 </div>
 </div>
-<div id="outline-container-sec-91" class="outline-2">
-<h2 id="sec-91">FreeNX --- faster vnc</h2>
-<div class="outline-text-2" id="text-91">
+<div id="outline-container-sec-84" class="outline-2">
+<h2 id="sec-84">FreeNX --- faster vnc</h2>
+<div class="outline-text-2" id="text-84">
 <p>
 <a href="https://help.ubuntu.com/community/FreeNX">https://help.ubuntu.com/community/FreeNX</a>
 </p>
@@ -4028,9 +3680,9 @@ sudo /usr/lib/nx/nxsetup --install
 </div>
 
 
-<div id="outline-container-sec-92" class="outline-2">
-<h2 id="sec-92">E: Sub-process /usr/bin/dpkg returned an error code (1)</h2>
-<div class="outline-text-2" id="text-92">
+<div id="outline-container-sec-85" class="outline-2">
+<h2 id="sec-85">E: Sub-process /usr/bin/dpkg returned an error code (1)</h2>
+<div class="outline-text-2" id="text-85">
 <p>
 此时可以这样解决：
 cd /var/lib/dpkg
@@ -4042,9 +3694,9 @@ sudo apt-get --reinstall install ttf-dustin khangman kdeedu kde
 </div>
 </div>
 
-<div id="outline-container-sec-93" class="outline-2">
-<h2 id="sec-93">A copy of the C library was found in an unexpected directory:</h2>
-<div class="outline-text-2" id="text-93">
+<div id="outline-container-sec-86" class="outline-2">
+<h2 id="sec-86">A copy of the C library was found in an unexpected directory:</h2>
+<div class="outline-text-2" id="text-86">
 <p>
   '/lib/i386-linux-gnu/libm-2.13.so'
 It is not safe to upgrade the C library in this situation;
@@ -4078,9 +3730,9 @@ sudo cp /tmp/lib/libpthread.so.0 .
 </div>
 </div>
 
-<div id="outline-container-sec-94" class="outline-2">
-<h2 id="sec-94">Notes setup</h2>
-<div class="outline-text-2" id="text-94">
+<div id="outline-container-sec-87" class="outline-2">
+<h2 id="sec-87">Notes setup</h2>
+<div class="outline-text-2" id="text-87">
 <p>
 gedit ~/.local/share/applications/mimeapps.list 
 </p>
@@ -4115,12 +3767,12 @@ Exec='/opt/ibm/lotus/notes/notes' %U
 </div>
 </div>
 
-<div id="outline-container-sec-95" class="outline-2">
-<h2 id="sec-95">RSA</h2>
-<div class="outline-text-2" id="text-95">
-</div><div id="outline-container-sec-95-1" class="outline-3">
-<h3 id="sec-95-1">Can't find libstdc++</h3>
-<div class="outline-text-3" id="text-95-1">
+<div id="outline-container-sec-88" class="outline-2">
+<h2 id="sec-88">RSA</h2>
+<div class="outline-text-2" id="text-88">
+</div><div id="outline-container-sec-88-1" class="outline-3">
+<h3 id="sec-88-1">Can't find libstdc++</h3>
+<div class="outline-text-3" id="text-88-1">
 <p>
 <a href="http://ibmforums.ibm.com/forums/thread.jspa?threadID=577740&tstart=100">http://ibmforums.ibm.com/forums/thread.jspa?threadID=577740&tstart=100</a>
 </p>
@@ -4146,9 +3798,9 @@ sudo ln -s ../lib/i386-linux-gnu/libstdc++.so.6 .
 </div>
 </div>
 
-<div id="outline-container-sec-96" class="outline-2">
-<h2 id="sec-96">Mount</h2>
-<div class="outline-text-2" id="text-96">
+<div id="outline-container-sec-89" class="outline-2">
+<h2 id="sec-89">Mount</h2>
+<div class="outline-text-2" id="text-89">
 <p>
 &lt;src&gt;
 will@will-ThinkPad-T420:/media$ cat /etc/fstab
@@ -4168,9 +3820,9 @@ UUID=4305604E4A5B9CB8 /media/win7               ntfs    errors=remount-ro,auto,e
 </p>
 </div>
 </div>
-<div id="outline-container-sec-97" class="outline-2">
-<h2 id="sec-97">Fedaro</h2>
-<div class="outline-text-2" id="text-97">
+<div id="outline-container-sec-90" class="outline-2">
+<h2 id="sec-90">Fedaro</h2>
+<div class="outline-text-2" id="text-90">
 <p>
 <a href="https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/%28optional%29%20Add%20additional%20repositories">https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/%28optional%29%20Add%20additional%20repositories</a>
 </p>
@@ -4192,13 +3844,6 @@ su -c 'yum localinstall --nogpgcheck <a href="http://download1.rpmfusion.org/fre
 sudo yum install agnclient
 </p>
 
-<p>
-sudo yum grouplist|grep IBM
-</p>
-
-<p>
-sudo yum groupinstall "IBM Client Java" "IBM Lotus Notes" "IBM Sametime" 
-</p>
 
 <p>
 sudo yum install ibus.x86_64 ibus-gtk2.i686 filezilla.x86_64 emacs.x86_64
@@ -4214,48 +3859,35 @@ sudo yum install mercurial.x86_6 emacs-mercurial-el.x86_64 aspell aspell-en
 </p>
 </div>
 
-<div id="outline-container-sec-97-1" class="outline-3">
-<h3 id="sec-97-1">Flash</h3>
-<div class="outline-text-3" id="text-97-1">
+<div id="outline-container-sec-90-1" class="outline-3">
+<h3 id="sec-90-1">Flash</h3>
+<div class="outline-text-3" id="text-90-1">
 <p>
 sudo yum install gnash-plugin.x86_64
 </p>
 </div>
 </div>
-<div id="outline-container-sec-97-2" class="outline-3">
-<h3 id="sec-97-2">Input method in notes or sametime</h3>
-<div class="outline-text-3" id="text-97-2">
-<p>
-<a href="http://ibmforums.ibm.com/forums/thread.jspa?messageID=1921274&tstart=0&#1921274">http://ibmforums.ibm.com/forums/thread.jspa?messageID=1921274&tstart=0&#1921274</a>
-</p>
-
-
+<div id="outline-container-sec-90-2" class="outline-3">
+<h3 id="sec-90-2">Input method in notes or sametime</h3>
+<div class="outline-text-3" id="text-90-2">
 <p>
 sudo yum install ibus-gtk2.i686 
 </p>
 </div>
 </div>
-<div id="outline-container-sec-97-3" class="outline-3">
-<h3 id="sec-97-3">DB2</h3>
-<div class="outline-text-3" id="text-97-3">
+<div id="outline-container-sec-90-3" class="outline-3">
+<h3 id="sec-90-3">DB2</h3>
+<div class="outline-text-3" id="text-90-3">
 <p>
 IBM DB2 Enterprise Server Edition 9.7 for Linux® on AMD64 and Intel® EM64T systems (x64) English (CZ19NEN)        
 </p>
-
-
-<p>
-Wei Chang/China/IBM
-</p>
-
-<p>
-D23M0037/23/M/IBM
-</p>
 </div>
 </div>
 
-<div id="outline-container-sec-97-4" class="outline-3">
-<h3 id="sec-97-4">美化</h3>
-<div class="outline-text-3" id="text-97-4">
+
+<div id="outline-container-sec-90-4" class="outline-3">
+<h3 id="sec-90-4">美化</h3>
+<div class="outline-text-3" id="text-90-4">
 <p>
 sudo rpm -Uvh <a href="http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm">http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm</a>
 sudo yum install freetype-infinality fontconfig-infinality
@@ -4280,9 +3912,9 @@ USE_STYLE="OSX"
 </p>
 </div>
 </div>
-<div id="outline-container-sec-97-5" class="outline-3">
-<h3 id="sec-97-5">Installation</h3>
-<div class="outline-text-3" id="text-97-5">
+<div id="outline-container-sec-90-5" class="outline-3">
+<h3 id="sec-90-5">Installation</h3>
+<div class="outline-text-3" id="text-90-5">
 <p>
 <a href="http://docs.fedoraproject.org/en-US/Fedora/17/html/Installation_Guide/pt-install-info-x86.html">http://docs.fedoraproject.org/en-US/Fedora/17/html/Installation_Guide/pt-install-info-x86.html</a>
 </p>
@@ -4299,9 +3931,9 @@ select a Fedora Live ISO file from the drop-down menu that LiveUSB Creator prese
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-97-6" class="outline-3">
-<h3 id="sec-97-6">Fix sudo issue</h3>
-<div class="outline-text-3" id="text-97-6">
+<div id="outline-container-sec-90-6" class="outline-3">
+<h3 id="sec-90-6">Fix sudo issue</h3>
+<div class="outline-text-3" id="text-90-6">
 <p>
 reboot and login recovery mod
 </p>
@@ -4329,9 +3961,9 @@ chmod 440 /etc/sudoers
 </p>
 </div>
 </div>
-<div id="outline-container-sec-97-7" class="outline-3">
-<h3 id="sec-97-7">Updgrad</h3>
-<div class="outline-text-3" id="text-97-7">
+<div id="outline-container-sec-90-7" class="outline-3">
+<h3 id="sec-90-7">Updgrad</h3>
+<div class="outline-text-3" id="text-90-7">
 <p>
 #注意操作前记得备份数据噢。
 </p>
@@ -4378,9 +4010,9 @@ upgrade 完成后，reboot 一下，That`s all。
 </div>
 </div>
 
-<div id="outline-container-sec-97-8" class="outline-3">
-<h3 id="sec-97-8">Upgrade with fedup</h3>
-<div class="outline-text-3" id="text-97-8">
+<div id="outline-container-sec-90-8" class="outline-3">
+<h3 id="sec-90-8">Upgrade with fedup</h3>
+<div class="outline-text-3" id="text-90-8">
 <p>
 sudo fedup-cli --network 19 --instrepo <a href="http://alt.fedoraproject.org/pub/fedora/linux/development/19/x86_64/os/">http://alt.fedoraproject.org/pub/fedora/linux/development/19/x86_64/os/</a>
 </p>
@@ -4410,14 +4042,14 @@ sudo package-cleanup --orphans &gt;/home/will/backup/f19upgrade.sh
 </p>
 </div>
 </div>
-<div id="outline-container-sec-97-9" class="outline-3">
-<h3 id="sec-97-9">RTC 3.0 p2 install</h3>
+<div id="outline-container-sec-90-9" class="outline-3">
+<h3 id="sec-90-9">RTC 3.0 p2 install</h3>
 </div>
 
 
-<div id="outline-container-sec-97-10" class="outline-3">
-<h3 id="sec-97-10">在Fedora14下的latex+CJK中文安装</h3>
-<div class="outline-text-3" id="text-97-10">
+<div id="outline-container-sec-90-10" class="outline-3">
+<h3 id="sec-90-10">在Fedora14下的latex+CJK中文安装</h3>
+<div class="outline-text-3" id="text-90-10">
 <p>
 <a href="http://hi.baidu.com/w176177082/blog/item/e5b874345bad9659241f1402.html">http://hi.baidu.com/w176177082/blog/item/e5b874345bad9659241f1402.html</a>
 </p>
@@ -4479,9 +4111,9 @@ Url：<a href="http://bj.soulinfo.com/~hugang/tex/tex2007/YueWang-zhfonts-final_
 </div>
 </div>
 
-<div id="outline-container-sec-98" class="outline-2">
-<h2 id="sec-98">FTP setup</h2>
-<div class="outline-text-2" id="text-98">
+<div id="outline-container-sec-91" class="outline-2">
+<h2 id="sec-91">FTP setup</h2>
+<div class="outline-text-2" id="text-91">
 <hr  />
 
 <p>
@@ -4519,9 +4151,9 @@ LDAPGenerateHomedirPrefixNoUsername on
 </p>
 </div>
 
-<div id="outline-container-sec-98-1" class="outline-3">
-<h3 id="sec-98-1">Reference</h3>
-<div class="outline-text-3" id="text-98-1">
+<div id="outline-container-sec-91-1" class="outline-3">
+<h3 id="sec-91-1">Reference</h3>
+<div class="outline-text-3" id="text-91-1">
 <p>
 <a href="http://www.worldhello.net/2010/06/29/1384.html">LDAP 做为fpt认证源</a>
 </p>
@@ -4588,9 +4220,9 @@ AuthGroupFile /etc/ftpd.group
 </div>
 </div>
 
-<div id="outline-container-sec-99" class="outline-2">
-<h2 id="sec-99">Download Linxu setup image</h2>
-<div class="outline-text-2" id="text-99">
+<div id="outline-container-sec-92" class="outline-2">
+<h2 id="sec-92">Download Linxu setup image</h2>
+<div class="outline-text-2" id="text-92">
 <ol class="org-ol">
 <li><a href="http://software.linux.ibm.com/pub/">http://software.linux.ibm.com/pub/</a>
 </li>
@@ -4598,17 +4230,17 @@ AuthGroupFile /etc/ftpd.group
 </div>
 </div>
 
-<div id="outline-container-sec-100" class="outline-2">
-<h2 id="sec-100">SSH</h2>
-<div class="outline-text-2" id="text-100">
+<div id="outline-container-sec-93" class="outline-2">
+<h2 id="sec-93">SSH</h2>
+<div class="outline-text-2" id="text-93">
 <p>
 <a href="http://www.jonathanmoeller.com/screed/?p=3606">http://www.jonathanmoeller.com/screed/?p=3606</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-101" class="outline-2">
-<h2 id="sec-101">xulrunner</h2>
-<div class="outline-text-2" id="text-101">
+<div id="outline-container-sec-94" class="outline-2">
+<h2 id="sec-94">xulrunner</h2>
+<div class="outline-text-2" id="text-94">
 <p>
 <a href="https://w3-connections.ibm.com/forums/html/topic?id=a0cb48ab-d7a7-4354-9e3b-e1d03d5c6a45#172d9087-2454-4031-a17a-8d08aa8eb74d">https://w3-connections.ibm.com/forums/html/topic?id=a0cb48ab-d7a7-4354-9e3b-e1d03d5c6a45#172d9087-2454-4031-a17a-8d08aa8eb74d</a>
 </p>
@@ -4675,9 +4307,9 @@ export LD_PRELOAD=/usr/lib64/libfreetype.so.6
 </div>
 </div>
 
-<div id="outline-container-sec-102" class="outline-2">
-<h2 id="sec-102"><a href="http://linuxtoy.org/archives/a-tour-through-open-source-creative-tools.html">开源创作工具一览</a></h2>
-<div class="outline-text-2" id="text-102">
+<div id="outline-container-sec-95" class="outline-2">
+<h2 id="sec-95"><a href="http://linuxtoy.org/archives/a-tour-through-open-source-creative-tools.html">开源创作工具一览</a></h2>
+<div class="outline-text-2" id="text-95">
 <p>
 来自 Red Hat 的 Máirín Duffy 在前段时间的峰会上快速演示了大量 Linux 平台上的众多创作工具。
 </p>
@@ -4909,9 +4541,9 @@ ok
 </div>
 </div>
 
-<div id="outline-container-sec-103" class="outline-2">
-<h2 id="sec-103">fedora 中文输入法 REMI</h2>
-<div class="outline-text-2" id="text-103">
+<div id="outline-container-sec-96" class="outline-2">
+<h2 id="sec-96">fedora 中文输入法 REMI</h2>
+<div class="outline-text-2" id="text-96">
 <p>
 &lt;src&gt;
 $ sudo yum install cmake gtest-devel boost-devel yaml-cpp-devel kyotocabinet-devel opencc-devel ibus-devel libnotify-devel zlib-devel gcc-c++ fcitx fcitx-devel glog-devel.x86_64
@@ -4928,12 +4560,12 @@ $ ./install.sh
 </p>
 </div>
 </div>
-<div id="outline-container-sec-104" class="outline-2">
-<h2 id="sec-104">Apahce</h2>
-<div class="outline-text-2" id="text-104">
-</div><div id="outline-container-sec-104-1" class="outline-3">
-<h3 id="sec-104-1">Ubuntu</h3>
-<div class="outline-text-3" id="text-104-1">
+<div id="outline-container-sec-97" class="outline-2">
+<h2 id="sec-97">Apahce</h2>
+<div class="outline-text-2" id="text-97">
+</div><div id="outline-container-sec-97-1" class="outline-3">
+<h3 id="sec-97-1">Ubuntu</h3>
+<div class="outline-text-3" id="text-97-1">
 <p>
 sudo apt-get install apache2
 </p>
@@ -4948,17 +4580,17 @@ sudo nano /etc/apache2/sites-available/default
 </div>
 </div>
 </div>
-<div id="outline-container-sec-105" class="outline-2">
-<h2 id="sec-105">Ubuntu backup iso</h2>
-<div class="outline-text-2" id="text-105">
+<div id="outline-container-sec-98" class="outline-2">
+<h2 id="sec-98">Ubuntu backup iso</h2>
+<div class="outline-text-2" id="text-98">
 <p>
 <a href="http://www.geekconnection.org/remastersys/ubuntu.html">http://www.geekconnection.org/remastersys/ubuntu.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-106" class="outline-2">
-<h2 id="sec-106">Awesome</h2>
-<div class="outline-text-2" id="text-106">
+<div id="outline-container-sec-99" class="outline-2">
+<h2 id="sec-99">Awesome</h2>
+<div class="outline-text-2" id="text-99">
 <p>
 <a href="http://blog.csdn.net/wearenoth/article/details/7489157">http://blog.csdn.net/wearenoth/article/details/7489157</a>
 </p>
@@ -5042,9 +4674,9 @@ WM_CLASS(STRING) = "zim", "Zim"
 </div>
 </div>
 
-<div id="outline-container-sec-107" class="outline-2">
-<h2 id="sec-107">FDUP</h2>
-<div class="outline-text-2" id="text-107">
+<div id="outline-container-sec-100" class="outline-2">
+<h2 id="sec-100">FDUP</h2>
+<div class="outline-text-2" id="text-100">
 <ol class="org-ol">
 <li><a href="http://fedoraproject.org/wiki/Upgrading">http://fedoraproject.org/wiki/Upgrading</a>
 </li>
@@ -5055,9 +4687,9 @@ WM_CLASS(STRING) = "zim", "Zim"
 
 
 
-<div id="outline-container-sec-108" class="outline-2">
-<h2 id="sec-108">Chrome</h2>
-<div class="outline-text-2" id="text-108">
+<div id="outline-container-sec-101" class="outline-2">
+<h2 id="sec-101">Chrome</h2>
+<div class="outline-text-2" id="text-101">
 <p>
 [fedora-chromium]
 name=Chromium web browser and deps
@@ -5076,9 +4708,9 @@ gpgcheck=0
 </div>
 </div>
 
-<div id="outline-container-sec-109" class="outline-2">
-<h2 id="sec-109"><a href="http://ocfedora.hursley.ibm.com/">Open Client Fedora Community Repositories</a></h2>
-<div class="outline-text-2" id="text-109">
+<div id="outline-container-sec-102" class="outline-2">
+<h2 id="sec-102"><a href="http://ocfedora.hursley.ibm.com/">Open Client Fedora Community Repositories</a></h2>
+<div class="outline-text-2" id="text-102">
 <p>
 *i3wm
 </p>
@@ -5088,9 +4720,9 @@ gpgcheck=0
 </p>
 </div>
 </div>
-<div id="outline-container-sec-110" class="outline-2">
-<h2 id="sec-110">Stop firewalld in fedora 18</h2>
-<div class="outline-text-2" id="text-110">
+<div id="outline-container-sec-103" class="outline-2">
+<h2 id="sec-103">Stop firewalld in fedora 18</h2>
+<div class="outline-text-2" id="text-103">
 <p>
 sudo systemctl stop firewalld.service
 </p>
@@ -5100,34 +4732,18 @@ sudo systemctl status firewalld.service
 </p>
 </div>
 </div>
-<div id="outline-container-sec-111" class="outline-2">
-<h2 id="sec-111">WIKI热点</h2>
-<div class="outline-text-2" id="text-111">
+<div id="outline-container-sec-104" class="outline-2">
+<h2 id="sec-104">WIKI热点</h2>
+<div class="outline-text-2" id="text-104">
 <p>
 <a href="http://blog.csdn.net/qihuanfengyun/article/details/6790990">http://blog.csdn.net/qihuanfengyun/article/details/6790990</a>
 <a href="http://www.cnblogs.com/heart-runner/archive/2011/12/14/2287370.html">http://www.cnblogs.com/heart-runner/archive/2011/12/14/2287370.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-112" class="outline-2">
-<h2 id="sec-112">ISAM</h2>
-<div class="outline-text-2" id="text-112">
-<p>
-disable firewalld to allow isam to upload the scan resluts. 
-</p>
-
-<p>
-先关闭firewalld, 在isam 里面启动scan,然后看Ｌog，如果看到启动wst, 立刻启动firewalld. 
-</p>
-
-<p>
-sudo systemctl stop firewalld.service  
-</p>
-</div>
-</div>
-<div id="outline-container-sec-113" class="outline-2">
-<h2 id="sec-113"><a href="https://w3-connections.ibm.com/wikis/home?lang=zh_CN#!/wiki/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/Installed%20IBM%20Notes%209%20-%20SUT%20doesn't%20work">Installed IBM Notes 9 - SUT doesn't work</a></h2>
-<div class="outline-text-2" id="text-113">
+<div id="outline-container-sec-105" class="outline-2">
+<h2 id="sec-105"><a href="https://w3-connections.ibm.com/wikis/home?lang=zh_CN#!/wiki/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/Installed%20IBM%20Notes%209%20-%20SUT%20doesn't%20work">Installed IBM Notes 9 - SUT doesn't work</a></h2>
+<div class="outline-text-2" id="text-105">
 <p>
 Problem
 After having installed IBM Notes V9 Gold (Code Drop Link) and installing the IBM template (IBM Template), the SUT functionality does not work anymore.
@@ -5147,17 +4763,17 @@ IBM Notes 9 Reference
 </div>
 </div>
 
-<div id="outline-container-sec-114" class="outline-2">
-<h2 id="sec-114">gnome plugin</h2>
-<div class="outline-text-2" id="text-114">
+<div id="outline-container-sec-106" class="outline-2">
+<h2 id="sec-106">gnome plugin</h2>
+<div class="outline-text-2" id="text-106">
 <p>
 gnome-tweak-tool
 </p>
 </div>
 </div>
-<div id="outline-container-sec-115" class="outline-2">
-<h2 id="sec-115">Java</h2>
-<div class="outline-text-2" id="text-115">
+<div id="outline-container-sec-107" class="outline-2">
+<h2 id="sec-107">Java</h2>
+<div class="outline-text-2" id="text-107">
 <p>
 <a href="http://www.if-not-true-then-false.com/2010/install-sun-oracle-java-jdk-jre-6-on-fedora-centos-red-hat-rhel/">http://www.if-not-true-then-false.com/2010/install-sun-oracle-java-jdk-jre-6-on-fedora-centos-red-hat-rhel/</a>
 </p>
@@ -5167,18 +4783,18 @@ gnome-tweak-tool
 </p>
 </div>
 </div>
-<div id="outline-container-sec-116" class="outline-2">
-<h2 id="sec-116">Add user</h2>
-<div class="outline-text-2" id="text-116">
+<div id="outline-container-sec-108" class="outline-2">
+<h2 id="sec-108">Add user</h2>
+<div class="outline-text-2" id="text-108">
 <p>
 useradd -groot ead
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-117" class="outline-2">
-<h2 id="sec-117">字体美化</h2>
-<div class="outline-text-2" id="text-117">
+<div id="outline-container-sec-109" class="outline-2">
+<h2 id="sec-109">字体美化</h2>
+<div class="outline-text-2" id="text-109">
 <p>
 第一步我就不多说了。我说要说的就是丑的字体AR UMING系列。由于这一系列的字体里面含有中文，且名字是A开头的，排在前面。所以系统里面的中文字用的就是这个字体。只要把这个字体删除就没事了。
 删除方法：
@@ -5190,12 +4806,12 @@ useradd -groot ead
 </div>
 </div>
 
-<div id="outline-container-sec-118" class="outline-2">
-<h2 id="sec-118">VM Setup</h2>
-<div class="outline-text-2" id="text-118">
-</div><div id="outline-container-sec-118-1" class="outline-3">
-<h3 id="sec-118-1">Apahce</h3>
-<div class="outline-text-3" id="text-118-1">
+<div id="outline-container-sec-110" class="outline-2">
+<h2 id="sec-110">VM Setup</h2>
+<div class="outline-text-2" id="text-110">
+</div><div id="outline-container-sec-110-1" class="outline-3">
+<h3 id="sec-110-1">Apahce</h3>
+<div class="outline-text-3" id="text-110-1">
 <p>
 &lt;src&gt;
 apachectl start
@@ -5212,9 +4828,9 @@ repositories
 </p>
 </div>
 </div>
-<div id="outline-container-sec-118-2" class="outline-3">
-<h3 id="sec-118-2">FTP</h3>
-<div class="outline-text-3" id="text-118-2">
+<div id="outline-container-sec-110-2" class="outline-3">
+<h3 id="sec-110-2">FTP</h3>
+<div class="outline-text-3" id="text-110-2">
 <p>
 edit /etc/proftpd.conf
 </p>
@@ -5246,13 +4862,13 @@ LDAPGenerateHomedirPrefixNoUsername on
 </p>
 </div>
 </div>
-<div id="outline-container-sec-118-3" class="outline-3">
-<h3 id="sec-118-3"><a href="https://pic.dhe.ibm.com/infocenter/cchelp/v7r1m0/index.jsp?topic=/com.ibm.rational.clearcase.cc_ms_install.doc/topics/c_packaging_intro_rsar.htm">IBM Packaging Utility</a></h3>
+<div id="outline-container-sec-110-3" class="outline-3">
+<h3 id="sec-110-3"><a href="https://pic.dhe.ibm.com/infocenter/cchelp/v7r1m0/index.jsp?topic=/com.ibm.rational.clearcase.cc_ms_install.doc/topics/c_packaging_intro_rsar.htm">IBM Packaging Utility</a></h3>
 </div>
 
-<div id="outline-container-sec-118-4" class="outline-3">
-<h3 id="sec-118-4">repository</h3>
-<div class="outline-text-3" id="text-118-4">
+<div id="outline-container-sec-110-4" class="outline-3">
+<h3 id="sec-110-4">repository</h3>
+<div class="outline-text-3" id="text-110-4">
 <p>
 wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-40.el6.centos.noarch.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-40.el6.centos.noarch.rpm</a> 
 wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm</a>   
@@ -5333,12 +4949,12 @@ yum localinstall --nogpgcheck <a href="http://download1.rpmfusion.org/free/el/up
 </div>
 </div>
 
-<div id="outline-container-sec-118-5" class="outline-3">
-<h3 id="sec-118-5">VNC</h3>
-<div class="outline-text-3" id="text-118-5">
-</div><div id="outline-container-sec-118-5-1" class="outline-4">
-<h4 id="sec-118-5-1">Install</h4>
-<div class="outline-text-4" id="text-118-5-1">
+<div id="outline-container-sec-110-5" class="outline-3">
+<h3 id="sec-110-5">VNC</h3>
+<div class="outline-text-3" id="text-110-5">
+</div><div id="outline-container-sec-110-5-1" class="outline-4">
+<h4 id="sec-110-5-1">Install</h4>
+<div class="outline-text-4" id="text-110-5-1">
 <p>
 <a href="http://ithelpblog.com/os/linux/redhat/centos-redhat/howto-install-and-configure-vnc-server-on-centos-6-3-or-redhat-rhel/">http://ithelpblog.com/os/linux/redhat/centos-redhat/howto-install-and-configure-vnc-server-on-centos-6-3-or-redhat-rhel/</a>
 </p>
@@ -5380,9 +4996,9 @@ VNCSERVERARGS<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a><
 </div>
 </div>
 
-<div id="outline-container-sec-118-5-2" class="outline-4">
-<h4 id="sec-118-5-2">Setup</h4>
-<div class="outline-text-4" id="text-118-5-2">
+<div id="outline-container-sec-110-5-2" class="outline-4">
+<h4 id="sec-110-5-2">Setup</h4>
+<div class="outline-text-4" id="text-110-5-2">
 <ol class="org-ol">
 <li>sudo apt-get install vnc4server # <a href="http://www.walkernews.net/2007/07/05/how-to-setup-linux-vnc-server/">http://www.walkernews.net/2007/07/05/how-to-setup-linux-vnc-server/</a>
 </li>
@@ -5455,9 +5071,9 @@ VNCSERVERARGS<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1
 </div>
 
 
-<div id="outline-container-sec-119" class="outline-2">
-<h2 id="sec-119">Remove notes Error in PREUN scriptlet \u2026 file was supposed to be removed but is not</h2>
-<div class="outline-text-2" id="text-119">
+<div id="outline-container-sec-111" class="outline-2">
+<h2 id="sec-111">Remove notes Error in PREUN scriptlet \u2026 file was supposed to be removed but is not</h2>
+<div class="outline-text-2" id="text-111">
 <p>
 To fix the problem run:
 </p>
@@ -5472,53 +5088,28 @@ You can add more than one package file to the end of the command.
 </div>
 </div>
 
-<div id="outline-container-sec-120" class="outline-2">
-<h2 id="sec-120">Redhat 6 Chrome</h2>
-<div class="outline-text-2" id="text-120">
+<div id="outline-container-sec-112" class="outline-2">
+<h2 id="sec-112">Redhat 6 Chrome</h2>
+<div class="outline-text-2" id="text-112">
 <p>
 <a href="http://jfbcb.com/article/detail/how-to-install-chrome-latest-version-on-centos64/">http://jfbcb.com/article/detail/how-to-install-chrome-latest-version-on-centos64/</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-121" class="outline-2">
-<h2 id="sec-121">Redhat 113 DNS</h2>
-<div class="outline-text-2" id="text-121">
-<p>
-[root@bxv5v1054 network-scripts]# cat ifcfg-Auto_eth1 
-TYPE=Ethernet
-BOOTPROTO=none
-IPADDR=9.110.82.113
-PREFIX=24
-GATEWAY=9.110.82.1
-DEFROUTE=yes
-IPV4_FAILURE_FATAL=yes
-IPV6INIT=no
-NAME="Auto eth1"
-UUID=0a231697-295f-4eda-b4c4-ca7577bef0b9
-ONBOOT=yes
-NETMASK=255.255.255.0
-DEVICE=Auto_eth1
-USERCTL=no
-HWADDR=00:50:56:AA:53:75
-LAST_CONNECT=1369120609
-DNS1=9.181.2.101
-DNS2=9.181.2.102
-</p>
-</div>
-</div>
 
-<div id="outline-container-sec-122" class="outline-2">
-<h2 id="sec-122">is not in the sudoers file</h2>
-<div class="outline-text-2" id="text-122">
+
+<div id="outline-container-sec-113" class="outline-2">
+<h2 id="sec-113">is not in the sudoers file</h2>
+<div class="outline-text-2" id="text-113">
 <p>
 $visudo 
 your_user_name ALL=(ALL)  ALL
 </p>
 </div>
 </div>
-<div id="outline-container-sec-123" class="outline-2">
-<h2 id="sec-123">查看Linux下端口被哪个进程占用</h2>
-<div class="outline-text-2" id="text-123">
+<div id="outline-container-sec-114" class="outline-2">
+<h2 id="sec-114">查看Linux下端口被哪个进程占用</h2>
+<div class="outline-text-2" id="text-114">
 <p>
 今天配置mfs服务器时遇到问题，发现9425端口被占用，为了查明是哪个进程在用此端口，可用如下命令：
 lsof -i:9425
@@ -5528,9 +5119,9 @@ kill -9 PID  （其中PID就写要杀死进程的具体进程号即可）
 </div>
 </div>
 
-<div id="outline-container-sec-124" class="outline-2">
-<h2 id="sec-124">Setup Java  in Fedora</h2>
-<div class="outline-text-2" id="text-124">
+<div id="outline-container-sec-115" class="outline-2">
+<h2 id="sec-115">Setup Java  in Fedora</h2>
+<div class="outline-text-2" id="text-115">
 <p>
 &lt;example&gt;
 1.到oracle官网下载
@@ -5579,9 +5170,9 @@ export PATH=$PATH:$JAVA_HOME/bin
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2013-12-19</span>
+        <span title="last modification date" class="post-info">2013-12-20</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a></span>
-        <span title="author" class="post-info">U-360BUYAD\changwei</span>
+        <span title="author" class="post-info">Will Chang</span>
       </div>
       <section>
         <h1>Comments</h1>
@@ -5614,7 +5205,7 @@ export PATH=$PATH:$JAVA_HOME/bin
       <div class="footer">
         <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
         <p>
-          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;at&gt; BJXX-CHANGWEI &lt;dot&gt; 360buyAD &lt;dot&gt; local">U-360BUYAD\changwei</a>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
         </p>
