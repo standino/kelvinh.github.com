@@ -1,0 +1,14 @@
+#+TITLE:       sql.org
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/sql
+#+KEYWORDS:    sql,db2
+#+TAGS:        :sql:db2:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  DB2 Stored Procedure 
+
+
+对表进行任何操作都不被允许，提示SQLSTATE=57016 SQLCODE=-668 ，原因码 "7"的错误：SQL0668N Operation not allowed for reason code "7"
+on table XXX. 解决方法为：执行命令：reorg table XXX；即可。 

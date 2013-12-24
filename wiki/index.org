@@ -1,0 +1,43 @@
+#+TITLE:       programming 
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/pro
+#+KEYWORDS:    programming
+#+TAGS:        :programming:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Programing
+
+
+
+
+
+* 关注的编程语言
+
+ - java (scala, spring, andromda)
+ - javascript
+ - sql
+ - xml
+ - 正则表达式
+ - shell
+ - lisp
+ - ruby
+ - go
+
+
+*  Xsl
+
+http://www.w3school.com.cn/xsl/xsl_w3celementref.asp
+
+* [[http://baike.baidu.com/link?url=gHiL3Nbkhuj4aDPtq50XtuLSFyVsDOSObcx0ngq1e2h1v9udopyInC8LXv41TU9N][正则表达式]]
+
+** Tester 
+
+http://regexpal.com/
+
+http://www.unibetter.com/deerchao/zhengzhe-biaodashi-jiaocheng-se.htm
+
+
+
+

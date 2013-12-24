@@ -1,0 +1,22 @@
+#+TITLE:       首页
+#+AUTHOR:      chang wei
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2012-11-27 Tue
+#+URI:         /
+#+KEYWORDS:    Lisp, Scheme, Emacs, Linux, Archlinux, Java, C++, Org-page, Programming, Blog, Kelvin Hu, ini_always, 博客, 编程, 生活, 骑行
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+DESCRIPTION: 常伟个人站点的首页
+
+本人使用Emacs也有四五年了，也学过一些Lisp的编程。但是，目前为止还是属于半瓶水的level。这是我用 Emacs + Org mode + Git + [[https://github.com/kelvinh/org-page][Org-page]] + [[http://pages.github.com][GitHub Pages]] 搭建的个人站点.
+我把这几年记录的知识点放在这里，希望能给大家一些帮助，同时也希望大家能够指出wiki中的问题，大家可以共同进步。
+
+--------------------------------------------------------------------------------
+
+- 你想更多地了解我，请前往@@html:<a href="/about/">About</a>@@页面
+
+- 想看看我的一些胡言乱语，请前往@@html:<a href="/blog/">Blog</a>@@页面
+
+- 想看看我平时记的一些杂七杂八的知识点，请前往@@html:<a href="/wiki/">Wiki</a>@@页面
+
+--------------------------------------------------------------------------------

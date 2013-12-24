@@ -1,0 +1,14 @@
+#+TITLE:       idea.org
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/idea
+#+KEYWORDS:    java, idea
+#+TAGS:        :java:idea:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  IDEA 开发工具
+
+
+ - http://gqsunrise.iteye.com/blog/1885116
+ - [[http://henrikwarne.com/2012/06/17/programmer-productivity-emacs-versus-intellij-idea/][快捷键]]

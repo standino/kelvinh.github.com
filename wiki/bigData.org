@@ -1,0 +1,20 @@
+#+TITLE:       大数据
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-20 Fri
+#+URI:         /wiki/bigdata
+#+KEYWORDS:    big data, hadoop, redis
+#+TAGS:        :big data:hadoop:redis:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 研究互联网用到的大数据技术
+
+* redis
+ 1. [[http://langgufu.iteye.com/blog/1434408][Redis介绍及常用命令]]
+ 2. [[http://blog.nosqlfan.com/html/3537.html][Redis资料汇总专题]]
+ 3. [[http://blog.nosqlfan.com/books][books]] 这些书我都没有下载成功。可能链接已经失效。
+ 4. [[http://www.rediscookbook.org/]]
+ 5. [[http://blog.nosqlfan.com/html/868.html?ref=rediszt][Redis几个认识误区]]
+ 6. [[http://blog.nosqlfan.com/html/3139.html?ref=rediszt][Redis系统性介绍]]  这篇入门级的文章写得不错。
+ 7. [[http://blog.nosqlfan.com/html/4144.html][从MySQL到Redis，提升数据迁移的效率]]
+ 8. [[http://try.redis.io/][在线执行redis命令]]

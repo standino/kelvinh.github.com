@@ -1,0 +1,14 @@
+#+TITLE:       easymda.org
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/easymda
+#+KEYWORDS:    mda
+#+TAGS:        :mda:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: easymda
+
+#title ¼òÒ×MDA¹¤¾ß
+
+ÓÃÐ¡ÎÚ¹ê´Ó http://svn.code.sf.net/p/andromda/svn/trunk ÄÃµ½ÁËËùÓÐµÄ´úÂë

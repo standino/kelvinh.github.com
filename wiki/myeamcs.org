@@ -1,0 +1,2803 @@
+#+TITLE:       Emacs 使用笔记
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2012-11-27 Tue
+#+URI:         /wiki/myemacs/
+#+TAGS:        :Emacs:
+#+KEYWORDS:    Lisp, Scheme, Emacs, Linux, cygwin, Java,  Org-page, Programming,编程
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+DESCRIPTION: Emacs 使用笔记
+
+----
+* Find files and tags  Read Java code
+
+** Best Practice 
+  
+ - Use Alt+Shit+x to invoke anything, then input the file name, or the functions 
+ - gtags-find-tag and gtags-find-rtag to find the java method declare and reference 
+ - rgrep to find in the files
+ - M-x multi-occur : find words in buffer, o		occur-mode-goto-occurrence-other-window, C-c C-c		occur-mode-goto-occurrence
+
+** Shell
+
+*find-dired* : Find a file : -iname d_qt_quote.sql 运行外部命令 find , 产生文件列表，然后进入 dired 模式。
+
+*find-grep-dired* : 运行外部命令 find，用 grep 过滤文件， ls 产生目录列表，然后进入 dired 模式，这样列出所有包含某些字符的文件列表。
+可以使用 dired-do-query-replace-regexp 在文件列表中查找并替换。可以递归所有子目录。可以用各种条件过滤文件，详细可以查看 [[shell.html#find][find]] 命令
+的帮助。 
+
+rgrep: 	首先输入的是需要搜索的内容，回车后，提示目标文件的类型，此时可以输入各个别名，比如ch，搜索所有的C++源码文件，随后输入的是
+搜索开始的目录。 	递归搜索目录中的内容，支持一些预定义的别名，比如ch表示所有的c++代码文件，hh表示所有的c++头文件等等。这个估计是
+写程序时，最好用的grep命令。 
+
+lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索当前指定目录中的内容，不会对子目录进行递归搜索。 	lgrep中的l应该是表示本
+层目录的（local）。对于在很大的，有很多子目录的文件夹中，只想搜索限定目录中，限定文件类型的时候，这个命令很方便。 
+
+
+** [[http://www.gnu.org/software/global/globaldoc.html][Gtags]]
+
+ - gtags-find-tag
+ - gtags-find-rtag
+ - gtags-find-with-grep
+ - gtags-find-symbol
+
+<src lang="lisp">
+(define-key xgtags-mode-map [(control .)] 'xgtags-find-tag-from-here)
+(define-key xgtags-mode-map [(control ,)] 'delete-other-windows)
+(define-key xgtags-mode-map [(meta .)] 'xgtags-find-symbol)
+(define-key xgtags-mode-map [(meta ,)] 'xgtags-find-pattern)
+(define-key xgtags-mode-map (kbd "C-M-.") 'xgtags-find-rtag)
+(define-key xgtags-mode-map (kbd "C-M-,") 'grep-find)
+(define-key xgtags-mode-map (kbd "C-M-/") 'xgtags-find-tag)
+(define-key xgtags-mode-map (kbd "M-p") 'xgtags-pop-stack)
+
+</src>
+
+** Ctags
+ 
+ 1. Install [[http://ctags.sourceforge.net/ctags.html][ctags]] from cygwin.
+ 2. Change the directory to c:/dsw
+ 3. execute <code>etags --file-scope=no -R</code>
+ 4. M-. [TAG] <RET>, select the tag file(c:/dsw/TAGS).The default tag is the identifier under the cursor.
+ 1.  M-*   Pop back to where you previously invoked "M-.".
+ 1.  C-u M-.  Find the next definition for the last tag.
+
+----
+
+* 获得帮助信息
+#+BEGIN_SRC 
+M-x apropos RET hook RET
+
+#+END_SRC
+*  拷贝到Emacs中的中文是乱码
+
+(set-language-environment 'Chinese-GB) 
+(set-keyboard-coding-system 'chinese-iso-8bit) 
+(set-terminal-coding-system 'chinese-iso-8bit) 
+(set-clipboard-coding-system 'chinese-iso-8bit) 
+(set-selection-coding-system 'chinese-iso-8bit)
+
+* [[https://github.com/kelvinh/org-page][org-page]]
+ - [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org][一年成为Emacs高手(像神一样使用编辑器)]]
+ - [[https://github.com/redguardtoo/emacs.d][试一试这个配置]]
+
+* 在cygwin中安装emacs 
+
+** [[https://github.com/cfg/apt-cyg][apt-cyg]]
+#+BEGIN_SRC 
+curl -o /usr/bin/apt-cyg https://raw.github.com/cfg/apt-cyg/master/apt-cyg
+
+chmod +x /usr/bin/apt-cyg
+
+git clone https://github.com/standino/emacs.d.git ~/.emacs.d
+
+http_proxy=http://127.0.0.1:8087 emacs -nw
+
+#+END_SRC
+
+
+
+* Emacs key mapping
+
+** Move
+
+| key                 | function          | knows about                                            | C-u |
+|---------------------+-------------------+--------------------------------------------------------+-----|
+| C-M-f 和 C-M-b 或 % |                   | 在匹配的括号之间来回跳转的时候按                       |     |
+| C-c  f              |                   | go to a char                                           |     |
+| C-c  b              |                   | back to a char                                         |     |
+| C-a                 |                   | Go to head                                             |     |
+| C-e                 |                   | Go to tail                                             |     |
+| C-n                 |                   | Next line                                              |     |
+| C-p                 |                   | Pre line                                               |     |
+| C-f                 |                   | forward one character                                  |     |
+| C-b                 |                   | backward one character                                 |     |
+| M-f                 |                   | forward one word                                       |     |
+| M-b                 |                   | backward one word                                      |     |
+| M-g g               |                   | jump to a specific line in the file.                   |     |
+| A-h                 | mark-paragraph    | Put point at beginning of this paragraph, mark at end. |     |
+| <C-down>, M-}       | forward-paragraph | Move forward to end of paragraph.                      |     |
+
+
+** Basic editing
+| key                        | function                   | knows about                                                                                                                                                                                                                                                                                                                                    | C-u |
+|----------------------------+----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----|
+| Ctrl-u 6 Ctrl-x a l        |                            | 建缩写                                                                                                                                                                                                                                                                                                                                         |     |
+| F1  m                      |                            | see what major mode you are in                                                                                                                                                                                                                                                                                                                 |     |
+| M-spc                      | just-one-space             | only keep on space.                                                                                                                                                                                                                                                                                                                            |     |
+| M-\                        |                            | delete all blank.                                                                                                                                                                                                                                                                                                                              |     |
+| C-s C-w                    |                            | search the current word in the current buffer.                                                                                                                                                                                                                                                                                                 |     |
+| C-M-Space                  |                            | Select a word                                                                                                                                                                                                                                                                                                                                  |     |
+| C-x i                      |                            | Insert file                                                                                                                                                                                                                                                                                                                                    |     |
+| C-x C-r                    |                            | Open a file with read only mode                                                                                                                                                                                                                                                                                                                |     |
+| C-x u Or C-/               |                            | Undo( if want to Redo, move the mouse or C-g then Undo)                                                                                                                                                                                                                                                                                        |     |
+| C-x C-s                    |                            | Save                                                                                                                                                                                                                                                                                                                                           |     |
+| C-x s                      |                            | Save all unsaved files                                                                                                                                                                                                                                                                                                                         |     |
+| C-x C-w                    |                            | Save as...                                                                                                                                                                                                                                                                                                                                     |     |
+| C-l                        |                            | Refresh the buffer and move the cursor to the middle of the buffer.                                                                                                                                                                                                                                                                            |     |
+| C-g                        |                            | Stop current command                                                                                                                                                                                                                                                                                                                           |     |
+| C-s                        |                            | search forward                                                                                                                                                                                                                                                                                                                                 |     |
+| C-r                        |                            | search backward                                                                                                                                                                                                                                                                                                                                |     |
+| C-M-s                      |                            | search-forward-regexp                                                                                                                                                                                                                                                                                                                          |     |
+| C-M-r                      |                            | search-backward-regexp                                                                                                                                                                                                                                                                                                                         |     |
+| ESC % or M-%               |                            | replace y: replace and continue; n: skip; q: exit; !: replace all                                                                                                                                                                                                                                                                              |     |
+| C-M-%                      |                            | regexp replace: %\(\w*_\w*\)% -> $\1                                                                                                                                                                                                                                                                                                           |     |
+| C-@ or C-z                 |                            | set mark                                                                                                                                                                                                                                                                                                                                       |     |
+| C-x C-x                    |                            | switch mark and point                                                                                                                                                                                                                                                                                                                          |     |
+| C-w                        |                            | delete the txt in the region and put them into yanking ring                                                                                                                                                                                                                                                                                    |     |
+| M-w                        |                            | copy the text in the region into yanking ring                                                                                                                                                                                                                                                                                                  |     |
+| C-y                        |                            | ;                                                                                                                                                                                                                                                                                                                                              |     |
+| M-y                        |                            | ;                                                                                                                                                                                                                                                                                                                                              |     |
+| C-o                        |                            | Insert a empty line                                                                                                                                                                                                                                                                                                                            |     |
+| C-x C-o                    |                            | Only keep one empty line, if run again, will remove all empty line                                                                                                                                                                                                                                                                             |     |
+| C-d                        |                            | delete a character                                                                                                                                                                                                                                                                                                                             |     |
+| M-d                        |                            | delete a word                                                                                                                                                                                                                                                                                                                                  |     |
+| C-x h                      |                            | select whole buffer                                                                                                                                                                                                                                                                                                                            |     |
+| C-k                        |                            | delete all txt from the point to tail                                                                                                                                                                                                                                                                                                          |     |
+| C-c u                      |                            | refresh                                                                                                                                                                                                                                                                                                                                        |     |
+| C-x #                      |                            | close buffer                                                                                                                                                                                                                                                                                                                                   |     |
+| C-u                        |                            | add prefix argument                                                                                                                                                                                                                                                                                                                            |     |
+| M-0 ...M-9                 |                            | argument 0...9                                                                                                                                                                                                                                                                                                                                 |     |
+| M--                        |                            | ;                                                                                                                                                                                                                                                                                                                                              |     |
+| C-x k                      |                            | kill-buffer                                                                                                                                                                                                                                                                                                                                    |     |
+|                            | untabify                   | change the TAB into blacn space                                                                                                                                                                                                                                                                                                                |     |
+| C-u M   ｜ tr -d \n\r RET  |                            | Remove \n                                                                                                                                                                                                                                                                                                                                      |     |
+| C-u M   ｜tr -s \\n \n RET |                            | Replace \n with a new line                                                                                                                                                                                                                                                                                                                     |     |
+|                            | tt                         | (defalias 'tt 'toggle-truncate-lines)                                                                                                                                                                                                                                                                                                          |     |
+| M-/                        |                            | Auto complete                                                                                                                                                                                                                                                                                                                                  |     |
+|                            | flush-lines                | Remove all empty line                                                                                                                                                                                                                                                                                                                          |     |
+|                            | cvs-status                 | ;                                                                                                                                                                                                                                                                                                                                              |     |
+|                            | dired-jump                 | ;                                                                                                                                                                                                                                                                                                                                              |     |
+|                            | dired-jump-other-window    | ;                                                                                                                                                                                                                                                                                                                                              |     |
+| M-[                        |                            | 'tabbar-backward-group)                                                                                                                                                                                                                                                                                                                        |     |
+| M-]                        |                            | 'tabbar-forward-group)                                                                                                                                                                                                                                                                                                                         |     |
+| M-p                        |                            | 'tabbar-backward)                                                                                                                                                                                                                                                                                                                              |     |
+| M-n                        |                            | 'tabbar-forward)                                                                                                                                                                                                                                                                                                                               |     |
+|                            | path-to-clipboard          | copy buffer path to clipboard                                                                                                                                                                                                                                                                                                                  |     |
+| C-c C-c                    |                            | sql-send-paragraph. This command allows you to send just the current paragraph to the db2 clp interpreter; however you need to consider that your notion of a paragraph may be different than SQL mode's.                                                                                                                                      |     |
+| C-c C-r                    |                            | sql-send-region. After you have selected a region with your mouse or with keystrokes, this command allows you to send the currently selected region to the DB2 CLP interpreter. This is useful for prototyping or for doing quick trials, or when you want to execute an existing piece of text you may have squirreled away from a while ago. |     |
+| C-c C-b                    |                            | sql-send-buffer.This is what you do when you want to execute the contents of the entire buffer.                                                                                                                                                                                                                                                |     |
+| M-<.                       |                            | beginning-of-buffer moves the cursor to the beginning of the buffer, leaving the mark at the previous position.                                                                                                                                                                                                                                |     |
+|                            | sql-db2                    | start db2                                                                                                                                                                                                                                                                                                                                      |     |
+|                            | emacs -nw                  | Open emacs from terminal                                                                                                                                                                                                                                                                                                                       |     |
+|                            | sort-lines                 | sort the text in the region                                                                                                                                                                                                                                                                                                                    |     |
+| C-u M ｜sort RET           |                            | Sort the region                                                                                                                                                                                                                                                                                                                                |     |
+| C-t                        |                            | Switch two character                                                                                                                                                                                                                                                                                                                           |     |
+| M-t                        |                            | Switch two words                                                                                                                                                                                                                                                                                                                               |     |
+| C-x C-t                    |                            | Switch two lines                                                                                                                                                                                                                                                                                                                               |     |
+| C-o                        |                            | scroll-down                                                                                                                                                                                                                                                                                                                                    |     |
+| C-i                        |                            | Auto complete.                                                                                                                                                                                                                                                                                                                                 |     |
+| (f3)]                      | 'dired)                    |                                                                                                                                                                                                                                                                                                                                                |     |
+| (f4)]                      | 'shell)                    |                                                                                                                                                                                                                                                                                                                                                |     |
+| (f5)]                      | 'gtd)                      |                                                                                                                                                                                                                                                                                                                                                |     |
+| <f8>)                      |                            | highlight simple                                                                                                                                                                                                                                                                                                                               |     |
+| <f9>)                      | 'list-bookmarks)           |                                                                                                                                                                                                                                                                                                                                                |     |
+| (f10)                      | 'bookmark-set)             |                                                                                                                                                                                                                                                                                                                                                |     |
+|                            | delete-trailing-whitespace | remove trailing white space.                                                                                                                                                                                                                                                                                                                   |     |
+| C-x C-c                    |                            | Exit and close Emacs                                                                                                                                                                                                                                                                                                                           |     |
+| C-x C-z                    |                            | Exit and hang on Emacs                                                                                                                                                                                                                                                                                                                         |     |
+| C-x C-f                    |                            | Open file or folder                                                                                                                                                                                                                                                                                                                            |     |
+|                            | 'yas  'yas/expand          | my snipet expand                                                                                                                                                                                                                                                                                                                               |     |
+| A+X                        |                            | anything                                                                                                                                                                                                                                                                                                                                       |     |
+| C-h                        | Backspace                  |                                                                                                                                                                                                                                                                                                                                                |     |
+|                            | (defalias '^m '^m-buffer)  | Remove all ^M's from the buffer.                                                                                                                                                                                                                                                                                                               |     |
+| Esc ESC f                  |                            | open file from file cache                                                                                                                                                                                                                                                                                                                      |     |
+
+  
+
+** [[http://orgmode.org/][Org mode]]
+
+
+*** Tags
+
+| key         | function | knows about                                                                                                                           | C-u |
+|-------------+----------+---------------------------------------------------------------------------------------------------------------------------------------+-----|
+| C-c C-e     |          | publish                                                                                                                               |     |
+| C-c C-t     |          | TODO                                                                                                                                  |     |
+| C-c C-c     |          | Prompts for a tag                                                                                                                     |     |
+| C-c \       |          | command is used to prompt for a tag search expression                                                                                 |     |
+| Alt-Enter   |          | start a new line to create a headline at the same level.                                                                              |     |
+| M-left      |          | To promote a heading by one level, place the cursor on the heading, and use the keystroke M-left (meta and left arrow keys together). |     |
+| C-cx  "x"   |          | CANCELLED                                                                                                                             |     |
+| C-cx  "d"   |          | DONE                                                                                                                                  |     |
+| C-cx  "f"   |          | DEFERRED                                                                                                                              |     |
+| C-cx  "l"   |          | DELEGATED                                                                                                                             |     |
+| C-cx  "s"   |          | STARTED                                                                                                                               |     |
+| C-cx  "w"   |          | WAITING                                                                                                                               |     |
+| C-c C-x C-s |          | Appends the completed task to the end of my archive file                                                                                                                                      |     |
+
+----
+
+| key     | function             | knows about    | C-u              |
+|---------+----------------------+----------------+------------------|
+| C-c /   | org-occur            | regexp         |                  |
+| C-c \   | org-tags-sparse-tree | tags, and more | restrict to TODO |
+| C-c C-v | org-show-todo-tree   | todo keywords  | ask for keyword  |
+
+
+- Next actions at home
+   TAG search for "@home//NEXT"
+
+- What actions am I waiting for that Sarah has to do?
+   TAG search for "Sarah//WAITING"
+
+- All items to discuss in a meeting with Sarah and Peter
+   TAG search for "Sarah|Peter"
+
+
+Check box: <example>- [ ] </example>
+
+create table: <code>|Name|Phone|Age <RET> |- <TAB>. </code>
+org-shiftmetaup) and M-S-down (org-shift-metadown),
+
+   | Action                        | Command                                 | Shortcut  | Alternative     |
+   |-------------------------------+-----------------------------------------+-----------+-----------------|
+   | Move a subtree up             | org-metaup / org-move-subtree-up        | M-up      | C-c C-x u       |
+   | Move a subtree down           | org-metadown / org-move-subtree-down    | M-down    | C-c C-x d       |
+   | Demote a subtree              | org-shiftmetaright / org-demote-subtree | S-M-right | C-c C-x r       |
+   | Promote a subtree             | org-shiftmetaleft / org-promote-subtree | S-M-left  | C-c C-x l       |
+   | Demote a headline             | org-metaright / org-do-demote           | M-right   | C-c C-x <right> |
+   | Promote a headline            | org-metaleft / org-do-promote           | M-left    | C-c C-x <left>  |
+   | Collapse or expand a subtree  | org-cycle (while on headline)           | TAB       |                 |
+   | Collapse or expand everything | org-shifttab (org-cycle)                | S-TAB     | C-u TAB         |
+
+
+
+*** Date
+
+*Inserting dates*
+| key     | function | knows about              | C-u |
+|---------+----------+--------------------------+-----|
+| C-c .   |          | Prompt for active date   |     |
+| C-c !   |          | Prompt for inactive date |     |
+| C-c C-d |          | Enter a DEADLINE date    |     |
+| C-c C-s |          | Enter a SCHEDULED date   |     |
+|         |          |                          |     |
+
+
+	
+*Date repeater*
+
+| key                | function | knows about                   | C-u |
+|--------------------+----------+-------------------------------+-----|
+| 2007-10-24 Wed +1w |          | Repeat every Wednesday        |     |
+| 2007-10-01 Mon +1m |          | Repeat on 1st day every month |     |
+|                    |          |                               |     |
+
+	
+*Date warning*
+
+| key                 | function | knows about                   | C-u |
+|---------------------+----------+-------------------------------+-----|
+| 2007-10-24 Wed -2m  |          | Start warning 2 months before |     |
+| 2007-10-24 Wed -20d |          | Start warning 20 days before  |     |
+|                     |          |                               |     |
+
+	
+*Calendar Navigation*
+
+| key         | function | knows about                     | C-u |
+|-------------+----------+---------------------------------+-----|
+| Shift-RIGHT |          | Go forward a day                |     |
+| Shift-LEFT  |          | Go backward a day               |     |
+| Shift-UP    |          | Go to previous week             |     |
+| Shift-DOWN  |          | Go to next week                 |     |
+| <           |          | Scroll calendar back 1 month    |     |
+| >           |          | Scroll calendar forward 1 month |     |
+| .           |          | Go to Today                     |     |
+|             |          |                                 |     |
+
+	
+*Prompt responses*
+| key               | function | knows about                                              | C-u |
+|-------------------+----------+----------------------------------------------------------+-----|
+| 15 (Number)       |          | Date of current month                                    |     |
+| Tue (Day name)    |          | Date of nearest day specified                            |     |
+| HH:MM             |          | Enter a time                                             |     |
+| +2d ( or w, m, y) |          | Two days (weeks, months, years)   after today's date     |     |
+| ++2d (or w, m, y) |          | Two days (weeks, months, years)   after the default date |     |
+| +3tue             |          | Third Tuesday of the month    (new in 5.13c)             |     |
+|                   |          |                                                          |     |
+
+
+
+
+*** Ref
+
+ - [[http://www.360doc.com/content/10/0327/12/155970_20456107.shtml][使用Org-Mode来GTD]]
+
+** Muse
+
+| key     | function | knows about | C-u                     |
+|---------+----------+-------------+-------------------------|
+| C-c C-t |          | publish     | publish unchanged files |
+|         |          |             |                         |
+
+** 版本管理
+
+
+快捷键 ||	 命令名 ||	 动作          
+| C-x v v    | vc-next-action          | 让当前文件进入下一个合理的version control状态              |
+| C-x v d    | vc-directory            | 显示一个目录下所有注册到版本控制下的文件                   |
+| C-x v =    | vc-diff                 | 产生一个diff报告                                           |
+| C-x v u    | vc-revert-buffer        | 丢弃自从所以此check in以来所做的所有更改                   |
+| C-x v ~    | vc-version-otder-window | 取出当前buffer在仓库里的指定版本并在另外一个窗口中显示出来 |
+| C-x v l    | vc-print-log            | 显示一个文件的历史和日志                                   |
+| C-x v i    | vc-register             | 把文件注册到版本控制系统里面去                             |
+| C-x v h    | vc-insert-headers       | 在文件里面插入version control headers                      |
+| C-x v r    | vc-retrieve-snapshot    | check out一个named project快照                             |
+| C-x v s    | vc-create-snapshot      | 创建一个named project快照                                  |
+| C-x v c    | vc-cancel-version       | 丢弃一个已经保存的版本                                     |
+| C-x v a    | vc-update-change-log    | 更新一个GNU-style的ChangeLog文件                           |
+| C-x v +    |                         | Update the file in the current buffer.                  |
+|            |ediff-revisions          | see differences between local file and the last version in cvs. |
+|            |vc-ediff                 | see differences between local file and the last version in cvs.           |
+
+
+** Dired
+
+http://jamesthornton.com/emacs/node/emacs_396.html
+
+http://www.20seven.org/journal/2008/11/emacs-dired-directory-management.html
+
+| key   | function                  | knows about                          | C-u                               |
+|-------+---------------------------+--------------------------------------+-----------------------------------|
+| w     |                           | 得到文件名                           | 如果使用 0 做 prefix 可以得到命名 |
+|       | dired-compare-directories | 可以比较两个文件夹中的文件是否相同。 |                                   |
+| C-u s |                           |                                      |                                   |
+|       | -S                        | 按文件大小排序                       |                                   |
+|       | -X                        | 按文件后缀排序                       |                                   |
+|       | -L                        | 显示符号链接的源文件信息             |                                   |
+|       | -h                        | 用更可读的方式显示文件大小           |                                   |
+|       | -t                        | sort by modification time.           |                                   |
+| [*]   | 作用在已标记的所有文件(目录)或光标所在当前文件(目录)上。                          |                                      |                                   |
+
+
+
+和文件一样打开目录或通过 C-x d 都可以进入目录的 Dired 缓冲中。这里是打开 Dired-x 之后默认的绑定。说明后面[]中的符号的意义：
+
+<example>
+
+[p] 用前缀参数表示文件个数，从当前文件开始，正数向下、负数向上。
+
+[u] 用前缀参数改变默认行为。对于设置标记的命令一般变为去掉标记。
+
+[x] 需要加载 dired-x。
+
+查看帮助
+
+    - ? 简单帮助
+    - h 模式帮助 
+
+移动光标
+
+    - n, p, SPC 上、下移动光标 [p]
+    - C-n, C-p 上、下移动光标 [p]
+    - M-{, M-} 已标记的文件之间移动 [p]
+    - C-M-p, C-M-n 缓冲中的子目录间移动 [p]
+    - <, > 缓冲中的目录行间移动 [p]
+    - C-M-u 缓冲中的目录树上移动 [p]
+    - M-g 光标移动到某个文件上
+    - M-G 光标移动到某个缓冲中的子目录上，(用 i 插入的) 
+
+标记文件
+
+    - m 标记文件，下移一行 [p]
+    - u 去掉标记，下移一行 [p]
+    - U 去掉缓冲中所有的标记
+    - M-Backspace 去掉缓冲中所有的某个标记，缺省为 - 标记
+    - Backspace 并去掉上一行标记，并上移一行 [p]
+    - t 标记/未标记互换
+    - D 删除所有标记的文件/目录 [*]
+    - d 设置“删除标记”（字符D），并且光标下移一行 [p]
+    - x 删除用 d 标记的文件/目录
+    - ~ 将缓冲中备份文件做删除标记 [u]
+    - & 没用的文件，做删除标记
+    - # 将缓冲中自动保存的文件做删除标记 [u]
+    - . 按备份文件版本，将备份文件做删除标记 [u]
+    - % g 标记所有“含有”regexp 的文件 [u]
+    - * * 标记所有可执行文件 [u]
+    - * . 标记所有同扩展名文件 [ux]
+    - * / 标记所有目录 [u]
+    - * @ 标记所有符号连接 [u]
+    - * c 改变标记的符号
+    - % d 通过匹配 regexp 标记删除
+    - % m 通过匹配 regexp 标记 [u] 
+
+复制、移动、创建 文件或目录以及连接
+
+    - C-x C-f 创建文件
+    - + 创建目录
+    - R 文件的重命名/移动 [p*]
+    - C 复制文件 [*]
+    - S 创建文件的 Symbol link (绝对路径) [p*]
+    - Y 创建文件的 Symbol link (相对路径) [px*]
+    - H 创建文件的 Hard link [p*]
+    - % C 复制匹配 regexp 的文件 [p*]
+    - % S 创建匹配 regexp 的 Symbol link (绝对路径) [p*]
+    - % Y 创建匹配 regexp 的 Symbol link (相对路径) [p*]
+    - % H 创建匹配 regexp 的 Hark link [p*] 
+
+修改文件名、属性
+
+    - M 修改文件 rwx 权限属性 [*]
+    - G 修改文件 Group 属性 [p*]
+    - O 修改文件 Owner 属性 [p*]
+    - T 修改文件的时间戳 [p*]
+    - % l 文件名逐一改为小写 [p*]
+    - % u 文件名逐一改为大写 [p*]
+    - % R, % r 重命名/移动匹配 regexp 的文件 [p*] 
+
+访问文件，目录
+
+    - e, f, RET 打开文件或目录
+    - a 打开文件或目录，并替换当前缓冲
+    - v 使用 view 模式查看文件，q 退出，有些文件使用外部查看程序调用
+    - o 另一个窗口中，打开文件或目录
+    - C-o 另一个窗口中，打开文件或目录，但当前窗口不变
+    - F 打开(多个)文件 [x*]
+    - I 使用 Info 模式查看文件
+    - N 使用 man 模式查看文件，若有前缀参数，提示输入处理命令 [ux*]
+    - V 使用 RMAIL 模式查看文件 [x] 
+
+退出
+
+    - ^ 访问目录的父目录，若有前缀参数在另外的窗口中打开 [u]
+    - q 退出缓冲，若有前缀参数则关闭缓冲 [u] 
+
+隐藏/刷新缓冲中内容
+
+    - s 互换缓冲中“文件名/时间”排序 [u]
+    - C-u s 修改传递给 ls 的参数，即修改每行的内容
+    - i 把当前行的子目录插入缓冲中
+    - M-o 隐藏/显示部分次要文件，使缓冲更简便，若有前缀参数标记隐藏的文件 [ux]
+    - $ 隐藏/显示当前目录中内容 [p]
+    - M-$ 隐藏/显示缓冲中所有目录内容
+    - k 隐藏文件，按 g 可以再显示出来 [p*]
+    - l 刷新缓冲文件 [p*]
+    - g 刷新缓冲所有文件
+    - C-/, C-_, C-x u dired 模式的 undo 
+
+其他
+
+    - = 比较文件
+    - M-= 文件和备份之间比较，若有前缀参数，提示输入 diff 选项 [u]
+    - w 复制文件名到 kill-ring [p*]
+    - Z 压缩/解压缩文件 [p*]
+    - X 在文件上执行 shell 命令 [p*]
+    - B 编译(Emacs Lisp)文件 [p*]
+    - L 加载(Emacs Lisp)文件 [p*]
+    - y 给出文件类型信息 (通过 file 命令)
+    - P 打印文件 [p*] 
+
+dired-x.el 中的其他有用的函数
+
+  dired-mark-extension    按后缀标记
+
+dired-flag-extension    按后缀标记删除 
+
+  dired-clean-patch       标记删除 patch 文件
+
+dired-clean-tex         标记删除 tex 编译文件
+
+dired-very-clean-tex    标记删除 tex 编译文件
+
+dired-jump              跳转到当前缓冲所在目录
+
+dired-jump-other-window 在另一个窗口中跳转到当前缓冲所在目录
+
+</example>
+
+** Abbrevs
+
+http://www.emacs.cn/Doc/Abbrevs
+
+If you need input some words several time, you can define a abbrevs by running C-x a g.
+for example: 
+input "find outer otter", then M-3 C-x a g foo RET. now you define a abbrevs: foo.
+mark a region , then C-u 0 C-x a g, it will define a region abbrevs.
+
+C-x a i g, insert the content for the abbrevs.
+
+
+
+* Below are good books or websites about emacs. I need read them carefully.
+
+ 1.[[../../../book/emacs/emacs24/index.htm][Sams Teach Yourself Emacs in 24 Hours]]
+ 2.[[http://learn.tsinghua.edu.cn:8080/2005211356/index.html][学无止境 ── 叶文彬的主页]]
+ 3.[[http://people.ku.edu/~syliu/shredderyin/][王垠的个人主页]]
+ 4.[[http://pluskid.lifegoo.com/wiki/EmacsTip.html][Emacs 小技巧]]
+ 5.[[http://xahlee.org/emacs/elisp.html][Xah's Emacs Lisp Tutorial]]
+ 6.[[../etc/Beamer.html][使用Beamer制作Slide介绍]]
+ 7.http://www.mygooglest.com/fni/site-map.html
+
+
+#top
+
+* Installation 
+** Emacs installation
+You can download emacs from ftp://ftp.gnu.org/gnu/emacs/windows/ or  http://nqmacs.sourceforge.net/
+
+** [[http://tromey.com/elpa/install.html][Using ELPA to install Emacs Lisp packages]]
+
+
+Once you have installed the package manager, type M-x package-list-packages. Type r in the package menu buffer to update the list
+of packages available from the server. 
+
+If you want a particular package, type i next to its name to mark it for installation, and then x to download and install it. 
+
+Install muse highline
+
+Add the following code to ~/.emacs
+
+<src type="lisp">
+(mapc 'load (directory-files "C:/standino/ideas/myscripts/emacs/conf" t ".+\\.el$"))
+</src>
+
+** set Chinese input method
+
+Alt+x set-input-method, then select 
+
+* Select a word
+
+<src>
+
+ 非常感谢。
+【 在 cheneymx (cheneymx) 的大作中提到: 】
+: 源文件里面:
+: ;; (require 'highlight-symbol)
+: ;; (global-set-key [(control f3)] 'highlight-symbol-at-point)
+: ................... 
+
+</src>
+
+*  Spell Check
+
+http://aspell.net/0.50-doc/man-html/3_Basic.html
+
+The easiest way to use Aspell with Emacs or Xemacs is to add this line:
+
+    (setq-default ispell-program-name "aspell") 
+
+to the end of your .emacs file.
+
+For some reason version 3.0 of ispell.el (the lisp program that (x)emacs uses) want to reverse the suggestion list. To fix this add this line:
+
+    (setq-default ispell-extra-args '("--reverse")) 
+
+after the previous line in your .emacs file and it should solve the problem.
+
+Ispell.el, version 3.1 (December 1, 1998) and better, has the list reversing problem fixed. You can find it at http://www.kdstevens.com/~stevens/ispell-page.html. 
+
+** Auto Turn on 
+
+Add the following code to basic.el:
+
+<src type="lisp">
+
+    (defvar my-flyspell-major-mode-list
+     '(latex-mode
+       message-mode
+       muse-mode
+       nuweb-mode
+       nxml-mode
+       text-mode))
+
+   (add-hook 'first-change-hook
+             (lambda ()
+;;                 (message "major-mode is %s" major-mode)
+               (when (and (memq major-mode my-flyspell-major-mode-list)
+                          (not flyspell-mode))
+                 (flyspell-mode))))
+
+</src>
+
+
+* Version Control
+
+[[http://www.mit.edu/~6.170/tools/versioncontrol.html][Version Control Reference]]
+
+
+----
+* Using Org to Manage Plan
+----
+
+**  [[http://orgmode.org/worg/org-tutorials/org-beamer/tutorial.php][Writing Beamer presentations in org-mode]]
+
+ - [[http://www.latexbuch.de/install-latex-windows-7/][Install LaTeX for Windows 7 – a complete setup]]
+ - http://docs.miktex.org/manual/pkgmgt.html
+ - [[http://bbs.chinatex.org/forum.php?mod=viewthread&tid=4892][ beamer 主题合集资源帖]]
+ - [[http://bbs.chinatex.org/forum.php?mod=viewthread&tid=8127][ org-mode的中文Beamer幻灯片模板 ]]
+ - [[https://raw.github.com/tumashu/emacs-helper/master/eh-org.el][beamer的配置文件例子]] http://www.douban.com/group/topic/27510659/
+ - [[http://doc.norang.ca/org-mode.html][Org Mode - Organize Your Life In Plain Text!]]
+ - [[http://headhole.org/organisation/2012/08/22/org-mode-gtd-and-the-pomodoro-technique/][Org-mode, GTD and the Pomodoro technique]]
+
+** The most useful articles
+ 1. [[http://www.newartisans.com/blog_files/org.mode.day.planner.php][Using org-mode as a Day Planner]]
+ 2. [[http://sachachua.com/wp/2007/12/22/a-day-in-a-life-with-org/][A day in a life with Org]]
+ 3. [[http://sachachua.com/notebook/wickedcool/][A book]]
+ 4. [[../../book/docs/howtouseorg4gtd.html][Use Org for GTD]]
+ 5. [[http://members.optusnet.com.au/~charles57/GTD/org_dates/][Using dates and times in Emacs org-mode]]
+ 6. [[http://legito.net/worg/org-tutorials/multitarget-tables.php][Using Org-Mode Table Formatting Functions]]
+
+
+** Reference 
+
+ 1.[[ 	/file:///C:/standino/docs/org_dates_index.html][org dates]]
+ 2.http://kyle.bloghome.cn/posts/145262.html
+ 3.[[http://www.linuxjournal.com/article/9116][Get Organized with Emacs Org-mode]]
+ 4.[[http://sachachua.com/wp/2007/12/30/clocking-time-with-emacs-org/][Clocking Time with Emacs Org]]
+ 5.[[http://sachachua.com/wp/2007/12/29/how-to-use-emacs-org-as-a-basic-day-planner/][How to use Emacs Org as a Basic Day Planner]]
+ 6.http://members.optusnet.com.au/~charles57/GTD/orgmode.html
+ 7.http://members.optusnet.com.au/~charles57/GTD/org_dates/index.html
+ 8.[[http://www.caole.net/diary/emacs.html][生活在Emacs中]]
+ 9.http://pluskid.lifegoo.com/wiki/Emacs.html
+
+**  Org File Title
+
+<example>
+
+#+STARTUP: showall
+#+TAGS: OFFICE(o) COMPUTER(c) HOME(h) PROJECT(p) READING(r) DVD(d) 
+#+STARTUP: hidestars
+
+
+#+STARTUP: overview
+#+TAGS: OFFICE(o) HOME(h) PROJECT(p) READING(r) A(a) B(b) C(c) D(d)
+#+STARTUP: hidestars
+#+SEQ_TODO: TODO STARTED WAITING DONE -MAYBE
+
+</example>
+
+[[http://orgmode.org/org.html][Org Mode Manual]]
+
+[[Natural_Project_Planning.html][Natural Project Planning with org-mode]]
+
+[[Outlining_Your_Notes_with_Org.html][Outlining Your Notes with Org]]
+
+[[http://sachachua.com/wp/2007/12/29/how-to-use-emacs-org-as-a-basic-day-planner/][How to use Emacs Org as a Basic Day Planner]]
+
+
+
+** Command Summary
+
+
+*Mark a tag*
+
+
+* * Viewing your daily or weekly agenda
+
+Type C-c a a (org-agenda, org-agenda-list) to view your agenda. By default, Org shows a weekly view of your scheduled tasks and
+appointments. This is your Org agenda view. 
+
+Here are some useful navigational keys:
+
+    -  Switch to a daily view with d (org-agenda-day-view)
+    -  Switch to a weekly view with w (org-agenda-week-view)
+    -  View earlier or later days/weeks with your left and right arrow keys (org-agenda-earlier, org-agenda-later)
+    -  Jump to a specific day with j (org-agenda-goto-date)
+
+Get into the habit of typing C-c a a to check your task list. It may also help to add
+(org-agenda-list)
+
+to the bottom of your ~/.emacs. This opens your Org agenda view when you start up Emacs. Start your Emacs day with your Org
+agenda, check it every time you finish a task, and review it before you end the day. This will help you make sure that nothing
+falls through the cracks. 
+
+
+** Work Flow and To-Do Lists
+
+In Org-mode you can create a to-do list in the same file that you are using to write notes or outline a project. This has the
+advantage of placing the task in the context of the entire project. To mark a headline as a to-do item, start the headline with
+the word TODO. You can do this more quickly by placing the cursor on the headline and typing in C-c C-t. This adds the label TODO
+to the start of the headline for you. The same command can be used to toggle the TODO to DONE when you complete the task. Use the
+command once again, and Org-mode removes DONE from the headline. 
+
+TODO and DONE are the standard work-flow states in Org-mode, but it's possible to configure your own work flow, either globally
+for all Org-mode files or a custom one for each file. For example, if you wanted to set up a custom work flow, such as TODO -->
+TEST --> DONE, add the following to the top of your Org file: 
+
+#+SEQ_TODO: TODO TEST DONE
+
+Priorities
+
+Once you create tasks, you will need to prioritize them. Org-mode supports three priority levels: A, B and C. A is the highest
+priority. Priority for a task can be set by adding [#A] to a headline. The command C-c also can be used to set priorities. Figure
+9 shows an example of a task list using tags, a custom to-do work flow and priorities. 
+
+[[org_todo.png]]
+
+Figure 9. Tags, Custom To-Do Work Flow and Priorities 
+
+** FreeMind
+
+OrgMode is great for storing and structuring ideas, hints etc. But what about if you want to present them to other people?
+Or if you want to cooperate with someone who does not speak Emacs but uses FreeMind?
+
+Then you might want to use the little lisp library below to convert between OrgMode and
+[[http://freemind.sourceforge.net][FreeMind mindmapping]] files.
+
+http://edward.oconnor.cx/elisp/json.el
+
+* w3m 
+** Install
+新版emacs自带的package管理器里就可以安装w3m
+
+** Short cuts
+
+  - g  	(w3m-goto-url)
+  - c 	(w3m-print-current-url)
+  - R 	(w3m-reload-this-page)
+  - SPC 	Scroll downwards
+  - DEL 	Scroll upwards
+  - > 	(w3m-scroll-left)
+  - < 	(w3m-scroll-right)
+  - . 	Shift to the left
+  - , 	Shift to the right
+  - M-l 	(w3m-horizontal-recenter)
+  - TAB 	Move the point to the next link
+  - M-TAB 	Move the point to the previous anchor.
+  - ] 	Move the point to the next form.
+  - [ 	Move the point to the previous form.
+  - } 	Move the point to the next image.
+  - { 	Move the point to the previous image
+  - B 	(w3m-view-previous-page)
+  - N 	(w3m-view-next-page).
+  - H 	(w3m-gohome)
+  - ^ 	parent directory of the page currently displayed
+  - q 	(w3m-close-window).
+  - Q 	(w3m-quit)
+  - T 	(w3m-toggle-inline-images)
+  - I 	(w3m-view-image)
+  - M-i 	(w3m-save-image)
+  - M-[ 	(w3m-zoom-out-image)
+  - M-] 	(w3m-zoom-in-image)
+  - s 	(w3m-history)
+  - a 	(w3m-bookmark-add-current-url)
+  - M-a 	(w3m-bookmark-add-this-url)
+  - v 	(w3m-bookmark-view)
+  - C-k 	(w3m-bookmark-kill-entry)
+  - E 	(w3m-bookmark-edit)
+  - C-_ 	(w3m-bookmark-undo)
+  - C-c C-t 	(w3m-copy-buffer)
+  - C-c C-w 	(w3m-delete-buffer)
+  - C-c M-w 	(w3m-delete-other-buffers)
+  - C-c C-p 	(w3m-previous-buffer)
+  - C-c C-n 	(w3m-next-buffer)
+  - C-c C-a 	(w3m-switch-buffer)
+  - C-c C-s 	(w3m-select-buffer)
+  - d 	(w3m-download-this-url)
+  - C-c C-c 	(w3m-submit-form)
+  - C-c C-q 	(w3m-form--keymap)
+  - D 	(w3m-dtree)
+
+RET Display the page pointed by the link under point (w3m-view-this-url).
+   
+g   Prompt for a URL in the minibuffer and make emacs-w3m display the corresponding page (independently of the position of the point) in an emacs-w3m buffer. This
+    binding will be familiar to you if you already use Gnus or Mew (w3m-goto-url).
+   
+G   Prompt for a URL in the minibuffer, and display it in a new session. This function works just like g(M-x w3m-goto-url), except that it opens a new session. When
+    you use emacs-w3m on Emacs 21, 22 or XEmacs, opening a new session means displaying the page in a new tab. For more information about tabs, please refer to 3.5
+    Everybody likes tabs (w3m-goto-url-new-session).
+   
+c   Display the URL of the page being displayed in the echo area and put it in the kill-ring (w3m-print-current-url).
+   
+u   Display the target URL of the link under point in the echo area and put it in the kill-ring (w3m-print-this-url).
+
+R   Reload the page (w3m-reload-this-page).
+
+SPC Scroll downwards. You may be used to this binding if you use the `more' or `less' commands, or Emacs's view-mode (w3m-scroll-up-or-next-url).
+   
+DEL Scroll upwards. You may be used to this binding if you use the `less' command or Emacs's view-mode (w3m-scroll-down-or-previous-url).
+   
+>   Scroll to the left. The scroll step is given by the w3m-horizontal-scroll-columns variable, default 10 (w3m-scroll-left).
+   
+<   Scroll to the right. The scroll step is given by the w3m-horizontal-scroll-columns variable, default 10 (w3m-scroll-right).
+   
+.   Shift to the left (a fine level horizontal scrolling). The shift step is given by the w3m-horizontal-shift-columns variable, default 2 (w3m-shift-left).
+   
+,   Shift to the right (a fine level horizontal scrolling). The shift step is given by the w3m-horizontal-shift-columns variable, default 2 (w3m-shift-right).
+   
+M-l Scroll horizontally so that the current position is centered (w3m-horizontal-recenter).
+
+The w3m-mode major mode defines commands to move to various kinds of things; namely links, forms, and images (whether they are displayed or not).
+
+Let's consider this simple example: suppose we want to search for a word on the widely-known Google search engine. Step one: open http://www.google.com in emacs-w3m.
+Step two: once the page is loaded, hit ]. Tadaa! The point has moved to the first form input in the page, you can now hit RET to enter something in it, and then C-c
+C-c to submit. Without this command, you would have had to move into the page using C-n, C-f and so forth, it would have been a real pain.
+
+TAB Move the point to the next link (an "anchor" in emacs-w3m lingo). More strictly speaking, move the point forwards to the nearest anchor.
+
+M-TAB
+S-TAB
+    Move the point to the previous anchor. More strictly speaking, move the point backwards to the nearest anchor (w3m-previous-anchor).
+   
+]   Move the point to the next form. More strictly speaking, move the point forwards to the nearest form (w3m-next-form).
+   
+[   Move the point to the previous form. More strictly speaking, move the point backwards to the nearest form (w3m-previous-form).
+   
+}   Move the point to the next image. More strictly speaking, move the point forwards to the nearest image (w3m-next-image).
+   
+{   Move the point to the previous image. More strictly speaking, move the point backwards to the nearest image (w3m-previous-image).
+
+** Display Chinese word
+
+<code type="lisp">
+(setq w3m-coding-system ''euc-cn)
+</code>
+
+* MetaPost
+
+* Tabbar
+
+I tried to set tabbar not to use group, I found the following doc may be helpful. 
+
+http://docs.huihoo.com/homepage/shredderyin/wiki/EmacsNotes.html
+
+* yasnippet
+
+http://code.google.com/p/yasnippet/wiki/Design
+
+
+* Emacs Wiki
+
+** SVN repository
+
+The SVN repository is run by zeus and contains the raw text of all wiki pages. A cron job updates the repository every 24h.
+
+    * https://svn.rizoma.cl/svn/emacswiki/
+
+Sources for this stuff: [[shell.html#emacswikishell][emacs-svn-update shell script]] making use of raw.pl and mimedecode.pl.
+
+(Back to WikiDownload.)
+  
+
+cvs -d:pserver:anonymous@cvs.sv.gnu.org:/sources/oddmuse co oddmuse/mimedecode.pl
+
+* SQL
+
+** Format SQL
+
+https://svn.rizoma.cl/svn/emacswiki/SqlBeautify
+
+
+* Emacs中的register
+
+在多个文件中逛的时候，我们常常需要快速切换到先前访问的某个位置。因此，我们需要把文件及其光标位置暂时存放在某个地方。
+
+在Emacs中，我们可以使用register暂时性保存这些信息。
+
+将当前光标所在位置保存入一个register中：
+
+C-x r SPACE + register名（一个字符，比如a吧）
+
+然后我们就可以到处瞎逛，若要回到保存的register a位置，我们可以输入：
+
+C-x r j a
+
+挺好用的吧:)
+
+如果你记性和我一样不好，恐怕会常常想看看自己保存了哪些register，我们可以输入：
+
+M-x view-register    查看某一个register
+M-x list-registers   查看所有的register
+
+其实我常用的就是以上功能，为了使笔记稍微完整一点，下面开始Copy 《GNU Emacs Manual》的相关章节：
+
+在下面，我们使用r来命名所有的register：
+Save Positions in Registers
+
+C-x r SPC r
+    Save position of point in register r (point-to-register). 
+C-x r j r
+    Jump to the position saved in register r (jump-to-register).
+
+Saving Text in Registers
+
+C-x r s r
+    Copy region into register r (copy-to-register). 
+C-x r i r
+    Insert text from register r (insert-register). 
+M-x append-to-register RET r
+    Append region to text in register r. 
+M-x prepend-to-register RET r
+    Prepend region to text in register r.
+
+Saving Rectangles in Registers
+
+C-x r r r
+    Copy the region-rectangle into register r (copy-rectangle-to-register). With numeric argument, delete it as well. 
+C-x r i r
+    Insert the rectangle stored in register r (if it contains a rectangle) (insert-register).
+
+Saving Window Configurations in Registers
+
+C-x r w r
+    Save the state of the selected frame's windows in register r (window-configuration-to-register). 
+C-x r f r
+    Save the state of all frames, including all their windows, in register r (frame-configuration-to-register).
+
+Keeping Numbers in Registers
+<code>
+C-u number C-x r n r
+    Store number into register r (number-to-register). 
+C-u number C-x r + r
+    Increment the number in register r by number (increment-register). 
+C-x r g r
+    Insert the number from register r into the buffer.
+</code>
+
+* 使.emacs立即生效
+
+M-x eval-current-buffer 
+
+----
+
+
+* ERC
+
+http://freenode.net/faq.shtml#nicksetup
+
+* Chinese input method
+
+Download eim from http://learn.tsinghua.edu.cn:8080/2005211356/emacs/Eim.html.
+
+Here is the [[eim_readme.html][Read Me]].
+
+
+* Lisp docs
+
+Common Lisp the Language, 2nd Edition
+
+http://www-2.cs.cmu.edu/afs/cs.cmu.edu/project/ai-repository/ai/html/cltl/cltl2.html
+Common Lisp HyperSpec
+
+http://www.lisp.org/HyperSpec/FrontMatter/index.html
+On Lisp
+
+http://www.paulgraham.com/onlisp.html
+A Brief Guide to CLOS
+
+http://www.aiai.ed.ac.uk/~jeff/clos-guide.html
+Common LISP Hints
+
+http://www.n-a-n-o.com/lisp/cmucl-tutorials/LISP-tutorial.html
+The Comon Lisp Cookbook
+
+http://cl-cookbook.sourceforge.net/index.html
+the Common Lisp Open Code Collection
+
+http://clocc.sourceforge.net/
+CMU Common Lisp Repository
+
+http://www.cs.cmu.edu/afs/cs.cmu.edu/project/ai-repository/ai/lang/lisp/0.html
+Getting StartedWith Hemlock
+
+http://www.cliki.net/GettingStartedWithHemlock 
+
+
+http://learn.tsinghua.edu.cn:8080/2005211356/stdlib/Ibuffer.html
+
+* More...
+** Remote Access
+
+Quick-Start Tramp Configuration
+<src type="lisp">
+    (setq tramp-default-method "ssh")
+</src>
+C-x C-f /remotehost:filename  RET (or /method:user@remotehost:filename)
+
+C-x C-f /changwei@ltstbrdb001.sby.ibm.com:test.txt
+
+** PDF
+
+[[http://bc.tech.coop/blog/070830.html][View PDF/PS/DVI files in an Emacs buffer]]
+
+** Rss
+[[http://www.nongnu.org/newsticker/ blank][A Newsticker for Emacs]]
+
+http://www.nongnu.org/newsticker/
+
+<exmple>
+1. Launch emacs
+
+emacs &
+
+
+2. Launch gnus
+
+M-x gnus
+
+
+3. Group Buffer
+3.1. Subscribe to news groups
+Check the group list
+
+AA
+
+
+Subscribe to a group (cursor above the group name)
+
+u
+
+
+3.2. Organise your topics
+Create a new topic
+
+T n
+
+
+Assign a newsgroup to a topic
+
+T m
+
+
+3.3. Some more useful commands
+
+RET = enter the newsgroup
+g = check for new mails and news
+q = quit
+c = mark all unread as read (catchup)
+C = mark all as read (catchup)
+l = show newsgroup with unread articles
+L = show all newsgroup
+m = create a new mail (mails)
+n = create a new post (news)
+
+
+4. Summary/Article Buffer (useful commands)
+
+RET = enter the article
+n = next unread article
+p = previous unread article
+SPACE = scroll down
+DEL = scroll up
+F/f = Follow-up (with cite/whitout cite)
+R/r = Reply (with cite/without cite)
+m = create a new mail (mails)
+a = create a new post (news)
+c = mark as read (catchup)
+
+
+5. Compose new mail and news
+After creating a new mail or post (see above) use the following :
+
+C-c C-c = send message
+C-c C-d = save message as draft
+C-c C-k = kill message
+C-c C-m f = attach file
+M-q = reformat paragraph
+
+
+6. NEED HELP ?
+
+C-h i gnus
+
+</example>
+
+** DB2 SQL Template
+
+ - ("createp" "DROP SPECIFIC PRO
+ - ("st" "DECLARE GLOBAL TEMPORA
+ - ("for" "FOR v1 AS       \n 
+ - ("if" "IF ($${condition}) THE
+ - ("curs" "DECLARE $${curs_name
+ - ("set" "SET $${name} = $${val
+ - ("createfs" "Drop SPECIFIC FU
+ - ("dropp" "DROP SPECIFIC PROCE
+ - ("dropf" "DROP SPECIFIC FUNCT
+ - ("createindex" "CREATE INDEX 
+ - ("having" "seletc
+
+
+* Icicle
+
+[[../etc/icicle.xhtml][icicle]]
+
+[[http://www.google.com/gwt/n?u=http%3A%2F%2Fsteve.yegge.googlepages.com%2Feffective-emacs][effective-emacs]]
+
+[[http://www.damtp.cam.ac.uk/user/sje30/emacs/ell.html][Emacs Lisp List]]
+
+http://members.optusnet.com.au/~charles57/GTD/remember.html
+
+http://planet.emacsen.org/
+
+
+* [[http://www.newartisans.com/blog_files/regex.tool.for.emacs.php][A regular expression IDE for Emacs]]
+
+
+
+* Macros
+
+ While you record the macro, Emacs will also enter recursive editing at that point. That is, the editing you do from the point you
+ press C-u C-x q and till you press C-M-c will not be part of the macro. 
+
+Ok, we are almost ready to develop a very neat and useful macro, but first lets exercise what we've learned above with a simple example. Type the following:
+
+C-x ( Type a word ==> C-u C-x q
+
+Now type Hello World, and when done, continue typing the following:
+
+C-M-c <== C-x )
+
+The above inserted the following text into your buffer: Type a word ==>Hello World<==. Furthermore it also defined a macro, which
+inserts this text except for the words Hello World. Whenever you execute the just defined macro Emacs will pause after having
+inserted Type a word ==>, and when you press C-M-c, it will continue with the macro, which means that it will insert the text <==.
+
+Naming a Macro
+
+To get several macros available at a time or to save a macro to a file, you need to give it a name. Follow these steps to name a macro:
+
+    1. Record the macro as described previously in the To Do section "Recording and Executing Macros." Press M-x (name-last-kbd-macro), press Return, and type a name for the macro. 
+
+Tip - It's wise to prefix the name of the macro with your initials to avoid overriding an existing function that is defined in Emacs. If you want to name a macro that does some special opening of files, you could name it jkp-open-file (given that your initials are jkp).
+
+Saving a Macro to Your Startup File
+
+This To Do task teaches you how to save a named macro to your startup file (that is, your .emacs file or a file specific for macros). Follow these steps:
+
+    1. Define and name your macro as described in the previous To Do task.
+
+    2. Switch to the file in which you want to save your macro.
+
+    3. Press M-x (insert-kbd-macro). Press Return and type the name of your macro.
+
+    If you save a macro in your .emacs file or another file read by your .emacs file, your macro will be available in all your Emacs sessions in the future. If you use the macro often, it might be wise to bind it to a key. 
+
+* Calendar和Diary
+
+Calendar是配合Diary进行行程安排的，两者配合可以用于规划比较长远的事情。
+
+我已经把Calendar模式绑定到了F8上，以下列举几个常用的命令：
+
+.  跳回当天
+o  跳到某一个月
+g  这一系列命令表示goto，可以跳到指定的某一天。
+   g d   跳到某年某月某日
+   g c   跳到某年某星期的星期几
+   g C   跳到阴历的某一天
+p  这一系列命令表示print，例如p C显示显示当前的阴历日期
+i  这一系列命令表示插入行程安排
+   i d   加入当前这一天的行程安排，类似还有m w y
+   i w   跳到某个星期的星期一，按下i w可以加入每个星期都必须做的事情
+   i a   跳到某天，按下i a可以加入周年纪念日
+
+好习惯应该是经常打开calendar，跳到某天，按下d就可以显示这一天的行程安排
+
+* Rails
+
+ 1.[[http://www.credmp.org/2006/11/28/ruby-on-rails-and-emacs/][Ruby On Rails and Emacs]]
+ 2.[[http://www.emacsblog.org/2007/06/10/package-faves-emacs-rails/][Package Faves: emacs-rails]]
+ 3.[[http://groups.google.com/group/emacs-on-rails][Rails On Emacs Google Group]]
+ 4.[[http://rubyforge.org/projects/emacs-rails/][emacs-rails project home page]]
+
+* Ruby
+ 1. [[http://blog.modp.com/2007/09/ruby-mode-for-emacs.html][ruby-mode for emacs]]
+ 2. [[http://github.com/wnoronha/dotemacs/tree/master][good example]]
+
+* [[http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html][Nxhtml]]
+
+* [[http://aur.archlinux.org/packages.php?ID=15006][remeber home page]]
+
+* [[http://emhacks.cvs.sourceforge.net/viewvc/emhacks/emhacks/][tabbar]]
+
+* [[http://emacs-session.sourceforge.net/][session]]
+
+*[[http://code.google.com/p/google-gtags/wiki/GTagsEmacsClient][ gtags ]]
+
+
+* Theme 
+
+https://wiki.ubuntu.com/Artwork/Incoming/DustTheme?action=show&redirect=Artwork%2FIncoming%2FIntrepid%2FDustTheme
+
+http://forum.ubuntu.org.cn/viewtopic.php?p=703091
+
+* Openoffice
+
+http://xml.openoffice.org/xmerge/docbook/
+
+*  Registers
+
+Emacs is full of wonderful features, but sometimes it takes some time to find them. Today, let's discuss one such feature,
+registers. Registers are dicussed in the Emacs Manual, but it took me quite some time before I understood what they're good
+for. So let me discuss them here - maybe I am not the only one. 
+
+To explain the use of register, let's look at the normal cut-copy-pasting of text first. When you have cut or copied some text, it
+lives in a place we call the clipboard, from with you can then paste it. But in most programs, if you copy/cut text again, it
+replaces what was already on the clip board. 
+
+Now, what about registers? In emacs, we have a special clipboard with multiple places to store things, each named by a single
+number or letter. We call these places registers. Thus, you can save some text to register A, some other text to register B, and
+later paste the contents of register A or B. The key bindings (shortcuts) for this are good to remember: 
+
+C-x r s R |	save region (selection) into register R
+C-x r i R |  insert the contents of register R
+
+So, to save the current region/selection in register 2, you would type: C-x r s 2, and to insert the contents of that register
+later, you'd do C-x r i 2. It's a really useful thing to add to your emacs muscle memory. 
+
+(Note: the clipboard that emacs uses for 'normal' cut/copy/paste, the 'kill-ring', allows for multiple (but unnamed) entries as
+well - but we'll discuss the kill-ring in some other entry.) 
+viewing register contents
+One obvious problem with registers is that for most people it's very hard to remember what went into which register, if you use
+more than two or three registers. There is M-x view-register, but that's only marginally useful. It would be much nicer if we
+could get a list of all registers in use and a preview of their contents. To do that, we can use the list-register.el package (see
+installing packages). The package adds a function list-registers (and some others). I use a key binding C-x r v for that, which
+somewhat logically follows the other ones: 
+
+C-x r v	| view registers
+
+(require 'list-register)
+(global-set-key (kbd "C-x r v") 'list-registers)
+
+An alternative would be to use C-x r l (for list registers), but that one has already been taken by bookmark-bmenu-list, which
+shows a list of your bookmarks -- to be discussed some other time). 
+
+I would vote for including the list-registers functionality in emacs. Having registers without a way to view them, makes them much less useful.
+more than words
+Personally, I seldomly use registers for anything but text; however, you can store other things in registers as well (see the
+Emacs Manual registers section for details): 
+
+object |	store	| retrieve |	notes
+rectangle |	C-x r r R |	C-x r i R |	save rectangle into register R (see working with rectangular selections, and insert it);
+buffer/position |	C-x r <SPC> R |	C-x r j R	 | save buffer/position in register R, and jump back to it
+window |	C-x r w R |	C-x r j R |	save window configuration in register R, and jump back to it. Note that what emacs
+calls a window is called a window pane elsewhere, see emacs terminology) 
+frame |	C-x r f R |	C-x r j R	| save frame configuration in register R, and jump back to it. Note that what emacs calls a frame is called a window elsewhere, see emacs terminology
+
+As you can see, some of the objects share the keybinding for retrieving them. In other words, what happens when you retrieve register R depends on the type of object you put in there before.
+
+While registers are quite useful, I think they would be easier to use if they were integrated with the normal cut-copy-paste (the
+'kill-ring'). Another issue is that you cannot access your registers from other programs. Actually, recent MS-Office versions do
+this in a bit nicer way... 
+
+
+* Dired 
+
+<example>
+最普通的标记就是 d 为当前文件贴上删除标签，之后可以使用 x 来真正
+删除所有贴上删除标签的文件。
+
+dired 还提供了许多预定义的方便的标记操作(当使用 C-u 传递一个前缀参数时，
+他们执行相反操作，即去掉标记)，例如：
+
+* # 为所有自动保存的文件(通常是文件名开始和结尾都是 # 的文件)贴上删
+除标签。
+* ~ 为所有备份文件(即文件名以 ~ 结尾的文件，Emacs 和 vi 等编辑器默认
+情况下都会产生这样的文件)贴上删除标签。
+* & 为“垃圾文件”(看 dired-garbage-files-regexp 的值可以知道 dired 把
+哪些文件当作了垃圾文件)贴上删除标签。
+
+通常这些命令可以方便地帮你清理垃圾，如果还不满意，可以使用 % d REGEXP
+<RET> 来输入自己的正则表达式，匹配到的文件会被贴上删除标签。
+
+当然，能用的标签并不止是 D (即删除标签)，几乎任何一个字符都可以使用，不
+过最常用的还是 * ， m 命令即是以 * 标记当前文件。同样，dired 提供了很多
+方便的标记操作(这些命令在传递一个前缀参数的时候都会执行相反的操作，例如
+C-u * * 会去掉所有可执行文件的标记)：
+
+* * 标记所有可执行文件。
+* @ 标记所有符号链接。
+* / 标记所有目录(不包括 . 和 .. )。
+* s 标记所有文件(不高考 . 和 .. )。
+* . 标记具有给定扩展名的文件。
+% m REGEXP <RET> 或 * % REGEXP <RET> 标记所有匹配到给定的正则表达
+式的文件。
+% g REGEXP <RET> 标记所有文件 内容 匹配到给定的正则表达式的文件。
+
+另外，还有一些相关的命令：
+
+* u 去除当前行的标记。
+* <DEL> 上移一行并去除该行的标记。
+* U 去除所有标记。
+* * ? MARKCHAR 或 M-<DEL> 去除所有以 MARKCHAR 标记的文件的标记，如果
+传递一个前缀参数，则会对每一个文件要求你确认是否去除标记。
+* t 交换标记，即所有原来标记为 * 的文件被置于未标记状态，原来未标记
+的文件被标记为 * ，原来有其他标记的文件不受影响。
+
+上面的操作都是使用 * 进行标记，但是 dired 可以使用更多的字符进行标记，只
+是没有提供相应的快捷键操作而已，你可以先以 * 标记，然后使用 * c
+OLD-MARKCHAR NEW-MARKCHAR 来把 * 标记变换成其他标记，几乎任何字符(当然不
+包括中文这种多字节的字符)都可以作为标记，不过空格被特殊对待，用于表示所
+有未标记的文件。
+
+列举了这么多命令，多少有些枯燥，作为一个例子，我们来把当前目录下的所有备
+份文件移动到 ~/backup 目录下。假设当前目录已经有一些文件被你以 D 标记，
+但是暂时还不想删除：
+
+1. 选择个临时标记，比如 t ，只要保证当前 buffer 里面没有已经存在的这
+种标记就行了。
+2. * c D t 把当前所有 D 标签换为 t 标签。
+3. ~ 以 D 标记所有备份文件。
+4. * c D * 把 D 标签换为 * 标签。
+5. R ~/backup <RET> 来把所有标记为 * 的文件移动到 ~/backup 目录里面。
+6. * c t D 恢复原来的 D 标记。
+
+当然这要假设你原来没有设定其他的 * 标记，要不然你也可以再添加一个临时标
+记。总之操作和清晰也很方便，感觉像在汇编语言里面使用寄存器一样，大多数批
+量操作都是针对 * 标记的，所以对某个标记操作之前需要把他先转换为 * 标记
+</example>
+
+* 4.8.2 Remember templates
+<exmaple>
+In combination with Org-mode, you can use templates to generate different types of remember notes. For example, if you would like
+to use one template to create general TODO entries, another one for journal entries, and a third one for collecting random ideas,
+you could use: 
+
+     (setq org-remember-templates
+      '((?t "* TODO %?\n  %i\n  %a" "~/org/TODO.org")
+        (?j "* %U %?\n\n  %i\n  %a" "~/org/JOURNAL.org")
+        (?i "* %^{Title}\n  %i\n  %a" "~/org/JOURNAL.org" "New Ideas")))
+
+In these entries, the character specifies how to select the template. The first string specifies the template. Two more (optional)
+strings give the file in which, and the headline under which the new note should be stored. The file defaults to
+org-default-notes-file, the heading to org-remember-default-headline. Both defaults help to get to the storing location quickly,
+but you can change the location interactively while storing the note. 
+
+When you call M-x remember (or M-x org-remember) to remember something, org will prompt for a key to select the template (if you
+have more than one template) and then prepare the buffer like 
+
+     * TODO
+       [[file:link to where you called remember]]
+
+or
+
+     * [2006-03-21 Tue 15:37]
+     
+       [[file:link to where you called remember]]
+
+During expansion of the template, special %-escapes allow dynamic insertion of content:
+
+     %^{prompt}  prompt the user for a string and replace this sequence with it.
+     %t          time stamp, date only
+     %T          time stamp with date and time
+     %u, %U      like the above, but inactive time stamps
+     %^t         like %t, but prompt for date.  Similarly %^T, %^u, %^U
+                 You may define a prompt like %^{Birthday}t
+     %n          user name (taken from user-full-name)
+     %a          annotation, normally the link created with org-store-link
+     %i          initial content, the region when remember is called with C-u.
+                 The entire text will be indented like %i itself.
+     %:keyword   specific information for certain link types, see below
+
+For specific link types, the following keywords will be defined:
+
+     Link type          |  Available keywords
+     -------------------+----------------------------------------------
+     bbdb               |  %:name %:company
+     vm, wl, mh, rmail  |  %:type %:subject %:message-id
+                        |  %:from %:fromname %:fromaddress
+                        |  %:to   %:toname   %:toaddress
+                        |  %:fromto (either "to NAME" or "from NAME")1
+     gnus               |  %:group, for messages also all email fields
+     w3, w3m            |  %:url
+     info               |  %:file %:node
+     calendar           |  %:date"
+
+If you would like to have the cursor in a specific position after the template has been expanded:
+
+     %?          After completing the template, position cursor here.
+
+If you change you mind about which template to use, call org-remember in the remember buffer. You may then select a new template
+that will be filled with the previoous context information. 
+</example>
+
+
+* [[http://jdee.sourceforge.net/][ JDEE]]
+
+
+
+
+;; This .emacs file illustrates the minimul setup
+
+;; required to run the JDE. 
+
+;; Set the debug option to enable a backtrace when a
+
+;; problem occurs.
+
+(setq debug-on-error t) 
+
+;; Update the Emacs load-path to include the path to
+
+;; the JDE and its require packages. This code assumes
+
+;; that you have installed the packages in the emacs/site
+
+;; subdirectory of your home directory.
+
+(add-to-list ''''load-path (expand-file-name "~/emacs/site/jde/lisp"))
+
+(add-to-list ''''load-path (expand-file-name "~/emacs/site/cedet/common"))
+
+(add-to-list ''''load-path (expand-file-name "~/emacs/site/elib")) 
+
+;; Initialize CEDET.
+
+(load-file (expand-file-name "~/emacs/site/cedet/common/cedet.el")) 
+
+;; If you want Emacs to defer loading the JDE until you open a
+
+;; Java file, edit the following line
+
+(setq defer-loading-jde nil)
+
+;; to read:
+
+;;
+
+;;  (setq defer-loading-jde t)
+
+;; 
+
+(if defer-loading-jde
+
+    (progn
+
+      (autoload ''''jde-mode "jde" "JDE mode." t)
+
+      (setq auto-mode-alist
+
+           (append
+
+            ''''(("\\.java\\''''" . jde-mode))
+
+            auto-mode-alist)))
+
+  (require ''''jde)) 
+
+;; Sets the basic indentation for Java source files
+
+;; to two spaces.
+
+(defun my-jde-mode-hook ()
+
+  (setq c-basic-offset 2))
+
+(add-hook ''''jde-mode-hook ''''my-jde-mode-hook) 
+
+;; Include the following only if you want to run
+
+;; bash as your shell. 
+
+;; Setup Emacs to run bash as its primary shell.
+
+(setq shell-file-name "bash")
+
+(setq shell-command-switch "-c")
+
+(setq explicit-shell-file-name shell-file-name)
+
+(setenv "SHELL" shell-file-name)
+
+(setq explicit-sh-args ''''("-login" "-i"))
+
+(if (boundp ''''w32-quote-process-args)
+
+  (setq w32-quote-process-args ?\")) ;; Include only for MS Windows.
+
+
+
+* Folding
+http://stackoverflow.com/questions/1208622/code-folding-in-emacs 
+
+http://stackoverflow.com/questions/1085170/how-to-achieve-code-folding-effects-in-emacs
+
+Type C-s foo, find the definition, press enter, read it, and then press C-x x to go back to where you were. Simple and very useful.
+
+Most modes support imenu. M-x imenu will let you jump to a function definition (etc.) by name. You can also bind it to a mouse
+click to get a menu of functions (or add it to the menubar; see the Info page for more detail). It provides data for
+which-function-mode, which will let you see which function you are currently inside in the modeline. (Why are your functions this
+long, though?) 
+
+There is also speedbar, which displays the imenu information (and other things) graphically.
+
+If you want to get an overview of your file, try "M-x occur". Given a regex, it will create a new buffer with each match in the
+current buffer. You can search for "(defun" to get an overview of the functions the current file implements. Clicking on the
+result will move you to that position in the file. 
+
+http://emacs.wordpress.com/2007/01/16/quick-and-dirty-code-folding/
+
+There is however one folding trick that i use all the time. I often want to hide all function bodies in a file, to get a quick summary of it contents. As it happens, you don’t need any package or extra configuration for that. Just go to any source file, type
+
+        M-1 C-x $
+
+and magic happens! As usual, it’s white magic: C-x $ will bring your code back.
+
+* Muse
+
+
+http://www.zhyfly.org/projects/QuickStart.cn.html#example
+
+http://mwolson.org/static/doc/muse.html
+
+[[http://mwolson.org/projects/EmacsMuse.html][home page]]
+
+configuration files http://code.google.com/p/myemacsconf/source/browse/trunk/.emacs.d/site-lisp/muse/?r=7
+
+<example>
+
+ Marc F. Neininger wrote:
+
+    Hi,
+
+    I'm not sure if I'm in the right group but I didn't find a more suitable one... I'm trying to write a lab report with few words, lots of sections and even more pictures (screenshots).
+
+
+    When converting (I use pdflatex) the first figures are shown at the right place but lateron the screenshots are not shown "here" but "hereTop" and with that there is no more relation between the section and the screenshots belong to it...
+
+    I made my source available under http://www.champagnierle.de/dl/Labor_FFT.tex
+
+    TIA
+
+    Marc 
+
+
+ 'h' does not mean here! That is a common misunderstanding. 'h' means here is possible. If it is not possible to place the figure here and 'h' is the only thing specified, then the placing algorithm will change 'h' to 'ht' (and give you the warning) and then try to place the figure at the top of a later page.
+
+  But in most cases it is wrong to just specify [h], why? Because in LaTeX there certain settiong that control how a float can be placed. For example for a top float there needs to be a certain amount of space left on the page (for text). So lets assume your figure is placed using 'h' and it is rather large. Then it will not be placed on the current page, 'h' is transformed into 'ht' (effectively 't'), but the figure is too large for placing with 't' so everything is shifted to the end of your document/chapter taking every subsequent float with it. Therefore it is better to always simply specify [htbp] (perhaps adding a !), and then remove letters when needed.
+</example>
+
+** Write presentation 
+
+<src> #module pre-14, </src>
+
+** [[http://pluskid.lifegoo.com/wiki/MuseSrctag.html][在  Muse  里使用源代码高亮]]
+<example>
+
+<src type="c">
+#include <stdio.h>
+
+int main()
+{
+    printf("hello\n");
+}
+</src>
+
+</example>
+
+** Create index
+
+http://www.linuxsir.org/bbs/showthread.php?t=269548
+
+
+----
+Emacs Muse 是一个基于 Emacs 的写作和发布平台。它简化了文档编辑
+过程，并且可以选择多种格式进行发布。
+
+Muse 包括两个主要部分：一个增强的 text 模式，用来编辑文档和在 
+Muse 工程中随意浏览文档；一组发布策略，用来产生各种不同的格式输出。
+
+
+** [[http://pluskid.lifegoo.com/wiki/MuseSrctag.html][在 Muse 里使用源代码高亮]]
+<example>
+
+<src type="c">
+#include <stdio.h>
+
+int main()
+{
+    printf("hello\n");
+}
+</src>
+
+</example>
+
+** 关于本文档
+
+本文档提供一个 Muse 标记以及功能的例子作为一个 Muse 的快速指南。
+
+要查看本文档发布后的形式，输入 =make examples=。你就会获得一个 Info 文档，
+一个 HTML 文档和一个 PDF 文档（假设你已经安装了 LaTeX，并带有必须的字体）。
+
+
+** 开始
+
+要使用 Muse，添加包含 Muse 文件的目录到你的 =load-path= 变量中，它一般在
+你的 =.emacs= 文件中定义。然后，加载写作模式和你想要发布的文档风格。
+
+<example>
+(add-to-list 'load-path "<path to Muse>")
+
+(require 'muse-mode)     ; load authoring mode
+
+(require 'muse-html)     ; load publishing styles I use
+(require 'muse-latex)
+(require 'muse-texinfo)
+(require 'muse-docbook)
+</example>
+
+一旦 Muse 模式被加载，命令 =M-x muse-publish-this-file= 将发布一个输入
+文档为任意可用的风格。如果你想在一个 buffer 中启用 =muse-mode= ，那么
+输入 =M-x muse-mode= ，它被绑定到 =C-c C-t=。
+
+** 创建一个 Muse 项目
+
+通常你希望自动将一个目录中的所有文件发布为一组特定的输出风格，
+为此， Muse 允许创建“项目”。下面是一个定义在你的 =.emacs= 文件
+中的项目范例。
+
+<example>
+(require 'muse-project)
+
+(setq muse-project-alist
+      '(("website"                      ; my various writings
+         ("~/Pages" :default "index")
+         (:base "html" :path "~/public_html")
+         (:base "pdf" :path "~/public_html/pdf"))))
+</example>
+
+上面定义了一个名为“website”的项目，该项目所有的文件都位于目录 
+=~/Pages= 下，默认的访问页为 =index=。当该项目被发布时，每一页将会以 
+HTML 格式输出到 =~/public_html= 目录中，并以 PDF 格式输出到 =~/public_html/pdf= 
+
+目录中。在项目中的任一页中，你可以使用语法 =[[pagename]]= 创建到
+其他页的链接。
+
+** Set File Title
+
+<example>
+#author John Wiegley
+#title The Emacs Muse
+
+<contents>
+</example>
+
+** 标记规则
+
+一个 Muse 文档使用特别的、文脉上的标记规则来决定怎样格式化输出结果。
+例如，如果一个段落被缩进了，Muse 就认为它应该被引用。
+
+并没有太多的标记规则，而且所有的标记规则力争简单以便让使用者更加
+专注于文档创作，而不是格式。
+
+*** 段落
+
+在 Muse 中段落必须通过一个空行来隔开。
+
+例如，本节的输入文本如下：
+
+<example>
+在 Muse 中段落必须通过一个空行来隔开。
+
+例如，本节的输入文本如下：
+</example>
+
+*** 段落居中和引用
+
+以六个或者更多的空白字元（Tab 或者空格）开始的一行表示一个
+居中的段落。
+
+                           这一段居中
+
+  但是如果一行以空白字元开始，但空白字元不足六个，这表示一个
+  引用的段落。
+
+*** 标题
+
+依赖于输出风格一个标题会成为打印输出的一章或者一节。以一个或
+几个星号开始一个新的段落，后面跟一个空格和标题题目，来表示一
+个标题。然后另起一段输入这部分的正文。
+
+<example>
+* First level
+
+** Second level
+
+*** Third level
+</example>
+
+*** 水平线
+
+四个或者更多的破折号（-）表示一个水平线。确保其前后都是空行，
+否则它将被看作是前面或后面段落的一部分！
+
+----
+
+上面分隔符由下面的输入产生：
+
+<example>
+----
+</example>
+
+*** 强调文本
+
+使用某些特别地认可的字符包围文本以强调文本：
+
+<example>
+*emphasis*
+**strong emphasis**
+***very strong emphasis***
+_underlined_
+=verbatim and monospace=
+</example>
+
+上面的列表生成：
+
+<verse>
+*emphasis*
+**strong emphasis**
+***very strong emphasis***
+_underlined_
+=verbatim and monospace=
+</verse>
+
+*** 添加脚注
+
+一个脚注引用就是简单的一个在方括号中的数字<verbatim>[1]</verbatim>，[1]
+在你的文件底部放置脚注的注解来定义它。 =footnote-mode= 可以被用来非常
+方便的生成这种脚注。
+
+<example>
+ Footnotes:
+ [1]  Footnotes are defined by the same number in brackets
+      occurring at the beginning of a line.  Use footnote-mode's
+      C-c ! a command, to very easily insert footnotes while
+      typing.  Use C-x C-x to return to the point of insertion.
+</example>
+
+*** 诗章
+
+诗要求空白字元被保留，但不采取等宽。为显示诗使用下面的标签，
+它让我们想起 email 引用的方式。
+
+<example>
+> A line of Emacs verse;
+>   forgive its being so terse.
+</example>
+
+上面的输入生成：
+
+> A line of Emacs verse;
+>   forgive its being so terse.
+
+你也可以使用 =<literal><verse></literal>= 标签，如果你喜欢：
+
+<example>
+<verse>
+A line of Emacs verse;
+  forgive its being so terse.
+</verse>
+</example>
+
+*** 抄录段落
+
+=<literal><example></literal>= 标签用于示例，其中空白应该被保留，
+等宽间距文本，且输出风格的任意特殊字符都被转义。
+
+还有一个 =<literal><literal></literal>= 标签，作用是使得所标记的
+块全部原样输出。比如这可以用来插入一段手编的 HTML 代码到 HTML 输出。
+
+*** 列表
+
+列表是由行首使用的特殊字符产生，在符号列表项或数字列表项前必须
+有一个空白字元用于区别那些字符可能确实出现在一个句子中的情况。
+
+Muse 提供的列表种类如下：
+
+<example>
+  - bullet item one
+  - bullet item two
+
+  1. Enumerated item one
+  2. Enumerated item two
+
+Term1 :: A definition one
+
+Term2 :: A definition two
+</example>
+
+它们生成一个符号列表：
+
+  - bullet item one
+  - bullet item two
+
+一个枚举列表：
+
+  1. Enum item one
+  2. Enum item two
+
+和是一个定义列表：
+
+Term1 ::
+  This is a first definition
+  And it has two lines;
+  no, make that three.
+
+Term2 ::
+  This is a second definition
+
+*** 表
+
+Muse 仅仅支持很简单的表格，语法如下：
+
+<example>
+  Double bars  || Separate header fields
+
+  Single bars   | Separate body fields
+  Here are more | body fields
+
+  Triple bars ||| Separate footer fields
+</example>
+
+上面的输入生成：
+
+Double bars  || Separate header fields
+
+Single bars   | Separate body fields
+Here are more | body fields
+
+Triple bars ||| Separate footer fields
+
+<comment>
+Double bars  || Separate header fields
+
+Single bars   | Separate body fields
+Here are more | body fields
+
+Triple bars ||| Separate footer fields
+</comment>
+
+*** 锚和标记的链接
+
+#example 如果你以“#anchor”开始一行 ── 其中“anchor”可以是任意不包含
+空白字元的单词 ── 那么它在所在位置定义了一个进入文档内部的锚。
+在一个 Muse 链接中使用“page#anchor”作为目标就可以引用这个锚点。（如下）
+
+点击 [[#example][这里]] 回到前面一段。
+
+*** URLs 和 E-mail 地址
+
+如果输出风格支持，输入文本中的一个 URL 或者 email 地址被发布为一个
+超链接。如果是一个图片的 URL，它将会被直接插入如果可能。例如
+最近更新的 Muse 源码可以从 http://download.gna.org/muse-el 下载，
+邮件可以被发送至 mwolson@gnu.org
+
+*** 链接
+
+一个超级链接可以引用一个 URL或者某个 Muse 项目中的其他页面。另外，
+描述文本可以被指定并在支持链接描述的输出风格中显示，而不是显示链接
+文本。语法如下：
+
+<example>
+[[link target][link description]]
+[[link target without description]]
+</example>
+
+因此，Muse 可以在 [[http://download.gna.org/muse-el/][这里]] 下载，或者在
+[[http://download.gna.org/muse-el/]].
+
+*** 嵌入 lisp
+
+使用 =<literal><lisp></literal>= 标签可以得到任意种类的标记，它也是仅有
+的在一个风格的页眉和页脚文本中支持的 Muse 标签。使用 =<literal><lisp></literal>= 
+标签你可以生成任意你想要的输出。如果 =<literal><lisp></literal>= 标签出现
+在文档正文内部，那么插入的输出将会被标记出。
+
+<example>
+<lisp>(concat "This form gets " "inserted")</lisp>
+</example>
+
+上面的输入生成：This form gets inserted.
+
+** 发布风格
+
+Muse 的一个基本特色是它能够把一个简单的输入文本发布成种种不同风格的输出。
+Muse 也使得创建一个新的风格或者从一个存在的风格中派生新风格变得容易。
+
+*** 从一个存在的风格中派生
+
+使用 =muse-derive-style= 从一个存在的风格生成一个新的风格：
+
+<example>
+(muse-derive-style DERIVED-NAME BASE-NAME STYLE-PARAMETERS)
+</example>
+
+DERIVED-NAME 是定义新风格的一个字符串，比如“my-html”。BASE-NAME 
+必须是一个存在的风格，比如“html”（如果你加载了 =muse-html= ）。 
+STYLE-PARAMETERS 与用来创建一个风格的参数相同，只是它们去掉了基风格
+中存在的所有定义。但是，一些定义仅仅部分弃除。下面的这些参数支持部分弃除：
+
+ - =:functions= -- 如果一个标记函数在派生的风格函数表中没有被找到，
+那么基风格的函数表将会被查询。
+
+ - =:strings=
+
+ - =:before=
+
+ - =:before-end=
+
+ - =:after=
+
+*** 重写一个存在的风格
+
+Write me.
+
+*** 创造一个新的风格
+
+Write me.
+测试一下。
+Footnotes:
+[1]  这是一个脚注。
+
+* GTD with Org mode
+
+** How to do the plan
+
+*** use org to do the plan
+*** Use muse to write down the notes. 
+*** weekly review the plan
+*** define the project 
+*** use brainstorming 
+*** use the pomodoro technique 
+*** archive the old task to mygtd.org_archive 
+ 
+
+
+
+
+
+** Reference 
+Natural Project Planning with org-mode
+http://members.optusnet.com.au/~charles57/GTD/Natural_Project_Planning.html
+
+http://members.optusnet.com.au/~charles57/GTD/gtd_workflow.html
+
+My org mode files are as follows:
+
+newgtd.org
+The main file containing TODO items, Projects, appointments and reminders
+newgtd.org_archive
+The archive file for the newgtd.org file. This is the history of all completed work.
+someday.org
+The Someday/Maybe file. The contents are reviewed each week. This file contains lists of things I would like to do, learn, books to read, places to go, and ideas for new projects.
+journal.org
+This is my electronic notebook where I record everthing that I don't write by hand - notes, web site addresses, diary notes, films seen, books read, conversations I have had, and things I have done. This file is updated with Remember mode.
+birthday.org
+Birthday and Anniversary information. This file is one of my agenda files.
+ 
+I use the #+CATEGORY lines at the beginning of each major section for display in the agenda view. This shows me if an item is part of a project, a task, a borrowed item (requiring completing in the near future) or a financial activity.
+
+ 
+
+ 
+
+("D" "Daily Action List"
+      (
+           (agenda "" ((org-agenda-ndays 1)
+                       (org-agenda-sorting-strategy
+                        (quote ((agenda time-up priority-down tag-up) )))
+                       (org-deadline-warning-days 0)
+                       ))))
+
+ 
+
+Tasks that take several days to complete, for example reading a book will be given an estimate of how much time I can commit today. For example, I may allocate 4 hours to a major task for the day.
+
+The best way to enter task estimates is to use Column View, so I switch to this view with the command C-c C-x C-c.
+
+
+http://www.360doc.com/relevant/20456107_more.shtml
+
+http://www.yifeiyang.net/emacs/use-emacs-org-mode.html
+
+需要花好几天的任务，比如开完一本书，我可以预计我今天花多久来执行。比方说今天的重要任务我分配了4个小时。
+
+预计任务时间的最基本方法是使用Column视图。执行「C-c C-x C-c」命令切换到这个视图：
+
+
+Review and summary
+
+To summarize what we’ve discussed, here are the steps I use to manage tasks “day-planner style” using org-mode:
+
+   1.
+
+      Rapidly (almost “mindlessly”) create new tasks using remember.
+   2.
+
+      Sit down each night and schedule/categorize those remembered tasks. Also, I move all completed tasks to the archive to clean up my todo file.
+   3.
+
+      Each morning, start up the agenda view with a 7 day view on the future, and briefly scan to see if my week looks/feels right. At best, I maybe push a few tasks around to make things more balanced; but most of the time, I prefer to leave the future alone.
+   4.
+
+      Switch to daily view and set priorities for the day’s tasks. Is there anything I can defer to another day? I like to see less than 15 tasks in this view.
+   5.
+
+      Paying special attention to my A tasks, I begin doing what I can to complete the day’s work load. I switch task states frequently, adding notes on what I’ve done each time. This is the most satisfying part of using org-mode for me, though I can’t really explain why.
+   6.
+
+      During the day, if anything new comes up I use remember to jot down the task and then promptly — intentionally — forget about it. Don’t clutter your brain! I use a digital voice recorder when remember isn’t handy.
+
+
+Scheduling, deadlines and appointments
+
+There are four ways of associating a date or time, or range of dates and times, with a task:
+
+   1.
+
+      Scheduling the task for a particular day or time. This indicates your intention to work on that task on that day. You might not finish it then — in which case it gets rescheduled for when you plan to continue — but at least you hope to work on it a bit that day.
+   2.
+
+      Setting a deadline for a task. This means the task has to be completed by the given day. Sometimes you will have non-task deadlines just to help keep you aware, with regular, associated tasks each scheduled on the days leading up to the deadline. Either way, the deadline task starts appearing in your agenda view based on its “lead time”, and is shown every day from that point until resolution. After the due date, it appears each day in bolded red, to indicate you must either finish the task or cancel it ASAP.
+   3.
+
+      Associating a date or time with a task. This is different from a scheduled date, which indicates a desire to work on the task that day; and it’s different from a deadline, which says that work must be finished by that day (but should be done before it). A dated task means that the task is only meaningful during the exact dates and times associated with it. I use this kind of dating to indicate appointments, vacations, conference times, classes, etc. It doesn’t even have to be a “task” necessarily; I use the “APPT” keyword to note such items, but even that is optional. If you just want to be aware of when a particular thing is going to happen, create an outline entry and put a date on it.
+   4.
+
+      Associating an inactive date or time with an item. This is just like the previous type, except that inactively dated items never appear in your agenda view. They are used for historical tracking only, like the dates that are stored when changing the state of a todo item.
+
+
+<example>
+
+I really like this discussion started by Alex.
+It has triggered for me a lot of
+thinking and clarity about how to use Org-mode for a GTD system.  High
+time, because my current system basically is "do whatever the closest
+person pointing a gun to your head is asking".  Has kept me alive, if
+stressed :-).
+
+Charles Cave's [article/tutorial] gives a great overview over the basic
+structure of GTD and his views on implementing GTD with org-mode.
+Below are a few thoughts on how GTD elements can be represented in
+org-mode.
+
+2 The (too?) many organizational elements of Org-mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are many ways to apply structure to your notes using Org-mode:
+
+- Categories (i.e. files)
+- Lists (outlines)
+- TODO keywords
+- TAGS
+
+and many of these can be used interchangeably.  For example, if I am
+collecting the things I have to discuss with my colleagues Peter and
+Sarah, I could
+
+- use lists
+
+: * Agendas
+: ** Peter
+: *** item p1
+: *** item p2
+: ** Sarah
+: *** item s1
+: *** item s2
+
+- use TODO keywords
+
+: #+TYP_TODO: Peter Sarah
+:
+: * Project X
+: ** Peter item p1
+: ** Sarah item s1
+: * Project Y
+: ** Peter item p2
+: ** Sarah item s2
+
+- use TAGS
+
+: * Project X
+: ** item p1          :Peter:
+: ** item s1          :Sarah:
+: * Project Y
+: ** item p2          :Peter:
+: ** item s2          :Sarah:
+
+The same is true for contexts like `@work', `@home', `@computer' etc
+as they are being used in GTD.  You could make a list of things to be
+handled at your computer at home, or you could use tags for contexts.
+
+So what is the best way to approach these issues, what method should
+be preferred and why?  I think his is the core of the present
+discussion.
+
+For me personally, the main advantage of Org-mode is that I can keep
+information relating to a project together in one place.  This is best
+for many reasons, for example
+- things that belong together, stay together
+- easy review if a project is stuck
+
+So I would not generally make lists for a specific contexts or people.
+Lists for a specific person are unlikely as well.  Most of the time I
+would use either TAGS or TODO keywords, also because the search
+functions for tags and TODO keywords are the most powerful ones in
+Org-mode.
+
+3 CATEGORIES for broad splitting of the GTD system
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I am using separate files for things I need to do for HOME
+and for WORK.  At work I use one big file for most things, but the
+biggest tasks/projects I split off and put them into a separate file.
+
+4 TAGS versus TODO keywords versus Lists to implement GTD elements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+4.1 Context
+===========
+
+    I think most of us agree that contexts (location and required tools
+    for doing a task) is something best implemented with TAGS in the
+    org-mode system.  Tags like @home, @work, @phone, @computer, @mall
+    can be defined and easily applied to any tasks that need that
+    particular context.
+
+4.2 The GTD lists as *status* of a task
+=======================================
+
+    Another important part of GTD terminology are different lists that
+    contain tasks, for example NEXT ACTION, WAITING, or SOMEDAY/MAYBE.
+    In the original GTD terminology these are called lists.  When
+    thinking about implementation in Org-mode, it occurred to me that
+    these are better called /status of a task/ which is then used to
+    make corresponding lists.  Here is what I mean by status:
+
+    - TODO: this is something that needs to be done, no further
+      specification if this can be done now or not.
+    - NEXT: this is something that can be done /now/, you have
+      everything you need to start doing it.  This is what /next
+      actions/ are about.
+    - WAITING: This item cannot be done now, because we are waiting for
+      something.  Somebody else needs to act, some material needs to
+      arrive, etc.
+    - SOMEDAY: means that you have not decided that this needs to be
+      done.
+
+    How should we go about implementing this structure in org-mode?
+
+    1. We could make physically separate lists for each task status.
+       As I said, I don't like this idea and will not discuss it
+       further.
+
+    2. We can use TODO keywords to implement these different states.
+       Each time the state changes, we switch to a different TODO
+       keyword.  This is very easy from an Agenda view: `1 t', `2 t',
+       `3 t' etc directly switch to the corresponding keyword.  In the
+       buffer, try `Shift-left/right' with the cursor on the keyword.
+
+    3. We can use TAGS to implement this structure.  So each TODO item
+       would have an additional tag, identifying the state of the task.
+       - Advantage: you keep the simple on/off of a TODO item.
+       - Disadvantage: When you mark an entry DONE, the NEXT tag (or
+         whichever the current status is will stick around and put this
+         item into your NEXT ACTION lists.
+
+    Which of these two possibilities you choose really depends on your
+    personal taste.  Since version 4.52 of org-mode matching TODO
+    keywords has become as easy as matching tasks, so also from the
+    technical point of view there is no preference. I am personally
+    inclined to try option (2) first.
+
+4.3 Agendas
+===========
+
+    Charles and Pete have already discussed here about making agendas
+    (things to discuss with a particular person or group) either lists
+    or tags.  I agree with them that it is best to keep tasks in the
+    project context and use tags to produce the relation to a person.
+    However, org-mode also gives you flexibility here.  Lets say you
+    have to discuss a number of things with a person that is not
+    related to projects, but for example to their and your personality,
+    interaction with other people etc.  So you might want to sit down
+    to write an agenda for discussing with them.  In this case, simply
+    /also/ tag this special list with the name of the person/group.
+    The a tag search will later link you to scattered items as well as
+    the specific list you have drawn up.  For example:
+
+    : * Agendas
+    : ** Peter                               :Peter:
+    : *** Issue 1
+    : ** Sarah                               :Sarah:
+    : *** Issue 1
+
+5 Configuration of Org-mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+5.1 Option 1: TODO items are simple two-state
+=============================================
+
+5.1.1 Configure by using in-file options
+----------------------------------------
+
+    : #+TAGS: { NEXT(n) WAITING(w) SOMEDAY(s) }
+    : #+TAGS: Peter(P) Sarah(S)
+    : #+TAGS: { @office(o) @home(h) @mall(m) }
+    : #+TAGS: { @phone(p) @computer(c) }
+
+5.2 Option 2: TODO types cover task lists
+=========================================
+
+5.2.1 Configure by using in-file options
+----------------------------------------
+
+    : #+TYP_TODO: TODO NEXT WAITING SOMEDAY DONE
+    : #+TAGS: Peter(P) Sarah(S)
+    : #+TAGS: { @office(o) @home(h) @mall(m) }
+    : #+TAGS: { @phone(p) @computer(c) }
+
+6 Creating the GTD lists
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+With a system set up as described above, you can easily create all
+those lists you need for GTD.  For the example below I am assuming
+that we are using TODO keywords for the status of a task - if you are
+using tags for this as will, just reformulate the search to match a
+tag instead of a todo keyword.
+
+- Next actions at home
+   TAG search for "@home//NEXT"
+
+- What actions am I waiting for that Sarah has to do?
+   TAG search for "Sarah//WAITING"
+
+- All items to discuss in a meeting with Sarah and Peter
+   TAG search for "Sarah|Peter"
+
+etc etc etc.
+</example>
+
+** Reporting time
+
+[[http://sachachua.com/wp/2007/12/clocking-time-with-emacs-org/][By project]]
+
+To see how much time you’ve spent on a project or task, open your ~/organizer.org file and press C-c C-x C-d
+(org-clock-display). Total times will be added to each headline, summarizing the times for each subtree. 
+
+You can also use one of Org’s dynamic blocks. Open your ~/organizer.org file, move your cursor to where you want the report
+inserted, and type C-c C-x C-r (org-clock-report). By default, the reports will include all the second-level headings for all the
+days. 
+
+
+C-c C-x C-c
+    Turn on column view in the agenda. 
+
+C-c C-x e
+    Set the effort estimate for the current entry. With a numeric prefix argument, set it to the NTH allowed value (see below). This command is also accessible from the agenda with the e key.
+C-c C-x C-e
+    Modify the effort estimate of the item currently being clocked. 
+
+*** Best Practice 
+
+ 1. C-A-r to create a task
+ 2. C-c a a to open the agenda
+ 3. e to fill the effort
+
+
+* auto-complete
+
+ - [[http://ahei.byethost32.com/t/imenu][用auto-complete实现Emacs的自动补全]]
+
+
+* Emacs config on Windows
+
+<src lang="lisp">
+(setenv "HOME" "E:/cygwin/home/Will/")
+(setenv "PATH" "E:/cygwin/home/Will/")
+;;set the default file path
+(setq default-directory "~/")
+(add-to-list 'load-path "~/emacs/site-lisp")
+(load-file "E:/cygwin/home/Will/ideas/emacs/.emacs")
+</src>
+
+* Publish to ODP 
+
+
+* Svn plugin
+
+Usage
+
+To check the status of a Subversion repository at ‘DIR’:
+
+  M-x svn-examine DIR RET
+From inside the *svn-status* buffer:
+
+‘g’
+Refresh status of files shown.
+‘U’
+Update files for currently examined Subversion repository.
+‘C-u U REVISION RET’
+Update the files to ‘REVISION’.
+‘M-- U’
+Update only marked files.
+‘m’
+Mark file at point.
+`* %’
+Mark files by RegularExpression.
+‘u’
+Unmark file at point.
+‘c’
+Commit marked files or file file at point.
+`=’
+Run diff on the marked files or file at point.
+`C-u = REVISION RET’
+Run diff on the marked files or file at point against ‘REVISION’.
+‘l’
+Display log for marked files or file at point.
+From the *svn-log* buffer:
+
+‘RET’
+Visit the file at point.
+`=’
+View the diff for the revision at point.
+For a more discursive treatment, see Ted Carnahan’s A Brief Introduction to Emacs psvn.
+
+For more details, read the commentary section at the top of the psvn.el.
+
+http://www.tedcarnahan.com/2008/10/24/a-brief-introduction-to-emacs-psvn/
+
+
+* Mac
+
+http://www.dirk.sh/diary/which-is-the-best-emacs-for-mac-os-x/
+
+http://emacsformacosx.com/
+
+* Emacs24 http://emacs.naquadah.org/
+
+wget -q -O - http://emacs.naquadah.org/key.gpg | sudo apt-key add -
+
+      deb http://emacs.naquadah.org/ natty/
+      deb-src http://emacs.naquadah.org/ natty/
+
+
+*  Emacs Evernote mode
+
+http://emacs-evernote-mode.googlecode.com/svn/branches/0_41/doc/readme_en.html
+
+
+** Emacs
+
+ 1. http://planet.emacsen.org/
+ 2. http://sachachua.com/notebook/
+ 3. http://www.gnu.org/software/emacs/
+
+* Java 
+
+
+ - https://github.com/senny/emacs-eclim
+ - 
+ - 
+
+* 矩形操作
+
+Emacs所有跟矩形操作的命令都是以 C-x r 为前缀，其区域选择与普通的区域选择的快捷键一样： C-space ，只是在执行矩形操作时，Emacs会将选择的起点和终点作为对角，其中的内容作为矩形区域。常用快捷键：
+
+<example>
+
+C-space	set-mark-command	标记矩形区块的一个角（光标标记其相对的角）。
+C-x r t	string-rectangle	用字符串填充矩形区域
+C-x r k	kill-rectangle	剪切当前的矩形区块，并将其保存在一个特殊的矩形区块缓冲区中。
+C-x r d	delete-rectangle	删除当前的矩形区块，并不为粘贴而保存它。
+C-x r c	clear-rectangle	清除当前的矩形区块，使用空白字符替换整个区域。
+C-x r o	open-rectangle	打开当前的矩形区块，使用空白字符填充整个区域，并将该矩形区块的所有文本移动到右边。
+C-x r y	yank-rectangle	在光标处，粘贴上一次剪切的矩形区块的内容，将所有的现有文本移动到右边。
+
+</example>
+
+
+ 
+ - [[http://www.headhole.org/organisation/2012/08/22/org-mode-gtd-and-the-pomodoro-technique/][Org-mode, GTD and the Pomodoro technique]]
+
+
+* 用 org-page 创建blog
+
+
+*  win7 交换 CAPS LOCK 左CTRL
+
+HKEY_LOCAL_MACHINE /SYSTEM /CurrentControlSet /Control /Keyboard Layout
+
+新建 二进制 字符串 Scancode Map
+
+修改其值为
+
+0000: 00 00 00 00 00 00 00 00
+0008: 02 00 00 00 3A 00 1D 00
+0010: 1D 00 3A 00 00 00 00 00
+
+保存后，重新登录
+
+
+* Java DEV
+
+ 
+ - https://github.com/senny/emacs-eclim
+
+
+* 举例：把一个iso-8859字符集的文件变为utf-8的
+打开该文件
+键入命令 M-x set-buffer-file-coding-system 该命令快捷键是 c-x RET f
+输入utf-8
+存盘
+
+* Win 7 Tex
+
+* 加一个抽屉
+
+calling org-insert-drawer, which is bound to <C-c C-x d>.
+
+* Get the emacswiki source 
+** CVS
+
+http://sourceforge.net/projects/emacswikicode
+
+** Git
+
+To get a complete copy simply run:
+
+    git clone git://github.com/tarsius/emacswiki.git
+
+You can also browse the repository at:
+
+
+ http://github.com/tarsius/emacswiki
+
+** SVN
+
+  svn co svn://svn.sv.gnu.org/emacswiki/emacswikipages
+
+
+
+* 矩形操作
+
+  Emacs所有跟矩形操作的命令都是以 =C-x r= 为前缀，其区域选择与普通的区域选择的快捷键一样： =C-space= ，只是在执行矩形操作时，Emacs会将选择的起点和终点作为对角，其中的内容作为矩形区域。常用快捷键：
+
+  | C-space | set-mark-command | 标记矩形区块的一个角（光标标记其相对的角）。                                       |
+  | C-x r t | string-rectangle | 用字符串填充矩形区域                                                               |
+  | C-x r k | kill-rectangle   | 剪切当前的矩形区块，并将其保存在一个特殊的矩形区块缓冲区中。                       |
+  | C-x r d | delete-rectangle | 删除当前的矩形区块，并不为粘贴而保存它。                                           |
+  | C-x r c | clear-rectangle  | 清除当前的矩形区块，使用空白字符替换整个区域。                                     |
+  | C-x r o | open-rectangle   | 打开当前的矩形区块，使用空白字符填充整个区域，并将该矩形区块的所有文本移动到右边。 |
+  | C-x r y | yank-rectangle   | 在光标处，粘贴上一次剪切的矩形区块的内容，将所有的现有文本移动到右边。             |
+
+* 寄存器操作
+
+  - 文本操作：
+
+  | C-x r s R   | 保存选中的区域到寄存器R         |
+  | C-x r r R   | 保存矩形区域                    |
+  | C-x r i R   | 读取寄存器R的内容并插入到光标处 |
+
+  - Buffer/Window/Frame操作：
+
+  | C-x r SPC R | 保存Buffer及光标位置            |
+  | C-x r w R   | 保存当前Window的配置            |
+  | C-x r f R   | 保存当前Frame的配置             |
+  | C-x r j R   | 恢复寄存器R的内容               |
+
+  : M-x list-registers    ; 显示所有寄存器中的内容
+  : M-x view-register R   ; 查看寄存器R中的内容
+
+* 书签操作：
+
+  | C-x r m Bookmark | bookmark-set         | 设置一个名为 Bookmark 的书签。              |
+  | C-x r l          | bookmarks-bmenu-list | 列出所有已保存的书签。                      |
+  |                  | bookmark-delete      | 删除一个书签。                              |
+  | C-x r b Bookmark | bookmark-jump        | 跳转至名为 Bookmark 的书签中所设置的位置。  |
+  |                  | bookmark-save        | 将所有的书签保存到书签文件 ~/.emac.bmk 中。 |
+
+* 删除空行：
+
+  : M-x flush-lines RET ^$ RET
+
+  =flush-lines= 命令的本意是删除buffer中match随后的regexp的行，而 =^$= 就代表空行，于是这就是删除空行的操作。
+#+END_SRC
+
+
+* 走进Emacs殿堂
+
+* 安装
+
+** 使用cygwin在windows上安装
+
+在安装emacs之前需要先安装cygwin。[[http://www.cygwin.cn/site/install/][这里是安装方法]]。需要特别说明的是，在选择安装包的时候，请选上python。
+
+[[ee1.png]]
+
+安装完cygwin以后我们就可以使用脚本进行以下的安装。把下面的一段代码存到名为myapt的文件中，把myapt文件存放到
+C:\cygwin\home\[您的用户名]\bin目录下。
+
+<src>
+#!/bin/bash
+
+function do_apt(){
+    mkdir -p ~/bin
+    cd ~/bin
+    wget http://download.linuxaudio.org/lilypond/binaries/cygwin/cyg-apt
+    chmod a+rx cyg-apt
+    cyg-apt -m http://www.cygwin.cn/pub setup
+    cyg-apt -m http://www.cygwin.cn/pub update
+    cd -
+}
+
+function do_editor(){
+    do_cyg_install install xinit xorg-server font-adobe-dpi100 font-adobe-dpi75
+    do_cyg_install install twm xclock font-isas-misc
+    do_cyg_install install emacs emacs-X11 emacs-el
+}
+
+function do_cyg_install(){
+     cyg-apt -m http://www.cygwin.cn/pub $@
+}
+
+cmd=$1
+
+case $cmd in
+    init)
+        do_apt
+        ;;
+    emacs)
+        do_editor
+        ;;
+
+esac
+
+</src>
+
+点击桌面的 cygwin 快捷方式启动 cygwin 控制台。
+在控制台中输入:
+<src>
+
+chmod +x bin/myapt #---赋予 myapt 执行权限。
+myapt init         #---初始化
+myapt emacs        #---安装emacs
+
+</src>
+
+现在，emacs在windows下的基本安装就完成了。 我们可以在 cygwin 控制台中输入命令 starx 启动 xterm, 然后在 xterm 中输入命令 emacs-X11
+来启动 emacs 程序。
+
+** 在 ubuntu 上安装
+
+我们同时使用脚本方式安装。把下面的代码拷贝到myapt文件中，把myapt存到${HOME}/bin目录下。
+
+<src>
+
+#!/bin/bash
+
+function do_emacs(){
+    sudo aptitude install  emacs emacs-extra emacs-goodies-el emacs-intl-fonts 
+    sudo aptitude install  w3m-el muse-el aspell remember-el 
+}
+
+cmd=$1
+
+case $cmd in
+
+    emacs)
+        do_editor
+        ;;
+
+esac
+
+</src>
+
+打开Terminal 输入：
+
+<src>
+
+chmod +x bin/myapt #---赋予myapt执行权限。
+myapt emacs        #---安装emacs
+
+</src>
+
+现在，emacs 在 ubuntu 下的基本安装就完成了。
+
+* Emacs 简介
+
+打开的 emacs 如下图所示。在 emacs 中编辑的不是文本本身，emacs 会把文件的内容拷贝到 buffer 中。
+[[../../ideas/Muse/images/ee2.png]]
+
+从图中我们可以看到，emacs 由“菜单”、“工具条”、“主 buffer”、“状态显示条”和“次 buffer” 组成。
+
+在 emacs 中很多操作都有快捷键，使用快捷键是一种
+高效的编辑 buffer 的方式。但是如果我们忘记了某个操作的快捷键，我们可以通过选择“菜单”或者点击“工具条”上的按钮来执行相应的操作。
+
+“主 buffer” 是我们编辑文件的主要区域，看起来和记事本没有太多区别，不过当您熟悉了它的功能以后，您就知道它远非那么简单了。
+
+在 emacs 中还有一个模式 (mode) 的概念，例如我们编辑一个 SQL 文件，那么它就会使用 sql-mod。所有 SQL 相关的语法显亮，连接数据库，执行
+SQL 查询等功能都会与 sql-mod 关联。在一个 buffer 中可以使用多个模式。这些信息会显示在“状态显示条”上。
+
+“次 buffer” 是我们和 emacs 交互的一个窗口。通过“次 buffer”，我们可以向 emacs 发送命令。emacs 中的所有操作都可以通过命令来执行。
+
+* 基本的文本编辑
+
+从根本上说，我们没个文本操作都是向 emacs 发送了一个函数调用。为了提高编辑的效率，我们可以给函数设定一个快捷键或者别名。对于初学者
+来说，比较困难的是记住那些繁多的快捷键。在 emacs 中的快捷键并不像我们一般使用的一个 Ctrl 加上一个英文字母，原因是 emacs 中的快捷键
+太多了。一般 emacs 默认的快捷键以 Ctrl+X 开始，如果我们自己定义快捷键，可以用 Ctrl+C 作为前缀。
+
+为了方便初学者使用 emacs，我们一般会推荐您编制一个自己的备忘录，把经常使用的快捷键记录在备忘录里，打印出来。这样您就很容易找到您需
+要的快捷键。等使用的熟练了，你就可以丢掉备忘录，随心使用 emacs 了。下面是一个备忘录的例子供您参考。
+
+<src>
+  C-x C-c : Exit and close Emacs
+  C-x C-z : Exit and hang on Emacs
+  C-x C-f : Open file or folder
+  C-x i   : Insert file 
+  C-x C-r : Open a file with read only mode
+  C-x u Or C-/   : Undo
+  C-x C-s : Save
+  C-x s   : Save all unsaved files
+  C-x C-w : Save as...
+  C-l     : Refresh the buffer 
+  C-g     : Stop current command
+  C-a     : Go to head
+  C-e     : Go to tail 
+  C-n     : Next line
+  C-p     : Pre line
+  C-f     : forward one character
+  C-b     : backward one character
+</src>
+
+* 如何获得帮助信息
+
+Emacs 中包含了丰富的文档，如果您是在 ubuntu 等 linux 系统下使用。很多文档都是中文的。这对我们学习使用 emacs 是非常有帮助的。您可以
+通过 Ctrl + h 或者 F1 调出帮助。然后您就可以输入不同的键值使用不同的帮助。如果您忘了如果输入键值，您可以直接输入 ?。Emacs 就会列出
+所有的键值。一般比较常用的就是 a ，然后输入所有查询单词，emacs 就会调出相关的帮助信息。输入 c 然后再输入快捷键，获得该快捷键的功能
+描述。
+
+<src>
+
+Ctrl + h
+
+ - a  command-apropos.  Type a list of words or a regexp; it shows a list of commands whose names match.  See also the  apropos  command.
+  
+ - b  describe-bindings.  Display a table of all key bindings.
+  
+ - c  describe-key-briefly.  Type a key sequence;it displays the command name run by that key sequence.
+  
+ - d  apropos-documentation.  Type a pattern (a list of words or a regexp), 
+and shows a list of functions, variables, and other items whose	documentation matches that pattern.  See also the apropos command.
+  
+ - p  finder-by-keyword. Find packages matching a given topic keyword.
+  
+ - r  info-emacs-manual.  Display the Emacs manual in Info mode.
+  
+</src>
+
+* Lisp 语言介绍
+
+ - Function
+
+
+01  (defun my-switch-buffer ()
+02    "Like switch-buffer but in the opposite direction"
+03    (interactive "")
+04    (other-window -1)
+05  )
+
+
+ - Customize Emacs
+
+
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-billw)
+
+* 安装插件
+
+Emacs的插件一般是由 Lisp 编写的，你只需要把插件的 Lisp 文件放到 Emacs 的查询路径下就可以了。这里我介绍另一个安装插件的工具 ELAP 
+http://tromey.com/elpa/install.html。
+
+
+<src>
+
+(let ((buffer (url-retrieve-synchronously
+	       "http://tromey.com/elpa/package-install.el")))
+  (save-excursion
+    (set-buffer buffer)
+    (goto-char (point-min))
+    (re-search-forward "^$" nil 'move)
+    (eval-region (point) (point-max))
+    (kill-buffer (current-buffer))))
+
+</src>
+
+
+* 在Emacs中编程
+
+ -  Tabbar
+ -  Spell Check
+ -  SQL
+ -  Template
+ -  Auto-completion
+ -  Version Control
+
+* 执行更多的文本编写
+
+** 使用 org  模式进行日程安排
+
+现在比较流行的时间管理方式是 GTD(Get Things Done)。它的理念是把脑袋里面所有想做得事情都记录到一个你信任的系统里，然后把大脑清空，
+只关注于当前要做得一件事情。这样即可以消除“每天都有太多事情做”的焦虑，也可以通过仔细计划和安排每天的事情，让做事的效率有很大提高。
+这里，我们不过多的介绍 GTD 。如果您想多了解相关知识，可以阅读《Get Things Done》这本书。
+
+Emacs 的 org 模式就是一个 GTD 的可信赖的系统。它基于简单的文本文件，您可以很容易的把它放到一个版本控制系统里。它提供了很多查询的功
+能，而且很容易定制。下面我就描述一下，我是如何使用它来实现 GTD 的。
+
+**录入**
+
+我的公司是使用 Louts Notes 作为邮件系统，而且工作基本上也是通过邮件来下发的。每天早上到公司后，我打开 Louts Notes 阅读邮件。如果是
+跟我相关的工作，我就就把那封电子邮件打上标记 (flag)。阅读和标记完邮件以后，我打开 Emacs, 使用 remember (C-A-r) 记录下我打标记的邮
+件内容，可以用 [[]] 加入一个到相关邮件的链接， 然后 (C-u C-c c) 存到我的 org 文件中。
+把工作都记录到 Emacs 中后，我会关闭 Louts Notes，避免新的邮件打扰我的工作。
+
+**计划**
+
+刚才已经录入了很多任务，它们是必须今天完成的。我需要把这些任务进行一下整理，让它们更易于阅读， 
+（C-c , A）把它设置为最高优先级，设置工作时间为今天，并给它设置一个Tag－－－ Office。
+当然我还有一些其他的任务需要做，例如写这篇论文、准备考认证、学习英语等等。我把这些任务的优先级设置为 B 。 把一些需要分配给其他人来
+做的工作设置为 DELEGATED 状态，设置处理时间为今天。我可能会突然想起来一些工作，我也 (C-A-r) 把它们记录下来，(C-c C-s) 设定一个处理时间。现在我已
+经完成了任务整理。下面我就需要具体安排今天的工作了。(C-c a a) 列出这周的任务，如果今天的A类任务比较多，那么我就会把原计划今天做
+的B任务推迟几天，如果今天的任务比较少，我就查看一下 WAITING 、START 或 TODO  状态的任务，看一下哪些任务可以今天来做。
+
+
+**执行**
+
+(C-c a a d) 列出今天的任务，下面的时间就是专注在今天了。首先，选择一个最高优先级的任务，（C-c x s) 设置为 STARED 状态，
+输入一些关于该任务的备注信息，然后就全身心的投入工作了，直到把这个任务做完(C-c x d)。然后是下一个任务。如果在此过程中，有什么灵感
+闪现，(C-A-r) 把它们记录下来，(C-c C-s) 设定一个估计计划做该任务的时间。然后，继续当前的工作。
+
+我会在下午两点和五点的时候再查收一下 Louts Notes 邮件，如果需要，我就重复上述的录入和计划的过程。
+
+**回顾。**
+
+在下班前五点半左右，（C-c a a l）列出今天完成的任务的情况。
+
+** 使用 muse 模式编写文档
+
+Emacs Muse is an authoring and publishing environment for Emacs. It simplifies the process of writings documents and publishing them to various output formats. Muse uses a very simple Wiki-like format as input.
+
+Muse consists of two main parts: an enhanced text-mode for authoring documents and navigating within Muse projects, and a set of
+publishing styles for generating different kinds of output.
+
+* 扩展Emacs
+
+ - Get the last version automatically 
+
+<src>
+
+(add-hook 'find-file-hooks 'my-vc-update)
+
+(defun my-vc-update()
+  (condition-case nil
+      (if (vc-registered (buffer-file-name))
+           (vc-update))
+    (error nil))
+)
+
+</src>
+
+ - Run SQLunit Test
+
+<src>
+(defun sqlunit-run-file ()
+     "Run sqlunit on current buffer"
+     (interactive )
+     (shell-command 
+      (format "ant -f %s../build.xml  -Dscript.name=%s &" (buffer-dir)  (buffer-name))))
+</src>
+
+ - Developerworks article publishing 

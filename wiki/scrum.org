@@ -1,0 +1,12 @@
+#+TITLE:       scrum
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/scrum
+#+KEYWORDS:    scrum
+#+TAGS:        :scrum:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Scrum 
+
+ 1. http://www.infoq.com/cn/articles/scrum-pseudo-code

@@ -1,0 +1,514 @@
+#+TITLE:       shell Notes
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/shell
+#+KEYWORDS:    shell
+#+TAGS:        :shell:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: shell notes
+
+
+http://www.ibm.com/developerworks/library/l-bash.html
+
+http://fanqiang.chinaunix.net/program/shell/index.shtml
+
+* ksh
+
+ http://kornshell.com/doc/
+
+ http://www.bolthole.com/solaris/ksh.html
+
+* awk
+
+#+BEGIN_SRC 
+ cat test.txt  | awk '{ if ($1=="memory") my=$3; else {if ($1=="pg") my=my" "$4}; if($1=="pg") print my  }' 
+
+
+#!/bin/ksh
+
+#checklog https://etlgdswuat02.etl.ibm.com/waslogs/sqo/
+
+#index.html
+#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log">quote.log</a>                       02-Jun-2011 01:12  2.6K  
+#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log.2010-11-11">quote.log.2010-11-11</a>            11-Nov-2010 23:57  6.4K  
+#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log.2010-11-12">quote.log.2010-11-12</a>            12-Nov-2010 16:57   47K  
+#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log.2010-11-13">quote.log.2010-11-13</a>            13-Nov-2010 17:00  2.5K  
+#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log.2010-11-14">quote.log.2010-11-14</a>            14-Nov-2010 22:06  375K  
+
+filelist=`grep 'quote.log*' index.html | awk -F\" '  { if ( $6>="quote.log.2011-05-23" &&  $6 <= "quote.log.2011-05-31" )  print  $6 }'` ;
+
+for i in $filelist ; do
+    echo "$i ---" 
+done 
+
+ ps -f -A | grep java | grep CVT-DSW-SQO2 
+
+kill -9  `ps -f -A | grep java | grep CVT-DSW-SQO2 | awk '{print $2}'`  
+
+#+END_SRC
+* delete duplicate lines from a file and keep the order of the other lines from Command-Line-Fu
+
+<src lang="sh">
+$ awk '!x[$0]++' FILE
+</src>
+
+* Create a zip file ignoring .svn files
+<src lang="sh">
+zip -r foo.zip DIR -x "*/.svn/*"
+
+find . -not \( -name .svn -prune \) -type f | xargs zip XXXXX.zip
+
+tar -cvf wid7.tar  **/.classpath **/.project
+</src>
+* count a specify word
+
+<src>
+
+'<hgtxt.txt tr -cs '[:alnum:]' '[\n*]'  | sort | uniq -c
+
+
+</src>
+
+* SED
+
+http://www.ibm.com/developerworks/linux/library/l-sed3.html
+
+** 用sed写循环处理
+
+对sed的使用一直紧限于 s//; //s///;  //,//s/// 稍复杂一点就用awk，可是有时候awk写起来也太长了
+
+最近碰到一个处理跨行xml节点的问题，终于激发了进一步学习sed的愿望，并学会了使用b label写循环
+
+<src>
+<tag id="0" attr2 = "val2" attr3 = "val3" attr4 = "val4" />
+<tag id="1" attr2 = "val2"
+        attr3 = "val3"
+        attr4 = "val4"/>
+</src>
+替换指定xml节点中的attr4属性名
+<src lang="sh">sed -e ‘/<tag id="‘$id’"/ { :loop />/! {N; b loop}; s/attr4/ak47/ }’ test.xml</src>
+
+** sed add line 
+
+<src>
+
+zhyfly@zhyfly:~/bash$ sed -e '/music/a\this line will be added to the end of the matching line!oooooooooo' test.txt
+The honeysuckle band played all night long for only $90.
+It was an evening of splendid music and company.
+this line will be added to the end of the matching line!oooooooooo
+Too bad the disco floor fell through at 23:00.
+The local nurse Miss P.Neave was in attendance.
+
+<src>
+* line count
+<src>
+find . -type f -iname "*.java" -exec cat {} \; | wc -l  
+</src>
+
+* scp
+
+<src>scp /home/cheney/full.tar.gz root@10.5.0.1:/home/root/ </src>
+
+* ln
+
+
+
+* Basic 
+The sha-bang ( #!) [5] at the head of a script tells your system that this file is a set of commands to be fed to
+the command interpreter indicated.
+
+<code>
+#!/bin/sh
+#!/bin/bash
+#!/usr/bin/perl
+#!/usr/bin/tcl
+#!/bin/sed -f
+#!/usr/awk -f
+</code>
+
+<code>
+Either:
+chmod 555 scriptname (gives everyone read/execute permission) [13]
+or
+chmod +rx scriptname (gives everyone read/execute permission)
+chmod u+rx scriptname (gives only the script owner read/execute permission)
+</code>
+
+* tar
+
+tar zxvf 
+
+** Unix 下的查找文件的工具 find
+#find
+- 在某个目录下所有子目录中搜索某个名字文件
+
+<src type="shell">
+find /some/dir -iname "*.txt"
+find /some/dir -name "*.txt"
+find /some/dir -iregex "*.txt"
+find /some/dir -regex "*.txt"
+</src>
+
+    iname 表示不区分大小写， name 表示区分大小写。他们都是按照 shell 的文件名称扩展方式扩展 * 和 ? 的。 
+    如果使用 regexp 那么表示用正则表达式来匹配文件名称。 iregexp 表示不区分大小写的正则表达式。
+ 在某个目录下所有子目录中搜索某个名字，某种类型的文件
+
+
+<src type="shell">
+find /some/dir -iname "*.txt" -type d
+find /some/dir -name "*.txt" -type f
+</src>
+
+    type 后面的字母表示文件类型。
+    b |	block (buffered) special
+    c |	character (unbuffered) special
+    d |	directory
+    p |	named pipe (FIFO)
+    f |	regular file
+    l |	symbolic link
+    s |	socket
+    D |	door (Solaris)
+
+find 命令和 bash 结合可以有很多用处
+
+例如，把所有以 txt 文件结尾的文件，改名成为以doc 结尾的文件，包括所有子目录。
+
+<code>
+for i in $(find -iname "*.txt"); do
+   mv "$i" "${i%%.txt}.doc" ;
+done
+</code>
+
+例如，删除所有以 bak 为扩展名称的文件。
+
+<code>
+find . -iname "*.bak" | xargs rm
+</code>
+** emacs wiki shell
+
+#emacswikishell
+<src type="shell">
+#! /bin/bash
+
+# Copyright (C) 2007, 2008  Alex Schroeder <alex@emacswiki.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Start with svn co https://svn.rizoma.cl/svn/emacswiki emacswikipages
+
+# Avoid SVN localization errors?
+export LANG=en_US.UTF8
+# Source: http://cvs.savannah.nongnu.org/viewvc/oddmuse/raw.pl?root=oddmuse&view=log
+perl ~/oddmuse/raw.pl --page ~/emacs/page --dir ~/emacswikipages
+cd ~/emacswikipages
+# Find files starting with a dot, but not ..
+FILES=`find -maxdepth 1 -type f`
+# Convert files containing uploaded pages
+# Source: http://cvs.savannah.nongnu.org/viewvc/oddmuse/mimedecode.pl?root=oddmuse&view=log
+perl ~/oddmuse/mimedecode.pl $FILES > /dev/null
+# svn update is not necessary since we never accept changes from upstream
+# add new files
+for f in `svn stat $FILES | sed -n 's/^?      //p'`; do
+    svn --quiet add $f
+done
+# delete files that no longer exist (skip ., .., and .svn)
+TMP=`tempfile`
+find . -maxdepth 1 -type f|cut -c 3- > $TMP
+perl -e '%h=split(/ /,<STDIN>);print join("\n",keys %h), "\n";' < ~/emacs/pageidx >> $TMP
+for f in `sort < $TMP | uniq -u`; do
+    rm $f
+    svn --quiet remove $f
+done
+rm $TMP
+# commit changes
+svn --quiet commit -m updates
+
+</src>
+
+* Delete a folder
+rm -rf <folder name> this also can delete soft link and will not delete the real folder which the softlink point to.    
+
+* Check if a file exists
+
+<src>
+
+
+
+   1. #!/bin/sh
+   2.  
+   3. myPath="/var/log/httpd/"
+   4. myFile="/var /log/httpd/access.log"
+   5.  
+   6. #这里的-x 参数判断$myPath是否存在并且是否具有可执行权限
+   7. if [ ! -x "$myPath"]; then
+   8.     mkdir "$myPath"
+   9. fi
+  10.  
+  11. #这里的-d 参数判断$myPath是否存在
+  12. if [ ! -d "$myPath"]; then
+  13.     mkdir "$myPath"
+  14. fi
+  15.  
+  16.  
+  17. #这里的-f参数判断$myFile是否存在
+  18. if [ ! -f "$myFile" ]; then
+  19.     touch "$myFile"
+  20. fi
+  21.  
+  22. #其他参数还有-n,-n是判断一个变量是否是否有值
+  23. if [ ! -n "$myVar" ]; then
+  24.     echo "$myVar is empty"
+  25.     exit 0
+  26. fi
+  27.  
+  28. #两个变量判断是否相等
+  29. if [ "$var1" = "$var2" ]; then
+  30.     echo '$var1 eq $var2'
+  31. else
+  32.     echo '$var1 not eq $var2'
+  33. fi
+
+</src>
+
+* Getopts
+
+[[../etc/getopts.1.asp.html]]
+
+
+* Shell 参数
+
+几个需要记住的特殊参数：
+
+    - $0      = shell 名称或 shel 脚本名称
+    - $1      = 第一个(1)shell 参数
+    - $9      = 第九个(9)shell 参数
+    - $#      = 位置参数的个数
+    - "$*"    = "$1 $2 $3 $4 ... $n"
+    - "$@"    = "$1" "$2" "$3" "$4" ... "$n"
+    - $?      = 最近执行的命令的退出状态
+    - $$      = 当前 shell 脚本的 PID
+    - $!      = 最近启动的后台作业的 PID
+
+需要记住的基本扩展参数：
+
+         形式       |  如果设置了 var  |     如果没有设置 var
+     ${var:-string} |  $var            |     string
+     ${var:+string} |  string          |     null
+     ${var:=string} |  $var            |     string   (并且执行 var=string)
+     ${var:?string} |  $var            |     (返回 string 然后退出)
+
+在此，冒号“:”在所有运算表达式中事实上均是可选的。
+
+    - 有“:” = 运算表达式测试“存在”和“非空”。
+    - 没有“:” = 运算表达式仅测试“存在”。
+
+需要记住的替换参数：
+
+         形式       |  	结果
+     ${var%suffix}  |  删除位于 var 结尾的 suffix 最小匹配模式
+     ${var%%suffix} |  删除位于 var 结尾的 suffix 最大匹配模式
+     ${var#prefix}  |  删除位于 var 开头的 prefix 最小匹配模式
+     ${var##prefix} |  删除位于 var 开头的 prefix 最大匹配模式
+
+* Diff
+[[../etc/983888.shtml]]
+
+
+* [[../etc/ABS_Guide_cn.txt][Shell Ref Doc]]
+
+
+* Split words
+
+<src>
+will@will-laptop:~$ mytest="ebiz1.web_quote"
+will@will-laptop:~$ echo ${mytest##*.}
+web_quote
+will@will-laptop:~$ echo ${mytest%%.*}
+ebiz1
+will@will-laptop:~$ 
+
+</src>
+
+* Programing Style
+
+ - Uppercase global variant 
+ - Lowercase local variant and separate by "_"
+ - Mixed case works well for a function.
+
+
+* Table 33-1. Operator Precedence
+<src>
+Operator                        Meaning                   Comments
+                                                          HIGHEST PRECEDENCE
+                                post-increment,           C-style operators
+var++ var--
+                                post-decrement
+                                pre-increment,
+++var --var
+                                pre-decrement
+                                negation                  logical / bitwise, inverts sense of following
+! ~
+                                                          operator
+                                exponentiation            arithmetic operation
+**
+                                multiplication, division, arithmetic operation
+* / %
+                                modulo
+                                addition, subtraction     arithmetic operation
++ -
+                                left, right shift         bitwise
+<< >>
+                                unary comparison          string is/is-not null
+-z -n
+                                unary comparison          files
+-e -f -t -x, etc.
+                                compound comparison       string and integer
+< -lt > -gt <= -le >= -ge
+                                compound comparison       files
+-nt -ot -ef
+                                equality / inequality     test operators, string and integer
+== -eq != -ne
+
+                       AND                    bitwise
+&
+                       XOR                    exclusive OR, bitwise
+^
+                       OR                     bitwise
+|
+                       AND                    logical, compound comparison
+&& -a
+                       OR                     logical, compound comparison
+|| -o
+                       trinary operator       C-style
+?:
+                       assignment             (do not confuse with equality test)
+=
+                       combination assignment times-equal, divide-equal, mod-equal, etc.
+*= /= %= += -= <<= >>=
+&= !=
+                       comma                  links a sequence of operations
+,
+</src>
+
+* System Variables
+
+<src>
+$HOME
+
+$OSTYPE
+
+</src>
+
+
+* folder of the scirpt
+
+%~dp0 is the folder of the bat.
+
+$(cd "$(dirname "$0")"; pwd)
+
+
+* Delete folders under windows
+
+ <src>
+  rd /S /Q folder
+</src>
+
+
+* 利用shell命令去除dos文件里的回车符——“^M”
+
+tr -d '\r' < dos.txt > unix.txt
+
+
+* KSH
+
+<src lang="sh">
+ ksh -o emacs : use emacs key 
+
+./checklog4sap_remote  -s PROD  -w 0002155019 -d /tmp/quotelogtool/testprod -f 2011-07-20 -t 2011-07-20 -c PRICING -u changwei@cn.ibm.com -p lenovot60
+
+/home/fvtoper/quotelogtool/checklog4sap3  -s PROD  -w 0002155019 -d /tmp/quotelogtool/PROD_changwei@cn.ibm.com_test -f 2011-07-20 -t 2011-07-20 -c PRICING 
+
+http://www2.research.att.com/sw/download/man/man1/ksh.html
+
+
+
+if [ -z "$var" ]; then
+   echo "Null String"
+else
+   echo "$var"
+fi
+
+#or use: if [ "$var" = "" ]; then ......
+
+</src>
+
+问题解决如下
+方法一
+大小 <src lang="sh">filesize=`du -m repError.log | awk '{print $1}'`
+if [ $Count -gt 1 ]; then
+echo "$unix_time" | mutt -s "$unix_time" -a /a/a/Error.log l@1.com
+fi
+</src>
+
+
+更方便的字符串操作
+
+程序员日常工作中是经常遇到的操作之一就是字符串操作，ksh93 自然不会放过这方面的增强。
+
+表 1 总结了 ksh93 在字符串处理方面的加强，假设 string 等于 abc123abc 。
+
+表 1. 更强的字符串处理
+功能 	语法 	样例
+求起始位置为 index 的子串	${param:offset}	> echo ${string:3}
+123abc
+求起始位置为 index 和长度 num 的子串	${param:offset:num}	> echo ${string:1:3}
+bc1
+替换第一个出现的 pattern为 repl	${parm/pattern/repl}	> echo ${string/abc/def}
+def123abc
+替换所有出现的 pattern 为 repl	${parm//pattern/repl}	> echo ${string//abc/def}
+def123def
+替换开头的 pattern 	${parm/#pattern/repl}	> echo ${string/#abc/def}
+def123abc
+替换结尾的 pattern 	${parm/%pattern/repl}	> echo ${string/%abc/def}
+abc123def
+
+注：上述的 pattern 是正则表达式
+
+
+
+* Add jsp name to jsp file
+
+<src>
+
+find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/w3:body>/i\<!--  JSP file :'{}' -->' '{}' \;
+find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/www:body>/i\<!--  JSP file :'{}' -->' '{}' \;
+find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/w3:popupBody>/i\<!--  JSP file :'{}' -->' '{}' \;
+find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/www:popupBody>/i\<!--  JSP file :'{}' -->' '{}' \;
+</src>
+
+* Find
+<src lang="sh">
+find . -type f -name  "pom.xml" -execdir sed -i -e '/-SNAPSHOT/d' '{}' \;
+</src>
+** 在文件中查找内容
+<src lang="sh">
+find . -name "*.el" -exec grep -H "org-defvaralias" {} \;
+</src>
+
+* 批量改名字
+  rename .old .new  *  
+
+  http://bbs.chinaunix.net/thread-554405-1-1.html
