@@ -4,8 +4,8 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周二, 24 十二月 2013 16:33:04 CST</pubDate>
-    <lastBuildDate>周二, 24 十二月 2013 16:33:04 CST</lastBuildDate>
+    <pubDate>周二, 24 十二月 2013 18:20:15 CST</pubDate>
+    <lastBuildDate>周二, 24 十二月 2013 18:20:15 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
@@ -44,6 +44,13 @@
       <guid>http://standino.github.io/wiki/bigdata</guid>
     </item>
     <item>
+      <title>使用MDA方式开发软件</title>
+      <link>http://standino.github.io/wiki/html/mda</link>
+      <description>mda</description>
+      <pubDate>2013-12-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/mda</guid>
+    </item>
+    <item>
       <title>Emacs 使用笔记</title>
       <link>http://standino.github.io/wiki/html/myemacs/</link>
       <description>Emacs 使用笔记</description>
@@ -70,13 +77,6 @@
       <description>freemind</description>
       <pubDate>2013-12-20</pubDate>
       <guid>http://standino.github.io/wiki/freemind</guid>
-    </item>
-    <item>
-      <title>IBM产品的使用</title>
-      <link>http://standino.github.io/wiki/ibm</link>
-      <description>ibm</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/ibm</guid>
     </item>
   </channel>
 </rss>
