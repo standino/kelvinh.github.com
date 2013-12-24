@@ -6,7 +6,7 @@
 #+TAGS:        :Emacs:
 #+KEYWORDS:    Lisp, Scheme, Emacs, Linux, cygwin, Java,  Org-page, Programming,编程
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:     H:3 num:nil toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+DESCRIPTION: Emacs 使用笔记
 
 ----
@@ -65,7 +65,11 @@ lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索�
 
 ----
 
+* 获得帮助信息
+#+BEGIN_SRC 
+M-x apropos RET hook RET
 
+#+END_SRC
 *  拷贝到Emacs中的中文是乱码
 
 (set-language-environment 'Chinese-GB) 
