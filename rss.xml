@@ -4,11 +4,18 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周二, 24 十二月 2013 10:07:01 CST</pubDate>
-    <lastBuildDate>周二, 24 十二月 2013 10:07:01 CST</lastBuildDate>
+    <pubDate>周二, 24 十二月 2013 10:27:33 CST</pubDate>
+    <lastBuildDate>周二, 24 十二月 2013 10:27:33 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
+      <title>使用apache cxf生成web servcie 客户端</title>
+      <link>http://standino.github.io/blog/cxf</link>
+      <description>介绍如何使用cxf生成客户端</description>
+      <pubDate>2013-12-24</pubDate>
+      <guid>http://standino.github.io/blog/cxf</guid>
+    </item>
+    <item>
       <title>Untitled</title>
       <link>http://standino.github.io/wiki/untitled/</link>
       <description>No Description</description>
@@ -23,18 +30,53 @@
       <guid>http://standino.github.io/wiki/untitled/</guid>
     </item>
     <item>
-      <title>cygwin</title>
-      <link>http://standino.github.io/wiki/cygwin</link>
-      <description>cygwin的使用技巧</description>
-      <pubDate>2013-12-19</pubDate>
-      <guid>http://standino.github.io/wiki/cygwin</guid>
+      <title>大数据</title>
+      <link>http://standino.github.io/wiki/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2013-12-24</pubDate>
+      <guid>http://standino.github.io/wiki/bigdata</guid>
     </item>
     <item>
-      <title>关于Emacs的一些使用心得</title>
-      <link>http://standino.github.io/wiki/emacs/</link>
-      <description>small skills/tips learned during using emacs</description>
-      <pubDate>2013-12-19</pubDate>
-      <guid>http://standino.github.io/wiki/emacs/</guid>
+      <title>Emacs 使用笔记</title>
+      <link>http://standino.github.io/wiki/myemacs/</link>
+      <description>Emacs 使用笔记</description>
+      <pubDate>2013-12-24</pubDate>
+      <guid>http://standino.github.io/wiki/myemacs/</guid>
+    </item>
+    <item>
+      <title>2014年计划</title>
+      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
+      <description>为明年做一下计划</description>
+      <pubDate>2013-12-20</pubDate>
+      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
+    </item>
+    <item>
+      <title>English</title>
+      <link>http://standino.github.io/wiki/eng</link>
+      <description>English</description>
+      <pubDate>2013-12-20</pubDate>
+      <guid>http://standino.github.io/wiki/eng</guid>
+    </item>
+    <item>
+      <title>FreeMind</title>
+      <link>http://standino.github.io/wiki/freemind</link>
+      <description>freemind</description>
+      <pubDate>2013-12-20</pubDate>
+      <guid>http://standino.github.io/wiki/freemind</guid>
+    </item>
+    <item>
+      <title>IBM产品的使用</title>
+      <link>http://standino.github.io/wiki/ibm</link>
+      <description>ibm</description>
+      <pubDate>2013-12-20</pubDate>
+      <guid>http://standino.github.io/wiki/ibm</guid>
+    </item>
+    <item>
+      <title>IBM Data Studio Introduction </title>
+      <link>http://standino.github.io/wiki/ibmdatastudiointroduction</link>
+      <description>IBM Data Studio Introduction </description>
+      <pubDate>2013-12-20</pubDate>
+      <guid>http://standino.github.io/wiki/ibmdatastudiointroduction</guid>
     </item>
   </channel>
 </rss>
