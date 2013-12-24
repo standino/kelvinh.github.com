@@ -17,3 +17,4 @@
  5. [[http://blog.nosqlfan.com/html/868.html?ref=rediszt][Redis几个认识误区]]
  6. [[http://blog.nosqlfan.com/html/3139.html?ref=rediszt][Redis系统性介绍]]  这篇入门级的文章写得不错。
  7. [[http://blog.nosqlfan.com/html/4144.html][从MySQL到Redis，提升数据迁移的效率]]
+ 8. [[http://try.redis.io/][在线执行redis命令]]
