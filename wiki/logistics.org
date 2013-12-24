@@ -1,8 +1,8 @@
-#+TITLE:       logistics.org
+#+TITLE:       使用MDA方式开发软件
 #+AUTHOR:      U-360BUYAD\changwei
 #+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/mda
+#+URI:         /wiki/html/mda
 #+KEYWORDS:    mda
 #+TAGS:        :mda:
 #+LANGUAGE:    en
@@ -30,7 +30,9 @@ You can access all artifacts on http://oss.sonatype.org/content/groups/public
 
 You can access new repository here: http://andromda.svn.sourceforge.net/viewvc/andromda
 
-<src>
+
+#+BEGIN_SRC 
+
 
 svn checkout  https://svn.code.sf.net/p/andromda/svn/trunk andromda
 
@@ -55,8 +57,8 @@ You deploy it with "mvn site:deploy -Pandromda-site,local" or "mvn site:deploy -
 Good luck!
 
 The AndroMDA Team
+#+END_SRC
 
-</src>
 
 
 maven-enforcer-plugin:1.1.1:enforce (enforce-jdk) 
@@ -93,11 +95,14 @@ http://www.highcharts.com/
 * AppEngine
 
 
-<src>
+
+
+
+#+BEGIN_SRC 
 cd ideas/googleapp/
 
 ~/tools/google_appengine/appcfg.py  update helloworld/
-</src>
+#+END_SRC
 http://code.google.com/p/appengine-jruby/wiki/GettingStarted 
 
 http://rails-primer.appspot.com/
@@ -126,7 +131,7 @@ Here’s how to get rolling:
       Generate a rackup file
 
       In the same folder, save this as config.ru.
-<src>
+#+BEGIN_SRC 
       require 'appengine-rack'
       AppEngine::Rack.configure_app(
         :application => 'my-app',
@@ -139,7 +144,7 @@ Here’s how to get rolling:
       require 'config/environment'
 
       run ActionController::Dispatcher.new
-</src>
+#+END_SRC
    5.
       Check gem sources for datamapper
 
@@ -173,7 +178,7 @@ Here’s how to get rolling:
 
       # Skip frameworks you're not going to use.
       config.frameworks -= [ :active_record ]
-</src>
+#+END_SRC
    9.
       Run your app locally
 
@@ -293,9 +298,9 @@ https://andromda.svn.sourceforge.net/svnroot/andromda/trunk/
 
 The following cmd will allow accessing jboss from remote machine.
 
-<src>
+#+BEGIN_SRC 
 ./run.sh -b 0.0.0.0 
-</src>
+#+END_SRC
 
 The andromda's default setting is for HsqlDB, so we need not install
 another database. We only need download the JBoss http://www.jboss.org 
@@ -310,12 +315,12 @@ Edit the Hsqldb configure file located at
 
 This line will delete all files copied by the JEMS Installer:
 
-<src>java -jar $JBOSS_HOME/Uninstaller/uninstaller.jar -c</src>
+#+BEGIN_SRC java -jar $JBOSS_HOME/Uninstaller/uninstaller.jar -c#+END_SRC
 
 
 This line will delete the whole $JBOSS_HOME folder includeing all log files, deployed applications and anything else inside it:
 
-<src>java -jar $JBOSS_HOME/Uninstaller/uninstaller.jar -c -f</src>
+#+BEGIN_SRC java -jar $JBOSS_HOME/Uninstaller/uninstaller.jar -c -f#+END_SRC
 
 
 * Date 
@@ -333,16 +338,16 @@ Code:
 
 <src type="xml">
 <property name="enableSpringTransactionsWhenEjbsEnabled">true</property>
-</src>
+#+END_SRC
 
 Notice that the defaultvalue of this namespace property is true, so you can omit this property.
 
 2.) Use the following tagged values on the method(s) you want to have encapsuled in own transaction:
 
-<src>
+#+BEGIN_SRC 
 @andromda.ejb.transaction.type = RequiresNew
 @andromda.spring.transaction.type = PROPAGATION_REQUIRES_NEW
-</src>
+#+END_SRC
 3.) Call the inner method by getting a Service Object from the generated ServiceLocator and call the method on this Service Object
 
 example:
@@ -395,7 +400,7 @@ protected boolean handleImportOneRecord(final Map colAtts)
         return true;
    }
 
-</src>
+#+END_SRC
 
 LG
 Michael
@@ -436,7 +441,7 @@ overwrite="true">
     </modelElements>
 </template>
                 
-</src>
+#+END_SRC
 
 
 *  MDA Introduction
@@ -482,7 +487,7 @@ http://velocity.apache.org/
  Script, HTML etc. The template syntax and rendering engine are both
  easy to understand and quick to learn and implement.
 
-<src>
+#+BEGIN_SRC 
 
 ----------------------------------------------------------------------------------
 --
@@ -540,7 +545,7 @@ GRANT SELECT  ON ${table.getSchema()}.${table.getName()} TO GROUP WEB_GRP
 
 
 
-</src>
+#+END_SRC
 
 
 ** Difference between MDA and DSL
@@ -565,7 +570,7 @@ http://www.martinfowler.com/dslwip/MDDview.html
 I did some experiment with profiles in argouml 0.25.5, I referenced profiles in andromda by adding these lines in andromda.xml :
 
 Code:
-<src>
+#+BEGIN_SRC 
   <repositories>
     <repository name="netBeansMDR">
       <models>
@@ -579,14 +584,14 @@ Code:
       </models>
     </repository>
   </repositories>
-</src>
+#+END_SRC
 
 
 * Create Project
 
 ** Generate 
 
-<src>
+#+BEGIN_SRC 
 
 mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.3:generate
 
@@ -638,7 +643,7 @@ yes
 
 Would you like to use the JSR181 (webservice defined by annotations) EJB3 cartridge specific implementation? [yes, no]: 
 yes
-</src>
+#+END_SRC
 
 ** compare mda folder to find what need to be updated or copy
 
@@ -679,7 +684,7 @@ http://maven.apache.org/
 
 http://maven.apache.org/guides/getting-started/index.html
 
-<src>
+#+BEGIN_SRC 
         <dependency>
             <groupId>${pom.groupId}</groupId>
             <artifactId>quoteBase</artifactId>
@@ -706,7 +711,7 @@ http://maven.apache.org/guides/getting-started/index.html
     </dependency>
 	<dependency>
 
-</src>
+#+END_SRC
 * WAS 6
 
 
@@ -715,7 +720,7 @@ After long search on different solutions on automated building and deployment of
 All we have to do is put it all together, automate deployment of EAR (remember cargo plugin doesn't support websphere yet) to websphere and hook functional tests (using selenium) into the integration test phase.
 So the project consists of an ejb, war, ear, functional testing and a parent modules, like this:
 
-<src>
+#+BEGIN_SRC 
      parent_project
                   |-ejb_module
                   |
@@ -725,7 +730,7 @@ So the project consists of an ejb, war, ear, functional testing and a parent mod
                   |
                   |-test_module
 
-</src>
+#+END_SRC
 
 
 Looks like a complete set? Let's go through all the modules.
@@ -737,7 +742,7 @@ Looks like a complete set? Let's go through all the modules.
 The EJB module.
 
 The general problem is as it is well known the WebSphere requires generated stubs and skeletons packaged in ejb jar before the deployment which maven-ejb-plugin can't do. But IBM does offer java api to generate them via ant tasks. All we need to do is to 'silently' generate the server-specific files with ant tasks and repackage the ejb jar as a part of maven build cycle (usually generated by RAD during deployment in the IDE). In short this is how the pom may look like:
-<src>
+#+BEGIN_SRC 
     <project>
       <modelVersion>4.0.0</modelVersion>
       <groupId>your_group</ins></groupId>
@@ -921,7 +926,7 @@ The general problem is as it is well known the WebSphere requires generated stub
 
     </project>
 
-</src>
+#+END_SRC
 
 This pom is self explanatory for the most part (and I've tried to put some comments there as well). Text in bold is to be noticed, I will just stop on most important parts:
 
@@ -952,7 +957,7 @@ The WEB module.
 
 This one is much easier, although with RAD-6 there are some 'tips&tricks'.
 
-<src>
+#+BEGIN_SRC 
     <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
       <modelVersion>4.0.0</modelVersion>
@@ -1025,19 +1030,19 @@ This one is much easier, although with RAD-6 there are some 'tips&tricks'.
        
     </project>
 
-</src>
+#+END_SRC
 
 Let's go through it piece-by-piece... The beginning is pretty much standard for any web module. Don't forget to specify dependencies that are provided by the container in the same way as it is done in the ejb module, also don't forget to use excludes (and there are lots of exclusions for websphere!) or disable transitive dependencies alltogether.
 The next interesting part is:
 
-<src>
+#+BEGIN_SRC 
     <finalName>${project.artifactId}</finalName>
-</src>
+#+END_SRC
 
 Which is needed in order to keep consistency between the maven-generated artifacts and RAD-generated vendor specific deployment desciptors.
 
 The following piece:
-<src>    <sourceDirectory>${basedir}/JavaSource</sourceDirectory></src>
+#+BEGIN_SRC     <sourceDirectory>${basedir}/JavaSource</sourceDirectory>#+END_SRC
 
 
 
@@ -1059,7 +1064,7 @@ If we 'fall' for the above we would probably want to use the resource folder in 
                 </resource>
             </resources>
 
-</src>
+#+END_SRC
 Source and compiled classes are excluded so they don't get in the resulting .war file.
 
 
@@ -1074,7 +1079,7 @@ For the current version of maven (2.0.7 at the time of writing) the webapp root 
                 </plugin>
 
 
-</src>
+#+END_SRC
 Keep in mind it needs to be in 'sync' with <buildOutputDirectory>...</buildOutputDirectory> (or better yet - make it a property in order not to repeat yourself - DRY). And here we go:
 
 <src lang="xml">
@@ -1100,7 +1105,7 @@ Keep in mind it needs to be in 'sync' with <buildOutputDirectory>...</buildOutpu
                     </configuration>
                 </plugin>
 
-</src>
+#+END_SRC
 
 Here, buildOutputDirectory points at the same tree branch as the warSourceDirectory.
 warContextRoot is here just in case you want to customize the context root. com.ibm.etools.ctc.serviceprojectbuilder in additionalBuildcommands is needed because RAD usually generates it in .project file for eclipse for web-enabled projects. And of course the <classpathContainer/> which generates a reference required libraries for work in RAD (although you wouldn't need it if you use the enterprise repository with the vendor specific dependencies - just like in case with the ejb module).
@@ -1146,7 +1151,7 @@ There is really nothing special about it except this little configuration:
             </plugins>
         </build>
 
-</src>
+#+END_SRC
 
 
 Here we have configuration of the application.xml where we have hardcoded (not nice but have to...) names of modules and the resulting artifacts that are packaged in the resulting ear (remember we have to have the same artifact names as the ones hardcoded in the IBM-specific deployment descriptors).
@@ -1204,7 +1209,7 @@ Let's go through all the steps:
                   </repository>
               </repositories>
 
-</src>
+#+END_SRC
 
    2. Define dependencies to be able to run selenium. This is also pretty straight forward:
 
@@ -1226,7 +1231,7 @@ Let's go through all the steps:
                       <version>0.9.0</version>
                   </dependency>
 
-</src>
+#+END_SRC
 
       Here we have defined dependencies on JUnit in order to be run the selenium tests converted to JUnit, then we have client drivers to use the selenium client api in our JUnit tests and we have dependency on server which runs the selenium server to execute the tests.
 
@@ -1255,7 +1260,7 @@ Let's go through all the steps:
                           </executions>
                       </plugin>
 
-</src>
+#+END_SRC
 
       Notice that it starts in pre-integration phase, that is just before the integration phase starts.
 
@@ -1286,7 +1291,7 @@ Let's go through all the steps:
                           </executions>
                       </plugin>
 
-</src>
+#+END_SRC
 
       Notice the part with <skip>true</skip> - it tells maven to skip the test phase for this plugin otherwise test will fail because we haven't deployed the application yet. And then for the integration phase we enforce this plugin (also notice the part with <skip>false</skip> there)
 
@@ -1327,7 +1332,7 @@ Let's go through all the steps:
                       </plugin>
 
 
-</src>
+#+END_SRC
       The preparation of EAR for deployment is done by forcing the maven-dependency-plugin to copy resources (our EAR in this case) from local repository in package phase. Because the copying is done from the local repository we would need to use at least install (or later) phase in our parent module which would guarantee placement of our EAR in a local repository. The plugin takes the artifactId and type to identify the resource to copy, we also use the destFileName and outputDirectory to configure the final name and the location of the EAR. As a result of this configuration we get the archive we want to deploy in the target directory of this module.
 
 
@@ -1413,7 +1418,7 @@ Let's go through all the steps:
                           </executions>
                       </plugin>
 
-</src>
+#+END_SRC
 
       The deployment to the server is done in the pre-integration-test phase. Because maven runs goals in order that plugins are configured in build/plugins section we have the EAR file prepared for deployment properly.
       In the configuration section of antrun plugin we defined was6.homewhich points to default location of WAS for development environment but this can be easily overridden by using -Dwas6.home=<your WAS home> in the command line.
@@ -1425,7 +1430,7 @@ Let's go through all the steps:
 
       And of course the ant script that performs the deployment and undeployment. It's quite big but fortunately it's not dependent on file system and thus can be easily reused across projects 'as is':
 
-<src>
+#+BEGIN_SRC 
           <?xml version="1.0"?>
           <project name="was-deployment" default="deploy" basedir=".">
              
@@ -1543,7 +1548,7 @@ Let's go through all the steps:
               </target>
           </project>
 
-</src>
+#+END_SRC
 
       This ant script uses ant tasks wsInstallApp, wsUninstallApp and wsStartApp provided by websphere. They are all needed to deploy (wsInstallApp target) the application and start it wsStartApp (separate action in webpshere) and then to undeploy the application (wsUninstallApp target). To protect this script from often changes we have was.classpath which provides classpath for those targets and deploy.properties file provides properties that you're likely to customize per application (or environment).
       Then we have a 'strange' ws-exec target which basically runs the same script again but this time passes it through ${user.install.root}/bin/ws_ant.bat which is an own implementation of ant from IBM. We do this mostly because those ant tasks we described require a lot of system and environment variables setup. And since this is a proprietary solution of IBM it's easier to let those scripts to do the initialization job and then return to our deploy.xml. We also pass the required properties (as command line arguments) through this script which in this case are:
@@ -1597,7 +1602,7 @@ Parent module
 This is the last module which serves as an orchestration assembly module for the whole application. It also defines a functional tests profile which allows developers to work on the application and build without invoking system integration tests (they can be slow depending on your application complexity). We can invoke the funstional test profile, for example, on our continuous integration server (continuum is used in this case). This a typical parent module with packaging type pom (<packaging>pom</packaging>). It has only two 'specific' for this whole task sections: the module and profile definition and compiler settings.
 
 The module definition is pretty simple:
-<src>
+#+BEGIN_SRC 
 
         <modules>
             <module>ejb_module</module>
@@ -1622,13 +1627,13 @@ The module definition is pretty simple:
             </profile>
         </profiles>
 
-</src>
+#+END_SRC
 
 According to the configuration above the default execution of build wont include the building of functional (integration) tests module. If we want to include integration tests as part of our build we can append "-P functional-test" at the command line, e.g. mvn install -P functional-test. There are also other ways of triggering this profile.
 
 And the last section of the parent module forces compiler to compile all java classes to java 1.4 compatible bytecode across all modules (because WAS-6 supports bytecode upto java 1.4):
 
-<src>
+#+BEGIN_SRC 
         <build>
             <plugins>
                 <plugin>
@@ -1642,7 +1647,7 @@ And the last section of the parent module forces compiler to compile all java cl
             </plugins>
         </build>
 
-</src>
+#+END_SRC
 
 Because all other modules declare this module as parent one they all use this setting so we don't have to specify it at every module that compiles java code.
 
@@ -1801,7 +1806,7 @@ search]]
         </to>
     </mapping>
 
-</src>
+#+END_SRC
 
  2. create file: /home/will/newlogistics/mda/src/main/config/templates/bpm4struts/pages/crud/dojo.jsp.vsl
 
@@ -1821,9 +1826,9 @@ Edit the Hsqldb configure file located at %JBoss_Home%\server\default\deploy\hsq
 uncomment:
 <src lang="xml">
 <connection-url>jdbc:hsqldb:hsql://localhost:1701</connection-url>
-</src>
+#+END_SRC
 comment :
-<src lang="xml"><connection-url>jdbc:hsqldb:${jboss.server.data.dir}${/}hypersonic${/}localDB</connection-url></src>
+<src lang="xml"><connection-url>jdbc:hsqldb:${jboss.server.data.dir}${/}hypersonic${/}localDB</connection-url>#+END_SRC
 
 
 uncomment
@@ -1837,7 +1842,7 @@ uncomment
      <attribute name="No_system_exit">true</attribute>
    </mbean>
 
-</src>
+#+END_SRC
 
 
 and
@@ -1847,7 +1852,7 @@ and
      <attribute name="Database">localDB</attribute>
      <attribute name="InProcessMode">true</attribute>
    </mbean>
-</src>
+#+END_SRC
 OK, HsqlDB is ready to use.
 
 
@@ -1855,7 +1860,7 @@ OK, HsqlDB is ready to use.
 
 Using the following code to get the association. 
 
-<src>
+#+BEGIN_SRC 
 <!--
 
 ## Generate the relation methods.
@@ -1888,7 +1893,7 @@ $target.getDocumentation("     * ")
 
 -->
 
-</src>
+#+END_SRC
 
 
 *  Javascript
@@ -1935,7 +1940,7 @@ function show_cookie(){
 
 
 </body>
-</src>
+#+END_SRC
 
 ** mydb2 online
 
@@ -2010,10 +2015,10 @@ function loadTreeFromUrl(nodeItem){
 		}
 		var deferred = dojo.xhrPost(xhrArgs);
 }
-</src>
+#+END_SRC
 
 * [[http://www.cnblogs.com/leadzen/archive/2008/09/07/1285764.html][JavaScript判断浏览器类型及版本]]
-<src>
+#+BEGIN_SRC 
     <script type="text/javascript">
         var Sys = {};
         var ua = navigator.userAgent.toLowerCase();
@@ -2030,13 +2035,13 @@ function loadTreeFromUrl(nodeItem){
         if(Sys.opera) document.write('Opera: '+Sys.opera);
         if(Sys.safari) document.write('Safari: '+Sys.safari);
     </script>
-</src>
+#+END_SRC
 
 ** Popup Calendar used in DSW
 
 http://www.dynarch.com/static/jscalendar-1.0/simple-1.html
 
-<src>
+#+BEGIN_SRC 
 
 <p><b>Hidden field, display area.</b> Very much like the previous
 examples,
@@ -2072,7 +2077,7 @@ date.getDay() == 0) ? true : false;
 			        });
 				</script>
 				
-</src>				
+#+END_SRC				
 
 
 
@@ -2087,7 +2092,7 @@ use, zero install, very impressive tool.
 ** REX
 
  3）match  得到查询数组
-<src>
+#+BEGIN_SRC 
        var data = "123123,213,12312,312,3,Cat,cat,dsfsdfs,";
        var reCat = /cat/gi;
        var arrMactches = data.match(reCat)
@@ -2096,7 +2101,7 @@ use, zero install, very impressive tool.
        {
             alert(arrMactches[i]);   //Cat  cat
        }
-</src>
+#+END_SRC
 
 
 **  Dojo
@@ -2319,12 +2324,12 @@ Import the starter .uml model into Papyrus to create a papyrus 'diagram', follow
         </plugin>
     </plugins>
 </build>
-</src>
+#+END_SRC
 
 
 4) mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.5-SNAPSHOT:generate
 
-<src>
+#+BEGIN_SRC 
 
 INFO  [AndroMDA] discovered andromdapp type --> 'j2ee'
 INFO  [AndroMDA] discovered andromdapp type --> 'richclient'
@@ -2391,7 +2396,7 @@ jaxws
 Would you like to use the embedded Jetty web server (Maven plugin)? [yes, no]: 
 yes
 
-</src>
+#+END_SRC
 
 
 * Working timetracker
@@ -2443,7 +2448,7 @@ mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.4:generate
 
 /home/will/ideas/RTCPlugin
 
-<src>
+#+BEGIN_SRC 
 
 will@will RTCPlugin$ mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.4:generate
 [INFO] Scanning for projects...
@@ -2520,7 +2525,7 @@ Would you like to use the embedded Jetty web server (Maven plugin)? [yes, no]:
 no
 -----
 
-</src>
+#+END_SRC
 
 
 修改app/pom.xml 设置jboos7新的部署目录 ${jboss.home}/standalone/deployments/
