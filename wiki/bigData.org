@@ -18,3 +18,6 @@
  6. [[http://blog.nosqlfan.com/html/3139.html?ref=rediszt][Redis系统性介绍]]  这篇入门级的文章写得不错。
  7. [[http://blog.nosqlfan.com/html/4144.html][从MySQL到Redis，提升数据迁移的效率]]
  8. [[http://try.redis.io/][在线执行redis命令]]
+ 9. [[http://www.blogways.net/blog/2013/06/02/jedis-demo.html][Redis的Java客户端Jedis的八种调用方式]]
+ 10. [[http://mina-java.iteye.com/blog/1149452][Redis最好的Java客户端jedis入门]]
+ 11. [[http://projects.spring.io/spring-data-redis/][Spring redis]]

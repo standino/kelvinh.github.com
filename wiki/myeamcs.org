@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2012-11-27 Tue
-#+URI:         /wiki/myemacs/
+#+URI:         /wiki/html/myemacs/
 #+TAGS:        :Emacs:
 #+KEYWORDS:    Lisp, Scheme, Emacs, Linux, cygwin, Java,  Org-page, Programming,编程
 #+LANGUAGE:    en

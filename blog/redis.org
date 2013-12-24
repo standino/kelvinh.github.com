@@ -1,0 +1,85 @@
+#+TITLE:       redis 
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-24 周二
+#+URI:         /blog/%y/%m/%d/redis
+#+KEYWORDS:    big data, redis
+#+TAGS:        :big data:redis
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: redis学习和入门
+
+reids 基本上还是比较简单的，有人说它是面向开发者的，因此开发人员使用起来就非常简单。下面我列出几篇不错的文章。
+
+* 入门
+
+ 6. [[http://blog.nosqlfan.com/html/3139.html?ref=rediszt][Redis系统性介绍]]  这篇入门级的文章写得不错。
+
+* 结构设计
+Redis并不是简单的key-value存储，实际上他是一个数据结构服务器，支持不同类型的值。
+
+ 1. 二进制安全的 字符串 string
+ 2. 二进制安全的 字符串列表 list of string
+ 3. 二进制安全的 字符串集合 set of string，换言之：它是一组无重复未排序的element。可以把它看成Ruby中的 hash–其key等于element，value都等于’true‘。
+ 4. 有序集合sorted set of string，类似于集合set，但其中每个元素都和一个浮点数score（评分）关联。element根据score排序。可以把它看成Ruby中的 hash–其key等于element，value等于score，但元素总是按score的顺序排列，无需额外的排序操作。
+
+因此在使用redis的时候也需要像使用传统关系型数据库那样设计一下数据结构。下面两篇文章是很好的参考：
+ 1. [[http://blog.codingnow.com/2011/11/dev_note_2.html][redis 数据库结构设计]]
+ 2. [[http://blog.nosqlfan.com/html/3033.html][浅谈Redis数据库的键值设计]]
+
+设计中需要考虑内存占用
+
+ 1. [[http://ju.outofmemory.cn/entry/20361][关于 Redis 的几种数据库设计方案的内存占用测试]]
+ 2. [[http://blog.nosqlfan.com/html/3379.html?ref=rediszt][节约内存：Instagram的Redis实践]]
+
+* Java 调用
+
+** [[http://projects.spring.io/spring-data-redis/#quick-start][Spring Data Redis]]
+
+*** MVN POM
+
+#+BEGIN_SRC 
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-redis</artifactId>
+        <version>1.1.0.RELEASE</version>
+    </dependency>
+</dependencies>
+
+#+END_SRC
+
+*** Configure RedisTemplate....
+#+BEGIN_SRC 
+<bean id="jedisConnFactory" 
+    class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
+    p:use-pool="true"/>
+
+<!-- redis template definition -->
+<bean id="redisTemplate" 
+    class="org.springframework.data.redis.core.RedisTemplate" 
+    p:connection-factory-ref="jedisConnFactory"/>
+
+#+END_SRC
+
+*** Inject and use RedisTemplate or any of its opsForX() instances....
+#+BEGIN_SRC 
+public class Example {
+
+    // inject the actual template
+    @Autowired
+    private RedisTemplate<String, String> template;
+
+    // inject the template as ListOperations
+    // can also inject as Value, Set, ZSet, and HashOperations
+    @Resource(name="redisTemplate")
+    private ListOperations<String, String> listOps;
+
+    public void addLink(String userId, URL url) {
+        listOps.leftPush(userId, url.toExternalForm());
+        // or use template directly
+        redisTemplate.boundListOps(userId).leftPush(url.toExternalForm());
+    }
+}
+
+#+END_SRC
