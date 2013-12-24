@@ -6,7 +6,7 @@
 #+KEYWORDS:    code review, sonar, coding
 #+TAGS:        :code review:sonar:coding
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: sonar的安装和使用
 
 * 安装
