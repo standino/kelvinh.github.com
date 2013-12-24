@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:
 #+DATE:        2013-12-24 周二
-#+URI:         /blog/cxf
+#+URI:         /blog/html/cxf
 #+KEYWORDS:    web servcie, apache, cxf
 #+TAGS:        :web servcie:apache:cxf:
 #+LANGUAGE:    en
