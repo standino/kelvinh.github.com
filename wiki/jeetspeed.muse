@@ -1,5 +1,0 @@
-#title Portal ¿ò¼Ü
-
-
- - http://portals.apache.org/jetspeed-2/deployguide/guide-jetui.html
- - [[http://portals.apache.org/jetspeed-2/tutorial/01/genapp.html][Get Started]]

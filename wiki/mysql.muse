@@ -1,6 +1,0 @@
-#title MySQL数据库
-
-
- - [[http://blog.csdn.net/adparking/article/details/6676571][mysql中的load data infile用法]]
- - [[http://www.blogjava.net/qileilove/archive/2012/04/23/376353.html][定时备份mysql数据库 并删除7天前的备份 （windows linux ）]]
- - [[http://blog.csdn.net/jinkelei/article/details/6833997][mysql定时备份和删除]]

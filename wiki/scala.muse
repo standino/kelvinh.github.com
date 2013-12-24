@@ -1,7 +1,0 @@
-#title scala 
-
-* Scala 
-
-http://www.artima.com/scalazine/articles/steps.html
-
-

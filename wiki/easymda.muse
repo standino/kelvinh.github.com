@@ -1,3 +1,0 @@
-#title 简易MDA工具
-
-用小乌龟从 http://svn.code.sf.net/p/andromda/svn/trunk 拿到了所有的代码
