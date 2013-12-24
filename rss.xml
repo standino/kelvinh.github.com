@@ -4,79 +4,37 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周一, 23 十二月 2013 13:18:54 CST</pubDate>
-    <lastBuildDate>周一, 23 十二月 2013 13:18:54 CST</lastBuildDate>
+    <pubDate>周二, 24 十二月 2013 09:14:08 CST</pubDate>
+    <lastBuildDate>周二, 24 十二月 2013 09:14:08 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>2014年计划</title>
-      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
-      <description>为明年做一下计划</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
+      <title>Untitled</title>
+      <link>http://standino.github.io/wiki/untitled/</link>
+      <description>No Description</description>
+      <pubDate>2013-12-24</pubDate>
+      <guid>http://standino.github.io/wiki/untitled/</guid>
     </item>
     <item>
-      <title>English</title>
-      <link>http://standino.github.io/wiki/eng</link>
-      <description>English</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/eng</guid>
+      <title>Untitled</title>
+      <link>http://standino.github.io/wiki/untitled/</link>
+      <description>No Description</description>
+      <pubDate>2013-12-24</pubDate>
+      <guid>http://standino.github.io/wiki/untitled/</guid>
     </item>
     <item>
-      <title>FreeMind</title>
-      <link>http://standino.github.io/wiki/freemind</link>
-      <description>freemind</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/freemind</guid>
+      <title>cygwin</title>
+      <link>http://standino.github.io/wiki/cygwin</link>
+      <description>cygwin的使用技巧</description>
+      <pubDate>2013-12-19</pubDate>
+      <guid>http://standino.github.io/wiki/cygwin</guid>
     </item>
     <item>
-      <title>IBM产品的使用</title>
-      <link>http://standino.github.io/wiki/ibm</link>
-      <description>ibm</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/ibm</guid>
-    </item>
-    <item>
-      <title>IBM Data Studio Introduction </title>
-      <link>http://standino.github.io/wiki/ibmdatastudiointroduction</link>
-      <description>IBM Data Studio Introduction </description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/ibmdatastudiointroduction</guid>
-    </item>
-    <item>
-      <title>面向对象设计和重构</title>
-      <link>http://standino.github.io/wiki/ood</link>
-      <description>面向对象设计</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/ood</guid>
-    </item>
-    <item>
-      <title>利用mydb2脚本实现数据库的敏捷开发</title>
-      <link>http://standino.github.io/wiki/agilemydb2</link>
-      <description>本文主要讨论使用 Shell 脚本与 DB2 交互的一些常用技巧和方法。介绍了利用 Shell 脚本帮助我们进行存储过程调优和部署。同时通过一个演示项目的开发过程的介绍来展示如何使用文中的脚本进行开发。</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/agilemydb2</guid>
-    </item>
-    <item>
-      <title>大数据</title>
-      <link>http://standino.github.io/wiki/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/bigdata</guid>
-    </item>
-    <item>
-      <title>汽车</title>
-      <link>http://standino.github.io/wiki/car</link>
-      <description>汽车</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/car</guid>
-    </item>
-    <item>
-      <title>Database Migration</title>
-      <link>http://standino.github.io/wiki/databasemigration</link>
-      <description>Database Migration </description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/databasemigration</guid>
+      <title>关于Emacs的一些使用心得</title>
+      <link>http://standino.github.io/wiki/emacs/</link>
+      <description>small skills/tips learned during using emacs</description>
+      <pubDate>2013-12-19</pubDate>
+      <guid>http://standino.github.io/wiki/emacs/</guid>
     </item>
   </channel>
 </rss>
