@@ -65,11 +65,16 @@ lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索�
 
 ----
 
-* 获得帮助信息
+* Wrting Gnu Emacs Extensions 读书笔记
+** 获得帮助信息
 #+BEGIN_SRC 
 M-x apropos RET hook RET
-
 #+END_SRC
+
+** Asterisk
+The asterisk, when it is the first character in an interactive argument, means "abort this
+function if the current buffer is read-only."
+
 *  拷贝到Emacs中的中文是乱码
 
 (set-language-environment 'Chinese-GB) 
