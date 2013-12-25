@@ -1,8 +1,8 @@
 #+TITLE:       scala.org
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/scala
+#+URI:         /wiki/html/scala
 #+KEYWORDS:    java,scala
 #+TAGS:        :java:scala:
 #+LANGUAGE:    en

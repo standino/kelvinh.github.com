@@ -1,8 +1,8 @@
 #+TITLE:       sql.org
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/sql
+#+URI:         /wiki/html/sql
 #+KEYWORDS:    sql,db2
 #+TAGS:        :sql:db2:
 #+LANGUAGE:    en

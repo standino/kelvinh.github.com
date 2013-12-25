@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/goodpresentation
+#+URI:         /wiki/html/goodpresentation
 #+KEYWORDS:    ppt
 #+TAGS:        :ppt:
 #+LANGUAGE:    en
@@ -17,7 +17,7 @@
 
 Below is a sample
 
-<include file="../article/template.muse" markup="src" >
+<include file="../article/template.muse" markup="#+BEGIN_SRC " >
 
 ** Use [[http://www.yworks.com/en/products_yed_about.html][yEd Graph Editor]] to draw the diagram 
 
@@ -55,7 +55,7 @@ The general syntax for extending a path in a “curved” way is .. controls fir
 first one to be used twice.
 
 ----
-<src>
+<#+BEGIN_SRC >
 <tikz caption="THE CAPTION YOU WANT DISPLAYED">
 YOUR TIKZ CODE	
 </tikz>
@@ -63,7 +63,7 @@ YOUR TIKZ CODE
 YOUR METAPOST CODE	
 </mpo>
 
-</src>
+</#+BEGIN_SRC >
 
 
 To include the encoded file in your document:
@@ -94,7 +94,7 @@ http://latex-beamer.sourceforge.net/
 
 [[http://www.cert.fr/dcsd/THESES/sbouveret/francais/LaTeX.html][My LaTeX customization page]]
 
-[[http://dsec.math.pku.edu.cn/~yuhj/wiki/Beamer.html][使用Beamer制作Slide介绍]]
+[[http://dsec.math.pku.edu.cn/~yuhj/wiki/html/Beamer.html][使用Beamer制作Slide介绍]]
 
 ** CVS
 

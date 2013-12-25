@@ -1,8 +1,8 @@
 #+TITLE:       go
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/go
+#+URI:         /wiki/html/html/go
 #+KEYWORDS:    go,programming language
 #+TAGS:        :go:programming language:
 #+LANGUAGE:    en
@@ -82,7 +82,7 @@ updating working directory
 这样在你的用户目录下应该有个 hg 目录了。继续执行一下操作
 Sudo mv hg Go
 Mkdir /home/xinglight/bin
-Cd Go\src
+Cd Go\#+BEGIN_SRC 
 ./all.bash
 如果前面没有问题,编译应该可以正确完成。编译后可以进入/home/xinglight/bin 目录下
 查看是不是有 6g 6l 8g 8l 这样的可执行文件。

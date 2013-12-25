@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/mdadsl
+#+URI:         /wiki/html/mdadsl
 #+KEYWORDS:    mda,dsl
 #+TAGS:        :mda:dsl:
 #+LANGUAGE:    en
@@ -16,7 +16,7 @@
  3. Interoperability
  4. Maintenance and Documentation  
 
-* [[http://en.wikipedia.org/wiki/Model-driven_architecture][MDA Introduction]]
+* [[http://en.wikipedia.org/wiki/html/Model-driven_architecture][MDA Introduction]]
 
 Model Driven Software Development (MDSD) is a style of software
 development that considers itself as an alternative to the traditional
@@ -99,7 +99,7 @@ renders data from plain Java objects to text, xml, email, SQL, Post
 Script, HTML etc. The template syntax and rendering engine are both
 easy to understand and quick to learn and implement.
 
-<src>
+<#+BEGIN_SRC >
 
 DROP TABLE ${table.getSchema()}.${table.getName()}
 @
@@ -115,7 +115,7 @@ CREATE TABLE ${table.getSchema()}.${table.getName()}
     INDEX IN ${table.getSchema()}_INDX_01
 @
 
-</src>
+</#+BEGIN_SRC >
 
 *   [[http://www.andromda.org/][Andromda ]]
 
@@ -170,7 +170,7 @@ AndroMDA might not be the best choice if
 
 ** Create Project
 
-<src>
+<#+BEGIN_SRC >
 
 C:\>mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.2:generate
 Please choose the type of application to generate [richclient, j2ee]
@@ -229,10 +229,10 @@ struts
 
 Would you like to be able to expose your services as web services? [yes, no]:
 no
-</src>
+</#+BEGIN_SRC >
 
 ** Project Layout 
-<src>
+<#+BEGIN_SRC >
 timetracker
      |
      |-- mda
@@ -245,7 +245,7 @@ timetracker
      |
      +-- app
     
-</src>
+</#+BEGIN_SRC >
 
 
 
@@ -273,7 +273,7 @@ problem.
 Domain specific languages have been talked about, and used
 for almost as long as computing has been done. DSLs are very common in
 computing.
-<src>
+<#+BEGIN_SRC >
       graphviz               LINQ
  ant
                   rake      Hibernate query language
@@ -285,7 +285,7 @@ SQL                                         make
                                rails validation
      JMock expectations
 
-</src>
+</#+BEGIN_SRC >
 
 ** Internal and External DSLs.
 
@@ -322,13 +322,13 @@ itself a high level language, such as Java or C.
 *  [[http://www.ruby-lang.org/en/][Ruby]]
 
  - OOP
-<src>
+<#+BEGIN_SRC >
 java: int c = Math.abs(-166);
 ruby: c = -166.abs
-</src>
+</#+BEGIN_SRC >
 
  - Code Block
-<src>
+<#+BEGIN_SRC >
 def callBlock
    yield
    yield
@@ -339,10 +339,10 @@ out:
  In the block
  In the block
 
-</src>
+</#+BEGIN_SRC >
  - [[http://www.innovationontherun.com/why-rubys-mixins-gives-rails-an-advantage-over-java-frameworks/][Mixin]]
 
-<src>
+<#+BEGIN_SRC >
 module BarModule
   def hello_world
     puts "Hello World"
@@ -358,21 +358,21 @@ end
 class Foo < BaseClass
   include BarModule
 end
-</src>
+</#+BEGIN_SRC >
 f = Foo.new | f = Foo.send(:new)
 f.class_method | f.send(:class_method)
 f.hello_world |  f.send(:hello_world)
-<src>
+<#+BEGIN_SRC >
 String.send(:include, BarModule)
 s = "Arbitrary String"
 s.hello_world
-</src>
+</#+BEGIN_SRC >
 
 
 
 ** DSL in Ruby
 
-<src lang="ruby">
+<#+BEGIN_SRC ">
 class QuoteDSLBuilder
 
 def self.load( dsl)
@@ -392,10 +392,10 @@ def add_parts(partNum) end
 def change_quantity(partNum, quantity) end
 def recalculate_quote end
 end#class QuoteDSLBuilder
-</src>
+</#+BEGIN_SRC >
 
 ** DSL in Ruby
-<src lang="ruby">
+<#+BEGIN_SRC ">
 create_quote 'PAUN','USA' do
   tab "Customers and partners" do
     select_customer '0007229725'
@@ -408,21 +408,21 @@ create_quote 'PAUN','USA' do
     assert_parts_date 'D576HLL'
   end
 end
-</src>
+</#+BEGIN_SRC >
 
 *   [[http://www.rubyonrails.org/][Rails]]
-<src>
+<#+BEGIN_SRC >
 work> rails depot
 work> cd depot
 depot> ls -p
 README         components/ doc/ public/ tmp/
 Rakefile       config/     lib/ script/ vendor/
 app/           db/         log/ test/
-</src>
+</#+BEGIN_SRC >
 
 ** Create Model
 
-<src>
+<#+BEGIN_SRC >
 depot> ruby script/generate model Product
   create db/migrate/001_create_products.rb
 
@@ -438,9 +438,9 @@ class CreateProducts < ActiveRecord::Migration
     drop_table :products
   end
 end
-</src>
+</#+BEGIN_SRC >
 **  Create Controller
-<src lang="rby">
+<#+BEGIN_SRC ">
 depot> ruby script/generate controller admin
   create app/controllers/admin_controller.rb
 
@@ -448,7 +448,7 @@ class AdminController < ApplicationController
   scaffold :product
 end
 
-</src>
+</#+BEGIN_SRC >
 
 ** Web UI
 
@@ -601,7 +601,7 @@ Profiles  «UMLµƒ¿©’πª˙÷∆°£“ª∏ˆProfile∂‘”¶“ª÷÷±‡≥Ã‘º∂®°£
 
 *** ¥¥Ω®œÓƒø
 
-<src>
+<#+BEGIN_SRC >
 
 C:\>mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.2:generate
 Please choose the type of application to generate [richclient, j2ee]
@@ -660,10 +660,10 @@ struts
 
 Would you like to be able to expose your services as web services? [yes, no]:
 no
-</src>
+</#+BEGIN_SRC >
 
 *** œÓƒøΩ·ππ
-<src>
+<#+BEGIN_SRC >
 timetracker
      |
      |-- mda
@@ -676,7 +676,7 @@ timetracker
      |
      +-- app
     
-</src>
+</#+BEGIN_SRC >
 
 
 *** ‘ˆ…æ≤È∏ƒ
@@ -704,7 +704,7 @@ DSL £®Domain Specific Language) «“ª÷÷’Î∂‘Ãÿ ‚Œ Ã‚µƒ±‡≥Ã”Ô—‘£¨≤ª «ƒ«÷÷ø…“‘±‡–¥∏˜÷
 
 DSL“—æ≠‘⁄º∆À„ª˙¡Ï”Ú π”√¡À∫‹æ√¡À£¨ «∑«≥£∆’±Èµƒ°£
 
-<src>
+<#+BEGIN_SRC >
       graphviz               LINQ
  ant
                   rake      Hibernate query language
@@ -716,7 +716,7 @@ SQL                                         make
                                rails validation
      JMock expectations
 
-</src>
+</#+BEGIN_SRC >
 
 ** Internal and External DSLs.
 
@@ -733,13 +733,13 @@ SQL                                         make
 *  [[http://www.ruby-lang.org/en/][Ruby]] ΩÈ…‹
 
  - OOP
-<src>
+<#+BEGIN_SRC >
 java: int c = Math.abs(-166);
 ruby: c = -166.abs
-</src>
+</#+BEGIN_SRC >
 
  - Code Block
-<src>
+<#+BEGIN_SRC >
 def callBlock
    yield
    yield
@@ -750,10 +750,10 @@ out:
  In the block
  In the block
 
-</src>
+</#+BEGIN_SRC >
  - [[http://www.innovationontherun.com/why-rubys-mixins-gives-rails-an-advantage-over-java-frameworks/][Mixin]]
 
-<src>
+<#+BEGIN_SRC >
 module BarModule
   def hello_world
     puts "Hello World"
@@ -769,21 +769,21 @@ end
 class Foo < BaseClass
   include BarModule
 end
-</src>
+</#+BEGIN_SRC >
 f = Foo.new | f = Foo.send(:new)
 f.class_method | f.send(:class_method)
 f.hello_world |  f.send(:hello_world)
-<src>
+<#+BEGIN_SRC >
 String.send(:include, BarModule)
 s = "Arbitrary String"
 s.hello_world
-</src>
+</#+BEGIN_SRC >
 
 
 
 ** DSL in Ruby
 
-<src lang="ruby">
+<#+BEGIN_SRC ">
 class QuoteDSLBuilder
 
 def self.load( dsl)
@@ -803,10 +803,10 @@ def add_parts(partNum) end
 def change_quantity(partNum, quantity) end
 def recalculate_quote end
 end#class QuoteDSLBuilder
-</src>
+</#+BEGIN_SRC >
 
 
-<src lang="ruby">
+<#+BEGIN_SRC ">
 create_quote 'PAUN','USA' do
   tab "Customers and partners" do
     select_customer '0007229725'
@@ -819,21 +819,21 @@ create_quote 'PAUN','USA' do
     assert_parts_date 'D576HLL'
   end
 end
-</src>
+</#+BEGIN_SRC >
 
 ***   [[http://www.rubyonrails.org/][Rails]]
-<src>
+<#+BEGIN_SRC >
 work> rails depot
 work> cd depot
 depot> ls -p
 README         components/ doc/ public/ tmp/
 Rakefile       config/     lib/ script/ vendor/
 app/           db/         log/ test/
-</src>
+</#+BEGIN_SRC >
 
 **** Create Model
 
-<src>
+<#+BEGIN_SRC >
 depot> ruby script/generate model Product
   create db/migrate/001_create_products.rb
 
@@ -849,9 +849,9 @@ class CreateProducts < ActiveRecord::Migration
     drop_table :products
   end
 end
-</src>
+</#+BEGIN_SRC >
 ****  Create Controller
-<src lang="rby">
+<#+BEGIN_SRC ">
 depot> ruby script/generate controller admin
   create app/controllers/admin_controller.rb
 
@@ -859,7 +859,7 @@ class AdminController < ApplicationController
   scaffold :product
 end
 
-</src>
+</#+BEGIN_SRC >
 
 * MDA∫ÕDSL±»Ωœ
 

@@ -1,8 +1,8 @@
 #+TITLE:       ruby.org
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/ruby
+#+URI:         /wiki/html/ruby
 #+KEYWORDS:    ruby
 #+TAGS:        :ruby:
 #+LANGUAGE:    en
@@ -26,13 +26,13 @@
 
 
 
-<src>
+<#+BEGIN_SRC >
 
 include Math
 print("sin(3.14)=",sin(3.14),"\n")
 print("cos(3.14)=",cos(3.14),"\n")
 print("sqrt(10000)=",sqrt(10000),"\n")
-</src>
+</#+BEGIN_SRC >
 
 ----
  -  [[http://express.engineyard.com/][Could computing with ruby and erlang]]
@@ -47,7 +47,7 @@ print("sqrt(10000)=",sqrt(10000),"\n")
 
 http://github.com/pvande/differ
 
-<src lang="ruby">
+<#+BEGIN_SRC ">
 will@will-laptop:~/Desktop/diff$ irb -rubygems
 irb(main):001:0> irb -rubygems
 NameError: undefined local variable or method `rubygems' for main:Object
@@ -80,7 +80,7 @@ irb(main):014:0> @diff = (@current - @original)
 => #<Differ::Diff:0xb74f3014 @raw=[{"Epic lolcat fail!" >> "Epic wolfman fail!"}]>
 irb(main):015:0> 
 
-</src>
+</#+BEGIN_SRC >
 
 * Execute cmd and get the output
 
@@ -93,11 +93,11 @@ IO.popen("help") {|d| d.readlines.each {|x|puts x} }
 http://rubygems.org/read/chapter/5
 http://www.hhtong.com/blog1/articles/2007/06/10/ruby-gpgen-20070603
 
-<src lang="ruby">
+<#+BEGIN_SRC ">
 gem install gem_plugin 
 gpgen easywebtest
 
-</src>
+</#+BEGIN_SRC >
 
 RubyGems是一个库和程序的标准化打包以及安装框架，它使定位、安装、升级和卸载Ruby包变的很容易。rails以及它的大部分插件都是以gem形式发布的。本文描述一个自己创建ruby Gems的过程。
     假设你今天用ruby实现了一个stack结构，你想发布到网上让别人可以共享，OK，工作开始了。首先你的程序当然要先写好了：
@@ -261,7 +261,7 @@ Ruby代码
   19.   s.extra_rdoc_files=["README"]  
   20. end    
 
-<src lang="ruby">
+<#+BEGIN_SRC ">
 #stack.spec
 require 'rubygems'
 SPEC=Gem::Specification.new do |s|
@@ -282,7 +282,7 @@ SPEC=Gem::Specification.new do |s|
   s.has_rdoc=false
   s.extra_rdoc_files=["README"]
 end  
-</src>
+</#+BEGIN_SRC >
 
 很明显，规范文件也是ruby程序（也可以用YAML描述），设置了这个gem的主要关键信息：名称、作者信息、平台,需要注意的就是files 数组过滤掉了cvs和rdoc文件，require_path和auto_require让你指定了require_gem装入gem时会被添加到$ LOAS_PATH（ruby查找库的路径）中的目录（也就是我们源代码存放的lib），auto_require指定了装载的文件名，我们没有 rdoc，所有设置has_rdoc为false，附带文档就是README。
 
@@ -330,20 +330,20 @@ http://snippets.dzone.com/tag/webrick
  
  * Ruby send mail with attathment
  
- <src>
+ <#+BEGIN_SRC >
  gem install actionmailer
  gem install mime-types
-</src>
+</#+BEGIN_SRC >
 
 * Ruby dummy mail server
 
-<src>
+<#+BEGIN_SRC >
   gem sources -a http://gems.github.com
   gem install koseki-mocksmtpd
 cd ~/.gem/ruby/1.8/bin
   ./mocksmtpd  init ~/testmail
   sudo ./mocksmtpd -f ~/testmail/mocksmtpd.conf 
-</src>
+</#+BEGIN_SRC >
 
 send mail to test@changweilaptop.dyn.webahead.ibm.com
 
@@ -377,8 +377,8 @@ ocra.rb.bat testo.rb
 === Loading script to check dependencies 
 testo vooo 
 === Building testo.exe 
-m src 
-a src\testo.rb 
+m #+BEGIN_SRC  
+a #+BEGIN_SRC  
 m bin 
 a bin\ruby.exe 
 a bin\msvcr100-ruby191.dll 
@@ -397,7 +397,7 @@ a lib\ruby\1.9.1\i386-mswin32_100\enc\gbk.so
 a lib\ruby\1.9.1\rubygems.rb 
 e RUBYOPT rubygems 
 e RUBYLIB 
-l bin\ruby.exe ruby.exe  \src\testo.rb 
+l bin\ruby.exe ruby.exe  \#+BEGIN_SRC  
 === Compressing 
 === Finished (Final size was 781622) - 只有 781k 的 standalone 
 
@@ -454,14 +454,14 @@ Options代码
 
 http://www.javaeye.com/topic/414412
 
-<src>
+<#+BEGIN_SRC >
 match, text, number = * "Something 981".match(/([A-z]*) ([0-9]*)/)  
-</src>
+</#+BEGIN_SRC >
 
 hash作参数： 
 
 Ruby代码 
-<src>
+<#+BEGIN_SRC >
 def m option={}  
   arg2 = option[:arg2]  
   arg1 = option[:arg1]  
@@ -471,31 +471,31 @@ end
 m :arg2 =>"Hi", :arg1 = > "hooopo"  
  #Hihooopo  
 
-</src>
+</#+BEGIN_SRC >
 
 * JRuby
 
 jruby -S gem install antwrap 
 
 
-[[http://wiki.jruby.org/wiki/Running_Rails_with_ActiveRecord-JDBC][Jruby on rails]]
+[[http://wiki.jruby.org/wiki/html/Running_Rails_with_ActiveRecord-JDBC][Jruby on rails]]
 
 
 * DB2 
 this version run gem install ibm_db on Windows. On Linux run the following:
-<src>
+<#+BEGIN_SRC >
 $ . /home/db2inst1/db2profile
 $ export IBM_DB_DIR=/opt/ibm/db2/V9.5
 $ export IBM_DB_LIB=/opt/ibm/db2/V9.5/lib32
 $ sudo gem install ibm_db
-</src>
+</#+BEGIN_SRC >
 * GUI
 
 http://shoooes.net/
 
 * mail
 
-<src>
+<#+BEGIN_SRC >
 require 'rubygems' 
 require 'action_mailer' 
 require 'mime/types' 
@@ -528,12 +528,12 @@ end
 
 Mailer.deliver_message('some title', 'the body message') 
 
-</src>
+</#+BEGIN_SRC >
 
 
 * passing parameter to ruby main
 
-<src type="ruby">
+<#+BEGIN_SRC ">
 if ARGV.size != 1
   puts "Usage: gencr time  15:00 or \"3/4 15:00\""
   exit
@@ -541,18 +541,18 @@ end
 
 
 copyfilesbefore ARGV[0]
-</src>
+</#+BEGIN_SRC >
 
 * Time
 
-<src type="ruby">
+<#+BEGIN_SRC ">
     Time.local(2008, 3, 5, 11, 20, 00)
     # Suppose it is "Thu Nov 29 14:33:20 GMT 2001" now and
     # your timezone is GMT:
     Time.parse("16:30")     #=> Thu Nov 29 16:30:00 GMT 2001
     Time.parse("7/23")      #=> Mon Jul 23 00:00:00 GMT 2001
     Time.parse("Aug 31")    #=> Fri Aug 31 00:00:00 GMT 2001
-</src>
+</#+BEGIN_SRC >
 
 * audio file
 
@@ -583,10 +583,10 @@ http://wtr.rubyforge.org/install.html
 
 http://code.google.com/p/tg4rb/
 
-<src>
+<#+BEGIN_SRC >
 require 'rubygems'
 require 'firewatir' 
-</src>
+</#+BEGIN_SRC >
 
 
 You need install firefox plugin too.
@@ -602,161 +602,161 @@ http://wiki.openqa.org/display/WTR/Tutorial
 
 Load the Watir library
 
-<src lang="ruby">
+<#+BEGIN_SRC ">
 require 'watir'
-</src>
+</#+BEGIN_SRC >
 
 Open a browser (default: Internet Explorer)
 
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser = Watir::Browser.new
-</src>
+</#+BEGIN_SRC >
 
 Open Browser at the specified URL
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser = Watir::Browser.start("http://google.com")
-</src>
+</#+BEGIN_SRC >
 
 Go to a specified URL
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.goto("http://amazon.com")
-</src>
+</#+BEGIN_SRC >
 
 Close the browser
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.close
-</src>
+</#+BEGIN_SRC >
 	
 *** Browser options (IE only)
 
 Speed up execution
 (or use the "-b" command line switch)
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.speed = :fast
-</src>
+</#+BEGIN_SRC >
 
 Maximize browser window
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.maximize
-</src>
+</#+BEGIN_SRC >
 
 Pop browser window to front
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.bring_to_front
-</src>
+</#+BEGIN_SRC >
 
 *** Access an Element
 
 Text box or text area
-<src lang="ruby">
+<#+BEGIN_SRC ">
 t = browser.text_field(:name, "username")
-</src>
+</#+BEGIN_SRC >
 Button
-<src lang="ruby">
+<#+BEGIN_SRC ">
 b = browser.button(:value, "Click Here")
-</src>
+</#+BEGIN_SRC >
 Drop down list
-<src lang="ruby">
+<#+BEGIN_SRC ">
 d = browser.select_list(:name, "month")
-</src>
+</#+BEGIN_SRC >
 Check box
-<src lang="ruby">
+<#+BEGIN_SRC ">
 c = browser.checkbox(:name, "enabled")
-</src>
+</#+BEGIN_SRC >
 Radio button
-<src lang="ruby">
+<#+BEGIN_SRC ">
 r = browser.radio(:name, "payment type")
-</src>
+</#+BEGIN_SRC >
 Form
-<src lang="ruby">
+<#+BEGIN_SRC ">
 f = browser.form(:name, "address")
 f = browser.form(:action, "submit")
-</src>
+</#+BEGIN_SRC >
 Link
-<src lang="ruby">
+<#+BEGIN_SRC ">
 l = browser.link(:url, "http://google.com")
 l = browser.link(:href, "http://google.com")
-</src>
+</#+BEGIN_SRC >
 Table cell in a table (2nd row, 1st column)
-<src lang="ruby">
+<#+BEGIN_SRC ">
 td = browser.table(:name, 'recent_records')[2][1]
-</src>
+</#+BEGIN_SRC >
 	
 *** Manipulate the Element
 
 Click a button or link
-<src lang="ruby">
+<#+BEGIN_SRC ">
 b.click
 l.click
-</src>
+</#+BEGIN_SRC >
 Enter text in a text box
-<src lang="ruby">
+<#+BEGIN_SRC ">
 t.set("mickey mouse")
-</src>
+</#+BEGIN_SRC >
 Enter multiple lines in a multi-line text box
-<src lang="ruby">
+<#+BEGIN_SRC ">
 t.set("line 1\nline2")
-</src>
+</#+BEGIN_SRC >
 Set radio button or check box
-<src lang="ruby">
+<#+BEGIN_SRC ">
 c.set
 r.set
-</src>
+</#+BEGIN_SRC >
 Clear an element
-<src lang="ruby">
+<#+BEGIN_SRC ">
 t.clear
 c.clear
 r.clear
-</src>
+</#+BEGIN_SRC >
 Select an option in a drop down list
-<src lang="ruby">
+<#+BEGIN_SRC ">
 d.select "cash"
 d.set "cash"
-</src>
+</#+BEGIN_SRC >
 Clear a drop down list
-<src lang="ruby">
+<#+BEGIN_SRC ">
 d.clearSelection
-</src>
+</#+BEGIN_SRC >
 Submit a form
-<src lang="ruby">
+<#+BEGIN_SRC ">
 f.submit
-</src>
+</#+BEGIN_SRC >
 Flash any element (useful from the watir-console)
-<src lang="ruby">
+<#+BEGIN_SRC ">
 e.flash
-</src>
+</#+BEGIN_SRC >
 
 *** Check the Contents
 
 Return the html of the page or any element
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.html
 e.html
-</src>
+</#+BEGIN_SRC >
 Return the text of the page or any element
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.text
 e.text
-</src>
+</#+BEGIN_SRC >
 Return the title of the document
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.title
-</src>
+</#+BEGIN_SRC >
 	
 
 Get text from status bar.
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.status
 => "Done"
-</src>
+</#+BEGIN_SRC >
 Return true if the specified text appears on the page
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.text.include? 'llama'
-</src>
+</#+BEGIN_SRC >
 Return the contents of a table as an array
-<src lang="ruby">
+<#+BEGIN_SRC ">
 browser.table(:id, 'recent_records').to_a
-</src>
+</#+BEGIN_SRC >
 
 ** Firefox
 
@@ -829,7 +829,7 @@ http://www.javaeye.com/topic/370007
 
 * Unit Test
 
-<src>
+<#+BEGIN_SRC >
 
 If we want, we can ask it to run just a particular test method:
 % ruby test_roman.rb -n test_range
@@ -846,6 +846,6 @@ Started
 Finished in 0.001036 seconds.
 1 tests, 2 assertions, 0 failures, 0 errors, 0 skips
 
-</src>
+</#+BEGIN_SRC >
 
 

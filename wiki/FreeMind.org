@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/freemind
+#+URI:         /wiki/html/freemind
 #+KEYWORDS:    freemind
 #+TAGS:        :freemind
 #+LANGUAGE:    en
@@ -14,7 +14,7 @@
 
 http://baike.baidu.com/view/30054.htm
 
-[[http://freemind.sourceforge.net/wiki/extensions/freemind/flashwindow.php?initLoadFile=/wiki/images/9/9c/Writing_an_essay_with_FreeMind.mm&startCollapsedToLevel=5&mm_title=Writing_an_essay_with_FreeMind.mm][Writing an Essay With FreeMind]]
+[[http://freemind.sourceforge.net/wiki/html/extensions/freemind/flashwindow.php?initLoadFile=/wiki/html/images/9/9c/Writing_an_essay_with_FreeMind.mm&startCollapsedToLevel=5&mm_title=Writing_an_essay_with_FreeMind.mm][Writing an Essay With FreeMind]]
 
 思维导图适应于应用的领域
 

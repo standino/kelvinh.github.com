@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/usingibmdatastudio
+#+URI:         /wiki/html/usingibmdatastudio
 #+KEYWORDS:    db2
 #+TAGS:        :db2:
 #+LANGUAGE:    en
@@ -245,7 +245,7 @@ Services的内容，请阅读参考资料中的《IBM Data Studio Data Web Servi
 在开发存储过程时，我们经常需要查看当前数据库中的某个存储过程的源代码。
 下面的存储过程可以实现该功能：
 
-<src lang="SQL">
+<#+BEGIN_SRC ">
 
 CREATE PROCEDURE VIEW_SP ( IN piSPName VARCHAR(30) )
 	DYNAMIC RESULT SETS 1
@@ -264,7 +264,7 @@ P1: BEGIN
 	OPEN cursor1;
 END P1
 
-</src>
+</#+BEGIN_SRC >
 
 我们把上面的存储过程部署到数据库中，然后把它发布成Web Services:ViewSP。
 
@@ -285,7 +285,7 @@ http://localhost:8080/SampleViewSP/rest/ViewSP/VIEW_SP?PISPNAME=get_tasks
 [[ids24.png]]
  - 打开xsl文件，输入以下内容：
 
-<src lang="xml">
+<#+BEGIN_SRC ">
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="html"/>
@@ -318,7 +318,7 @@ http://localhost:8080/SampleViewSP/rest/ViewSP/VIEW_SP?PISPNAME=get_tasks
 </xsl:template>
 </xsl:stylesheet>
 
-</src>
+</#+BEGIN_SRC >
 
  - 在Data Project Explorer中选择Web Services--->ViewSP--->VIEW_SP。
  - 单击右键，选择”Manage XSLT...“。

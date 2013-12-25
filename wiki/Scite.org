@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/scite
+#+URI:         /wiki/html/scite
 #+KEYWORDS:    scite,editor
 #+TAGS:        :scite:editor:
 #+LANGUAGE:    en

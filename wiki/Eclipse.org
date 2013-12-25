@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/eclipse
+#+URI:         /wiki/html/eclipse
 #+KEYWORDS:    eclipse
 #+TAGS:        :eclipse:
 #+LANGUAGE:    en
@@ -25,13 +25,13 @@
 http://wiki.eclipse.org/Orion/Getting_Started_with_Orion
 
 
-<src lang="html">
+<#+BEGIN_SRC ">
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script type="text/javascript" src="../orion/plugin.js"></script>
+	<script type="text/javascript" #+BEGIN_SRC >
 	<script>
 		window.onload = function() {
 			var provider = new orion.PluginProvider({postInstallUrl:"../plugin/list.html"});
@@ -92,7 +92,7 @@ http://wiki.eclipse.org/Orion/Getting_Started_with_Orion
 </body>
 </html>
 
-</src>
+</#+BEGIN_SRC >
 
 
 * Plugin development

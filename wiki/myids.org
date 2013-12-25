@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/myids
+#+URI:         /wiki/html/myids
 #+KEYWORDS:    db2
 #+TAGS:        :article:ibm:db2
 #+LANGUAGE:    en
@@ -134,7 +134,7 @@ secondaryStaff | VARCHAR | 结对的开发人员 Email 地址
 下面是我们定义的模板的具体内容：
 
  - Create table
-<src>
+<#+BEGIN_SRC >
 
 DROP TABLE ${table_name}
 @
@@ -166,10 +166,10 @@ ALTER TABLE ${table_name}
     ADD     CONSTRAINT ${table_name}_PK
     PRIMARY KEY (${pk} )
 @
-</src>
+</#+BEGIN_SRC >
 
  - Create stored procedure 
-<src>
+<#+BEGIN_SRC >
 DROP SPECIFIC PROCEDURE ${spName}
 @
 
@@ -288,7 +288,7 @@ BEGIN NOT ATOMIC
 
 END
 @
-</src>
+</#+BEGIN_SRC >
 
 
 现在我们开始编写代码。右键单击 SQL Scripts 文件夹，在弹出菜单中选择 New > SQL or Xquery Script。输入名称 USER_STORY，然后单击 Finish。
@@ -297,7 +297,7 @@ END
 
 修改后的代码如下：
 
-<src>
+<#+BEGIN_SRC >
 
 -- <ScriptOptions statementTerminator="@" />
 DROP TABLE USER_STORY
@@ -332,7 +332,7 @@ ALTER TABLE USER_STORY
     ADD     CONSTRAINT USER_STORY_PK
     PRIMARY KEY (ID )
 @
-</src>
+</#+BEGIN_SRC >
 
 编写完建表文件后，我们需要把它装载到数据库中。
 
@@ -379,14 +379,14 @@ Procedures。右键单击存储过程，在弹出菜单中选择 Open > With SQL
 
 通过单步执行，我们很快的就找到了出错的代码：
 
-<src>
+<#+BEGIN_SRC >
 
 DECLARE vMaxId              SMALLINT;
 
 ...
 
 SELECT MAX(ID)+1 INTO vMaxId FROM USER_STORY;
-</src>
+</#+BEGIN_SRC >
 
 原来，我们把 vMaxId 声明成 SMALLINT， 然而随着表 USER_STORY 中数据的增加，MAX(ID) 很快就超过了 SMALLINT 的最大值，这时我们再把
 MAX(ID) 赋值给 vMaxId，就会出现溢出的错误。看来 I_USER_SOTRY 中有一个 bug。我们应当把 vMaxId 声明成 INTEGER 而不是 SMALLINT。我们把修改后的代码重新部署

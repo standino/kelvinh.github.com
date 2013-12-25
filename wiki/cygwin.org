@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 周四
-#+URI:         /wiki/cygwin
+#+URI:         /wiki/html/cygwin
 #+KEYWORDS:    cygwin,linux
 #+TAGS:        :cygwin:linux:
 #+LANGUAGE:    en
@@ -22,17 +22,17 @@ I can't remember where I found it, but using this series of commands from the cy
 
 for cygwin 1.5:
 
-<src>
+<#+BEGIN_SRC >
 cygrunsrv -I cron -p /usr/sbin/cron -a -D
-</src>
+</#+BEGIN_SRC >
 
 for cygwin 1.7:
 
-<src>
+<#+BEGIN_SRC >
 
 cygrunsrv --install cron --path=/usr/sbin/cron --desc='Cygwin cron service' --type=auto --neverexits -a '-n'
 
-</src>
+</#+BEGIN_SRC >
 followed by:
 
 net start cron
@@ -116,7 +116,7 @@ http://www.webalice.it/angelo.graziosi/cygwin/emacs/Emacs.html
 
 * Shell
 
-<src> 
+<#+BEGIN_SRC > 
 
 ln -s /cygdrive/c/standino ./standino 
 
@@ -126,13 +126,13 @@ ln -s "/cygdrive/c/Documents and Settings/Administrator/Desktop" ~/Desktop
 
 ln -s "/cygdrive/c/" /c
 
-</src>
+</#+BEGIN_SRC >
 
 Terminal program: setting the terminal type to TTY
 If you are using Emacs in the clumsy Windows "Command" window (command.exe), you might benefit from setting the terminal type so
 that more control characters work. Do this by changing the startup script, cygwin.bat, to contain the following commands, setting
 the CYGWIN tty and binary modes. For example: 
-<src>
+<#+BEGIN_SRC >
 @echo off
 
 C:
@@ -140,12 +140,12 @@ chdir \cygwin\bin
 
 set CYGWIN=tty binmode
 bash --login -i 
-</src>
+</#+BEGIN_SRC >
     - install rxvt from setup.exe
     - copy the cygwin.bat startup script in your Cygwin root directory, e.g. C:\cygwin\cygwin.bat to C:\cygwin\cygwin-rxvt.bat
     - Make the following change to cygwin-rxvt.bat
 
-<src>
+<#+BEGIN_SRC >
 @echo off
 
 C:
@@ -154,9 +154,9 @@ chdir C:\cygwin\bin
 set SHELL=/bin/bash
 rxvt --loginShell -sr
 #bash --login -i
-</src>
+</#+BEGIN_SRC >
 
-get from server : <src> rsync -avuz -e ssh --delete changwei.dyn.webahead.ibm.com:/Latest / </src>
+get from server : <#+BEGIN_SRC >
 
 
 * SSH without password
@@ -164,7 +164,7 @@ get from server : <src> rsync -avuz -e ssh --delete changwei.dyn.webahead.ibm.co
  1. 分别从A和B上登录作为root后运行ssh-keygen，目的是简单地在/root下创建目录.ssh,当提示输入
 　　 passphase时打入两次回车。这将生成/root/.ssh/identity and/root/.ssh/identity.pub
  2. 先测试一下，从A登录作为root，打入#ssh B,会要求提示root password。
- 3. 现在从A登录作为root，运行 <src>scp ~/.ssh/id_rsa.pub changwei.dyn.webahead.ibm.com:~/.ssh/authorized_keys</src>　　文件名必须不能弄错。
+ 3. 现在从A登录作为root，运行 <#+BEGIN_SRC 。
  4. 现在再从A运行#ssh B则不需要密码了：)
 
 
@@ -191,9 +191,9 @@ cygpath工具提供了在shell脚本中进行win32-posix路径格式转换的能
 * 如何打造绿色版cygwin
 
 You can use 
-<src>
+<#+BEGIN_SRC >
  mount -m > mymount.bat
-</src>
+</#+BEGIN_SRC >
 to generate a mount bat
 
 Yesterday I wanted to reinstall cygwin on my notebook. I just copied the whole cygwin directory from desktop to notebook. When I run cygwin.bat, it always complained that "bash.exe: could not find /tmp, please create!".
@@ -201,25 +201,25 @@ Yesterday I wanted to reinstall cygwin on my notebook. I just copied the whole c
 There is something wrong with cygwin's mount table. According to cygwin faq, To save the mount information to a file for later restoration, use `mount -m > mounts.bat' To remove all mount information use `umount -A'. To reincorporate saved mount information just run the batch file.
 Displaying the current set of mount points
 
-<src>
+<#+BEGIN_SRC >
 c:\> mount
 f:\cygwin\bin on /usr/bin type system (binmode)
 f:\cygwin\lib on /usr/lib type system (binmode)
 f:\cygwin on / type system (binmode)
-e:\src on /usr/src type system (binmode)
+e:\#+BEGIN_SRC )
 c: on /cygdrive/c type user (binmode,noumount)
 e: on /cygdrive/e type user (binmode,noumount)
-</src>
+</#+BEGIN_SRC >
 
 Run mounts.bat to setup mount points to solve the problem
 
 No bash command, just run mount from cmd.exe. At that moment, bash still complains "no /tmp", we can't use it, use mount directly. After we run this batch file, we can check system-wide registry "HKLM/Software/Cygnus Solutions/Cygwin/mounts2".
-<src>
+<#+BEGIN_SRC >
 mount -f -s -b "d:/cygwin/bin" "/usr/bin"
 mount -f -s -b "d:/cygwin/lib" "/usr/lib"
 mount -f -s -b "d:/cygwin" "/"
 mount -s -b --change-cygdrive-prefix "/cygdrive"
-</src>
+</#+BEGIN_SRC >
 Following are from cygwin's faq
 
 The mapping is stored in the current user's Cygwin mount table in the Windows registry so that the information will be retrieved next time the user logs in. Because it is sometimes desirable to have system-wide as well as user-specific mounts, there is also a system-wide mount table that all Cygwin users inherit. The system-wide table may only be modified by a user with the appropriate privileges (Administrator privileges in Windows NT).

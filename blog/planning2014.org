@@ -15,29 +15,29 @@
 
 ** 大数据 redis, hadoop 等
 
-学习笔记就记录在@@html:<a href="/wiki/bigdata">这里吧</a>@@
+学习笔记就记录在@@html:<a href="/wiki/html/bigdata">这里吧</a>@@
 
 ** 面向对象设计和重构
 
 软件开发了这么多年，需要提供一下设计能力了。
 
-学习笔记就记录在@@html:<a href="/wiki/ood">这里吧</a>@@
+学习笔记就记录在@@html:<a href="/wiki/html/ood">这里吧</a>@@
 
 ** Lisp 编程
 
 一直在使用Emacs，但是对于编写它的插件还是不是很了解。读一下这本书：<[[http://www.amazon.com/Writing-GNU-Emacs-Extensions-Glickstein/dp/1565922611][Writing GNU Emacs Extensions]] by Bob Glickstein>
-学习笔记就记录在@@html:<a href="/wiki/lisp">这里吧</a>@@
+学习笔记就记录在@@html:<a href="/wiki/html/lisp">这里吧</a>@@
 
 ** go 语言
 
 google大牛开发的编程语言，应该很有前途。早点搭上这班车吧。考虑使用它替代shell编写一些小脚本。
-学习笔记就记录在@@html:<a href="/wiki/go/">这里吧</a>@@
+学习笔记就记录在@@html:<a href="/wiki/html/go/">这里吧</a>@@
 
 ** Emacs 使用
 
 重点学习一个org的使用
 
-学习笔记就记录在@@html:<a href="/wiki/myemacs">这里吧</a>@@
+学习笔记就记录在@@html:<a href="/wiki/html/myemacs">这里吧</a>@@
 
 
 

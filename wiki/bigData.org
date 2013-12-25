@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-20 Fri
-#+URI:         /wiki/bigdata
+#+URI:         /wiki/html/bigdata
 #+KEYWORDS:    big data, hadoop, redis
 #+TAGS:        :big data:hadoop:redis:
 #+LANGUAGE:    en

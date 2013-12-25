@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/vesionmanage
+#+URI:         /wiki/html/vesionmanage
 #+KEYWORDS:    svn,cvs,git,hg
 #+TAGS:        :svn:cvs:git:hg:
 #+LANGUAGE:    en
@@ -54,9 +54,9 @@ MercurialEclipse supports:
 
 ** Big file
 
- http://mercurial.selenic.com/wiki/BigfilesExtension
+ http://mercurial.selenic.com/wiki/html/BigfilesExtension
 
- http://mercurial.selenic.com/wiki/HandlingLargeFiles
+ http://mercurial.selenic.com/wiki/html/HandlingLargeFiles
 
 Usage
 
@@ -64,7 +64,7 @@ Usage
   2. hg bstat
   3. hg bupdate
 
-<src>
+<#+BEGIN_SRC >
     * The extension overrides 'hg update', so that it can compare contents of '.bigfiles' before and after the update to remove and fetch appropriate big files.
     * The directory storing versions of big files can be synced with the remote one (the extension doesn't do this, but tells the list of the necessary files). The versions corresponding to old changesets can be removed to save space.
     * To add a new big file, use normal 'hg add', ignoring the size warning.
@@ -74,17 +74,17 @@ Usage
           o removed and modified big files. 
     * 'hg bupdate' - to fetch files from versions directory as recorded in
           o '.bigfiles', and get a list of necessary files missing in the version directory. 
-</src>
+</#+BEGIN_SRC >
 Configuration
 
 Configure your .hgrc to enable the extension by adding following lines:
-<src>
+<#+BEGIN_SRC >
 [extensions]
 bigfiles = path/to/bigfiles.py
 
 [bigfiles]
 repo = path/to/versions/dir 
-</src>
+</#+BEGIN_SRC >
 
 ** How to manage my files with hg
 
@@ -119,7 +119,7 @@ backup the data.
 
 * [[http://pypi.python.org/pypi/hgsvn][hgsvn]]
 
-<src>
+<#+BEGIN_SRC >
 $ mkdir nose && cd nose
   # Make SVN checkout, initialize hg repository with first SVN revision
 $ hgimportsvn http://python-nose.googlecode.com/svn/trunk
@@ -128,7 +128,7 @@ $ cd trunk
   # Pull all history from SVN, creating a new hg changeset for each SVN rev
 $ hgpullsvn
 
-</src>
+</#+BEGIN_SRC >
 
 
 	
@@ -136,7 +136,7 @@ $ hgpullsvn
 * 1 create repos
 
 
-<src>
+<#+BEGIN_SRC >
 $ svnadmin create /path/to/repos
 $ ls /path/to/repos
 conf/  dav/  db/  format  hooks/  locks/  README.txt
@@ -151,12 +151,12 @@ conf/  dav/  db/  format  hooks/  locks/  README.txt
                Makefile
                ¡­
 
-</src>
+</#+BEGIN_SRC >
 
 * 2 Import projects
 
 
-<src>
+<#+BEGIN_SRC >
 
 svn mkdir svn://changwei.dyn.webahead.ibm.com/bin/ubuntu  -m "init mk"
 
@@ -185,7 +185,7 @@ a high level"
 will@will-laptop:~/ideas/newlogistics$ svn mv https://newlogistics.googlecode.com/svn/trunk/logistics  https://newlogistics.googlecode.com/svn/branches/log_0_1 -m "bakup old code"
 
 
-</src>
+</#+BEGIN_SRC >
 
 * Export repos
 
@@ -200,16 +200,16 @@ svn log -v
 
 * view the old file
 
-<src>
+<#+BEGIN_SRC >
 svn cat --revision 2 rules.txt 
-</src>
+</#+BEGIN_SRC >
 
 * EXTERNAL
 
 C:\standino\ideas>svn propedit svn:externals .
 
 
-C:\standino\ideas\logistics\web\src\main\jsp>svn propset svn:externals "dojo_trunk
+C:\standino\ideas\logistics\web\#+BEGIN_SRC 
 http://svn.dojotoolkit.org/dojo/view/anon/all/trunk" dojo
 
 logic.war https://newlogistics.googlecode.com/svn/new
@@ -222,11 +222,11 @@ logistics  https://newlogistics.googlecode.com/svn/trunk
 
 update .bahrc
 
-<src>
+<#+BEGIN_SRC >
 
 export EDITOR="emacs-nox.exe -q"
 
-</src>
+</#+BEGIN_SRC >
 
 
 
@@ -427,7 +427,7 @@ hg clone http://test:8002
 修改Client端的配置
 
 更改.hg/hgrc，加上default-push和username
-<src>
+<#+BEGIN_SRC >
 [paths]
 default = http://test:8002
 default-push = ssh://hgrepo@test//home/hgrepo/project.hg/
@@ -440,7 +440,7 @@ default-push = ssh://will@9.123.157.55//home/will/ideas/
 [ui]
 username=will
 
-</src>
+</#+BEGIN_SRC >
 这样你就可用hg push 向服务器提交code了。这时服务器会问你passward,这个password就是用户hgrepo的password.
 
 Good Luck.
@@ -483,7 +483,7 @@ groups = dev-team
 http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial
 
 
-<src>
+<#+BEGIN_SRC >
   109  hg branches
   110  hg branch
   111  hg branch '多维度设置采购计划控制参数'
@@ -498,7 +498,7 @@ http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-na
   120  hg update default
   121  hg branches
   126  hg merge  '多维度设置采购计划控制参数'
-</src>
+</#+BEGIN_SRC >
 
 In your specific example I think you could get a list of of just d and e using:
 

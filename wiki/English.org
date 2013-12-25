@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/eng
+#+URI:         /wiki/html/eng
 #+KEYWORDS:    eng
 #+TAGS:        :eng:
 #+LANGUAGE:    en

@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/tool
+#+URI:         /wiki/html/tool
 #+KEYWORDS:    tool
 #+TAGS:        :tool:
 #+LANGUAGE:    en
@@ -59,7 +59,7 @@ http_proxy=http://127.0.0.1:8087 emacs -nw
 * [[http://prism.mozilla.com/started/][Prism]]
 
 
-* [[http://ichi2.net/anki/wiki/][Anki]]
+* [[http://ichi2.net/anki/wiki/html/][Anki]]
 
 学习英语的好工具。
 
@@ -295,7 +295,7 @@ http://www.it.com.cn/edu/tools/nettools/2009/10/14/18/646158.html
   3. http://www.getforecastfox.com/
   4. http://yellow5.us/firefox/linkification/
   5. https://addons.mozilla.org/en-US/firefox/addon/161916/
-  6. RSS  https://addons.mozilla.org/zh-CN/firefox/addon/rss-ticker/?src=api
+  6. RSS  https://addons.mozilla.org/zh-CN/firefox/addon/rss-ticker/?#+BEGIN_SRC 
 
 
 * Chrome
@@ -344,7 +344,7 @@ installation information as well as known problemsand currently supported featur
  client password: pass4jazz
 
 
-*  [[http://code.google.com/p/telluriumdoc/wiki/TelluriumQuickStart][Tellurium是一个开源的网页测试框架]]
+*  [[http://code.google.com/p/telluriumdoc/wiki/html/TelluriumQuickStart][Tellurium是一个开源的网页测试框架]]
  
 
 mvn archetype:create -DgroupId=example -DartifactId=demo -DarchetypeArtifactId=tellurium-junit-archetype -DarchetypeGroupId=tellurium -DarchetypeVersion=0.6.0  -DarchetypeRepository=http://kungfuters.org/nexus/content/repositories/releases

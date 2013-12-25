@@ -1,8 +1,8 @@
 #+TITLE:       使用MDA方式开发软件
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/html/mda
+#+URI:         /wiki/html/html/mda
 #+KEYWORDS:    mda
 #+TAGS:        :mda:
 #+LANGUAGE:    en
@@ -82,13 +82,13 @@ http://www.highcharts.com/
 如下是官网的一个错误提示示例图：
 点击在新窗口中浏览此图片
 
-官网地址：http://www.my-debugbar.com/wiki/CompanionJS/HomePage
+官网地址：http://www.my-debugbar.com/wiki/html/CompanionJS/HomePage
 
 具体使用方法为：
 1、先下载Companion.JS安装文件，然后安装。
 2、下载安装Microsoft Script Debugger，如果您的机器已经安装过了就可以免过这一步。
 3、打开IE菜单“工具”--“Internet选项”--“高级”，找到“禁用脚本调试(Internet Explorer)”和“禁用脚本调试(在Internet Explorer之外)”，将两个选项前面的对钩都去掉，然后重启IE。
-4、在Ie中输入：http://www.my-debugbar.com/wiki/uploads/CompanionJS/dummy.htm，然后点击click me链接，如果左上角弹出一个小错误提示或下面控制台出现了错误信息提示，就说明您已经安装成功了。
+4、在Ie中输入：http://www.my-debugbar.com/wiki/html/uploads/CompanionJS/dummy.htm，然后点击click me链接，如果左上角弹出一个小错误提示或下面控制台出现了错误信息提示，就说明您已经安装成功了。
 
 提示：Microsoft Script Debugger下载可到MS官网(需要经过MS的操作系统正版验证)：http://www.microsoft.com/downloads/details.aspx?displaylang=zh-cn&FamilyID=E606E71F-BA7F-471E-A57D-F2216D81EC3D#filelist或到baidu里输入“Microsoft Script Debugger 下载”寻找一下。 
 
@@ -103,7 +103,7 @@ cd ideas/googleapp/
 
 ~/tools/google_appengine/appcfg.py  update helloworld/
 #+END_SRC
-http://code.google.com/p/appengine-jruby/wiki/GettingStarted 
+http://code.google.com/p/appengine-jruby/wiki/html/GettingStarted 
 
 http://rails-primer.appspot.com/
 
@@ -167,7 +167,7 @@ Here’s how to get rolling:
       Modify the Rails Initializer
 
       Add the following to your config/environment.rb.
-<src lang="ruby">
+<#+BEGIN_SRC ">
       # Set DataMapper to use dm-appengine adapter
       require 'dm-core'
       DataMapper.setup(:default, "appengine://auto")
@@ -336,7 +336,7 @@ Jippiee, i found the solution and it is very elegant. If anybody have a similar 
 1.) Make sure to have enabled Spring transactions when ejb enabled in your andromda.xml:
 Code:
 
-<src type="xml">
+<#+BEGIN_SRC ">
 <property name="enableSpringTransactionsWhenEjbsEnabled">true</property>
 #+END_SRC
 
@@ -354,7 +354,7 @@ example:
 
 Code:
 
-<src type="java">
+<#+BEGIN_SRC ">
 // outer method which is doing the whole import fo thowsands of data records
 protected NahImportStats handleImportAll(ImportParam params) throws Exception
     {
@@ -430,7 +430,7 @@ Apache's Velocity is the default Template Engine of AndroMDA, and for that we us
 The scripting object model
 
 Different from AndroMDA 2.x, AndroMDA 3.x no longer places any model elements in a template context. You define the names of elements to make available to the template in your cartridge's andromda-cartridge.xml, like so:
-<src lang="xml">
+<#+BEGIN_SRC ">
 <template
 path="templates/MetafacadeLogic.vsl"
 outputPattern="$generatedFile"
@@ -578,7 +578,7 @@ Code:
           <uri>${model.uri}</uri>
           <moduleSearchLocations>
             <location patterns="**/*.xml.zip">${settings.localRepository}/org/andromda/profiles/uml14</location>
-            <location patterns="**/*.xmi">${project.basedir}/src/main/uml/</location>
+            <location patterns="**/*.xmi">${project.basedir}/#+BEGIN_SRC >
           </moduleSearchLocations>
         </model>
       </models>
@@ -647,7 +647,7 @@ yes
 
 ** compare mda folder to find what need to be updated or copy
 
-** Copy core src
+** Copy core #+BEGIN_SRC 
 
 
 
@@ -1002,7 +1002,7 @@ This one is much easier, although with RAD-6 there are some 'tips&tricks'.
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <configuration>
-                        <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                        <warSourceDirectory>${basedir}/#+BEGIN_SRC >
                     </configuration>
                 </plugin>
             <!--
@@ -1012,7 +1012,7 @@ This one is much easier, although with RAD-6 there are some 'tips&tricks'.
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-eclipse-plugin</artifactId>
                     <configuration>
-                        <buildOutputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</buildOutputDirectory>
+                        <buildOutputDirectory>${basedir}/#+BEGIN_SRC >
                         <!-- Customizing context root if needed -->
                         <warContextRoot>your_context_root</warContextRoot>
                         <additionalBuildcommands>
@@ -1050,7 +1050,7 @@ is there to (still) allow to use default RAD source tree (however if you can aff
 
 If we 'fall' for the above we would probably want to use the resource folder in 'RAD' way (that source with the resource files together):
 
-<src lang="xml">
+<#+BEGIN_SRC ">
             <!--
                 customizing resources location so that only needed files are archived in jar files
             -->
@@ -1068,13 +1068,13 @@ If we 'fall' for the above we would probably want to use the resource folder in 
 Source and compiled classes are excluded so they don't get in the resulting .war file.
 
 
-For the current version of maven (2.0.7 at the time of writing) the webapp root dir should match the default one of maven (${basedir}/src/main/webapp), unfortunately I did not manage to make customized directory work with maven and RAD at the same time. Which could be (in theory) done by the following configuration:
-<src lang="xml">
+For the current version of maven (2.0.7 at the time of writing) the webapp root dir should match the default one of maven (${basedir}/#+BEGIN_SRC :
+<#+BEGIN_SRC ">
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <configuration>
-                        <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+                        <warSourceDirectory>${basedir}/#+BEGIN_SRC >
                     </configuration>
                 </plugin>
 
@@ -1082,7 +1082,7 @@ For the current version of maven (2.0.7 at the time of writing) the webapp root 
 #+END_SRC
 Keep in mind it needs to be in 'sync' with <buildOutputDirectory>...</buildOutputDirectory> (or better yet - make it a property in order not to repeat yourself - DRY). And here we go:
 
-<src lang="xml">
+<#+BEGIN_SRC ">
 
             <!--
                 customizing classes folder for RAD to pick it classes for hot deployment of exploded archive up - doesn't work with the default one (target)
@@ -1091,7 +1091,7 @@ Keep in mind it needs to be in 'sync' with <buildOutputDirectory>...</buildOutpu
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-eclipse-plugin</artifactId>
                     <configuration>
-                        <buildOutputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</buildOutputDirectory>
+                        <buildOutputDirectory>${basedir}/#+BEGIN_SRC >
                         <!-- Customizing context root if needed -->
                         <warContextRoot>your_context_root</warContextRoot>
                         <additionalBuildcommands>
@@ -1121,7 +1121,7 @@ The EAR module.
 There is really nothing special about it except this little configuration:
 
 
-<src lang="xml">
+<#+BEGIN_SRC ">
         <build>
             <plugins>
                 <plugin>
@@ -1193,7 +1193,7 @@ Let's go through all the steps:
 
    1. Define selenium repository (or have your enterprise repository take care of that). We can define it either in our pom (see below) or let artifactory take care of that:
 
-<src lang="xml">
+<#+BEGIN_SRC ">
               <repositories>
                   <repository>
                       <id>openqa</id>
@@ -1213,7 +1213,7 @@ Let's go through all the steps:
 
    2. Define dependencies to be able to run selenium. This is also pretty straight forward:
 
-<src lang="xml">
+<#+BEGIN_SRC ">
                   <dependency>
                       <groupId>junit</groupId>
                       <artifactId>junit</artifactId>
@@ -1239,7 +1239,7 @@ Let's go through all the steps:
 
    3. Automatically start selenium server just before the integration-test phase. This is defined in build/plugins section:
 
-<src lang="xml">
+<#+BEGIN_SRC ">
                       <!-- Start the Selenium server -->
                       <plugin>
                           <groupId>org.codehaus.mojo</groupId>
@@ -1266,7 +1266,7 @@ Let's go through all the steps:
 
 
    4. Force Surefire plugin to run in integration-test phase and not in test phase. This belongs to build/plugins section as well:
-<src lang="xml">
+<#+BEGIN_SRC ">
 
                       <!--
                   Forcing test phase in integration-test phase
@@ -1298,7 +1298,7 @@ Let's go through all the steps:
 
    5. Prepare EAR for the deployment script. This is an interesting one... Because we don't have cargo plugin for WAS-6 that could seamlessly deploy the EAR to the server we need to prepare the EAR at a specific location so that 3rd party scripts could pickup the archive for deployment. This is how this can be done (also in the same build/plugins section):
 
-<src lang="xml">
+<#+BEGIN_SRC ">
                       <plugin>
                           <!--
                               This goal allows us to get the EAR from the repository for deployment and install it locally
@@ -1338,7 +1338,7 @@ Let's go through all the steps:
 
    6. Call websphere deployment scripts in pre-integration test phase to deploy the EAR we prepared above to our websphere server (this can be both the websphere test environment integrated with the IDE or a dedicated server). Because we can't use cargo plugin we have to do something else - in this case we can use deployment scripts from websphere to deploy our artifacts. We configure both deploy and undeploy operations here. This is done with the help of maven antrun plugin by calling our ant scripts (they'll follow later):
 
-<src lang="xml">
+<#+BEGIN_SRC ">
 
                       <!-- Maven Ant run plugin to run deploy the EAR automatically to WebSphere-->
                       <plugin>
@@ -1724,7 +1724,7 @@ subhas said...
     groupId::org.apache.maven.plugins
     artifactId::maven-eclipse-plugin
     configuration:
-    buildOutputDirectory :: ${basedir}/src/main/webapp/WEB-INF/classes
+    buildOutputDirectory :: ${basedir}/#+BEGIN_SRC 
 
     additionalBuildcommands
     buildcommand::com.ibm.etools.ctc.serviceprojectbuilder
@@ -1783,9 +1783,9 @@ search]]
 
 * add new template 
 
- 1. update the file /home/will/newlogistics/mda/src/main/config/mappings/WebMergeMappings.xml
+ 1. update the file /home/will/newlogistics/mda/#+BEGIN_SRC 
 
-<src lang="xml">
+<#+BEGIN_SRC ">
     <mapping>
         <from><![CDATA[<!-- cartridge-template merge-point -->]]></from>
         <to>
@@ -1808,7 +1808,7 @@ search]]
 
 #+END_SRC
 
- 2. create file: /home/will/newlogistics/mda/src/main/config/templates/bpm4struts/pages/crud/dojo.jsp.vsl
+ 2. create file: /home/will/newlogistics/mda/#+BEGIN_SRC 
 
 
 * SCHEMA names in persistent tables
@@ -1824,15 +1824,15 @@ http://galaxy.andromda.org/forum/viewtopic.php?t=1204
 The andromda's default setting is for HsqlDB, so we need not install another database. We only need download the JBoss http://www.jboss.org
 Edit the Hsqldb configure file located at %JBoss_Home%\server\default\deploy\hsqldb-ds.xml
 uncomment:
-<src lang="xml">
+<#+BEGIN_SRC ">
 <connection-url>jdbc:hsqldb:hsql://localhost:1701</connection-url>
 #+END_SRC
 comment :
-<src lang="xml"><connection-url>jdbc:hsqldb:${jboss.server.data.dir}${/}hypersonic${/}localDB</connection-url>#+END_SRC
+<#+BEGIN_SRC 
 
 
 uncomment
-<src lang="xml">
+<#+BEGIN_SRC ">
  <mbean code="org.jboss.jdbc.HypersonicDatabase"
      name="jboss:service=Hypersonic">
      <attribute name="Port">1701</attribute>
@@ -1846,7 +1846,7 @@ uncomment
 
 
 and
-<src lang="xml">
+<#+BEGIN_SRC ">
 <mbean code="org.jboss.jdbc.HypersonicDatabase"
      name="jboss:service=Hypersonic,database=localDB">
      <attribute name="Database">localDB</attribute>
@@ -1899,7 +1899,7 @@ $target.getDocumentation("     * ")
 *  Javascript
 
 * * delete cookie 
-<src lang="html">
+<#+BEGIN_SRC ">
 <input type="submit" />
 
 <input type ="Button" name="clear" value="Clear Cookies" onclick="deleteAllCookies();"/>
@@ -1946,7 +1946,7 @@ function show_cookie(){
 
 http://docs.dojocampus.org/dojo/xhrPost?highlight=%28dojo\.xhrPost%29
 
-<src lang="javascript">
+<#+BEGIN_SRC ">
 function moreParamsToUrl(){
 	var params = {};
 	var moreParams = document.getElementById("moreparams");
@@ -2192,7 +2192,7 @@ Update JSPs files
 We need include the dojo.js file and set the value of locale.
 <script  language="javascript"  type="text/javascript" 
    djConfig="parseOnLoad:true, isDebug: false, locale: 'en'" 
-   src="js/dojo/dojo/dojo.js">
+   #+BEGIN_SRC ">
 </script>
 
 
@@ -2228,7 +2228,7 @@ function validateDates(isFTL,startDateYear,startDateMonth,startDateDay,endDateYe
 ....
 
 Update JSPs
- <script language="javascript" type="text/javascript" src="./js/partprice.jsp"></script>
+ <script language="javascript" type="text/javascript" #+BEGIN_SRC >
 
 
 
@@ -2260,7 +2260,7 @@ Follow the instructions below to install Papyrus.
 
 Documentation is on the Papyrus site http://www.eclipse.org/modeling/mdt/papyrus
 Add the update site for Papyrus to Eclipse as specified in http://www.eclipse.org/modeling/mdt/papyrus/updates/index.php Install Papyrus from Eclipse by Help -> Install New Software...
-After generating the starter project with the EMF-UML2 modeling option. This creates the project .uml and profile.uml files in the mda\src\main\uml directory. The .uml profile files in the maven repository, under org/andromda/profiles/emf-uml22, are copied to the mda\src\main\uml and are not referenced directly by the starter model, because Papyrus does not support UML2 PATHMAP variables pointing to file locations.
+After generating the starter project with the EMF-UML2 modeling option. This creates the project .uml and profile.uml files in the mda\#+BEGIN_SRC .
 Import the starter .uml model into Papyrus to create a papyrus 'diagram', following the instructions at http://wiki.eclipse.org/Papyrus_User_Guide#Create_a_diagram_from_an_existing_uml_file Create a diagram from an existing uml file (New -> Initialize Papyrus Diagram).
 
 ** UML 2
@@ -2287,7 +2287,7 @@ Import the starter .uml model into Papyrus to create a papyrus 'diagram', follow
 
 3) Edit pom.xml in this directory to add the following content: 
 
-<src lang="xml">
+<#+BEGIN_SRC ">
 
 <repositories>
     <repository>

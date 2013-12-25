@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/sqlunit
+#+URI:         /wiki/html/sqlunit
 #+KEYWORDS:    sql,unit
 #+TAGS:        :ibm:sql:unit test:
 #+LANGUAGE:    en
@@ -25,7 +25,7 @@ A: SQLUnit and EU4DB
 
 * SQLUnit  --- Get Started
 
-<src lang="xml">
+<#+BEGIN_SRC ">
 
 <?xml version="1.0"?>
 <!DOCTYPE sqlunit SYSTEM "../lib/sqlunit.dtd" [
@@ -53,12 +53,12 @@ A: SQLUnit and EU4DB
 
 </sqlunit>
 
-</src>
+</#+BEGIN_SRC >
 
 * SQLUnit  --- Connections
 
  - Some customization to make SQLUnit to support DB2. 
-  <src>
+  <#+BEGIN_SRC >
 
 # Add the following code to etc\types.properties
 ##############################################################################
@@ -67,13 +67,13 @@ A: SQLUnit and EU4DB
 ibmdb2.SMALLINT.class = net.sourceforge.sqlunit.types.IntegerType
 ibmdb2.SMALLINT.type = 5
 
-</src>
+</#+BEGIN_SRC >
 
 
  - Using connection tag to define a connection
- <src>   <connection server-name="ibmdb2" extern="duke" /> </src>
+ <#+BEGIN_SRC >
  - Importing a xml file to define a connection
- <src lang = "xml">
+ <#+BEGIN_SRC ">
  
 <?xml version="1.0"?>
  <!DOCTYPE sqlunit SYSTEM "file:sqlunit/lib/sqlunit.dtd" [
@@ -87,9 +87,9 @@ ibmdb2.SMALLINT.type = 5
 
   ...
 
- </src>
+ </#+BEGIN_SRC >
 
- <src>
+ <#+BEGIN_SRC >
 #
 # Sample sqlunit-connection.properties
 #
@@ -98,15 +98,15 @@ sqlunit.url = jdbc:db2:sample
 # sqlunit.user =
 # sqlunit.password =
 # EOF
- </src>
+ </#+BEGIN_SRC >
 
 * SQLUnit  --- Setup & Teardown
 
  - Set variable 
- <src lang="xml"><set name="${CreatorID}" value="changwei@cn.ibm.com" /></src>
+ <#+BEGIN_SRC >
 
  - Setup test data
-  <src lang="xml">
+  <#+BEGIN_SRC ">
  <sql>
       <stmt>INSERT INTO sods2.ibm_emp_dlgtn (
       		IBM_EMP_NUM, EMP_CNTRY_CODE, PROG_CODE, MIGRTN_CODE, REVN_STREAM_CODE,
@@ -138,11 +138,11 @@ sqlunit.url = jdbc:db2:sample
 		<param id="17" type="TIMESTAMP">${vMOD_DATE}</param>
 		<param id="18" type="VARCHAR">${vMOD_BY_HRCL_NAME}</param>
     </sql>
-</src>
+</#+BEGIN_SRC >
 
 * SQLUnit  --- Test
 
-<src>
+<#+BEGIN_SRC >
 
 	<test name="Test S_Q0_CNTRY_SLSORG"> 
 	<call connection-id="duke">
@@ -186,7 +186,7 @@ sqlunit.url = jdbc:db2:sample
 	</diff>	
 
 
-</src>
+</#+BEGIN_SRC >
 
 
 

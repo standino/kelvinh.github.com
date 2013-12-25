@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changewei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/databasemigration
+#+URI:         /wiki/html/databasemigration
 #+KEYWORDS:    db2
 #+TAGS:        :db2:
 #+LANGUAGE:    en
@@ -60,9 +60,9 @@ This has many uses, including:
 
 Run the generator:
 
-<src lang="ruby">
+<#+BEGIN_SRC ">
 ruby script/generate migration add_a_new_table
-</src>
+</#+BEGIN_SRC >
 
 
 This will create the file db/migrate/001_add_a_new_table.rb
@@ -70,7 +70,7 @@ This will create the file db/migrate/001_add_a_new_table.rb
 * Rails---Edit the code to tell it what to do
 
 The method self.up is used when migrating to a new version, self.down is used to roll back any changes if needed. 
-<src lang="ruby">
+<#+BEGIN_SRC ">
   class AddANewTable < ActiveRecord::Migration
     def self.up
       create_table :users do |table|
@@ -82,7 +82,7 @@ The method self.up is used when migrating to a new version, self.down is used to
       drop_table :users
     end
  end
-</src>
+</#+BEGIN_SRC >
 
 
 
@@ -90,13 +90,13 @@ The method self.up is used when migrating to a new version, self.down is used to
 
 There is a table in database to track the version.
 
-<src>
+<#+BEGIN_SRC >
 rake db:migrate
-</src>
+</#+BEGIN_SRC >
 
-<src>
+<#+BEGIN_SRC >
 rake db:migrate VERSION=17
-</src>
+</#+BEGIN_SRC >
 
 * Our solution---Improvement, Not revolution
 1) *Change Set*

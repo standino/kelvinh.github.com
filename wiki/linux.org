@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/linux
+#+URI:         /wiki/html/linux
 #+KEYWORDS:    linux
 #+TAGS:        :linux:
 #+LANGUAGE:    en
@@ -26,7 +26,7 @@
 
  sudo pam-auth-update --force 
 
-* [[http://w3.ibm.com/connections/wikis/home/wiki/Wbd0c3129b6b7_4e5f_ba7d_2bb397faa12f/page/Setup%20Ubuntu%20as%20your%20primary%20workstation?lang=zh][Setup Ubuntu as your primary workstation]]
+* [[http://w3.ibm.com/connections/wikis/home/wiki/html/Wbd0c3129b6b7_4e5f_ba7d_2bb397faa12f/page/Setup%20Ubuntu%20as%20your%20primary%20workstation?lang=zh][Setup Ubuntu as your primary workstation]]
 
 [[http://w3.tap.ibm.com/w3ki03/display/linuxportal/Ubuntu+Linux+Client+Acceleration+Guide][Ubuntu Linux Client Acceleration Guide]]
 
@@ -45,12 +45,12 @@
  - Unzip grub4dos, copy grldr and  menu.lst to C:\. Edit menu.lst file， remove all the content in the file and paste below into
 menu.lst file. 
 
-<src>
+<#+BEGIN_SRC >
 title Install Ubuntu 10.10
 find --set-root /linux
 kernel /linux
 initrd /initrd.gz
-</src>
+</#+BEGIN_SRC >
 
  - Edit C:\boot.ini, add one line at the bottom:  C:\grldr="Install Ubuntu"
  - Reboot and select "Install Ubuntu 10.10" menu.   http://wiki.ubuntu.org.cn/Qref/Hardy
@@ -82,10 +82,10 @@ initrd /initrd.gz
  2. vncpasswd #  "pass4jazz"
  3. vncserver  -geometry 1600x900  -depth 24 &
  4. gedit ~/.vnc/xstartup 
-<src lang="sh">
+<#+BEGIN_SRC ">
 #twm 
 gnome-session &
-</src>
+</#+BEGIN_SRC >
 
 上面的设置适用于所有程序，下面就vnc来谈
 
@@ -178,7 +178,7 @@ https://www14.software.ibm.com/webapp/dswdown/dswdown.wss/web/searchPartNumber
 
 (2)在profile文件末尾加入：
 
-<src lang="sh">
+<#+BEGIN_SRC ">
 JAVA_HOME=/opt/ibm/WebSphere/AppServer/java
 
 PATH=$JAVA_HOME/bin:$PATH
@@ -190,7 +190,7 @@ export JAVA_HOME
 export PATH
 
 export CLASSPATH 
-</src>
+</#+BEGIN_SRC >
 文件修改并保持完以后，运行source etc/profile命令即可使修改操作立即生效
 
 * 认识系统服务 daemons
@@ -204,14 +204,14 @@ sudo /etc/init.d/gdm start
 
 * Mount ntfs files
 
-<src>
+<#+BEGIN_SRC >
  /sbin/fdisk -l
 
 mount   -o umask=0 /dev/sda3   /datad/eadftp/SOA/a/
 mount   -o umask=0 /dev/sdb1   /datad/eadftp/SOA/b/
 mount   -o umask=0 /dev/sdc1   /datad/eadftp/SOA/c/
 
-</src>
+</#+BEGIN_SRC >
 
 * How to Mount a Remote Folder using SSH on Ubuntu
 
@@ -249,14 +249,14 @@ Now you should be able to cd into the directory and start using it as if it was 
 
 * Firewall
 ** Ubuntu
-<src lang="sh>
+<#+BEGIN_SRC >
 sudo gedit /etc/iptables.d/filter/INPUT/25-c4eb-allow.rule
 sudo /etc/init.d/iptables reset
 sudo /etc/init.d/iptables restart
-</src>
+</#+BEGIN_SRC >
 
 ** redhat
-<src lang="sh">
+<#+BEGIN_SRC ">
 # gedit  /etc/sysconfig/iptables
 iptables -A INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
 /etc/init.d/iptables stop
@@ -271,7 +271,7 @@ iptables --list
 
 /sbin/service iptables save
 
-</src>
+</#+BEGIN_SRC >
 
 ** Ubuntu 12.4 
 
@@ -344,7 +344,7 @@ sudo  /etc/init.d/openvpn start
 
 /datad/rtc_data_backup/will/ideas/bts.service start
 
-<src lang="sh">
+<#+BEGIN_SRC ">
 
 # mount the SOA disk                                                                                                                                                        
 su -c "mount   -o umask=0 /dev/sda3   /datad/eadftp/SOA/a/"
@@ -363,7 +363,7 @@ su jazz -c "vncserver"
 su -c "mocksmtpd -f /datad/rtc_data_backup/will/ideas/mocksmtpd/connection_reports/mocksmtpd.conf"
 
 
-</src>
+</#+BEGIN_SRC >
 
 ** ubuntu
 
@@ -394,13 +394,13 @@ ubuntu开机自动运行程序
 
 如果不需要休眠的话，用交换文件就好了。下面 3 行在根目录建立一个 512 M 的交换文件 /swapfile，重启即可。
 
-<src>
+<#+BEGIN_SRC >
 
 sudo dd if=/dev/zero of=/swapfile bs=1M count=512
 sudo mkswap /swapfile
 sudo echo "/swapfile none swap sw 0 0" >> /etc/fstab
 
-</src>
+</#+BEGIN_SRC >
 
 * VOIP
 
@@ -421,7 +421,7 @@ netstat -nlp |grep 9445 |awk '{print $7}'|awk -F / '{print $1}'
 
 ps -aux |grep -m1 3227|awk '{print $4}'|awk -F . '{print $1}'
 
-<src>
+<#+BEGIN_SRC >
  #!/bin/sh
 
  #允许最大占用内存的百分比
@@ -457,7 +457,7 @@ ps -aux |grep -m1 3227|awk '{print $4}'|awk -F . '{print $1}'
  #else
  # echo 1
  fi
-</src>
+</#+BEGIN_SRC >
 
 * SSH
 
@@ -479,7 +479,7 @@ http://forum.ubuntu.org.cn/viewtopic.php?f=54&t=121428&start=0
 
 * Redhat ftp
 
-http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch15_:_Linux_FTP_Server_Setup
+http://www.linuxhomenetworking.com/wiki/html/index.php/Quick_HOWTO_:_Ch15_:_Linux_FTP_Server_Setup
 
 yum install vsftpd
 
@@ -582,7 +582,7 @@ sudo apt-get install dnsmasq
 搜索“resolv-file", 把注释号去掉, 并修改为：resolv-file=/etc/resolv.dnsmasq.conf
 
 编辑/etc/dhcp3/dhclient.conf，修改为：
-<src>
+<#+BEGIN_SRC >
 #supersede domain-name “fugue.com home.vix.com”;
 
 prepend domain-name-servers 127.0.0.1;
@@ -592,7 +592,7 @@ request subnet-mask, broadcast-address, time-offset, routers,
 domain-name, domain-name-servers, host-name,
 
 netbios-name-servers, netbios-scope;
-</src>
+</#+BEGIN_SRC >
 编辑/etc/resolv.conf，
 
 在第一行添加        nameserver 127.0.0.1
@@ -692,7 +692,7 @@ generalized yet, so let's build the wisdom here.
 
 * Kernel 
 
-<src>
+<#+BEGIN_SRC >
 
 update-initramfs -u -k ${MODVER}
 
@@ -714,7 +714,7 @@ boot
 2.6.30-020630rc7-generic 
 
 2.6.22-14
-</src>
+</#+BEGIN_SRC >
 
 * 密码和加密密钥
 http://ubuntuabc.com/123/?p=27
@@ -857,13 +857,13 @@ cd ~/.config/autostart
 
 http://forum.ubuntu.org.cn/viewtopic.php?f=77&t=196208&p=1219175#p1219175
 
-https://ltc3.linux.ibm.com/wiki/LinuxDesktop
+https://ltc3.linux.ibm.com/wiki/html/LinuxDesktop
 
 http://ibmforums.ibm.com/forums/message.jspa?messageID=1326857&tstart=15
 
 http://yktgsa.ibm.com/projects/i/ibmubuntu/web/installation.shtml
 
-https://ltc3.linux.ibm.com/wiki/LTCDesktop/LUDContrib
+https://ltc3.linux.ibm.com/wiki/html/LTCDesktop/LUDContrib
 
 [[https://knowledgecommunity.raleigh.ibm.com/KnowledgeWeb/protect/command.wss/doUTSubmissionDisplay?ukc_session_system=WKC&icID=2214][How to install WID 6.1.2 in silent mode on Linux ]]
 
@@ -929,9 +929,9 @@ use ctrl+alt+enter to toggle full screen.
 
 [[../etc/reciteword.html]]
 
-<src>svn co
+<#+BEGIN_SRC 
 https://reciteword.svn.sourceforge.net/svnroot/reciteword/trunk
-reciteword</src>
+reciteword</#+BEGIN_SRC >
 
 See install.sh for detail.
 
@@ -958,18 +958,18 @@ dpkg --get-selections|grep linux ＃列出当前内核。带image的则是已经
 程序功能：能跟踪由“make install”或类似命令安装的所有文件，并为这些文件创建Slackware、RPM或者Debian安装包，然后把它添加到已安装软件包数据库中，以便能简便的卸载或发布安装包。
 
 例如：
-<src>
+<#+BEGIN_SRC >
 sudo ./configure
 sudo make
 sudo make install
-</src>
+</#+BEGIN_SRC >
 
 这个是通常的软件编译安装步骤，这样做有不好的地方就是一旦编译安装失败，文件四零八落的很难收拾，但是通过
-<src>
+<#+BEGIN_SRC >
 sudo ./configure
 sudo make
 sudo checkinstall
-</src>
+</#+BEGIN_SRC >
 这样生成一个包，再安装时如果失败了也可以通过新立德来卸载它。
 
 
@@ -1154,13 +1154,13 @@ sudo /etc/init.d/vsftpd restart
 sudo /etc/init.d/vsftpd start
 sudo /etc/init.d/vsftpd stop
 
-* [[https://ltc3.linux.ibm.com/wiki/LinuxDesktop/Fetchnotes][fetch notes]]
+* [[https://ltc3.linux.ibm.com/wiki/html/LinuxDesktop/Fetchnotes][fetch notes]]
 
 http://ibmforums.ibm.com/forums/thread.jspa?messageID=1315054&tstart=0&#1315054
 
 http://ibmforums.ibm.com/forums/thread.jspa?messageID=1218790&tstart=0&#1218790
 
-https://ltc3.linux.ibm.com/wiki/LinuxDesktop/Fetchnotes
+https://ltc3.linux.ibm.com/wiki/html/LinuxDesktop/Fetchnotes
 
 * Virtualbox
 
@@ -1781,12 +1781,12 @@ $bind -v
 
 * 窗口关闭按钮的位置修改
 
-<src>
+<#+BEGIN_SRC >
 gconftool-2 --set /apps/metacity/general/button_layout --type string "menu:minimize,maximize,close"
-</src>
+</#+BEGIN_SRC >
 
 * sed常用命令整理
-<src>
+<#+BEGIN_SRC >
 sed '1,3d' file //删除1-3行
 sed -n '/[Aa]bc/p' file //打印包含Abc或者abc的行
 sed '/ABC/d' //删除包含ABC的行
@@ -1808,12 +1808,12 @@ sed 's/^/ /g' //每行前面增加一个空格
 sed 's/.\(.\)$/*\1/' //将倒数第二位换成*
 sed '/ABC/!s/1/*/g' //在不包含ABC的行里,将所有的1替换成*
 sed 's/1\|2\|3/*/g' //在GNU里将不管是1或2或者是3替换成*
-</src>
+</#+BEGIN_SRC >
 
 
 * awesome
 
-<src>
+<#+BEGIN_SRC >
 当然你可以通过修改配置文件来更改这些键位。这里的Mod4可以在配置文件中定义，默认是Windows键。
 
 Mod4 + Return
@@ -1872,7 +1872,7 @@ Mod4 + Shift + r
 重绘当前窗口
 
 
-</src>
+</#+BEGIN_SRC >
 
 * Linux网卡配置文件的含义
 
@@ -1905,7 +1905,7 @@ Mod4 + Shift + r
 
 http://kbase.redhat.com/faq/docs/DOC-13668
 
-<src>
+<#+BEGIN_SRC >
 [jazz@dswdev3 ~]$ cat /etc/sysconfig/network-scripts/ifcfg-eth1
 DEVICE=eth1
 BOOTPROTO=static
@@ -1922,7 +1922,7 @@ PEERDNS=yes
 DNS1=9.181.2.101
 DNS2=9.181.2.102
 DOMAIN=dswdev3
-</src>
+</#+BEGIN_SRC >
 
 
 * Golden dict
@@ -1971,12 +1971,12 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 
 * Setup script
 
-< include file="~/ideas/bin/myinstall" markup="src" lang="sh">
+< include file="~/ideas/bin/myinstall" markup="#+BEGIN_SRC ">
 
 
 * IPv6
 
-<  include file="/home/will/ideas/Muse/tools/ipaddress.txt" markup="src" >
+<  include file="/home/will/ideas/Muse/tools/ipaddress.txt" markup="#+BEGIN_SRC " >
 
 
 * Printer 
@@ -2019,7 +2019,7 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 
  http://computer-refuge.org/classiccmp/aixpdslib/pub/wget/RISC/5.3/exec/
 
-<src>
+<#+BEGIN_SRC >
 
  gzip -dc wget.1.10.2.tar.Z | tar -xvf -
 
@@ -2031,13 +2031,13 @@ gzip -dc  gcc.4.1.1.tar.Z | tar -xvf -
 
 gzip -dc  grep.2.5.1.tar.Z | tar -xvf -
 
-</src>
+</#+BEGIN_SRC >
 
 * Remote run ssh 
 
-ssh -l changwei etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src/log4j.properties"
+ssh -l changwei etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/#+BEGIN_SRC "
 
-ssh  changwei@etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src/log4j.properties"
+ssh  changwei@etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/#+BEGIN_SRC "
 
 scp id_rsa.pub changwei@etlbdswws01.etl.ibm.com:/home/changwei/.ssh/authorized_keys2
 
@@ -2054,7 +2054,7 @@ https://wiki.archlinux.org/index.php/FreeNX
 
 CTR+ALT+F          Toggles full-screen mode. 
 
-<src>
+<#+BEGIN_SRC >
 sudo add-apt-repository ppa:freenx-team
 
 sudo sed -i 's/natty/lucid/g' freenx-team-ppa-natty.list 
@@ -2067,7 +2067,7 @@ sudo cp nxsetup /usr/lib/nx/nxsetup
 
 sudo /usr/lib/nx/nxsetup --install 
 
-</src>
+</#+BEGIN_SRC >
 
 
 
@@ -2112,7 +2112,7 @@ sudo cp /tmp/lib/libpthread.so.0 .
 
 gedit ~/.local/share/applications/mimeapps.list 
 
-<src>
+<#+BEGIN_SRC >
 
 [Default Applications]
 x-scheme-handler/notes=notesplugin.desktop
@@ -2122,13 +2122,13 @@ x-scheme-handler/ndl=notesplugin.desktop
 x-scheme-handler/eml=notesplugin.desktop
 x-scheme-handler/messages=notesplugin.desktop
 
-</src>
+</#+BEGIN_SRC >
 
 sudo gedit /usr/share/applications/notesplugin.desktop
 
-<src>
+<#+BEGIN_SRC >
 Exec='/opt/ibm/lotus/notes/notes' %U
-</src>
+</#+BEGIN_SRC >
 
 
 * RSA
@@ -2150,7 +2150,7 @@ sudo ln -s ../lib/i386-linux-gnu/libstdc++.so.6 .
 
 * Mount
 
-<src>
+<#+BEGIN_SRC >
 will@will-ThinkPad-T420:/media$ cat /etc/fstab
 # /etc/fstab: static file system information.
 #
@@ -2166,13 +2166,13 @@ UUID=653cc2de-1549-4472-a8a8-beec519f8886 /               ext4    errors=remount
 UUID=fe5ba2a6-b9b1-4d55-8300-302e4096c07b none            swap    sw              0       0
 # windows 7
 UUID=4305604E4A5B9CB8 /media/win7               ntfs    errors=remount-ro,auto,exec,rw,user 0       0
-</src>
+</#+BEGIN_SRC >
 
 * Fedaro
 
-https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/%28optional%29%20Add%20additional%20repositories
+https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/%28optional%29%20Add%20additional%20repositories
 
-<src>
+<#+BEGIN_SRC >
 sudo yum install http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
 
 sudo yum install flash-plugin
@@ -2187,7 +2187,7 @@ sudo yum install ibus.x86_64 ibus-gtk2.i686 filezilla.x86_64 emacs.x86_64
 sudo yum install xulrunner-compat.i386 rubygem-Platform.noarch ruby.x86_64
 
 sudo yum install mercurial.x86_6 emacs-mercurial-el.x86_64 aspell aspell-en
-</src>
+</#+BEGIN_SRC >
 
 ** Flash
 
@@ -2298,7 +2298,7 @@ http://hi.baidu.com/w176177082/blog/item/e5b874345bad9659241f1402.html
 
 http://www.linuxidc.com/Linux/2012-06/62070.htm
 
-<src>
+<#+BEGIN_SRC >
 
 然后从 http://www.ctan.org/tex-archive/systems/texlive/Images/ 下载 texlive 2010的完整安装包iso格式的
 假定将镜像文件下载至 /opt 目录下，将其挂载到 /mnt/cdrom，并进入该目录：
@@ -2316,14 +2316,14 @@ http://www.linuxidc.com/Linux/2012-06/62070.htm
 $ vi ~/.bash_profile 修改PATH为:
 PATH=/usr/local/texlive/2010/bin/i386-linux:$PATH:$HOME/bin
 
-</src>
+</#+BEGIN_SRC >
 
-<src>
+<#+BEGIN_SRC >
 
 [will@will willATibm]$ sudo rpm -i http://jnovy.fedorapeople.org/texlive/2012/packages.fc17/texlive-release.noarch.rpm
 [will@will willATibm]$ sudo yum install texlive
 
-</src>
+</#+BEGIN_SRC >
 3)下载中文库包
 
 Url：http://bj.soulinfo.com/~hugang/tex/tex2007/YueWang-zhfonts-final_1.01.tar.bz2
@@ -2341,7 +2341,7 @@ yum install proftpd proftpd-ldap openssl
 
 Below is the real working proftpd.conf
 
-<src>
+<#+BEGIN_SRC >
 AuthOrder                        mod_auth_file.c. mod_ldap.c
 LoadModule mod_ldap.c                                                                                                                                                           
 #LoadModule mod_auth_file.c                                                                                                                                                     
@@ -2356,7 +2356,7 @@ RequireValidShell no
 LDAPAttr uid mail
 LDAPGenerateHomedirPrefixNoUsername on
 
-</src>
+</#+BEGIN_SRC >
 
 /etc/init.d/proftpd restart
 
@@ -2369,7 +2369,7 @@ http://www.cyberciti.biz/tips/linux-installing-configuring-proftpd-ftp-server.ht
 http://bbs.chinaunix.net/thread-1769917-1-1.html
 https://w3-connections.ibm.com/forums/html/topic?id=77777777-0000-0000-0000-000000979974#26c947a9-364a-4120-85d3-8fdcb6536d66
 http://www.kreci.net/linux/proftpd-virtual-user-quick-howto/
-http://www.crsay.com/wiki/wiki.php/server/proftp/install-virtualuser-manage
+http://www.crsay.com/wiki/html/wiki.php/server/proftp/install-virtualuser-manage
 
 LDAPServer ldap://bluepages.ibm.com:389
 LDAPBindDN "c=cn,ou=bluepages,o=ibm.com" "admin_password"
@@ -2433,11 +2433,11 @@ add a -Dorg.eclipse.swt.browser.XULRunnerPath=/opt/ibm/xulrunner to the eclipse.
  https://w3-connections.ibm.com/forums/html/topic?id=77777777-0000-0000-0000-000002053706
 
 eclipse.ini
-<src>
+<#+BEGIN_SRC >
  -Dorg.eclipse.swt.browser.XULRunnerPath=/opt/ibm/lotus/Sametime/rcp/eclipse/plugins/com.ibm.rcp.xulrunner.runtime.linux.x86_6.2.3.20110414-1652/xulrunner
 -Dorg.eclipse.swt.browser.DefaultType=webkit
 -Dorg.eclipse.swt.browser.UseWebKitGTK=true
-</src>
+</#+BEGIN_SRC >
 
 /usr/bin/xulrunner
 /usr/lib/xulrunner-compat
@@ -2447,7 +2447,7 @@ eclipse.ini
 /usr/lib64/firefox/xulrunner
 /opt/IBM/SDPShared/plugins/com.ibm.etools.webedit.xulrunner_1.0.0.v20101018_1437/xulrunner
 
-<src>
+<#+BEGIN_SRC >
 [will@will ~]$ cat .bashrc
 # .bashrc
 
@@ -2468,7 +2468,7 @@ AddRemoveString PATH /home/will/willATibm/apache-maven-3.0.4/bin a
 export PATH
 export LD_LIBRARY_PATH=/usr/lib/xulrunner-compat
 export LD_PRELOAD=/usr/lib64/libfreetype.so.6 
-</src>
+</#+BEGIN_SRC >
 *  [[http://linuxtoy.org/archives/a-tour-through-open-source-creative-tools.html][开源创作工具一览]]
 
 来自 Red Hat 的 Máirín Duffy 在前段时间的峰会上快速演示了大量 Linux 平台上的众多创作工具。
@@ -2589,7 +2589,7 @@ ok
 
 *  fedora 中文输入法 REMI
 
-<src>
+<#+BEGIN_SRC >
 $ sudo yum install cmake gtest-devel boost-devel yaml-cpp-devel kyotocabinet-devel opencc-devel ibus-devel libnotify-devel zlib-devel gcc-c++ fcitx fcitx-devel glog-devel.x86_64
 $ wget https://rimeime.googlecode.com/files/librime-0.9.4.tar.gz
 $ wget https://rimeime.googlecode.com/files/ibus-rime-0.9.4.tar.gz
@@ -2600,7 +2600,7 @@ $ tar xzf brise-0.13.tar.gz
 $ cd ibus-rime
 $ sudo ldconfig
 $ ./install.sh
-</src>
+</#+BEGIN_SRC >
 
 * Apahce
 
@@ -2680,7 +2680,7 @@ WM_CLASS(STRING) = "zim", "Zim"
 
 * FDUP
 
- 1. http://fedoraproject.org/wiki/Upgrading
+ 1. http://fedoraproject.org/wiki/html/Upgrading
 
 
 
@@ -2719,7 +2719,7 @@ sudo systemctl status firewalld.service
 http://blog.csdn.net/qihuanfengyun/article/details/6790990
 http://www.cnblogs.com/heart-runner/archive/2011/12/14/2287370.html
 
-* [[https://w3-connections.ibm.com/wikis/home?lang=zh_CN#!/wiki/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/Installed%20IBM%20Notes%209%20-%20SUT%20doesn't%20work][Installed IBM Notes 9 - SUT doesn't work]]
+* [[https://w3-connections.ibm.com/wikis/home?lang=zh_CN#!/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/Installed%20IBM%20Notes%209%20-%20SUT%20doesn't%20work][Installed IBM Notes 9 - SUT doesn't work]]
 
 Problem
 After having installed IBM Notes V9 Gold (Code Drop Link) and installing the IBM template (IBM Template), the SUT functionality does not work anymore.
@@ -2764,7 +2764,7 @@ useradd -groot ead
 
 ** Apahce 
 
-<src>
+<#+BEGIN_SRC >
 apachectl start
 
 [root@bxv5v1053 www]# cd html
@@ -2773,14 +2773,14 @@ apachectl start
 [root@bxv5v1053 html]# ln -s /home/eadftp/public/dsw_dev_tools/repositories/ .
 [root@bxv5v1053 html]# ls
 repositories
-</src>
+</#+BEGIN_SRC >
 
 ** FTP 
 
 
 edit /etc/proftpd.conf
 
-<src>
+<#+BEGIN_SRC >
 
 AuthOrder			 mod_auth_file.c. mod_ldap.c
 # ...
@@ -2800,7 +2800,7 @@ RequireValidShell no
 LDAPAttr uid mail
 LDAPGenerateHomedirPrefixNoUsername on
 
-</src>
+</#+BEGIN_SRC >
 
 ** [[https://pic.dhe.ibm.com/infocenter/cchelp/v7r1m0/index.jsp?topic=/com.ibm.rational.clearcase.cc_ms_install.doc/topics/c_packaging_intro_rsar.htm][IBM Packaging Utility]]
 
@@ -2896,10 +2896,10 @@ VNCSERVERARGS[2]=”-geometry 1600x900 -nolisten tcp -localhost”
  2. vncpasswd #  "pass4jazz"
  3. vncserver  -geometry 1600x900  -depth 24 &
  4. gedit ~/.vnc/xstartup 
-<src lang="sh">
+<#+BEGIN_SRC ">
 #twm 
 gnome-session &
-</src>
+</#+BEGIN_SRC >
 
 上面的设置适用于所有程序，下面就vnc来谈
 

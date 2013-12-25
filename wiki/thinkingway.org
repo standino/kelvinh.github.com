@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/thinkingway
+#+URI:         /wiki/html/thinkingway
 #+KEYWORDS:    ibm,think
 #+TAGS:        :ibm:think:
 #+LANGUAGE:    en
@@ -155,6 +155,6 @@
 
 
 <slide title="参考资料">
- - [[http://wiki.mbalib.com/wiki/%E5%85%AD%E9%A1%B6%E6%80%9D%E8%80%83%E5%B8%BD][六顶思考帽]]
+ - [[http://wiki.mbalib.com/wiki/html/%E5%85%AD%E9%A1%B6%E6%80%9D%E8%80%83%E5%B8%BD][六顶思考帽]]
 
 </slide>

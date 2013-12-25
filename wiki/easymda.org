@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/easymda
+#+URI:         /wiki/html/easymda
 #+KEYWORDS:    mda
 #+TAGS:        :mda:
 #+LANGUAGE:    en

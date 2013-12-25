@@ -2,7 +2,7 @@
 #+AUTHOR:      Kelvin Hu
 #+EMAIL:       ini.kelvin@gmail.com
 #+DATE:        2012-12-13 Thu
-#+URI:         /wiki/emacs/
+#+URI:         /wiki/html/emacs/
 #+KEYWORDS:    emacs
 #+TAGS:        :Emacs:
 #+LANGUAGE:    en

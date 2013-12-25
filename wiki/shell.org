@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/shell
+#+URI:         /wiki/html/shell
 #+KEYWORDS:    shell
 #+TAGS:        :shell:
 #+LANGUAGE:    en
@@ -31,11 +31,11 @@ http://fanqiang.chinaunix.net/program/shell/index.shtml
 #checklog https://etlgdswuat02.etl.ibm.com/waslogs/sqo/
 
 #index.html
-#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log">quote.log</a>                       02-Jun-2011 01:12  2.6K  
-#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log.2010-11-11">quote.log.2010-11-11</a>            11-Nov-2010 23:57  6.4K  
-#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log.2010-11-12">quote.log.2010-11-12</a>            12-Nov-2010 16:57   47K  
-#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log.2010-11-13">quote.log.2010-11-13</a>            13-Nov-2010 17:00  2.5K  
-#<img src="/icons/unknown.gif" alt="[   ]"> <a href="quote.log.2010-11-14">quote.log.2010-11-14</a>            14-Nov-2010 22:06  375K  
+#<img #+BEGIN_SRC   
+#<img #+BEGIN_SRC   
+#<img #+BEGIN_SRC   
+#<img #+BEGIN_SRC   
+#<img #+BEGIN_SRC   
 
 filelist=`grep 'quote.log*' index.html | awk -F\" '  { if ( $6>="quote.log.2011-05-23" &&  $6 <= "quote.log.2011-05-31" )  print  $6 }'` ;
 
@@ -50,26 +50,26 @@ kill -9  `ps -f -A | grep java | grep CVT-DSW-SQO2 | awk '{print $2}'`
 #+END_SRC
 * delete duplicate lines from a file and keep the order of the other lines from Command-Line-Fu
 
-<src lang="sh">
+<#+BEGIN_SRC ">
 $ awk '!x[$0]++' FILE
-</src>
+</#+BEGIN_SRC >
 
 * Create a zip file ignoring .svn files
-<src lang="sh">
+<#+BEGIN_SRC ">
 zip -r foo.zip DIR -x "*/.svn/*"
 
 find . -not \( -name .svn -prune \) -type f | xargs zip XXXXX.zip
 
 tar -cvf wid7.tar  **/.classpath **/.project
-</src>
+</#+BEGIN_SRC >
 * count a specify word
 
-<src>
+<#+BEGIN_SRC >
 
 '<hgtxt.txt tr -cs '[:alnum:]' '[\n*]'  | sort | uniq -c
 
 
-</src>
+</#+BEGIN_SRC >
 
 * SED
 
@@ -81,18 +81,18 @@ http://www.ibm.com/developerworks/linux/library/l-sed3.html
 
 最近碰到一个处理跨行xml节点的问题，终于激发了进一步学习sed的愿望，并学会了使用b label写循环
 
-<src>
+<#+BEGIN_SRC >
 <tag id="0" attr2 = "val2" attr3 = "val3" attr4 = "val4" />
 <tag id="1" attr2 = "val2"
         attr3 = "val3"
         attr4 = "val4"/>
-</src>
+</#+BEGIN_SRC >
 替换指定xml节点中的attr4属性名
-<src lang="sh">sed -e ‘/<tag id="‘$id’"/ { :loop />/! {N; b loop}; s/attr4/ak47/ }’ test.xml</src>
+<#+BEGIN_SRC >
 
 ** sed add line 
 
-<src>
+<#+BEGIN_SRC >
 
 zhyfly@zhyfly:~/bash$ sed -e '/music/a\this line will be added to the end of the matching line!oooooooooo' test.txt
 The honeysuckle band played all night long for only $90.
@@ -101,15 +101,15 @@ this line will be added to the end of the matching line!oooooooooo
 Too bad the disco floor fell through at 23:00.
 The local nurse Miss P.Neave was in attendance.
 
-<src>
+<#+BEGIN_SRC >
 * line count
-<src>
+<#+BEGIN_SRC >
 find . -type f -iname "*.java" -exec cat {} \; | wc -l  
-</src>
+</#+BEGIN_SRC >
 
 * scp
 
-<src>scp /home/cheney/full.tar.gz root@10.5.0.1:/home/root/ </src>
+<#+BEGIN_SRC >
 
 * ln
 
@@ -144,22 +144,22 @@ tar zxvf
 #find
 - 在某个目录下所有子目录中搜索某个名字文件
 
-<src type="shell">
+<#+BEGIN_SRC ">
 find /some/dir -iname "*.txt"
 find /some/dir -name "*.txt"
 find /some/dir -iregex "*.txt"
 find /some/dir -regex "*.txt"
-</src>
+</#+BEGIN_SRC >
 
     iname 表示不区分大小写， name 表示区分大小写。他们都是按照 shell 的文件名称扩展方式扩展 * 和 ? 的。 
     如果使用 regexp 那么表示用正则表达式来匹配文件名称。 iregexp 表示不区分大小写的正则表达式。
  在某个目录下所有子目录中搜索某个名字，某种类型的文件
 
 
-<src type="shell">
+<#+BEGIN_SRC ">
 find /some/dir -iname "*.txt" -type d
 find /some/dir -name "*.txt" -type f
-</src>
+</#+BEGIN_SRC >
 
     type 后面的字母表示文件类型。
     b |	block (buffered) special
@@ -189,7 +189,7 @@ find . -iname "*.bak" | xargs rm
 ** emacs wiki shell
 
 #emacswikishell
-<src type="shell">
+<#+BEGIN_SRC ">
 #! /bin/bash
 
 # Copyright (C) 2007, 2008  Alex Schroeder <alex@emacswiki.org>
@@ -236,14 +236,14 @@ rm $TMP
 # commit changes
 svn --quiet commit -m updates
 
-</src>
+</#+BEGIN_SRC >
 
 * Delete a folder
 rm -rf <folder name> this also can delete soft link and will not delete the real folder which the softlink point to.    
 
 * Check if a file exists
 
-<src>
+<#+BEGIN_SRC >
 
 
 
@@ -281,7 +281,7 @@ rm -rf <folder name> this also can delete soft link and will not delete the real
   32.     echo '$var1 not eq $var2'
   33. fi
 
-</src>
+</#+BEGIN_SRC >
 
 * Getopts
 
@@ -332,7 +332,7 @@ rm -rf <folder name> this also can delete soft link and will not delete the real
 
 * Split words
 
-<src>
+<#+BEGIN_SRC >
 will@will-laptop:~$ mytest="ebiz1.web_quote"
 will@will-laptop:~$ echo ${mytest##*.}
 web_quote
@@ -340,7 +340,7 @@ will@will-laptop:~$ echo ${mytest%%.*}
 ebiz1
 will@will-laptop:~$ 
 
-</src>
+</#+BEGIN_SRC >
 
 * Programing Style
 
@@ -350,7 +350,7 @@ will@will-laptop:~$
 
 
 * Table 33-1. Operator Precedence
-<src>
+<#+BEGIN_SRC >
 Operator                        Meaning                   Comments
                                                           HIGHEST PRECEDENCE
                                 post-increment,           C-style operators
@@ -401,16 +401,16 @@ var++ var--
 &= !=
                        comma                  links a sequence of operations
 ,
-</src>
+</#+BEGIN_SRC >
 
 * System Variables
 
-<src>
+<#+BEGIN_SRC >
 $HOME
 
 $OSTYPE
 
-</src>
+</#+BEGIN_SRC >
 
 
 * folder of the scirpt
@@ -422,9 +422,9 @@ $(cd "$(dirname "$0")"; pwd)
 
 * Delete folders under windows
 
- <src>
+ <#+BEGIN_SRC >
   rd /S /Q folder
-</src>
+</#+BEGIN_SRC >
 
 
 * 利用shell命令去除dos文件里的回车符——“^M”
@@ -434,7 +434,7 @@ tr -d '\r' < dos.txt > unix.txt
 
 * KSH
 
-<src lang="sh">
+<#+BEGIN_SRC ">
  ksh -o emacs : use emacs key 
 
 ./checklog4sap_remote  -s PROD  -w 0002155019 -d /tmp/quotelogtool/testprod -f 2011-07-20 -t 2011-07-20 -c PRICING -u changwei@cn.ibm.com -p lenovot60
@@ -453,15 +453,15 @@ fi
 
 #or use: if [ "$var" = "" ]; then ......
 
-</src>
+</#+BEGIN_SRC >
 
 问题解决如下
 方法一
-大小 <src lang="sh">filesize=`du -m repError.log | awk '{print $1}'`
+大小 <#+BEGIN_SRC }'`
 if [ $Count -gt 1 ]; then
 echo "$unix_time" | mutt -s "$unix_time" -a /a/a/Error.log l@1.com
 fi
-</src>
+</#+BEGIN_SRC >
 
 
 更方便的字符串操作
@@ -491,22 +491,34 @@ abc123def
 
 * Add jsp name to jsp file
 
-<src>
+<#+BEGIN_SRC >
 
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/w3:body>/i\<!--  JSP file :'{}' -->' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/www:body>/i\<!--  JSP file :'{}' -->' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/w3:popupBody>/i\<!--  JSP file :'{}' -->' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/www:popupBody>/i\<!--  JSP file :'{}' -->' '{}' \;
-</src>
+</#+BEGIN_SRC >
 
 * Find
-<src lang="sh">
+<#+BEGIN_SRC ">
 find . -type f -name  "pom.xml" -execdir sed -i -e '/-SNAPSHOT/d' '{}' \;
-</src>
+
+/bin/find . -type f -name  "*.org" -execdir sed -i -e 's/Will Chang/Will Chang/g' '{}' \;
+~/ideas/standino.github.com $ /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/U-360BUYAD\changwei/Will Chang/g' '{}' \;
+~/ideas/standino.github.com $ /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/U-360BUYAD\\changwei/Will Chang/g' '{}' \;
+~/ideas/standino.github.com $ /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/changwei@BJXX-CHANGWEI.360buyAD.local/changwei.cn@gmail.com/g' '{}' \;
+~/ideas/standino.github.com $ /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/\/wiki\//\/wiki\/html\//g' '{}' \;
+
+/bin/find . -type f -name  "*.org" -execdir sed -i -e 's/\<#+BEGIN_SRC ' '{}' \;
+
+</#+BEGIN_SRC >
+#+BEGIN_SRC 
+
+#+END_SRC
 ** 在文件中查找内容
-<src lang="sh">
+<#+BEGIN_SRC ">
 find . -name "*.el" -exec grep -H "org-defvaralias" {} \;
-</src>
+</#+BEGIN_SRC >
 
 * 批量改名字
   rename .old .new  *  

@@ -1,8 +1,8 @@
 #+TITLE:       IBM_Data_Studio_back.org
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/datastudio
+#+URI:         /wiki/html/datastudio
 #+KEYWORDS:    db2,ibm
 #+TAGS:        :db2:ibm:
 #+LANGUAGE:    en
@@ -76,7 +76,7 @@ First we need set statement terminator:
  1. Right-click on SQL Editor,
  1. Select Set Statement Terminator,
  1. Input @, OK.
- 1. One new line was inserted into the SQL Editor. <src type="sql">-- <ScriptOptions statementTerminator="@" /></src>
+ 1. One new line was inserted into the SQL Editor. <#+BEGIN_SRC >
 
 Then load the table to database:
  1. Right-click on SQL Editor, 

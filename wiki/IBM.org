@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/ibm
+#+URI:         /wiki/html/ibm
 #+KEYWORDS:    ibm
 #+TAGS:        :ibm:
 #+LANGUAGE:    en
@@ -17,7 +17,7 @@
 
 Create a RTC build engine : "RationalBuildForgeConnector"
 http://jazz.net/forums/viewtopic.php?p=46073&sid=405b9ce85df26eb93a3bfc0569b1ffc7#46073
-https://jazz.net/wiki/bin/view/Main/RationalBuildForge/IntegrationWithRTC#Setup_an_RTC_Run_As_user_for_ass
+https://jazz.net/wiki/html/bin/view/Main/RationalBuildForge/IntegrationWithRTC#Setup_an_RTC_Run_As_user_for_ass
 The example is installed with the Build System Toolkit; it can be found at /opt/ibm/TeamConcertBuild/buildsystem/buildtoolkit/examples/standalone/. The build.xml file in that directory contains the steps to follow to run the example.
 
 SCM tools
@@ -1224,7 +1224,7 @@ http://www.ibm.com/developerworks/websphere/zones/brms/
 Notes
 This issue applies only to Notes on Linux. Notes processes may show high CPU usage; some systems running the Lotus Notes client on Linux may exhibit high CPU usage even when idle. If you experience this issue, it can be alleviated by adding the following line to the "/opt/ibm/lotus/notes/framework/rcp/deploy/jvm.properties" file: vmarg.attach=-Dcom.ibm.tools.attach.enable=no
 Can you collect logs with the IBM Support Assistant as per:
-http://w3.ibm.com/connections/wikis/home?lang=en#/wiki/Wbf0cf9955 005_4fe2_a8d5_dbb263e58ead/page/Bug%2C%20Problem%2C%20and%20Issue %20Reporting
+http://w3.ibm.com/connections/wikis/home?lang=en#/wiki/html/Wbf0cf9955 005_4fe2_a8d5_dbb263e58ead/page/Bug%2C%20Problem%2C%20and%20Issue %20Reporting
 Speed up
 Just in case you're interested: https://w3.ibm.com/connections/blogs/allerhed/entry/speed_up_your_lotus_notes_performance_by_tuning_the_jvm?lang=en
 Here's the text from the link: Lotus Notes uses Java Virtual Machine (JVM) for processing of Lotus Notes applications and plugins.  IBMs Lotus Notes client configuration has a standard value that defines how many megabytes of RAM Lotus Notes can maximally use for JVM. This value is for PCs with above 1 GB RAM initially set too low, as it should be approx. 1/3 of the RAM of the PC (default value = 256 MB, but should be 768 MB).   How to change this:   1.) Shut down Lotus Notes.  - To be sure no processes are running in the background, run this command from Start -> Run Type C:\notes\nsd.exe -kill   2.) Find the file "jvm.properties" in this folder (depending on Lotus Notes version): In Lotus Notes version 8.5.x: C:\Notes\framework\rcp\deploy\   3.) Open the jvm.properties files in a texteditor like notepad.     4.) You will now see a text surrounded by a lot of pound signs #### The first 'property' after the last # sign is:  vmarg.Xmx=-Xmx256m This is where you must change 256 MB RAM to 768 RAM (if you have 2GB RAM installed which is IBM standard) vmarg.Xmx=-Xmx768m

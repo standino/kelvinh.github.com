@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2012-11-27 Tue
-#+URI:         /wiki/html/myemacs/
+#+URI:         /wiki/html/html/myemacs/
 #+TAGS:        :Emacs:
 #+KEYWORDS:    Lisp, Scheme, Emacs, Linux, cygwin, Java,  Org-page, Programming,编程
 #+LANGUAGE:    en
@@ -42,7 +42,7 @@ lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索�
  - gtags-find-with-grep
  - gtags-find-symbol
 
-<src lang="lisp">
+<#+BEGIN_SRC ">
 (define-key xgtags-mode-map [(control .)] 'xgtags-find-tag-from-here)
 (define-key xgtags-mode-map [(control ,)] 'delete-other-windows)
 (define-key xgtags-mode-map [(meta .)] 'xgtags-find-symbol)
@@ -52,7 +52,7 @@ lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索�
 (define-key xgtags-mode-map (kbd "C-M-/") 'xgtags-find-tag)
 (define-key xgtags-mode-map (kbd "M-p") 'xgtags-pop-stack)
 
-</src>
+</#+BEGIN_SRC >
 
 ** Ctags
  
@@ -532,7 +532,7 @@ C-x a i g, insert the content for the abbrevs.
  1.[[../../../book/emacs/emacs24/index.htm][Sams Teach Yourself Emacs in 24 Hours]]
  2.[[http://learn.tsinghua.edu.cn:8080/2005211356/index.html][学无止境 ── 叶文彬的主页]]
  3.[[http://people.ku.edu/~syliu/shredderyin/][王垠的个人主页]]
- 4.[[http://pluskid.lifegoo.com/wiki/EmacsTip.html][Emacs 小技巧]]
+ 4.[[http://pluskid.lifegoo.com/wiki/html/EmacsTip.html][Emacs 小技巧]]
  5.[[http://xahlee.org/emacs/elisp.html][Xah's Emacs Lisp Tutorial]]
  6.[[../etc/Beamer.html][使用Beamer制作Slide介绍]]
  7.http://www.mygooglest.com/fni/site-map.html
@@ -556,9 +556,9 @@ Install muse highline
 
 Add the following code to ~/.emacs
 
-<src type="lisp">
+<#+BEGIN_SRC ">
 (mapc 'load (directory-files "C:/standino/ideas/myscripts/emacs/conf" t ".+\\.el$"))
-</src>
+</#+BEGIN_SRC >
 
 ** set Chinese input method
 
@@ -566,7 +566,7 @@ Alt+x set-input-method, then select
 
 * Select a word
 
-<src>
+<#+BEGIN_SRC >
 
  非常感谢。
 【 在 cheneymx (cheneymx) 的大作中提到: 】
@@ -575,7 +575,7 @@ Alt+x set-input-method, then select
 : ;; (global-set-key [(control f3)] 'highlight-symbol-at-point)
 : ................... 
 
-</src>
+</#+BEGIN_SRC >
 
 *  Spell Check
 
@@ -599,7 +599,7 @@ Ispell.el, version 3.1 (December 1, 1998) and better, has the list reversing pro
 
 Add the following code to basic.el:
 
-<src type="lisp">
+<#+BEGIN_SRC ">
 
     (defvar my-flyspell-major-mode-list
      '(latex-mode
@@ -616,7 +616,7 @@ Add the following code to basic.el:
                           (not flyspell-mode))
                  (flyspell-mode))))
 
-</src>
+</#+BEGIN_SRC >
 
 
 * Version Control
@@ -657,7 +657,7 @@ Add the following code to basic.el:
  6.http://members.optusnet.com.au/~charles57/GTD/orgmode.html
  7.http://members.optusnet.com.au/~charles57/GTD/org_dates/index.html
  8.[[http://www.caole.net/diary/emacs.html][生活在Emacs中]]
- 9.http://pluskid.lifegoo.com/wiki/Emacs.html
+ 9.http://pluskid.lifegoo.com/wiki/html/Emacs.html
 
 **  Org File Title
 
@@ -858,11 +858,11 @@ S-TAB
 
 I tried to set tabbar not to use group, I found the following doc may be helpful. 
 
-http://docs.huihoo.com/homepage/shredderyin/wiki/EmacsNotes.html
+http://docs.huihoo.com/homepage/shredderyin/wiki/html/EmacsNotes.html
 
 * yasnippet
 
-http://code.google.com/p/yasnippet/wiki/Design
+http://code.google.com/p/yasnippet/wiki/html/Design
 
 
 * Emacs Wiki
@@ -1008,9 +1008,9 @@ http://learn.tsinghua.edu.cn:8080/2005211356/stdlib/Ibuffer.html
 ** Remote Access
 
 Quick-Start Tramp Configuration
-<src type="lisp">
+<#+BEGIN_SRC ">
     (setq tramp-default-method "ssh")
-</src>
+</#+BEGIN_SRC >
 C-x C-f /remotehost:filename  RET (or /method:user@remotehost:filename)
 
 C-x C-f /changwei@ltstbrdb001.sby.ibm.com:test.txt
@@ -1209,7 +1209,7 @@ i  这一系列命令表示插入行程安排
 
 * [[http://emacs-session.sourceforge.net/][session]]
 
-*[[http://code.google.com/p/google-gtags/wiki/GTagsEmacsClient][ gtags ]]
+*[[http://code.google.com/p/google-gtags/wiki/html/GTagsEmacsClient][ gtags ]]
 
 
 * Theme 
@@ -1566,19 +1566,19 @@ configuration files http://code.google.com/p/myemacsconf/source/browse/trunk/.em
 
 ** Write presentation 
 
-<src> #module pre-14, </src>
+<#+BEGIN_SRC >
 
-** [[http://pluskid.lifegoo.com/wiki/MuseSrctag.html][在  Muse  里使用源代码高亮]]
+** [[http://pluskid.lifegoo.com/wiki/html/MuseSrctag.html][在  Muse  里使用源代码高亮]]
 <example>
 
-<src type="c">
+<#+BEGIN_SRC ">
 #include <stdio.h>
 
 int main()
 {
     printf("hello\n");
 }
-</src>
+</#+BEGIN_SRC >
 
 </example>
 
@@ -1595,17 +1595,17 @@ Muse 包括两个主要部分：一个增强的 text 模式，用来编辑文档
 Muse 工程中随意浏览文档；一组发布策略，用来产生各种不同的格式输出。
 
 
-** [[http://pluskid.lifegoo.com/wiki/MuseSrctag.html][在 Muse 里使用源代码高亮]]
+** [[http://pluskid.lifegoo.com/wiki/html/MuseSrctag.html][在 Muse 里使用源代码高亮]]
 <example>
 
-<src type="c">
+<#+BEGIN_SRC ">
 #include <stdio.h>
 
 int main()
 {
     printf("hello\n");
 }
-</src>
+</#+BEGIN_SRC >
 
 </example>
 
@@ -2299,14 +2299,14 @@ C-c C-x C-e
 
 * Emacs config on Windows
 
-<src lang="lisp">
+<#+BEGIN_SRC ">
 (setenv "HOME" "E:/cygwin/home/Will/")
 (setenv "PATH" "E:/cygwin/home/Will/")
 ;;set the default file path
 (setq default-directory "~/")
 (add-to-list 'load-path "~/emacs/site-lisp")
 (load-file "E:/cygwin/home/Will/ideas/emacs/.emacs")
-</src>
+</#+BEGIN_SRC >
 
 * Publish to ODP 
 
@@ -2366,7 +2366,7 @@ http://emacsformacosx.com/
 wget -q -O - http://emacs.naquadah.org/key.gpg | sudo apt-key add -
 
       deb http://emacs.naquadah.org/ natty/
-      deb-src http://emacs.naquadah.org/ natty/
+      deb-#+BEGIN_SRC /
 
 
 *  Emacs Evernote mode
@@ -2525,7 +2525,7 @@ You can also browse the repository at:
 安装完cygwin以后我们就可以使用脚本进行以下的安装。把下面的一段代码存到名为myapt的文件中，把myapt文件存放到
 C:\cygwin\home\[您的用户名]\bin目录下。
 
-<src>
+<#+BEGIN_SRC >
 #!/bin/bash
 
 function do_apt(){
@@ -2560,17 +2560,17 @@ case $cmd in
 
 esac
 
-</src>
+</#+BEGIN_SRC >
 
 点击桌面的 cygwin 快捷方式启动 cygwin 控制台。
 在控制台中输入:
-<src>
+<#+BEGIN_SRC >
 
 chmod +x bin/myapt #---赋予 myapt 执行权限。
 myapt init         #---初始化
 myapt emacs        #---安装emacs
 
-</src>
+</#+BEGIN_SRC >
 
 现在，emacs在windows下的基本安装就完成了。 我们可以在 cygwin 控制台中输入命令 starx 启动 xterm, 然后在 xterm 中输入命令 emacs-X11
 来启动 emacs 程序。
@@ -2579,7 +2579,7 @@ myapt emacs        #---安装emacs
 
 我们同时使用脚本方式安装。把下面的代码拷贝到myapt文件中，把myapt存到${HOME}/bin目录下。
 
-<src>
+<#+BEGIN_SRC >
 
 #!/bin/bash
 
@@ -2598,16 +2598,16 @@ case $cmd in
 
 esac
 
-</src>
+</#+BEGIN_SRC >
 
 打开Terminal 输入：
 
-<src>
+<#+BEGIN_SRC >
 
 chmod +x bin/myapt #---赋予myapt执行权限。
 myapt emacs        #---安装emacs
 
-</src>
+</#+BEGIN_SRC >
 
 现在，emacs 在 ubuntu 下的基本安装就完成了。
 
@@ -2637,7 +2637,7 @@ SQL 查询等功能都会与 sql-mod 关联。在一个 buffer 中可以使用�
 为了方便初学者使用 emacs，我们一般会推荐您编制一个自己的备忘录，把经常使用的快捷键记录在备忘录里，打印出来。这样您就很容易找到您需
 要的快捷键。等使用的熟练了，你就可以丢掉备忘录，随心使用 emacs 了。下面是一个备忘录的例子供您参考。
 
-<src>
+<#+BEGIN_SRC >
   C-x C-c : Exit and close Emacs
   C-x C-z : Exit and hang on Emacs
   C-x C-f : Open file or folder
@@ -2655,7 +2655,7 @@ SQL 查询等功能都会与 sql-mod 关联。在一个 buffer 中可以使用�
   C-p     : Pre line
   C-f     : forward one character
   C-b     : backward one character
-</src>
+</#+BEGIN_SRC >
 
 * 如何获得帮助信息
 
@@ -2664,7 +2664,7 @@ Emacs 中包含了丰富的文档，如果您是在 ubuntu 等 linux 系统下�
 所有的键值。一般比较常用的就是 a ，然后输入所有查询单词，emacs 就会调出相关的帮助信息。输入 c 然后再输入快捷键，获得该快捷键的功能
 描述。
 
-<src>
+<#+BEGIN_SRC >
 
 Ctrl + h
 
@@ -2681,7 +2681,7 @@ and shows a list of functions, variables, and other items whose	documentation ma
   
  - r  info-emacs-manual.  Display the Emacs manual in Info mode.
   
-</src>
+</#+BEGIN_SRC >
 
 * Lisp 语言介绍
 
@@ -2708,7 +2708,7 @@ Emacs的插件一般是由 Lisp 编写的，你只需要把插件的 Lisp 文件
 http://tromey.com/elpa/install.html。
 
 
-<src>
+<#+BEGIN_SRC >
 
 (let ((buffer (url-retrieve-synchronously
 	       "http://tromey.com/elpa/package-install.el")))
@@ -2719,7 +2719,7 @@ http://tromey.com/elpa/install.html。
     (eval-region (point) (point-max))
     (kill-buffer (current-buffer))))
 
-</src>
+</#+BEGIN_SRC >
 
 
 * 在Emacs中编程
@@ -2782,7 +2782,7 @@ publishing styles for generating different kinds of output.
 
  - Get the last version automatically 
 
-<src>
+<#+BEGIN_SRC >
 
 (add-hook 'find-file-hooks 'my-vc-update)
 
@@ -2793,16 +2793,16 @@ publishing styles for generating different kinds of output.
     (error nil))
 )
 
-</src>
+</#+BEGIN_SRC >
 
  - Run SQLunit Test
 
-<src>
+<#+BEGIN_SRC >
 (defun sqlunit-run-file ()
      "Run sqlunit on current buffer"
      (interactive )
      (shell-command 
       (format "ant -f %s../build.xml  -Dscript.name=%s &" (buffer-dir)  (buffer-name))))
-</src>
+</#+BEGIN_SRC >
 
  - Developerworks article publishing 

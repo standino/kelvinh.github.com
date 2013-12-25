@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/html/confluence
+#+URI:         /wiki/html/html/confluence
 #+KEYWORDS:    wiki
 #+TAGS:        :wiki:
 #+LANGUAGE:    en
@@ -10,13 +10,13 @@
 #+DESCRIPTION:  Confluence 
 
 
- - [[http://www.zzbaike.com/wiki/Confluence/Windows%E4%B8%8BConfluence%E5%AE%89%E8%A3%85][Confluence/Windows下Confluence安装]]
+ - [[http://www.zzbaike.com/wiki/html/Confluence/Windows%E4%B8%8BConfluence%E5%AE%89%E8%A3%85][Confluence/Windows下Confluence安装]]
  - [[http://my.oschina.net/u/941788/blog/119352][jira+confluence安装+破解+汉化]]
  - [[http://blog.csdn.net/ilovemilk/article/details/6713968][构建高效的团队协作工具(三) Confluence安装配置]]
  - [[https://confluence.atlassian.com/display/DOC/Confluence+Documentation+Home][Confluence Documentation Home]]
  - [[https://confluence.atlassian.com/display/DOC/Installing+the+Confluence+EAR-WAR+Edition][Installing the Confluence EAR-WAR Edition]]
  - [[http://www.clickonf5.org/7599/10-free-opensource-wiki-software-engine/][10 Free Wiki Software Platforms or Wiki Engines]]
- - [[http://www.mediawiki.org/wiki/Manual:Installing_MediaWiki/zh][Installing MediaWiki/zh]]
+ - [[http://www.mediawiki.org/wiki/html/Manual:Installing_MediaWiki/zh][Installing MediaWiki/zh]]
 
 
 最后，还是发现要钱的东西好，安装了JIRA-Enterprise-3.13.2。

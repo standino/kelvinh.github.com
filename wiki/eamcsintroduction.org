@@ -1,8 +1,8 @@
 #+TITLE:       Emacs introduction
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/emacsintroduction
+#+URI:         /wiki/html/emacsintroduction
 #+KEYWORDS:    <TODO: insert your keywords here>
 #+TAGS:        :emacs:ppt:
 #+LANGUAGE:    en

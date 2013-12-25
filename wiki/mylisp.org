@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/lisp
+#+URI:         /wiki/html/lisp
 #+KEYWORDS:    lisp
 #+TAGS:        :lisp:
 #+LANGUAGE:    en
@@ -75,7 +75,7 @@ With the previous method for defining hooks, you often find that you need a new 
 
  [[../etc/Interactive-Codes.html][Code Characters for interactive]]
 
- If you need a string input parameter, you can code like this : <src>  (interactive "sPlease input DB name:")</src>
+ If you need a string input parameter, you can code like this : <#+BEGIN_SRC >
 
 * Books
 

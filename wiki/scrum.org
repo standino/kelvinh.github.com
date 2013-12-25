@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/scrum
+#+URI:         /wiki/html/scrum
 #+KEYWORDS:    scrum
 #+TAGS:        :scrum:
 #+LANGUAGE:    en

@@ -2,7 +2,7 @@
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
-#+URI:         /wiki/pm
+#+URI:         /wiki/html/pm
 #+KEYWORDS:    pm
 #+TAGS:        pm
 #+LANGUAGE:    en
