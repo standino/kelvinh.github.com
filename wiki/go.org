@@ -28,7 +28,7 @@ http://robfig.github.io/revel/
 http://www.cnblogs.com/ztiandan/archive/2013/01/17/2864498.html
 
 *  Google 的 Go 编程语言初体验
-<example>
+#+BEGIN_SRC
 Go 编程语言是 Google 中一些大牛(尤其是有着 plan9 前科的大牛们)如 Rob Pike,Ken
 Thomason 这两位赫赫有名的程序高手、技术作家。
 很多人认为 Go 编程语言有点像是 C 语言与 Python 的混血, Golang 主页上也清楚写着 Go
@@ -82,7 +82,7 @@ updating working directory
 这样在你的用户目录下应该有个 hg 目录了。继续执行一下操作
 Sudo mv hg Go
 Mkdir /home/xinglight/bin
-Cd Go\#+BEGIN_SRC 
+Cd Go\src
 ./all.bash
 如果前面没有问题,编译应该可以正确完成。编译后可以进入/home/xinglight/bin 目录下
 查看是不是有 6g 6l 8g 8l 这样的可执行文件。
@@ -114,4 +114,4 @@ OK,基本上 Go 编程语言的大致试用情况就是这样,真正想学 Go �
 QQ:88509100
 E-mail: wikiojo@qq.com
                                                       3
-</example>
+#+END_SRC

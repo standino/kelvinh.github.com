@@ -50,7 +50,7 @@ title Install Ubuntu 10.10
 find --set-root /linux
 kernel /linux
 initrd /initrd.gz
-</#+BEGIN_SRC >
+#+END_SRC
 
  - Edit C:\boot.ini, add one line at the bottom:  C:\grldr="Install Ubuntu"
  - Reboot and select "Install Ubuntu 10.10" menu.   http://wiki.ubuntu.org.cn/Qref/Hardy
@@ -82,10 +82,10 @@ initrd /initrd.gz
  2. vncpasswd #  "pass4jazz"
  3. vncserver  -geometry 1600x900  -depth 24 &
  4. gedit ~/.vnc/xstartup 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 #twm 
 gnome-session &
-</#+BEGIN_SRC >
+#+END_SRC
 
 上面的设置适用于所有程序，下面就vnc来谈
 
@@ -178,7 +178,7 @@ https://www14.software.ibm.com/webapp/dswdown/dswdown.wss/web/searchPartNumber
 
 (2)在profile文件末尾加入：
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 JAVA_HOME=/opt/ibm/WebSphere/AppServer/java
 
 PATH=$JAVA_HOME/bin:$PATH
@@ -190,7 +190,7 @@ export JAVA_HOME
 export PATH
 
 export CLASSPATH 
-</#+BEGIN_SRC >
+#+END_SRC
 文件修改并保持完以后，运行source etc/profile命令即可使修改操作立即生效
 
 * 认识系统服务 daemons
@@ -211,7 +211,7 @@ mount   -o umask=0 /dev/sda3   /datad/eadftp/SOA/a/
 mount   -o umask=0 /dev/sdb1   /datad/eadftp/SOA/b/
 mount   -o umask=0 /dev/sdc1   /datad/eadftp/SOA/c/
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * How to Mount a Remote Folder using SSH on Ubuntu
 
@@ -253,10 +253,10 @@ Now you should be able to cd into the directory and start using it as if it was 
 sudo gedit /etc/iptables.d/filter/INPUT/25-c4eb-allow.rule
 sudo /etc/init.d/iptables reset
 sudo /etc/init.d/iptables restart
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** redhat
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 # gedit  /etc/sysconfig/iptables
 iptables -A INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
 /etc/init.d/iptables stop
@@ -271,7 +271,7 @@ iptables --list
 
 /sbin/service iptables save
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** Ubuntu 12.4 
 
@@ -344,7 +344,7 @@ sudo  /etc/init.d/openvpn start
 
 /datad/rtc_data_backup/will/ideas/bts.service start
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
 # mount the SOA disk                                                                                                                                                        
 su -c "mount   -o umask=0 /dev/sda3   /datad/eadftp/SOA/a/"
@@ -363,11 +363,11 @@ su jazz -c "vncserver"
 su -c "mocksmtpd -f /datad/rtc_data_backup/will/ideas/mocksmtpd/connection_reports/mocksmtpd.conf"
 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** ubuntu
 
-<example>
+#+BEGIN_SRC
 其后，我们编写一个shell脚本用来挂载xp的分区
 #!/bin/sh
 #rc.?d
@@ -388,7 +388,7 @@ ubuntu开机自动运行程序
 2. chmod 755 /etc/init.d/aa    
 3. ubuntu默认启动级别为2加载的脚本在/etc/rc2.d/
    ln -s /etc/init.d/aa /etc/rc2.d/s99aa (s为开始执行99为执行顺序aa为文件名)
-</example>
+#+END_SRC
 
 * Swap files 
 
@@ -400,7 +400,7 @@ sudo dd if=/dev/zero of=/swapfile bs=1M count=512
 sudo mkswap /swapfile
 sudo echo "/swapfile none swap sw 0 0" >> /etc/fstab
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * VOIP
 
@@ -457,7 +457,7 @@ ps -aux |grep -m1 3227|awk '{print $4}'|awk -F . '{print $1}'
  #else
  # echo 1
  fi
-</#+BEGIN_SRC >
+#+END_SRC
 
 * SSH
 
@@ -465,7 +465,7 @@ http://forum.ubuntu.org.cn/viewtopic.php?f=54&t=121428&start=0
 
 大家好，装了一个redhat enterprise 5.5,想用ssh，先作了以下一些操作，但是连接失败
  
-<example>
+#+BEGIN_SRC
  1、把selinux设置为disabled
  2、service iptables stop
  3、配置了/etc/ssh/sshd_config 去掉了一些#,但是不知道是否去掉的正确
@@ -474,7 +474,7 @@ http://forum.ubuntu.org.cn/viewtopic.php?f=54&t=121428&start=0
 
 提示OK 
 
-</example>
+#+END_SRC
 
 
 * Redhat ftp
@@ -592,7 +592,7 @@ request subnet-mask, broadcast-address, time-offset, routers,
 domain-name, domain-name-servers, host-name,
 
 netbios-name-servers, netbios-scope;
-</#+BEGIN_SRC >
+#+END_SRC
 编辑/etc/resolv.conf，
 
 在第一行添加        nameserver 127.0.0.1
@@ -714,7 +714,7 @@ boot
 2.6.30-020630rc7-generic 
 
 2.6.22-14
-</#+BEGIN_SRC >
+#+END_SRC
 
 * 密码和加密密钥
 http://ubuntuabc.com/123/?p=27
@@ -931,7 +931,7 @@ use ctrl+alt+enter to toggle full screen.
 
 <#+BEGIN_SRC 
 https://reciteword.svn.sourceforge.net/svnroot/reciteword/trunk
-reciteword</#+BEGIN_SRC >
+reciteword#+END_SRC
 
 See install.sh for detail.
 
@@ -962,14 +962,14 @@ dpkg --get-selections|grep linux ＃列出当前内核。带image的则是已经
 sudo ./configure
 sudo make
 sudo make install
-</#+BEGIN_SRC >
+#+END_SRC
 
 这个是通常的软件编译安装步骤，这样做有不好的地方就是一旦编译安装失败，文件四零八落的很难收拾，但是通过
 <#+BEGIN_SRC >
 sudo ./configure
 sudo make
 sudo checkinstall
-</#+BEGIN_SRC >
+#+END_SRC
 这样生成一个包，再安装时如果失败了也可以通过新立德来卸载它。
 
 
@@ -1281,7 +1281,7 @@ http://grigio.org/textmate_gedit_few_steps
 
 *  Mplayer
 
-<example>
+#+BEGIN_SRC
 
 本文所要探讨的，除却一般的使用方法之外，更包括一些鲜为人知的提示和诀窍。相信在阅读此文后，你的多媒体播放体验将会增色不少。
 
@@ -1477,7 +1477,7 @@ mplayer -aspect 16:9 <somefile>
 srate=48000
 ao="pcm:file=dumpedaudio.wav"
 
-</example>
+#+END_SRC
 
 *  Network Interfaces
 
@@ -1783,7 +1783,7 @@ $bind -v
 
 <#+BEGIN_SRC >
 gconftool-2 --set /apps/metacity/general/button_layout --type string "menu:minimize,maximize,close"
-</#+BEGIN_SRC >
+#+END_SRC
 
 * sed常用命令整理
 <#+BEGIN_SRC >
@@ -1808,7 +1808,7 @@ sed 's/^/ /g' //每行前面增加一个空格
 sed 's/.\(.\)$/*\1/' //将倒数第二位换成*
 sed '/ABC/!s/1/*/g' //在不包含ABC的行里,将所有的1替换成*
 sed 's/1\|2\|3/*/g' //在GNU里将不管是1或2或者是3替换成*
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 * awesome
@@ -1872,7 +1872,7 @@ Mod4 + Shift + r
 重绘当前窗口
 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Linux网卡配置文件的含义
 
@@ -1922,7 +1922,7 @@ PEERDNS=yes
 DNS1=9.181.2.101
 DNS2=9.181.2.102
 DOMAIN=dswdev3
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 * Golden dict
@@ -2031,7 +2031,7 @@ gzip -dc  gcc.4.1.1.tar.Z | tar -xvf -
 
 gzip -dc  grep.2.5.1.tar.Z | tar -xvf -
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Remote run ssh 
 
@@ -2067,7 +2067,7 @@ sudo cp nxsetup /usr/lib/nx/nxsetup
 
 sudo /usr/lib/nx/nxsetup --install 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 
@@ -2122,13 +2122,13 @@ x-scheme-handler/ndl=notesplugin.desktop
 x-scheme-handler/eml=notesplugin.desktop
 x-scheme-handler/messages=notesplugin.desktop
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 sudo gedit /usr/share/applications/notesplugin.desktop
 
 <#+BEGIN_SRC >
 Exec='/opt/ibm/lotus/notes/notes' %U
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 * RSA
@@ -2166,7 +2166,7 @@ UUID=653cc2de-1549-4472-a8a8-beec519f8886 /               ext4    errors=remount
 UUID=fe5ba2a6-b9b1-4d55-8300-302e4096c07b none            swap    sw              0       0
 # windows 7
 UUID=4305604E4A5B9CB8 /media/win7               ntfs    errors=remount-ro,auto,exec,rw,user 0       0
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Fedaro
 
@@ -2187,7 +2187,7 @@ sudo yum install ibus.x86_64 ibus-gtk2.i686 filezilla.x86_64 emacs.x86_64
 sudo yum install xulrunner-compat.i386 rubygem-Platform.noarch ruby.x86_64
 
 sudo yum install mercurial.x86_6 emacs-mercurial-el.x86_64 aspell aspell-en
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** Flash
 
@@ -2316,14 +2316,14 @@ http://www.linuxidc.com/Linux/2012-06/62070.htm
 $ vi ~/.bash_profile 修改PATH为:
 PATH=/usr/local/texlive/2010/bin/i386-linux:$PATH:$HOME/bin
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 <#+BEGIN_SRC >
 
 [will@will willATibm]$ sudo rpm -i http://jnovy.fedorapeople.org/texlive/2012/packages.fc17/texlive-release.noarch.rpm
 [will@will willATibm]$ sudo yum install texlive
 
-</#+BEGIN_SRC >
+#+END_SRC
 3)下载中文库包
 
 Url：http://bj.soulinfo.com/~hugang/tex/tex2007/YueWang-zhfonts-final_1.01.tar.bz2
@@ -2356,7 +2356,7 @@ RequireValidShell no
 LDAPAttr uid mail
 LDAPGenerateHomedirPrefixNoUsername on
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 /etc/init.d/proftpd restart
 
@@ -2437,7 +2437,7 @@ eclipse.ini
  -Dorg.eclipse.swt.browser.XULRunnerPath=/opt/ibm/lotus/Sametime/rcp/eclipse/plugins/com.ibm.rcp.xulrunner.runtime.linux.x86_6.2.3.20110414-1652/xulrunner
 -Dorg.eclipse.swt.browser.DefaultType=webkit
 -Dorg.eclipse.swt.browser.UseWebKitGTK=true
-</#+BEGIN_SRC >
+#+END_SRC
 
 /usr/bin/xulrunner
 /usr/lib/xulrunner-compat
@@ -2468,7 +2468,7 @@ AddRemoveString PATH /home/will/willATibm/apache-maven-3.0.4/bin a
 export PATH
 export LD_LIBRARY_PATH=/usr/lib/xulrunner-compat
 export LD_PRELOAD=/usr/lib64/libfreetype.so.6 
-</#+BEGIN_SRC >
+#+END_SRC
 *  [[http://linuxtoy.org/archives/a-tour-through-open-source-creative-tools.html][开源创作工具一览]]
 
 来自 Red Hat 的 Máirín Duffy 在前段时间的峰会上快速演示了大量 Linux 平台上的众多创作工具。
@@ -2600,7 +2600,7 @@ $ tar xzf brise-0.13.tar.gz
 $ cd ibus-rime
 $ sudo ldconfig
 $ ./install.sh
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Apahce
 
@@ -2620,7 +2620,7 @@ http://www.geekconnection.org/remastersys/ubuntu.html
 
  http://blog.csdn.net/wearenoth/article/details/7489157
 
-<example>
+#+BEGIN_SRC
 切换程序 
 切换到下一个程序：Mod4 + j
 切换到上一个程序：Mod4 + k
@@ -2675,7 +2675,7 @@ minghe@minghe-Inspiron-1420:~$ xprop
 WM_CLASS(STRING) = "zim", "Zim"  
 
 
-</example>
+#+END_SRC
 
 
 * FDUP
@@ -2773,7 +2773,7 @@ apachectl start
 [root@bxv5v1053 html]# ln -s /home/eadftp/public/dsw_dev_tools/repositories/ .
 [root@bxv5v1053 html]# ls
 repositories
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** FTP 
 
@@ -2800,7 +2800,7 @@ RequireValidShell no
 LDAPAttr uid mail
 LDAPGenerateHomedirPrefixNoUsername on
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** [[https://pic.dhe.ibm.com/infocenter/cchelp/v7r1m0/index.jsp?topic=/com.ibm.rational.clearcase.cc_ms_install.doc/topics/c_packaging_intro_rsar.htm][IBM Packaging Utility]]
 
@@ -2896,10 +2896,10 @@ VNCSERVERARGS[2]=”-geometry 1600x900 -nolisten tcp -localhost”
  2. vncpasswd #  "pass4jazz"
  3. vncserver  -geometry 1600x900  -depth 24 &
  4. gedit ~/.vnc/xstartup 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 #twm 
 gnome-session &
-</#+BEGIN_SRC >
+#+END_SRC
 
 上面的设置适用于所有程序，下面就vnc来谈
 
@@ -2964,7 +2964,7 @@ kill -9 PID  （其中PID就写要杀死进程的具体进程号即可）
 
 
 * Setup Java  in Fedora 
-<example>
+#+BEGIN_SRC
 1.到oracle官网下载
 jdk-7u4-linux-x64.rpm
 以下在root权限下:
@@ -2987,5 +2987,5 @@ export PATH=$PATH:$JAVA_HOME/bin
 #java -version
 -------------------------若命令可以运行，且版本号正确，证明安装成功。
 
-</example>
+#+END_SRC
 

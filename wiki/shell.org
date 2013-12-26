@@ -50,18 +50,18 @@ kill -9  `ps -f -A | grep java | grep CVT-DSW-SQO2 | awk '{print $2}'`
 #+END_SRC
 * delete duplicate lines from a file and keep the order of the other lines from Command-Line-Fu
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 $ awk '!x[$0]++' FILE
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Create a zip file ignoring .svn files
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 zip -r foo.zip DIR -x "*/.svn/*"
 
 find . -not \( -name .svn -prune \) -type f | xargs zip XXXXX.zip
 
 tar -cvf wid7.tar  **/.classpath **/.project
-</#+BEGIN_SRC >
+#+END_SRC
 * count a specify word
 
 <#+BEGIN_SRC >
@@ -69,7 +69,7 @@ tar -cvf wid7.tar  **/.classpath **/.project
 '<hgtxt.txt tr -cs '[:alnum:]' '[\n*]'  | sort | uniq -c
 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * SED
 
@@ -86,7 +86,7 @@ http://www.ibm.com/developerworks/linux/library/l-sed3.html
 <tag id="1" attr2 = "val2"
         attr3 = "val3"
         attr4 = "val4"/>
-</#+BEGIN_SRC >
+#+END_SRC
 替换指定xml节点中的attr4属性名
 <#+BEGIN_SRC >
 
@@ -105,7 +105,7 @@ The local nurse Miss P.Neave was in attendance.
 * line count
 <#+BEGIN_SRC >
 find . -type f -iname "*.java" -exec cat {} \; | wc -l  
-</#+BEGIN_SRC >
+#+END_SRC
 
 * scp
 
@@ -119,22 +119,22 @@ find . -type f -iname "*.java" -exec cat {} \; | wc -l
 The sha-bang ( #!) [5] at the head of a script tells your system that this file is a set of commands to be fed to
 the command interpreter indicated.
 
-<code>
+#+BEGIN_SRC
 #!/bin/sh
 #!/bin/bash
 #!/usr/bin/perl
 #!/usr/bin/tcl
 #!/bin/sed -f
 #!/usr/awk -f
-</code>
+#+END_SRC
 
-<code>
+#+BEGIN_SRC
 Either:
 chmod 555 scriptname (gives everyone read/execute permission) [13]
 or
 chmod +rx scriptname (gives everyone read/execute permission)
 chmod u+rx scriptname (gives only the script owner read/execute permission)
-</code>
+#+END_SRC
 
 * tar
 
@@ -144,22 +144,22 @@ tar zxvf
 #find
 - 在某个目录下所有子目录中搜索某个名字文件
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 find /some/dir -iname "*.txt"
 find /some/dir -name "*.txt"
 find /some/dir -iregex "*.txt"
 find /some/dir -regex "*.txt"
-</#+BEGIN_SRC >
+#+END_SRC
 
     iname 表示不区分大小写， name 表示区分大小写。他们都是按照 shell 的文件名称扩展方式扩展 * 和 ? 的。 
     如果使用 regexp 那么表示用正则表达式来匹配文件名称。 iregexp 表示不区分大小写的正则表达式。
  在某个目录下所有子目录中搜索某个名字，某种类型的文件
 
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 find /some/dir -iname "*.txt" -type d
 find /some/dir -name "*.txt" -type f
-</#+BEGIN_SRC >
+#+END_SRC
 
     type 后面的字母表示文件类型。
     b |	block (buffered) special
@@ -175,21 +175,21 @@ find 命令和 bash 结合可以有很多用处
 
 例如，把所有以 txt 文件结尾的文件，改名成为以doc 结尾的文件，包括所有子目录。
 
-<code>
+#+BEGIN_SRC
 for i in $(find -iname "*.txt"); do
    mv "$i" "${i%%.txt}.doc" ;
 done
-</code>
+#+END_SRC
 
 例如，删除所有以 bak 为扩展名称的文件。
 
-<code>
+#+BEGIN_SRC
 find . -iname "*.bak" | xargs rm
-</code>
+#+END_SRC
 ** emacs wiki shell
 
 #emacswikishell
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 #! /bin/bash
 
 # Copyright (C) 2007, 2008  Alex Schroeder <alex@emacswiki.org>
@@ -236,7 +236,7 @@ rm $TMP
 # commit changes
 svn --quiet commit -m updates
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Delete a folder
 rm -rf <folder name> this also can delete soft link and will not delete the real folder which the softlink point to.    
@@ -281,7 +281,7 @@ rm -rf <folder name> this also can delete soft link and will not delete the real
   32.     echo '$var1 not eq $var2'
   33. fi
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Getopts
 
@@ -340,7 +340,7 @@ will@will-laptop:~$ echo ${mytest%%.*}
 ebiz1
 will@will-laptop:~$ 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Programing Style
 
@@ -401,7 +401,7 @@ var++ var--
 &= !=
                        comma                  links a sequence of operations
 ,
-</#+BEGIN_SRC >
+#+END_SRC
 
 * System Variables
 
@@ -410,7 +410,7 @@ $HOME
 
 $OSTYPE
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 * folder of the scirpt
@@ -424,7 +424,7 @@ $(cd "$(dirname "$0")"; pwd)
 
  <#+BEGIN_SRC >
   rd /S /Q folder
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 * 利用shell命令去除dos文件里的回车符——“^M”
@@ -434,7 +434,7 @@ tr -d '\r' < dos.txt > unix.txt
 
 * KSH
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
  ksh -o emacs : use emacs key 
 
 ./checklog4sap_remote  -s PROD  -w 0002155019 -d /tmp/quotelogtool/testprod -f 2011-07-20 -t 2011-07-20 -c PRICING -u changwei@cn.ibm.com -p lenovot60
@@ -453,7 +453,7 @@ fi
 
 #or use: if [ "$var" = "" ]; then ......
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 问题解决如下
 方法一
@@ -461,7 +461,7 @@ fi
 if [ $Count -gt 1 ]; then
 echo "$unix_time" | mutt -s "$unix_time" -a /a/a/Error.log l@1.com
 fi
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 更方便的字符串操作
@@ -497,10 +497,10 @@ find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/w3:body>/i\<!--  JSP file 
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/www:body>/i\<!--  JSP file :'{}' -->' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/w3:popupBody>/i\<!--  JSP file :'{}' -->' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/www:popupBody>/i\<!--  JSP file :'{}' -->' '{}' \;
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Find
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 find . -type f -name  "pom.xml" -execdir sed -i -e '/-SNAPSHOT/d' '{}' \;
 
 /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/Will Chang/Will Chang/g' '{}' \;
@@ -511,14 +511,14 @@ find . -type f -name  "pom.xml" -execdir sed -i -e '/-SNAPSHOT/d' '{}' \;
 
 /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/\<#+BEGIN_SRC ' '{}' \;
 
-</#+BEGIN_SRC >
+#+END_SRC
 #+BEGIN_SRC 
 
 #+END_SRC
 ** 在文件中查找内容
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 find . -name "*.el" -exec grep -H "org-defvaralias" {} \;
-</#+BEGIN_SRC >
+#+END_SRC
 
 * 批量改名字
   rename .old .new  *  

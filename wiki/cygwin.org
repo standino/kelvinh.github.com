@@ -24,7 +24,7 @@ for cygwin 1.5:
 
 <#+BEGIN_SRC >
 cygrunsrv -I cron -p /usr/sbin/cron -a -D
-</#+BEGIN_SRC >
+#+END_SRC
 
 for cygwin 1.7:
 
@@ -32,7 +32,7 @@ for cygwin 1.7:
 
 cygrunsrv --install cron --path=/usr/sbin/cron --desc='Cygwin cron service' --type=auto --neverexits -a '-n'
 
-</#+BEGIN_SRC >
+#+END_SRC
 followed by:
 
 net start cron
@@ -95,7 +95,7 @@ http://www.webalice.it/angelo.graziosi/cygwin/emacs/Emacs.html
 
 * Display Chinese words
 
-<example>
+#+BEGIN_SRC
 
    1. .bashrc
       # 中文环境
@@ -112,7 +112,7 @@ http://www.webalice.it/angelo.graziosi/cygwin/emacs/Emacs.html
       set input-meta on
       set output-meta on
 
-</example>
+#+END_SRC
 
 * Shell
 
@@ -126,7 +126,7 @@ ln -s "/cygdrive/c/Documents and Settings/Administrator/Desktop" ~/Desktop
 
 ln -s "/cygdrive/c/" /c
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 Terminal program: setting the terminal type to TTY
 If you are using Emacs in the clumsy Windows "Command" window (command.exe), you might benefit from setting the terminal type so
@@ -140,7 +140,7 @@ chdir \cygwin\bin
 
 set CYGWIN=tty binmode
 bash --login -i 
-</#+BEGIN_SRC >
+#+END_SRC
     - install rxvt from setup.exe
     - copy the cygwin.bat startup script in your Cygwin root directory, e.g. C:\cygwin\cygwin.bat to C:\cygwin\cygwin-rxvt.bat
     - Make the following change to cygwin-rxvt.bat
@@ -154,7 +154,7 @@ chdir C:\cygwin\bin
 set SHELL=/bin/bash
 rxvt --loginShell -sr
 #bash --login -i
-</#+BEGIN_SRC >
+#+END_SRC
 
 get from server : <#+BEGIN_SRC >
 
@@ -193,7 +193,7 @@ cygpath工具提供了在shell脚本中进行win32-posix路径格式转换的能
 You can use 
 <#+BEGIN_SRC >
  mount -m > mymount.bat
-</#+BEGIN_SRC >
+#+END_SRC
 to generate a mount bat
 
 Yesterday I wanted to reinstall cygwin on my notebook. I just copied the whole cygwin directory from desktop to notebook. When I run cygwin.bat, it always complained that "bash.exe: could not find /tmp, please create!".
@@ -209,7 +209,7 @@ f:\cygwin on / type system (binmode)
 e:\#+BEGIN_SRC )
 c: on /cygdrive/c type user (binmode,noumount)
 e: on /cygdrive/e type user (binmode,noumount)
-</#+BEGIN_SRC >
+#+END_SRC
 
 Run mounts.bat to setup mount points to solve the problem
 
@@ -219,7 +219,7 @@ mount -f -s -b "d:/cygwin/bin" "/usr/bin"
 mount -f -s -b "d:/cygwin/lib" "/usr/lib"
 mount -f -s -b "d:/cygwin" "/"
 mount -s -b --change-cygdrive-prefix "/cygdrive"
-</#+BEGIN_SRC >
+#+END_SRC
 Following are from cygwin's faq
 
 The mapping is stored in the current user's Cygwin mount table in the Windows registry so that the information will be retrieved next time the user logs in. Because it is sometimes desirable to have system-wide as well as user-specific mounts, there is also a system-wide mount table that all Cygwin users inherit. The system-wide table may only be modified by a user with the appropriate privileges (Administrator privileges in Windows NT).

@@ -42,7 +42,7 @@ lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索�
  - gtags-find-with-grep
  - gtags-find-symbol
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 (define-key xgtags-mode-map [(control .)] 'xgtags-find-tag-from-here)
 (define-key xgtags-mode-map [(control ,)] 'delete-other-windows)
 (define-key xgtags-mode-map [(meta .)] 'xgtags-find-symbol)
@@ -52,13 +52,13 @@ lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索�
 (define-key xgtags-mode-map (kbd "C-M-/") 'xgtags-find-tag)
 (define-key xgtags-mode-map (kbd "M-p") 'xgtags-pop-stack)
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** Ctags
  
  1. Install [[http://ctags.sourceforge.net/ctags.html][ctags]] from cygwin.
  2. Change the directory to c:/dsw
- 3. execute <code>etags --file-scope=no -R</code>
+ 3. execute #+BEGIN_SRCetags --file-scope=no -R#+END_SRC
  4. M-. [TAG] <RET>, select the tag file(c:/dsw/TAGS).The default tag is the identifier under the cursor.
  1.  M-*   Pop back to where you previously invoked "M-.".
  1.  C-u M-.  Find the next definition for the last tag.
@@ -251,9 +251,9 @@ http_proxy=http://127.0.0.1:8087 emacs -nw
    TAG search for "Sarah|Peter"
 
 
-Check box: <example>- [ ] </example>
+Check box: #+BEGIN_SRC- [ ] #+END_SRC
 
-create table: <code>|Name|Phone|Age <RET> |- <TAB>. </code>
+create table: #+BEGIN_SRC|Name|Phone|Age <RET> |- <TAB>. #+END_SRC
 org-shiftmetaup) and M-S-down (org-shift-metadown),
 
    | Action                        | Command                                 | Shortcut  | Alternative     |
@@ -382,7 +382,7 @@ http://www.20seven.org/journal/2008/11/emacs-dired-directory-management.html
 
 和文件一样打开目录或通过 C-x d 都可以进入目录的 Dired 缓冲中。这里是打开 Dired-x 之后默认的绑定。说明后面[]中的符号的意义：
 
-<example>
+#+BEGIN_SRC
 
 [p] 用前缀参数表示文件个数，从当前文件开始，正数向下、负数向上。
 
@@ -512,7 +512,7 @@ dired-jump              跳转到当前缓冲所在目录
 
 dired-jump-other-window 在另一个窗口中跳转到当前缓冲所在目录
 
-</example>
+#+END_SRC
 
 ** Abbrevs
 
@@ -556,9 +556,9 @@ Install muse highline
 
 Add the following code to ~/.emacs
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 (mapc 'load (directory-files "C:/standino/ideas/myscripts/emacs/conf" t ".+\\.el$"))
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** set Chinese input method
 
@@ -575,7 +575,7 @@ Alt+x set-input-method, then select
 : ;; (global-set-key [(control f3)] 'highlight-symbol-at-point)
 : ................... 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 *  Spell Check
 
@@ -599,7 +599,7 @@ Ispell.el, version 3.1 (December 1, 1998) and better, has the list reversing pro
 
 Add the following code to basic.el:
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
     (defvar my-flyspell-major-mode-list
      '(latex-mode
@@ -616,7 +616,7 @@ Add the following code to basic.el:
                           (not flyspell-mode))
                  (flyspell-mode))))
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 * Version Control
@@ -661,7 +661,7 @@ Add the following code to basic.el:
 
 **  Org File Title
 
-<example>
+#+BEGIN_SRC
 
 #+STARTUP: showall
 #+TAGS: OFFICE(o) COMPUTER(c) HOME(h) PROJECT(p) READING(r) DVD(d) 
@@ -673,7 +673,7 @@ Add the following code to basic.el:
 #+STARTUP: hidestars
 #+SEQ_TODO: TODO STARTED WAITING DONE -MAYBE
 
-</example>
+#+END_SRC
 
 [[http://orgmode.org/org.html][Org Mode Manual]]
 
@@ -850,7 +850,7 @@ S-TAB
 
 <code type="lisp">
 (setq w3m-coding-system ''euc-cn)
-</code>
+#+END_SRC
 
 * MetaPost
 
@@ -944,14 +944,14 @@ C-x r f r
     Save the state of all frames, including all their windows, in register r (frame-configuration-to-register).
 
 Keeping Numbers in Registers
-<code>
+#+BEGIN_SRC
 C-u number C-x r n r
     Store number into register r (number-to-register). 
 C-u number C-x r + r
     Increment the number in register r by number (increment-register). 
 C-x r g r
     Insert the number from register r into the buffer.
-</code>
+#+END_SRC
 
 * 使.emacs立即生效
 
@@ -1008,9 +1008,9 @@ http://learn.tsinghua.edu.cn:8080/2005211356/stdlib/Ibuffer.html
 ** Remote Access
 
 Quick-Start Tramp Configuration
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
     (setq tramp-default-method "ssh")
-</#+BEGIN_SRC >
+#+END_SRC
 C-x C-f /remotehost:filename  RET (or /method:user@remotehost:filename)
 
 C-x C-f /changwei@ltstbrdb001.sby.ibm.com:test.txt
@@ -1099,7 +1099,7 @@ M-q = reformat paragraph
 
 C-h i gnus
 
-</example>
+#+END_SRC
 
 ** DB2 SQL Template
 
@@ -1280,7 +1280,7 @@ this in a bit nicer way...
 
 * Dired 
 
-<example>
+#+BEGIN_SRC
 最普通的标记就是 d 为当前文件贴上删除标签，之后可以使用 x 来真正
 删除所有贴上删除标签的文件。
 
@@ -1342,7 +1342,7 @@ OLD-MARKCHAR NEW-MARKCHAR 来把 * 标记变换成其他标记，几乎任何字
 当然这要假设你原来没有设定其他的 * 标记，要不然你也可以再添加一个临时标
 记。总之操作和清晰也很方便，感觉像在汇编语言里面使用寄存器一样，大多数批
 量操作都是针对 * 标记的，所以对某个标记操作之前需要把他先转换为 * 标记
-</example>
+#+END_SRC
 
 * 4.8.2 Remember templates
 <exmaple>
@@ -1406,7 +1406,7 @@ If you would like to have the cursor in a specific position after the template h
 
 If you change you mind about which template to use, call org-remember in the remember buffer. You may then select a new template
 that will be filled with the previoous context information. 
-</example>
+#+END_SRC
 
 
 * [[http://jdee.sourceforge.net/][ JDEE]]
@@ -1541,7 +1541,7 @@ http://mwolson.org/static/doc/muse.html
 
 configuration files http://code.google.com/p/myemacsconf/source/browse/trunk/.emacs.d/site-lisp/muse/?r=7
 
-<example>
+#+BEGIN_SRC
 
  Marc F. Neininger wrote:
 
@@ -1562,25 +1562,25 @@ configuration files http://code.google.com/p/myemacsconf/source/browse/trunk/.em
  'h' does not mean here! That is a common misunderstanding. 'h' means here is possible. If it is not possible to place the figure here and 'h' is the only thing specified, then the placing algorithm will change 'h' to 'ht' (and give you the warning) and then try to place the figure at the top of a later page.
 
   But in most cases it is wrong to just specify [h], why? Because in LaTeX there certain settiong that control how a float can be placed. For example for a top float there needs to be a certain amount of space left on the page (for text). So lets assume your figure is placed using 'h' and it is rather large. Then it will not be placed on the current page, 'h' is transformed into 'ht' (effectively 't'), but the figure is too large for placing with 't' so everything is shifted to the end of your document/chapter taking every subsequent float with it. Therefore it is better to always simply specify [htbp] (perhaps adding a !), and then remove letters when needed.
-</example>
+#+END_SRC
 
 ** Write presentation 
 
 <#+BEGIN_SRC >
 
 ** [[http://pluskid.lifegoo.com/wiki/html/MuseSrctag.html][在  Muse  里使用源代码高亮]]
-<example>
+#+BEGIN_SRC
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 #include <stdio.h>
 
 int main()
 {
     printf("hello\n");
 }
-</#+BEGIN_SRC >
+#+END_SRC
 
-</example>
+#+END_SRC
 
 ** Create index
 
@@ -1596,18 +1596,18 @@ Muse 工程中随意浏览文档；一组发布策略，用来产生各种不同
 
 
 ** [[http://pluskid.lifegoo.com/wiki/html/MuseSrctag.html][在 Muse 里使用源代码高亮]]
-<example>
+#+BEGIN_SRC
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 #include <stdio.h>
 
 int main()
 {
     printf("hello\n");
 }
-</#+BEGIN_SRC >
+#+END_SRC
 
-</example>
+#+END_SRC
 
 ** 关于本文档
 
@@ -1622,7 +1622,7 @@ int main()
 要使用 Muse，添加包含 Muse 文件的目录到你的 =load-path= 变量中，它一般在
 你的 =.emacs= 文件中定义。然后，加载写作模式和你想要发布的文档风格。
 
-<example>
+#+BEGIN_SRC
 (add-to-list 'load-path "<path to Muse>")
 
 (require 'muse-mode)     ; load authoring mode
@@ -1631,7 +1631,7 @@ int main()
 (require 'muse-latex)
 (require 'muse-texinfo)
 (require 'muse-docbook)
-</example>
+#+END_SRC
 
 一旦 Muse 模式被加载，命令 =M-x muse-publish-this-file= 将发布一个输入
 文档为任意可用的风格。如果你想在一个 buffer 中启用 =muse-mode= ，那么
@@ -1643,7 +1643,7 @@ int main()
 为此， Muse 允许创建“项目”。下面是一个定义在你的 =.emacs= 文件
 中的项目范例。
 
-<example>
+#+BEGIN_SRC
 (require 'muse-project)
 
 (setq muse-project-alist
@@ -1651,7 +1651,7 @@ int main()
          ("~/Pages" :default "index")
          (:base "html" :path "~/public_html")
          (:base "pdf" :path "~/public_html/pdf"))))
-</example>
+#+END_SRC
 
 上面定义了一个名为“website”的项目，该项目所有的文件都位于目录 
 =~/Pages= 下，默认的访问页为 =index=。当该项目被发布时，每一页将会以 
@@ -1662,12 +1662,12 @@ HTML 格式输出到 =~/public_html= 目录中，并以 PDF 格式输出到 =~/p
 
 ** Set File Title
 
-<example>
+#+BEGIN_SRC
 #author John Wiegley
 #title The Emacs Muse
 
 <contents>
-</example>
+#+END_SRC
 
 ** 标记规则
 
@@ -1683,11 +1683,11 @@ HTML 格式输出到 =~/public_html= 目录中，并以 PDF 格式输出到 =~/p
 
 例如，本节的输入文本如下：
 
-<example>
+#+BEGIN_SRC
 在 Muse 中段落必须通过一个空行来隔开。
 
 例如，本节的输入文本如下：
-</example>
+#+END_SRC
 
 *** 段落居中和引用
 
@@ -1705,13 +1705,13 @@ HTML 格式输出到 =~/public_html= 目录中，并以 PDF 格式输出到 =~/p
 几个星号开始一个新的段落，后面跟一个空格和标题题目，来表示一
 个标题。然后另起一段输入这部分的正文。
 
-<example>
+#+BEGIN_SRC
 * First level
 
 ** Second level
 
 *** Third level
-</example>
+#+END_SRC
 
 *** 水平线
 
@@ -1722,21 +1722,21 @@ HTML 格式输出到 =~/public_html= 目录中，并以 PDF 格式输出到 =~/p
 
 上面分隔符由下面的输入产生：
 
-<example>
+#+BEGIN_SRC
 ----
-</example>
+#+END_SRC
 
 *** 强调文本
 
 使用某些特别地认可的字符包围文本以强调文本：
 
-<example>
+#+BEGIN_SRC
 *emphasis*
 **strong emphasis**
 ***very strong emphasis***
 _underlined_
 =verbatim and monospace=
-</example>
+#+END_SRC
 
 上面的列表生成：
 
@@ -1754,23 +1754,23 @@ _underlined_
 在你的文件底部放置脚注的注解来定义它。 =footnote-mode= 可以被用来非常
 方便的生成这种脚注。
 
-<example>
+#+BEGIN_SRC
  Footnotes:
  [1]  Footnotes are defined by the same number in brackets
       occurring at the beginning of a line.  Use footnote-mode's
       C-c ! a command, to very easily insert footnotes while
       typing.  Use C-x C-x to return to the point of insertion.
-</example>
+#+END_SRC
 
 *** 诗章
 
 诗要求空白字元被保留，但不采取等宽。为显示诗使用下面的标签，
 它让我们想起 email 引用的方式。
 
-<example>
+#+BEGIN_SRC
 > A line of Emacs verse;
 >   forgive its being so terse.
-</example>
+#+END_SRC
 
 上面的输入生成：
 
@@ -1779,16 +1779,16 @@ _underlined_
 
 你也可以使用 =<literal><verse></literal>= 标签，如果你喜欢：
 
-<example>
+#+BEGIN_SRC
 <verse>
 A line of Emacs verse;
   forgive its being so terse.
 </verse>
-</example>
+#+END_SRC
 
 *** 抄录段落
 
-=<literal><example></literal>= 标签用于示例，其中空白应该被保留，
+=<literal>#+BEGIN_SRC</literal>= 标签用于示例，其中空白应该被保留，
 等宽间距文本，且输出风格的任意特殊字符都被转义。
 
 还有一个 =<literal><literal></literal>= 标签，作用是使得所标记的
@@ -1801,7 +1801,7 @@ A line of Emacs verse;
 
 Muse 提供的列表种类如下：
 
-<example>
+#+BEGIN_SRC
   - bullet item one
   - bullet item two
 
@@ -1811,7 +1811,7 @@ Muse 提供的列表种类如下：
 Term1 :: A definition one
 
 Term2 :: A definition two
-</example>
+#+END_SRC
 
 它们生成一个符号列表：
 
@@ -1837,14 +1837,14 @@ Term2 ::
 
 Muse 仅仅支持很简单的表格，语法如下：
 
-<example>
+#+BEGIN_SRC
   Double bars  || Separate header fields
 
   Single bars   | Separate body fields
   Here are more | body fields
 
   Triple bars ||| Separate footer fields
-</example>
+#+END_SRC
 
 上面的输入生成：
 
@@ -1885,10 +1885,10 @@ Triple bars ||| Separate footer fields
 描述文本可以被指定并在支持链接描述的输出风格中显示，而不是显示链接
 文本。语法如下：
 
-<example>
+#+BEGIN_SRC
 [[link target][link description]]
 [[link target without description]]
-</example>
+#+END_SRC
 
 因此，Muse 可以在 [[http://download.gna.org/muse-el/][这里]] 下载，或者在
 [[http://download.gna.org/muse-el/]].
@@ -1900,9 +1900,9 @@ Triple bars ||| Separate footer fields
 标签你可以生成任意你想要的输出。如果 =<literal><lisp></literal>= 标签出现
 在文档正文内部，那么插入的输出将会被标记出。
 
-<example>
+#+BEGIN_SRC
 <lisp>(concat "This form gets " "inserted")</lisp>
-</example>
+#+END_SRC
 
 上面的输入生成：This form gets inserted.
 
@@ -1915,9 +1915,9 @@ Muse 也使得创建一个新的风格或者从一个存在的风格中派生新
 
 使用 =muse-derive-style= 从一个存在的风格生成一个新的风格：
 
-<example>
+#+BEGIN_SRC
 (muse-derive-style DERIVED-NAME BASE-NAME STYLE-PARAMETERS)
-</example>
+#+END_SRC
 
 DERIVED-NAME 是定义新风格的一个字符串，比如“my-html”。BASE-NAME 
 必须是一个存在的风格，比如“html”（如果你加载了 =muse-html= ）。 
@@ -2054,7 +2054,7 @@ There are four ways of associating a date or time, or range of dates and times, 
       Associating an inactive date or time with an item. This is just like the previous type, except that inactively dated items never appear in your agenda view. They are used for historical tracking only, like the dates that are stored when changing the state of a todo item.
 
 
-<example>
+#+BEGIN_SRC
 
 I really like this discussion started by Alex.
 It has triggered for me a lot of
@@ -2263,7 +2263,7 @@ tag instead of a todo keyword.
    TAG search for "Sarah|Peter"
 
 etc etc etc.
-</example>
+#+END_SRC
 
 ** Reporting time
 
@@ -2299,14 +2299,14 @@ C-c C-x C-e
 
 * Emacs config on Windows
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 (setenv "HOME" "E:/cygwin/home/Will/")
 (setenv "PATH" "E:/cygwin/home/Will/")
 ;;set the default file path
 (setq default-directory "~/")
 (add-to-list 'load-path "~/emacs/site-lisp")
 (load-file "E:/cygwin/home/Will/ideas/emacs/.emacs")
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Publish to ODP 
 
@@ -2391,7 +2391,7 @@ http://emacs-evernote-mode.googlecode.com/svn/branches/0_41/doc/readme_en.html
 
 Emacs所有跟矩形操作的命令都是以 C-x r 为前缀，其区域选择与普通的区域选择的快捷键一样： C-space ，只是在执行矩形操作时，Emacs会将选择的起点和终点作为对角，其中的内容作为矩形区域。常用快捷键：
 
-<example>
+#+BEGIN_SRC
 
 C-space	set-mark-command	标记矩形区块的一个角（光标标记其相对的角）。
 C-x r t	string-rectangle	用字符串填充矩形区域
@@ -2401,7 +2401,7 @@ C-x r c	clear-rectangle	清除当前的矩形区块，使用空白字符替换�
 C-x r o	open-rectangle	打开当前的矩形区块，使用空白字符填充整个区域，并将该矩形区块的所有文本移动到右边。
 C-x r y	yank-rectangle	在光标处，粘贴上一次剪切的矩形区块的内容，将所有的现有文本移动到右边。
 
-</example>
+#+END_SRC
 
 
  
@@ -2560,7 +2560,7 @@ case $cmd in
 
 esac
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 点击桌面的 cygwin 快捷方式启动 cygwin 控制台。
 在控制台中输入:
@@ -2570,7 +2570,7 @@ chmod +x bin/myapt #---赋予 myapt 执行权限。
 myapt init         #---初始化
 myapt emacs        #---安装emacs
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 现在，emacs在windows下的基本安装就完成了。 我们可以在 cygwin 控制台中输入命令 starx 启动 xterm, 然后在 xterm 中输入命令 emacs-X11
 来启动 emacs 程序。
@@ -2598,7 +2598,7 @@ case $cmd in
 
 esac
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 打开Terminal 输入：
 
@@ -2607,7 +2607,7 @@ esac
 chmod +x bin/myapt #---赋予myapt执行权限。
 myapt emacs        #---安装emacs
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 现在，emacs 在 ubuntu 下的基本安装就完成了。
 
@@ -2655,7 +2655,7 @@ SQL 查询等功能都会与 sql-mod 关联。在一个 buffer 中可以使用�
   C-p     : Pre line
   C-f     : forward one character
   C-b     : backward one character
-</#+BEGIN_SRC >
+#+END_SRC
 
 * 如何获得帮助信息
 
@@ -2681,7 +2681,7 @@ and shows a list of functions, variables, and other items whose	documentation ma
   
  - r  info-emacs-manual.  Display the Emacs manual in Info mode.
   
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Lisp 语言介绍
 
@@ -2719,7 +2719,7 @@ http://tromey.com/elpa/install.html。
     (eval-region (point) (point-max))
     (kill-buffer (current-buffer))))
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 * 在Emacs中编程
@@ -2793,7 +2793,7 @@ publishing styles for generating different kinds of output.
     (error nil))
 )
 
-</#+BEGIN_SRC >
+#+END_SRC
 
  - Run SQLunit Test
 
@@ -2803,6 +2803,6 @@ publishing styles for generating different kinds of output.
      (interactive )
      (shell-command 
       (format "ant -f %s../build.xml  -Dscript.name=%s &" (buffer-dir)  (buffer-name))))
-</#+BEGIN_SRC >
+#+END_SRC
 
  - Developerworks article publishing 

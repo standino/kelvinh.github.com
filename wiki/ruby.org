@@ -32,7 +32,7 @@ include Math
 print("sin(3.14)=",sin(3.14),"\n")
 print("cos(3.14)=",cos(3.14),"\n")
 print("sqrt(10000)=",sqrt(10000),"\n")
-</#+BEGIN_SRC >
+#+END_SRC
 
 ----
  -  [[http://express.engineyard.com/][Could computing with ruby and erlang]]
@@ -47,7 +47,7 @@ print("sqrt(10000)=",sqrt(10000),"\n")
 
 http://github.com/pvande/differ
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 will@will-laptop:~/Desktop/diff$ irb -rubygems
 irb(main):001:0> irb -rubygems
 NameError: undefined local variable or method `rubygems' for main:Object
@@ -80,7 +80,7 @@ irb(main):014:0> @diff = (@current - @original)
 => #<Differ::Diff:0xb74f3014 @raw=[{"Epic lolcat fail!" >> "Epic wolfman fail!"}]>
 irb(main):015:0> 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Execute cmd and get the output
 
@@ -93,11 +93,11 @@ IO.popen("help") {|d| d.readlines.each {|x|puts x} }
 http://rubygems.org/read/chapter/5
 http://www.hhtong.com/blog1/articles/2007/06/10/ruby-gpgen-20070603
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 gem install gem_plugin 
 gpgen easywebtest
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 RubyGems是一个库和程序的标准化打包以及安装框架，它使定位、安装、升级和卸载Ruby包变的很容易。rails以及它的大部分插件都是以gem形式发布的。本文描述一个自己创建ruby Gems的过程。
     假设你今天用ruby实现了一个stack结构，你想发布到网上让别人可以共享，OK，工作开始了。首先你的程序当然要先写好了：
@@ -261,7 +261,7 @@ Ruby代码
   19.   s.extra_rdoc_files=["README"]  
   20. end    
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 #stack.spec
 require 'rubygems'
 SPEC=Gem::Specification.new do |s|
@@ -282,7 +282,7 @@ SPEC=Gem::Specification.new do |s|
   s.has_rdoc=false
   s.extra_rdoc_files=["README"]
 end  
-</#+BEGIN_SRC >
+#+END_SRC
 
 很明显，规范文件也是ruby程序（也可以用YAML描述），设置了这个gem的主要关键信息：名称、作者信息、平台,需要注意的就是files 数组过滤掉了cvs和rdoc文件，require_path和auto_require让你指定了require_gem装入gem时会被添加到$ LOAS_PATH（ruby查找库的路径）中的目录（也就是我们源代码存放的lib），auto_require指定了装载的文件名，我们没有 rdoc，所有设置has_rdoc为false，附带文档就是README。
 
@@ -333,7 +333,7 @@ http://snippets.dzone.com/tag/webrick
  <#+BEGIN_SRC >
  gem install actionmailer
  gem install mime-types
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Ruby dummy mail server
 
@@ -343,7 +343,7 @@ http://snippets.dzone.com/tag/webrick
 cd ~/.gem/ruby/1.8/bin
   ./mocksmtpd  init ~/testmail
   sudo ./mocksmtpd -f ~/testmail/mocksmtpd.conf 
-</#+BEGIN_SRC >
+#+END_SRC
 
 send mail to test@changweilaptop.dyn.webahead.ibm.com
 
@@ -456,7 +456,7 @@ http://www.javaeye.com/topic/414412
 
 <#+BEGIN_SRC >
 match, text, number = * "Something 981".match(/([A-z]*) ([0-9]*)/)  
-</#+BEGIN_SRC >
+#+END_SRC
 
 hash作参数： 
 
@@ -471,7 +471,7 @@ end
 m :arg2 =>"Hi", :arg1 = > "hooopo"  
  #Hihooopo  
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * JRuby
 
@@ -488,7 +488,7 @@ $ . /home/db2inst1/db2profile
 $ export IBM_DB_DIR=/opt/ibm/db2/V9.5
 $ export IBM_DB_LIB=/opt/ibm/db2/V9.5/lib32
 $ sudo gem install ibm_db
-</#+BEGIN_SRC >
+#+END_SRC
 * GUI
 
 http://shoooes.net/
@@ -528,12 +528,12 @@ end
 
 Mailer.deliver_message('some title', 'the body message') 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 * passing parameter to ruby main
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 if ARGV.size != 1
   puts "Usage: gencr time  15:00 or \"3/4 15:00\""
   exit
@@ -541,18 +541,18 @@ end
 
 
 copyfilesbefore ARGV[0]
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Time
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
     Time.local(2008, 3, 5, 11, 20, 00)
     # Suppose it is "Thu Nov 29 14:33:20 GMT 2001" now and
     # your timezone is GMT:
     Time.parse("16:30")     #=> Thu Nov 29 16:30:00 GMT 2001
     Time.parse("7/23")      #=> Mon Jul 23 00:00:00 GMT 2001
     Time.parse("Aug 31")    #=> Fri Aug 31 00:00:00 GMT 2001
-</#+BEGIN_SRC >
+#+END_SRC
 
 * audio file
 
@@ -586,7 +586,7 @@ http://code.google.com/p/tg4rb/
 <#+BEGIN_SRC >
 require 'rubygems'
 require 'firewatir' 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 You need install firefox plugin too.
@@ -602,161 +602,161 @@ http://wiki.openqa.org/display/WTR/Tutorial
 
 Load the Watir library
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 require 'watir'
-</#+BEGIN_SRC >
+#+END_SRC
 
 Open a browser (default: Internet Explorer)
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser = Watir::Browser.new
-</#+BEGIN_SRC >
+#+END_SRC
 
 Open Browser at the specified URL
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser = Watir::Browser.start("http://google.com")
-</#+BEGIN_SRC >
+#+END_SRC
 
 Go to a specified URL
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.goto("http://amazon.com")
-</#+BEGIN_SRC >
+#+END_SRC
 
 Close the browser
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.close
-</#+BEGIN_SRC >
+#+END_SRC
 	
 *** Browser options (IE only)
 
 Speed up execution
 (or use the "-b" command line switch)
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.speed = :fast
-</#+BEGIN_SRC >
+#+END_SRC
 
 Maximize browser window
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.maximize
-</#+BEGIN_SRC >
+#+END_SRC
 
 Pop browser window to front
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.bring_to_front
-</#+BEGIN_SRC >
+#+END_SRC
 
 *** Access an Element
 
 Text box or text area
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 t = browser.text_field(:name, "username")
-</#+BEGIN_SRC >
+#+END_SRC
 Button
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 b = browser.button(:value, "Click Here")
-</#+BEGIN_SRC >
+#+END_SRC
 Drop down list
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 d = browser.select_list(:name, "month")
-</#+BEGIN_SRC >
+#+END_SRC
 Check box
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 c = browser.checkbox(:name, "enabled")
-</#+BEGIN_SRC >
+#+END_SRC
 Radio button
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 r = browser.radio(:name, "payment type")
-</#+BEGIN_SRC >
+#+END_SRC
 Form
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 f = browser.form(:name, "address")
 f = browser.form(:action, "submit")
-</#+BEGIN_SRC >
+#+END_SRC
 Link
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 l = browser.link(:url, "http://google.com")
 l = browser.link(:href, "http://google.com")
-</#+BEGIN_SRC >
+#+END_SRC
 Table cell in a table (2nd row, 1st column)
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 td = browser.table(:name, 'recent_records')[2][1]
-</#+BEGIN_SRC >
+#+END_SRC
 	
 *** Manipulate the Element
 
 Click a button or link
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 b.click
 l.click
-</#+BEGIN_SRC >
+#+END_SRC
 Enter text in a text box
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 t.set("mickey mouse")
-</#+BEGIN_SRC >
+#+END_SRC
 Enter multiple lines in a multi-line text box
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 t.set("line 1\nline2")
-</#+BEGIN_SRC >
+#+END_SRC
 Set radio button or check box
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 c.set
 r.set
-</#+BEGIN_SRC >
+#+END_SRC
 Clear an element
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 t.clear
 c.clear
 r.clear
-</#+BEGIN_SRC >
+#+END_SRC
 Select an option in a drop down list
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 d.select "cash"
 d.set "cash"
-</#+BEGIN_SRC >
+#+END_SRC
 Clear a drop down list
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 d.clearSelection
-</#+BEGIN_SRC >
+#+END_SRC
 Submit a form
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 f.submit
-</#+BEGIN_SRC >
+#+END_SRC
 Flash any element (useful from the watir-console)
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 e.flash
-</#+BEGIN_SRC >
+#+END_SRC
 
 *** Check the Contents
 
 Return the html of the page or any element
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.html
 e.html
-</#+BEGIN_SRC >
+#+END_SRC
 Return the text of the page or any element
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.text
 e.text
-</#+BEGIN_SRC >
+#+END_SRC
 Return the title of the document
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.title
-</#+BEGIN_SRC >
+#+END_SRC
 	
 
 Get text from status bar.
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.status
 => "Done"
-</#+BEGIN_SRC >
+#+END_SRC
 Return true if the specified text appears on the page
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.text.include? 'llama'
-</#+BEGIN_SRC >
+#+END_SRC
 Return the contents of a table as an array
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 browser.table(:id, 'recent_records').to_a
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** Firefox
 
@@ -846,6 +846,6 @@ Started
 Finished in 0.001036 seconds.
 1 tests, 2 assertions, 0 failures, 0 errors, 0 skips
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 

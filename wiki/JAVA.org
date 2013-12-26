@@ -18,7 +18,7 @@
 <#+BEGIN_SRC >
 set CXF_HOME=D:\资料文件-limpo\apache-cxf-2.2.7\apache-cxf-2.2.7
 set JAVA_HOME=C:\Program Files\Java\jdk1.6.0_01
-</#+BEGIN_SRC >
+#+END_SRC
   也就是设置你的cxf地址和jdk地址，除了以上两个，你还需要在jdk安装目录下的jre/lib下新建endorsed目录，再把jaxb-api-2.1.jar拷贝到其中，因为cxf在jdk1.6下运行，需要这个包。
 2）、接着，用cmd命令，进到cxf下的bin目录，例：D:\cxf\apache-cxf-2.3.1\bin 。然后再输入：
 <#+BEGIN_SRC >
@@ -27,7 +27,7 @@ set JAVA_HOME=C:\Program Files\Java\jdk1.6.0_01
 -d后的d:/指的是文件生成的本地路径。
 最后的uri指的是wsdl的访问地址。
 2、客户端配置：
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jaxws="http://cxf.apache.org/jaxws"
@@ -46,19 +46,19 @@ address="${webservice.address.category}"
 serviceClass="com.jd.emall.rpc.server.category.CategoryWebService">
 </jaxws:client>
 </beans>   
-</#+BEGIN_SRC >
+#+END_SRC
 properties文件加入以下配置： 
 <#+BEGIN_SRC >
 #商品信息外部接口地址
 webservice.address.ware=http://admin.ebook.360buy.net/services/services/ebookQueryWs
 #商品分类外部接口地址
 webservice.address.category=http://10.10.224.38:8080/product-bss-web/services/categoryWebService
- </#+BEGIN_SRC >
+ #+END_SRC
 3、可能遇到的问题：
 1）、生成的文件中可能由于java6与 cxf 版本问题报Service类的几个构造方法未定义，解决方法是: 
 <#+BEGIN_SRC >
 D:\cxf>wsdl2java -p com.naver.usalife.ws.client -frontend jaxws21  -client  http://localhost:8080/ws/helloworld?wsdl
-</#+BEGIN_SRC >
+#+END_SRC
 
 请增加 -frontend jaxws21  
 2）、可能你在web中集成spring和cxf时也会遇到2个jax*版本不一致的问题
@@ -67,7 +67,7 @@ D:\cxf>wsdl2java -p com.naver.usalife.ws.client -frontend jaxws21  -client  http
 
 <#+BEGIN_SRC >
 wsdl2java -p  com.jd.pbs.ws.brandrelationinfo  -d d:/ http://service.vm.360buy.com/services/soap/xml/brandrelationinfo?wsdl
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Spring
 

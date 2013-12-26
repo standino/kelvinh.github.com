@@ -42,14 +42,14 @@ muse 接口改变，使用一些配置不能用（当然，自己有能力研究
 windows 上安装了一般的 unix 开发环境，比如 msys 或 cygwin，还是推荐用
 make 来安装。可以根据自己的情况修改
 Makefile.defs[1] 文件中相关参数，比较重要的安装目录参数，比如
-PREFIX，ELISPDIR。修改完后运行 <code>make</code> 和 <code>make
-install</code> 两个命令。
+PREFIX，ELISPDIR。修改完后运行 #+BEGIN_SRCmake#+END_SRC 和 #+BEGIN_SRCmake
+install#+END_SRC 两个命令。
 
 * 基本配置
 
 Muse 文档中说在 .emacs 加上这样的基本配置：
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
 (add-to-list 'load-path "<path to Muse>")
 
@@ -60,19 +60,19 @@ Muse 文档中说在 .emacs 加上这样的基本配置：
 (require 'muse-docbook)
 (require 'muse-project)  ; publish files in projects
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 但是我推荐如果你不是每天都用 muse 写东西，还是在使用时再导入需要的库。
 方法是把你所有有关 muse 的配置写到一个 muse-init.el 文件中，放到 load-path
 下的某个目录中，然后在 .emacs 中写：
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 (add-to-list 'load-path "<path to Muse>")
 (add-to-list 'auto-mode-alist '("\\.muse$" . muse-mode))
 ;; Tricks to load feature when needed
 (defun muse-mode ()
   (require 'muse-init)
   (muse-mode-choose-mode))
-</#+BEGIN_SRC >
+#+END_SRC
 
 不要担心你这里定义了 muse-mode，因为当你导入 muse-init 时会同时导入
 muse-mode，这样 muse-mode 就重定义成真正起作用的函数了。
@@ -81,7 +81,7 @@ muse-mode，这样 muse-mode 就重定义成真正起作用的函数了。
 西，你可以选择用 M-x customize-group RET muse 一个一个设定，也可以直接
 写到 muse-init.el 文件中。我推荐的一些基本设置如下：
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 (setq
  ;; 使用 ido 来补全
  muse-completing-read-function 'ido-completing-read
@@ -91,16 +91,16 @@ muse-mode，这样 muse-mode 就重定义成真正起作用的函数了。
  muse-publish-date-format "%Y 年 %m 月 %d 日"
  ;; 单独的项目名字不会成为 wiki 链接
  muse-wiki-ignore-bare-project-names t)
-</#+BEGIN_SRC >
+#+END_SRC
 
 * 创建第一个 muse 文件
 
 使用上面的配置之后你就可以创建 muse 文件了。例如：
-<example>
+#+BEGIN_SRC
 #title hello, Muse
 
 This is my first file in Muse.
-</example>
+#+END_SRC
 
 写完后用 C-c C-t 发布所写的文档，会让你选择发布的格式和目录。如果没有
 什么意外，每种格式都是能用的[2]。你可以尝试各种标记方法，这里我就不罗
@@ -124,7 +124,7 @@ This is my first file in Muse.
 现。
 
 这里列一些我的项目设置：
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 (setq muse-project-alist
       `(("Emacs"
          ("~/Muse/Emacs" :default "index"
@@ -136,7 +136,7 @@ This is my first file in Muse.
          (:base "html" :path "~/public_html/elispintro")
          (:base "latexbook" :path "~/Muse/latex/elispintro"
                 :exclude ,(regexp-opt '("index" "RecentChanges" "WikiIndex"))))))
-</#+BEGIN_SRC >
+#+END_SRC
 
 * 一些使用经验
 
@@ -148,9 +148,9 @@ This is my first file in Muse.
 
 我写了一个 ywb-muse-relative-path 函数用于把发布文件所在的目录转换成与
 发布根目录的相对路径。这样在你的头文件中可以用：
-<example>
+#+BEGIN_SRC
 <lisp>(ywb-muse-relative-path "css/style.css")</lisp>
-</example>
+#+END_SRC
 
 来引用在发布根目录下的 css/style.css 文件。这样发布的 html 文件中，根
 目录下 index.html 这个链接为 "./css/style.css"，而在 emacs/index.html
@@ -163,10 +163,10 @@ This is my first file in Muse.
 完成。在发布的源文件 examples 目录里有一个 publish-project 命令。没有
 找到没有关系，就这几行：
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 #! /bin/bash
 emacs -q -batch -l muse-init.el -f muse-project-batch-publish "$@"
-</#+BEGIN_SRC >
+#+END_SRC
 
 我稍微修改了一下 muse-project-batch-publish，可以用
 <literal>--all</literal>
@@ -174,22 +174,22 @@ emacs -q -batch -l muse-init.el -f muse-project-batch-publish "$@"
 
 你可以以下面的方式使用这个命令：
 
-<example>
+#+BEGIN_SRC
 publish-project [--force] [--all | ProjectName1 ProjectName2 ...]
-</example>
+#+END_SRC
 
 <literal>--force</literal> 参数不考虑已发布文件的修改时间与源文件的关系，强制发布全部页面。
 
 ** 如何使用不同的模板
 如果想让一个项目使用不同的模板文件，最简单的办法是重新定义一种发布格式。
 看上去好像很复杂，实际上非常简单：
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 (muse-derive-style "my-html" "html"
                    :header 'my-muse-html-header
                    :footer 'my-muse-html-footer
                    :style-sheet 'my-muse-html-style-sheet
                    :maintainer "Ye Wenbin")
-</#+BEGIN_SRC >
+#+END_SRC
 这里我定义一种新的发布格式 "my-html"，其中 my-muse-html-header 和
 my-muse-html-footer 同 muse-html-header 和 muse-html-footer 一样既可以
 是一个字符串，也可以是一个文件名。其它没有修改参数就和发布格式 html 完
@@ -213,18 +213,18 @@ muse 实现在 html 中高亮源代码。这个功能需要 htmlize 1.34 版的�
 能会遇到一个问题是这些代码中可能也会自己加上 shebang 行。我的解决办法是
 在使用 executable-set-magic 之前先检查当前 buffer 是否关联文件，比如：
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 (add-hook 'cperl-mode-hook
           (lambda ()
             (when buffer-file-name
               (executable-set-magic "perl" "-w" t t))))
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** 方便的插入标签
 如果你用 html-mode，应该用到一个按键 C-c C-t，作用是成对的插入 html 标
 签。在 muse-mode 也可以用这个命令：
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 (autoload 'sgml-tag "sgml-mode" "" t)
 (defvar muse-tag-alist
   '(("example")
@@ -239,7 +239,7 @@ muse 实现在 html 中高亮源代码。这个功能需要 htmlize 1.34 版的�
             (modify-syntax-entry ?< "(" muse-mode-syntax-table)
             (define-key muse-mode-map (kbd "C-c /") 'sgml-close-tag)
             (define-key muse-mode-map (kbd "C-c t") 'sgml-tag)))
-</#+BEGIN_SRC >
+#+END_SRC
 
 * 我写的一些扩展
 
@@ -258,7 +258,7 @@ muse 提供很方便修改 muse-mode 中高亮的接口。我写了一个函数�
 
 ** 在目录索引中显示标题
 
-在文件中使用 <code><lisp>(muse-index-as-string t t t)</lisp></code> 可
+在文件中使用 #+BEGIN_SRC<lisp>(muse-index-as-string t t t)</lisp>#+END_SRC 可
 以产生项目的索引。但是这样产生的链接文字是文件名，我觉得不是很有用，所
 以写了一个兼容的函数 ywb-muse-index-as-string，可以使链接文字为实际的标
 题。
@@ -267,9 +267,9 @@ muse 提供很方便修改 muse-mode 中高亮的接口。我写了一个函数�
 
 这个功能我觉得还是比较实用，但是 muse 没有实现，我自己写了一个，效果还
 好。用法与生成目录类似，在文件中加入：
-<example>
+#+BEGIN_SRC
 <lisp>(ywb-muse-generate-recentchanges)</lisp>
-</example>
+#+END_SRC
 
 但是需要注意的是这个文件中最好只有这一句，因为这个函数是会修改这个文件
 的。如果有其它文字，很有可能有影响。
@@ -297,7 +297,7 @@ We can change the value of muse-xml-header, muse-html-footer and
 muse-xml-markup-regexps
 to generate developworks xml file.
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
 (defcustom muse-xml-header
   "<?xml version=\"1.0\" encoding=\"<lisp>
@@ -384,8 +384,8 @@ For more on the structure of this list, see
     (footnote-end    . "</footnote>")
     (begin-underline . "<format type=\"underline\">")
     (end-underline   . "</format>")
-    (begin-literal   . "<code>")
-    (end-literal     . "</code>")
+    (begin-literal   . "#+BEGIN_SRC")
+    (end-literal     . "#+END_SRC")
     (begin-emph      . "<format type=\"emphasis\" level=\"1\">")
     (end-emph        . "</format>")
     (begin-more-emph . "<format type=\"emphasis\" level=\"2\">")
@@ -399,8 +399,8 @@ For more on the structure of this list, see
     (begin-last-stanza-line . "<line>")
     (end-last-stanza-line . "</line>")
     (end-verse       . "</verse>")
-    (begin-example   . "<example>")
-    (end-example     . "</example>")
+    (begin-example   . "#+BEGIN_SRC")
+    (end-example     . "#+END_SRC")
     (begin-center    . "<p><format type=\"center\">\n")
     (end-center      . "\n</format></p>")
     (begin-quote     . "<blockquote>\n")
@@ -443,7 +443,7 @@ For more on the structure of this list, see
 	</div>")
 ;;}}}
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 Footnotes: 
@@ -456,5 +456,5 @@ Makefile.defs.default 成 Makefile.defs，这样修改后者可以防止错误�
 码，将使用默认编码 gb2312，如果你使用 utf-8 保存文件的话，会因为文件编
 码内文件中指定的编码不一致而出错，可以通过设置变量
 muse-latexcjk-encoding-default
-为 <code>"{UTF8}{song}"</code> 来顺利产生 latex 文件或 pdf 文件。
+为 #+BEGIN_SRC"{UTF8}{song}"#+END_SRC 来顺利产生 latex 文件或 pdf 文件。
 

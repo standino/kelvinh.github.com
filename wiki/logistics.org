@@ -167,7 +167,7 @@ Here’s how to get rolling:
       Modify the Rails Initializer
 
       Add the following to your config/environment.rb.
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
       # Set DataMapper to use dm-appengine adapter
       require 'dm-core'
       DataMapper.setup(:default, "appengine://auto")
@@ -336,7 +336,7 @@ Jippiee, i found the solution and it is very elegant. If anybody have a similar 
 1.) Make sure to have enabled Spring transactions when ejb enabled in your andromda.xml:
 Code:
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 <property name="enableSpringTransactionsWhenEjbsEnabled">true</property>
 #+END_SRC
 
@@ -354,7 +354,7 @@ example:
 
 Code:
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 // outer method which is doing the whole import fo thowsands of data records
 protected NahImportStats handleImportAll(ImportParam params) throws Exception
     {
@@ -430,7 +430,7 @@ Apache's Velocity is the default Template Engine of AndroMDA, and for that we us
 The scripting object model
 
 Different from AndroMDA 2.x, AndroMDA 3.x no longer places any model elements in a template context. You define the names of elements to make available to the template in your cartridge's andromda-cartridge.xml, like so:
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 <template
 path="templates/MetafacadeLogic.vsl"
 outputPattern="$generatedFile"
@@ -1050,7 +1050,7 @@ is there to (still) allow to use default RAD source tree (however if you can aff
 
 If we 'fall' for the above we would probably want to use the resource folder in 'RAD' way (that source with the resource files together):
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
             <!--
                 customizing resources location so that only needed files are archived in jar files
             -->
@@ -1069,7 +1069,7 @@ Source and compiled classes are excluded so they don't get in the resulting .war
 
 
 For the current version of maven (2.0.7 at the time of writing) the webapp root dir should match the default one of maven (${basedir}/#+BEGIN_SRC :
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
@@ -1082,7 +1082,7 @@ For the current version of maven (2.0.7 at the time of writing) the webapp root 
 #+END_SRC
 Keep in mind it needs to be in 'sync' with <buildOutputDirectory>...</buildOutputDirectory> (or better yet - make it a property in order not to repeat yourself - DRY). And here we go:
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
             <!--
                 customizing classes folder for RAD to pick it classes for hot deployment of exploded archive up - doesn't work with the default one (target)
@@ -1121,7 +1121,7 @@ The EAR module.
 There is really nothing special about it except this little configuration:
 
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
         <build>
             <plugins>
                 <plugin>
@@ -1193,7 +1193,7 @@ Let's go through all the steps:
 
    1. Define selenium repository (or have your enterprise repository take care of that). We can define it either in our pom (see below) or let artifactory take care of that:
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
               <repositories>
                   <repository>
                       <id>openqa</id>
@@ -1213,7 +1213,7 @@ Let's go through all the steps:
 
    2. Define dependencies to be able to run selenium. This is also pretty straight forward:
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
                   <dependency>
                       <groupId>junit</groupId>
                       <artifactId>junit</artifactId>
@@ -1239,7 +1239,7 @@ Let's go through all the steps:
 
    3. Automatically start selenium server just before the integration-test phase. This is defined in build/plugins section:
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
                       <!-- Start the Selenium server -->
                       <plugin>
                           <groupId>org.codehaus.mojo</groupId>
@@ -1266,7 +1266,7 @@ Let's go through all the steps:
 
 
    4. Force Surefire plugin to run in integration-test phase and not in test phase. This belongs to build/plugins section as well:
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
                       <!--
                   Forcing test phase in integration-test phase
@@ -1298,7 +1298,7 @@ Let's go through all the steps:
 
    5. Prepare EAR for the deployment script. This is an interesting one... Because we don't have cargo plugin for WAS-6 that could seamlessly deploy the EAR to the server we need to prepare the EAR at a specific location so that 3rd party scripts could pickup the archive for deployment. This is how this can be done (also in the same build/plugins section):
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
                       <plugin>
                           <!--
                               This goal allows us to get the EAR from the repository for deployment and install it locally
@@ -1338,7 +1338,7 @@ Let's go through all the steps:
 
    6. Call websphere deployment scripts in pre-integration test phase to deploy the EAR we prepared above to our websphere server (this can be both the websphere test environment integrated with the IDE or a dedicated server). Because we can't use cargo plugin we have to do something else - in this case we can use deployment scripts from websphere to deploy our artifacts. We configure both deploy and undeploy operations here. This is done with the help of maven antrun plugin by calling our ant scripts (they'll follow later):
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
                       <!-- Maven Ant run plugin to run deploy the EAR automatically to WebSphere-->
                       <plugin>
@@ -1785,7 +1785,7 @@ search]]
 
  1. update the file /home/will/newlogistics/mda/#+BEGIN_SRC 
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
     <mapping>
         <from><![CDATA[<!-- cartridge-template merge-point -->]]></from>
         <to>
@@ -1824,7 +1824,7 @@ http://galaxy.andromda.org/forum/viewtopic.php?t=1204
 The andromda's default setting is for HsqlDB, so we need not install another database. We only need download the JBoss http://www.jboss.org
 Edit the Hsqldb configure file located at %JBoss_Home%\server\default\deploy\hsqldb-ds.xml
 uncomment:
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 <connection-url>jdbc:hsqldb:hsql://localhost:1701</connection-url>
 #+END_SRC
 comment :
@@ -1832,7 +1832,7 @@ comment :
 
 
 uncomment
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
  <mbean code="org.jboss.jdbc.HypersonicDatabase"
      name="jboss:service=Hypersonic">
      <attribute name="Port">1701</attribute>
@@ -1846,7 +1846,7 @@ uncomment
 
 
 and
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 <mbean code="org.jboss.jdbc.HypersonicDatabase"
      name="jboss:service=Hypersonic,database=localDB">
      <attribute name="Database">localDB</attribute>
@@ -1899,7 +1899,7 @@ $target.getDocumentation("     * ")
 *  Javascript
 
 * * delete cookie 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 <input type="submit" />
 
 <input type ="Button" name="clear" value="Clear Cookies" onclick="deleteAllCookies();"/>
@@ -1946,7 +1946,7 @@ function show_cookie(){
 
 http://docs.dojocampus.org/dojo/xhrPost?highlight=%28dojo\.xhrPost%29
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 function moreParamsToUrl(){
 	var params = {};
 	var moreParams = document.getElementById("moreparams");
@@ -2287,7 +2287,7 @@ Import the starter .uml model into Papyrus to create a papyrus 'diagram', follow
 
 3) Edit pom.xml in this directory to add the following content: 
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
 <repositories>
     <repository>

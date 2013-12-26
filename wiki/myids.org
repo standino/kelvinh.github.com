@@ -166,7 +166,7 @@ ALTER TABLE ${table_name}
     ADD     CONSTRAINT ${table_name}_PK
     PRIMARY KEY (${pk} )
 @
-</#+BEGIN_SRC >
+#+END_SRC
 
  - Create stored procedure 
 <#+BEGIN_SRC >
@@ -288,7 +288,7 @@ BEGIN NOT ATOMIC
 
 END
 @
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 现在我们开始编写代码。右键单击 SQL Scripts 文件夹，在弹出菜单中选择 New > SQL or Xquery Script。输入名称 USER_STORY，然后单击 Finish。
@@ -332,7 +332,7 @@ ALTER TABLE USER_STORY
     ADD     CONSTRAINT USER_STORY_PK
     PRIMARY KEY (ID )
 @
-</#+BEGIN_SRC >
+#+END_SRC
 
 编写完建表文件后，我们需要把它装载到数据库中。
 
@@ -386,7 +386,7 @@ DECLARE vMaxId              SMALLINT;
 ...
 
 SELECT MAX(ID)+1 INTO vMaxId FROM USER_STORY;
-</#+BEGIN_SRC >
+#+END_SRC
 
 原来，我们把 vMaxId 声明成 SMALLINT， 然而随着表 USER_STORY 中数据的增加，MAX(ID) 很快就超过了 SMALLINT 的最大值，这时我们再把
 MAX(ID) 赋值给 vMaxId，就会出现溢出的错误。看来 I_USER_SOTRY 中有一个 bug。我们应当把 vMaxId 声明成 INTEGER 而不是 SMALLINT。我们把修改后的代码重新部署

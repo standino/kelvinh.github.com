@@ -106,13 +106,13 @@ documentation matches that pattern.  See also the apropos command.
 ** Lisp
 
 
-<example>
+#+BEGIN_SRC
 01  (defun my-switch-buffer ()
 02    "Like switch-buffer but in the opposite direction"
 03    (interactive "")
 04    (other-window -1)
 05  )
-</example>
+#+END_SRC
 
 
  Test || table

@@ -74,7 +74,7 @@ Usage
           o removed and modified big files. 
     * 'hg bupdate' - to fetch files from versions directory as recorded in
           o '.bigfiles', and get a list of necessary files missing in the version directory. 
-</#+BEGIN_SRC >
+#+END_SRC
 Configuration
 
 Configure your .hgrc to enable the extension by adding following lines:
@@ -84,7 +84,7 @@ bigfiles = path/to/bigfiles.py
 
 [bigfiles]
 repo = path/to/versions/dir 
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** How to manage my files with hg
 
@@ -128,7 +128,7 @@ $ cd trunk
   # Pull all history from SVN, creating a new hg changeset for each SVN rev
 $ hgpullsvn
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 	
@@ -151,7 +151,7 @@ conf/  dav/  db/  format  hooks/  locks/  README.txt
                Makefile
                ¡­
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * 2 Import projects
 
@@ -185,7 +185,7 @@ a high level"
 will@will-laptop:~/ideas/newlogistics$ svn mv https://newlogistics.googlecode.com/svn/trunk/logistics  https://newlogistics.googlecode.com/svn/branches/log_0_1 -m "bakup old code"
 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * Export repos
 
@@ -202,7 +202,7 @@ svn log -v
 
 <#+BEGIN_SRC >
 svn cat --revision 2 rules.txt 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * EXTERNAL
 
@@ -226,7 +226,7 @@ update .bahrc
 
 export EDITOR="emacs-nox.exe -q"
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 
@@ -234,7 +234,7 @@ export EDITOR="emacs-nox.exe -q"
 
 * svn export — Export a clean directory tree.
 
-<example>
+#+BEGIN_SRC
 Synopsis
 
 svn export [-r REV] URL [PATH]
@@ -280,7 +280,7 @@ A  my-export/test
 A  my-export/quiz
 …
 Exported revision 15.
-</example>
+#+END_SRC
 
 
 * Cygwin环境下使用Subversion和SSH (Not verified)
@@ -330,12 +330,12 @@ svn co svn+ssh://servername/project
 
 * SVN Layout
 
-<example>
+#+BEGIN_SRC
 www.standino.com/
                 mp3
                 book
                 software/trunk
-</example>
+#+END_SRC
 
 * HG
 
@@ -440,7 +440,7 @@ default-push = ssh://will@9.123.157.55//home/will/ideas/
 [ui]
 username=will
 
-</#+BEGIN_SRC >
+#+END_SRC
 这样你就可用hg push 向服务器提交code了。这时服务器会问你passward,这个password就是用户hgrepo的password.
 
 Good Luck.
@@ -498,7 +498,7 @@ http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-na
   120  hg update default
   121  hg branches
   126  hg merge  '多维度设置采购计划控制参数'
-</#+BEGIN_SRC >
+#+END_SRC
 
 In your specific example I think you could get a list of of just d and e using:
 

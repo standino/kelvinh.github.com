@@ -115,7 +115,7 @@ CREATE TABLE ${table.getSchema()}.${table.getName()}
     INDEX IN ${table.getSchema()}_INDX_01
 @
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 *   [[http://www.andromda.org/][Andromda ]]
 
@@ -229,7 +229,7 @@ struts
 
 Would you like to be able to expose your services as web services? [yes, no]:
 no
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** Project Layout 
 <#+BEGIN_SRC >
@@ -245,7 +245,7 @@ timetracker
      |
      +-- app
     
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 
@@ -285,7 +285,7 @@ SQL                                         make
                                rails validation
      JMock expectations
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** Internal and External DSLs.
 
@@ -325,7 +325,7 @@ itself a high level language, such as Java or C.
 <#+BEGIN_SRC >
 java: int c = Math.abs(-166);
 ruby: c = -166.abs
-</#+BEGIN_SRC >
+#+END_SRC
 
  - Code Block
 <#+BEGIN_SRC >
@@ -339,7 +339,7 @@ out:
  In the block
  In the block
 
-</#+BEGIN_SRC >
+#+END_SRC
  - [[http://www.innovationontherun.com/why-rubys-mixins-gives-rails-an-advantage-over-java-frameworks/][Mixin]]
 
 <#+BEGIN_SRC >
@@ -358,7 +358,7 @@ end
 class Foo < BaseClass
   include BarModule
 end
-</#+BEGIN_SRC >
+#+END_SRC
 f = Foo.new | f = Foo.send(:new)
 f.class_method | f.send(:class_method)
 f.hello_world |  f.send(:hello_world)
@@ -366,13 +366,13 @@ f.hello_world |  f.send(:hello_world)
 String.send(:include, BarModule)
 s = "Arbitrary String"
 s.hello_world
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 
 ** DSL in Ruby
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 class QuoteDSLBuilder
 
 def self.load( dsl)
@@ -392,10 +392,10 @@ def add_parts(partNum) end
 def change_quantity(partNum, quantity) end
 def recalculate_quote end
 end#class QuoteDSLBuilder
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** DSL in Ruby
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 create_quote 'PAUN','USA' do
   tab "Customers and partners" do
     select_customer '0007229725'
@@ -408,7 +408,7 @@ create_quote 'PAUN','USA' do
     assert_parts_date 'D576HLL'
   end
 end
-</#+BEGIN_SRC >
+#+END_SRC
 
 *   [[http://www.rubyonrails.org/][Rails]]
 <#+BEGIN_SRC >
@@ -418,7 +418,7 @@ depot> ls -p
 README         components/ doc/ public/ tmp/
 Rakefile       config/     lib/ script/ vendor/
 app/           db/         log/ test/
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** Create Model
 
@@ -438,9 +438,9 @@ class CreateProducts < ActiveRecord::Migration
     drop_table :products
   end
 end
-</#+BEGIN_SRC >
+#+END_SRC
 **  Create Controller
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 depot> ruby script/generate controller admin
   create app/controllers/admin_controller.rb
 
@@ -448,7 +448,7 @@ class AdminController < ApplicationController
   scaffold :product
 end
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** Web UI
 
@@ -660,7 +660,7 @@ struts
 
 Would you like to be able to expose your services as web services? [yes, no]:
 no
-</#+BEGIN_SRC >
+#+END_SRC
 
 *** 项目结构
 <#+BEGIN_SRC >
@@ -676,7 +676,7 @@ timetracker
      |
      +-- app
     
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 *** 增删查改
@@ -716,7 +716,7 @@ SQL                                         make
                                rails validation
      JMock expectations
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 ** Internal and External DSLs.
 
@@ -736,7 +736,7 @@ SQL                                         make
 <#+BEGIN_SRC >
 java: int c = Math.abs(-166);
 ruby: c = -166.abs
-</#+BEGIN_SRC >
+#+END_SRC
 
  - Code Block
 <#+BEGIN_SRC >
@@ -750,7 +750,7 @@ out:
  In the block
  In the block
 
-</#+BEGIN_SRC >
+#+END_SRC
  - [[http://www.innovationontherun.com/why-rubys-mixins-gives-rails-an-advantage-over-java-frameworks/][Mixin]]
 
 <#+BEGIN_SRC >
@@ -769,7 +769,7 @@ end
 class Foo < BaseClass
   include BarModule
 end
-</#+BEGIN_SRC >
+#+END_SRC
 f = Foo.new | f = Foo.send(:new)
 f.class_method | f.send(:class_method)
 f.hello_world |  f.send(:hello_world)
@@ -777,13 +777,13 @@ f.hello_world |  f.send(:hello_world)
 String.send(:include, BarModule)
 s = "Arbitrary String"
 s.hello_world
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 
 ** DSL in Ruby
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 class QuoteDSLBuilder
 
 def self.load( dsl)
@@ -803,10 +803,10 @@ def add_parts(partNum) end
 def change_quantity(partNum, quantity) end
 def recalculate_quote end
 end#class QuoteDSLBuilder
-</#+BEGIN_SRC >
+#+END_SRC
 
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 create_quote 'PAUN','USA' do
   tab "Customers and partners" do
     select_customer '0007229725'
@@ -819,7 +819,7 @@ create_quote 'PAUN','USA' do
     assert_parts_date 'D576HLL'
   end
 end
-</#+BEGIN_SRC >
+#+END_SRC
 
 ***   [[http://www.rubyonrails.org/][Rails]]
 <#+BEGIN_SRC >
@@ -829,7 +829,7 @@ depot> ls -p
 README         components/ doc/ public/ tmp/
 Rakefile       config/     lib/ script/ vendor/
 app/           db/         log/ test/
-</#+BEGIN_SRC >
+#+END_SRC
 
 **** Create Model
 
@@ -849,9 +849,9 @@ class CreateProducts < ActiveRecord::Migration
     drop_table :products
   end
 end
-</#+BEGIN_SRC >
+#+END_SRC
 ****  Create Controller
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 depot> ruby script/generate controller admin
   create app/controllers/admin_controller.rb
 
@@ -859,7 +859,7 @@ class AdminController < ApplicationController
   scaffold :product
 end
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * MDA和DSL比较
 

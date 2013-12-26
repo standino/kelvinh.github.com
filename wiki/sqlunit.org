@@ -25,7 +25,7 @@ A: SQLUnit and EU4DB
 
 * SQLUnit  --- Get Started
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
 <?xml version="1.0"?>
 <!DOCTYPE sqlunit SYSTEM "../lib/sqlunit.dtd" [
@@ -53,7 +53,7 @@ A: SQLUnit and EU4DB
 
 </sqlunit>
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 * SQLUnit  --- Connections
 
@@ -67,13 +67,13 @@ A: SQLUnit and EU4DB
 ibmdb2.SMALLINT.class = net.sourceforge.sqlunit.types.IntegerType
 ibmdb2.SMALLINT.type = 5
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
  - Using connection tag to define a connection
  <#+BEGIN_SRC >
  - Importing a xml file to define a connection
- <#+BEGIN_SRC ">
+ #+BEGIN_SRC
  
 <?xml version="1.0"?>
  <!DOCTYPE sqlunit SYSTEM "file:sqlunit/lib/sqlunit.dtd" [
@@ -87,7 +87,7 @@ ibmdb2.SMALLINT.type = 5
 
   ...
 
- </#+BEGIN_SRC >
+ #+END_SRC
 
  <#+BEGIN_SRC >
 #
@@ -98,7 +98,7 @@ sqlunit.url = jdbc:db2:sample
 # sqlunit.user =
 # sqlunit.password =
 # EOF
- </#+BEGIN_SRC >
+ #+END_SRC
 
 * SQLUnit  --- Setup & Teardown
 
@@ -106,7 +106,7 @@ sqlunit.url = jdbc:db2:sample
  <#+BEGIN_SRC >
 
  - Setup test data
-  <#+BEGIN_SRC ">
+  #+BEGIN_SRC
  <sql>
       <stmt>INSERT INTO sods2.ibm_emp_dlgtn (
       		IBM_EMP_NUM, EMP_CNTRY_CODE, PROG_CODE, MIGRTN_CODE, REVN_STREAM_CODE,
@@ -138,7 +138,7 @@ sqlunit.url = jdbc:db2:sample
 		<param id="17" type="TIMESTAMP">${vMOD_DATE}</param>
 		<param id="18" type="VARCHAR">${vMOD_BY_HRCL_NAME}</param>
     </sql>
-</#+BEGIN_SRC >
+#+END_SRC
 
 * SQLUnit  --- Test
 
@@ -186,7 +186,7 @@ sqlunit.url = jdbc:db2:sample
 	</diff>	
 
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 

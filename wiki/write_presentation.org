@@ -63,7 +63,7 @@ YOUR TIKZ CODE
 YOUR METAPOST CODE	
 </mpo>
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 To include the encoded file in your document:

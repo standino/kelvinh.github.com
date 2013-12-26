@@ -25,7 +25,7 @@
 http://wiki.eclipse.org/Orion/Getting_Started_with_Orion
 
 
-<#+BEGIN_SRC ">
+#+BEGIN_SRC
 
 <!DOCTYPE html>
 <html>
@@ -92,7 +92,7 @@ http://wiki.eclipse.org/Orion/Getting_Started_with_Orion
 </body>
 </html>
 
-</#+BEGIN_SRC >
+#+END_SRC
 
 
 * Plugin development
