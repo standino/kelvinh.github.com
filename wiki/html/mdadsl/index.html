@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>MDA vs DSL - Keep going</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Will Chang" />
+    <meta name="description" content="MDA vs DSL" />
+    <meta name="keywords" content="mda,dsl" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>努力超越自己！</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>MDA vs DSL</h1>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Pain Points of Software Development</h2>
+<div class="outline-text-2" id="text-1">
+<ol class="org-ol">
+<li>Productivity
+</li>
+<li>Portability
+</li>
+<li>Interoperability
+</li>
+<li>Maintenance and Documentation  
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><a href="http://en.wikipedia.org/wiki/html/Model-driven_architecture">MDA Introduction</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Model Driven Software Development (MDSD) is a style of software
+development that considers itself as an alternative to the traditional
+style of programming. 
+</p>
+
+<p>
+The approach centers itself on building models
+of a software system. These models are typically made manifest through
+diagrammatic design notations - the UML is one option. 
+</p>
+
+<p>
+The idea is
+that you use these diagrams, to specify your system to a modeling tool
+and then you generate code in a conventional programming language.
+<i>bThe MDA process</i> 
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">PIM</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+A platform independent model describes the system, but does not
+show details of its use of its platform.
+</p>
+
+<p>
+A PIM might consist of enterprise, information and computational ODP viewpoint
+specifications. (The structure of this information model might be quite different from
+the structure of an information viewpoint model in a computation independent model
+of the same system.)
+</p>
+
+<p>
+A platform independent model will be suited for a particular architectural style, or
+several.
+</p>
+
+<p>
+<i>PIM Sample</i>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">PSM</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+A platform-specific model is a model of a software or business system
+that is linked to a specific technological platform (e.g. a specific
+programming language, operating system or database).
+</p>
+
+<p>
+It should be
+possible to use a MTL to transform a Platform-independent model into a
+Platform-specific model.One PIM may have 1+ PSM.
+</p>
+
+<p>
+<i>PSM Sample</i>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Profiles</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Profiles are a UML extension mechanism. A profile applies to a language
+specification, specifying a new modeling language by adding new kinds of language
+elements or restricting the language.
+</p>
+
+<ul class="org-ul">
+<li>Stereotype
+</li>
+<li>Constraint
+</li>
+<li>Tagged value
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">How MDA Helps Us</h2>
+<div class="outline-text-2" id="text-3">
+<ol class="org-ol">
+<li>Productivity
+</li>
+<li>Portability
+   <i>mda_dsl1.jpg</i> 
+</li>
+<li>Interoperability
+</li>
+
+<li>Maintenance and Documentation  
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><a href="http://maven.apache.org/">Maven</a>  Introduction</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Maven's primary goal is to allow a developer to comprehend the
+complete state of a development effort in the shortest period of
+time. In order to attain this goal there are several areas of concern
+that Maven attempts to deal with: 
+</p>
+
+<ul class="org-ul">
+<li>Making the build process easy
+</li>
+<li>Providing a uniform build system
+</li>
+<li>Providing quality project information
+</li>
+<li>Providing guidelines for best practices development
+</li>
+<li>Allowing transparent migration to new features
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><a href="http://velocity.apache.org/">Velocity</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Velocity is a simple yet powerful Java-based template engine that
+renders data from plain Java objects to text, xml, email, SQL, Post
+Script, HTML etc. The template syntax and rendering engine are both
+easy to understand and quick to learn and implement.
+</p>
+
+<p>
+&lt;#+BEGIN_SRC &gt;
+</p>
+
+<p>
+DROP TABLE ${table.getSchema()}.${table.getName()}
+@
+CREATE TABLE ${table.getSchema()}.${table.getName()}
+(
+</p>
+
+<p>
+#foreach($col in ${table.getColumns()})
+    , ${col.getColumnDef()}
+#end
+</p>
+
+<p>
+)
+    IN ${table.getSchema()}_DATA_01
+    INDEX IN ${table.getSchema()}_INDX_01
+@
+</p>
+
+<p>
+#+END_SRC
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><a href="http://www.andromda.org/">Andromda </a></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<i>andromdaarchjava.jpg</i>
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">Core Features</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+AndroMDA currently comes with the following features:
+</p>
+
+<ul class="org-ul">
+<li>Modular design: all major building blocks of AndroMDA are pluggable and can be exchanged to meet your needs
+</li>
+<li>Support for major UML tools like MagicDraw, Poseidon, Enterprise Architect and more
+</li>
+<li>Comes with the complete UML 1.4 metamodel (support for UML 2.0 is currently being developed) - alternatively, you can bring your own metamodel in MOF XMI and generate code from models based on it
+</li>
+<li>Validates the input models using OCL constraints which are related to the metamodel classes. Comes with pre-configured constraints that protect you against the most common modeling mistakes - add your own project-specific constraints, too.
+</li>
+<li>Model-to-model transformations help to raise abstraction level. Write your own transformations, currently in Java, or in any transformation language, e.g. the QVT-like Atlas Transformation Language (ATL), in the next major AndroMDA release.
+</li>
+<li>Can generate any kind of text output using templates (source code, database scripts, web pages, O/R mapping configuration files, etc.) -  you teach it, AndroMDA does it!
+</li>
+<li>Templates are based on well-known template engines. Currently, Velocity and FreeMarker are supported
+</li>
+<li>Ready-to-use cartridges for common enterprise architectures (EJB, Spring, Hibernate, Struts, JSF, Axis, jBPM)
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2">Cartridges</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Very much like Eclipse, AndroMDA features a plug-in
+architecture. AndroMDA itself basically is a transformation engine. To
+support arbitrary target architectures, you can plug-in custom
+transformations. These transformations are packaged as so-called
+cartridges. 
+</p>
+
+<p>
+AndroMDA comes with a host of ready-to-use cartridges such as:
+</p>
+
+<ul class="org-ul">
+<li>Spring
+</li>
+<li>EJB 2 / 3
+</li>
+<li>Webservices
+</li>
+<li>Hibernate
+</li>
+<li>Struts
+</li>
+<li>JSF
+</li>
+<li>Java
+</li>
+<li>XSD
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3">When to use AndroMDA?</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+AndroMDA is a great choice when
+</p>
+
+<ul class="org-ul">
+<li>You are starting a new project
+</li>
+<li>You want to save time by generating as much code as possible
+</li>
+<li>You are building an application that stores its data in a database
+</li>
+</ul>
+
+<p>
+AndroMDA might not be the best choice if
+</p>
+
+<ul class="org-ul">
+<li>Your application uses an existing database that cannot be easily mapped to an object model (for example, it does not use
+primary keys and object relationships are not clear) 
+</li>
+<li>You already have a mature application with existing business objects and the incremental effort to model existing components
+is too high to provide enough value 
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4">Create Project</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+&lt;#+BEGIN_SRC &gt;
+</p>
+
+<p>
+C:\&gt;mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.2:generate
+Please choose the type of application to generate [richclient, j2ee]
+j2ee
+Please enter the location in which your new application will be created
+(i.e. f:/java/development):
+C:/
+Please enter your first and last name (i.e. Chad Brandon):
+Naresh Bhatia
+Which kind of modeling tool will you use? [uml1.4, uml2, emf-uml2]:
+Use the list below to enter the correct choice:
+    ArgoUML:        uml1.4
+    MagicDraw 9.x:  uml1.4
+    MagicDraw 11.5: uml2
+    RSM 6:          emf-uml2
+uml1.4
+</p>
+
+<p>
+Please enter the name of your J2EE project (i.e. Animal Quiz):
+TimeTracker
+</p>
+
+<p>
+Please enter an id for your J2EE project (i.e. animalquiz):
+timetracker
+</p>
+
+<p>
+Please enter a version for your project (i.e. 1.0-SNAPSHOT):
+1.0-SNAPSHOT
+</p>
+
+<p>
+Please enter the root package name for your J2EE project
+(i.e. org.andromda.samples.animalquiz):
+org.andromda.timetracker
+</p>
+
+<p>
+Would you like an EAR or standalone WAR? [ear, war]:
+ear
+</p>
+
+<p>
+Please enter the type of transactional/persistence cartridge to use
+[hibernate, ejb, ejb3, spring, none]:
+spring
+</p>
+
+<p>
+Please enter the database backend for the persistence layer
+[hypersonic, mysql, oracle, db2, informix, mssql, pointbase,
+ postgres, sybase, sabdb, progress, derby]:
+mysql
+</p>
+
+<p>
+Will your project need workflow engine capabilities?
+(it uses jBPM and Hibernate3)? [yes, no]:
+no
+</p>
+
+<p>
+Please enter the hibernate version number
+(enter '2' for 2.1.x or '3' for 3.0.x) [2, 3]:
+3
+</p>
+
+<p>
+Will your project have a web user interface? [yes, no]:
+yes
+</p>
+
+<p>
+Would you like your web user interface to use JSF or Struts? [jsf, struts]:
+struts
+</p>
+
+<p>
+Would you like to be able to expose your services as web services? [yes, no]:
+no
+#+END_SRC
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6-5" class="outline-3">
+<h3 id="sec-6-5">Project Layout</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+&lt;#+BEGIN_SRC &gt;
+timetracker
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<thead>
+<tr>
+</tr>
+</thead>
+<tbody>
+<tr>
+</tr>
+</tbody>
+<tbody>
+<tr>
+</tr>
+</tbody>
+<tbody>
+<tr>
+</tr>
+</tbody>
+<tbody>
+<tr>
+</tr>
+</tbody>
+
+<tr>f = Foo.send(:new)
+</tr>
+</tbody>
+</table>
+
+<p>
+#+END_SRC
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6-6" class="outline-3">
+<h3 id="sec-6-6">CRUD</h3>
+<div class="outline-text-3" id="text-6-6">
+<p>
+<i>user.jpg</i>
+</p>
+
+<p>
+<i>searchresultspanel2.jpg</i>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6-7" class="outline-3">
+<h3 id="sec-6-7">Page Flow</h3>
+<div class="outline-text-3" id="text-6-7">
+<p>
+<i>searchtimecardsuc.jpg</i>
+</p>
+
+<p>
+<i>searchtimecardsad3.jpg</i>
+</p>
+
+<p>
+<i>searchcriteriapanel.jpg</i>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><a href="http://www.martinfowler.com/dslwip/">DSL Introduction</a></h2>
+<div class="outline-text-2" id="text-7">
+<p>
+The basic idea of a domain specific language (DSL) is a computer
+language that's targeted to a particular kind of problem, rather than
+a general purpose language that's aimed at any kind of software
+problem. 
+</p>
+
+<p>
+Domain specific languages have been talked about, and used
+for almost as long as computing has been done. DSLs are very common in
+computing.
+&lt;#+BEGIN_SRC &gt;
+      graphviz               LINQ
+ ant
+                  rake      Hibernate query language
+        regular expression
+                                 FIT
+SQL                                         make
+                   struts-config.xml
+           CSS
+                               rails validation
+     JMock expectations
+</p>
+
+<p>
+#+END_SRC
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1">Internal and External DSLs.</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Internal DSLs are particular ways of using a host language to give the host
+</li>
+</ul>
+<p>
+language the feel of a particular language. This approach has recently
+been popularized by the Ruby community although it's had a long
+heritage in other languages - in particular Lisp. Although it's
+usually easier in low-ceremony languages like that, you can do
+effective internal DSLs in more mainstream languages like Java and
+C#. 
+</p>
+
+<ul class="org-ul">
+<li>External DSLs have their own custom syntax and you
+</li>
+</ul>
+<p>
+write a full parser to process them. There is a very strong tradition
+of doing this in the Unix community. Many XML configurations have
+ended up as external DSLs, although XML's syntax is badly suited to
+this purpose. The most most common DSLs in the wild today are textual,
+but you can have graphical DSLs too. Graphical DSLs requires a tool
+along the lines of a Language Workbench. Language Workbenches are less
+common but many people think they have the potential to profoundly
+improve the way we do programming. DSLs can be implemented either by
+interpretation or code generation. Interpretation (reading in the DSL
+script and executing it at run time) is usually easiest, but
+code-generation is sometimes essential. Usually the generated code is
+itself a high level language, such as Java or C. 
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">How DSL Helps Us</h2>
+<div class="outline-text-2" id="text-8">
+<ol class="org-ol">
+<li>Productivity
+</li>
+<li>Portability
+</li>
+<li>Interoperability
+</li>
+<li>Maintenance and Documentation  
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><a href="http://www.ruby-lang.org/en/">Ruby</a></h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>OOP
+</li>
+</ul>
+<p>
+&lt;#+BEGIN_SRC &gt;
+java: int c = Math.abs(-166);
+ruby: c = -166.abs
+#+END_SRC
+</p>
+
+<ul class="org-ul">
+<li>Code Block
+</li>
+</ul>
+<p>
+&lt;#+BEGIN_SRC &gt;
+def callBlock
+   yield
+   yield
+end
+callBlock { puts "In the block" }
+</p>
+
+<p>
+out:
+ In the block
+ In the block
+</p>
+
+<p>
+#+END_SRC
+</p>
+<ul class="org-ul">
+<li><a href="http://www.innovationontherun.com/why-rubys-mixins-gives-rails-an-advantage-over-java-frameworks/">Mixin</a>
+</li>
+</ul>
+
+<p>
+&lt;#+BEGIN_SRC &gt;
+module BarModule
+  def hello_world
+    puts "Hello World"
+  end
+end
+</p>
+
+<p>
+class BaseClass
+  def class_method
+    puts "In class method"
+  end
+end
+</p>
+
+<p>
+class Foo &lt; BaseClass
+  include BarModule
+end
+#+END_SRC
+f = Foo.new | f = Foo.send(:new)
+f.class_method | f.send(:class_method)
+f.hello_world |  f.send(:hello_world)
+&lt;#+BEGIN_SRC &gt;
+String.send(:include, BarModule)
+s = "Arbitrary String"
+s.hello_world
+#+END_SRC
+</p>
+</div>
+
+
+
+<div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1">DSL in Ruby</h3>
+<div class="outline-text-3" id="text-9-1">
+<pre class="example">
+class QuoteDSLBuilder
+
+def self.load( dsl)
+
+    proj = proj.instance_eval(File.read(dsl), dsl)
+    proj
+end
+
+def create_quote(lob, cntry)
+    ...
+    yield
+end
+
+def tab (name) end
+def select_customer custNum  end
+def add_parts(partNum) end
+def change_quantity(partNum, quantity) end
+def recalculate_quote end
+end#class QuoteDSLBuilder
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2">DSL in Ruby</h3>
+<div class="outline-text-3" id="text-9-2">
+<pre class="example">
+create_quote 'PAUN','USA' do
+  tab "Customers and partners" do
+    select_customer '0007229725'
+  end
+    
+  tab "Parts and pricing" do
+    add_parts 'D576HLL','BB0PWNA'
+    change_quantity 'D576HLL', 10
+    recalculate_quote
+    assert_parts_date 'D576HLL'
+  end
+end
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><a href="http://www.rubyonrails.org/">Rails</a></h2>
+<div class="outline-text-2" id="text-10">
+<p>
+&lt;#+BEGIN_SRC &gt;
+work&gt; rails depot
+work&gt; cd depot
+depot&gt; ls -p
+README         components/ doc/ public/ tmp/
+Rakefile       config/     lib/ script/ vendor/
+app/           db/         log/ test/
+#+END_SRC
+</p>
+</div>
+
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1">Create Model</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+&lt;#+BEGIN_SRC &gt;
+depot&gt; ruby script/generate model Product
+  create db/migrate/001_create_products.rb
+</p>
+
+<p>
+class CreateProducts &lt; ActiveRecord::Migration
+  def self.up
+    create_table :products do |t|
+      t.column :title,       :string
+      t.column :description, :text
+      t.column :image_url,   :string
+    end
+  end
+  def self.down
+    drop_table :products
+  end
+end
+#+END_SRC
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2">Create Controller</h3>
+<div class="outline-text-3" id="text-10-2">
+<pre class="example">
+depot&gt; ruby script/generate controller admin
+  create app/controllers/admin_controller.rb
+
+class AdminController &lt; ApplicationController
+  scaffold :product
+end
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3">Web UI</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+<i>rails1.png</i>
+</p>
+
+<p>
+<i>rails2.png</i>
+</p>
+
+<p>
+<i>rails3.png</i>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10-4" class="outline-3">
+<h3 id="sec-10-4">The Advantages of MDA</h3>
+<div class="outline-text-3" id="text-10-4">
+<ul class="org-ul">
+<li>The productivity increases because the programmers only have to model
+</li>
+</ul>
+<p>
+the system and do a few customizations. 
+</p>
+
+<ul class="org-ul">
+<li>The PIM can be used for more platforms. If you decide to change from
+</li>
+</ul>
+<p>
+platform that shouldn't be a problem (theoretically). 
+</p>
+
+<ul class="org-ul">
+<li>All the bridges between the different PSMs are automatically
+</li>
+</ul>
+<p>
+generated. 
+</p>
+
+<ul class="org-ul">
+<li>If you only have some pieces of your application modeled you'll be
+</li>
+</ul>
+<p>
+able to do prototyping. All you have to do is to push the "Generate
+code" button. 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10-5" class="outline-3">
+<h3 id="sec-10-5">The Disadvantages of MDA</h3>
+<div class="outline-text-3" id="text-10-5">
+<ul class="org-ul">
+<li>The MDA tools which are nowadays on the market aren't able to generate
+</li>
+</ul>
+<p>
+100% code. So you'll always have to code after the generation process
+</p>
+
+<ul class="org-ul">
+<li>If you want to use a relatively new technology, then you must keep in mind that the MDA tool is the developer
+</li>
+</ul>
+<p>
+for you. So it takes some time before the producer has implemented a
+new technology into their MDA tool.  
+</p>
+<ul class="org-ul">
+<li>MDA need IDE support(version control etc...).
+</li>
+<li>UML is not easy to read and cooperate.
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10-6" class="outline-3">
+<h3 id="sec-10-6">The Advantages of DSL</h3>
+<div class="outline-text-3" id="text-10-6">
+<ul class="org-ul">
+<li>Domain-specific languages allow solutions to be expressed in the
+</li>
+</ul>
+<p>
+idiom and at the level of abstraction of the problem
+domain. Consequently, domain experts themselves can understand,
+validate, modify, and often even develop domain-specific language
+programs. 
+</p>
+<ul class="org-ul">
+<li>Self-documenting code.
+</li>
+<li>Domain-specific languages enhance quality, productivity,
+</li>
+</ul>
+<p>
+reliability, maintainability, portability and reusability. 
+</p>
+<ul class="org-ul">
+<li>Domain-specific languages allow validation at the domain
+</li>
+</ul>
+<p>
+level. As long as the language constructs are safe any sentence
+written with them can be considered safe. 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-7" class="outline-3">
+<h3 id="sec-10-7">The Disadvantages of DSL</h3>
+<div class="outline-text-3" id="text-10-7">
+<ul class="org-ul">
+<li>Cost of designing, implementing, and maintaining a domain-specific language.
+</li>
+<li>Difficulty of balancing trade-offs between domain-specificity
+</li>
+</ul>
+<p>
+and general-purpose programming language constructs. 
+</p>
+<ul class="org-ul">
+<li>Potential loss of processor efficiency compared with hand-coded
+</li>
+</ul>
+<p>
+software. 
+</p>
+<ul class="org-ul">
+<li>Hard or impossible to debug.
+</li>
+</ul>
+
+<p>
+#title MDA vs DSL
+</p>
+
+<p>
+<a href="http://news.csdn.net/n/20080606/116568.html">http://news.csdn.net/n/20080606/116568.html</a>
+<a href="http://subject.csdn.net/agile_dsl.htm">http://subject.csdn.net/agile_dsl.htm</a>
+</p>
+
+
+<p>
+#±êÌâ£º MDA vs DSL
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Èí¼þ¿ª·¢ÖÐµÄÎÊÌâ</h2>
+<div class="outline-text-2" id="text-11">
+<ol class="org-ol">
+<li>¿ª·¢Ð§ÂÊ£ºÏ£ÍûÈí¼þÄÜÔÚ×î¶ÌÊ±¼äÀï¿ª·¢Íê³É
+</li>
+<li>¿ÉÒÆÖ²ÐÔ£ºÄÜ¹»ºÜÈÝÒ×µÄÇ¨ÒÆµ½ÐÂµÄ¼¼ÊõºÍÆ½Ì¨ÉÏ
+</li>
+<li>Î¬»¤ºÍÎÄµµ£ºÏ£ÍûÈí¼þÒ×ÓÚÎ¬»¤£¬ÓÐ×îÐÂµÄÎÄµµ¿ÉÒÔ²éÔÄ
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">MDA ½éÉÜ</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Ïà¶ÔÓÚ´«Í³µÄÈí¼þ¿ª·¢£¬Ä£ÐÍÇý¶¯Èí¼þ¿ª·¢·½Ê½ÊÇÒ»ÖÖÐÂµÄÈí¼þ¿ª·¢·½Ê½¡£Ëü¹Ø×¢Óë¹¹½¨Èí¼þÏµÍ³µÄÄ£ÐÍ£¬ÕâÐ©Ä£ÐÍÓÃÍ¼ÐÎµÄ·½Ê½Õ¹Ê¾£¬×î³£ÓÃµÄÊÇ
+UML. 
+</p>
+
+<p>
+¾ßÌå×ö·¨ÊÇ£ºÄãÊ¹ÓÃ½¨Ä£¹¤¾ßÎªÏµÍ³½¨Ä££¬È»ºóÊ¹ÓÃÌØ¶¨µÄ±à³ÌÓïÑÔÉú³É³ÌÐò´úÂë¡£
+</p>
+</div>
+
+
+<div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1">PIM £¨ Platform independent model Æ½Ì¨ÎÞ¹ØÄ£ÐÍ£©</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+PIM Ö»ÃèÊöÏµÍ³Ä£ÐÍ£¬²»Éæ¼°ÏµÍ³Ê¹ÓÃµÄÆ½Ì¨µÄÏ¸½ÚÐÅÏ¢¡£
+</p>
+</div>
+</div>
+<div id="outline-container-sec-12-2" class="outline-3">
+<h3 id="sec-12-2">PSM£¨Platform-specific model Æ½Ì¨Ïà¹ØÄ£ÐÍ£©</h3>
+<div class="outline-text-3" id="text-12-2">
+<p>
+PSMÖÐ»áÖ¸¶¨ÏµÍ³µÄ±à³ÌÓïÑÔ£¬²Ù×÷ÏµÍ³ÒÔ¼°Êý¾Ý¿âµÈ¡£
+</p>
+</div>
+</div>
+<div id="outline-container-sec-12-3" class="outline-3">
+<h3 id="sec-12-3">Profiles</h3>
+<div class="outline-text-3" id="text-12-3">
+<p>
+Profiles ÊÇUMLµÄÀ©Õ¹»úÖÆ¡£Ò»¸öProfile¶ÔÓ¦Ò»ÖÖ±à³ÌÔ¼¶¨¡£
+</p>
+
+<ul class="org-ul">
+<li>Ä£°å£ºStereotype
+</li>
+<li>Ô¼Êø£ºConstraint
+</li>
+<li>±êÇ©£ºTagged value
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-12-4" class="outline-3">
+<h3 id="sec-12-4">MDAÈçºÎ°ïÖúÎÒÃÇ</h3>
+<div class="outline-text-3" id="text-12-4">
+<ol class="org-ol">
+<li>¿ª·¢Ð§ÂÊ£º°ïÖúÎÒÃÇÉú³ÉÁË´óÁ¿´úÂë£¬È¥³ýÁËÎÞÎ½µÄ¿½±´Õ³Ìù£¬Ìá¸ßÁËÐ§ÂÊ£¬¼õÉÙÁË³ö´í»ú»á¡£
+</li>
+<li>¿ÉÒÆÖ²ÐÔ£º¿ÉÒÔÉú³É»ùÓÚ²»Í¬±à³ÌÓïÑÔ£¬²Ù×÷ÏµÍ³ºÍÊý¾ÝµÄ´úÂë£¬ÎªÒÆÖ²´øÀ´ÁËºÜ´óµÄ±ãÀû
+</li>
+<li>Î¬»¤ºÍÎÄµµ£ºÖ»ÓÐÉÙÊý´úÂëÊÇÊÖ¶¯±àÐ´£¬¶øÇÒ´úÂë¶¼ÊÇ·ûºÏÍ³Ò»·ç¸ñ£¬Ò×ÓÚÎ¬»¤¡£Ä£ÐÍ×ÜÊÇ×îÐÂµÄ£¬Í¨¹ý¿ÉÊÓ»¯µÄÄ£ÐÍ£¬¿ª·¢ÈËÔ±ÄÜ¸ü·½±ãµÄÁË
+½âÏµÍ³¡£
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">Andromda ½éÉÜ</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+<i>andromdaarchjava.jpg</i>
+</p>
+</div>
+
+<div id="outline-container-sec-13-1" class="outline-3">
+<h3 id="sec-13-1">ÓÉÈý²¿·Ö×é³É£º</h3>
+<div class="outline-text-3" id="text-13-1">
+<ol class="org-ol">
+<li>Generic code generation engine ´úÂëÉú³ÉÒýÇæ
+</li>
+<li>Cartridges (Java, EJB, Hibernate, Spring, JSF, Struts, etc.) ²å¼þ
+</li>
+<li>Tools ¸¨Öú¹¤¾ß
+</li>
+<li>Maven project generator
+</li>
+<li>Schema2XMI
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-13-2" class="outline-3">
+<h3 id="sec-13-2">´úÂëÉú³ÉÂÊ£º</h3>
+<div class="outline-text-3" id="text-13-2">
+<ul class="org-ul">
+<li>³Ö¾Ã²ãPersistence (EJB/Hibernate): 100%
+</li>
+<li>ÒµÎñ²ãBusiness (EJB): 30%
+</li>
+<li>WebServices (Axis): 100%
+</li>
+<li>±íÏÖ²ãPresentation (Struts): 80%
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-13-3" class="outline-3">
+<h3 id="sec-13-3">¿ª·¢Á÷³Ì£º</h3>
+<div class="outline-text-3" id="text-13-3">
+<ul class="org-ul">
+<li>Éú³ÉÏîÄ¿: maven andromdapp:generate
+</li>
+<li>±à¼­Ä£ÐÍ
+</li>
+<li>±àÒë: maven
+</li>
+<li>±àÐ´¾ßÌåÊµÏÖ
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-13-4" class="outline-3">
+<h3 id="sec-13-4">ºÎÊ±Ê¹ÓÃ Andromda</h3>
+<div class="outline-text-3" id="text-13-4">
+</div><div id="outline-container-sec-13-4-1" class="outline-4">
+<h4 id="sec-13-4-1">ÔÚÒÔÏÂÇé¿öÊÊºÏÊ¹ÓÃ£º</h4>
+<div class="outline-text-4" id="text-13-4-1">
+<ul class="org-ul">
+<li>¿ªÊ¼´´½¨Ò»¸öÐÂÏîÄ¿
+</li>
+<li>Ï£ÍûÄÜ¹»¾¡Á¿¶àµÄ×Ô¶¯Éú³É´úÂë
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-13-4-2" class="outline-4">
+<h4 id="sec-13-4-2">ÔÚÒÔÏÂÇé¿ö²»ÊÊºÏÊ¹ÓÃ£º</h4>
+<div class="outline-text-4" id="text-13-4-2">
+<ul class="org-ul">
+<li>ÏµÍ³µÄÊý¾Ý½á¹¹²»ÄÜºÜºÃµÄÓ³Éäµ½¶ÔÏó¡£ÀýÈç£¬Ã»ÓÐÖ÷¼üºÍ¶ÔÏó¼äµÄ¹ØÏµ
+</li>
+<li>ÄãÒÑ¾­ÓµÓÐÒ»¸ö³ÉÊìµÄÏµÍ³£¬ÎªÕâ¸öÏµÍ³½¨Ä£µÄ¹¤×÷Á¿Ì«´ó£¬ÇÒ²»ÄÜ´øÀ´×ã¹»µÄºÃ´¦
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-13-5" class="outline-3">
+<h3 id="sec-13-5">Demo</h3>
+<div class="outline-text-3" id="text-13-5">
+</div><div id="outline-container-sec-13-5-1" class="outline-4">
+<h4 id="sec-13-5-1">´´½¨ÏîÄ¿</h4>
+<div class="outline-text-4" id="text-13-5-1">
+<p>
+&lt;#+BEGIN_SRC &gt;
+</p>
+
+<p>
+C:\&gt;mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.2:generate
+Please choose the type of application to generate [richclient, j2ee]
+j2ee
+Please enter the location in which your new application will be created
+(i.e. f:/java/development):
+C:/
+Please enter your first and last name (i.e. Chad Brandon):
+Naresh Bhatia
+Which kind of modeling tool will you use? [uml1.4, uml2, emf-uml2]:
+Use the list below to enter the correct choice:
+    ArgoUML:        uml1.4
+    MagicDraw 9.x:  uml1.4
+    MagicDraw 11.5: uml2
+    RSM 6:          emf-uml2
+uml1.4
+</p>
+
+<p>
+Please enter the name of your J2EE project (i.e. Animal Quiz):
+TimeTracker
+</p>
+
+<p>
+Please enter an id for your J2EE project (i.e. animalquiz):
+timetracker
+</p>
+
+<p>
+Please enter a version for your project (i.e. 1.0-SNAPSHOT):
+1.0-SNAPSHOT
+</p>
+
+<p>
+Please enter the root package name for your J2EE project
+(i.e. org.andromda.samples.animalquiz):
+org.andromda.timetracker
+</p>
+
+<p>
+Would you like an EAR or standalone WAR? [ear, war]:
+ear
+</p>
+
+<p>
+Please enter the type of transactional/persistence cartridge to use
+[hibernate, ejb, ejb3, spring, none]:
+spring
+</p>
+
+<p>
+Please enter the database backend for the persistence layer
+[hypersonic, mysql, oracle, db2, informix, mssql, pointbase,
+ postgres, sybase, sabdb, progress, derby]:
+mysql
+</p>
+
+<p>
+Will your project need workflow engine capabilities?
+(it uses jBPM and Hibernate3)? [yes, no]:
+no
+</p>
+
+<p>
+Please enter the hibernate version number
+(enter '2' for 2.1.x or '3' for 3.0.x) [2, 3]:
+3
+</p>
+
+<p>
+Will your project have a web user interface? [yes, no]:
+yes
+</p>
+
+<p>
+Would you like your web user interface to use JSF or Struts? [jsf, struts]:
+struts
+</p>
+
+<p>
+Would you like to be able to expose your services as web services? [yes, no]:
+no
+#+END_SRC
+</p>
+</div>
+</div>
+<div id="outline-container-sec-13-5-2" class="outline-4">
+<h4 id="sec-13-5-2">ÏîÄ¿½á¹¹</h4>
+<div class="outline-text-4" id="text-13-5-2">
+<p>
+&lt;#+BEGIN_SRC &gt;
+timetracker
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<thead>
+<tr>
+</tr>
+</thead>
+<tbody>
+<tr>
+</tr>
+</tbody>
+<tbody>
+<tr>
+</tr>
+</tbody>
+<tbody>
+<tr>
+</tr>
+</tbody>
+<tbody>
+<tr>
+</tr>
+</tbody>
+
+<tr>f = Foo.send(:new)
+</tr>
+</tbody>
+</table>
+
+<p>
+#+END_SRC
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-13-5-3" class="outline-4">
+<h4 id="sec-13-5-3">ÔöÉ¾²é¸Ä</h4>
+<div class="outline-text-4" id="text-13-5-3">
+<p>
+<i>user.jpg</i>
+</p>
+
+<p>
+<i>searchresultspanel2.jpg</i>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-13-5-4" class="outline-4">
+<h4 id="sec-13-5-4">Ò³ÃæÁ÷</h4>
+<div class="outline-text-4" id="text-13-5-4">
+<p>
+<i>searchtimecardsuc.jpg</i>
+</p>
+
+<p>
+<i>SearchControllerToUserService.jpg</i>
+</p>
+
+<p>
+<i>searchtimecardsad3.jpg</i>
+</p>
+
+<p>
+<i>searchcriteriapanel.jpg</i>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">DSL ½éÉÜ</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+DSL £¨Domain Specific Language)ÊÇÒ»ÖÖÕë¶ÔÌØÊâÎÊÌâµÄ±à³ÌÓïÑÔ£¬²»ÊÇÄÇÖÖ¿ÉÒÔ±àÐ´¸÷ÖÖÓ¦ÓÃ£¬½â¾ö¶àÖÖÎÊÌâµÄÍ¨ÓÃ±à³ÌÓïÑÔ¡£
+</p>
+
+<p>
+DSLÒÑ¾­ÔÚ¼ÆËã»úÁìÓòÊ¹ÓÃÁËºÜ¾ÃÁË£¬ÊÇ·Ç³£ÆÕ±éµÄ¡£
+</p>
+
+<p>
+&lt;#+BEGIN_SRC &gt;
+      graphviz               LINQ
+ ant
+                  rake      Hibernate query language
+        regular expression
+                                 FIT
+SQL                                         make
+                   struts-config.xml
+           CSS
+                               rails validation
+     JMock expectations
+</p>
+
+<p>
+#+END_SRC
+</p>
+</div>
+
+<div id="outline-container-sec-14-1" class="outline-3">
+<h3 id="sec-14-1">Internal and External DSLs.</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li>Internal DSLs: ÊÇ¶Ô±à³ÌÓïÑÔµÄÒ»ÖÖÌØÊâÓÃ·¨¡£ÔÚrubyÓïÑÔÀïÌØ±ðÁ÷ÐÐ¡£µ«ÊÇ£¬ÔÚLisp, JavaºÍC#ÖÐÍ¬Ñù¿ÉÒÔÊµÏÖ internal DSLs.
+</li>
+<li>External DSLs: ÆäÓµÓÐÌØÊâµÄÓï·¨£¬ÐèÒªÒ»¸ö³ÌÐòÈ¥·ÖÎöºÍ´¦ÀíËü¡£ºÜ¶àXMLÅäÖÃÎÄ¼þ¾ÍÊÇ external DSLs. ÏÖÔÚÊ¹ÓÃµÄ×î¶àµÄÊÇÎÄ±¾¸ñÊ½µÄ
+DSLs£¬µ«ÊÇ£¬ÎÒÃÇÍ¬Ñù¿ÉÒÔÓÐÍ¼ÐÎ»¯µÄDSLs. ÓÐÁ½ÖÖ·½Ê½ÊµÏÖDSLs£º½âÎö·½Ê½£¨¶ÁÈëDLS½Å±¾£¬È»ºó¶¯Ì¬Ö´ÐÐ£©£»´úÂëÉú³É·½Ê½¡£
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-14-2" class="outline-3">
+<h3 id="sec-14-2">DSLÈçºÎ°ïÖúÎÒÃÇ½â¾öÎÊÌâ</h3>
+<div class="outline-text-3" id="text-14-2">
+<ol class="org-ol">
+<li>¿ª·¢Ð§ÂÊ£º¿ÉÒÔÈÃÎÒÃÇ±àÐ´¸üÉÙµÄ´úÂëÊµÏÖ¸ü¶àµÄ¹¦ÄÜ¡£°ïÖúÎÒÃÇÉú³ÉÁË´óÁ¿´úÂë£¬È¥³ýÁËÎÞÎ½µÄ¿½±´Õ³Ìù£¬Ìá¸ßÁËÐ§ÂÊ£¬¼õÉÙÁË³ö´í»ú»á¡£
+</li>
+<li>¿ÉÒÆÖ²ÐÔ£º¾ßÓÐÒ»¶¨µÄÆ½Ì¨ÒÆÖ²ÐÔ¡£
+</li>
+<li>Î¬»¤ºÍÎÄµµ£º´úÂë¸üÒ×ÔÄ¶Á£¬´úÂë±¾Éí¾ÍÊÇ×îºÃµÄÎÄµµ¡£
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><a href="http://www.ruby-lang.org/en/">Ruby</a> ½éÉÜ</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li>OOP
+</li>
+</ul>
+<p>
+&lt;#+BEGIN_SRC &gt;
+java: int c = Math.abs(-166);
+ruby: c = -166.abs
+#+END_SRC
+</p>
+
+<ul class="org-ul">
+<li>Code Block
+</li>
+</ul>
+<p>
+&lt;#+BEGIN_SRC &gt;
+def callBlock
+   yield
+   yield
+end
+callBlock { puts "In the block" }
+</p>
+
+<p>
+out:
+ In the block
+ In the block
+</p>
+
+<p>
+#+END_SRC
+</p>
+<ul class="org-ul">
+<li><a href="http://www.innovationontherun.com/why-rubys-mixins-gives-rails-an-advantage-over-java-frameworks/">Mixin</a>
+</li>
+</ul>
+
+<p>
+&lt;#+BEGIN_SRC &gt;
+module BarModule
+  def hello_world
+    puts "Hello World"
+  end
+end
+</p>
+
+<p>
+class BaseClass
+  def class_method
+    puts "In class method"
+  end
+end
+</p>
+
+<p>
+class Foo &lt; BaseClass
+  include BarModule
+end
+#+END_SRC
+f = Foo.new | f = Foo.send(:new)
+f.class_method | f.send(:class_method)
+f.hello_world |  f.send(:hello_world)
+&lt;#+BEGIN_SRC &gt;
+String.send(:include, BarModule)
+s = "Arbitrary String"
+s.hello_world
+#+END_SRC
+</p>
+</div>
+
+
+
+<div id="outline-container-sec-15-1" class="outline-3">
+<h3 id="sec-15-1">DSL in Ruby</h3>
+<div class="outline-text-3" id="text-15-1">
+<pre class="example">
+class QuoteDSLBuilder
+
+def self.load( dsl)
+
+    proj = proj.instance_eval(File.read(dsl), dsl)
+    proj
+end
+
+def create_quote(lob, cntry)
+    ...
+    yield
+end
+
+def tab (name) end
+def select_customer custNum  end
+def add_parts(partNum) end
+def change_quantity(partNum, quantity) end
+def recalculate_quote end
+end#class QuoteDSLBuilder
+</pre>
+
+
+<pre class="example">
+create_quote 'PAUN','USA' do
+  tab "Customers and partners" do
+    select_customer '0007229725'
+  end
+    
+  tab "Parts and pricing" do
+    add_parts 'D576HLL','BB0PWNA'
+    change_quantity 'D576HLL', 10
+    recalculate_quote
+    assert_parts_date 'D576HLL'
+  end
+end
+</pre>
+</div>
+
+<div id="outline-container-sec-15-1-1" class="outline-4">
+<h4 id="sec-15-1-1"><a href="http://www.rubyonrails.org/">Rails</a></h4>
+<div class="outline-text-4" id="text-15-1-1">
+<p>
+&lt;#+BEGIN_SRC &gt;
+work&gt; rails depot
+work&gt; cd depot
+depot&gt; ls -p
+README         components/ doc/ public/ tmp/
+Rakefile       config/     lib/ script/ vendor/
+app/           db/         log/ test/
+#+END_SRC
+</p>
+</div>
+
+<ul class="org-ul"><li>Create Model<br  /><div class="outline-text-5" id="text-15-1-1-1">
+<p>
+&lt;#+BEGIN_SRC &gt;
+depot&gt; ruby script/generate model Product
+  create db/migrate/001_create_products.rb
+</p>
+
+<p>
+class CreateProducts &lt; ActiveRecord::Migration
+  def self.up
+    create_table :products do |t|
+      t.column :title,       :string
+      t.column :description, :text
+      t.column :image_url,   :string
+    end
+  end
+  def self.down
+    drop_table :products
+  end
+end
+#+END_SRC
+</p>
+</div>
+</li>
+
+<li>Create Controller<br  /><div class="outline-text-5" id="text-15-1-1-2">
+<pre class="example">
+depot&gt; ruby script/generate controller admin
+  create app/controllers/admin_controller.rb
+
+class AdminController &lt; ApplicationController
+  scaffold :product
+end
+</pre>
+</div>
+</li></ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">MDAºÍDSL±È½Ï</h2>
+<div class="outline-text-2" id="text-16">
+</div><div id="outline-container-sec-16-1" class="outline-3">
+<h3 id="sec-16-1">MDAµÄÓÅµã</h3>
+<div class="outline-text-3" id="text-16-1">
+<ul class="org-ul">
+<li>ÒòÎªÖ»ÐèÒª½¨Ä£ºÍÉÙÁ¿µÄ¶¨ÖÆ¾Í¿ÉÒÔ¿ª·¢³öÓ¦ÓÃÏµÍ³£¬Éú²úÐ§ÂÊÌá¸ßÁË
+</li>
+<li>ÀíÂÛÉÏ£¬ºÜÈÝÒ×Ç¨ÒÆµ½ÆäËûÆ½Ì¨
+</li>
+<li>Ò×ÓÚ×öÔ­ÐÍ£¬µãÒ»ÏÂ¡°Éú²ú´úÂë¡±°´Å¥¾Í¿ÉÒÔÁË
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-16-2" class="outline-3">
+<h3 id="sec-16-2">MDAµÄÈ±µã</h3>
+<div class="outline-text-3" id="text-16-2">
+<ul class="org-ul">
+<li>ÏÖÔÚÊÐ³¡ÉÏµÄMDA¹¤¾ß»¹²»ÄÜÉú³É100%µÄ´úÂë£¬ËùÒÔÄã±ØÐëÔÚ´úÂëÉú³ÉºóÊÖ¶¯ÐÞ¸Ä´úÂë
+</li>
+<li>Èç¹ûÄãÒªÊ¹ÓÃ×îÐÂ¼¼Êõ£¬ÄãÒªÃ´×Ô¼ºÊµÏÖ²å¼þ£¬ÒªÃ´µÈµ½±ðÈËÊµÏÖ
+</li>
+<li>MDAÐèÒª¹¤¾ßÖ§³Ö
+</li>
+<li>UML ²»ÊÇÒ×¶ÁºÍÐ­×÷
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-16-3" class="outline-3">
+<h3 id="sec-16-3">DSLµÄÓÅµã</h3>
+<div class="outline-text-3" id="text-16-3">
+<ul class="org-ul">
+<li>DSL¿ÉÒÔ¶ÔÎÊÌâ×ö¸ü¸ßµÄ³éÏó£¬Ò»´ÎÒµÎñ×¨¼Ò¿ÉÒÔÀí½â£¬ÑéÖ¤ÉõÖÁ×Ô¼º±àÐ´DSL
+</li>
+<li>´úÂë¾ÍÊÇ×¢ÊÍ
+</li>
+<li>DSLÌá¸ßµÄ´úÂëÖÊÁ¿£¬¿ª·¢Ð§ÂÊ£¬¿ÉÎ¬»¤ÐÔºÍ¿ÉÖØÓÃÐÔ
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-16-4" class="outline-3">
+<h3 id="sec-16-4">DSLµÄÈ±µã</h3>
+<div class="outline-text-3" id="text-16-4">
+<ul class="org-ul">
+<li>Éè¼Æ£¬ÊµÏÖºÍÎ¬»¤DSLÐèÒªÒ»¶¨µÄ¹¤×÷
+</li>
+<li>²»ºÃÈ¨ºâºÎÊ±Ê¹ÓÃDSL£¬ºÎÊ±Ê¹ÓÃÍ¬Ñù±à³ÌÓïÑÔ
+</li>
+<li>Ö´ÐÐÐ§ÂÊ¿ÉÄÜ»á´òÕÛ
+</li>
+<li>ºÜÄÑ»ò¸ù±¾ÎÞ·¨debug
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2013-12-19</span>
+        <span title="last modification date" class="post-info">2013-12-26</span>
+        <span title="tags" class="post-info"><a href="/tags/mda/">mda</a>, <a href="/tags/dsl/">dsl</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/wiki/html/mdadsl";
+          var disqus_url = "http://standino.github.io/wiki/html/mdadsl";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

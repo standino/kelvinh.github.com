@@ -4,79 +4,79 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周三, 25 十二月 2013 15:22:54 CST</pubDate>
-    <lastBuildDate>周三, 25 十二月 2013 15:22:54 CST</lastBuildDate>
+    <pubDate>周四, 26 十二月 2013 13:36:45 CST</pubDate>
+    <lastBuildDate>周四, 26 十二月 2013 13:36:45 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>Emacs 使用笔记</title>
-      <link>http://standino.github.io/wiki/html/myemacs/</link>
-      <description>Emacs 使用笔记</description>
-      <pubDate>2013-12-25</pubDate>
-      <guid>http://standino.github.io/wiki/html/myemacs/</guid>
+      <title>Eclipse</title>
+      <link>http://standino.github.io/wiki/html/eclipse</link>
+      <description>eclipse</description>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/eclipse</guid>
     </item>
     <item>
-      <title>使用apache cxf生成web servcie 客户端</title>
-      <link>http://standino.github.io/blog/html/cxf</link>
-      <description>介绍如何使用cxf生成客户端</description>
-      <pubDate>2013-12-24</pubDate>
-      <guid>http://standino.github.io/blog/html/cxf</guid>
+      <title>JAVA.org</title>
+      <link>http://standino.github.io/wiki/html/java</link>
+      <description>Java Tips</description>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/java</guid>
     </item>
     <item>
-      <title>redis </title>
-      <link>http://standino.github.io/blog/2013/12/24/redis</link>
-      <description>redis学习和入门</description>
-      <pubDate>2013-12-24</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/24/redis</guid>
+      <title>Scite.org</title>
+      <link>http://standino.github.io/wiki/html/scite</link>
+      <description>scite</description>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/scite</guid>
     </item>
     <item>
-      <title>sonar的安装和使用</title>
-      <link>http://standino.github.io/blog/2013/12/24/sonar</link>
-      <description>sonar的安装和使用</description>
-      <pubDate>2013-12-24</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/24/sonar</guid>
+      <title>利用mydb2脚本实现数据库的敏捷开发</title>
+      <link>http://standino.github.io/wiki/html/agilemydb2</link>
+      <description>本文主要讨论使用 Shell 脚本与 DB2 交互的一些常用技巧和方法。介绍了利用 Shell 脚本帮助我们进行存储过程调优和部署。同时通过一个演示项目的开发过程的介绍来展示如何使用文中的脚本进行开发。</description>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/agilemydb2</guid>
     </item>
     <item>
-      <title>Untitled</title>
-      <link>http://standino.github.io/wiki/untitled/</link>
+      <title>cygwin</title>
+      <link>http://standino.github.io/wiki/html/cygwin</link>
       <description>No Description</description>
-      <pubDate>2013-12-24</pubDate>
-      <guid>http://standino.github.io/wiki/untitled/</guid>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/cygwin</guid>
     </item>
     <item>
-      <title>大数据</title>
-      <link>http://standino.github.io/wiki/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2013-12-24</pubDate>
-      <guid>http://standino.github.io/wiki/bigdata</guid>
+      <title>Database Migration</title>
+      <link>http://standino.github.io/wiki/html/databasemigration</link>
+      <description>Database Migration </description>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/databasemigration</guid>
     </item>
     <item>
-      <title>confluence.org</title>
-      <link>http://standino.github.io/wiki/html/confluence</link>
-      <description>Confluence </description>
-      <pubDate>2013-12-24</pubDate>
-      <guid>http://standino.github.io/wiki/html/confluence</guid>
+      <title>Emacs introduction</title>
+      <link>http://standino.github.io/wiki/html/emacsintroduction</link>
+      <description>Emacs introduction </description>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/emacsintroduction</guid>
     </item>
     <item>
-      <title>使用MDA方式开发软件</title>
-      <link>http://standino.github.io/wiki/html/mda</link>
-      <description>mda</description>
-      <pubDate>2013-12-24</pubDate>
-      <guid>http://standino.github.io/wiki/html/mda</guid>
+      <title>go</title>
+      <link>http://standino.github.io/wiki/html/html/go</link>
+      <description>go</description>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/html/go</guid>
     </item>
     <item>
-      <title>2014年计划</title>
-      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
-      <description>为明年做一下计划</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
+      <title>Tools</title>
+      <link>http://standino.github.io/wiki/html/tool</link>
+      <description>Tools</description>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/tool</guid>
     </item>
     <item>
-      <title>English</title>
-      <link>http://standino.github.io/wiki/eng</link>
-      <description>English</description>
-      <pubDate>2013-12-20</pubDate>
-      <guid>http://standino.github.io/wiki/eng</guid>
+      <title>linux.org</title>
+      <link>http://standino.github.io/wiki/html/linux</link>
+      <description>linux</description>
+      <pubDate>2013-12-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/linux</guid>
     </item>
   </channel>
 </rss>
