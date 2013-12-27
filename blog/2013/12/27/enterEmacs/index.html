@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>走进Emacs殿堂 - Keep going</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Will Chang" />
+    <meta name="description" content="走进Emacs殿堂" />
+    <meta name="keywords" content="emacs" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>努力超越自己！</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>走进Emacs殿堂</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">安装</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">使用cygwin在windows上安装</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+在安装emacs之前需要先安装cygwin。<a href="http://www.cygwin.cn/site/install/">这里是安装方法</a>。
+</p>
+
+<p>
+需要特别说明的是，在选择安装包的时候，请选上emacs-w32 和git。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">在 ubuntu 上安装</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+我们同时使用脚本方式安装。
+</p>
+
+<pre class="example">
+sudo apt-get install  emacs emacs-extra git
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">配置Emacs</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+执行下面的脚步获得配置文件
+</p>
+<pre class="example">
+git clone https://github.com/standino/emacs.d.git ~/.emacs.d
+</pre>
+
+<p>
+配置完毕以后就可以在命令行里使用emacs命令启动它了，第一次启动会在线安装一些插件。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Emacs 简介</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+打开的 emacs 如下图所示。在 emacs 中编辑的不是文本本身，emacs 会把文件的内容拷贝到 buffer 中。
+<img src="../../ideas/Muse/images/ee2.png" alt="ee2.png" />
+</p>
+
+<p>
+从图中我们可以看到，emacs 由“菜单”、“工具条”、“主 buffer”、“状态显示条”和“次 buffer” 组成。
+</p>
+
+<p>
+在 emacs 中很多操作都有快捷键，使用快捷键是一种
+高效的编辑 buffer 的方式。但是如果我们忘记了某个操作的快捷键，我们可以通过选择“菜单”或者点击“工具条”上的按钮来执行相应的操作。
+</p>
+
+<p>
+“主 buffer” 是我们编辑文件的主要区域，看起来和记事本没有太多区别，不过当您熟悉了它的功能以后，您就知道它远非那么简单了。
+</p>
+
+<p>
+在 emacs 中还有一个模式 (mode) 的概念，例如我们编辑一个 SQL 文件，那么它就会使用 sql-mod。所有 SQL 相关的语法显亮，连接数据库，执行
+SQL 查询等功能都会与 sql-mod 关联。在一个 buffer 中可以使用多个模式。这些信息会显示在“状态显示条”上。
+</p>
+
+<p>
+“次 buffer” 是我们和 emacs 交互的一个窗口。通过“次 buffer”，我们可以向 emacs 发送命令。emacs 中的所有操作都可以通过命令来执行。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">基本的文本编辑</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+从根本上说，我们没个文本操作都是向 emacs 发送了一个函数调用。为了提高编辑的效率，我们可以给函数设定一个快捷键或者别名。对于初学者
+来说，比较困难的是记住那些繁多的快捷键。在 emacs 中的快捷键并不像我们一般使用的一个 Ctrl 加上一个英文字母，原因是 emacs 中的快捷键
+太多了。一般 emacs 默认的快捷键以 Ctrl+X 开始，如果我们自己定义快捷键，可以用 Ctrl+C 作为前缀。
+</p>
+
+<p>
+为了方便初学者使用 emacs，我们一般会推荐您编制一个自己的备忘录，把经常使用的快捷键记录在备忘录里，打印出来。这样您就很容易找到您需
+要的快捷键。等使用的熟练了，你就可以丢掉备忘录，随心使用 emacs 了。下面是一个备忘录的例子供您参考。
+</p>
+
+<pre class="example">
+C-x C-c : Exit and close Emacs
+C-x C-z : Exit and hang on Emacs
+C-x C-f : Open file or folder
+C-x i   : Insert file
+C-x C-r : Open a file with read only mode
+C-x u Or C-/   : Undo
+C-x C-s : Save
+C-x s   : Save all unsaved files
+C-x C-w : Save as...
+C-l     : Refresh the buffer
+C-g     : Stop current command
+C-a     : Go to head
+C-e     : Go to tail
+C-n     : Next line
+C-p     : Pre line
+C-f     : forward one character
+C-b     : backward one character
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">如何获得帮助信息</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Emacs 中包含了丰富的文档，如果您是在 ubuntu 等 linux 系统下使用。很多文档都是中文的。这对我们学习使用 emacs 是非常有帮助的。您可以
+通过 Ctrl + h 或者 F1 调出帮助。然后您就可以输入不同的键值使用不同的帮助。如果您忘了如果输入键值，您可以直接输入 ?。Emacs 就会列出
+所有的键值。一般比较常用的就是 a ，然后输入所有查询单词，emacs 就会调出相关的帮助信息。输入 c 然后再输入快捷键，获得该快捷键的功能
+描述。
+</p>
+
+<pre class="example">
+Ctrl + h
+
+ - a  command-apropos.  Type a list of words or a regexp; it shows a list of commands whose names match.  See also the  apropos  command.
+
+ - b  describe-bindings.  Display a table of all key bindings.
+
+ - c  describe-key-briefly.  Type a key sequence;it displays the command name run by that key sequence.
+
+ - d  apropos-documentation.  Type a pattern (a list of words or a regexp),
+and shows a list of functions, variables, and other items whose	documentation matches that pattern.  See also the apropos command.
+
+ - p  finder-by-keyword. Find packages matching a given topic keyword.
+
+ - r  info-emacs-manual.  Display the Emacs manual in Info mode.
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Lisp 语言介绍</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Function
+</li>
+</ul>
+
+
+<p>
+01  (defun my-switch-buffer ()
+02    "Like switch-buffer but in the opposite direction"
+03    (interactive "")
+04    (other-window -1)
+05  )
+</p>
+
+
+<ul class="org-ul">
+<li>Customize Emacs
+</li>
+</ul>
+
+
+<p>
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-billw)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">安装插件</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Emacs的插件一般是由 Lisp 编写的，你只需要把插件的 Lisp 文件放到 Emacs 的查询路径下就可以了。这里我介绍另一个安装插件的工具 ELAP
+<a href="http://tromey.com/elpa/install.html">http://tromey.com/elpa/install.html</a>。
+</p>
+
+
+<pre class="example">
+(let ((buffer (url-retrieve-synchronously
+               "http://tromey.com/elpa/package-install.el")))
+  (save-excursion
+    (set-buffer buffer)
+    (goto-char (point-min))
+    (re-search-forward "^$" nil 'move)
+    (eval-region (point) (point-max))
+    (kill-buffer (current-buffer))))
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">在Emacs中编程</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>Tabbar
+</li>
+<li>Spell Check
+</li>
+<li>SQL
+</li>
+<li>Template
+</li>
+<li>Auto-completion
+</li>
+<li>Version Control
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">执行更多的文本编写</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1">使用 org  模式进行日程安排</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+现在比较流行的时间管理方式是 GTD(Get Things Done)。它的理念是把脑袋里面所有想做得事情都记录到一个你信任的系统里，然后把大脑清空，
+只关注于当前要做得一件事情。这样即可以消除“每天都有太多事情做”的焦虑，也可以通过仔细计划和安排每天的事情，让做事的效率有很大提高。
+这里，我们不过多的介绍 GTD 。如果您想多了解相关知识，可以阅读《Get Things Done》这本书。
+</p>
+
+<p>
+Emacs 的 org 模式就是一个 GTD 的可信赖的系统。它基于简单的文本文件，您可以很容易的把它放到一个版本控制系统里。它提供了很多查询的功
+能，而且很容易定制。下面我就描述一下，我是如何使用它来实现 GTD 的。
+</p>
+
+<p>
+<b><b>录入</b></b>
+</p>
+
+<p>
+我的公司是使用 Louts Notes 作为邮件系统，而且工作基本上也是通过邮件来下发的。每天早上到公司后，我打开 Louts Notes 阅读邮件。如果是
+跟我相关的工作，我就就把那封电子邮件打上标记 (flag)。阅读和标记完邮件以后，我打开 Emacs, 使用 remember (C-A-r) 记录下我打标记的邮
+件内容，可以用 [[]] 加入一个到相关邮件的链接， 然后 (C-u C-c c) 存到我的 org 文件中。
+把工作都记录到 Emacs 中后，我会关闭 Louts Notes，避免新的邮件打扰我的工作。
+</p>
+
+<p>
+<b><b>计划</b></b>
+</p>
+
+<p>
+刚才已经录入了很多任务，它们是必须今天完成的。我需要把这些任务进行一下整理，让它们更易于阅读，
+（C-c , A）把它设置为最高优先级，设置工作时间为今天，并给它设置一个Tag－－－ Office。
+当然我还有一些其他的任务需要做，例如写这篇论文、准备考认证、学习英语等等。我把这些任务的优先级设置为 B 。 把一些需要分配给其他人来
+做的工作设置为 DELEGATED 状态，设置处理时间为今天。我可能会突然想起来一些工作，我也 (C-A-r) 把它们记录下来，(C-c C-s) 设定一个处理时间。现在我已
+经完成了任务整理。下面我就需要具体安排今天的工作了。(C-c a a) 列出这周的任务，如果今天的A类任务比较多，那么我就会把原计划今天做
+的B任务推迟几天，如果今天的任务比较少，我就查看一下 WAITING 、START 或 TODO  状态的任务，看一下哪些任务可以今天来做。
+</p>
+
+
+<p>
+<b><b>执行</b></b>
+</p>
+
+<p>
+(C-c a a d) 列出今天的任务，下面的时间就是专注在今天了。首先，选择一个最高优先级的任务，（C-c x s) 设置为 STARED 状态，
+输入一些关于该任务的备注信息，然后就全身心的投入工作了，直到把这个任务做完(C-c x d)。然后是下一个任务。如果在此过程中，有什么灵感
+闪现，(C-A-r) 把它们记录下来，(C-c C-s) 设定一个估计计划做该任务的时间。然后，继续当前的工作。
+</p>
+
+<p>
+我会在下午两点和五点的时候再查收一下 Louts Notes 邮件，如果需要，我就重复上述的录入和计划的过程。
+</p>
+
+<p>
+<b><b>回顾。</b></b>
+</p>
+
+<p>
+在下班前五点半左右，（C-c a a l）列出今天完成的任务的情况。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2">使用 muse 模式编写文档</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Emacs Muse is an authoring and publishing environment for Emacs. It simplifies the process of writings documents and publishing them to various output formats. Muse uses a very simple Wiki-like format as input.
+</p>
+
+<p>
+Muse consists of two main parts: an enhanced text-mode for authoring documents and navigating within Muse projects, and a set of
+publishing styles for generating different kinds of output.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">扩展Emacs</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>Get the last version automatically
+</li>
+</ul>
+
+<pre class="example">
+(add-hook 'find-file-hooks 'my-vc-update)
+
+(defun my-vc-update()
+  (condition-case nil
+      (if (vc-registered (buffer-file-name))
+           (vc-update))
+    (error nil))
+)
+</pre>
+
+<ul class="org-ul">
+<li>Run SQLunit Test
+</li>
+</ul>
+
+<pre class="example">
+(defun sqlunit-run-file ()
+     "Run sqlunit on current buffer"
+     (interactive )
+     (shell-command
+      (format "ant -f %s../build.xml  -Dscript.name=%s &amp;" (buffer-dir)  (buffer-name))))
+</pre>
+
+<ul class="org-ul">
+<li>Developerworks article publishing
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2013-12-27</span>
+        <span title="last modification date" class="post-info">2013-12-27</span>
+        <span title="tags" class="post-info"><a href="/tags/emacs/">emacs</a>, <a href="/tags/editor/">editor</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2013/12/27/enterEmacs";
+          var disqus_url = "http://standino.github.io/blog/2013/12/27/enterEmacs";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
