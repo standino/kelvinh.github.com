@@ -1,4 +1,4 @@
-#+TITLE:       JAVA.org
+#+TITLE:       JAVA
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
@@ -8,66 +8,6 @@
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION:  Java Tips
-     
-
-
-* cxf工具生成webservice客户端方法
-
-1、用CXF的wsdl2java.bat自动生成客户端： 
-1）、首先，需要在wsdl2java.bat中以下两个变量：（可以添加到文件最后）
-<#+BEGIN_SRC >
-set CXF_HOME=D:\资料文件-limpo\apache-cxf-2.2.7\apache-cxf-2.2.7
-set JAVA_HOME=C:\Program Files\Java\jdk1.6.0_01
-#+END_SRC
-  也就是设置你的cxf地址和jdk地址，除了以上两个，你还需要在jdk安装目录下的jre/lib下新建endorsed目录，再把jaxb-api-2.1.jar拷贝到其中，因为cxf在jdk1.6下运行，需要这个包。
-2）、接着，用cmd命令，进到cxf下的bin目录，例：D:\cxf\apache-cxf-2.3.1\bin 。然后再输入：
-<#+BEGIN_SRC >
-就可以了。
--p后的com.jd.emall.rpc.server.wares 指的是生成的java文件的包路径。
--d后的d:/指的是文件生成的本地路径。
-最后的uri指的是wsdl的访问地址。
-2、客户端配置：
-#+BEGIN_SRC
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jaxws="http://cxf.apache.org/jaxws"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
-    
-      <import resource="classpath:META-INF/cxf/cxf.xml" />
-<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
-      <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-<jaxws:client id="wareServicer"
-address="${webservice.address.ware}"
-serviceClass="com.jd.emall.rpc.server.wares.EbookQueryInfoWsService">
-</jaxws:client>
-<jaxws:client id="categoryServicer"
-address="${webservice.address.category}"
-serviceClass="com.jd.emall.rpc.server.category.CategoryWebService">
-</jaxws:client>
-</beans>   
-#+END_SRC
-properties文件加入以下配置： 
-<#+BEGIN_SRC >
-#商品信息外部接口地址
-webservice.address.ware=http://admin.ebook.360buy.net/services/services/ebookQueryWs
-#商品分类外部接口地址
-webservice.address.category=http://10.10.224.38:8080/product-bss-web/services/categoryWebService
- #+END_SRC
-3、可能遇到的问题：
-1）、生成的文件中可能由于java6与 cxf 版本问题报Service类的几个构造方法未定义，解决方法是: 
-<#+BEGIN_SRC >
-D:\cxf>wsdl2java -p com.naver.usalife.ws.client -frontend jaxws21  -client  http://localhost:8080/ws/helloworld?wsdl
-#+END_SRC
-
-请增加 -frontend jaxws21  
-2）、可能你在web中集成spring和cxf时也会遇到2个jax*版本不一致的问题
-请在web工程中获得 System.out.println(System.getProperty("java.endorsed.dirs")); 所在路径，然后将附件中的两个jar添加到获得的路径中。
-如果文件夹不存在，请手动创建文件夹。
-
-<#+BEGIN_SRC >
-wsdl2java -p  com.jd.pbs.ws.brandrelationinfo  -d d:/ http://service.vm.360buy.com/services/soap/xml/brandrelationinfo?wsdl
-#+END_SRC
 
 * Spring
 
@@ -80,6 +20,7 @@ wsdl2java -p  com.jd.pbs.ws.brandrelationinfo  -d d:/ http://service.vm.360buy.c
 SpringMVC概要
 Spring MVC的总控：DispatcherServlet
 web.xml中的声明：
+#+BEGIN_SRC 
      <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/app-*.xml</param-value>
@@ -101,6 +42,7 @@ web.xml中的声明：
 		<servlet-name>springmvc</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
+#+END_SRC
 
 1、ContextLoaderListener创建root webApplicationContext 
 2、DispatcherServlet创建servlet-specific 的webApplicationContext，继承并覆盖root的定义。init-param可选，缺省查找/WEB-INF/{servletName}-servlet.xml。示例中该文件放在classpath中便于使用maven resources插件进行环境变量替换。
@@ -111,19 +53,24 @@ web.xml中的声明：
  
 
 {servletName}-servlet.xml配置, 初始化默认的框架级别的bean。
-
+#+BEGIN_SRC 
 <mvc:annotation-driven />
+#+END_SRC
+
 
 
 spring 3.1 mvc默认实现变化：
 HandlerMapping和HandlerAdapter ，spring3.1的这两个接口的默认实现：
+#+BEGIN_SRC 
 
 	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
 Creates RequestMappingInfo instances from type and method-level @RequestMapping annotations in  @Controller classes.
 	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
 An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature -- method argument and  return types, defined in @RequestMapping. 
 
+#+END_SRC
 多了几个接口：HandlerMethodArgumentResolver/HandlerMethodReturnValueHandler，因此MVC XML Namespace下的配置有些变化，可扩展点更多。暂时只需了解即可。
+#+BEGIN_SRC 
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -149,19 +96,23 @@ An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature 
             <bean/>
 		</mvc:return-value-handlers>
 	</mvc:annotation-driven>
-Restful MVC
-URL规划
 
-URL	HTTP方法 	MIME	含义
-/return/order	GET	text/html	退货单首页
-/return/order/new	GET	text/html	显示新增页
-/return/order	POST		创建退货单
-/return/order/{id}/edit	GET	text/html	显示修改页
-/return/order/{id}	PUT		修改退货单
-/return/order/{id}	GET	text/html	显示退货单
-/return/order/{id}	DELETE		删除退货单
-/return/order/query	GET	text/html	查询结果
-/return/order/query	GET	application/json	查询结果
+#+END_SRC
+
+** Restful MVC
+*** URL规划
+
+ | URL                     | HTTP方法 | MIME             | 含义       |
+ | /return/order           | GET      | text/html        | 退货单首页 |
+ | /return/order/new       | GET      | text/html        | 显示新增页 |
+ | /return/order           | POST     |                  | 创建退货单 |
+ | /return/order/{id}/edit | GET      | text/html        | 显示修改页 |
+ | /return/order/{id}      | PUT      |                  | 修改退货单 |
+ | /return/order/{id}      | GET      | text/html        | 显示退货单 |
+ | /return/order/{id}      | DELETE   |                  | 删除退货单 |
+ | /return/order/query     | GET      | text/html        | 查询结果   |
+ | /return/order/query     | GET      | application/json | 查询结果   |
+
 
 HTTP方法，表达了针对资源的动作
 	GET：检索资源。具有幂等性，可以充分使用客户端的缓存。
@@ -171,6 +122,8 @@ HTTP方法，表达了针对资源的动作
 	HEAD/OPTIONS，略。
 
 ajax框架可指定http方法，浏览器一般只能GET/POST，spring通过一个表单隐藏域来模拟其他方法。
+#+BEGIN_SRC 
+
 
 
 <form action="#springUrl('')/return/order/$id" method="POST">
@@ -211,10 +164,13 @@ public class ReturnOrderController {
     }
     ...
 }
-
+#+END_SRC
 spring扫描并管理：
+#+BEGIN_SRC 
+
 <context:component-scan  base-package="com.jd.bluedragon.web.controller" />
 
+#+END_SRC
 controller类声明：
 1、@Controller注解bean，由spring ioc管理，默认为单例。其value属性可指定bean name，默认为首字母小写的类名。
 2、@RequestMapping("/return/order")，将http请求限定到类，映射资源url的起始路径。
@@ -499,64 +455,52 @@ public class IndexController {
 
 
 
-拦截器，以京东SSO为例说明
+*** 拦截器，
 
 静态资源映射，不使用拦截器：{servletName}-servlet.xml
+#+BEGIN_SRC 
+
+
 	<mvc:default-servlet-handler />
 
 	<!-- static resources -->
 	<mvc:resources location="/static/" mapping="/static/**"
 		cache-period="864000"/><!-- 24 * 3600 * 10 -->
-
+#+END_SRC
 使用servlet容器默认的servlet，而不使用spring的DispatcherServlet来处理，快速，还可加缓存时间。在生产环境中，有可能被前端的proxy给拦截掉。
 
 spring mvc的拦截器，类似于servlet的filter。
 	比filter好的地方是，interceptor可以被spring ioc容器管理。
 
 URL映射和拦截器配置:{servletName}-servlet.xml
+#+BEGIN_SRC xml
+
+
     <!-- url mapping with interceptor -->
 	<mvc:interceptors>
-		<mvc:interceptor>
-	        <mvc:mapping path="/index/**" />
-	        <mvc:mapping path="/return/**" />
-			<ref bean="_DotnetTicketContextInterceptor" />
-		</mvc:interceptor>
+
 		<mvc:interceptor>
             <mvc:mapping path="/index/**" />
             <mvc:mapping path="/return/**" />
-			<ref bean="_HrmDotnetTicketLoginContextInterceptor" />
+			<ref bean="_tLoginContextInterceptor" />
 		</mvc:interceptor>
-		<mvc:interceptor>
-            <mvc:mapping path="/index/**" />
-            <mvc:mapping path="/return/**" />
-			<ref bean="_LoginContextInterceptor" />
-		</mvc:interceptor>
- 		<mvc:interceptor>
-            <mvc:mapping path="/index/**" />
-            <mvc:mapping path="/return/**" />
-			<ref bean="_DotnetTicketRequiredInterceptor" />
-		</mvc:interceptor>
- 		<mvc:interceptor>
-            <mvc:mapping path="/index/**" />
-            <mvc:mapping path="/return/**" />
-			<ref bean="_HrmPrivilegeInterceptor" />
-		</mvc:interceptor>
+
 	</mvc:interceptors>
+#+END_SRC
 
 权限相关：在controller方法上加上自定义的注解
-    /**
-     * demonstrate @HrmPrivilege handling failed.
-     */
+
+#+BEGIN_SRC 
+
+
     @HrmPrivilege("ceo,cto")
     @RequestMapping(value = "/access-denied", method = RequestMethod.GET)
     public void denied() {
         // throw in interceptor
     }
 
+#+END_SRC
 
-讲解
-com.jd.common.springmvc.interceptor.DotnetTicketRequiredInterceptor
-com.jd.common.hrm.support.HrmPrivilegeInterceptor
 
 * Copy files from a jar
 
@@ -613,11 +557,6 @@ http://grails.org/plugin/app-engine
 
  [[http://www.alphaworks.ibm.com/tech/jca][IBM Thread and Monitor Dump Analyzer for Java]]
 
-* IBM JDK
-
-
- 1. http://w3.hursley.ibm.com/java/jim/ibmsdks/latest/windowsx64/60servicerefresh10fp1windowsamd64em64tpwa6460sr10fp12012032101j9/index.html
- 14. IBM SKD http://w3.hursley.ibm.com/java/jim/ibmsdks/latest/
 
 * Automation test
 

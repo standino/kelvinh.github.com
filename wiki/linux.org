@@ -1,4 +1,4 @@
-#+TITLE:       linux.org
+#+TITLE:       linux
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
@@ -28,9 +28,6 @@
 
 * [[http://w3.ibm.com/connections/wikis/home/wiki/html/Wbd0c3129b6b7_4e5f_ba7d_2bb397faa12f/page/Setup%20Ubuntu%20as%20your%20primary%20workstation?lang=zh][Setup Ubuntu as your primary workstation]]
 
-[[http://w3.tap.ibm.com/w3ki03/display/linuxportal/Ubuntu+Linux+Client+Acceleration+Guide][Ubuntu Linux Client Acceleration Guide]]
-
-[[http://w3.tap.ibm.com/w3ki03/display/linuxportal/Install+PAE+Kernel+for+Machines+with+more+than+3+GB+Memory][Install PAE Kernel for Machines with more than 3 GB Memory]]
 
 ** Setup Ubuntu 
 
@@ -45,7 +42,8 @@
  - Unzip grub4dos, copy grldr and  menu.lst to C:\. Edit menu.lst file， remove all the content in the file and paste below into
 menu.lst file. 
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
+ 
 title Install Ubuntu 10.10
 find --set-root /linux
 kernel /linux
@@ -54,7 +52,7 @@ initrd /initrd.gz
 
  - Edit C:\boot.ini, add one line at the bottom:  C:\grldr="Install Ubuntu"
  - Reboot and select "Install Ubuntu 10.10" menu.   http://wiki.ubuntu.org.cn/Qref/Hardy
- - download ocdc-repository_1.5_all.deb  from http://ocdc.hursley.ibm.com/ocdc/pool/IBM/o/ocdc-repository/ 
+
 
 
 ** Upgrade Ubuntu
@@ -160,11 +158,8 @@ https://www14.software.ibm.com/webapp/dswdown/dswdown.wss/web/searchPartNumber
  - sudo ./install
  - sudo  unlink /bin/sh
  - sudo ln -s /bin/bash /bin/sh
- - start IBMIM and set the repository to  http://btsjazz.dyn.webahead.ibm.com:8000. Please check this for more detail:  [[Notes://CSDLD01/48256F8C0020B1A3/BB2207E44A8BD1BC052566AB007D9C67/CF81F260E602C4F348257777002C5152 ]]
+ - start IBMIM and set the repository to  http://btsjazz.dyn.webahead.ibm.com:8000. 
  - Set Install Directory to a folder in your home (ie. /home/will/willATibm/SDP7)
- 
-[[ubuntuwid7.jpg]]
-
 ----
 
 
@@ -204,7 +199,7 @@ sudo /etc/init.d/gdm start
 
 * Mount ntfs files
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
  /sbin/fdisk -l
 
 mount   -o umask=0 /dev/sda3   /datad/eadftp/SOA/a/
@@ -249,7 +244,7 @@ Now you should be able to cd into the directory and start using it as if it was 
 
 * Firewall
 ** Ubuntu
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 sudo gedit /etc/iptables.d/filter/INPUT/25-c4eb-allow.rule
 sudo /etc/init.d/iptables reset
 sudo /etc/init.d/iptables restart
@@ -394,7 +389,7 @@ ubuntu开机自动运行程序
 
 如果不需要休眠的话，用交换文件就好了。下面 3 行在根目录建立一个 512 M 的交换文件 /swapfile，重启即可。
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 sudo dd if=/dev/zero of=/swapfile bs=1M count=512
 sudo mkswap /swapfile
@@ -421,7 +416,7 @@ netstat -nlp |grep 9445 |awk '{print $7}'|awk -F / '{print $1}'
 
 ps -aux |grep -m1 3227|awk '{print $4}'|awk -F . '{print $1}'
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
  #!/bin/sh
 
  #允许最大占用内存的百分比
@@ -582,7 +577,7 @@ sudo apt-get install dnsmasq
 搜索“resolv-file", 把注释号去掉, 并修改为：resolv-file=/etc/resolv.dnsmasq.conf
 
 编辑/etc/dhcp3/dhclient.conf，修改为：
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 #supersede domain-name “fugue.com home.vix.com”;
 
 prepend domain-name-servers 127.0.0.1;
@@ -692,7 +687,7 @@ generalized yet, so let's build the wisdom here.
 
 * Kernel 
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 update-initramfs -u -k ${MODVER}
 
@@ -958,14 +953,14 @@ dpkg --get-selections|grep linux ＃列出当前内核。带image的则是已经
 程序功能：能跟踪由“make install”或类似命令安装的所有文件，并为这些文件创建Slackware、RPM或者Debian安装包，然后把它添加到已安装软件包数据库中，以便能简便的卸载或发布安装包。
 
 例如：
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 sudo ./configure
 sudo make
 sudo make install
 #+END_SRC
 
 这个是通常的软件编译安装步骤，这样做有不好的地方就是一旦编译安装失败，文件四零八落的很难收拾，但是通过
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 sudo ./configure
 sudo make
 sudo checkinstall
@@ -1154,13 +1149,6 @@ sudo /etc/init.d/vsftpd restart
 sudo /etc/init.d/vsftpd start
 sudo /etc/init.d/vsftpd stop
 
-* [[https://ltc3.linux.ibm.com/wiki/html/LinuxDesktop/Fetchnotes][fetch notes]]
-
-http://ibmforums.ibm.com/forums/thread.jspa?messageID=1315054&tstart=0&#1315054
-
-http://ibmforums.ibm.com/forums/thread.jspa?messageID=1218790&tstart=0&#1218790
-
-https://ltc3.linux.ibm.com/wiki/html/LinuxDesktop/Fetchnotes
 
 * Virtualbox
 
@@ -1781,12 +1769,12 @@ $bind -v
 
 * 窗口关闭按钮的位置修改
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 gconftool-2 --set /apps/metacity/general/button_layout --type string "menu:minimize,maximize,close"
 #+END_SRC
 
 * sed常用命令整理
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 sed '1,3d' file //删除1-3行
 sed -n '/[Aa]bc/p' file //打印包含Abc或者abc的行
 sed '/ABC/d' //删除包含ABC的行
@@ -1813,7 +1801,7 @@ sed 's/1\|2\|3/*/g' //在GNU里将不管是1或2或者是3替换成*
 
 * awesome
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 当然你可以通过修改配置文件来更改这些键位。这里的Mod4可以在配置文件中定义，默认是Windows键。
 
 Mod4 + Return
@@ -1905,7 +1893,7 @@ Mod4 + Shift + r
 
 http://kbase.redhat.com/faq/docs/DOC-13668
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 [jazz@dswdev3 ~]$ cat /etc/sysconfig/network-scripts/ifcfg-eth1
 DEVICE=eth1
 BOOTPROTO=static
@@ -2019,7 +2007,7 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 
  http://computer-refuge.org/classiccmp/aixpdslib/pub/wget/RISC/5.3/exec/
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
  gzip -dc wget.1.10.2.tar.Z | tar -xvf -
 
@@ -2054,7 +2042,7 @@ https://wiki.archlinux.org/index.php/FreeNX
 
 CTR+ALT+F          Toggles full-screen mode. 
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 sudo add-apt-repository ppa:freenx-team
 
 sudo sed -i 's/natty/lucid/g' freenx-team-ppa-natty.list 
@@ -2112,7 +2100,7 @@ sudo cp /tmp/lib/libpthread.so.0 .
 
 gedit ~/.local/share/applications/mimeapps.list 
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 [Default Applications]
 x-scheme-handler/notes=notesplugin.desktop
@@ -2126,7 +2114,7 @@ x-scheme-handler/messages=notesplugin.desktop
 
 sudo gedit /usr/share/applications/notesplugin.desktop
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 Exec='/opt/ibm/lotus/notes/notes' %U
 #+END_SRC
 
@@ -2150,7 +2138,7 @@ sudo ln -s ../lib/i386-linux-gnu/libstdc++.so.6 .
 
 * Mount
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 will@will-ThinkPad-T420:/media$ cat /etc/fstab
 # /etc/fstab: static file system information.
 #
@@ -2172,7 +2160,7 @@ UUID=4305604E4A5B9CB8 /media/win7               ntfs    errors=remount-ro,auto,e
 
 https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/%28optional%29%20Add%20additional%20repositories
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 sudo yum install http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
 
 sudo yum install flash-plugin
@@ -2298,7 +2286,7 @@ http://hi.baidu.com/w176177082/blog/item/e5b874345bad9659241f1402.html
 
 http://www.linuxidc.com/Linux/2012-06/62070.htm
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 然后从 http://www.ctan.org/tex-archive/systems/texlive/Images/ 下载 texlive 2010的完整安装包iso格式的
 假定将镜像文件下载至 /opt 目录下，将其挂载到 /mnt/cdrom，并进入该目录：
@@ -2318,7 +2306,7 @@ PATH=/usr/local/texlive/2010/bin/i386-linux:$PATH:$HOME/bin
 
 #+END_SRC
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 [will@will willATibm]$ sudo rpm -i http://jnovy.fedorapeople.org/texlive/2012/packages.fc17/texlive-release.noarch.rpm
 [will@will willATibm]$ sudo yum install texlive
@@ -2341,7 +2329,7 @@ yum install proftpd proftpd-ldap openssl
 
 Below is the real working proftpd.conf
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 AuthOrder                        mod_auth_file.c. mod_ldap.c
 LoadModule mod_ldap.c                                                                                                                                                           
 #LoadModule mod_auth_file.c                                                                                                                                                     
@@ -2433,7 +2421,7 @@ add a -Dorg.eclipse.swt.browser.XULRunnerPath=/opt/ibm/xulrunner to the eclipse.
  https://w3-connections.ibm.com/forums/html/topic?id=77777777-0000-0000-0000-000002053706
 
 eclipse.ini
-<#+BEGIN_SRC >
+#+BEGIN_SRC
  -Dorg.eclipse.swt.browser.XULRunnerPath=/opt/ibm/lotus/Sametime/rcp/eclipse/plugins/com.ibm.rcp.xulrunner.runtime.linux.x86_6.2.3.20110414-1652/xulrunner
 -Dorg.eclipse.swt.browser.DefaultType=webkit
 -Dorg.eclipse.swt.browser.UseWebKitGTK=true
@@ -2447,7 +2435,7 @@ eclipse.ini
 /usr/lib64/firefox/xulrunner
 /opt/IBM/SDPShared/plugins/com.ibm.etools.webedit.xulrunner_1.0.0.v20101018_1437/xulrunner
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 [will@will ~]$ cat .bashrc
 # .bashrc
 
@@ -2589,7 +2577,7 @@ ok
 
 *  fedora 中文输入法 REMI
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 $ sudo yum install cmake gtest-devel boost-devel yaml-cpp-devel kyotocabinet-devel opencc-devel ibus-devel libnotify-devel zlib-devel gcc-c++ fcitx fcitx-devel glog-devel.x86_64
 $ wget https://rimeime.googlecode.com/files/librime-0.9.4.tar.gz
 $ wget https://rimeime.googlecode.com/files/ibus-rime-0.9.4.tar.gz
@@ -2764,7 +2752,7 @@ useradd -groot ead
 
 ** Apahce 
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 apachectl start
 
 [root@bxv5v1053 www]# cd html
@@ -2780,7 +2768,7 @@ repositories
 
 edit /etc/proftpd.conf
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 AuthOrder			 mod_auth_file.c. mod_ldap.c
 # ...

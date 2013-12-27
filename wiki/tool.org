@@ -13,7 +13,7 @@
 
 ** VPN Proxy 
 
- - https://code.google.com/p/goagent/ 我的应用名称是: cwopenproxy 
+ - https://code.google.com/p/goagent/ 
 
 ** [[www.cygwin.com][Cygwin]]
 
@@ -407,9 +407,4 @@ google已经成为一个不可或缺的搜索工具，每天被数百万人使�
 
  - [[http://tengine.taobao.org/book/][Nginx开发从入门到精通]]
 
-* VPN
 
-
- - https://code.google.com/p/goagent/
-
-我的应用名称是: cwopenproxy 

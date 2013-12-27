@@ -1,4 +1,4 @@
-#+TITLE:       关于
+#+TITLE:       自我介绍
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2012-11-27 Tue
@@ -8,7 +8,7 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+DESCRIPTION: About Will Chang
 
-Smart, Quick learning, hardworking.
+Quick learning, hardworking.
 
 Familiar with J2EE & web service related technology.
 

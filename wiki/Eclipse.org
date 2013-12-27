@@ -20,9 +20,11 @@
 
  
  - [[http://lylyb.iteye.com/blog/162799][eclipse JVM 设置]]
-* Eclipse Orion  http://orionhub.org/ changwei/7807
+* Eclipse Orion  http://orionhub.org/ 
+
 
 http://wiki.eclipse.org/Orion/Getting_Started_with_Orion
+
 
 
 #+BEGIN_SRC
