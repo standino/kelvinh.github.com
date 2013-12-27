@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>JAVA.org - Keep going</title>
+    <title>JAVA - Keep going</title>
     <meta charset="utf-8" />
     <meta name="author" content="Will Chang" />
     <meta name="description" content="Java Tips" />
@@ -32,83 +32,11 @@
 
 <div>
 <div class="post">
-<h1>JAVA.org</h1>
-
-
+<h1>JAVA</h1>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">cxf工具生成webservice客户端方法</h2>
+<h2 id="sec-1">Spring</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-1、用CXF的wsdl2java.bat自动生成客户端： 
-1）、首先，需要在wsdl2java.bat中以下两个变量：（可以添加到文件最后）
-&lt;#+BEGIN_SRC &gt;
-set CXF_HOME=D:\资料文件-limpo\apache-cxf-2.2.7\apache-cxf-2.2.7
-set JAVA_HOME=C:\Program Files\Java\jdk1.6.0_01
-#+END_SRC
-  也就是设置你的cxf地址和jdk地址，除了以上两个，你还需要在jdk安装目录下的jre/lib下新建endorsed目录，再把jaxb-api-2.1.jar拷贝到其中，因为cxf在jdk1.6下运行，需要这个包。
-2）、接着，用cmd命令，进到cxf下的bin目录，例：D:\cxf\apache-cxf-2.3.1\bin 。然后再输入：
-&lt;#+BEGIN_SRC &gt;
-就可以了。
--p后的com.jd.emall.rpc.server.wares 指的是生成的java文件的包路径。
--d后的d:/指的是文件生成的本地路径。
-最后的uri指的是wsdl的访问地址。
-2、客户端配置：
-</p>
-<pre class="example">
-&lt;beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jaxws="http://cxf.apache.org/jaxws"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd"&gt;
-    
-      &lt;import resource="classpath:META-INF/cxf/cxf.xml" /&gt;
-&lt;import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" /&gt;
-      &lt;import resource="classpath:META-INF/cxf/cxf-servlet.xml" /&gt;
-&lt;jaxws:client id="wareServicer"
-address="${webservice.address.ware}"
-serviceClass="com.jd.emall.rpc.server.wares.EbookQueryInfoWsService"&gt;
-&lt;/jaxws:client&gt;
-&lt;jaxws:client id="categoryServicer"
-address="${webservice.address.category}"
-serviceClass="com.jd.emall.rpc.server.category.CategoryWebService"&gt;
-&lt;/jaxws:client&gt;
-&lt;/beans&gt;
-</pre>
-<p>
-properties文件加入以下配置： 
-&lt;#+BEGIN_SRC &gt;
-#商品信息外部接口地址
-webservice.address.ware=<a href="http://admin.ebook.360buy.net/services/services/ebookQueryWs">http://admin.ebook.360buy.net/services/services/ebookQueryWs</a>
-#商品分类外部接口地址
-webservice.address.category=<a href="http://10.10.224.38:8080/product-bss-web/services/categoryWebService">http://10.10.224.38:8080/product-bss-web/services/categoryWebService</a>
-</p>
-<p>
- #+END_SRC
-3、可能遇到的问题：
-1）、生成的文件中可能由于java6与 cxf 版本问题报Service类的几个构造方法未定义，解决方法是: 
-&lt;#+BEGIN_SRC &gt;
-D:\cxf&gt;wsdl2java -p com.naver.usalife.ws.client -frontend jaxws21  -client  <a href="http://localhost:8080/ws/helloworld?wsdl">http://localhost:8080/ws/helloworld?wsdl</a>
-#+END_SRC
-</p>
-
-<p>
-请增加 -frontend jaxws21  
-2）、可能你在web中集成spring和cxf时也会遇到2个jax*版本不一致的问题
-请在web工程中获得 System.out.println(System.getProperty("java.endorsed.dirs")); 所在路径，然后将附件中的两个jar添加到获得的路径中。
-如果文件夹不存在，请手动创建文件夹。
-</p>
-
-<p>
-&lt;#+BEGIN_SRC &gt;
-wsdl2java -p  com.jd.pbs.ws.brandrelationinfo  -d d:/ <a href="http://service.vm.360buy.com/services/soap/xml/brandrelationinfo?wsdl">http://service.vm.360buy.com/services/soap/xml/brandrelationinfo?wsdl</a>
-#+END_SRC
-</p>
-</div>
-</div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Spring</h2>
-<div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><a href="http://www.blogjava.net/freeman1984/archive/2007/12/07/166112.html">ibatis学习（三）---ibatis与spring的整合</a>
 </li>
@@ -123,30 +51,30 @@ wsdl2java -p  com.jd.pbs.ws.brandrelationinfo  -d d:/ <a href="http://service.vm
 SpringMVC概要
 Spring MVC的总控：DispatcherServlet
 web.xml中的声明：
-     &lt;context-param&gt;
-        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-        &lt;param-value&gt;classpath:spring/app-*.xml&lt;/param-value&gt;
-    &lt;/context-param&gt;
-    &lt;listener&gt;
-        &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
-    &lt;/listener&gt;
 </p>
+<pre class="example">
+ &lt;context-param&gt;
+    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+    &lt;param-value&gt;classpath:spring/app-*.xml&lt;/param-value&gt;
+&lt;/context-param&gt;
+&lt;listener&gt;
+    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+&lt;/listener&gt;
 
-<p>
-&lt;servlet&gt;
-        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-        &lt;init-param&gt;
-          &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-          &lt;param-value&gt;classpath:spring/springmvc-servlet.xml&lt;/param-value&gt;
-        &lt;/init-param&gt;
-&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-&lt;/servlet&gt;
-&lt;servlet-mapping&gt;
-        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-&lt;/servlet-mapping&gt;
-</p>
+    &lt;servlet&gt;
+	    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+	    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+	    &lt;init-param&gt;
+	      &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+	      &lt;param-value&gt;classpath:spring/springmvc-servlet.xml&lt;/param-value&gt;
+	    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+	    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+	    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+</pre>
 
 <p>
 1、ContextLoaderListener创建root webApplicationContext 
@@ -161,71 +89,144 @@ web.xml中的声明：
 <p>
 {servletName}-servlet.xml配置, 初始化默认的框架级别的bean。
 </p>
-
-<p>
+<pre class="example">
 &lt;mvc:annotation-driven /&gt;
-</p>
+</pre>
+
 
 
 <p>
 spring 3.1 mvc默认实现变化：
 HandlerMapping和HandlerAdapter ，spring3.1的这两个接口的默认实现：
 </p>
-
-<p>
-        org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+<pre class="example">
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
 Creates RequestMappingInfo instances from type and method-level @RequestMapping annotations in  @Controller classes.
-        org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
-An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature -- method argument and  return types, defined in @RequestMapping. 
-</p>
-
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
+An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature -- method argument and  return types, defined in @RequestMapping.
+</pre>
 <p>
 多了几个接口：HandlerMethodArgumentResolver/HandlerMethodReturnValueHandler，因此MVC XML Namespace下的配置有些变化，可扩展点更多。暂时只需了解即可。
 </p>
-
-<p>
-&lt;beans xmlns="<a href="http://www.springframework.org/schema/beans">http://www.springframework.org/schema/beans</a>"
-        xmlns:xsi="<a href="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</a>"
-        xmlns:mvc="<a href="http://www.springframework.org/schema/mvc">http://www.springframework.org/schema/mvc</a>"
-        xmlns:util="<a href="http://www.springframework.org/schema/util">http://www.springframework.org/schema/util</a>"
-        xmlns:context="<a href="http://www.springframework.org/schema/context">http://www.springframework.org/schema/context</a>"
-        xsi:schemaLocation="
-    <a href="http://www.springframework.org/schema/beans">http://www.springframework.org/schema/beans</a> <a href="http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">http://www.springframework.org/schema/beans/spring-beans-3.1.xsd</a>
-    <a href="http://www.springframework.org/schema/context">http://www.springframework.org/schema/context</a> <a href="http://www.springframework.org/schema/context/spring-context-3.1.xsd">http://www.springframework.org/schema/context/spring-context-3.1.xsd</a>
-    <a href="http://www.springframework.org/schema/mvc">http://www.springframework.org/schema/mvc</a> <a href="http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd</a>
-    <a href="http://www.springframework.org/schema/util">http://www.springframework.org/schema/util</a> <a href="http://www.springframework.org/schema/util/spring-util-3.1.xsd">http://www.springframework.org/schema/util/spring-util-3.1.xsd</a>
+<pre class="example">
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
     "&gt;
-</p>
 
-<p>
-        &lt;mvc:annotation-driven conversion-service="conversionService"&gt;
-                &lt;mvc:argument-resolvers&gt;
-                        &lt;bean/&gt;
-                        &lt;bean/&gt;
-                &lt;/mvc:argument-resolvers&gt;
-                &lt;mvc:message-converters register-defaults="true"&gt;
+	&lt;mvc:annotation-driven conversion-service="conversionService"&gt;
+		&lt;mvc:argument-resolvers&gt;
+			&lt;bean/&gt;
+			&lt;bean/&gt;
+		&lt;/mvc:argument-resolvers&gt;
+		&lt;mvc:message-converters register-defaults="true"&gt;
             &lt;bean/&gt;
-                &lt;/mvc:message-converters&gt;
-                &lt;mvc:return-value-handlers&gt;
+		&lt;/mvc:message-converters&gt;
+		&lt;mvc:return-value-handlers&gt;
             &lt;bean/&gt;
-                &lt;/mvc:return-value-handlers&gt;
-        &lt;/mvc:annotation-driven&gt;
-Restful MVC
-URL规划
-</p>
+		&lt;/mvc:return-value-handlers&gt;
+	&lt;/mvc:annotation-driven&gt;
+</pre>
+</div>
 
-<p>
-URL        HTTP方法         MIME        含义
-/return/order        GET        text/html        退货单首页
-/return/order/new        GET        text/html        显示新增页
-/return/order        POST                创建退货单
-/return/order/{id}/edit        GET        text/html        显示修改页
-/return/order/{id}        PUT                修改退货单
-/return/order/{id}        GET        text/html        显示退货单
-/return/order/{id}        DELETE                删除退货单
-/return/order/query        GET        text/html        查询结果
-/return/order/query        GET        application/json        查询结果
-</p>
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Restful MVC</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">URL规划</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">URL</td>
+<td class="left">HTTP方法</td>
+<td class="left">MIME</td>
+<td class="left">含义</td>
+</tr>
+
+<tr>
+<td class="left">/return/order</td>
+<td class="left">GET</td>
+<td class="left">text/html</td>
+<td class="left">退货单首页</td>
+</tr>
+
+<tr>
+<td class="left">/return/order/new</td>
+<td class="left">GET</td>
+<td class="left">text/html</td>
+<td class="left">显示新增页</td>
+</tr>
+
+<tr>
+<td class="left">/return/order</td>
+<td class="left">POST</td>
+<td class="left">&#xa0;</td>
+<td class="left">创建退货单</td>
+</tr>
+
+<tr>
+<td class="left">/return/order/{id}/edit</td>
+<td class="left">GET</td>
+<td class="left">text/html</td>
+<td class="left">显示修改页</td>
+</tr>
+
+<tr>
+<td class="left">/return/order/{id}</td>
+<td class="left">PUT</td>
+<td class="left">&#xa0;</td>
+<td class="left">修改退货单</td>
+</tr>
+
+<tr>
+<td class="left">/return/order/{id}</td>
+<td class="left">GET</td>
+<td class="left">text/html</td>
+<td class="left">显示退货单</td>
+</tr>
+
+<tr>
+<td class="left">/return/order/{id}</td>
+<td class="left">DELETE</td>
+<td class="left">&#xa0;</td>
+<td class="left">删除退货单</td>
+</tr>
+
+<tr>
+<td class="left">/return/order/query</td>
+<td class="left">GET</td>
+<td class="left">text/html</td>
+<td class="left">查询结果</td>
+</tr>
+
+<tr>
+<td class="left">/return/order/query</td>
+<td class="left">GET</td>
+<td class="left">application/json</td>
+<td class="left">查询结果</td>
+</tr>
+</tbody>
+</table>
+
 
 <p>
 HTTP方法，表达了针对资源的动作
@@ -239,9 +240,7 @@ HTTP方法，表达了针对资源的动作
 <p>
 ajax框架可指定http方法，浏览器一般只能GET/POST，spring通过一个表单隐藏域来模拟其他方法。
 </p>
-
-
-<p>
+<pre class="example">
 &lt;form action="#springUrl('')/return/order/$id" method="POST"&gt;
 ...
 &lt;input name="_method" type="hidden" value="PUT" /&gt;
@@ -249,24 +248,18 @@ ajax框架可指定http方法，浏览器一般只能GET/POST，spring通过一�
 &lt;input type="button" value="删除" onclick="javascript:this.form['_method'].value='DELETE';this.form.submit();" /&gt;
 &lt;/ins&gt;
 &lt;/form&gt;
-</p>
 
-<p>
 web.xml
-</p>
 
-<p>
-&lt;filter&gt;
-            &lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
-            &lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;
-    &lt;/filter&gt;
-    &lt;filter-mapping&gt;
-            &lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
-            &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-    &lt;/filter-mapping&gt;
-</p>
+    &lt;filter&gt;
+		&lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
+		&lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;
+	&lt;/filter&gt;
+	&lt;filter-mapping&gt;
+		&lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
+		&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+	&lt;/filter-mapping&gt;
 
-<p>
 Controller
 使用注解编写Restful Controller：
 @Controller
@@ -274,29 +267,25 @@ Controller
 public class ReturnOrderController {
     @Autowired
     ReturnOrderService service;
-</p>
 
-<p>
-@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-public String edit(@PathVariable("id") Long id, Model view) {
-    // load from backend by id
-    ReturnOrder order = service.getById(id);
-</p>
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    public String edit(@PathVariable("id") Long id, Model view) {
+        // load from backend by id
+        ReturnOrder order = service.getById(id);
 
-<p>
         // add to view model to render edit page
         view.addAttribute("order", order);
         return "return/order-edit";
     }
     ...
 }
-</p>
-
+</pre>
 <p>
 spring扫描并管理：
-&lt;context:component-scan  base-package="com.jd.bluedragon.web.controller" /&gt;
 </p>
-
+<pre class="example">
+&lt;context:component-scan  base-package="com.jd.bluedragon.web.controller" /&gt;
+</pre>
 <p>
 controller类声明：
 1、@Controller注解bean，由spring ioc管理，默认为单例。其value属性可指定bean name，默认为首字母小写的类名。
@@ -667,24 +656,23 @@ public class IndexController {
                 .addObject("exception", exception);
     }
 </p>
+</div>
+</div>
 
 
-
-<p>
-拦截器，以京东SSO为例说明
-</p>
-
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">拦截器，</h4>
+<div class="outline-text-4" id="text-1-1-2">
 <p>
 静态资源映射，不使用拦截器：{servletName}-servlet.xml
-        &lt;mvc:default-servlet-handler /&gt;
 </p>
+<pre class="example">
+&lt;mvc:default-servlet-handler /&gt;
 
-<p>
 &lt;!-- static resources --&gt;
-&lt;mvc:resources location="<i>static</i>" mapping="/static/**"
-        cache-period="864000"/&gt;&lt;!-- 24 * 3600 * 10 --&gt;
-</p>
-
+&lt;mvc:resources location="/static/" mapping="/static/**"
+	cache-period="864000"/&gt;&lt;!-- 24 * 3600 * 10 --&gt;
+</pre>
 <p>
 使用servlet容器默认的servlet，而不使用spring的DispatcherServlet来处理，快速，还可加缓存时间。在生产环境中，有可能被前端的proxy给拦截掉。
 </p>
@@ -696,72 +684,49 @@ spring mvc的拦截器，类似于servlet的filter。
 
 <p>
 URL映射和拦截器配置:{servletName}-servlet.xml
-    &lt;!-- url mapping with interceptor --&gt;
-        &lt;mvc:interceptors&gt;
-                &lt;mvc:interceptor&gt;
-                &lt;mvc:mapping path="/index/**" /&gt;
-                &lt;mvc:mapping path="/return/**" /&gt;
-                        &lt;ref bean="_DotnetTicketContextInterceptor" /&gt;
-                &lt;/mvc:interceptor&gt;
-                &lt;mvc:interceptor&gt;
-            &lt;mvc:mapping path="/index/**" /&gt;
-            &lt;mvc:mapping path="/return/**" /&gt;
-                        &lt;ref bean="_HrmDotnetTicketLoginContextInterceptor" /&gt;
-                &lt;/mvc:interceptor&gt;
-                &lt;mvc:interceptor&gt;
-            &lt;mvc:mapping path="/index/**" /&gt;
-            &lt;mvc:mapping path="/return/**" /&gt;
-                        &lt;ref bean="_LoginContextInterceptor" /&gt;
-                &lt;/mvc:interceptor&gt;
-                 &lt;mvc:interceptor&gt;
-            &lt;mvc:mapping path="/index/**" /&gt;
-            &lt;mvc:mapping path="/return/**" /&gt;
-                        &lt;ref bean="_DotnetTicketRequiredInterceptor" /&gt;
-                &lt;/mvc:interceptor&gt;
-                 &lt;mvc:interceptor&gt;
-            &lt;mvc:mapping path="/index/**" /&gt;
-            &lt;mvc:mapping path="/return/**" /&gt;
-                        &lt;ref bean="_HrmPrivilegeInterceptor" /&gt;
-                &lt;/mvc:interceptor&gt;
-        &lt;/mvc:interceptors&gt;
 </p>
+<div class="org-src-container">
+
+<pre class="src src-xml"><span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #839496; font-style: italic;"> url mapping with interceptor </span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
+    &lt;<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">interceptors</span>&gt;
+
+            &lt;<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">interceptor</span>&gt;
+        &lt;<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">mapping</span> <span style="color: #b58900;">path</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">/index/**</span><span style="color: #2aa198;">"</span> /&gt;
+        &lt;<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">mapping</span> <span style="color: #b58900;">path</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">/return/**</span><span style="color: #2aa198;">"</span> /&gt;
+                    &lt;<span style="color: #268bd2;">ref</span> <span style="color: #b58900;">bean</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">_tLoginContextInterceptor</span><span style="color: #2aa198;">"</span> /&gt;
+            &lt;/<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">interceptor</span>&gt;
+
+    &lt;/<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">interceptors</span>&gt;
+</pre>
+</div>
 
 <p>
 权限相关：在controller方法上加上自定义的注解
-    /**
 </p>
-<ul class="org-ul">
-<li>demonstrate @HrmPrivilege handling failed.
-</li>
-</ul>
-<p>
- */
+
+<pre class="example">
 @HrmPrivilege("ceo,cto")
 @RequestMapping(value = "/access-denied", method = RequestMethod.GET)
 public void denied() {
     // throw in interceptor
 }
-</p>
-
-
-<p>
-讲解
-com.jd.common.springmvc.interceptor.DotnetTicketRequiredInterceptor
-com.jd.common.hrm.support.HrmPrivilegeInterceptor
-</p>
+</pre>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Copy files from a jar</h2>
-<div class="outline-text-2" id="text-3">
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Copy files from a jar</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 <a href="http://stackoverflow.com/questions/1386809/copy-a-directory-from-a-jar-file">http://stackoverflow.com/questions/1386809/copy-a-directory-from-a-jar-file</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Google App Engine</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Google App Engine</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 <a href="http://code.google.com/intl/zh-CN/appengine/docs/python/gettingstarted/uploading.html">http://code.google.com/intl/zh-CN/appengine/docs/python/gettingstarted/uploading.html</a>
 </p>
@@ -769,9 +734,9 @@ com.jd.common.hrm.support.HrmPrivilegeInterceptor
 </div>
 
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">J2EE User Management</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">J2EE User Management</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 <a href="http://www.onjava.com/pub/a/onjava/2002/06/12/form.html">J2EE Form-based Authentication</a>
 </p>
@@ -781,9 +746,9 @@ com.jd.common.hrm.support.HrmPrivilegeInterceptor
 </p>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">在Eclipse中设置中文JavaDOC</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">在Eclipse中设置中文JavaDOC</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 <a href="http://www.cnblogs.com/kay/archive/2008/05/26/1207956.html">在Eclipse中设置中文JavaDOC</a>
 </p>
@@ -826,9 +791,9 @@ com.jd.common.hrm.support.HrmPrivilegeInterceptor
 </p>
 </div>
 </div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">Java decompiler</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Java decompiler</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geocities.com/kpdus/jad.html</a>
 </p>
@@ -838,46 +803,36 @@ Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geoc
 </p>
 </div>
 </div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">Grails</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Grails</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 <a href="http://grails.org/plugin/app-engine">http://grails.org/plugin/app-engine</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">Java core dump</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Java core dump</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 <a href="http://www.alphaworks.ibm.com/tech/jca">IBM Thread and Monitor Dump Analyzer for Java</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">IBM JDK</h2>
-<div class="outline-text-2" id="text-10">
-<ol class="org-ol">
-<li><a href="http://w3.hursley.ibm.com/java/jim/ibmsdks/latest/windowsx64/60servicerefresh10fp1windowsamd64em64tpwa6460sr10fp12012032101j9/index.html">http://w3.hursley.ibm.com/java/jim/ibmsdks/latest/windowsx64/60servicerefresh10fp1windowsamd64em64tpwa6460sr10fp12012032101j9/index.html</a>
-</li>
-<li>IBM SKD <a href="http://w3.hursley.ibm.com/java/jim/ibmsdks/latest/">http://w3.hursley.ibm.com/java/jim/ibmsdks/latest/</a>
-</li>
-</ol>
-</div>
-</div>
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11">Automation test</h2>
-<div class="outline-text-2" id="text-11">
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Automation test</h2>
+<div class="outline-text-2" id="text-9">
 <p>
 <a href="http://www.ibm.com/developerworks/java/library/j-ap03137/index.html">http://www.ibm.com/developerworks/java/library/j-ap03137/index.html</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">AIO</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">AIO</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 连接数多且长的需要使用AIO, AIO使用的时候需要使用多线程。
 </p>
@@ -889,7 +844,7 @@ Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geoc
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2013-12-26</span>
+        <span title="last modification date" class="post-info">2013-12-27</span>
         <span title="tags" class="post-info"><a href="/tags/java/">java</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
