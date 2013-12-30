@@ -1,0 +1,17 @@
+#+TITLE:       mvn
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2013-12-30 周一
+#+URI:         /wiki/html/mvn
+#+KEYWORDS:    mvn
+#+TAGS:        :mvn:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: mvn
+
+
+#+BEGIN_SRC
+
+mvn archetype:generate -DgroupId=com.companyname.bank -DartifactId=consumerBanking -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+#+END_SRC
