@@ -32,54 +32,49 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
  1. [[http://ju.outofmemory.cn/entry/20361][关于 Redis 的几种数据库设计方案的内存占用测试]]
  2. [[http://blog.nosqlfan.com/html/3379.html?ref=rediszt][节约内存：Instagram的Redis实践]]
 
+性能监控
+
+ 1. [[http://blog.nosqlfan.com/html/4166.html][Redis监控技巧]]
+
 * Java 调用
 
-** [[http://projects.spring.io/spring-data-redis/#quick-start][Spring Data Redis]]
+** 配置pom.xml引入jedis依赖
 
-*** MVN POM
-
-#+BEGIN_SRC 
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.data</groupId>
-        <artifactId>spring-data-redis</artifactId>
-        <version>1.1.0.RELEASE</version>
-    </dependency>
-</dependencies>
-
+#+BEGIN_SRC xml
+<dependency>
+          <groupId>redis.clients</groupId>
+          <artifactId>jedis</artifactId>
+          <version>2.2.1</version>
+          <type>jar</type>
+          <scope>compile</scope>
+</dependency>
 #+END_SRC
 
-*** Configure RedisTemplate....
-#+BEGIN_SRC 
-<bean id="jedisConnFactory" 
-    class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
-    p:use-pool="true"/>
+** Java 程序访问redis服务器
+#+BEGIN_SRC java
 
-<!-- redis template definition -->
-<bean id="redisTemplate" 
-    class="org.springframework.data.redis.core.RedisTemplate" 
-    p:connection-factory-ref="jedisConnFactory"/>
+public static void main( String[] args )
+    {
+        Jedis jedis = new Jedis("192.168.232.116");
+        jedis.set("foo", "bar");
 
-#+END_SRC
+        String value = jedis.get("foo");
+        System.out.println("get from redis:"+value);
 
-*** Inject and use RedisTemplate or any of its opsForX() instances....
-#+BEGIN_SRC 
-public class Example {
+        jedis.hset("ProdSort:1", "fatherid", "123");
 
-    // inject the actual template
-    @Autowired
-    private RedisTemplate<String, String> template;
+        value =  jedis.hget("ProdSort:1", "fatherid");
 
-    // inject the template as ListOperations
-    // can also inject as Value, Set, ZSet, and HashOperations
-    @Resource(name="redisTemplate")
-    private ListOperations<String, String> listOps;
+        System.out.println("get from redis:"+value);
 
-    public void addLink(String userId, URL url) {
-        listOps.leftPush(userId, url.toExternalForm());
-        // or use template directly
-        redisTemplate.boundListOps(userId).leftPush(url.toExternalForm());
+//        for( Map i: jedis.hgetAll("ProdSort:1")) {
+//
+//        }
     }
-}
 
 #+END_SRC
+
+* 参考文章
+
+ 1. [[https://github.com/springside/springside4/wiki/redis][江南白衣Redis]]
+ 2.  [[http://projects.spring.io/spring-data-redis/#quick-start][Spring Data Redis]]
