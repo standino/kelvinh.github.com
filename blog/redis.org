@@ -1,10 +1,10 @@
-#+TITLE:       redis 
+#+TITLE:       我是如何开始使用redis的
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-24 周二
 #+URI:         /blog/%y/%m/%d/redis
-#+KEYWORDS:    big data, redis
-#+TAGS:        :big data:redis
+#+KEYWORDS:    缓存, redis
+#+TAGS:        :缓存:redis:linux:NoSQL:数据结构:设计:java:mvn:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: redis学习和入门
@@ -16,23 +16,65 @@ reids 基本上还是比较简单的，有人说它是面向开发者的，因�
  6. [[http://blog.nosqlfan.com/html/3139.html?ref=rediszt][Redis系统性介绍]]  这篇入门级的文章写得不错。
 
 * 结构设计
-Redis并不是简单的key-value存储，实际上他是一个数据结构服务器，支持不同类型的值。
 
- 1. 二进制安全的 字符串 string
- 2. 二进制安全的 字符串列表 list of string
- 3. 二进制安全的 字符串集合 set of string，换言之：它是一组无重复未排序的element。可以把它看成Ruby中的 hash–其key等于element，value都等于’true‘。
- 4. 有序集合sorted set of string，类似于集合set，但其中每个元素都和一个浮点数score（评分）关联。element根据score排序。可以把它看成Ruby中的 hash–其key等于element，value等于score，但元素总是按score的顺序排列，无需额外的排序操作。
-
-因此在使用redis的时候也需要像使用传统关系型数据库那样设计一下数据结构。下面两篇文章是很好的参考：
+Redis并不是简单的key-value存储，实际上他是一个数据结构服务器，支持不同类型的值。因此在使用redis的时候也需要像使用传统关系型数据库那样设计一下数据结构。下面两篇文章是很好的参考：
  1. [[http://blog.codingnow.com/2011/11/dev_note_2.html][redis 数据库结构设计]]
  2. [[http://blog.nosqlfan.com/html/3033.html][浅谈Redis数据库的键值设计]]
 
-设计中需要考虑内存占用
+可以使用下面的思路把一个关系数据库表改成 redis结构
+
+ 1. HSET key String value
+ 2. 使用表名：主键作为key
+ 3. 使用列名作为String
+ 4. 列中的数据作为 value
+
+建议用”:”分隔域，用”.”作为单词间的连接，如”comment:1234:reply.to”。
+
+这里要说明一下，key和String应该尽量的短小以节省内存。但是它们要能明确的表达其含义，毕竟可维护性要比内存占用更重要。
+所以不要使用类似p:1这样的key，没人知道它指的是“person 1”还是“product 1”。
+
+** 设计中需要考虑内存占用
 
  1. [[http://ju.outofmemory.cn/entry/20361][关于 Redis 的几种数据库设计方案的内存占用测试]]
  2. [[http://blog.nosqlfan.com/html/3379.html?ref=rediszt][节约内存：Instagram的Redis实践]]
 
-性能监控
+下面的命令可以看Linux下有多少物理内存
+
+#+BEGIN_SRC shell
+
+grep MemTotal /proc/meminfo
+
+#+END_SRC
+
+使用info命令可以查看redis的内存占用等信息
+
+#+BEGIN_SRC shell
+
+redis 127.0.0.1:6379> info
+# Server
+redis_version:2.6.16
+redis_git_sha1:00000000
+....
+# Clients
+connected_clients:2
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:624864
+used_memory_human:610.22K
+used_memory_rss:1708032
+used_memory_peak:624280
+used_memory_peak_human:609.65K
+used_memory_lua:31744
+mem_fragmentation_ratio:2.73
+mem_allocator:libc
+
+
+#+END_SRC
+
+* 性能监控
 
  1. [[http://blog.nosqlfan.com/html/4166.html][Redis监控技巧]]
 
@@ -77,4 +119,6 @@ public static void main( String[] args )
 * 参考文章
 
  1. [[https://github.com/springside/springside4/wiki/redis][江南白衣Redis]]
- 2.  [[http://projects.spring.io/spring-data-redis/#quick-start][Spring Data Redis]]
+ 2. [[http://projects.spring.io/spring-data-redis/#quick-start][Spring Data Redis]]
+ 3. [[http://openmymind.net/2012/1/23/The-Little-Redis-Book/][The Little Redis Book]]
+ 4. [[http://www.javacodegeeks.com/2013/10/simple-crud-using-servlet-3-0-redisjedis-and-cdi-part-1.html][Simple CRUD using Servlet 3.0, Redis/Jedis and CDI ]]
