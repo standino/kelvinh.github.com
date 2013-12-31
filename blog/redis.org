@@ -40,7 +40,7 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
 
 下面的命令可以看Linux下有多少物理内存
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC sh
 
 grep MemTotal /proc/meminfo
 
@@ -48,7 +48,7 @@ grep MemTotal /proc/meminfo
 
 使用info命令可以查看redis的内存占用等信息
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC sh
 
 redis 127.0.0.1:6379> info
 # Server
