@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>redis  - Keep going</title>
+    <title>我是如何开始使用redis的 - Keep going</title>
     <meta charset="utf-8" />
     <meta name="author" content="Will Chang" />
     <meta name="description" content="redis学习和入门" />
-    <meta name="keywords" content="big data, redis" />
+    <meta name="keywords" content="缓存, redis" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
   </head>
   <body class="container">
@@ -32,20 +32,25 @@
 
 <div>
 <div class="post">
-<h1>redis </h1>
+<h1>我是如何开始使用redis的</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#sec-1">入门</a></li>
-<li><a href="#sec-2">结构设计</a></li>
-<li><a href="#sec-3">Java 调用</a>
+<li><a href="#sec-2">结构设计</a>
 <ul>
-<li><a href="#sec-3-1">配置pom.xml引入jedis依赖</a></li>
-<li><a href="#sec-3-2">Java 程序访问redis服务器</a></li>
+<li><a href="#sec-2-1">设计中需要考虑内存占用</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">参考文章</a></li>
+<li><a href="#sec-3">性能监控</a></li>
+<li><a href="#sec-4">Java 调用</a>
+<ul>
+<li><a href="#sec-4-1">配置pom.xml引入jedis依赖</a></li>
+<li><a href="#sec-4-2">Java 程序访问redis服务器</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">参考文章</a></li>
 </ul>
 </div>
 </div>
@@ -66,22 +71,7 @@ reids 基本上还是比较简单的，有人说它是面向开发者的，因�
 <h2 id="sec-2">结构设计</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-Redis并不是简单的key-value存储，实际上他是一个数据结构服务器，支持不同类型的值。
-</p>
-
-<ol class="org-ol">
-<li>二进制安全的 字符串 string
-</li>
-<li>二进制安全的 字符串列表 list of string
-</li>
-<li>二进制安全的 字符串集合 set of string，换言之：它是一组无重复未排序的element。可以把它看成Ruby中的 hash–其key等于element，value都等于’true‘。
-</li>
-<li>有序集合sorted set of string，类似于集合set，但其中每个元素都和一个浮点数score（评分）关联。element根据score排序。可以把它看成Ruby中的 hash–其key等于element，value等于score，但元素总是按score的顺序排列，无需额外的排序操作。
-</li>
-</ol>
-
-<p>
-因此在使用redis的时候也需要像使用传统关系型数据库那样设计一下数据结构。下面两篇文章是很好的参考：
+Redis并不是简单的key-value存储，实际上他是一个数据结构服务器，支持不同类型的值。因此在使用redis的时候也需要像使用传统关系型数据库那样设计一下数据结构。下面两篇文章是很好的参考：
 </p>
 <ol class="org-ol">
 <li><a href="http://blog.codingnow.com/2011/11/dev_note_2.html">redis 数据库结构设计</a>
@@ -91,9 +81,33 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
 </ol>
 
 <p>
-设计中需要考虑内存占用
+可以使用下面的思路把一个关系数据库表改成 redis结构
 </p>
 
+<ol class="org-ol">
+<li>HSET key String value
+</li>
+<li>使用表名：主键作为key
+</li>
+<li>使用列名作为String
+</li>
+<li>列中的数据作为 value
+</li>
+</ol>
+
+<p>
+建议用”:”分隔域，用”.”作为单词间的连接，如”comment:1234:reply.to”。
+</p>
+
+<p>
+这里要说明一下，key和String应该尽量的短小以节省内存。但是它们要能明确的表达其含义，毕竟可维护性要比内存占用更重要。
+所以不要使用类似p:1这样的key，没人知道它指的是“person 1”还是“product 1”。
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">设计中需要考虑内存占用</h3>
+<div class="outline-text-3" id="text-2-1">
 <ol class="org-ol">
 <li><a href="http://ju.outofmemory.cn/entry/20361">关于 Redis 的几种数据库设计方案的内存占用测试</a>
 </li>
@@ -102,21 +116,61 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
 </ol>
 
 <p>
-性能监控
+下面的命令可以看Linux下有多少物理内存
 </p>
 
+<div class="org-src-container">
+
+<pre class="src src-sh">grep MemTotal /proc/meminfo
+</pre>
+</div>
+
+<p>
+使用info命令可以查看redis的内存占用等信息
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">redis 127.0.0.1:6379&gt; info
+<span style="color: #93a1a1; font-style: italic;"># </span><span style="color: #839496; font-style: italic;">Server</span>
+redis_version:2.6.16
+redis_git_sha1:00000000
+....
+<span style="color: #93a1a1; font-style: italic;"># </span><span style="color: #839496; font-style: italic;">Clients</span>
+connected_clients:2
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+<span style="color: #93a1a1; font-style: italic;"># </span><span style="color: #839496; font-style: italic;">Memory</span>
+used_memory:624864
+used_memory_human:610.22K
+used_memory_rss:1708032
+used_memory_peak:624280
+used_memory_peak_human:609.65K
+used_memory_lua:31744
+mem_fragmentation_ratio:2.73
+mem_allocator:libc
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">性能监控</h2>
+<div class="outline-text-2" id="text-3">
 <ol class="org-ol">
 <li><a href="http://blog.nosqlfan.com/html/4166.html">Redis监控技巧</a>
 </li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Java 调用</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1">配置pom.xml引入jedis依赖</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Java 调用</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">配置pom.xml引入jedis依赖</h3>
+<div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 
 <pre class="src src-xml">&lt;<span style="color: #268bd2;">dependency</span>&gt;
@@ -130,9 +184,9 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2">Java 程序访问redis服务器</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">Java 程序访问redis服务器</h3>
+<div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
 
 <pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span>( <span style="color: #b58900;">String</span>[] <span style="color: #b58900;">args</span> )
@@ -158,13 +212,17 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">参考文章</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">参考文章</h2>
+<div class="outline-text-2" id="text-5">
 <ol class="org-ol">
 <li><a href="https://github.com/springside/springside4/wiki/redis">江南白衣Redis</a>
 </li>
 <li><a href="http://projects.spring.io/spring-data-redis/#quick-start">Spring Data Redis</a>
+</li>
+<li><a href="http://openmymind.net/2012/1/23/The-Little-Redis-Book/">The Little Redis Book</a>
+</li>
+<li><a href="http://www.javacodegeeks.com/2013/10/simple-crud-using-servlet-3-0-redisjedis-and-cdi-part-1.html">Simple CRUD using Servlet 3.0, Redis/Jedis and CDI </a>
 </li>
 </ol>
 </div>
@@ -175,8 +233,8 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-24</span>
-        <span title="last modification date" class="post-info">2013-12-30</span>
-        <span title="tags" class="post-info"><a href="/tags/big-data/">big data</a>, <a href="/tags/redis/">redis</a></span>
+        <span title="last modification date" class="post-info">2013-12-31</span>
+        <span title="tags" class="post-info"><a href="/tags/缓存/">缓存</a>, <a href="/tags/redis/">redis</a>, <a href="/tags/linux/">linux</a>, <a href="/tags/nosql/">NoSQL</a>, <a href="/tags/数据结构/">数据结构</a>, <a href="/tags/设计/">设计</a>, <a href="/tags/java/">java</a>, <a href="/tags/mvn/">mvn</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
       <section>
