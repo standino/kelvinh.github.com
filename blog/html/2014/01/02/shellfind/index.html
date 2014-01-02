@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>使用shell批量修改文件 - Keep going</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Will Chang" />
+    <meta name="description" content="使用find和sed来批量修改文件" />
+    <meta name="keywords" content="shell,find" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>努力超越自己！</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>使用shell批量修改文件</h1>
+<p>
+我们经常有一些批量修改文件的需求，例如在很多文件里把某个字段替换成另外一些字段，或者在文件的某处添加一行。这些需求可以使用shell脚
+本中的find和sed命令轻松实现。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">批量替换关键字</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">/bin/find . -type f -name  <span style="color: #2aa198;">"*.org"</span> -execdir sed -i -e <span style="color: #2aa198;">'s/&lt;code&gt;/#+BEGIN_SRC/g'</span> <span style="color: #2aa198;">'{}'</span> <span style="color: #2aa198;">\;</span>
+</pre>
+</div>
+
+<p>
+由于windows下也有find命令，所以如何你是使用cygwin, 最好使用find的绝对路径来调用它。上面的例子是把&lt;code&gt;替换成#+BEGIN_SRC.
+-e后面的参数是正则表达式，有些符号需要转义符才能表示它本身，具体请参看 <a href="http://www.aslibra.com/blog/read.php/1559.htm">正则表达式需要转义的特殊字符</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">在某行前添加一行</h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:body&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
+</pre>
+
+<p>
+我以前遇到过这样的一个问题，就是我们的项目有很多jsp文件，新来的同事不知道如何把浏览器中看到的页面和jsp对应起来，我想到的一个办法是
+把jsp的名字加到jsp的代码中，这样，同事在浏览器中通过查看html源代码就可以找到jsp的名字。但是，现在的jsp的文件里都没有加jsp文件名，
+如果手工去添加的话就太麻烦了，而且还可能出错。
+</p>
+
+<p>
+上面的脚本就可以轻松完成修改。它在body结束前，把一段标明jsp文件名的注释插入到jsp文件中。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">从文件中删除关键字</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+find . -type f -name  "pom.xml" -execdir sed -i -e '/-SNAPSHOT/d' '{}' \;
+</pre>
+
+<p>
+上面的脚本把pom.xml文件中版本号里的snapshot去除，这个在发布某个版本的时候很有用。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">利用shell命令去除dos文件里的回车符——“^M”</h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+tr -d '\r' &lt; dos.txt &gt; unix.txt
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">批量改名字</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+
+<pre class="src src-sh">rename .old .new  *
+</pre>
+</div>
+
+<p>
+<a href="http://bbs.chinaunix.net/thread-554405-1-1.html">http://bbs.chinaunix.net/thread-554405-1-1.html</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">在文件中查找内容</h2>
+<div class="outline-text-2" id="text-6">
+<pre class="example">
+find . -name "*.el" -exec grep -H "org-defvaralias" {} \;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2014-01-02</span>
+        <span title="last modification date" class="post-info">2014-01-02</span>
+        <span title="tags" class="post-info"><a href="/tags/shell/">shell</a>, <a href="/tags/find/">find</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/html/2014/01/02/shellfind";
+          var disqus_url = "http://standino.github.io/blog/html/2014/01/02/shellfind";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
