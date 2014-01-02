@@ -4,16 +4,23 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周二, 31 十二月 2013 08:48:37 CST</pubDate>
-    <lastBuildDate>周二, 31 十二月 2013 08:48:37 CST</lastBuildDate>
+    <pubDate>周四, 02 一月 2014 09:18:03 CST</pubDate>
+    <lastBuildDate>周四, 02 一月 2014 09:18:03 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>我是如何开始使用redis的</title>
       <link>http://standino.github.io/blog/2013/12/24/redis</link>
       <description>redis学习和入门</description>
-      <pubDate>2013-12-31</pubDate>
+      <pubDate>2014-01-02</pubDate>
       <guid>http://standino.github.io/blog/2013/12/24/redis</guid>
+    </item>
+    <item>
+      <title>常用链接</title>
+      <link>http://standino.github.io/wiki/html/mylinks</link>
+      <description>常用链接</description>
+      <pubDate>2014-01-02</pubDate>
+      <guid>http://standino.github.io/wiki/html/mylinks</guid>
     </item>
     <item>
       <title>mvn</title>
@@ -70,13 +77,6 @@
       <description>Programing</description>
       <pubDate>2013-12-27</pubDate>
       <guid>http://standino.github.io/wiki/html/pro</guid>
-    </item>
-    <item>
-      <title>Tools</title>
-      <link>http://standino.github.io/wiki/html/tool</link>
-      <description>Tools</description>
-      <pubDate>2013-12-27</pubDate>
-      <guid>http://standino.github.io/wiki/html/tool</guid>
     </item>
   </channel>
 </rss>
