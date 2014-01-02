@@ -427,9 +427,6 @@ $(cd "$(dirname "$0")"; pwd)
 #+END_SRC
 
 
-* 利用shell命令去除dos文件里的回车符——“^M”
-
-tr -d '\r' < dos.txt > unix.txt
 
 
 * KSH
@@ -499,28 +496,4 @@ find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/w3:popupBody>/i\<!--  JSP 
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/www:popupBody>/i\<!--  JSP file :'{}' -->' '{}' \;
 #+END_SRC
 
-* Find
-#+BEGIN_SRC
-find . -type f -name  "pom.xml" -execdir sed -i -e '/-SNAPSHOT/d' '{}' \;
 
-/bin/find . -type f -name  "*.org" -execdir sed -i -e 's/Will Chang/Will Chang/g' '{}' \;
-~/ideas/standino.github.com $ /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/U-360BUYAD\changwei/Will Chang/g' '{}' \;
-~/ideas/standino.github.com $ /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/U-360BUYAD\\changwei/Will Chang/g' '{}' \;
-~/ideas/standino.github.com $ /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/changwei@BJXX-CHANGWEI.360buyAD.local/changwei.cn@gmail.com/g' '{}' \;
-~/ideas/standino.github.com $ /bin/find . -type f -name  "*.org" -execdir sed -i -e 's/\/wiki\//\/wiki\/html\//g' '{}' \;
-
-/bin/find . -type f -name  "*.org" -execdir sed -i -e 's/\<#+BEGIN_SRC ' '{}' \;
-
-#+END_SRC
-#+BEGIN_SRC 
-
-#+END_SRC
-** 在文件中查找内容
-#+BEGIN_SRC
-find . -name "*.el" -exec grep -H "org-defvaralias" {} \;
-#+END_SRC
-
-* 批量改名字
-  rename .old .new  *  
-
-  http://bbs.chinaunix.net/thread-554405-1-1.html

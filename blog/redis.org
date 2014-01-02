@@ -39,12 +39,32 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
  2. [[http://blog.nosqlfan.com/html/3379.html?ref=rediszt][节约内存：Instagram的Redis实践]]
 
 ** 从mysql 中导入数据
-  1. http://blog.nosqlfan.com/html/4144.html
+
+  为了考察一下内存占用，我决定先从mysql中导入一个有两千多万条记录的表到redis中。虽然这篇文章 [[http://blog.nosqlfan.com/html/4144.html][从MySQL到Redis，提升数据迁移的效率]] 介
+  绍了一个很好的方法，但是在我使用的时候发现一次导入两千多万条记录花费时间还是很多的，所以我写了一个shell脚本去每次只导入1万条，
+  这样可以在十分钟内在控制台上看到一些反馈。
+
+sql 文件
+
+#+INCLUDE: "/home/changwei/projects/pbs/redis/mysql_to_redis.sql" src sql
+
+shell 文件
+
+#+INCLUDE: "/home/changwei/projects/pbs/redis/mysql_to_redis.sh" src sh
+
+Shell脚本需要7个参数：
+
+ 1. 需要执行的sql文件路径，该文件里需要这样使用Limit： limit  ##START## , ##END##
+ 2. 开始的记录数，例如：0
+ 3. 结束的记录数，例如: 1000000
+ 4. mysql IP
+ 5. mysql 用户
+ 6. mysql 密码
+ 7. mysql 库名称
+
+脚本每次执行前会修改sql中的Limit语句，每次递增导入一万条记录。
 
 #+BEGIN_SRC 
-
-
-
 
 #+END_SRC
 * 有用的命令（Linux or redis)
