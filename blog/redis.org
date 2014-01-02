@@ -4,7 +4,7 @@
 #+DATE:        2013-12-24 周二
 #+URI:         /blog/%y/%m/%d/redis
 #+KEYWORDS:    缓存, redis
-#+TAGS:        :缓存:redis:linux:NoSQL:数据结构:设计:java:mvn:
+#+TAGS:        :缓存:redis:linux:NoSQL:数据结构:设计:java:mvn:mysql:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: redis学习和入门
@@ -24,9 +24,9 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
 可以使用下面的思路把一个关系数据库表改成 redis结构
 
  1. HSET key String value
- 2. 使用表名：主键作为key
- 3. 使用列名作为String
- 4. 列中的数据作为 value
+ 2. 使用【表名：主键】作为key
+ 3. 使用【列名】作为String
+ 4. 列中的【数据】作为 value
 
 建议用”:”分隔域，用”.”作为单词间的连接，如”comment:1234:reply.to”。
 
@@ -37,6 +37,17 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
 
  1. [[http://ju.outofmemory.cn/entry/20361][关于 Redis 的几种数据库设计方案的内存占用测试]]
  2. [[http://blog.nosqlfan.com/html/3379.html?ref=rediszt][节约内存：Instagram的Redis实践]]
+
+** 从mysql 中导入数据
+  1. http://blog.nosqlfan.com/html/4144.html
+
+#+BEGIN_SRC 
+
+
+
+
+#+END_SRC
+* 有用的命令（Linux or redis)
 
 下面的命令可以看Linux下有多少物理内存
 
@@ -73,6 +84,8 @@ mem_allocator:libc
 
 
 #+END_SRC
+
+使用 flushdb 清空redis 数据库
 
 * 性能监控
 
@@ -122,3 +135,14 @@ public static void main( String[] args )
  2. [[http://projects.spring.io/spring-data-redis/#quick-start][Spring Data Redis]]
  3. [[http://openmymind.net/2012/1/23/The-Little-Redis-Book/][The Little Redis Book]]
  4. [[http://www.javacodegeeks.com/2013/10/simple-crud-using-servlet-3-0-redisjedis-and-cdi-part-1.html][Simple CRUD using Servlet 3.0, Redis/Jedis and CDI ]]
+
+
+-------------------------------------
+
+hash-max-zipmap-entries 64 (hash-max-ziplist-entries for Redis >= 2.6)
+hash-max-zipmap-value 512  (hash-max-ziplist-value for Redis >= 2.6)
+list-max-ziplist-entries 512
+list-max-ziplist-value 64
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+set-max-intset-entries 512
