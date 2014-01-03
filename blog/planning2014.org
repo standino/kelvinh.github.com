@@ -6,7 +6,7 @@
 #+KEYWORDS:    goal,plan
 #+TAGS:        :goal:plan:project:文件整理:
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t todo:nil
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t  tasks:nil
 #+DESCRIPTION: 为明年做一下计划
 
 
