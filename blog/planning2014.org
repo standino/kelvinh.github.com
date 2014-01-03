@@ -8,7 +8,7 @@
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t  tasks:nil
 #+DESCRIPTION: 为明年做一下计划
-
+#+SEQ_TODO: TODO(t)   STARTED(s!) | DELEGATED(f@)  WAITING(w@/!) OKTODAY(o!) |  DONE(d!) |  DEFERRED(l!) | CANCELED(c!)
 
 
 * 编程技术学习
@@ -98,6 +98,9 @@ google大牛开发的编程语言，应该很有前途。早点搭上这班车�
 学习笔记就记录在@@html:<a href="/wiki/html/go/">这里吧</a>@@
 
 *** TODO 学习 go 语言
+    :LOGBOOK:
+    CLOCK: [2014-01-03 周五 13:26]--[2014-01-03 周五 13:59] =>  0:33
+    :END:
 
 **** 阅读 go 文章
 
