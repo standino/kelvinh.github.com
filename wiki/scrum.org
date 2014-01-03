@@ -1,12 +1,16 @@
-#+TITLE:       scrum
+#+TITLE:       敏捷软件开发
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/html/scrum
-#+KEYWORDS:    scrum
-#+TAGS:        :scrum:
+#+KEYWORDS:    scrum,agile,软件开发
+#+TAGS:        :scrum:agile:软件开发:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
-#+DESCRIPTION:  Scrum 
+#+DESCRIPTION:  敏捷软件开发
 
+"不管白猫黑猫，抓到老鼠就是好猫"。软件开发也是，我们不要形而上学的敏捷，而且是要考虑为什么要敏捷。敏捷的目的是，能够快速开发软件满
+足用户需求。这个是根本目的，所有不能达到这个目的的做法，都需要去改进，无论那种做法是不是披着敏捷的外衣。
+
+* Scrum
  1. http://www.infoq.com/cn/articles/scrum-pseudo-code

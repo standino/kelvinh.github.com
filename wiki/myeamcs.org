@@ -86,6 +86,9 @@ function if the current buffer is read-only."
 * [[https://github.com/kelvinh/org-page][org-page]]
  - [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org][一年成为Emacs高手(像神一样使用编辑器)]]
  - [[https://github.com/redguardtoo/emacs.d][试一试这个配置]]
+ - [[http://www.gnu.org/software/emacs/manual/html_node/org/Export-options.html][导出选项]]
+
+
 
 * 在cygwin中安装emacs 
 
@@ -2510,5 +2513,6 @@ You can also browse the repository at:
 
   =flush-lines= 命令的本意是删除buffer中match随后的regexp的行，而 =^$= 就代表空行，于是这就是删除空行的操作。
 #+END_SRC
+
 
 

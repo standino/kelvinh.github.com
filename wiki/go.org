@@ -1,4 +1,4 @@
-#+TITLE:       go
+#+TITLE:       go 语言
 #+AUTHOR:      Will Chang
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2013-12-19 Thu
@@ -6,15 +6,40 @@
 #+KEYWORDS:    go,programming language
 #+TAGS:        :go:programming language:
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
-#+DESCRIPTION: go
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: go 语言
+
+ - [[https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md][build-web-application-with-golang]] 这篇文章非常详细的介绍了go语言
+
+* 安装
+
+  - 在cygwin setup中安装 mingw-gcc
+  - 编译
+#+BEGIN_SRC
+cd
+hg clone -u release https://code.google.com/p/go
+cd go/src
+./all.bash
+
+#+END_SRC
+
+修改.bashrc
+
+#+BEGIN_SRC
+
+export GOROOT=$HOME/go
+export GOBIN=$GOROOT/bin
+export PATH=$PATH:$GOBIN
+
+#+END_SRC
+
 
 
 
 * SMTP
 
  - https://github.com/brightcode/smtpd
- - [[https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md][build-web-application-with-golang]]
+
 
 http://stackoverflow.com/questions/11623232/the-go-language-exec-command-method-execute-failed
 

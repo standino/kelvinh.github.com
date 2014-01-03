@@ -6,7 +6,7 @@
 #+KEYWORDS:    goal,plan
 #+TAGS:        :goal:plan:project:文件整理:
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t todo:nil
 #+DESCRIPTION: 为明年做一下计划
 
 
@@ -32,6 +32,8 @@
 
 google大牛开发的编程语言，应该很有前途。早点搭上这班车吧。考虑使用它替代shell编写一些小脚本。
 学习笔记就记录在@@html:<a href="/wiki/html/go/">这里吧</a>@@
+
+*** TODO 学习 go 语言
 
 ** Emacs 使用
 

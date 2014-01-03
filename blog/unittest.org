@@ -1,0 +1,88 @@
+#+TITLE:       单元测试
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2014-01-02 周四
+#+URI:         /blog/%y/%m/%d/unittest
+#+KEYWORDS:    unit test,java
+#+TAGS:        :Java:unit test:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 单元测试
+
+* AbstractTransactionalJUnit4SpringContextTests
+
+测试用例继承 AbstractTransactionalJUnit4SpringContextTests这个类后，在测试用例中进行的所有JDBC操作都会回滚，不用担心测试用例会污染
+数据库。
+
+#+BEGIN_SRC java
+
+@ContextConfiguration(locations = {"/spring/spring-core.xml"})
+public class AllocationWebServiceClientTest extends AbstractTransactionalJUnit4SpringContextTests {
+    private static Log log = LogFactory.getLog(AllocationWebServiceClientTest.class);
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private AllocationWebServiceClient allocationWebServiceClient;
+
+    @Before
+    public void init() {
+        String sql = "SELECT distinct wid FROM inventory ";
+
+        RowMapper<ProductWrap> rowMapper = new RowMapper<ProductWrap>() {
+            public ProductWrap mapRow(ResultSet rs, int rowNum)
+                    throws SQLException {
+                ProductWrap productWrap = new ProductWrap();
+                Product product = new Product();
+                product.setId(rs.getInt("wid"));
+                productWrap.setProduct(product);
+                return productWrap;
+            }
+        };
+
+        productWraps = jdbcTemplate.query(sql, rowMapper);
+    }
+
+    @Test
+    public void test() {
+
+        Assert.assertNotNull(allocationWebServiceClient);
+
+        try {
+                allocationWebServiceClient.processAllocatableStock(productWraps);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+}
+
+
+#+END_SRC
+
+* mockito
+
+另外一种unit test的方式就是使用mockito彻底去除对外部接口的依赖（Database和web service等)
+
+ 1. 使用mock(*.class)实例化类
+ 2. 通过when(classA.methodB).thenReturn()的方式定义mock的方法返回值
+
+#+BEGIN_SRC
+
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyDouble;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyList;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.anyMap;
+import static org.mockito.Mockito.*;
+
+@Test
+public void testLong(){
+         buyPolicy =mock(BuyingPolicyImpl.class);
+         when(buyPolicy.allowBuying(any(Warehouse.class), anyString(), any(Vendor.class), any(Product.class))).thenReturn(true);
+}
+
+#+END_SRC
