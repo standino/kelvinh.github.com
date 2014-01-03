@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>go - Keep going</title>
+    <title>go 语言 - Keep going</title>
     <meta charset="utf-8" />
     <meta name="author" content="Will Chang" />
-    <meta name="description" content="go" />
+    <meta name="description" content="go 语言" />
     <meta name="keywords" content="go,programming language" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
   </head>
@@ -32,19 +32,60 @@
 
 <div>
 <div class="post">
-<h1>go</h1>
-
-
+<h1>go 语言</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">安装</a></li>
+<li><a href="#sec-2">SMTP</a></li>
+<li><a href="#sec-3">Google 的 Go 编程语言初体验</a></li>
+</ul>
+</div>
+</div>
+<ul class="org-ul">
+<li><a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md">build-web-application-with-golang</a> 这篇文章非常详细的介绍了go语言
+</li>
+</ul>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">SMTP</h2>
+<h2 id="sec-1">安装</h2>
 <div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>在cygwin setup中安装 mingw-gcc
+</li>
+<li>编译
+</li>
+</ul>
+<pre class="example">
+cd
+hg clone -u release https://code.google.com/p/go
+cd go/src
+./all.bash
+</pre>
+
+<p>
+修改.bashrc
+</p>
+
+<pre class="example">
+export GOROOT=$HOME/go
+export GOBIN=$GOROOT/bin
+export PATH=$PATH:$GOBIN
+</pre>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">SMTP</h2>
+<div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><a href="https://github.com/brightcode/smtpd">https://github.com/brightcode/smtpd</a>
 </li>
-<li><a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md">build-web-application-with-golang</a>
-</li>
 </ul>
+
 
 <p>
 <a href="http://stackoverflow.com/questions/11623232/the-go-language-exec-command-method-execute-failed">http://stackoverflow.com/questions/11623232/the-go-language-exec-command-method-execute-failed</a>
@@ -68,9 +109,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Google 的 Go 编程语言初体验</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Google 的 Go 编程语言初体验</h2>
+<div class="outline-text-2" id="text-3">
 <pre class="example">
 Go 编程语言是 Google 中一些大牛(尤其是有着 plan9 前科的大牛们)如 Rob Pike,Ken
 Thomason 这两位赫赫有名的程序高手、技术作家。
@@ -166,7 +207,7 @@ E-mail: wikiojo@qq.com
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2013-12-26</span>
+        <span title="last modification date" class="post-info">2014-01-03</span>
         <span title="tags" class="post-info"><a href="/tags/go/">go</a>, <a href="/tags/programming-language/">programming language</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
