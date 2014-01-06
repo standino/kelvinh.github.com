@@ -23,15 +23,34 @@ Redis并不是简单的key-value存储，实际上他是一个数据结构服务
 
 可以使用下面的思路把一个关系数据库表改成 redis结构
 
- 1. HSET key String value
- 2. 使用【表名：主键】作为key
- 3. 使用【列名】作为String
- 4. 列中的【数据】作为 value
+为了节约内存使用，最好的方法是使用HSET对一个mysql表进行 分表存储
+
+ hset "【表名缩写】:【第一主键】" "第二主键" "其他列的json values"
+
+其中第二主键应该能把记录划分为小于 512的记录，这样就可以使用redis里的压缩机制。Redis内部用了ziplist/intset这样的压缩结构来减少
+hash/list/set/zset的存储，默认当集合的元素少于512个且最长那个值不超过64字节时使用，可配置。 下表列出了压缩的一些配置。 你可以使用
+config get 获得配置的数值。
+
+#+BEGIN_SRC 
+
+redis 127.0.0.1:6379> config get *zip*
+ 1) "hash-max-ziplist-entries"
+ 2) "512"
+ 3) "hash-max-ziplist-value"
+ 4) "64"
+ 5) "list-max-ziplist-entries"
+ 6) "512"
+ 7) "list-max-ziplist-value"
+ 8) "64"
+ 9) "zset-max-ziplist-entries"
+10) "128"
+11) "zset-max-ziplist-value"
+12) "64"
+
+#+END_SRC
 
 建议用”:”分隔域，用”.”作为单词间的连接，如”comment:1234:reply.to”。
 
-这里要说明一下，key和String应该尽量的短小以节省内存。但是它们要能明确的表达其含义，毕竟可维护性要比内存占用更重要。
-所以不要使用类似p:1这样的key，没人知道它指的是“person 1”还是“product 1”。
 
 ** 设计中需要考虑内存占用
 
@@ -158,11 +177,3 @@ public static void main( String[] args )
 
 
 -------------------------------------
-
-hash-max-zipmap-entries 64 (hash-max-ziplist-entries for Redis >= 2.6)
-hash-max-zipmap-value 512  (hash-max-ziplist-value for Redis >= 2.6)
-list-max-ziplist-entries 512
-list-max-ziplist-value 64
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-set-max-intset-entries 512
