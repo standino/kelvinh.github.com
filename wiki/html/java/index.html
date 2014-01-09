@@ -45,10 +45,86 @@
 <li><a href="http://docs.spring.io/spring-roo/reference/html/beginning.html">Spring roo</a> <a href="http://it-ebooks.info/read/741/">Spring roo in action</a>
 </li>
 </ul>
+</div>
 
-
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Spring bean</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">使用注解声明bean</h4>
+<div class="outline-text-4" id="text-1-1-1">
 <p>
-SpringMVC概要
+applicationContext.xml
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;?<span style="color: #859900;">xml</span> <span style="color: #b58900;">version</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">1.0</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">encoding</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">UTF-8</span><span style="color: #2aa198;">"</span>?&gt;
+&lt;<span style="color: #268bd2;">beans</span> <span style="color: #6c71c4;">xmlns</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://www.springframework.org/schema/beans</span><span style="color: #2aa198;">"</span>
+        <span style="color: #6c71c4;">xmlns</span>:<span style="color: #b58900;">xsi</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #2aa198;">"</span> <span style="color: #6c71c4;">xmlns</span>:<span style="color: #b58900;">context</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://www.springframework.org/schema/context</span><span style="color: #2aa198;">"</span>
+                <span style="color: #6c71c4;">xsi</span>:<span style="color: #b58900;">schemaLocation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span>
+<span style="color: #2aa198;">        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd</span>
+<span style="color: #2aa198;">        </span><span style="color: #2aa198;">"</span>&gt;
+
+        <span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #839496; font-style: italic;"> &#20351;Spring&#25903;&#25345;&#33258;&#21160;&#26816;&#27979;&#32452;&#20214;&#65292;&#22914;&#27880;&#35299;&#30340;Controller </span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
+        &lt;<span style="color: #6c71c4;">context</span>:<span style="color: #268bd2;">annotation-config</span> /&gt;
+
+        &lt;<span style="color: #6c71c4;">context</span>:<span style="color: #268bd2;">component-scan</span> <span style="color: #b58900;">base-package</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">com.jd.pbs</span><span style="color: #2aa198;">"</span>/&gt;
+
+        &lt;<span style="color: #268bd2;">import</span> <span style="color: #b58900;">resource</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">applicationContext-datasource.xml</span><span style="color: #2aa198;">"</span>/&gt;
+        &lt;<span style="color: #268bd2;">import</span> <span style="color: #b58900;">resource</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">applicationContext-service.xml</span><span style="color: #2aa198;">"</span>/&gt;
+        &lt;<span style="color: #268bd2;">import</span> <span style="color: #b58900;">resource</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">applicationContext-schedule.xml</span><span style="color: #2aa198;">"</span> /&gt;
+        &lt;<span style="color: #268bd2;">import</span> <span style="color: #b58900;">resource</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">spring-monitor.xml</span><span style="color: #2aa198;">"</span> /&gt;
+&lt;/<span style="color: #268bd2;">beans</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">使用propertes</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+
+<pre class="src src-xml">    &lt;<span style="color: #268bd2;">bean</span> <span style="color: #b58900;">id</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">propertyConfigurer</span><span style="color: #2aa198;">"</span>
+            <span style="color: #b58900;">class</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">org.springframework.beans.factory.config.PropertyPlaceholderConfigurer</span><span style="color: #2aa198;">"</span>&gt;
+            &lt;<span style="color: #268bd2;">property</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">locations</span><span style="color: #2aa198;">"</span>&gt;
+                    &lt;<span style="color: #268bd2;">list</span>&gt;
+                            &lt;<span style="color: #268bd2;">value</span>&gt;classpath:jdbc.properties&lt;/<span style="color: #268bd2;">value</span>&gt;
+                            &lt;<span style="color: #268bd2;">value</span>&gt;classpath:important.properties&lt;/<span style="color: #268bd2;">value</span>&gt;
+                            &lt;<span style="color: #268bd2;">value</span>&gt;classpath:app.properties&lt;/<span style="color: #268bd2;">value</span>&gt;
+                    &lt;/<span style="color: #268bd2;">list</span>&gt;
+            &lt;/<span style="color: #268bd2;">property</span>&gt;
+    &lt;/<span style="color: #268bd2;">bean</span>&gt;
+
+&lt;<span style="color: #268bd2;">bean</span> <span style="color: #b58900;">id</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">jedis</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">class</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">redis.clients.jedis.Jedis</span><span style="color: #2aa198;">"</span>&gt;
+    &lt;<span style="color: #268bd2;">constructor-arg</span> <span style="color: #b58900;">value</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">${redis.server.ip}</span><span style="color: #2aa198;">"</span>/&gt;
+&lt;/<span style="color: #268bd2;">bean</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3">运行worker</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #6c71c4;">@Scheduled</span>(cron = <span style="color: #2aa198;">"${data.sync.cron.expression}"</span>)
+    <span style="color: #859900;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">syncData</span>() {
+
+    }
+
+    <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">String</span>[] <span style="color: #b58900;">args</span>) {
+        <span style="color: #859900;">new</span> <span style="color: #b58900;">ClassPathXmlApplicationContext</span>(<span style="color: #2aa198;">"/spring/applicationContext.xml"</span>, DataSyncWorker.<span style="color: #859900;">class</span>);
+    }
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">SpringMVC概要</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
 Spring MVC的总控：DispatcherServlet
 web.xml中的声明：
 </p>
@@ -100,9 +176,9 @@ spring 3.1 mvc默认实现变化：
 HandlerMapping和HandlerAdapter ，spring3.1的这两个接口的默认实现：
 </p>
 <pre class="example">
-	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
 Creates RequestMappingInfo instances from type and method-level @RequestMapping annotations in  @Controller classes.
-	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
 An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature -- method argument and  return types, defined in @RequestMapping.
 </pre>
 <p>
@@ -135,13 +211,13 @@ An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature 
 	&lt;/mvc:annotation-driven&gt;
 </pre>
 </div>
-
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">Restful MVC</h3>
-<div class="outline-text-3" id="text-1-1">
-</div><div id="outline-container-sec-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1">URL规划</h4>
-<div class="outline-text-4" id="text-1-1-1">
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Restful MVC</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">URL规划</h4>
+<div class="outline-text-4" id="text-1-3-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -230,16 +306,24 @@ An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature 
 
 <p>
 HTTP方法，表达了针对资源的动作
-        GET：检索资源。具有幂等性，可以充分使用客户端的缓存。
-        POST：创建一个新资源，不具有幂等性（多次操作会产生多个新资源）。建议使用Post/Redirect/Get模式。
-        PUT：更新资源数据，如果资源不存在的话，则可根据此URI创建一个新的资源。具有幂等性。
-        DELETE，删除一个资源。具有幂等性，可以多次操作它，直到得出结果，删除不存在的东西没有任何问题。
-        HEAD/OPTIONS，略。
 </p>
+<ul class="org-ul">
+<li>GET：检索资源。具有幂等性，可以充分使用客户端的缓存。
+</li>
+<li>POST：创建一个新资源，不具有幂等性（多次操作会产生多个新资源）。建议使用Post/Redirect/Get模式。
+</li>
+<li>PUT：更新资源数据，如果资源不存在的话，则可根据此URI创建一个新的资源。具有幂等性。
+</li>
+<li>DELETE，删除一个资源。具有幂等性，可以多次操作它，直到得出结果，删除不存在的东西没有任何问题。
+</li>
+<li>HEAD/OPTIONS，略。
+</li>
+</ul>
 
 <p>
 ajax框架可指定http方法，浏览器一般只能GET/POST，spring通过一个表单隐藏域来模拟其他方法。
 </p>
+
 <pre class="example">
 &lt;form action="#springUrl('')/return/order/$id" method="POST"&gt;
 ...
@@ -288,30 +372,48 @@ spring扫描并管理：
 </pre>
 <p>
 controller类声明：
-1、@Controller注解bean，由spring ioc管理，默认为单例。其value属性可指定bean name，默认为首字母小写的类名。
-2、@RequestMapping("/return/order")，将http请求限定到类，映射资源url的起始路径。
 </p>
+
+<ol class="org-ol">
+<li>@Controller注解bean，由spring ioc管理，默认为单例。其value属性可指定bean name，默认为首字母小写的类名。
+</li>
+<li>@RequestMapping("/return/order")，将http请求限定到类，映射资源url的起始路径。
+</li>
+</ol>
 
 <p>
 controller类方法签名：
-1、@RequestMapping注解，将http请求限定到类方法：映射从起始路径开始的url路径，http方法, http头、请求参数等等。
-2、方法名，无特殊规定，建议有意义的命名。
-3、允许的方法参数，详尽@RequestMapping的API文档，稍后举例。
-4、允许的返回值，详见@RequestMapping的API文档，稍后举例。
-5、异常，无特殊规定。
 </p>
+<ul class="org-ul">
+<li>1、@RequestMapping注解，将http请求限定到类方法：映射从起始路径开始的url路径，http方法, http头、请求参数等等。
+</li>
+<li>2、方法名，无特殊规定，建议有意义的命名。
+</li>
+<li>3、允许的方法参数，详尽@RequestMapping的API文档，稍后举例。
+</li>
+<li>4、允许的返回值，详见@RequestMapping的API文档，稍后举例。
+</li>
+<li>5、异常，无特殊规定。
+</li>
+</ul>
 
 
 <p>
 controller类方法签名：@RequestMapping的作用
 mapping and narrow request to method.
+</p>
+
+<p>
 1、        value：url限定，比如方法上的/{id}/edit和/new。
 </p>
 
 <p>
 2、        method：http方法限定。GET/POST/PUT/DELETE等。当url一样时，通过http方法来区分。
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public String update(...
+</p>
+
+<p>
+@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+public String update(...
 </p>
 
 <p>
@@ -660,9 +762,9 @@ public class IndexController {
 </div>
 
 
-<div id="outline-container-sec-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2">拦截器，</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2">拦截器，</h4>
+<div class="outline-text-4" id="text-1-3-2">
 <p>
 静态资源映射，不使用拦截器：{servletName}-servlet.xml
 </p>
@@ -844,7 +946,7 @@ Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geoc
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2013-12-27</span>
+        <span title="last modification date" class="post-info">2014-01-09</span>
         <span title="tags" class="post-info"><a href="/tags/java/">java</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
@@ -877,7 +979,7 @@ Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geoc
         })();
       </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5c)</p>
         <p>
           Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;

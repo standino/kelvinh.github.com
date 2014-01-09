@@ -4,10 +4,17 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周四, 09 一月 2014 13:26:56 CST</pubDate>
-    <lastBuildDate>周四, 09 一月 2014 13:26:56 CST</lastBuildDate>
+    <pubDate>周四, 09 一月 2014 19:21:39 CST</pubDate>
+    <lastBuildDate>周四, 09 一月 2014 19:21:39 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>使用伪代码做详细设计</title>
+      <link>http://standino.github.io/blog/2014/01/09/使用伪代码做详细设计</link>
+      <description>使用伪代码做详细设计</description>
+      <pubDate>2014-01-09</pubDate>
+      <guid>http://standino.github.io/blog/2014/01/09/使用伪代码做详细设计</guid>
+    </item>
     <item>
       <title>2014年计划</title>
       <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
@@ -16,11 +23,25 @@
       <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
     </item>
     <item>
+      <title>JAVA</title>
+      <link>http://standino.github.io/wiki/html/java</link>
+      <description>Java Tips</description>
+      <pubDate>2014-01-09</pubDate>
+      <guid>http://standino.github.io/wiki/html/java</guid>
+    </item>
+    <item>
       <title>mvn</title>
       <link>http://standino.github.io/wiki/html/mvn</link>
       <description>mvn</description>
       <pubDate>2014-01-09</pubDate>
       <guid>http://standino.github.io/wiki/html/mvn</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-01-09</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
     </item>
     <item>
       <title>我是如何开始使用redis的</title>
@@ -56,27 +77,6 @@
       <description>敏捷软件开发</description>
       <pubDate>2014-01-03</pubDate>
       <guid>http://standino.github.io/wiki/html/scrum</guid>
-    </item>
-    <item>
-      <title>使用shell批量修改文件</title>
-      <link>http://standino.github.io/blog/html/2014/01/02/shellfind</link>
-      <description>使用find和sed来批量修改文件</description>
-      <pubDate>2014-01-02</pubDate>
-      <guid>http://standino.github.io/blog/html/2014/01/02/shellfind</guid>
-    </item>
-    <item>
-      <title>常用链接</title>
-      <link>http://standino.github.io/wiki/html/mylinks</link>
-      <description>常用链接</description>
-      <pubDate>2014-01-02</pubDate>
-      <guid>http://standino.github.io/wiki/html/mylinks</guid>
-    </item>
-    <item>
-      <title>shell Notes</title>
-      <link>http://standino.github.io/wiki/html/shell</link>
-      <description>shell notes</description>
-      <pubDate>2014-01-02</pubDate>
-      <guid>http://standino.github.io/wiki/html/shell</guid>
     </item>
   </channel>
 </rss>
