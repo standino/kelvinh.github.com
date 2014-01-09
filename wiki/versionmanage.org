@@ -52,7 +52,7 @@ MercurialEclipse supports:
     * Mercurial extensions (mqueue, transplant and such) 
 
 
-** Big file
+** Big file！
 
  http://mercurial.selenic.com/wiki/html/BigfilesExtension
 
@@ -480,10 +480,10 @@ groups = dev-team
 
 * 比较两个 branch 
 
-http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial
+  http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial
 
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
   109  hg branches
   110  hg branch
   111  hg branch '多维度设置采购计划控制参数'
@@ -516,6 +516,7 @@ Another way to do this, useful also for branches that you have already merged to
 
 hg diff -r "max(ancestors(foo) and branch(default)):foo"
 Though that can be a pit of a pain, so i'd recommend setting up an alias by adding something like:
+#+BEGIN_SRC 
 
 [alias]
 branchdiff = diff -r "max(ancestors('$1') and branch(default)):'$1'"
@@ -525,5 +526,7 @@ hg branchdiff <branch name>
 or
 
 hg branchdiff .
+
+#+END_SRC
 
 

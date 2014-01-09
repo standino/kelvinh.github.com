@@ -16,8 +16,71 @@
  - [[http://hi.baidu.com/delete_h/item/7b65023c1d9cab5f80f1a77e][Spring中使用Quartz的２种方法]]
  - [[http://docs.spring.io/spring-roo/reference/html/beginning.html][Spring roo]] [[http://it-ebooks.info/read/741/][Spring roo in action]]
 
+** Spring bean
 
-SpringMVC概要
+*** 使用注解声明bean
+
+applicationContext.xml
+
+#+BEGIN_SRC xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	">
+
+	<!-- 使Spring支持自动检测组件，如注解的Controller -->
+	<context:annotation-config />
+
+	<context:component-scan base-package="com.jd.pbs"/>
+
+	<import resource="applicationContext-datasource.xml"/>
+	<import resource="applicationContext-service.xml"/>
+	<import resource="applicationContext-schedule.xml" />
+	<import resource="spring-monitor.xml" />
+</beans>
+
+#+END_SRC
+
+*** 使用propertes 
+
+#+BEGIN_SRC xml
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:important.properties</value>
+				<value>classpath:app.properties</value>
+			</list>
+		</property>
+	</bean>
+
+    <bean id="jedis" class="redis.clients.jedis.Jedis">
+        <constructor-arg value="${redis.server.ip}"/>
+    </bean>
+
+#+END_SRC
+
+*** 运行worker
+
+#+BEGIN_SRC java
+
+@Scheduled(cron = "${data.sync.cron.expression}")
+    public void syncData() {
+
+    }
+
+    public static void main(String[] args) {
+        new ClassPathXmlApplicationContext("/spring/applicationContext.xml", DataSyncWorker.class);
+    }
+
+#+END_SRC
+
+** SpringMVC概要
 Spring MVC的总控：DispatcherServlet
 web.xml中的声明：
 #+BEGIN_SRC 
@@ -63,9 +126,9 @@ spring 3.1 mvc默认实现变化：
 HandlerMapping和HandlerAdapter ，spring3.1的这两个接口的默认实现：
 #+BEGIN_SRC 
 
-	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
 Creates RequestMappingInfo instances from type and method-level @RequestMapping annotations in  @Controller classes.
-	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
 An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature -- method argument and  return types, defined in @RequestMapping. 
 
 #+END_SRC
@@ -115,16 +178,15 @@ An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature 
 
 
 HTTP方法，表达了针对资源的动作
-	GET：检索资源。具有幂等性，可以充分使用客户端的缓存。
-	POST：创建一个新资源，不具有幂等性（多次操作会产生多个新资源）。建议使用Post/Redirect/Get模式。
-	PUT：更新资源数据，如果资源不存在的话，则可根据此URI创建一个新的资源。具有幂等性。
-	DELETE，删除一个资源。具有幂等性，可以多次操作它，直到得出结果，删除不存在的东西没有任何问题。
-	HEAD/OPTIONS，略。
+	- GET：检索资源。具有幂等性，可以充分使用客户端的缓存。
+	- POST：创建一个新资源，不具有幂等性（多次操作会产生多个新资源）。建议使用Post/Redirect/Get模式。
+	- PUT：更新资源数据，如果资源不存在的话，则可根据此URI创建一个新的资源。具有幂等性。
+	- DELETE，删除一个资源。具有幂等性，可以多次操作它，直到得出结果，删除不存在的东西没有任何问题。
+	- HEAD/OPTIONS，略。
 
 ajax框架可指定http方法，浏览器一般只能GET/POST，spring通过一个表单隐藏域来模拟其他方法。
+
 #+BEGIN_SRC 
-
-
 
 <form action="#springUrl('')/return/order/$id" method="POST">
 ...
@@ -172,22 +234,25 @@ spring扫描并管理：
 
 #+END_SRC
 controller类声明：
-1、@Controller注解bean，由spring ioc管理，默认为单例。其value属性可指定bean name，默认为首字母小写的类名。
-2、@RequestMapping("/return/order")，将http请求限定到类，映射资源url的起始路径。
+
+ 1. @Controller注解bean，由spring ioc管理，默认为单例。其value属性可指定bean name，默认为首字母小写的类名。
+ 2. @RequestMapping("/return/order")，将http请求限定到类，映射资源url的起始路径。
 
 controller类方法签名：
-1、@RequestMapping注解，将http请求限定到类方法：映射从起始路径开始的url路径，http方法, http头、请求参数等等。
-2、方法名，无特殊规定，建议有意义的命名。
-3、允许的方法参数，详尽@RequestMapping的API文档，稍后举例。
-4、允许的返回值，详见@RequestMapping的API文档，稍后举例。
-5、异常，无特殊规定。
+ - 1、@RequestMapping注解，将http请求限定到类方法：映射从起始路径开始的url路径，http方法, http头、请求参数等等。
+ - 2、方法名，无特殊规定，建议有意义的命名。
+ - 3、允许的方法参数，详尽@RequestMapping的API文档，稍后举例。
+ - 4、允许的返回值，详见@RequestMapping的API文档，稍后举例。
+ - 5、异常，无特殊规定。
 
 
 controller类方法签名：@RequestMapping的作用
 mapping and narrow request to method.
+
 1、	value：url限定，比如方法上的/{id}/edit和/new。
 
 2、	method：http方法限定。GET/POST/PUT/DELETE等。当url一样时，通过http方法来区分。
+
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public String update(...
 

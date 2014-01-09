@@ -1,0 +1,16 @@
+#+TITLE:       使用伪代码做详细设计
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2014-01-09 周四
+#+URI:         /blog/%y/%m/%d/使用伪代码做详细设计
+#+KEYWORDS:    设计,伪代码,软件开发
+#+TAGS:        设计, 软件开发,
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 使用伪代码做详细设计
+
+* 确定创建的类
+
+* 在类头上写上该类的职责
+
+* 给每个类设计方法，编写上实现该方法的伪代码
