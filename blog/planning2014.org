@@ -192,6 +192,7 @@ CLOCK: [2013-08-26 一 10:46]--[2013-08-26 一 11:11] =>  0:25
    -http://octopress.org/docs/setup/
    - [ ]
    - [ ]
+***** TODO [#C] task统计时间不准确
 ***** DONE [#C] [/]  做计划，如何使用org 和 muse
 CLOSED: [2014-01-02 周四 20:18]
 - State "DONE"       from "TODO"       [2014-01-02 周四 20:18]
