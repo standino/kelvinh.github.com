@@ -10,6 +10,7 @@
 #+DESCRIPTION: go 语言
 
  - [[https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md][build-web-application-with-golang]] 这篇文章非常详细的介绍了go语言
+ - [[http://beego.me/docs/install/bee.md][go web 框架]]
 
 * 安装
 
