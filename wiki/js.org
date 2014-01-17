@@ -13,5 +13,39 @@
  - [[http://www.myexception.cn/javascript/407684.html][DOJO js 根本dom操作]]
  - http://folyred.iteye.com/blog/946565
  - https://dojotoolkit.org/reference-guide/1.7/dojo/dom-construct.html
+ - [[http://jinlong.github.io/blog/2013/08/29/devtoolsecrets/][浏览器开发工具的秘密]]
+ - [[http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html][Chrome developer tool介绍（javascript调试）]]
+ - [[http://www.jb51.net/article/18111.htm][jquery控制div下所有连接]]
+ - [[https://micate.me/debug-jquery-object-binded-events.note][获取绑定在 jQuery 对象上的事件]]
+ - [[http://www.divcss5.com/jiqiao/j497.shtml][jQuery适用技巧笔记整合]]
 
-UI调试工具Fiddler,微软开发的。
+*  [[http://www.w3cschool.cc/bootstrap/bootstrap-intro.html][Bootstrap 简介]]
+
+Bootstrap 是一个用于快速开发 Web 应用程序和网站的前端框架。
+
+在现代 Web 开发中，有几个几乎所有的 Web 项目中都需要的组件。
+
+Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Tables、Forms、Buttons 和 Responsiveness。
+
+此外，还有大量其他有用的前端组件，比如 Dropdowns、Navigation、Modals、Typehead、Pagination、Carousal、Breadcrumb、Tab、Thumbnails、Headers 等等。
+
+有了这些，你可以搭建一个 Web 项目，并让它运行地更快速更轻松。
+
+* UI调试工具Fiddler,微软开发的。
+* 获得jquery绑定的事件an
+
+
+#+BEGIN_SRC javascript
+
+var events = $(".add").data('events');
+if (events && events.click) {
+
+
+
+    // jQuery 1.4.x+
+    $.each(events.click, function(key, handlerObject) {
+        console.info(handlerObject.handler);
+    });
+}
+
+#+END_SRC
