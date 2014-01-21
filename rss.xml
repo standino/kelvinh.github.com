@@ -4,10 +4,31 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周一, 13 一月 2014 17:50:30 CST</pubDate>
-    <lastBuildDate>周一, 13 一月 2014 17:50:30 CST</lastBuildDate>
+    <pubDate>周二, 21 一月 2014 17:35:16 CST</pubDate>
+    <lastBuildDate>周二, 21 一月 2014 17:35:16 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>常用链接</title>
+      <link>http://standino.github.io/wiki/html/mylinks</link>
+      <description>常用链接</description>
+      <pubDate>2014-01-21</pubDate>
+      <guid>http://standino.github.io/wiki/html/mylinks</guid>
+    </item>
+    <item>
+      <title>js.org</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-01-17</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>使用MDA方式开发软件</title>
+      <link>http://standino.github.io/wiki/html/html/mda</link>
+      <description>mda</description>
+      <pubDate>2014-01-16</pubDate>
+      <guid>http://standino.github.io/wiki/html/html/mda</guid>
+    </item>
     <item>
       <title>go 语言</title>
       <link>http://standino.github.io/wiki/html/go</link>
@@ -56,27 +77,6 @@
       <description>redis学习和入门</description>
       <pubDate>2014-01-06</pubDate>
       <guid>http://standino.github.io/blog/2013/12/24/redis</guid>
-    </item>
-    <item>
-      <title>单元测试</title>
-      <link>http://standino.github.io/blog/2014/01/02/unittest</link>
-      <description>单元测试</description>
-      <pubDate>2014-01-03</pubDate>
-      <guid>http://standino.github.io/blog/2014/01/02/unittest</guid>
-    </item>
-    <item>
-      <title>Emacs 使用笔记</title>
-      <link>http://standino.github.io/wiki/html/html/myemacs/</link>
-      <description>Emacs 使用笔记</description>
-      <pubDate>2014-01-03</pubDate>
-      <guid>http://standino.github.io/wiki/html/html/myemacs/</guid>
-    </item>
-    <item>
-      <title>敏捷软件开发</title>
-      <link>http://standino.github.io/wiki/html/scrum</link>
-      <description>敏捷软件开发</description>
-      <pubDate>2014-01-03</pubDate>
-      <guid>http://standino.github.io/wiki/html/scrum</guid>
     </item>
   </channel>
 </rss>
