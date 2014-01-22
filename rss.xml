@@ -4,10 +4,24 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周二, 21 一月 2014 17:35:16 CST</pubDate>
-    <lastBuildDate>周二, 21 一月 2014 17:35:16 CST</lastBuildDate>
+    <pubDate>周三, 22 一月 2014 15:44:37 CST</pubDate>
+    <lastBuildDate>周三, 22 一月 2014 15:44:37 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>JAVA</title>
+      <link>http://standino.github.io/wiki/html/java</link>
+      <description>Java Tips</description>
+      <pubDate>2014-01-22</pubDate>
+      <guid>http://standino.github.io/wiki/html/java</guid>
+    </item>
+    <item>
+      <title>mvn</title>
+      <link>http://standino.github.io/wiki/html/mvn</link>
+      <description>mvn</description>
+      <pubDate>2014-01-22</pubDate>
+      <guid>http://standino.github.io/wiki/html/mvn</guid>
+    </item>
     <item>
       <title>常用链接</title>
       <link>http://standino.github.io/wiki/html/mylinks</link>
@@ -49,20 +63,6 @@
       <description>为明年做一下计划</description>
       <pubDate>2014-01-09</pubDate>
       <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
-    </item>
-    <item>
-      <title>JAVA</title>
-      <link>http://standino.github.io/wiki/html/java</link>
-      <description>Java Tips</description>
-      <pubDate>2014-01-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>mvn</title>
-      <link>http://standino.github.io/wiki/html/mvn</link>
-      <description>mvn</description>
-      <pubDate>2014-01-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/mvn</guid>
     </item>
     <item>
       <title>版本管理工具</title>
