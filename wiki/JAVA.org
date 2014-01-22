@@ -4,7 +4,7 @@
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/html/java
 #+KEYWORDS:    java
-#+TAGS:        :java:
+#+TAGS:        :java:rest:spring:ajax:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION:  Java Tips
@@ -34,7 +34,7 @@ applicationContext.xml
 	<!-- 使Spring支持自动检测组件，如注解的Controller -->
 	<context:annotation-config />
 
-	<context:component-scan base-package="com.jd.pbs"/>
+	<context:component-scan base-package="com.mycompany.pbs"/>
 
 	<import resource="applicationContext-datasource.xml"/>
 	<import resource="applicationContext-service.xml"/>
@@ -52,7 +52,7 @@ applicationContext.xml
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath:jdbc.properties</value>
+				<value>classpath:mycompanybc.properties</value>
 				<value>classpath:important.properties</value>
 				<value>classpath:app.properties</value>
 			</list>
@@ -230,7 +230,7 @@ public class ReturnOrderController {
 spring扫描并管理：
 #+BEGIN_SRC 
 
-<context:component-scan  base-package="com.jd.bluedragon.web.controller" />
+<context:component-scan  base-package="com.mycompany.bluedragon.web.controller" />
 
 #+END_SRC
 controller类声明：
@@ -505,7 +505,7 @@ public class IndexController {
 	   <property name="defaultErrorView" value="error/uncaught"/>
 	   <property name="exceptionMappings">
 	       <props>
-	           <prop key="com.jd.common.hrm.IllegalHrmPrivilegeException">error/access-denied</prop>
+	           <prop key="com.mycompany.common.hrm.IllegalHrmPrivilegeException">error/access-denied</prop>
 	        </props>
 	    </property>
 	</bean>
@@ -566,7 +566,225 @@ URL映射和拦截器配置:{servletName}-servlet.xml
 
 #+END_SRC
 
+** Ajax 调用
 
+#+BEGIN_SRC java
+    @RequestMapping(method = RequestMethod.POST )
+    @ResponseStatus(HttpStatus.CREATED)
+    public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
+                                    BindingResult bindingResult, ModelMap view) {
+        quickMenu.setUserId(this.getUserID());
+        quickMenu.setCreator(this.getUserID());
+        this.quickMenuService.addMenu(quickMenu);
+        return quickMenu;
+    }
+#+END_SRC
+
+#+BEGIN_SRC javascript
+#set($layout = "/layout/empty.vm")
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+
+        a.quickMenu {
+            background: url("http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon20-blue.png") no-repeat;
+            border-radius: 5px;
+            color: #999999;
+            display: block;
+            float: left;
+            font-size: 14px;
+            font-weight: bold;
+            height: 31px;
+            margin: 0 5px 5px 0;
+            padding-top: 55px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s ease-out 0s;
+            width: 86px;
+        }
+
+        span {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            color: #0095CD;
+            display: inline-block;
+            height: 30px;
+            overflow: hidden;
+            width: 82px;
+            position: relative;
+        }
+
+        .item-warp a b.ticked {
+            display: block;
+            height: 26px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 26px;
+            background: url("http://css.eip.mycompany.com/jetui/jetuicss/i/icon-ticked-blue.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+        }
+
+
+    </style>
+
+</head>
+<body>
+<!-- 显示已添加的快捷菜单 -->
+<div id="quickMenuTemplate">
+
+    #foreach( $menu in $menus )
+        <a title="${menu.linkName}" class="quickMenu"
+           style="background: url('${menu.linkImgUrl}') no-repeat"
+           href="${menu.linkUrl}" target="_blank">
+            <span>${menu.linkName}</span>
+            <em>
+                <b></b>
+            </em>
+        </a>
+    #end
+
+
+    <a id="quickMenu_add" title="添加" class="quickMenu"
+       style="background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/icon21-gray.png') no-repeat"
+       href="#" target="_blank">
+        <span></span>
+        <em>
+            <b></b>
+        </em>
+    </a>
+
+
+</div>
+
+<!--显示所有可见菜单，供供用户添加和删除 -->
+<div id="dialog-form"  title="添加菜单" style="display: none">
+
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">手动添加</a></li>
+            <li><a href="#tabs-2">常用功能</a></li>
+        </ul>
+        <div id="tabs-1">
+            <form id="newForm" action="#springUrl('/quickMenus')" method="post">
+                <fieldset>
+                    <label for="linkName">链接名称</label>
+                    <input type="text" name="linkName" id="linkName" class="text ui-widget-content ui-corner-all">
+                          <br />
+                    <label for="linkUrl">链接地址</label>
+                    <input type="text" name="linkUrl" id="linkUrl" value="" class="text ui-widget-content ui-corner-all">
+                    <br />
+                    <label for="linkImgUrl">链接图片</label>
+                    <input type="text" name="linkImgUrl" id="linkImgUrl" value="" class="text ui-widget-content ui-corner-all">
+                    <br />
+                </fieldset>
+            </form>
+        </div>
+        <div id="tabs-2" class="item-warp">
+            <a title="E-learning" class="quickMenu"
+               style="background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon6-blue.png') no-repeat"
+               href="javascript:void(0) " target="_blank">
+                <span>E-learning</span>
+                <em>
+                    <b class="ticked"></b>
+                </em>
+            </a>
+
+            <a id="timeCard" title="打卡" class="quickMenu"
+               style="background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon1-blue.png') no-repeat"
+               href="javascript:void(0)" target="_blank">
+                <span>打卡</span>
+                <em>
+                    <b class="ticked"></b>
+                </em>
+            </a>
+        </div>
+
+    </div>
+
+
+</div>
+
+<script>
+    $(function () {
+                $( "#tabs" ).tabs();
+
+                $("#dialog-form").dialog({
+                    autoOpen: false,
+                    height: 600,
+                    width: 650,
+                    modal: true,
+                    buttons: {
+                        "添加": function () {
+//                            $("#newForm").submit();
+                            var url = "#springUrl('/quickMenus')"; // the script where you handle the form input.
+
+                            $.ajax({
+                                type: "POST",
+                                url: url,
+                                data: $("#newForm").serialize(), // serializes the form's elements.
+                                success: function(data) {
+//                                    alert(data); // show response from the php script.
+                                    console.log("创建快捷链接" +data);
+                                    $(this).dialog("close");
+                                    location.reload();
+
+                                }
+                            });
+
+//
+                        },
+                        "取消": function () {
+                            $(this).dialog("close");
+                        }
+                    },
+                    close: function () {
+                    }
+                });
+
+                $("#quickMenu_add").bind('click', function () {
+                    $("#dialog-form").dialog("open");
+                    return false;
+                })
+
+                $("#tabs-2 a").bind('click', function () {
+                    console.log("触发打钩");
+                    $(this).find("b").toggleClass("ticked");
+                })
+            }
+
+    );
+
+</script>
+
+
+</body>
+</html>
+#+END_SRC
+
+** 事务控制
+
+下面的配置里，只有insert,update, add, mod,del和move开头的servcie方法有数据库commit权限。
+#+BEGIN_SRC xml
+<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+			<tx:method name="update*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="add*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="mod*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="del*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="move*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+			<tx:method name="*"   isolation="READ_COMMITTED" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+
+    <aop:config proxy-target-class="true">
+		<aop:advisor pointcut="execution(* com.retail.*.service.*.*(..))" advice-ref="txAdvice" />
+	</aop:config>
+#+END_SRC
 * Copy files from a jar
 
 http://stackoverflow.com/questions/1386809/copy-a-directory-from-a-jar-file
@@ -589,7 +807,7 @@ http://code.google.com/intl/zh-CN/appengine/docs/python/gettingstarted/uploading
 在Eclipse中，我们常常看一些英文的JavaDoc提示或者没有相应的提示是很不习惯的，如下图所示：
 
 我们现在要把这种不习惯的提示改为中文的JavaDOC提示，首先先
-到http://download.java.net/jdk/jdk-api-localizations/jdk-api-zh-cn/publish/1.6.0/html_zh_CN.zip 
+到http://download.java.net/mycompanyk/mycompanyk-api-localizations/mycompanyk-api-zh-cn/publish/1.6.0/html_zh_CN.zip 
 下载中文的JavaDOC，版本为javaSE6.0。
 然后在Eclipse中选择window-->Preferences，
 在图中对应位置输入“jre”：
@@ -631,5 +849,6 @@ http://grails.org/plugin/app-engine
 * AIO
 
 连接数多且长的需要使用AIO, AIO使用的时候需要使用多线程。
+
 
 

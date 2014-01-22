@@ -4,7 +4,7 @@
 #+DATE:        2013-12-30 周一
 #+URI:         /wiki/html/mvn
 #+KEYWORDS:    mvn
-#+TAGS:        :mvn:work:
+#+TAGS:        :mvn:work:jetty:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: mvn
@@ -86,5 +86,42 @@ mvn archetype:generate   -DarchetypeArtifactId=maven-archetype-webapp   -DgroupI
   </dependencies>
 </project>
 
+
+#+END_SRC
+
+* Jetty plugin
+
+#+BEGIN_SRC xml
+                        <plugin>
+                                <groupId>org.mortbay.jetty</groupId>
+                                <artifactId>jetty-maven-plugin</artifactId>
+                                <version>8.1.9.v20130131</version>
+                                <configuration>
+                    <contextXml>${basedir}/src/main/webapp/WEB-INF/jetty-context.xml</contextXml>
+                                        <stopKey>CTRL+C</stopKey>
+                                        <stopPort>8999</stopPort>
+                                        <scanIntervalSeconds>10</scanIntervalSeconds>
+                                        <webAppConfig>
+                                                <contextPath>/</contextPath>
+                                        </webAppConfig>
+                                </configuration>
+                        </plugin>
+
+#+END_SRC
+
+jetty-context.xml
+
+#+BEGIN_SRC xml
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN"
+        "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+    <Call name="setAttribute">
+        <Arg>org.eclipse.jetty.server.webapp.WebInfIncludeJarPattern</Arg>
+        <Arg>.*/.*jsp-api-[^/]\.jar$|./.*jsp-[^/]\.jar$|./.*taglibs[^/]*\.jar$</Arg>
+    </Call>
+</Configure>
 
 #+END_SRC
