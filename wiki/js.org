@@ -4,7 +4,7 @@
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/html/js
 #+KEYWORDS:    js
-#+TAGS:        :js:
+#+TAGS:        :js:jquery:dojo:ajax:定位元素:调试:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION:  Javascript
@@ -62,3 +62,12 @@ if (events && events.click) {
 
 * firebug
  - [[http://mynoteweb.com/node/114][用Firebug调试JavaScript]]
+
+* Jquery 查询对象的几种方式
+
+  | 查询方式                 | 例子                                          |
+  | 按class查询              | $(".myclass")                                 |
+  | 按ID查询                 | $("#myid")                                    |
+  | 定位某个元素，查找子元素 | $(".quickMenu i").bind('click', function () { |
+  | 函数里获得this的子元素   | $(this).find('i').toggleClass("ticked");      |
+  |                          |                                               |
