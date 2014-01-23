@@ -4,7 +4,7 @@
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/html/linux
 #+KEYWORDS:    linux
-#+TAGS:        :linux:
+#+TAGS:        :linux:端口:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: linux
@@ -2977,3 +2977,29 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 #+END_SRC
 
+
+
+* centos 打开端口
+
+#关闭防火墙
+/etc/init.d/iptables stop
+service iptables stop # 停止服务
+#查看防火墙信息
+/etc/init.d/iptables status
+
+#开放端口:8080
+/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+#重启防火墙以便改动生效:(或者直接重启系统)
+/etc/init.d/iptables restart
+#将更改进行保存
+/etc/rc.d/init.d/iptables save
+
+* Tomcat 修改root context
+
+/confg/server.xml
+
+<Context  path="/"  docBase="/usr/jalimay/apache-tomcat-6.0.35/webapps/retail_portal"  debug="0"    reloadable="true"  crossContext="true"/>
+      </Host>
+    </Engine>
+  </Service>
+</Server>

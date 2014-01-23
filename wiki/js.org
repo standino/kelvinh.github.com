@@ -49,3 +49,16 @@ if (events && events.click) {
 }
 
 #+END_SRC
+
+
+* $.ajax 在IE中不work
+
+#+BEGIN_SRC javascript
+        $.ajaxSetup ({
+            cache: false //关闭AJAX相应的缓存
+        });
+
+#+END_SRC
+
+* firebug
+ - [[http://mynoteweb.com/node/114][用Firebug调试JavaScript]]

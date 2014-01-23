@@ -81,7 +81,22 @@ applicationContext.xml
 #+END_SRC
 
 ** SpringMVC概要
-Spring MVC的总控：DispatcherServlet
+
+*** Controler 一个方法对应多个url
+
+#+BEGIN_SRC java
+@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
+    public String index(
+            @RequestParam(value = "locale", required = false) Locale locale,
+            HttpServletRequest request,
+            HttpServletResponse response, ModelMap view) {
+        if (locale != null) {
+            localeResolver.setLocale(request, response, locale);
+
+        }
+#+END_SRC
+
+*** Spring MVC的总控：DispatcherServlet
 web.xml中的声明：
 #+BEGIN_SRC 
      <context-param>
