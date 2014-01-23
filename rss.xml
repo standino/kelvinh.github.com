@@ -4,16 +4,37 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周三, 22 一月 2014 15:44:37 CST</pubDate>
-    <lastBuildDate>周三, 22 一月 2014 15:44:37 CST</lastBuildDate>
+    <pubDate>周四, 23 一月 2014 18:17:22 CST</pubDate>
+    <lastBuildDate>周四, 23 一月 2014 18:17:22 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>JAVA</title>
       <link>http://standino.github.io/wiki/html/java</link>
       <description>Java Tips</description>
-      <pubDate>2014-01-22</pubDate>
+      <pubDate>2014-01-23</pubDate>
       <guid>http://standino.github.io/wiki/html/java</guid>
+    </item>
+    <item>
+      <title>js.org</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-01-23</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>linux</title>
+      <link>http://standino.github.io/wiki/html/linux</link>
+      <description>linux</description>
+      <pubDate>2014-01-23</pubDate>
+      <guid>http://standino.github.io/wiki/html/linux</guid>
+    </item>
+    <item>
+      <title>Tools</title>
+      <link>http://standino.github.io/wiki/html/tool</link>
+      <description>Tools</description>
+      <pubDate>2014-01-23</pubDate>
+      <guid>http://standino.github.io/wiki/html/tool</guid>
     </item>
     <item>
       <title>mvn</title>
@@ -28,13 +49,6 @@
       <description>常用链接</description>
       <pubDate>2014-01-21</pubDate>
       <guid>http://standino.github.io/wiki/html/mylinks</guid>
-    </item>
-    <item>
-      <title>js.org</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-01-17</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
     <item>
       <title>使用MDA方式开发软件</title>
@@ -63,20 +77,6 @@
       <description>为明年做一下计划</description>
       <pubDate>2014-01-09</pubDate>
       <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
-    </item>
-    <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-01-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
-    </item>
-    <item>
-      <title>我是如何开始使用redis的</title>
-      <link>http://standino.github.io/blog/2013/12/24/redis</link>
-      <description>redis学习和入门</description>
-      <pubDate>2014-01-06</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/24/redis</guid>
     </item>
   </channel>
 </rss>
