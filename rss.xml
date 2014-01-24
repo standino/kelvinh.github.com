@@ -4,23 +4,30 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周四, 23 一月 2014 18:17:22 CST</pubDate>
-    <lastBuildDate>周四, 23 一月 2014 18:17:22 CST</lastBuildDate>
+    <pubDate>周五, 24 一月 2014 16:03:24 CST</pubDate>
+    <lastBuildDate>周五, 24 一月 2014 16:03:24 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>js.org</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-01-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>常用链接</title>
+      <link>http://standino.github.io/wiki/html/mylinks</link>
+      <description>常用链接</description>
+      <pubDate>2014-01-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/mylinks</guid>
+    </item>
     <item>
       <title>JAVA</title>
       <link>http://standino.github.io/wiki/html/java</link>
       <description>Java Tips</description>
       <pubDate>2014-01-23</pubDate>
       <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>js.org</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-01-23</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
     <item>
       <title>linux</title>
@@ -42,13 +49,6 @@
       <description>mvn</description>
       <pubDate>2014-01-22</pubDate>
       <guid>http://standino.github.io/wiki/html/mvn</guid>
-    </item>
-    <item>
-      <title>常用链接</title>
-      <link>http://standino.github.io/wiki/html/mylinks</link>
-      <description>常用链接</description>
-      <pubDate>2014-01-21</pubDate>
-      <guid>http://standino.github.io/wiki/html/mylinks</guid>
     </item>
     <item>
       <title>使用MDA方式开发软件</title>
