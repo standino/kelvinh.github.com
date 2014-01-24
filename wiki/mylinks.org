@@ -11,7 +11,7 @@
 
 * 常用链接
 
- 1. [[http://standino.github.io/][github上的个人网站]]  [[http://127.0.0.1:8012][github网站本地版]] [[https://bitbucket.org/][我的代码库]] [[https://github.com/standino/][my github]] [[http://standino.disqus.com/][评论统计]]
+ 1. [[http://standino.github.io/][github上的个人网站]]  [[http://127.0.0.1:8012][github网站本地版]] [[https://bitbucket.org/][我的代码库]] [[https://github.com/standino/][my github]] [[http://standino.disqus.com/][评论统计]] [[网站使用统计]]
  2. [[http://127.0.0.1:8000/][本地个人笔记]]
  3. [[http://mail.google.com/][Gmail]] [[https://blu170.mail.live.com/default.aspx?id=64855][MS Outlook]] 
  4. [[https://pan.baidu.com/disk/home#dir/path=%2Fwork%2Fjd][百度网盘]]
@@ -29,4 +29,4 @@
  16. [[http://www.google.com/gwt/n][GWT 突破]]
  17. [[http://blog.jobbole.com/5886/][国外程序员推荐：每个程序员都应读的书]]
  18. [[http://stackoverflow.com/][开发问题论坛]]
- 19. [[http://www.douban.com/people/2263327/][豆瓣读书]]
+ 19. [[http://www.douban.com/people/2263327/][豆瓣读书]] [[http://www.ppurl.com/]] 

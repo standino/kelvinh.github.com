@@ -71,3 +71,107 @@ if (events && events.click) {
   | 定位某个元素，查找子元素 | $(".quickMenu i").bind('click', function () { |
   | 函数里获得this的子元素   | $(this).find('i').toggleClass("ticked");      |
   |                          |                                               |
+
+
+* Jquery widget 编写
+#+BEGIN_SRC javascript
+
+
+var Green5  = {
+        getLevel: function () { return this.options.level; },
+        setLevel: function (x) {
+                var greenlevels = this.options.greenlevels;
+                var level = Math.floor(Math.min(greenlevels.length-1, Math.max(0,x)));
+                this.options.level = level;
+                this.element.css({background: greenlevels[level]});
+                this._trigger('change', 0, level);
+        },
+        _init: function() { this.setLevel(this.getLevel()); }, // grab the default value and use it
+        darker: function() { this.setLevel(this.getLevel()-1); },
+        lighter: function() { this.setLevel(this.getLevel()+1); },
+        off: function() {
+                this.element.css({background: 'none'});
+                this._trigger('done');
+                this.destroy(); // use the predefined function
+        },
+        options: {
+                level: 15,
+                greenlevels: ['#000','#010','#020','#030','#040','#050','#060','#070','#080','#090','#0a0','#0b0','#0c0','#0d0','#0e0','#0f0', '#fff']
+        }
+};
+$.widget("ui.green5", Green5);
+#+END_SRC
+
+#+BEGIN_SRC html
+        <p class="target">This is a test paragraph with green level <span class="level">undefined</span>.</p>
+#+END_SRC
+#+BEGIN_SRC javascript
+
+//  The on button above does the following:
+$('.target').green5({
+        change: function(event, level) { $('.level', this).text(level); } // callback to handle change event
+});
+$('.target').bind('green5done', function() { $('.level', this).text('undefined');alert('bye!') }); // event handler for done event
+
+#+END_SRC
+
+** Involving the Mouse
+Now, a lot of what we want to do with widgets involves mouse tracking, so ui.core.js provides a mixin object that includes lots of
+useful methods for the mouse. All we need to do is add the $.ui.mouse widget to our widget prototype:
+
+#+BEGIN_SRC javascript
+
+
+var Green6 = {mouse-overriding function and widget-specific functions};
+$.widget ('ui.green6', $.ui.mouse, Green6);
+#+END_SRC
+And override $.ui.mouse's functions (_mouseStart, _mouseDrag, _mouseStop) to do something useful, and call this._mouseInit in your
+this._init and this._mouseDestroy in your this.destroy. The mouse defaults are automagically including in your options object; see
+the mouse code for details.
+
+Let's add some mouse control to our greenerizer:
+#+BEGIN_SRC javascript
+
+
+
+Green6 = $.extend({}, $.ui.green5.prototype, { // leave the old Green5 alone; create a new object
+        _init: function(){
+                $.ui.green5.prototype._init.call(this); // call the original function
+                this._mouseInit(); // start up the mouse handling
+        },
+        destroy: function(){
+                this._mouseDestroy();
+                $.ui.green5.prototype.destroy.call(this); // call the original function
+        },
+        // need to override the mouse functions
+        _mouseStart: function(e){
+                // keep track of where the mouse started
+                this.xStart = e.pageX; // not in the options object; this is not something that can be initialized by the user
+                this.levelStart = this.options.level;
+        },
+        _mouseDrag: function(e){
+                this.setLevel (this.levelStart +(e.pageX-this.xStart)/this.options.distance);
+        },
+        options: {
+                level: 15,
+                greenlevels: ['#000','#010','#020','#030','#040','#050','#060','#070','#080','#090','#0a0','#0b0','#0c0','#0d0','#0e0','#0f0', '#fff'],
+                distance: 10
+        }
+});
+$.widget("ui.green6", $.ui.mouse, Green6);
+#+END_SRC
+
+#+BEGIN_SRC html
+
+
+        <p class="target">This is a test paragraph with green level <span class="level">undefined</span>.</p>
+#+END_SRC
+
+The ever-alert reader will note what we've just done: subclassed green5 to make green6, including calls to "super" methods. This
+ought to be abstracted out into its own method, something like
+
+#+BEGIN_SRC javascript
+
+
+$.ui.green5.subclass("green6", $.ui.mouse, {mouseStart:function(){}, mouseDrag: function(){}})
+#+END_SRC
