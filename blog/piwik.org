@@ -1,0 +1,196 @@
+#+TITLE:       使用piwik做网站统计
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2014-01-27 周一
+#+URI:         /blog/%y/%m/%d/piwik
+#+KEYWORDS:    piwik, js
+#+TAGS:        piwik, js, linux, centos, apache, mysql, shell, php
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: piwik
+
+虽然有[[http://tongji.baidu.com/open/api/more][百度统计]]和[[http://www.google.com/analytics/][Google Analytics]]可以帮助我们做网站统计，但是有时候我们可能不愿意把数据上传到外网，或者是内部系统不能访问外网。这个
+时候，我们就需要自己搭建一套网站统计系统。幸好，我们有piwik，它是一个Php编写的开源网站统计系统，基于GPL，可以免费试用。
+
+* 安装 apache, mysql和php
+
+安装前需要先确定你的Linux的版本。如果你的系统版本太低，就只能下载版本稍低的软件。我安装的时候就遇到了最新版mysql无法安装的情况。我
+的解决办法是下载了一个低版本的mysql。
+
+#+BEGIN_SRC shell
+[j@localhost ~]$ lsb_release -a
+LSB Version:    :core-4.0-amd64:core-4.0-ia32:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-ia32:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-ia32:printing-4.0-noarch
+Distributor ID: CentOS
+Description:    CentOS release 5.6 (Final)
+Release:        5.6
+Codename:       Final
+
+#+END_SRC
+
+现在有[[http://lnmp.org/install.html][LNMP一键安装包]],据说可以一次性搞定所有的安装。但是，我的服务器由于不能上网，所以我采用了下载源码，scp到服务器上编译安装的方式。
+下面三篇文章已经介绍的很清楚了，大家如果在安装的时候遇到问题，可以参考它们。我这里只列出我的操作脚本。
+
+ - Linux下安装、启动MySQL ：http://blog.csdn.net/wy3552128/article/details/8143686
+ - Linux下安装、配置、启动Apache：http://blog.csdn.net/wy3552128/article/details/8143875
+ - Linux下安装、配置PHP环境： http://blog.csdn.net/wy3552128/article/details/8144457
+
+
+** 下载
+
+#+BEGIN_SRC shell
+wget -c http://cn2.php.net/distributions/php-5.5.8.tar.gz
+wget -c http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.7.tar.gz
+wget -c http://www.webhostingjams.com/mirror/apache//apr/apr-1.5.0.tar.gz
+wget -c http://www.webhostingjams.com/mirror/apache//apr/apr-util-1.5.3.tar.gz
+wget -c http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip
+wget -c http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-client-community-5.1.73-1.rhel5.x86_64.rpm
+wget -c http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-server-community-5.1.73-1.rhel5.x86_64.rpm
+
+#+END_SRC
+
+** 安装 mysql
+
+#+BEGIN_SRC shell
+
+rpm -ivh MySQL-client-community-5.1.73-1.rhel5.x86_64.rpm
+rpm -ivh MySQL-server-community-5.1.73-1.rhel5.x86_64.rpm
+
+#+END_SRC
+
+** 编译apache
+
+#+BEGIN_SRC shell
+tar -zxvf httpd-2.4.7.tar.gz
+tar -zxf apr-1.5.0.tar.gz
+tar -zxf apr-util-1.5.3.tar.gz
+unzip pcre-8.31.zip
+
+cp -rf apr-1.5.0 httpd-2.4.7/srclib/apr
+cp -rf apr-util-1.5.3 httpd-2.4.7/srclib/apr-util
+
+cd  httpd-2.4.7/srclib/apr
+./configure --prefix=/usr/local/apr
+make && make install
+cd -
+
+cd  httpd-2.4.7/srclib/apr-util
+./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr
+make && make install
+cd -
+
+cd pcre-8.31
+./configure --prefix=/usr/local/pcre
+make && make install
+cd -
+
+cd  httpd-2.4.7/
+./configure  --prefix=/usr/local/apache2/ --with-apr=/usr/local/apr/ --with-apr-util=/usr/local/apr-util/ --with-pcre=/usr/local/pcre --with-included-apr
+make && make install
+cd -
+
+cd php-5.5.8
+make clean
+./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-config-file-path=/usr/local/lib --with-mysqli --with-zlib --enable-track-vars --with-xml --with-gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2/freetype/ --with-mbstring --enable-mbstring=all
+make && make install
+cd -
+
+
+#+END_SRC
+* 配置php
+
+ 参考： Linux下安装、配置PHP环境： http://blog.csdn.net/wy3552128/article/details/8144457
+
+这里需要注意一下，有可能端口80没有打开，这样其他机器就访问不了服务器上的apache.使用下面的命令打开80端口。
+#+BEGIN_SRC
+
+/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+
+#将更改进行保存
+/etc/rc.d/init.d/iptables save
+
+#重启防火墙以便改动生效:(或者直接重启系统)
+/etc/init.d/iptables restart
+
+#+END_SRC
+
+重启apache的命令
+#+BEGIN_SRC shell
+/usr/local/apache2/bin/apachectl restart
+#+END_SRC
+
+
+
+
+
+* piwik
+
+** [[http://piwik.org/docs/installation/][安装 piwik]]
+
+#+BEGIN_SRC shell
+
+wget http://builds.piwik.org/latest.zip
+
+unzip latest.zip
+ls
+mv piwik/ /usr/local/apache2/htdocs/
+
+chmod -R 777 piwik
+#+END_SRC
+
+参照官方文档 [[http://piwik.org/docs/installation/][安装 piwik]].
+
+** 使用piwik
+
+ [[http://developer.piwik.org/api-reference/tracking-javascript#where-can-i-find-the-piwik-tracking-code][Javascript Tracking client How-to]] 里介绍了如何使用。
+
+#+BEGIN_SRC javascript
+
+###确认这段代码在网站所有页面的 </body> 标签之前。
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+
+        #if ($piwik_title)
+        _paq.push(['setDocumentTitle', '$piwik_title']);
+        #else
+        _paq.push(['setDocumentTitle', document.title]);
+        #end
+
+        #if($nick)
+        _paq.push(['setCustomVariable', '1', '用户名', '$nick']);
+        #end
+
+    _paq.push(['trackPageView']);
+
+        #foreach( $portlet in $myPortletC0 )
+        _paq.push(['trackPageView', '$portlet.itemId']);
+        #end
+
+        #foreach( $portlet in $myPortletC1 )
+        _paq.push(['trackPageView', '$portlet.itemId']);
+        #end
+
+        #foreach( $portlet in $myPortletC2 )
+        _paq.push(['trackPageView', '$portlet.itemId']);
+        #end
+
+    _paq.push(['enableLinkTracking']);
+
+
+    (function () {
+        var u = (("https:" == document.location.protocol) ? "https" : "http") + "://my.piwik.com/piwik/";
+        _paq.push(['setTrackerUrl', u + 'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript';
+        g.defer = true;
+        g.async = true;
+        g.src = u + 'piwik.js';
+        s.parentNode.insertBefore(g, s);
+    })();
+
+</script>
+<noscript><p><img src="http://my.piwik.com/piwik/piwik.php?idsite=1" style="border:0;" alt=""/></p></noscript>
+<!-- End Piwik Code -->
+
+#+END_SRC
