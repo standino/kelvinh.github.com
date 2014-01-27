@@ -4,7 +4,7 @@
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/html/js
 #+KEYWORDS:    js
-#+TAGS:        :js:jquery:dojo:ajax:定位元素:调试:
+#+TAGS:        :js:jquery:dojo:ajax:定位元素:调试:piwik:网站统计:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION:  Javascript
@@ -175,3 +175,7 @@ ought to be abstracted out into its own method, something like
 
 $.ui.green5.subclass("green6", $.ui.mouse, {mouseStart:function(){}, mouseDrag: function(){}})
 #+END_SRC
+
+* piwik
+
+ API: http://developer.piwik.org/api-reference/tracking-javascript#where-can-i-find-the-piwik-tracking-code

@@ -4,7 +4,7 @@
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/html/linux
 #+KEYWORDS:    linux
-#+TAGS:        :linux:端口:
+#+TAGS:        :linux:端口:jdretail:采销平台:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: linux
@@ -1891,7 +1891,7 @@ Mod4 + Shift + r
 
 * DNS
 
-http://kbase.redhat.com/faq/docs/DOC-13668
+http://hi.baidu.com/eshifangs/item/e2bc80a77a465c348819d366
 
 #+BEGIN_SRC
 [jazz@dswdev3 ~]$ cat /etc/sysconfig/network-scripts/ifcfg-eth1
@@ -2989,6 +2989,8 @@ service iptables stop # 停止服务
 
 #开放端口:8080
 /sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+
+/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 #重启防火墙以便改动生效:(或者直接重启系统)
 /etc/init.d/iptables restart
 #将更改进行保存
@@ -2998,8 +3000,187 @@ service iptables stop # 停止服务
 
 /confg/server.xml
 
+
 <Context  path="/"  docBase="/usr/jalimay/apache-tomcat-6.0.35/webapps/retail_portal"  debug="0"    reloadable="true"  crossContext="true"/>
       </Host>
     </Engine>
   </Service>
 </Server>
+
+
+* [[http://www.cnblogs.com/zhuque/archive/2012/11/03/2763351.html][安装PHP环境]]
+
+** 获得操作系统基本信息
+查看端口号使用 
+#+BEGIN_SRC shell
+netstat -tnl|grep 80
+#+END_SRC
+
+** 下载
+
+
+wget -c http://cn2.php.net/distributions/php-5.5.8.tar.gz?
+wget -c http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.7.tar.gz?
+http://www.webhostingjams.com/mirror/apache//apr/apr-1.5.0.tar.gz
+wget -c http://www.webhostingjams.com/mirror/apache//apr/apr-util-1.5.3.tar.gz
+http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip
+
+
+
+scp php-5.5.8.tar.gz jalimay@192.168.229.77:/usr/jalimay/
+
+scp httpd-2.4.7.tar.gz jalimay@192.168.229.77:/usr/changwei
+
+scp apr-1.5.0.tar.gz jalimay@192.168.229.77:/usr/changwei
+
+scp apr-util-1.5.3.tar.gz jalimay@192.168.229.77:/usr/changwei
+
+scp pcre-8.34.zip jalimay@192.168.229.77:/usr/changwei
+
+
+** 编译安装apache
+#+BEGIN_SRC shell
+
+  [root@localhost bin]# tar -zxf apr-1.4.5.tar.gz
+  [root@localhost apr-1.4.5]# ./configure --prefix=/usr/local/apr
+  [root@localhost apr-1.4.5]# make
+  [root@localhost apr-1.4.5]# make install
+
+  [root@localhost bin]# tar -zxf apr-util-1.3.12.tar.gz
+  [root@localhost apr-util-1.3.12]# ./configure --prefix=/usr/local/apr-util -with-apr=/usr/local/apr/bin/apr-1-config
+  [root@localhost apr-util-1.3.12]# make
+  [root@localhost apr-util-1.3.12]# make install
+
+  [root@localhost ~]# unzip pcre-8.31.zip
+  [root@localhost ~]# cd pcre-8.31
+  [root@localhost pcre-8.31]# ./configure --prefix=/usr/local/pcre
+  [root@localhost pcre-8.31]# make
+  [root@localhost pcre-8.31]# make install
+
+
+tar -zxvf    httpd-2.4.7.tar.gz
+
+在redhat上安装可能会在启动apache的时候报错
+
+apache 安装好后 启动出错:
+httpd: Syntax error on line 140 of /usr/local/apache2/conf/httpd.conf: Cannot load /usr/local/apache2/modules/mod_dir.so into server: /usr/local/apache2/modules/mod_dir.so: undefined symbol: apr_array_clear
+
+由于apache编译时没有指定   --with-included-apr
+
+解决方法：
+1、下载的apr和apr-utils源文件夹拷贝到httpd-2.4.2/srclib/, 再进行编译
+#cp -rf apr-1.5.0 httpd-2.4.7/srclib/apr
+#cp -rf apr-util-1.5.3 httpd-2.4.7/srclib/apr-util
+
+2、在编译httpd时，加上--with-included-apr
+./configure  --prefix=/usr/local/apache2/ --with-apr=/usr/local/apr/ --with-apr-util=/usr/local/apr-util/ --with-pcre=/usr/local/pcre --with-included-apr
+
+make
+make install
+#+END_SRC
+
+[[http://sookk8.blog.51cto.com/455855/558460][ APACHE 安装出错 configure: error: Cannot use an external APR with the bundled APR-util]]
+
+安装apr和apr-util
+cd httpd-2.2.17/srclib/apr
+./configure --prefix=/usr/local/apr
+make && make install
+cd ../apr-util
+./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr
+make && make install
+ 
+再安装apache就可以了
+ 
+./configure --prefix=/usr/local/apache --enable-so --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util/bin --enable-mods-shared=all --with-mpm=worker --enable-cache --enable-disk-cache --enable-mem-cache --enable-file-cache
+
+
+
+
+
+启动Apache：/usr/local/apache2/bin/apachectl start
+• 停止Apache：/usr/local/apache2/bin/apachectl stop
+• 重启Apache：/usr/local/apache2/bin/apachectl restart
+网站放在/usr/local/apache2/htdocs目录下
+
+** 安装mysql
+
+rpm -ivh MySQL-client-5.6.15-1.el6.x86_64.rpm
+
+ [[http://blog.csdn.net/cpplang/article/details/8462768][解决libc.so.6: version `GLIBC_2.14' not found问题]]
+
+
+http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-client-community-5.1.73-1.rhel5.x86_64.rpm
+
+** 编译安装php
+
+#+BEGIN_SRC shell
+
+
+
+
+find / -name mysql.h
+
+tar -zxvf php-5.5.8.tar.gz
+cd php*
+
+ make clean
+ ./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-config-file-path=/usr/local/lib --with-mysqli --with-zlib --enable-track-vars --with-xml --with-gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2/freetype/ --with-mbstring --enable-mbstring=all
+ make && make install
+/usr/local/apache2/bin/apachectl restart
+
+# ./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-config-file-path=/usr/local/lib --enable-track-vars --with-xml --with-mysql-dir=/usr/include/mysql/mysql.h --with-zlib-dir=/usr/lib
+
+make
+make install
+cp php.ini-production /usr/local/lib/php.ini
+#+END_SRC
+
+
+** 配置apache使其支持php
+vi /etc/httpd/conf/httpd.conf
+
+** 1、在LoadModule中添加：LoadModule php5_module     modules/libphp5.so
+
+2、在AddType application/x-gzip .gz .tgz下面添加：
+#+BEGIN_SRC shell
+# probably should define those extensions to indicate media types:
+#
+AddType application/x-compress .Z
+AddType application/x-gzip .gz .tgz
+AddType application/x-httpd-php .php
+AddType application/x-httpd-php-source .phps
+#+END_SRC
+
+3、在DirectoryIndex增加 index.php，以便Apache识别PHP格式的index
+
+#+BEGIN_SRC shell
+<IfModule dir_module>  
+    DirectoryIndex index.html index.php  
+</IfModule> 
+#+END_SRC
+最后一步验证PHP环境：
+
+在Apache网站目录下新建php的phpinfo测试页，/usr/local/apache/htdocs/info.php
+#+BEGIN_SRC shell
+[root@localhost htdocs]# vi info.php
+
+<?php
+
+phpinfo();
+
+?>
+#+END_SRC
+
+通过http://serverIP/info.php 验证，通过phpinfo()可以查看很多信息，比如php.ini的存放路径，以及所有扩展组件等，很强大。
+
+** [[http://piwik.org/docs/installation/][安装 piwik]]
+#+BEGIN_SRC shell
+
+wget http://builds.piwik.org/latest.zip
+
+unzip latest.zip
+ls
+mv piwik/ /usr/local/apache2/htdocs/
+
+chmod -R 777 piwik
+#+END_SRC
