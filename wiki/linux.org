@@ -3019,11 +3019,11 @@ netstat -tnl|grep 80
 ** 下载
 
 
-wget -c http://cn2.php.net/distributions/php-5.5.8.tar.gz?
-wget -c http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.7.tar.gz?
-http://www.webhostingjams.com/mirror/apache//apr/apr-1.5.0.tar.gz
+wget -c http://cn2.php.net/distributions/php-5.5.8.tar.gz
+wget -c http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.7.tar.gz
+wget -c http://www.webhostingjams.com/mirror/apache//apr/apr-1.5.0.tar.gz
 wget -c http://www.webhostingjams.com/mirror/apache//apr/apr-util-1.5.3.tar.gz
-http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip
+wget -c http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip
 
 
 
@@ -3109,7 +3109,8 @@ rpm -ivh MySQL-client-5.6.15-1.el6.x86_64.rpm
  [[http://blog.csdn.net/cpplang/article/details/8462768][解决libc.so.6: version `GLIBC_2.14' not found问题]]
 
 
-http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-client-community-5.1.73-1.rhel5.x86_64.rpm
+wget -c http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-client-community-5.1.73-1.rhel5.x86_64.rpm
+wget -c http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-server-community-5.1.73-1.rhel5.x86_64.rpm
 
 ** 编译安装php
 
