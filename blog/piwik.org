@@ -1,6 +1,6 @@
 #+TITLE:       使用piwik做网站统计
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      standino
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2014-01-27 周一
 #+URI:         /blog/%y/%m/%d/piwik
 #+KEYWORDS:    piwik, js
