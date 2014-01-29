@@ -535,3 +535,5 @@ hg branchdiff .
 * github 不需要用户名密码push
 
  - https://help.github.com/articles/generating-ssh-keys
+
+  - [[https://help.github.com/articles/fork-a-repo][Fork A Repo]]
