@@ -4,23 +4,65 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周五, 24 一月 2014 16:03:24 CST</pubDate>
-    <lastBuildDate>周五, 24 一月 2014 16:03:24 CST</lastBuildDate>
+    <pubDate>周五, 07 二月 2014 09:53:09 CST</pubDate>
+    <lastBuildDate>周五, 07 二月 2014 09:53:09 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>2014年计划</title>
+      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
+      <description>为明年做一下计划</description>
+      <pubDate>2014-02-07</pubDate>
+      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
+    </item>
+    <item>
+      <title>怀念我的姥姥</title>
+      <link>http://standino.github.io/blog/2014/01/29/怀念我的姥姥</link>
+      <description>怀念我的姥姥</description>
+      <pubDate>2014-01-29</pubDate>
+      <guid>http://standino.github.io/blog/2014/01/29/怀念我的姥姥</guid>
+    </item>
+    <item>
+      <title>使用piwik做网站统计</title>
+      <link>http://standino.github.io/blog/2014/01/27/piwik</link>
+      <description>piwik</description>
+      <pubDate>2014-01-29</pubDate>
+      <guid>http://standino.github.io/blog/2014/01/27/piwik</guid>
+    </item>
+    <item>
+      <title>go 语言</title>
+      <link>http://standino.github.io/wiki/html/go</link>
+      <description>go 语言</description>
+      <pubDate>2014-01-29</pubDate>
+      <guid>http://standino.github.io/wiki/html/go</guid>
+    </item>
     <item>
       <title>js.org</title>
       <link>http://standino.github.io/wiki/html/js</link>
       <description>Javascript</description>
-      <pubDate>2014-01-24</pubDate>
+      <pubDate>2014-01-29</pubDate>
       <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
     <item>
       <title>常用链接</title>
       <link>http://standino.github.io/wiki/html/mylinks</link>
       <description>常用链接</description>
-      <pubDate>2014-01-24</pubDate>
+      <pubDate>2014-01-29</pubDate>
       <guid>http://standino.github.io/wiki/html/mylinks</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-01-29</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
+    </item>
+    <item>
+      <title>linux</title>
+      <link>http://standino.github.io/wiki/html/linux</link>
+      <description>linux</description>
+      <pubDate>2014-01-28</pubDate>
+      <guid>http://standino.github.io/wiki/html/linux</guid>
     </item>
     <item>
       <title>JAVA</title>
@@ -30,53 +72,11 @@
       <guid>http://standino.github.io/wiki/html/java</guid>
     </item>
     <item>
-      <title>linux</title>
-      <link>http://standino.github.io/wiki/html/linux</link>
-      <description>linux</description>
-      <pubDate>2014-01-23</pubDate>
-      <guid>http://standino.github.io/wiki/html/linux</guid>
-    </item>
-    <item>
       <title>Tools</title>
       <link>http://standino.github.io/wiki/html/tool</link>
       <description>Tools</description>
       <pubDate>2014-01-23</pubDate>
       <guid>http://standino.github.io/wiki/html/tool</guid>
-    </item>
-    <item>
-      <title>mvn</title>
-      <link>http://standino.github.io/wiki/html/mvn</link>
-      <description>mvn</description>
-      <pubDate>2014-01-22</pubDate>
-      <guid>http://standino.github.io/wiki/html/mvn</guid>
-    </item>
-    <item>
-      <title>使用MDA方式开发软件</title>
-      <link>http://standino.github.io/wiki/html/html/mda</link>
-      <description>mda</description>
-      <pubDate>2014-01-16</pubDate>
-      <guid>http://standino.github.io/wiki/html/html/mda</guid>
-    </item>
-    <item>
-      <title>go 语言</title>
-      <link>http://standino.github.io/wiki/html/go</link>
-      <description>go 语言</description>
-      <pubDate>2014-01-13</pubDate>
-      <guid>http://standino.github.io/wiki/html/go</guid>
-    </item>
-    <item>
-      <title>使用伪代码做详细设计</title>
-      <link>http://standino.github.io/blog/2014/01/09/使用伪代码做详细设计</link>
-      <description>使用伪代码做详细设计</description>
-      <pubDate>2014-01-09</pubDate>
-      <guid>http://standino.github.io/blog/2014/01/09/使用伪代码做详细设计</guid>
-    </item>
-    <item>
-      <title>2014年计划</title>
-      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
-      <description>为明年做一下计划</description>
-      <pubDate>2014-01-09</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
     </item>
   </channel>
 </rss>
