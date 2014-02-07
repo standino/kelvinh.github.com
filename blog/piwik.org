@@ -4,7 +4,7 @@
 #+DATE:        2014-01-27 周一
 #+URI:         /blog/%y/%m/%d/piwik
 #+KEYWORDS:    piwik, js
-#+TAGS:        piwik, js, linux, centos, apache, mysql, shell, php
+#+TAGS:        piwik:js:linux:centos:apache:mysql:shell:php:端口:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: piwik
