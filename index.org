@@ -6,10 +6,14 @@
 #+KEYWORDS:    Lisp,  Emacs, Linux,  Java,  Org-page, Programming, Blog, 博客, 编程, 生活
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
-#+DESCRIPTION: 常伟个人站点的首页
+#+DESCRIPTION: 个人站点的首页
 
-本人使用Emacs也有四五年了，也学过一些Lisp的编程。但是，目前为止还是属于半瓶水的level。这是我用 Emacs + Org mode + Git + [[https://github.com/kelvinh/org-page][Org-page]] + [[http://pages.github.com][GitHub Pages]] 搭建的个人站点.
-我把这几年记录的知识点放在这里，希望能给大家一些帮助，同时也希望大家能够指出wiki中的问题，大家可以共同进步。
+几年前开始学习Emacs的使用。当初是为了使用Emacs的列模式来修改SQL文件。现在，用的最多的是使用 Emacs Org mode来编写笔记和做为GTD的工
+具。
+
+这几年从各个地方也拷贝了很多笔记，不过内容都很凌乱，没有经过整理。而且，好多东西虽然我把他们复制到我的文件里，但事后就忘记了。现在，
+想来还是需要经过自己的大脑消化，用自己的文字把他们写出来。这样，才能真正能够学到东西。因此，我建立了这个个人站点。我把这几年记录的
+知识点放在这里，同时会写一下自己对各个技术和工具的理解。希望能给大家一些帮助，同时也希望大家能够指出wiki中的问题，大家可以共同进步。
 
 --------------------------------------------------------------------------------
 
