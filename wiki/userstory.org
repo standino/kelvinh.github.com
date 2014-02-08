@@ -1,0 +1,35 @@
+#+TITLE:       User Story
+#+AUTHOR:      U-360BUYAD\changwei
+#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+DATE:        2014-02-08 周六
+#+URI:         /wiki/html/%t
+#+TAGS:        :user story:agile:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: User Story
+
+* 用户故事通常按照如下的格式来表达：
+
+英文：
+
+As a <Role>, I want to <Activity>, so that <Business Value>.
+
+中文：
+
+作为一个<角色>, 我想要<活动>, 以便于<商业价值>
+
+举例：
+
+作为一个“网站管理员”，我想要“统计每天有多少人访问了我的网站”，以便于“我的赞助商了解我的网站会给他们带来什么收益。”
+
+需要注意的是用户故事不能够使用技术语言来描述，要使用用户可以理解的业务语言来描述。
+
+* Ron Jeffries的3个C
+
+关于用户故事，Ron Jeffries用3个C来描述它：
+
+卡片（Card） - 用户故事一般写在小的记事卡片上。卡片上可能会写上故事的简短描述，工作量估算等。
+
+交谈（Conversation）- 用户故事背后的细节来源于和客户或者产品负责人的交流沟通。
+
+确认（Confirmation）- 通过验收测试确认用户故事被正确完成。
