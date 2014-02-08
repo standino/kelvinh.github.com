@@ -4,10 +4,17 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周五, 07 二月 2014 09:53:09 CST</pubDate>
-    <lastBuildDate>周五, 07 二月 2014 09:53:09 CST</lastBuildDate>
+    <pubDate>周五, 07 二月 2014 19:13:09 CST</pubDate>
+    <lastBuildDate>周五, 07 二月 2014 19:13:09 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>使用piwik做网站统计</title>
+      <link>http://standino.github.io/blog/2014/01/27/使用piwik做网站统计/</link>
+      <description>piwik</description>
+      <pubDate>2014-02-07</pubDate>
+      <guid>http://standino.github.io/blog/2014/01/27/使用piwik做网站统计/</guid>
+    </item>
     <item>
       <title>2014年计划</title>
       <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
@@ -16,18 +23,18 @@
       <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
     </item>
     <item>
-      <title>怀念我的姥姥</title>
-      <link>http://standino.github.io/blog/2014/01/29/怀念我的姥姥</link>
-      <description>怀念我的姥姥</description>
-      <pubDate>2014-01-29</pubDate>
-      <guid>http://standino.github.io/blog/2014/01/29/怀念我的姥姥</guid>
+      <title>js.org</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-02-07</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
     <item>
-      <title>使用piwik做网站统计</title>
-      <link>http://standino.github.io/blog/2014/01/27/piwik</link>
-      <description>piwik</description>
+      <title>怀念我的姥姥</title>
+      <link>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</link>
+      <description>怀念我的姥姥</description>
       <pubDate>2014-01-29</pubDate>
-      <guid>http://standino.github.io/blog/2014/01/27/piwik</guid>
+      <guid>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</guid>
     </item>
     <item>
       <title>go 语言</title>
@@ -35,13 +42,6 @@
       <description>go 语言</description>
       <pubDate>2014-01-29</pubDate>
       <guid>http://standino.github.io/wiki/html/go</guid>
-    </item>
-    <item>
-      <title>js.org</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-01-29</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
     <item>
       <title>常用链接</title>

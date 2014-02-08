@@ -2,9 +2,7 @@
 #+AUTHOR:      U-360BUYAD\changwei
 #+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
 #+DATE:        2014-01-29 周三
-#+URI:         /blog/%y/%m/%d/怀念我的姥姥
-#+KEYWORDS:    情感
-#+TAGS:        情感
+#+TAGS:        :情感:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 怀念我的姥姥

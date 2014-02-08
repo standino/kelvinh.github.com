@@ -2,7 +2,6 @@
 #+AUTHOR:      standino
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2014-01-27 周一
-#+URI:         /blog/%y/%m/%d/piwik
 #+KEYWORDS:    piwik,js,
 #+TAGS:        piwik:js:linux:centos:apache:mysql:shell:php:端口:nginx
 #+LANGUAGE:    en
@@ -15,7 +14,7 @@
 安装前需要先确定你的Linux的版本。如果你的系统版本太低，就只能下载版本稍低的软件。我安装的时候就遇到了最新版mysql无法安装的情况。我
 的解决办法是下载了一个低版本的mysql。
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 [j@localhost ~]$ lsb_release -a
 LSB Version:    :core-4.0-amd64:core-4.0-ia32:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-ia32:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-ia32:printing-4.0-noarch
 Distributor ID: CentOS
@@ -46,7 +45,7 @@ make && make install
 
 * 安装 mysql
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 wget -c http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-client-community-5.1.73-1.rhel5.x86_64.rpm
 wget -c http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-server-community-5.1.73-1.rhel5.x86_64.rpm
 
@@ -58,7 +57,7 @@ rpm -ivh MySQL-server-community-5.1.73-1.rhel5.x86_64.rpm
 
 * 安装php
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 
 cd php-5.5.8
 make clean
@@ -99,7 +98,7 @@ lsof -i:80
 ** 配置nginx
 
 vi conf/nginx.conf
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 
     server {
         listen       80;
@@ -146,13 +145,13 @@ vi conf/nginx.conf
 
 启动nginx
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
   vi /usr/local/nginx1.5.10/sbin/nginx
 #+END_SRC
 
 如果nginx说端口已经占用，可以使用下面的命令来查看端口占用情况，并杀掉相关进程。
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 
 #查看端口占用
 lsof -i:80
@@ -168,7 +167,7 @@ kill -9 [pid]
 
 vi /usr/local/nginx1.5.10/html/info.php
 
-#+BEGIN_SRC php
+#+BEGIN_SRC
 <?php
 
 phpinfo();
@@ -182,7 +181,7 @@ phpinfo();
 
 ** [[http://piwik.org/docs/installation/][安装 piwik]]
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 
 wget http://builds.piwik.org/latest.zip
 
@@ -199,7 +198,7 @@ chmod -R 777 piwik
 
  [[http://developer.piwik.org/api-reference/tracking-javascript#where-can-i-find-the-piwik-tracking-code][Javascript Tracking client How-to]] 里介绍了如何使用。
 
-#+BEGIN_SRC javascript
+#+BEGIN_SRC
 
 ###确认这段代码在网站所有页面的 </body> 标签之前。
 <!-- Piwik -->
@@ -265,7 +264,7 @@ chmod -R 777 piwik
 
 ** 下载
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 wget -c http://cn2.php.net/distributions/php-5.5.8.tar.gz
 wget -c http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.7.tar.gz
 wget -c http://www.webhostingjams.com/mirror/apache//apr/apr-1.5.0.tar.gz
@@ -279,7 +278,7 @@ wget -c http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-server-community-5.1.73-1
 
 ** 编译apache
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 tar -zxvf httpd-2.4.7.tar.gz
 tar -zxf apr-1.5.0.tar.gz
 tar -zxf apr-util-1.5.3.tar.gz
@@ -317,6 +316,6 @@ cd -
 
 #+END_SRC
 重启apache的命令
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 /usr/local/apache2/bin/apachectl restart
 #+END_SRC
