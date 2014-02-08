@@ -73,8 +73,10 @@ make && make install
 
 
 
-这里需要注意一下，有可能端口80没有打开，这样其他机器就访问不了服务器上的apache.使用下面的命令打开80端口。
+这里需要注意一下，有可能端口80没有打开，这样其他机器就访问不了服务器上的Nginx. 使用下面的命令打开80端口。
+
 #+BEGIN_SRC
+
 /sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 
 #将更改进行保存
@@ -91,7 +93,7 @@ lsof -i:80
 
 ** 启动php的fastcgi进程
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 ./php-cgi   -b   3344
 #+END_SRC
 

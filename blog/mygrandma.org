@@ -1,11 +1,13 @@
 #+TITLE:       怀念我的姥姥
-#+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+AUTHOR:      Will
+#+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2014-01-29 周三
 #+TAGS:        :情感:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 怀念我的姥姥
+
+* 怀念我的姥姥
 
 春节又到了，我又想起我亲爱的姥姥。姥姥从小把我带大，每天放学回来，姥姥都做好了饭菜。最爱吃的是裹着面炸的花生米，嚼在嘴里太香了！
 

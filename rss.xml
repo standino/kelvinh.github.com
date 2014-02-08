@@ -4,16 +4,30 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周五, 07 二月 2014 19:13:09 CST</pubDate>
-    <lastBuildDate>周五, 07 二月 2014 19:13:09 CST</lastBuildDate>
+    <pubDate>周六, 08 二月 2014 09:30:52 CST</pubDate>
+    <lastBuildDate>周六, 08 二月 2014 09:30:52 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>怀念我的姥姥</title>
+      <link>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</link>
+      <description>怀念我的姥姥</description>
+      <pubDate>2014-02-08</pubDate>
+      <guid>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</guid>
+    </item>
     <item>
       <title>使用piwik做网站统计</title>
       <link>http://standino.github.io/blog/2014/01/27/使用piwik做网站统计/</link>
       <description>piwik</description>
-      <pubDate>2014-02-07</pubDate>
+      <pubDate>2014-02-08</pubDate>
       <guid>http://standino.github.io/blog/2014/01/27/使用piwik做网站统计/</guid>
+    </item>
+    <item>
+      <title>Eclipse</title>
+      <link>http://standino.github.io/wiki/html/eclipse</link>
+      <description>eclipse</description>
+      <pubDate>2014-02-08</pubDate>
+      <guid>http://standino.github.io/wiki/html/eclipse</guid>
     </item>
     <item>
       <title>2014年计划</title>
@@ -28,13 +42,6 @@
       <description>Javascript</description>
       <pubDate>2014-02-07</pubDate>
       <guid>http://standino.github.io/wiki/html/js</guid>
-    </item>
-    <item>
-      <title>怀念我的姥姥</title>
-      <link>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</link>
-      <description>怀念我的姥姥</description>
-      <pubDate>2014-01-29</pubDate>
-      <guid>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</guid>
     </item>
     <item>
       <title>go 语言</title>
@@ -70,13 +77,6 @@
       <description>Java Tips</description>
       <pubDate>2014-01-23</pubDate>
       <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>Tools</title>
-      <link>http://standino.github.io/wiki/html/tool</link>
-      <description>Tools</description>
-      <pubDate>2014-01-23</pubDate>
-      <guid>http://standino.github.io/wiki/html/tool</guid>
     </item>
   </channel>
 </rss>
