@@ -4,8 +4,8 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周六, 08 二月 2014 09:30:52 CST</pubDate>
-    <lastBuildDate>周六, 08 二月 2014 09:30:52 CST</lastBuildDate>
+    <pubDate>周六, 08 二月 2014 19:09:37 CST</pubDate>
+    <lastBuildDate>周六, 08 二月 2014 19:09:37 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
@@ -28,6 +28,13 @@
       <description>eclipse</description>
       <pubDate>2014-02-08</pubDate>
       <guid>http://standino.github.io/wiki/html/eclipse</guid>
+    </item>
+    <item>
+      <title>User Story</title>
+      <link>http://standino.github.io/wiki/html/user-story</link>
+      <description>User Story</description>
+      <pubDate>2014-02-08</pubDate>
+      <guid>http://standino.github.io/wiki/html/user-story</guid>
     </item>
     <item>
       <title>2014年计划</title>
@@ -70,13 +77,6 @@
       <description>linux</description>
       <pubDate>2014-01-28</pubDate>
       <guid>http://standino.github.io/wiki/html/linux</guid>
-    </item>
-    <item>
-      <title>JAVA</title>
-      <link>http://standino.github.io/wiki/html/java</link>
-      <description>Java Tips</description>
-      <pubDate>2014-01-23</pubDate>
-      <guid>http://standino.github.io/wiki/html/java</guid>
     </item>
   </channel>
 </rss>

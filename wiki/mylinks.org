@@ -21,7 +21,8 @@
  8. [[https://app.yinxiang.com/Home.action][印象笔记]]
  9. [[http://golang.org/][Go language]]
  10. [[http://edu.bj.chinamobile.com/edu/web][家校互动]]
- 11. [[http://orgmode.org/org.html][Emacs Org 使用手册]]
+ 11. [[http://orgmode.org/org.html][Emacs Org 使用手册]] [[http://www.reddit.com/r/emacs/][reddit emacs]]
+     [[https://plus.google.com/communities/114815898697665598016/stream/81b18aec-3b8e-4025-b96f-a87fabc8dadf][Google plus emacs]]
  12. [[http://www.theserverside.com/][The server side]]
  13. [[http://www.goosh.org][goosh]] [[http://115.com]]
  14. [[http://hi.baidu.com/standino][我的博客]]
@@ -30,3 +31,7 @@
  17. [[http://blog.jobbole.com/5886/][国外程序员推荐：每个程序员都应读的书]]
  18. [[http://stackoverflow.com/][开发问题论坛]]
  19. [[http://www.douban.com/people/2263327/][豆瓣读书]] [[http://www.ppurl.com/]] 
+
+* 育儿
+
+ 1. 父母如何做孩子才健康 http://lz.book.sohu.com/book-19135.html

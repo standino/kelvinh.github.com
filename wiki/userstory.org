@@ -33,3 +33,31 @@ As a <Role>, I want to <Activity>, so that <Business Value>.
 交谈（Conversation）- 用户故事背后的细节来源于和客户或者产品负责人的交流沟通。
 
 确认（Confirmation）- 通过验收测试确认用户故事被正确完成。
+
+
+* User Story应遵循INVEST规则
+
+Independent 独立性，避免与其他Story的依赖性。
+Negotiable 可谈判性，Scrum中的story不是瀑布开始某事中的Contract, Stories不必太过详细，开发人员可以给出适当的建议。
+Valueable 有价值性， Story需要体现出对于用户的价值
+Estimable 可估计性，Story应可以估计出Task的开发时间。
+Sized Right 合理的尺寸， Stories应该尽量小，并且使得团队尽量在1个sprint(2 weeks)中完成。
+Testable 可测试性， User Story应该是可以测试的，最好有界面可以测试和自动化测试。每个任务都应有Junit Test.
+一些经验：
+
+永远不要在User Story中使用And和Or，因为这是些分支词就表示分支任务，把它们拆成两个Story.
+数据整理：通常情况下1个sprint(2周一次迭代)可以做4～5个Story，极端大的Story不可大于1个sprint。
+数据整理：通常情况下1个sprint(2周一次迭代)可以做50个左右的Task。
+User Story用于描述用户故事，不要包括任何的技术，框架等内容。Task可以包括框架，技术等内容。
+
+
+http://www.laitry.com/trip/288.html
+
+
+* 什么是User Story?
+对于“敏捷”流程的需求，最重要的一篇文档就是User Story。User Story更注重沟通，这是有所有的项目参与者共同书写的文档，也是一篇互相交流的文档，因为这个文档的考量是从用户角度，在将用词协商确定后，可以任何项目相关人员都可以很好的读懂和书写写个文档。
+我们不用硬性的给一个定义，基本上User Story就是从用户角度来描述软件系统功能的文档，主要有三方面用途：做项目开发计划使用；和用户及相关人员交流时记录交流内容；软件测试时使用来验证项目完成度。
+
+
+* 怎么写User Story?
+User Story不光是我们软件开发的知道，更是与软件项目相关人员交流使用的一种工具，更想是一个对话的记录总结。

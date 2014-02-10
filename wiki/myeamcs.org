@@ -2383,12 +2383,6 @@ http://emacs-evernote-mode.googlecode.com/svn/branches/0_41/doc/readme_en.html
  2. http://sachachua.com/notebook/
  3. http://www.gnu.org/software/emacs/
 
-* Java 
-
-
- - https://github.com/senny/emacs-eclim
- - 
- - 
 
 * 矩形操作
 
@@ -2431,7 +2425,6 @@ HKEY_LOCAL_MACHINE /SYSTEM /CurrentControlSet /Control /Keyboard Layout
 
 * Java DEV
 
- 
  - https://github.com/senny/emacs-eclim
 
 
@@ -2516,3 +2509,11 @@ You can also browse the repository at:
 
 
 
+
+* [[http://web-mode.org/][web mode]]
+
+ 1. https://github.com/fxbois/web-mode
+ 2. https://github.com/fgallina/multi-web-mode
+
+
+* TODO 安装和配置Java开发环境
