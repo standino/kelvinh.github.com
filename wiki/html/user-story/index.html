@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>User Story - Keep going</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="U-360BUYAD\changwei" />
+    <meta name="description" content="User Story" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>努力超越自己！</p>
+        <ul>
+          <li><a href="/%appdata%/">%appdata%</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>User Story</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">用户故事通常按照如下的格式来表达：</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+英文：
+</p>
+
+<p>
+As a &lt;Role&gt;, I want to &lt;Activity&gt;, so that &lt;Business Value&gt;.
+</p>
+
+<p>
+中文：
+</p>
+
+<p>
+作为一个&lt;角色&gt;, 我想要&lt;活动&gt;, 以便于&lt;商业价值&gt;
+</p>
+
+<p>
+举例：
+</p>
+
+<p>
+作为一个“网站管理员”，我想要“统计每天有多少人访问了我的网站”，以便于“我的赞助商了解我的网站会给他们带来什么收益。”
+</p>
+
+<p>
+需要注意的是用户故事不能够使用技术语言来描述，要使用用户可以理解的业务语言来描述。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Ron Jeffries的3个C</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+关于用户故事，Ron Jeffries用3个C来描述它：
+</p>
+
+<p>
+卡片（Card） - 用户故事一般写在小的记事卡片上。卡片上可能会写上故事的简短描述，工作量估算等。
+</p>
+
+<p>
+交谈（Conversation）- 用户故事背后的细节来源于和客户或者产品负责人的交流沟通。
+</p>
+
+<p>
+确认（Confirmation）- 通过验收测试确认用户故事被正确完成。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">User Story应遵循INVEST规则</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Independent 独立性，避免与其他Story的依赖性。
+Negotiable 可谈判性，Scrum中的story不是瀑布开始某事中的Contract, Stories不必太过详细，开发人员可以给出适当的建议。
+Valueable 有价值性， Story需要体现出对于用户的价值
+Estimable 可估计性，Story应可以估计出Task的开发时间。
+Sized Right 合理的尺寸， Stories应该尽量小，并且使得团队尽量在1个sprint(2 weeks)中完成。
+Testable 可测试性， User Story应该是可以测试的，最好有界面可以测试和自动化测试。每个任务都应有Junit Test.
+一些经验：
+</p>
+
+<p>
+永远不要在User Story中使用And和Or，因为这是些分支词就表示分支任务，把它们拆成两个Story.
+数据整理：通常情况下1个sprint(2周一次迭代)可以做4～5个Story，极端大的Story不可大于1个sprint。
+数据整理：通常情况下1个sprint(2周一次迭代)可以做50个左右的Task。
+User Story用于描述用户故事，不要包括任何的技术，框架等内容。Task可以包括框架，技术等内容。
+</p>
+
+
+<p>
+<a href="http://www.laitry.com/trip/288.html">http://www.laitry.com/trip/288.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">什么是User Story?</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+对于“敏捷”流程的需求，最重要的一篇文档就是User Story。User Story更注重沟通，这是有所有的项目参与者共同书写的文档，也是一篇互相交流的文档，因为这个文档的考量是从用户角度，在将用词协商确定后，可以任何项目相关人员都可以很好的读懂和书写写个文档。
+我们不用硬性的给一个定义，基本上User Story就是从用户角度来描述软件系统功能的文档，主要有三方面用途：做项目开发计划使用；和用户及相关人员交流时记录交流内容；软件测试时使用来验证项目完成度。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">怎么写User Story?</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+User Story不光是我们软件开发的知道，更是与软件项目相关人员交流使用的一种工具，更想是一个对话的记录总结。
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2014-02-08</span>
+        <span title="last modification date" class="post-info">2014-02-10</span>
+        <span title="tags" class="post-info"><a href="/tags/user-story/">user story</a>, <a href="/tags/agile/">agile</a></span>
+        <span title="author" class="post-info">U-360BUYAD\changwei</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/wiki/html/user-story";
+          var disqus_url = "http://standino.github.io/wiki/html/user-story";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
+        <p>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;at&gt; BJXX-CHANGWEI &lt;dot&gt; 360buyAD &lt;dot&gt; local">U-360BUYAD\changwei</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

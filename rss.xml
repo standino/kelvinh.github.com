@@ -4,10 +4,31 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周六, 08 二月 2014 19:09:37 CST</pubDate>
-    <lastBuildDate>周六, 08 二月 2014 19:09:37 CST</lastBuildDate>
+    <pubDate>周一, 10 二月 2014 12:46:21 CST</pubDate>
+    <lastBuildDate>周一, 10 二月 2014 12:46:21 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>Emacs 使用笔记</title>
+      <link>http://standino.github.io/wiki/html/html/myemacs/</link>
+      <description>Emacs 使用笔记</description>
+      <pubDate>2014-02-10</pubDate>
+      <guid>http://standino.github.io/wiki/html/html/myemacs/</guid>
+    </item>
+    <item>
+      <title>常用链接</title>
+      <link>http://standino.github.io/wiki/html/mylinks</link>
+      <description>常用链接</description>
+      <pubDate>2014-02-10</pubDate>
+      <guid>http://standino.github.io/wiki/html/mylinks</guid>
+    </item>
+    <item>
+      <title>User Story</title>
+      <link>http://standino.github.io/wiki/html/user-story</link>
+      <description>User Story</description>
+      <pubDate>2014-02-10</pubDate>
+      <guid>http://standino.github.io/wiki/html/user-story</guid>
+    </item>
     <item>
       <title>怀念我的姥姥</title>
       <link>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</link>
@@ -28,13 +49,6 @@
       <description>eclipse</description>
       <pubDate>2014-02-08</pubDate>
       <guid>http://standino.github.io/wiki/html/eclipse</guid>
-    </item>
-    <item>
-      <title>User Story</title>
-      <link>http://standino.github.io/wiki/html/user-story</link>
-      <description>User Story</description>
-      <pubDate>2014-02-08</pubDate>
-      <guid>http://standino.github.io/wiki/html/user-story</guid>
     </item>
     <item>
       <title>2014年计划</title>
@@ -58,25 +72,11 @@
       <guid>http://standino.github.io/wiki/html/go</guid>
     </item>
     <item>
-      <title>常用链接</title>
-      <link>http://standino.github.io/wiki/html/mylinks</link>
-      <description>常用链接</description>
-      <pubDate>2014-01-29</pubDate>
-      <guid>http://standino.github.io/wiki/html/mylinks</guid>
-    </item>
-    <item>
       <title>版本管理工具</title>
       <link>http://standino.github.io/wiki/html/vesionmanage</link>
       <description>Version control</description>
       <pubDate>2014-01-29</pubDate>
       <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
-    </item>
-    <item>
-      <title>linux</title>
-      <link>http://standino.github.io/wiki/html/linux</link>
-      <description>linux</description>
-      <pubDate>2014-01-28</pubDate>
-      <guid>http://standino.github.io/wiki/html/linux</guid>
     </item>
   </channel>
 </rss>
