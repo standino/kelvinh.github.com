@@ -158,9 +158,12 @@ CLOCK: [2013-11-02 周六 11:04]--[2013-11-04 周一 08:57] => 45:53
   [2013-11-02 周六] :OFFICE:
  what are the results:
 ***** TODO [#C] 修改org的配置，能够自动生成日报和周报
+      - State "OKTODAY"    from "STARTED"    [2014-02-10 周一 17:06]
+      - State "STARTED"    from "STARTED"    [2014-02-10 周一 16:40]
 - State "OKTODAY"    from "STARTED"    [2013-12-18 周三 19:27]
 - State "STARTED"    from "STARTED"    [2013-12-18 周三 17:15]
 :LOGBOOK:
+CLOCK: [2014-02-10 周一 16:40]--[2014-02-10 周一 17:06] =>  0:26
 CLOCK: [2013-12-18 周三 17:15]--[2013-12-18 周三 19:27] =>  2:12
 :END:
 ******* DONE [#C] [/]  如何建立个人网站   [2013-08-26 一]                 :OFFICE:

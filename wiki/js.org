@@ -185,3 +185,10 @@ $.ui.green5.subclass("green6", $.ui.mouse, {mouseStart:function(){}, mouseDrag: 
 * SSI
 
   http://blog.csdn.net/cpp_lzth/article/details/6167591
+
+* Node.js
+  1. 在Windows下安装Node.js、npm、express http://blog.uifanr.com/2013/03/12/472
+** [[http://getkickstrap.com/docs.html#/first-steps][kickstrap]]
+
+
+  https://www.firebase.com/tutorial/#session/va7gdy2y5s0
