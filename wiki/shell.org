@@ -64,7 +64,7 @@ tar -cvf wid7.tar  **/.classpath **/.project
 #+END_SRC
 * count a specify word
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 '<hgtxt.txt tr -cs '[:alnum:]' '[\n*]'  | sort | uniq -c
 
@@ -81,18 +81,18 @@ http://www.ibm.com/developerworks/linux/library/l-sed3.html
 
 最近碰到一个处理跨行xml节点的问题，终于激发了进一步学习sed的愿望，并学会了使用b label写循环
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 <tag id="0" attr2 = "val2" attr3 = "val3" attr4 = "val4" />
 <tag id="1" attr2 = "val2"
         attr3 = "val3"
         attr4 = "val4"/>
 #+END_SRC
 替换指定xml节点中的attr4属性名
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 ** sed add line 
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 zhyfly@zhyfly:~/bash$ sed -e '/music/a\this line will be added to the end of the matching line!oooooooooo' test.txt
 The honeysuckle band played all night long for only $90.
@@ -101,15 +101,15 @@ this line will be added to the end of the matching line!oooooooooo
 Too bad the disco floor fell through at 23:00.
 The local nurse Miss P.Neave was in attendance.
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 * line count
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 find . -type f -iname "*.java" -exec cat {} \; | wc -l  
 #+END_SRC
 
 * scp
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 * ln
 
@@ -243,7 +243,7 @@ rm -rf <folder name> this also can delete soft link and will not delete the real
 
 * Check if a file exists
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC 
 
 
 
@@ -284,8 +284,6 @@ rm -rf <folder name> this also can delete soft link and will not delete the real
 #+END_SRC
 
 * Getopts
-
-[[../etc/getopts.1.asp.html]]
 
 
 * Shell 参数
@@ -332,7 +330,7 @@ rm -rf <folder name> this also can delete soft link and will not delete the real
 
 * Split words
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 will@will-laptop:~$ mytest="ebiz1.web_quote"
 will@will-laptop:~$ echo ${mytest##*.}
 web_quote
@@ -350,7 +348,7 @@ will@will-laptop:~$
 
 
 * Table 33-1. Operator Precedence
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 Operator                        Meaning                   Comments
                                                           HIGHEST PRECEDENCE
                                 post-increment,           C-style operators
@@ -405,7 +403,7 @@ var++ var--
 
 * System Variables
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 $HOME
 
 $OSTYPE
@@ -422,7 +420,7 @@ $(cd "$(dirname "$0")"; pwd)
 
 * Delete folders under windows
 
- <#+BEGIN_SRC >
+ #+BEGIN_SRC
   rd /S /Q folder
 #+END_SRC
 
@@ -488,7 +486,7 @@ abc123def
 
 * Add jsp name to jsp file
 
-<#+BEGIN_SRC >
+#+BEGIN_SRC
 
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/w3:body>/i\<!--  JSP file :'{}' -->' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/www:body>/i\<!--  JSP file :'{}' -->' '{}' \;
