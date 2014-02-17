@@ -108,18 +108,9 @@ tar -cvf wid7.tar  **/.classpath **/.project
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">count a specify word</h2>
 <div class="outline-text-2" id="text-5">
-<p>
-&lt;#+BEGIN_SRC &gt;
-</p>
-
-<p>
+<pre class="example">
 '&lt;hgtxt.txt tr -cs '[:alnum:]' '[\n*]'  | sort | uniq -c
-</p>
-
-
-<p>
-#+END_SRC
-</p>
+</pre>
 </div>
 </div>
 <div id="outline-container-sec-6" class="outline-2">
@@ -141,15 +132,15 @@ tar -cvf wid7.tar  **/.classpath **/.project
 最近碰到一个处理跨行xml节点的问题，终于激发了进一步学习sed的愿望，并学会了使用b label写循环
 </p>
 
-<p>
-&lt;#+BEGIN_SRC &gt;
+<pre class="example">
 &lt;tag id="0" attr2 = "val2" attr3 = "val3" attr4 = "val4" /&gt;
 &lt;tag id="1" attr2 = "val2"
         attr3 = "val3"
         attr4 = "val4"/&gt;
-#+END_SRC
+</pre>
+<p>
 替换指定xml节点中的attr4属性名
-&lt;#+BEGIN_SRC &gt;
+#+BEGIN_SRC
 </p>
 </div>
 </div>
@@ -157,7 +148,7 @@ tar -cvf wid7.tar  **/.classpath **/.project
 <h3 id="sec-6-2">sed add line</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
-&lt;#+BEGIN_SRC &gt;
+#+BEGIN_SRC
 </p>
 
 <p>
@@ -170,7 +161,7 @@ The local nurse Miss P.Neave was in attendance.
 </p>
 
 <p>
-&lt;#+BEGIN_SRC &gt;
+#+BEGIN_SRC
 </p>
 </div>
 </div>
@@ -179,18 +170,16 @@ The local nurse Miss P.Neave was in attendance.
 <div id="outline-container-sec-7" class="outline-2">
 <h2 id="sec-7">line count</h2>
 <div class="outline-text-2" id="text-7">
-<p>
-&lt;#+BEGIN_SRC &gt;
-find . -type f -iname "*.java" -exec cat {} \; | wc -l  
-#+END_SRC
-</p>
+<pre class="example">
+find . -type f -iname "*.java" -exec cat {} \; | wc -l
+</pre>
 </div>
 </div>
 <div id="outline-container-sec-8" class="outline-2">
 <h2 id="sec-8">scp</h2>
 <div class="outline-text-2" id="text-8">
 <p>
-&lt;#+BEGIN_SRC &gt;
+#+BEGIN_SRC
 </p>
 </div>
 </div>
@@ -367,87 +356,47 @@ rm -rf &lt;folder name&gt; this also can delete soft link and will not delete th
 <div id="outline-container-sec-13" class="outline-2">
 <h2 id="sec-13">Check if a file exists</h2>
 <div class="outline-text-2" id="text-13">
-<p>
-&lt;#+BEGIN_SRC &gt;
-</p>
-
-
-
-<ol class="org-ol">
-<li>#!/bin/sh
-</li>
-<li></li>
-<li>myPath="<i>var/log/httpd</i>"
-</li>
-<li>myFile="/var /log/httpd/access.log"
-</li>
-<li></li>
-<li>#这里的-x 参数判断$myPath是否存在并且是否具有可执行权限
-</li>
-<li>if [ ! -x "$myPath"]; then
-</li>
-<li>mkdir "$myPath"
-</li>
-<li>fi
-</li>
-<li></li>
-<li>#这里的-d 参数判断$myPath是否存在
-</li>
-<li>if [ ! -d "$myPath"]; then
-</li>
-<li>mkdir "$myPath"
-</li>
-<li>fi
-</li>
-<li></li>
-<li></li>
-<li>#这里的-f参数判断$myFile是否存在
-</li>
-<li>if [ ! -f "$myFile" ]; then
-</li>
-<li>touch "$myFile"
-</li>
-<li>fi
-</li>
-<li></li>
-<li>#其他参数还有-n,-n是判断一个变量是否是否有值
-</li>
-<li>if [ ! -n "$myVar" ]; then
-</li>
-<li>echo "$myVar is empty"
-</li>
-<li>exit 0
-</li>
-<li>fi
-</li>
-<li></li>
-<li>#两个变量判断是否相等
-</li>
-<li>if [ "$var1" = "$var2" ]; then
-</li>
-<li>echo '$var1 eq $var2'
-</li>
-<li>else
-</li>
-<li>echo '$var1 not eq $var2'
-</li>
-<li>fi
-</li>
-</ol>
-
-<p>
-#+END_SRC
-</p>
+<pre class="example">
+ 1. #!/bin/sh
+ 2.  
+ 3. myPath="/var/log/httpd/"
+ 4. myFile="/var /log/httpd/access.log"
+ 5.  
+ 6. #这里的-x 参数判断$myPath是否存在并且是否具有可执行权限
+ 7. if [ ! -x "$myPath"]; then
+ 8.     mkdir "$myPath"
+ 9. fi
+10.  
+11. #这里的-d 参数判断$myPath是否存在
+12. if [ ! -d "$myPath"]; then
+13.     mkdir "$myPath"
+14. fi
+15.  
+16.  
+17. #这里的-f参数判断$myFile是否存在
+18. if [ ! -f "$myFile" ]; then
+19.     touch "$myFile"
+20. fi
+21.  
+22. #其他参数还有-n,-n是判断一个变量是否是否有值
+23. if [ ! -n "$myVar" ]; then
+24.     echo "$myVar is empty"
+25.     exit 0
+26. fi
+27.  
+28. #两个变量判断是否相等
+29. if [ "$var1" = "$var2" ]; then
+30.     echo '$var1 eq $var2'
+31. else
+32.     echo '$var1 not eq $var2'
+33. fi
+</pre>
 </div>
 </div>
 <div id="outline-container-sec-14" class="outline-2">
 <h2 id="sec-14">Getopts</h2>
-<div class="outline-text-2" id="text-14">
-<p>
-<a href="../etc/getopts.1.asp.html">../etc/getopts.1.asp.html</a>
-</p>
 </div>
-</div>
+
 
 <div id="outline-container-sec-15" class="outline-2">
 <h2 id="sec-15">Shell 参数</h2>
@@ -530,19 +479,14 @@ ${var##prefix} |  删除位于 var 开头的 prefix 最大匹配模式
 <div id="outline-container-sec-18" class="outline-2">
 <h2 id="sec-18">Split words</h2>
 <div class="outline-text-2" id="text-18">
-<p>
-&lt;#+BEGIN_SRC &gt;
+<pre class="example">
 will@will-laptop:~$ mytest="ebiz1.web_quote"
-will@will-laptop:~$ echo \({mytest##*.}
+will@will-laptop:~$ echo ${mytest##*.}
 web_quote
-will@will-laptop:~\) echo \({mytest%%.*}
+will@will-laptop:~$ echo ${mytest%%.*}
 ebiz1
-will@will-laptop:~\) 
-</p>
-
-<p>
-#+END_SRC
-</p>
+will@will-laptop:~$
+</pre>
 </div>
 </div>
 <div id="outline-container-sec-19" class="outline-2">
@@ -563,7 +507,7 @@ will@will-laptop:~\)
 <h2 id="sec-20">Table 33-1. Operator Precedence</h2>
 <div class="outline-text-2" id="text-20">
 <p>
-&lt;#+BEGIN_SRC &gt;
+#+BEGIN_SRC
 Operator                        Meaning                   Comments
                                                           HIGHEST PRECEDENCE
                                 post-increment,           C-style operators
@@ -659,18 +603,11 @@ left, right shift         bitwise
 <div id="outline-container-sec-22" class="outline-2">
 <h2 id="sec-22">System Variables</h2>
 <div class="outline-text-2" id="text-22">
-<p>
-&lt;#+BEGIN_SRC &gt;
+<pre class="example">
 $HOME
-</p>
 
-<p>
 $OSTYPE
-</p>
-
-<p>
-#+END_SRC
-</p>
+</pre>
 </div>
 </div>
 
@@ -690,11 +627,9 @@ $(cd "$(dirname "$0")"; pwd)
 <div id="outline-container-sec-24" class="outline-2">
 <h2 id="sec-24">Delete folders under windows</h2>
 <div class="outline-text-2" id="text-24">
-<p>
- &lt;#+BEGIN_SRC &gt;
-  rd /S /Q folder
-#+END_SRC
-</p>
+<pre class="example">
+rd /S /Q folder
+</pre>
 </div>
 </div>
 
@@ -773,17 +708,12 @@ abc123def
 <div id="outline-container-sec-26" class="outline-2">
 <h2 id="sec-26">Add jsp name to jsp file</h2>
 <div class="outline-text-2" id="text-26">
-<p>
-&lt;#+BEGIN_SRC &gt;
-</p>
-
-<p>
+<pre class="example">
 find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/w3:body&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:body&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/w3:popupBody&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:popupBody&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
-#+END_SRC
-</p>
+</pre>
 </div>
 </div>
 <div id="footnotes">
@@ -800,7 +730,7 @@ find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:popupBody&gt;/i\&lt
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-01-02</span>
+        <span title="last modification date" class="post-info">2014-02-15</span>
         <span title="tags" class="post-info"><a href="/tags/shell/">shell</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
@@ -833,7 +763,7 @@ find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:popupBody&gt;/i\&lt
         })();
       </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
         <p>
           Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
