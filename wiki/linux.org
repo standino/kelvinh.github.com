@@ -2275,7 +2275,10 @@ sudo package-cleanup --orphans >/home/will/backup/f19upgrade.sh
 
 
 
-http://alensiljak.blogspot.hk/2013/04/upgrading-fedora-18-19-with-fedup.html
+ 1. http://alensiljak.blogspot.hk/2013/04/upgrading-fedora-18-19-with-fedup.html
+ 2. http://linux.cn/article-1645-1.html
+ 3. http://2414742.blog.51cto.com/2404742/427445 sudo不需要输入密码
+
 
 ** RTC 3.0 p2 install 
 
