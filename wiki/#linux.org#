@@ -3190,8 +3190,10 @@ chmod -R 777 piwik
 #+END_SRC
 
 * STARTED 在台式机上安装开发环境
+  - State "OKTODAY"    from "STARTED"    [2014-02-24 一 13:14]
   :LOGBOOK:
-  CLOCK: [2014-02-24 周一 09:13]
+  CLOCK: [2014-02-24 一 13:14]
+  CLOCK: [2014-02-24 周一 09:13]--[2014-02-24 一 13:14] =>  4:01
   :END:
 
   1. 安装emacs
