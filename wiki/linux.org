@@ -3188,3 +3188,20 @@ mv piwik/ /usr/local/apache2/htdocs/
 
 chmod -R 777 piwik
 #+END_SRC
+
+* STARTED 在台式机上安装开发环境
+  :LOGBOOK:
+  CLOCK: [2014-02-24 周一 09:13]
+  :END:
+
+  1. 安装emacs
+  2. 安装IDEA
+  3. 安装JOne
+  4. 
+#+BEGIN_SRC 
+
+    sudo yum install emacs git mercurial eclipse livetex-beamer w3m mvn
+    http_proxy=http://127.0.0.1:8087 emacs &
+
+
+#+END_SRC
