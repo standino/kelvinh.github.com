@@ -1414,7 +1414,9 @@ that will be filled with the previoous context information.
 
 * [[http://jdee.sourceforge.net/][ JDEE]]
 
-
+ 1. http://www.linuxidc.com/Linux/2014-02/97080.htm
+ 2. http://www.linuxidc.com/Linux/2014-02/97082.htm
+ 3. http://www.linuxidc.com/Linux/2014-02/97079.htm
 
 
 ;; This .emacs file illustrates the minimul setup
