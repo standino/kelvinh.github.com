@@ -3189,9 +3189,14 @@ mv piwik/ /usr/local/apache2/htdocs/
 chmod -R 777 piwik
 #+END_SRC
 
-* STARTED 在台式机上安装开发环境
+
+* DONE 在台式机上安装开发环境
+  CLOSED: [2014-02-24 一 14:14]
+  - State "DONE"       from "STARTED"    [2014-02-24 一 14:14]
+  - State "OKTODAY"    from "STARTED"    [2014-02-24 一 13:14]
   :LOGBOOK:
-  CLOCK: [2014-02-24 周一 09:13]
+  CLOCK: [2014-02-24 一 13:14]--[2014-02-24 一 14:14] =>  1:00
+  CLOCK: [2014-02-24 周一 09:13]--[2014-02-24 一 13:14] =>  4:01
   :END:
 
   1. 安装emacs
