@@ -3211,3 +3211,16 @@ chmod -R 777 piwik
 
 
 #+END_SRC
+
+
+* Fedora 20 SSH
+
+在红帽和centos下，一般安装完后会自带ssh，然后可以通过/etc/init.d/sshd start的方式运行，但是在Fedora 20下，系统改用了另外一套服务开启机制。
+
+首先安装ssh server
+
+sudo yum install openssh-server
+接下来之下下面两条命令行
+
+systemctl enable sshd.service
+systemctl start sshd.service
