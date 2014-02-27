@@ -6,10 +6,13 @@
 #+TAGS:        :Emacs:
 #+KEYWORDS:    Lisp, Scheme, Emacs, Linux, cygwin, Java,  Org-page, Programming,编程
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:     H:3 num:t toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+DESCRIPTION: Emacs 使用笔记
 
 ----
+
+
+
 * Find files and tags  Read Java code
 
 ** Best Practice 
@@ -17,21 +20,20 @@
  - Use Alt+Shit+x to invoke anything, then input the file name, or the functions 
  - gtags-find-tag and gtags-find-rtag to find the java method declare and reference 
  - rgrep to find in the files
- - M-x multi-occur : find words in buffer, o		occur-mode-goto-occurrence-other-window, C-c C-c		occur-mode-goto-occurrence
+ - M-x multi-occur : find words in buffer, o:occur-mode-goto-occurrence-other-window, C-c C-c:	occur-mode-goto-occurrence
 
 ** Shell
 
 *find-dired* : Find a file : -iname d_qt_quote.sql 运行外部命令 find , 产生文件列表，然后进入 dired 模式。
 
-*find-grep-dired* : 运行外部命令 find，用 grep 过滤文件， ls 产生目录列表，然后进入 dired 模式，这样列出所有包含某些字符的文件列表。
-可以使用 dired-do-query-replace-regexp 在文件列表中查找并替换。可以递归所有子目录。可以用各种条件过滤文件，详细可以查看 [[shell.html#find][find]] 命令
-的帮助。 
+*find-grep-dired* : 运行外部命令 find，用 grep 过滤文件， ls 产生目录列表，然后进入 dired 模式，这样列出所有包含某些字符的文件列表。 
+*dired-do-query-replace-regexp*: 在文件列表中查找并替换。可以递归所有子目录。可以用各种条件过滤文件，详细可以查看 [[shell.html#find][find]] 命令的帮助。 
 
-rgrep: 	首先输入的是需要搜索的内容，回车后，提示目标文件的类型，此时可以输入各个别名，比如ch，搜索所有的C++源码文件，随后输入的是
+*rgrep*: 	首先输入的是需要搜索的内容，回车后，提示目标文件的类型，此时可以输入各个别名，比如ch，搜索所有的C++源码文件，随后输入的是
 搜索开始的目录。 	递归搜索目录中的内容，支持一些预定义的别名，比如ch表示所有的c++代码文件，hh表示所有的c++头文件等等。这个估计是
 写程序时，最好用的grep命令。 
 
-lgrep: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索当前指定目录中的内容，不会对子目录进行递归搜索。 	lgrep中的l应该是表示本
+*lgrep*: 	提示内容与rgrep的都一样，唯一不同的是，lgrep只搜索当前指定目录中的内容，不会对子目录进行递归搜索。 	lgrep中的l应该是表示本
 层目录的（local）。对于在很大的，有很多子目录的文件夹中，只想搜索限定目录中，限定文件类型的时候，这个命令很方便。 
 
 
@@ -2425,9 +2427,9 @@ HKEY_LOCAL_MACHINE /SYSTEM /CurrentControlSet /Control /Keyboard Layout
 保存后，重新登录
 
 
-* Java DEV
 
- - https://github.com/senny/emacs-eclim
+
+
 
 
 * 举例：把一个iso-8859字符集的文件变为utf-8的
@@ -2517,5 +2519,33 @@ You can also browse the repository at:
  1. https://github.com/fxbois/web-mode
  2. https://github.com/fgallina/multi-web-mode
 
+* 配置和使用软件开发环境
+** DONE 安装和配置Java开发环境
+   CLOSED: [2014-02-26 三 13:45]
+   :LOGBOOK:
+   CLOCK: [2014-02-26 三 11:19]--[2014-02-26 三 13:03] =>  1:44
+   CLOCK: [2014-02-26 三 10:31]--[2014-02-26 三 11:19] =>  0:48
+   :END:
 
-* TODO 安装和配置Java开发环境
+  - https://github.com/senny/emacs-eclim
+  - http://www.skybert.net/emacs/java/
+
+#+BEGIN_SRC 
+
+wget -c http://jaist.dl.sourceforge.net/project/eclim/eclim/2.3.2/eclim_2.3.2.jar？
+java -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=8087 -jar eclim_2.3.2.jar
+
+## .eclimrc 
+
+osgi.instance.area.default=@user.home/JD/projects
+
+# increase heap size
+-Xmx256M
+
+# increase perm gen size
+-XX:PermSize=64m
+-XX:MaxPermSize=128m
+
+-XX:-UseCompressedOops
+
+#+END_SRC
