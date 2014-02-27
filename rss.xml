@@ -4,79 +4,79 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>周六, 15 二月 2014 11:31:12 CST</pubDate>
-    <lastBuildDate>周六, 15 二月 2014 11:31:12 CST</lastBuildDate>
+    <pubDate>四, 27 2月 2014 12:38:18 CST</pubDate>
+    <lastBuildDate>四, 27 2月 2014 12:38:18 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
-    <item>
-      <title>shell Notes</title>
-      <link>http://standino.github.io/wiki/html/shell</link>
-      <description>shell notes</description>
-      <pubDate>2014-02-15</pubDate>
-      <guid>http://standino.github.io/wiki/html/shell</guid>
-    </item>
-    <item>
-      <title>2014年计划</title>
-      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
-      <description>为明年做一下计划</description>
-      <pubDate>2014-02-11</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
-    </item>
-    <item>
-      <title>js.org</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-02-11</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
-    </item>
     <item>
       <title>Emacs 使用笔记</title>
       <link>http://standino.github.io/wiki/html/html/myemacs/</link>
       <description>Emacs 使用笔记</description>
-      <pubDate>2014-02-10</pubDate>
+      <pubDate>2014-02-27</pubDate>
       <guid>http://standino.github.io/wiki/html/html/myemacs/</guid>
     </item>
     <item>
-      <title>常用链接</title>
-      <link>http://standino.github.io/wiki/html/mylinks</link>
-      <description>常用链接</description>
-      <pubDate>2014-02-10</pubDate>
-      <guid>http://standino.github.io/wiki/html/mylinks</guid>
-    </item>
-    <item>
-      <title>User Story</title>
-      <link>http://standino.github.io/wiki/html/user-story</link>
-      <description>User Story</description>
-      <pubDate>2014-02-10</pubDate>
-      <guid>http://standino.github.io/wiki/html/user-story</guid>
-    </item>
-    <item>
-      <title>怀念我的姥姥</title>
-      <link>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</link>
-      <description>怀念我的姥姥</description>
-      <pubDate>2014-02-08</pubDate>
-      <guid>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</guid>
-    </item>
-    <item>
-      <title>使用piwik做网站统计</title>
-      <link>http://standino.github.io/blog/2014/01/27/使用piwik做网站统计/</link>
-      <description>piwik</description>
-      <pubDate>2014-02-08</pubDate>
-      <guid>http://standino.github.io/blog/2014/01/27/使用piwik做网站统计/</guid>
+      <title>linux</title>
+      <link>http://standino.github.io/wiki/html/linux</link>
+      <description>linux</description>
+      <pubDate>2014-02-25</pubDate>
+      <guid>http://standino.github.io/wiki/html/linux</guid>
     </item>
     <item>
       <title>Eclipse</title>
       <link>http://standino.github.io/wiki/html/eclipse</link>
       <description>eclipse</description>
-      <pubDate>2014-02-08</pubDate>
+      <pubDate>2014-02-24</pubDate>
       <guid>http://standino.github.io/wiki/html/eclipse</guid>
     </item>
     <item>
-      <title>go 语言</title>
-      <link>http://standino.github.io/wiki/html/go</link>
-      <description>go 语言</description>
-      <pubDate>2014-01-29</pubDate>
-      <guid>http://standino.github.io/wiki/html/go</guid>
+      <title>English</title>
+      <link>http://standino.github.io/wiki/html/eng</link>
+      <description>English</description>
+      <pubDate>2014-02-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/eng</guid>
+    </item>
+    <item>
+      <title>FreeMind</title>
+      <link>http://standino.github.io/wiki/html/freemind</link>
+      <description>freemind</description>
+      <pubDate>2014-02-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/freemind</guid>
+    </item>
+    <item>
+      <title>IBM产品的使用</title>
+      <link>http://standino.github.io/wiki/html/ibm</link>
+      <description>ibm</description>
+      <pubDate>2014-02-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/ibm</guid>
+    </item>
+    <item>
+      <title>IBM Data Studio Introduction </title>
+      <link>http://standino.github.io/wiki/html/ibmdatastudiointroduction</link>
+      <description>IBM Data Studio Introduction </description>
+      <pubDate>2014-02-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/ibmdatastudiointroduction</guid>
+    </item>
+    <item>
+      <title>IBM_Data_Studio_back.org</title>
+      <link>http://standino.github.io/wiki/html/datastudio</link>
+      <description>date stduio</description>
+      <pubDate>2014-02-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/datastudio</guid>
+    </item>
+    <item>
+      <title>JAVA</title>
+      <link>http://standino.github.io/wiki/html/java</link>
+      <description>Java Tips</description>
+      <pubDate>2014-02-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/java</guid>
+    </item>
+    <item>
+      <title>Scite.org</title>
+      <link>http://standino.github.io/wiki/html/scite</link>
+      <description>scite</description>
+      <pubDate>2014-02-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/scite</guid>
     </item>
   </channel>
 </rss>
