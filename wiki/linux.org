@@ -3190,6 +3190,7 @@ chmod -R 777 piwik
 #+END_SRC
 
 
+
 * DONE 在台式机上安装开发环境
   CLOSED: [2014-02-24 一 14:14]
   - State "DONE"       from "STARTED"    [2014-02-24 一 14:14]
@@ -3206,11 +3207,14 @@ chmod -R 777 piwik
 #+BEGIN_SRC 
 
 
+
     sudo yum install emacs git mercurial eclipse livetex-beamer w3m mvn maven-eclipse-plugin
+
     http_proxy=http://127.0.0.1:8087 emacs &
 
 
 #+END_SRC
+
 
 
 * Fedora 20 SSH
@@ -3224,3 +3228,4 @@ sudo yum install openssh-server
 
 systemctl enable sshd.service
 systemctl start sshd.service
+
