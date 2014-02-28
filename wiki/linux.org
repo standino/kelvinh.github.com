@@ -3229,3 +3229,20 @@ sudo yum install openssh-server
 systemctl enable sshd.service
 systemctl start sshd.service
 
+* TODO Fedora 20 nginx
+
+http://www.if-not-true-then-false.com/2011/install-nginx-php-fpm-on-fedora-centos-red-hat-rhel/
+
+#+BEGIN_SRC 
+
+sudo rpm -Uvh http://rpms.famillecollet.com/remi-release-20.rpm
+sudo yum --enablerepo=remi install nginx
+sudo systemctl enable nginx.service
+sudo systemctl start nginx.service
+#sudo firewall-cmd --permanent --zone=public --add-service=http
+
+firewall-cmd --permanent --zone=public --add-port=8000/tcp
+
+
+#+END_SRC
+
