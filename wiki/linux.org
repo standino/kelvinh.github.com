@@ -3192,10 +3192,15 @@ chmod -R 777 piwik
 
 
 * DONE 在台式机上安装开发环境
-  CLOSED: [2014-02-24 一 14:14]
+  CLOSED: [2014-03-06 四 16:59]
+  - State "DONE"       from "STARTED"    [2014-03-06 四 16:59]
+  - State "OKTODAY"    from "DONE"       [2014-03-06 四 13:19]
+  - State "DONE"       from "WAITING"    [2014-03-06 四 13:19]
+  - State "WAITING"    from "DONE"       [2014-03-06 四 13:19]
   - State "DONE"       from "STARTED"    [2014-02-24 一 14:14]
   - State "OKTODAY"    from "STARTED"    [2014-02-24 一 13:14]
   :LOGBOOK:
+  CLOCK: [2014-03-06 四 13:19]--[2014-03-06 四 16:59] =>  3:40
   CLOCK: [2014-02-24 一 13:14]--[2014-02-24 一 14:14] =>  1:00
   CLOCK: [2014-02-24 周一 09:13]--[2014-02-24 一 13:14] =>  4:01
   :END:
@@ -3208,13 +3213,23 @@ chmod -R 777 piwik
 
 
 
-    sudo yum install emacs git mercurial eclipse livetex-beamer w3m mvn maven-eclipse-plugin
+sudo yum install -y  emacs git mercurial w3m maven  subversion openssh-server texlive-beamer yum-plugin-fastestmirror
 
-    http_proxy=http://127.0.0.1:8087 emacs &
+#eclipse maven-eclipse-plugin fastestmirror
+
+http_proxy=http://127.0.0.1:8087 emacs &
 
 
 #+END_SRC
 
+** Chrome
+
+** sudo无秘密
+
+sudo visudo
+
+## Same thing without a password
+%wheel  ALL=(ALL)       NOPASSWD: ALL
 
 
 * Fedora 20 SSH
@@ -3230,6 +3245,9 @@ systemctl enable sshd.service
 systemctl start sshd.service
 
 * TODO Fedora 20 nginx
+  :LOGBOOK:
+  CLOCK: [2014-03-05 三 19:01]--[2014-03-06 四 13:19] => 18:18
+  :END:
 
 http://www.if-not-true-then-false.com/2011/install-nginx-php-fpm-on-fedora-centos-red-hat-rhel/
 
@@ -3239,9 +3257,17 @@ sudo rpm -Uvh http://rpms.famillecollet.com/remi-release-20.rpm
 sudo yum --enablerepo=remi install nginx
 sudo systemctl enable nginx.service
 sudo systemctl start nginx.service
+
 #sudo firewall-cmd --permanent --zone=public --add-service=http
 
-firewall-cmd --permanent --zone=public --add-port=8000/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=8000/tcp
+
+sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+
+sudo systemctl restart nginx.service
+
+sudo gedit  /etc/nginx/nginx.conf &
+
 
 
 #+END_SRC

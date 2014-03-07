@@ -4,7 +4,7 @@
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/html/mysql
 #+KEYWORDS:    mysql,sql
-#+TAGS:        :mysql:
+#+TAGS:        :mysql:mybatis:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION:  MySQL数据库
@@ -13,3 +13,10 @@
  - [[http://blog.csdn.net/adparking/article/details/6676571][mysql中的load data infile用法]]
  - [[http://www.blogjava.net/qileilove/archive/2012/04/23/376353.html][定时备份mysql数据库 并删除7天前的备份 （windows linux ）]]
  - [[http://blog.csdn.net/jinkelei/article/details/6833997][mysql定时备份和删除]]
+
+
+* mybatis like
+
+        AND (find_in_set(#{tags},tags)
+                                OR name LIKE CONCAT(CONCAT('%', #{tags}),'%')
+                                OR contactor LIKE CONCAT(CONCAT('%', #{tags}),'%')
