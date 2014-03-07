@@ -206,3 +206,11 @@ encodeURIComponent(
     dataType : "json",
     success : function(data) {
 #+END_SRC
+
+* 表格截断
+ 1. http://www.045d.com/post/461.html
+ 2. http://www.cftea.com/c/2010/12/UVBUCD0J888L2XPQ.asp
+
+《
+       .notice-td { overflow:hidden;white-space:nowrap;word-break:keep-all;  }
+       
