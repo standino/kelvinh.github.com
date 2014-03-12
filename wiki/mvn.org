@@ -10,6 +10,8 @@
 #+DESCRIPTION: mvn
 
  - http://maven.apache.org/guides/getting-started/index.html
+ - http://www.infoq.com/cn/news/2011/05/xxb-maven-8-plugin
+ - http://mojo.codehaus.org/versions-maven-plugin/
 
 * 建立偶过个模块的mvn项目
 

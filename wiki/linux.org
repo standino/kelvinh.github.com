@@ -3213,8 +3213,8 @@ chmod -R 777 piwik
 
 
 
-sudo yum install -y  emacs git mercurial w3m maven  subversion openssh-server texlive-beamer yum-plugin-fastestmirror
-
+sudo yum install -y  emacs git mercurial w3m maven  subversion openssh-server texlive-beamer yum-plugin-fastestmirror community-mysql pgp-tools meld global
+sudo yum groupinstall lxde-desktop
 #eclipse maven-eclipse-plugin fastestmirror
 
 http_proxy=http://127.0.0.1:8087 emacs &

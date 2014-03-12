@@ -214,3 +214,6 @@ encodeURIComponent(
 《
        .notice-td { overflow:hidden;white-space:nowrap;word-break:keep-all;  }
        
+* autocompte
+
+http://jqueryui.com/autocomplete/#multiple-remote
