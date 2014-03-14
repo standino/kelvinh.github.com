@@ -2557,3 +2557,7 @@ osgi.instance.area.default=@user.home/JD/projects
 http://emacser.com/mew.htm
 
 https://github.com/hkhn/personal-configuration/blob/master/.mew.el
+
+* macro
+
+http://www.emacswiki.org/emacs/KeyboardMacros

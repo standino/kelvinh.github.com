@@ -3289,7 +3289,7 @@ sudo yum install openssh-server
 systemctl enable sshd.service
 systemctl start sshd.service
 
-* TODO Fedora 20 nginx
+* SOMEDAY Fedora 20 nginx
   :LOGBOOK:
   CLOCK: [2014-03-05 三 19:01]--[2014-03-06 四 13:19] => 18:18
   :END:
