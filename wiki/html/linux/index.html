@@ -82,8 +82,8 @@ sudo pam-auth-update --force
 <li>Download grub4dos from  <a href="http://sourceforge.net/projects/grub4dos/files/">http://sourceforge.net/projects/grub4dos/files/</a>
 </li>
 <li>Download initrd.gz、linux and put them in C:\
-     <a href="http://software.linux.ibm.com/pub/ubuntu-repository/dists/maverick/main/installer-i386/current/images/netboot/ubuntu-installer/i386/">http://software.linux.ibm.com/pub/ubuntu-repository/dists/maverick/main/installer-i386/current/images/netboot/ubuntu-installer/i386/</a>
-     <a href="http://software.linux.ibm.com/pub/ubuntu-repository/dists/natty/main/installer-i386/current/images/netboot/ubuntu-installer/i386/">http://software.linux.ibm.com/pub/ubuntu-repository/dists/natty/main/installer-i386/current/images/netboot/ubuntu-installer/i386/</a>
+<a href="http://software.linux.ibm.com/pub/ubuntu-repository/dists/maverick/main/installer-i386/current/images/netboot/ubuntu-installer/i386/">http://software.linux.ibm.com/pub/ubuntu-repository/dists/maverick/main/installer-i386/current/images/netboot/ubuntu-installer/i386/</a>
+<a href="http://software.linux.ibm.com/pub/ubuntu-repository/dists/natty/main/installer-i386/current/images/netboot/ubuntu-installer/i386/">http://software.linux.ibm.com/pub/ubuntu-repository/dists/natty/main/installer-i386/current/images/netboot/ubuntu-installer/i386/</a>
 </li>
 <li>Unzip grub4dos, copy grldr and  menu.lst to C:\. Edit menu.lst file， remove all the content in the file and paste below into
 </li>
@@ -3242,7 +3242,7 @@ Mod4 + Shift + r
 <h2 id="sec-74">DNS</h2>
 <div class="outline-text-2" id="text-74">
 <p>
-<a href="http://kbase.redhat.com/faq/docs/DOC-13668">http://kbase.redhat.com/faq/docs/DOC-13668</a>
+<a href="http://hi.baidu.com/eshifangs/item/e2bc80a77a465c348819d366">http://hi.baidu.com/eshifangs/item/e2bc80a77a465c348819d366</a>
 </p>
 
 <pre class="example">
@@ -3274,7 +3274,7 @@ I put the setup script in myapt.
 </p>
 
 <p>
-<a href="http://www.babylon.com/free-dictionaries/languages/Babylon-English-Chinese-%28S%29/912.html">http://www.babylon.com/free-dictionaries/languages/Babylon-English-Chinese-%28S%29/912.html</a>
+<a href="http://www.babylon.com/free-dictionaries/languages/Babylon-English-Chinese-(S)/912.html">http://www.babylon.com/free-dictionaries/languages/Babylon-English-Chinese-(S)/912.html</a>
 </p>
 
 <p>
@@ -3620,7 +3620,7 @@ UUID=4305604E4A5B9CB8 /media/win7               ntfs    errors=remount-ro,auto,e
 <h2 id="sec-89">Fedaro</h2>
 <div class="outline-text-2" id="text-89">
 <p>
-<a href="https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/%28optional%29%20Add%20additional%20repositories">https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/%28optional%29%20Add%20additional%20repositories</a>
+<a href="https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/(optional)%20Add%20additional%20repositories">https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/(optional)%20Add%20additional%20repositories</a>
 </p>
 
 <pre class="example">
@@ -3819,11 +3819,17 @@ sudo package-cleanup --orphans &gt;/home/will/backup/f19upgrade.sh
 
 
 
-<p>
-<a href="http://alensiljak.blogspot.hk/2013/04/upgrading-fedora-18-19-with-fedup.html">http://alensiljak.blogspot.hk/2013/04/upgrading-fedora-18-19-with-fedup.html</a>
-</p>
+<ol class="org-ol">
+<li><a href="http://alensiljak.blogspot.hk/2013/04/upgrading-fedora-18-19-with-fedup.html">http://alensiljak.blogspot.hk/2013/04/upgrading-fedora-18-19-with-fedup.html</a>
+</li>
+<li><a href="http://linux.cn/article-1645-1.html">http://linux.cn/article-1645-1.html</a>
+</li>
+<li><a href="http://2414742.blog.51cto.com/2404742/427445">http://2414742.blog.51cto.com/2404742/427445</a> sudo不需要输入密码
+</li>
+</ol>
 </div>
 </div>
+
 <div id="outline-container-sec-89-9" class="outline-3">
 <h3 id="sec-89-9">RTC 3.0 p2 install</h3>
 </div>
@@ -4871,6 +4877,440 @@ export PATH=$PATH:$JAVA_HOME/bin
 </pre>
 </div>
 </div>
+
+
+<div id="outline-container-sec-115" class="outline-2">
+<h2 id="sec-115">centos 打开端口</h2>
+<div class="outline-text-2" id="text-115">
+<p>
+#关闭防火墙
+/etc/init.d/iptables stop
+service iptables stop # 停止服务
+#查看防火墙信息
+/etc/init.d/iptables status
+</p>
+
+<p>
+#开放端口:8080
+/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+</p>
+
+<p>
+/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+#重启防火墙以便改动生效:(或者直接重启系统)
+/etc/init.d/iptables restart
+#将更改进行保存
+/etc/rc.d/init.d/iptables save
+</p>
+</div>
+</div>
+<div id="outline-container-sec-116" class="outline-2">
+<h2 id="sec-116">Tomcat 修改root context</h2>
+<div class="outline-text-2" id="text-116">
+<p>
+/confg/server.xml
+</p>
+
+
+<p>
+&lt;Context  path="/"  docBase="/usr/jalimay/apache-tomcat-6.0.35/webapps/retail_portal"  debug="0"    reloadable="true"  crossContext="true"/&gt;
+      &lt;/Host&gt;
+    &lt;/Engine&gt;
+  &lt;/Service&gt;
+&lt;/Server&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-117" class="outline-2">
+<h2 id="sec-117"><a href="http://www.cnblogs.com/zhuque/archive/2012/11/03/2763351.html">安装PHP环境</a></h2>
+<div class="outline-text-2" id="text-117">
+</div><div id="outline-container-sec-117-1" class="outline-3">
+<h3 id="sec-117-1">获得操作系统基本信息</h3>
+<div class="outline-text-3" id="text-117-1">
+<p>
+查看端口号使用 
+</p>
+<pre class="example">
+netstat -tnl|grep 80
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-117-2" class="outline-3">
+<h3 id="sec-117-2">下载</h3>
+<div class="outline-text-3" id="text-117-2">
+<p>
+wget -c <a href="http://cn2.php.net/distributions/php-5.5.8.tar.gz">http://cn2.php.net/distributions/php-5.5.8.tar.gz</a>
+wget -c <a href="http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.7.tar.gz">http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.7.tar.gz</a>
+wget -c <a href="http://www.webhostingjams.com/mirror/apache//apr/apr-1.5.0.tar.gz">http://www.webhostingjams.com/mirror/apache//apr/apr-1.5.0.tar.gz</a>
+wget -c <a href="http://www.webhostingjams.com/mirror/apache//apr/apr-util-1.5.3.tar.gz">http://www.webhostingjams.com/mirror/apache//apr/apr-util-1.5.3.tar.gz</a>
+wget -c <a href="http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip">http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip</a>
+</p>
+
+
+
+<p>
+scp php-5.5.8.tar.gz jalimay@192.168.229.77:/usr/jalimay/
+</p>
+
+<p>
+scp httpd-2.4.7.tar.gz jalimay@192.168.229.77:/usr/changwei
+</p>
+
+<p>
+scp apr-1.5.0.tar.gz jalimay@192.168.229.77:/usr/changwei
+</p>
+
+<p>
+scp apr-util-1.5.3.tar.gz jalimay@192.168.229.77:/usr/changwei
+</p>
+
+<p>
+scp pcre-8.34.zip jalimay@192.168.229.77:/usr/changwei
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-117-3" class="outline-3">
+<h3 id="sec-117-3">编译安装apache</h3>
+<div class="outline-text-3" id="text-117-3">
+<pre class="example">
+  [root@localhost bin]# tar -zxf apr-1.4.5.tar.gz
+  [root@localhost apr-1.4.5]# ./configure --prefix=/usr/local/apr
+  [root@localhost apr-1.4.5]# make
+  [root@localhost apr-1.4.5]# make install
+
+  [root@localhost bin]# tar -zxf apr-util-1.3.12.tar.gz
+  [root@localhost apr-util-1.3.12]# ./configure --prefix=/usr/local/apr-util -with-apr=/usr/local/apr/bin/apr-1-config
+  [root@localhost apr-util-1.3.12]# make
+  [root@localhost apr-util-1.3.12]# make install
+
+  [root@localhost ~]# unzip pcre-8.31.zip
+  [root@localhost ~]# cd pcre-8.31
+  [root@localhost pcre-8.31]# ./configure --prefix=/usr/local/pcre
+  [root@localhost pcre-8.31]# make
+  [root@localhost pcre-8.31]# make install
+
+
+tar -zxvf    httpd-2.4.7.tar.gz
+
+在redhat上安装可能会在启动apache的时候报错
+
+apache 安装好后 启动出错:
+httpd: Syntax error on line 140 of /usr/local/apache2/conf/httpd.conf: Cannot load /usr/local/apache2/modules/mod_dir.so into server: /usr/local/apache2/modules/mod_dir.so: undefined symbol: apr_array_clear
+
+由于apache编译时没有指定   --with-included-apr
+
+解决方法：
+1、下载的apr和apr-utils源文件夹拷贝到httpd-2.4.2/srclib/, 再进行编译
+#cp -rf apr-1.5.0 httpd-2.4.7/srclib/apr
+#cp -rf apr-util-1.5.3 httpd-2.4.7/srclib/apr-util
+
+2、在编译httpd时，加上--with-included-apr
+./configure  --prefix=/usr/local/apache2/ --with-apr=/usr/local/apr/ --with-apr-util=/usr/local/apr-util/ --with-pcre=/usr/local/pcre --with-included-apr
+
+make
+make install
+</pre>
+
+<p>
+<a href="http://sookk8.blog.51cto.com/455855/558460"> APACHE 安装出错 configure: error: Cannot use an external APR with the bundled APR-util</a>
+</p>
+
+<p>
+安装apr和apr-util
+cd httpd-2.2.17/srclib/apr
+./configure --prefix=/usr/local/apr
+make &amp;&amp; make install
+cd ../apr-util
+./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr
+make &amp;&amp; make install
+</p>
+
+<p>
+再安装apache就可以了
+</p>
+
+<p>
+./configure --prefix=/usr/local/apache --enable-so --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util/bin --enable-mods-shared=all --with-mpm=worker --enable-cache --enable-disk-cache --enable-mem-cache --enable-file-cache
+</p>
+
+
+
+
+
+<p>
+启动Apache：/usr/local/apache2/bin/apachectl start
+• 停止Apache：/usr/local/apache2/bin/apachectl stop
+• 重启Apache：/usr/local/apache2/bin/apachectl restart
+网站放在/usr/local/apache2/htdocs目录下
+</p>
+</div>
+</div>
+<div id="outline-container-sec-117-4" class="outline-3">
+<h3 id="sec-117-4">安装mysql</h3>
+<div class="outline-text-3" id="text-117-4">
+<p>
+rpm -ivh MySQL-client-5.6.15-1.el6.x86_64.rpm
+</p>
+
+<p>
+<a href="http://blog.csdn.net/cpplang/article/details/8462768">解决libc.so.6: version `GLIBC_2.14' not found问题</a>
+</p>
+
+
+<p>
+wget -c <a href="http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-client-community-5.1.73-1.rhel5.x86_64.rpm">http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-client-community-5.1.73-1.rhel5.x86_64.rpm</a>
+wget -c <a href="http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-server-community-5.1.73-1.rhel5.x86_64.rpm">http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-server-community-5.1.73-1.rhel5.x86_64.rpm</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-117-5" class="outline-3">
+<h3 id="sec-117-5">编译安装php</h3>
+<div class="outline-text-3" id="text-117-5">
+<pre class="example">
+find / -name mysql.h
+
+tar -zxvf php-5.5.8.tar.gz
+cd php*
+
+ make clean
+ ./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-config-file-path=/usr/local/lib --with-mysqli --with-zlib --enable-track-vars --with-xml --with-gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2/freetype/ --with-mbstring --enable-mbstring=all
+ make &amp;&amp; make install
+/usr/local/apache2/bin/apachectl restart
+
+# ./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-config-file-path=/usr/local/lib --enable-track-vars --with-xml --with-mysql-dir=/usr/include/mysql/mysql.h --with-zlib-dir=/usr/lib
+
+make
+make install
+cp php.ini-production /usr/local/lib/php.ini
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-117-6" class="outline-3">
+<h3 id="sec-117-6">配置apache使其支持php</h3>
+<div class="outline-text-3" id="text-117-6">
+<p>
+vi /etc/httpd/conf/httpd.conf
+</p>
+</div>
+</div>
+<div id="outline-container-sec-117-7" class="outline-3">
+<h3 id="sec-117-7">1、在LoadModule中添加：LoadModule php5_module     modules/libphp5.so</h3>
+<div class="outline-text-3" id="text-117-7">
+<p>
+2、在AddType application/x-gzip .gz .tgz下面添加：
+</p>
+<pre class="example">
+# probably should define those extensions to indicate media types:
+#
+AddType application/x-compress .Z
+AddType application/x-gzip .gz .tgz
+AddType application/x-httpd-php .php
+AddType application/x-httpd-php-source .phps
+</pre>
+
+<p>
+3、在DirectoryIndex增加 index.php，以便Apache识别PHP格式的index
+</p>
+
+<pre class="example">
+&lt;IfModule dir_module&gt;  
+    DirectoryIndex index.html index.php  
+&lt;/IfModule&gt;
+</pre>
+<p>
+最后一步验证PHP环境：
+</p>
+
+<p>
+在Apache网站目录下新建php的phpinfo测试页，/usr/local/apache/htdocs/info.php
+</p>
+<pre class="example">
+[root@localhost htdocs]# vi info.php
+
+&lt;?php
+
+phpinfo();
+
+?&gt;
+</pre>
+
+<p>
+通过<a href="http://serverIP/info.php">http://serverIP/info.php</a> 验证，通过phpinfo()可以查看很多信息，比如php.ini的存放路径，以及所有扩展组件等，很强大。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-117-8" class="outline-3">
+<h3 id="sec-117-8"><a href="http://piwik.org/docs/installation/">安装 piwik</a></h3>
+<div class="outline-text-3" id="text-117-8">
+<pre class="example">
+wget http://builds.piwik.org/latest.zip
+
+unzip latest.zip
+ls
+mv piwik/ /usr/local/apache2/htdocs/
+
+chmod -R 777 piwik
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-118" class="outline-2">
+<h2 id="sec-118"><span class="done DONE">DONE</span> 在台式机上安装开发环境</h2>
+<div class="outline-text-2" id="text-118">
+<ul class="org-ul">
+<li>State "DONE"       from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-06 四 16:59]</span></span>
+</li>
+<li>State "OKTODAY"    from "DONE"       <span class="timestamp-wrapper"><span class="timestamp">[2014-03-06 四 13:19]</span></span>
+</li>
+<li>State "DONE"       from "WAITING"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-06 四 13:19]</span></span>
+</li>
+<li>State "WAITING"    from "DONE"       <span class="timestamp-wrapper"><span class="timestamp">[2014-03-06 四 13:19]</span></span>
+</li>
+<li>State "DONE"       from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-02-24 一 14:14]</span></span>
+</li>
+<li>State "OKTODAY"    from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-02-24 一 13:14]</span></span>
+</li>
+</ul>
+<ol class="org-ol">
+<li>安装emacs
+</li>
+<li>安装IDEA
+</li>
+<li>安装JOne
+</li>
+<li></li>
+</ol>
+<pre class="example">
+sudo yum install -y  emacs git mercurial w3m maven  subversion openssh-server texlive-beamer yum-plugin-fastestmirror community-mysql pgp-tools meld global claws-mail
+
+sudo yum groupinstall lxde-desktop
+#eclipse maven-eclipse-plugin fastestmirror
+
+http_proxy=http://127.0.0.1:8087 emacs &amp;
+</pre>
+</div>
+
+<div id="outline-container-sec-118-1" class="outline-3">
+<h3 id="sec-118-1">input method</h3>
+<div class="outline-text-3" id="text-118-1">
+<ol class="org-ol">
+<li><a href="http://www.hiadmin.org/linux/fedora19-fcitx">http://www.hiadmin.org/linux/fedora19-fcitx</a>
+</li>
+</ol>
+
+<pre class="example">
+sudo yum remove ibus  
+gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+
+
+sudo yum install fcitx*
+
+Fedora 19安装Fcitx输入法并安装搜狗输入法资源包
+发表于 2013 年 11 月 4 日 由 Sam
+个人使用Ubuntu已经很多年了、但是只从ubuntu的界面换了之后我就一直没升级、最近新弄一块SSD硬盘、于是乎就想着安装个Fedora版本来玩玩、下载了最新版本的Fedora19。用U盘做好启动盘并安装到硬盘上之后发现系统自带的Ibus输入法非常的不好用、在Sublime Text下中文根本不能输入、于是想着换成Fcitx。
+
+1、先卸载系统自带的Ibus输入法
+sudo yum remove ibus  
+gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+2、安装Fcitx输入法
+sudo yum install fcitx*
+
+3、配置一下Fcitx、在~/.bashrc中添加:如下内容
+    export GTK_IM_MODULE=fcitx  
+    export QT_IM_MODULE=fcitx  
+    export XMODIFIERS="@im=fcitx"
+4、由于Fedora 19中取消了注销按钮、就重启下机器吧
+上面步骤完成之后其实就可以使用Fcitx输入法、不过看到搜狗输入法都已经出deb包了(sogou居然没有rpm包)
+
+所以就想着安装个搜狗输入法到Fcitx上去。
+
+从下面的连接地址下载对应的deb包、32位系统用i386.deb、64位系统用amd64.deb
+
+http://mirror.sohu.com/deepin/pool/non-free/f/fcitx-sogoupinyin-release/
+
+随便在从如下地址下载一个搜狗输入法的皮肤
+
+http://mirror.sohu.com/deepin/pool/main/f/fcitx-skins/
+
+5、下载完成之后双击打开amd64.deb、蒋里面的data.tar.bz提取出来、然后到解压压缩文件
+sudo tar Jxvf data.tar.xz -C /
+接着我们把解压出来的.so文件移动到Fcitx的指定目录即可(64位为例)
+
+sudo mv fcitx-sogoupinyin.so /usr/lib64/fcitx/
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-118-2" class="outline-3">
+<h3 id="sec-118-2">Chrome</h3>
+</div>
+
+<div id="outline-container-sec-118-3" class="outline-3">
+<h3 id="sec-118-3">sudo无秘密</h3>
+<div class="outline-text-3" id="text-118-3">
+<p>
+sudo visudo
+</p>
+
+<p>
+## Same thing without a password
+%wheel  ALL=(ALL)       NOPASSWD: ALL
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-119" class="outline-2">
+<h2 id="sec-119">Fedora 20 SSH</h2>
+<div class="outline-text-2" id="text-119">
+<p>
+在红帽和centos下，一般安装完后会自带ssh，然后可以通过/etc/init.d/sshd start的方式运行，但是在Fedora 20下，系统改用了另外一套服务开启机制。
+</p>
+
+<p>
+首先安装ssh server
+</p>
+
+<p>
+sudo yum install openssh-server
+接下来之下下面两条命令行
+</p>
+
+<p>
+systemctl enable sshd.service
+systemctl start sshd.service
+</p>
+</div>
+</div>
+<div id="outline-container-sec-120" class="outline-2">
+<h2 id="sec-120"><span class="todo SOMEDAY">SOMEDAY</span> Fedora 20 nginx</h2>
+<div class="outline-text-2" id="text-120">
+<p>
+<a href="http://www.if-not-true-then-false.com/2011/install-nginx-php-fpm-on-fedora-centos-red-hat-rhel/">http://www.if-not-true-then-false.com/2011/install-nginx-php-fpm-on-fedora-centos-red-hat-rhel/</a>
+</p>
+
+<pre class="example">
+sudo rpm -Uvh http://rpms.famillecollet.com/remi-release-20.rpm
+sudo yum --enablerepo=remi install nginx
+sudo systemctl enable nginx.service
+sudo systemctl start nginx.service
+
+sudo firewall-cmd --permanent --zone=public --add-service=http
+
+sudo firewall-cmd --permanent --zone=public --add-port=8000/tcp
+
+sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+
+sudo systemctl restart nginx.service
+
+sudo gedit  /etc/nginx/nginx.conf &amp;
+</pre>
+</div>
+</div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
@@ -4887,8 +5327,8 @@ export PATH=$PATH:$JAVA_HOME/bin
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2013-12-27</span>
-        <span title="tags" class="post-info"><a href="/tags/linux/">linux</a></span>
+        <span title="last modification date" class="post-info">2014-03-14</span>
+        <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/端口/">端口</a>, <a href="/tags/jdretail/">jdretail</a>, <a href="/tags/采销平台/">采销平台</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
       <section>
@@ -4920,9 +5360,9 @@ export PATH=$PATH:$JAVA_HOME/bin
         })();
       </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
         <p>
-          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          Copyright &copy; 2012 - 2014 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
         </p>

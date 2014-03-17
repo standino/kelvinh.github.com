@@ -14,7 +14,7 @@
 
 
 * Find files and tags  Read Java code
-
+  
 ** Best Practice 
   
  - Use Alt+Shit+x to invoke anything, then input the file name, or the functions 
