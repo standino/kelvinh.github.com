@@ -65,11 +65,56 @@ redis 127.0.0.1:6379> config get *zip*
 
 sql 文件
 
-#+INCLUDE: "/home/changwei/projects/pbs/redis/mysql_to_redis.sql" src sql
+#+BEGIN_SRC 
+
+SELECT CONCAT(
+    "*4\r\n",
+    '$', LENGTH(redis_cmd), '\r\n',
+    redis_cmd, '\r\n',
+    '$', LENGTH(redis_key), '\r\n',
+    redis_key, '\r\n',
+    '$', LENGTH(hkey), '\r\n',
+    hkey, '\r\n',
+    '$', LENGTH(hval), '\r\n',
+    hval, '\r'
+)
+FROM (
+       SELECT distinct
+         'HSET' as redis_cmd,
+         CONCAT('warestock:',wid,':',rid) AS redis_key,
+         'purchase' AS hkey,
+         purchase AS hval
+       FROM warestock
+       limit  ##START## , ##END##
+     ) AS t
+
+#+END_SRC
 
 shell 文件
+#+BEGIN_SRC 
 
-#+INCLUDE: "/home/changwei/projects/pbs/redis/mysql_to_redis.sh" src sh
+#!/bin/sh
+
+sql_file=$1
+start=$2
+end=$3
+host=$4
+user=$5
+passwd=$6
+dbname=$7
+ADD_NUM=10000
+for (( i=${start}; i<${end};i++ ));
+do
+    cat $sql_file > tmp.sql
+    sed -i "s/##START##/$i/g"  tmp.sql
+    i=`expr $i + ${ADD_NUM}`
+    echo $i
+    sed -i "s/##END##/$i/g"  tmp.sql
+    cat tmp.sql
+    mysql -h $host -u $user -p$passwd -D$dbname --skip-column-names --raw < tmp.sql | ./redis-c --pipe
+done
+
+#+END_SRC
 
 Shell脚本需要7个参数：
 
