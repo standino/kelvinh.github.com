@@ -3015,7 +3015,7 @@ service iptables stop # 停止服务
 
 ** 获得操作系统基本信息
 查看端口号使用
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 netstat -tnl|grep 80
 #+END_SRC
 
@@ -3042,7 +3042,7 @@ scp pcre-8.34.zip jalimay@192.168.229.77:/usr/changwei
 
 
 ** 编译安装apache
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 
   [root@localhost bin]# tar -zxf apr-1.4.5.tar.gz
   [root@localhost apr-1.4.5]# ./configure --prefix=/usr/local/apr
@@ -3117,7 +3117,7 @@ wget -c http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-server-community-5.1.73-1
 
 ** 编译安装php
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 
 
 
@@ -3146,7 +3146,7 @@ vi /etc/httpd/conf/httpd.conf
 ** 1、在LoadModule中添加：LoadModule php5_module     modules/libphp5.so
 
 2、在AddType application/x-gzip .gz .tgz下面添加：
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 # probably should define those extensions to indicate media types:
 #
 AddType application/x-compress .Z
@@ -3157,7 +3157,7 @@ AddType application/x-httpd-php-source .phps
 
 3、在DirectoryIndex增加 index.php，以便Apache识别PHP格式的index
 
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 <IfModule dir_module>
     DirectoryIndex index.html index.php
 </IfModule>
@@ -3165,7 +3165,7 @@ AddType application/x-httpd-php-source .phps
 最后一步验证PHP环境：
 
 在Apache网站目录下新建php的phpinfo测试页，/usr/local/apache/htdocs/info.php
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 [root@localhost htdocs]# vi info.php
 
 <?php
@@ -3178,7 +3178,7 @@ phpinfo();
 通过http://serverIP/info.php 验证，通过phpinfo()可以查看很多信息，比如php.ini的存放路径，以及所有扩展组件等，很强大。
 
 ** [[http://piwik.org/docs/installation/][安装 piwik]]
-#+BEGIN_SRC shell
+#+BEGIN_SRC
 
 wget http://builds.piwik.org/latest.zip
 

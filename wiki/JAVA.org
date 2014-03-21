@@ -4,7 +4,7 @@
 #+DATE:        2013-12-19 Thu
 #+URI:         /wiki/html/java
 #+KEYWORDS:    java
-#+TAGS:        :java:rest:spring:ajax:
+#+TAGS:        :java:rest:spring:ajax:log4j:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION:  Java Tips
@@ -893,3 +893,7 @@ return result;
 }
 #+END_SRC
 
+
+* log4j
+
+ 1. http://yuguanyin.iteye.com/blog/226549

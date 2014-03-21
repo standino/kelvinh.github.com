@@ -39,7 +39,7 @@
 <h2 id="sec-1">Apache</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Start httpd in the service in redhat. 
+Start httpd in the service in redhat.
 </p>
 
 <p>
@@ -61,7 +61,7 @@ ln -s /datad/eadftp/public/dsw_dev_tools/repositories .
 <h2 id="sec-2">can not change passwd</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-sudo pam-auth-update --force 
+sudo pam-auth-update --force
 </p>
 </div>
 </div>
@@ -89,7 +89,7 @@ sudo pam-auth-update --force
 </li>
 </ul>
 <p>
-menu.lst file. 
+menu.lst file.
 </p>
 
 <pre class="example">
@@ -164,11 +164,11 @@ sudo service sshd start
 </li>
 <li>vncserver  -geometry 1600x900  -depth 24 &amp;
 </li>
-<li>gedit ~/.vnc/xstartup 
+<li>gedit ~/.vnc/xstartup
 </li>
 </ol>
 <pre class="example">
-#twm 
+#twm
 gnome-session &amp;
 </pre>
 
@@ -215,10 +215,10 @@ chkconfig --del xxx
 <p>
 编辑/etc/sysconfig/vncservers，内容如下：
 view plaincopy to clipboardprint?
-VNCSERVERS="1:user1"  
-VNCSERVERARGS<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>="-geometry 1152x864"  
 VNCSERVERS="1:user1"
-VNCSERVERARGS<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>="-geometry 1152x864" 
+VNCSERVERARGS<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>="-geometry 1152x864"
+VNCSERVERS="1:user1"
+VNCSERVERARGS<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>="-geometry 1152x864"
 然后运行sudo chkconfig --level 345 vncserver on ，让VNC Server随系统自动启动最后，运行sudo /etc/init.d/vncserver start 来启动VNC Server
 </p>
 </div>
@@ -243,11 +243,11 @@ VNCSERVERARGS<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1
 <h3 id="sec-3-6">Text  Editor</h3>
 <div class="outline-text-3" id="text-3-6">
 <ul class="org-ul">
-<li>sudo apt-get jedit # Writing in Java ,have a lots of plugin 
+<li>sudo apt-get jedit # Writing in Java ,have a lots of plugin
 </li>
 <li>sudo apt-get scite # notepad ++ linux version, but need more efforts to config it
 </li>
-<li>UltraEdit # need licence 
+<li>UltraEdit # need licence
 </li>
 </ul>
 </div>
@@ -285,7 +285,7 @@ sudo apt-get base-layer integrated-productivity-layer
 </li>
 <li>unzip the tar file
 </li>
-<li>sudo ./db2setup 
+<li>sudo ./db2setup
 </li>
 </ul>
 
@@ -314,7 +314,7 @@ IBM DB2 9.7, Express Edition - CPU Option for Linux? on 32-bit AMD and Intel sys
 </li>
 <li>sudo ln -s /bin/bash /bin/sh
 </li>
-<li>start IBMIM and set the repository to  <a href="http://btsjazz.dyn.webahead.ibm.com:8000">http://btsjazz.dyn.webahead.ibm.com:8000</a>. 
+<li>start IBMIM and set the repository to  <a href="http://btsjazz.dyn.webahead.ibm.com:8000">http://btsjazz.dyn.webahead.ibm.com:8000</a>.
 </li>
 <li>Set Install Directory to a folder in your home (ie. /home/will/willATibm/SDP7)
 </li>
@@ -450,7 +450,7 @@ sshfs &lt;username&gt;@&lt;ipaddress&gt;:/remotepath ~/remoteserv
 </p>
 
 <p>
-Now you should be able to cd into the directory and start using it as if it was local. 
+Now you should be able to cd into the directory and start using it as if it was local.
 </p>
 </div>
 </div>
@@ -477,7 +477,7 @@ iptables -A INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
 /etc/init.d/iptables start
 
 
----- 
+----
 
 iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
 
@@ -584,7 +584,7 @@ sudo tar -C /etc -xvzf alonweb.tar.gz
 </p>
 
 <p>
-安装完成，启动OpenVPN 
+安装完成，启动OpenVPN
 </p>
 
 <p>
@@ -627,20 +627,20 @@ sudo  /etc/init.d/openvpn start
 </p>
 
 <pre class="example">
-# mount the SOA disk                                                                                                                                                        
+# mount the SOA disk
 su -c "mount   -o umask=0 /dev/sda3   /datad/eadftp/SOA/a/"
 su -c "mount   -o umask=0 /dev/sdb1   /datad/eadftp/SOA/b/"
 su -c "mount   -o umask=0 /dev/sdc1   /datad/eadftp/SOA/c/"
 
-# start db2 server for RTC                                                                                                                                                  
+# start db2 server for RTC
 cd /home/db2inst1
 su db2inst1 -c "/home/db2inst1/sqllib/adm/db2start"
 
-# start vncserver for jazz user                                                                                                                                             
+# start vncserver for jazz user
 cd /home/jazz
 su jazz -c "vncserver"
 
-# start the mock smtp server for plug connection reports                                                                                                                    
+# start the mock smtp server for plug connection reports
 su -c "mocksmtpd -f /datad/rtc_data_backup/will/ideas/mocksmtpd/connection_reports/mocksmtpd.conf"
 </pre>
 </div>
@@ -666,7 +666,7 @@ ubuntu开机自动运行程序
    gedit /etc/init.d/aa
    #!/bin/bash
    mplayer /home/aa.avi -fs -vo fbdev -vf scale=800:600 (fs全屏，vo进入桌面前使用，        scale设置画面大小)
-2. chmod 755 /etc/init.d/aa    
+2. chmod 755 /etc/init.d/aa
 3. ubuntu默认启动级别为2加载的脚本在/etc/rc2.d/
    ln -s /etc/init.d/aa /etc/rc2.d/s99aa (s为开始执行99为执行顺序aa为文件名)
 </pre>
@@ -1097,8 +1097,8 @@ Greetings--
 </p>
 
 <p>
-I had problems with both sametime-connect and sametime-blue when trying 
-to use Voice Suite. But I was able to get it to work under OCDC's Notes 
+I had problems with both sametime-connect and sametime-blue when trying
+to use Voice Suite. But I was able to get it to work under OCDC's Notes
 8.5 by doing the following:
 </p>
 
@@ -1136,21 +1136,21 @@ both are under the 3rd twistie.
 <li>Restart Notes.
 </li>
 
-<li>Voice Suite should now work. Be sure to check your mixer (on my T61p 
+<li>Voice Suite should now work. Be sure to check your mixer (on my T61p
 </li>
 </ol>
 <p>
-fresh install, it did not 'pick' some of my devices by default -- I had 
+fresh install, it did not 'pick' some of my devices by default -- I had
 to enable the microphones manually.
 </p>
 
 <p>
-Good luck. This deserves its own writeup, but it's not sufficiently 
+Good luck. This deserves its own writeup, but it's not sufficiently
 generalized yet, so let's build the wisdom here.
 </p>
 
 <p>
---Harley 
+--Harley
 </p>
 </div>
 </div>
@@ -1176,7 +1176,7 @@ initrd        /boot/initrd.img-2.6.15-27-686
 boot
 
 
-2.6.30-020630rc7-generic 
+2.6.30-020630rc7-generic
 
 2.6.22-14
 </pre>
@@ -1559,7 +1559,7 @@ Then browse for the connected interface (eth0, wlan0, etc)
 <h2 id="sec-35">Connect to windows</h2>
 <div class="outline-text-2" id="text-35">
 <p>
-execute myremotedesk shell. 
+execute myremotedesk shell.
 </p>
 
 <p>
@@ -1584,7 +1584,7 @@ use ctrl+alt+enter to toggle full screen.
 </p>
 
 <p>
-&lt;#+BEGIN_SRC 
+&lt;#+BEGIN_SRC
 <a href="https://reciteword.svn.sourceforge.net/svnroot/reciteword/trunk">https://reciteword.svn.sourceforge.net/svnroot/reciteword/trunk</a>
 reciteword#+END_SRC
 </p>
@@ -1828,7 +1828,7 @@ chmod o-x junk
 </p>
 
 <p>
-你也可以去这里，有更多的信息。 
+你也可以去这里，有更多的信息。
 </p>
 </div>
 </div>
@@ -2607,43 +2607,43 @@ Bash readline 的使用技巧
 </p>
 
 <p>
-很多人会用 Bash，但是很少有人知道 readline 是怎么回事。readline 是一个强大的库，只要使用了它的程序，都可以用同一个配置文件配置，而且用同样的方法操作命令行，让你可以方便的编辑命令行。 
+很多人会用 Bash，但是很少有人知道 readline 是怎么回事。readline 是一个强大的库，只要使用了它的程序，都可以用同一个配置文件配置，而且用同样的方法操作命令行，让你可以方便的编辑命令行。
 </p>
 
 <p>
-使用 readline 的程序现在主要有 Bash, GDB，ftp 等。readline 付予这些程序强大的 Emacs 似的命令行编辑方式，你可以随意绑定你的键盘。 
+使用 readline 的程序现在主要有 Bash, GDB，ftp 等。readline 付予这些程序强大的 Emacs 似的命令行编辑方式，你可以随意绑定你的键盘。
 </p>
 
 <p>
-术语解释 
+术语解释
 </p>
 
 <p>
-在下文中，我们经常提到 "C-x r" 这类键操作。"C-x r" 其实就是按Ctrl-x，然后按 r。同理 "C-M-@" 就是按 ctrl-alt-@(M表示meta, 在 PC 上就是 Alt 键)，但是其实 @ 是shift-2 (看看你的键盘)。所以 "C-M- @" 实际上要你按 ctrl-alt-shift-2。 
+在下文中，我们经常提到 "C-x r" 这类键操作。"C-x r" 其实就是按Ctrl-x，然后按 r。同理 "C-M-@" 就是按 ctrl-alt-@(M表示meta, 在 PC 上就是 Alt 键)，但是其实 @ 是shift-2 (看看你的键盘)。所以 "C-M- @" 实际上要你按 ctrl-alt-shift-2。
 </p>
 
 <p>
-但是在配置文件里的键序列中，我们把 "C-x r" 表示为 "\C-xr", 把 "C-M-@" 表示为 "\C-\M-@"，你自己看看就知道怎么回事了。同理 "Esc a" 别表示成 "\ea"。 
+但是在配置文件里的键序列中，我们把 "C-x r" 表示为 "\C-xr", 把 "C-M-@" 表示为 "\C-\M-@"，你自己看看就知道怎么回事了。同理 "Esc a" 别表示成 "\ea"。
 </p>
 
 <p>
-这就是 Emacs 里的按键的通常标记方法。EMACS = Esc Meta Alt Ctrl Shift :) 
+这就是 Emacs 里的按键的通常标记方法。EMACS = Esc Meta Alt Ctrl Shift :)
 </p>
 
 <p>
-技巧篇 
+技巧篇
 </p>
 
 <p>
-在自己配置命令行之前，我们先来看看利用缺省的键绑定能够进行的一些巧妙的用法： 
+在自己配置命令行之前，我们先来看看利用缺省的键绑定能够进行的一些巧妙的用法：
 </p>
 
 <p>
-第一招：使用以前的命令行参数 
+第一招：使用以前的命令行参数
 </p>
 
 <p>
-你是否经常出现这种情况？你想把 ~/text-browser/ 目录下的3个.tar.gz文件搬到/usr3/software/，于是你输入： 
+你是否经常出现这种情况？你想把 ~/text-browser/ 目录下的3个.tar.gz文件搬到/usr3/software/，于是你输入：
 </p>
 
 
@@ -2654,15 +2654,15 @@ $mv ~/text-browser/*.tar.gz <i>usr3/software</i>
 
 
 <p>
-我想你一定已经知道，打入 ~/text 之后按 TAB 就可以补全text-browser这个长文件名吧？这是Bash 的基本功能。我废话？好了，就当你知道吧。不过今天我要讲的东西比这个复杂一些。 
+我想你一定已经知道，打入 ~/text 之后按 TAB 就可以补全text-browser这个长文件名吧？这是Bash 的基本功能。我废话？好了，就当你知道吧。不过今天我要讲的东西比这个复杂一些。
 </p>
 
 <p>
-Go on! 刚刚输入到这里，你突然想起，应该在 <i>usr3/software</i> 下先建立一个目录叫browsers，这样放进去的文件比较好管理。 
+Go on! 刚刚输入到这里，你突然想起，应该在 <i>usr3/software</i> 下先建立一个目录叫browsers，这样放进去的文件比较好管理。
 </p>
 
 <p>
-于是你 Ctrl-u，删掉了这行命令。唉呀，这么长的命令一下就没了。是不是有点可惜？这还不算麻烦。然后你 
+于是你 Ctrl-u，删掉了这行命令。唉呀，这么长的命令一下就没了。是不是有点可惜？这还不算麻烦。然后你
 </p>
 
 
@@ -2674,11 +2674,11 @@ mv ~/text-browser/*.tar.gz /usr3/software/browser
 
 
 <p>
-嗯。TAB 是帮了你不少忙。可是你实际上有更好的办法来完成这项工作。好吧，看看 readline 怎样神奇的完成你的任务： 
+嗯。TAB 是帮了你不少忙。可是你实际上有更好的办法来完成这项工作。好吧，看看 readline 怎样神奇的完成你的任务：
 </p>
 
 <p>
-我们回到这种情况： 
+我们回到这种情况：
 </p>
 
 
@@ -2689,11 +2689,11 @@ $mv ~/text-browser/*.tar.gz <i>usr3/software</i>
 
 
 <p>
-你刚才是按了 Ctrl-u 删除了所有输入的东西。可惜啊！你要是按 M-#(也就是按住 PC 机的 Alt 键，再按 #，实际上就是 Alt-Shift-3)，那么 Bash 就会在这样最开头插入一个 "#"，然后输入这行。这样命令就被作为一行注释载入了历史。 
+你刚才是按了 Ctrl-u 删除了所有输入的东西。可惜啊！你要是按 M-#(也就是按住 PC 机的 Alt 键，再按 #，实际上就是 Alt-Shift-3)，那么 Bash 就会在这样最开头插入一个 "#"，然后输入这行。这样命令就被作为一行注释载入了历史。
 </p>
 
 <p>
-这有什么好处？这样你的这行命令里的内容就可以被再次利用。看着：你接着输入： 
+这有什么好处？这样你的这行命令里的内容就可以被再次利用。看着：你接着输入：
 </p>
 
 
@@ -2704,11 +2704,11 @@ mkdir ...
 
 
 <p>
-等等，你是不是想输入 <i>usr3/software/？你不用再敲一遍了！直接按 M-.(Alt 加句号)，看看， /usr3 /software</i> 是不是出现在命令行上了？M-. 就是调用了 yank-last-arg 函数，把上一条命令的最后一个参数放在命令行上。好了，回车吧！ 
+等等，你是不是想输入 <i>usr3/software/？你不用再敲一遍了！直接按 M-.(Alt 加句号)，看看， /usr3 /software</i> 是不是出现在命令行上了？M-. 就是调用了 yank-last-arg 函数，把上一条命令的最后一个参数放在命令行上。好了，回车吧！
 </p>
 
 <p>
-你接着输入： 
+你接着输入：
 </p>
 
 
@@ -2719,7 +2719,7 @@ mv ...
 
 
 <p>
-等等，这下是该输入 ~/text-browser/*.tar.gz 了。烦不烦啊？换一种方式吧。请按："M-1 M-."(把上一条命令的第一个参数放在命令行上)。这样命令行成为了： 
+等等，这下是该输入 ~/text-browser/*.tar.gz 了。烦不烦啊？换一种方式吧。请按："M-1 M-."(把上一条命令的第一个参数放在命令行上)。这样命令行成为了：
 </p>
 
 
@@ -2730,7 +2730,7 @@ mv /usr3/software/browser
 
 
 <p>
-怎么成这样了？看看你的“上一条命令”是什么吧？是……你自己看。所以这个参数不是你想要的。那么继续再按一次 "M-."。看到了吧？你的命令行已经成为： 
+怎么成这样了？看看你的“上一条命令”是什么吧？是……你自己看。所以这个参数不是你想要的。那么继续再按一次 "M-."。看到了吧？你的命令行已经成为：
 </p>
 
 
@@ -2741,7 +2741,7 @@ mv ~/text-browser/*.tar.gz
 
 
 <p>
-好。打一个空格。再按一下 "M-."。命令行变成了： 
+好。打一个空格。再按一下 "M-."。命令行变成了：
 </p>
 
 
@@ -2752,11 +2752,11 @@ mv ~/text-browser/*.tar.gz /usr3/software/browser
 
 
 <p>
-这就是你想要的！ 
+这就是你想要的！
 </p>
 
 <p>
-是不是看起来你还是花了不少工夫？但是想一想，如果你是要执行这样一个命令呢？ 
+是不是看起来你还是花了不少工夫？但是想一想，如果你是要执行这样一个命令呢？
 </p>
 
 
@@ -2768,15 +2768,15 @@ mv <i>data/ftp/pub/TUG/texmf/tex/latex/CJK/GB/GB.cap \
 
 
 <p>
-嗯。记住这个有用命令：M-. ， 它的前面可以用 M-0, ... 作为数字参数。 
+嗯。记住这个有用命令：M-. ， 它的前面可以用 M-0, ... 作为数字参数。
 </p>
 
 <p>
-第二招：补全命令名，文件名和变量名 
+第二招：补全命令名，文件名和变量名
 </p>
 
 <p>
-你知道 TAB 可以补全命令行上很多东西。可是你遇到这种情况的时候怎么办？ 
+你知道 TAB 可以补全命令行上很多东西。可是你遇到这种情况的时候怎么办？
 </p>
 
 
@@ -2788,11 +2788,11 @@ man a-very-very-long-command-name
 
 
 <p>
-你输入了 man a-ver... 之后，按 TAB，什么反应也没有。因为 TAB 执行的是 “按情况补全”(complete)，它看到 man，知道这应该是一个命令，那么它认为： “后面应该是一个文件名参数。” 但是你想要的是命令的名字怎么办？答案：按 "M-!". 
+你输入了 man a-ver... 之后，按 TAB，什么反应也没有。因为 TAB 执行的是 “按情况补全”(complete)，它看到 man，知道这应该是一个命令，那么它认为： “后面应该是一个文件名参数。” 但是你想要的是命令的名字怎么办？答案：按 "M-!".
 </p>
 
 <p>
-再来看：你需要设置 XMODIFIERS="@im=fcitx"。你输入了 
+再来看：你需要设置 XMODIFIERS="@im=fcitx"。你输入了
 </p>
 
 
@@ -2803,11 +2803,11 @@ export XM...
 
 
 <p>
-按 TAB? 没有反应。为什么呢？因为 TAB 的补全想要一个文件名，而当前目录没有开头是 "XM..." 的文件。那么你怎么补全？答案："M-$"。 
+按 TAB? 没有反应。为什么呢？因为 TAB 的补全想要一个文件名，而当前目录没有开头是 "XM..." 的文件。那么你怎么补全？答案："M-$"。
 </p>
 
 <p>
-其实 readline 的补全方式被 Bash 扩充了很多。看看有多少吧！ 
+其实 readline 的补全方式被 Bash 扩充了很多。看看有多少吧！
 </p>
 
 
@@ -2823,15 +2823,15 @@ export XM...
 
 
 <p>
-自己试试吧！ 
+自己试试吧！
 </p>
 
 <p>
-第三招：扩展命令行 
+第三招：扩展命令行
 </p>
 
 <p>
-你的一个目录里有很多类似的文件，名字叫 T12.txt, T12.log, T23.txt, T23.log, T13.txt, T13.log…… 有后缀 txt 的，也有后缀 log 的。... 你想把其中的某些 T*.txt 都移动到另外一个目录，而T*.log都不动。但是T*.txt 也不是全部都要移动。所以你想把T*.txt 都放在命令行上，然后选择其中一些。你输入： 
+你的一个目录里有很多类似的文件，名字叫 T12.txt, T12.log, T23.txt, T23.log, T13.txt, T13.log…… 有后缀 txt 的，也有后缀 log 的。... 你想把其中的某些 T*.txt 都移动到另外一个目录，而T*.log都不动。但是T*.txt 也不是全部都要移动。所以你想把T*.txt 都放在命令行上，然后选择其中一些。你输入：
 </p>
 
 
@@ -2842,7 +2842,7 @@ mv T...
 
 
 <p>
-接着按 "M-*"(insert-completions)。结果 T 开头的文件都被放到命令行上了。嗯。这在某些时候是有用的，可是现在它把 T*.log 的文件也放上去了。不行。我们于是继续输入： 
+接着按 "M-*"(insert-completions)。结果 T 开头的文件都被放到命令行上了。嗯。这在某些时候是有用的，可是现在它把 T*.log 的文件也放上去了。不行。我们于是继续输入：
 </p>
 
 
@@ -2853,55 +2853,55 @@ mv T*.txt
 
 
 <p>
-好了，现在我们可以使用 "C-x*"(先按ctrl-x，然后按*)。结果所有名字T*.txt 的文件都被放到了命令行上面。"C-x*" 执行的函数叫做 glob-expand-word. 
+好了，现在我们可以使用 "C-x*"(先按ctrl-x，然后按*)。结果所有名字T*.txt 的文件都被放到了命令行上面。"C-x*" 执行的函数叫做 glob-expand-word.
 </p>
 
 <p>
-配置篇 
+配置篇
 </p>
 
 <p>
-你是不是觉得那些命令很难记住？不顺手？别怕！它们都是可以改变的，就像Emacs的键绑定那样，可以被任意的改变！ 
+你是不是觉得那些命令很难记住？不顺手？别怕！它们都是可以改变的，就像Emacs的键绑定那样，可以被任意的改变！
 </p>
 
 <p>
-所有使用readline的程序，都使用一个配置文件来决定它的行为和键绑定。这个文件一般是 INPUTRC 环境变量确定的。如果这个环境变量没有值，那么缺省使用 ~/.inputrc。 
+所有使用readline的程序，都使用一个配置文件来决定它的行为和键绑定。这个文件一般是 INPUTRC 环境变量确定的。如果这个环境变量没有值，那么缺省使用 ~/.inputrc。
 </p>
 
 <p>
-~/.inputrc 文件很简单，只有4种语句： 
+~/.inputrc 文件很简单，只有4种语句：
 </p>
 
 <p>
-1.注释 
+1.注释
 </p>
 
 <p>
-2.变量设置语句(set variable value) 
+2.变量设置语句(set variable value)
 </p>
 
 <p>
-3.键定("keyseq":function) 
+3.键定("keyseq":function)
 </p>
 
 <p>
-4.条件语句($if ... $endif) 
+4.条件语句($if ... $endif)
 </p>
 
 <p>
-我们先不说其它的，先来看看键绑定吧！ 
+我们先不说其它的，先来看看键绑定吧！
 </p>
 
 <p>
-键绑定 
+键绑定
 </p>
 
 <p>
-1.绑定语句。 
+1.绑定语句。
 </p>
 
 <p>
-你现在就可以动手设置你喜欢的控制方式。比如，我发现有些时候我需要在命令行上做上 mark(Emacs 术语)，然后把mark 和光标之间的 region(Emacs术语) 删掉，这个操作在 Emacs 里叫做kill-region. 但是我们发现这个函数在 Bash 里缺省是没有绑定的。如果我希望得到跟 Emacs 一样的绑定 C-w 的话，就把这行插入到 ~/.inputrc: 
+你现在就可以动手设置你喜欢的控制方式。比如，我发现有些时候我需要在命令行上做上 mark(Emacs 术语)，然后把mark 和光标之间的 region(Emacs术语) 删掉，这个操作在 Emacs 里叫做kill-region. 但是我们发现这个函数在 Bash 里缺省是没有绑定的。如果我希望得到跟 Emacs 一样的绑定 C-w 的话，就把这行插入到 ~/.inputrc:
 </p>
 
 
@@ -2912,15 +2912,15 @@ mv T*.txt
 
 
 <p>
-2.使绑定生效。为了使这个键绑定生效，你需要执行 re-read-init-file 函数。这个函数缺省绑定在了 "C-x C-r"。你修改 ~/.inputrc 之后在 Bash 里输入 "C-x C-r" 就可以使新的配置生效了。 
+2.使绑定生效。为了使这个键绑定生效，你需要执行 re-read-init-file 函数。这个函数缺省绑定在了 "C-x C-r"。你修改 ~/.inputrc 之后在 Bash 里输入 "C-x C-r" 就可以使新的配置生效了。
 </p>
 
 <p>
-3.列出可用的函数。 
+3.列出可用的函数。
 </p>
 
 <p>
-不过你怎么知道那些函数可以被绑定呢？readline 的 info 页列出了很多函数，可是你不会每次都去info里查询吧，很麻烦啊。其实你可以使用bash的 bind 命令来得到所有的键绑定: 
+不过你怎么知道那些函数可以被绑定呢？readline 的 info 页列出了很多函数，可是你不会每次都去info里查询吧，很麻烦啊。其实你可以使用bash的 bind 命令来得到所有的键绑定:
 </p>
 
 
@@ -2931,7 +2931,7 @@ $bind -p
 
 
 <p>
-可以显示所有现有的已经绑定和没有绑定的函数。没有被绑定的函数被显示为 "(not bound)"，并被加上了注释。就像这样： 
+可以显示所有现有的已经绑定和没有绑定的函数。没有被绑定的函数被显示为 "(not bound)"，并被加上了注释。就像这样：
 </p>
 
 
@@ -2952,11 +2952,11 @@ $bind -p
 
 
 <p>
-你可以把这个命令的输出作为一个模板，嵌入到 ~/.inputrc 文件。把你喜欢的函数绑定到方便的按键。 
+你可以把这个命令的输出作为一个模板，嵌入到 ~/.inputrc 文件。把你喜欢的函数绑定到方便的按键。
 </p>
 
 <p>
-其实 readline 有三个函数可以让你方便的查询函数，变量和宏的绑定情况，它们是： 
+其实 readline 有三个函数可以让你方便的查询函数，变量和宏的绑定情况，它们是：
 </p>
 
 
@@ -2969,22 +2969,22 @@ dump-macros
 
 
 <p>
-可是它们缺省都没有被绑定到任何按键。你可以为它们分别设置类似 "C-xf", "C-xv", "C-xm" 这样容易记忆的绑定。 
+可是它们缺省都没有被绑定到任何按键。你可以为它们分别设置类似 "C-xf", "C-xv", "C-xm" 这样容易记忆的绑定。
 </p>
 
 <p>
-4.如果忘了绑定…… 
+4.如果忘了绑定……
 </p>
 
 <p>
-这样你就可以设置你需要的绑定啦！但是你还是有可能在需要的时候突然记不起哪些键绑定可以补全。这时候你输入： 
+这样你就可以设置你需要的绑定啦！但是你还是有可能在需要的时候突然记不起哪些键绑定可以补全。这时候你输入：
 </p>
 
 
 
 <p>
 $bind -p | grep compl
-得到结果： 
+得到结果：
 "\C-i": complete
 "\M-\e": complete
 "TAB": complete
@@ -3002,43 +3002,43 @@ $bind -p | grep compl
 
 
 <p>
-这样你记不住一个键的时候就可以方便的查询，这样几次之后，你就会把自己需要的按键都记住了。 
+这样你记不住一个键的时候就可以方便的查询，这样几次之后，你就会把自己需要的按键都记住了。
 </p>
 
 <p>
-配置变量 
+配置变量
 </p>
 
 <p>
-1.体验： 
+1.体验：
 </p>
 
 <p>
-Bash 的 readline 有一些变量可以控制它的行为。比如: 
+Bash 的 readline 有一些变量可以控制它的行为。比如:
 </p>
 
 <p>
-bell-style 可以控制出错时是 audible(发出响声)，visible(闪动屏幕)，还是none(什么都不做)；editing-mode 可以控制你是用 Emacs 的输入方式还是用 vi 的； 
+bell-style 可以控制出错时是 audible(发出响声)，visible(闪动屏幕)，还是none(什么都不做)；editing-mode 可以控制你是用 Emacs 的输入方式还是用 vi 的；
 </p>
 
 <p>
-completion-query-times 的值控制在补全的个数超过多少N时，bash 提示： “Display all N possibilities? (y or n)”； 
+completion-query-times 的值控制在补全的个数超过多少N时，bash 提示： “Display all N possibilities? (y or n)”；
 </p>
 
 <p>
-如果我设置 expand-tilde 为 on，当输入“ls ~/doc”，按 TAB 时，命令行会自动变成 "ls /home/wy/doc". 
+如果我设置 expand-tilde 为 on，当输入“ls ~/doc”，按 TAB 时，命令行会自动变成 "ls /home/wy/doc".
 </p>
 
 <p>
-如果把 visible-stats 设置为 on，那么列出补全的时候，目录，可执行文件，符号连接，会被分别使用 /, *, @ 来标记，就像 ls -F 的到的结果。 
+如果把 visible-stats 设置为 on，那么列出补全的时候，目录，可执行文件，符号连接，会被分别使用 /, *, @ 来标记，就像 ls -F 的到的结果。
 </p>
 
 <p>
-2.设置： 
+2.设置：
 </p>
 
 <p>
-设置的方法极其简单，就在 ~/.inputrc 文件里写入类似语句： 
+设置的方法极其简单，就在 ~/.inputrc 文件里写入类似语句：
 </p>
 
 
@@ -3049,15 +3049,15 @@ set visible-stats on
 
 
 <p>
-然后 "C-x C-r" 使设置生效。 
+然后 "C-x C-r" 使设置生效。
 </p>
 
 <p>
-3.怎样知道有哪些设置？ 
+3.怎样知道有哪些设置？
 </p>
 
 <p>
-可以设置的参数是很多的。使用命令 
+可以设置的参数是很多的。使用命令
 </p>
 
 
@@ -3270,7 +3270,7 @@ DOMAIN=dswdev3
 <h2 id="sec-75">Golden dict</h2>
 <div class="outline-text-2" id="text-75">
 <p>
-I put the setup script in myapt. 
+I put the setup script in myapt.
 </p>
 
 <p>
@@ -3343,7 +3343,7 @@ sudo add-apt-repository ppa:user/ppa-name
 </p>
 
 <p>
-Replace ppa:user/ppa-name with the PPA's location that you noted above. 
+Replace ppa:user/ppa-name with the PPA's location that you noted above.
 </p>
 </div>
 </div>
@@ -3404,7 +3404,7 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 </p>
 
 <p>
-另外用prtconf|pg可以较全的列出系统及硬件信息 
+另外用prtconf|pg可以较全的列出系统及硬件信息
 </p>
 </div>
 </div>
@@ -3450,7 +3450,7 @@ t5y6u7i8
 </p>
 
 <p>
-/home/fvtoper/quotelogtool/checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote4 -f 2011-06-09 -t 2011-06-10 -c PRICING -u changwei@cn.ibm.com 
+/home/fvtoper/quotelogtool/checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote4 -f 2011-06-09 -t 2011-06-10 -c PRICING -u changwei@cn.ibm.com
 </p>
 </div>
 </div>
@@ -3466,13 +3466,13 @@ t5y6u7i8
 </p>
 
 <p>
-CTR+ALT+F          Toggles full-screen mode. 
+CTR+ALT+F          Toggles full-screen mode.
 </p>
 
 <pre class="example">
 sudo add-apt-repository ppa:freenx-team
 
-sudo sed -i 's/natty/lucid/g' freenx-team-ppa-natty.list 
+sudo sed -i 's/natty/lucid/g' freenx-team-ppa-natty.list
 
 wget https://bugs.launchpad.net/freenx-server/+bug/576359/+attachment/1378450/+files/nxsetup.tar.gz
 
@@ -3531,7 +3531,7 @@ ls -ls | grep libpthread-2.13.so
 cp libpthread-2.13.so /tmp/lib/libpthread.so.0
 sudo mv libpthread-2.13.so /home/will/backup
 sudo rm libpthread.so.0
-sudo cp /tmp/lib/libpthread.so.0 . 
+sudo cp /tmp/lib/libpthread.so.0 .
 </p>
 </div>
 </div>
@@ -3540,7 +3540,7 @@ sudo cp /tmp/lib/libpthread.so.0 .
 <h2 id="sec-86">Notes setup</h2>
 <div class="outline-text-2" id="text-86">
 <p>
-gedit ~/.local/share/applications/mimeapps.list 
+gedit ~/.local/share/applications/mimeapps.list
 </p>
 
 <pre class="example">
@@ -3653,7 +3653,7 @@ sudo yum install gnash-plugin.x86_64
 <h3 id="sec-89-2">Input method in notes or sametime</h3>
 <div class="outline-text-3" id="text-89-2">
 <p>
-sudo yum install ibus-gtk2.i686 
+sudo yum install ibus-gtk2.i686
 </p>
 </div>
 </div>
@@ -3661,7 +3661,7 @@ sudo yum install ibus-gtk2.i686
 <h3 id="sec-89-3">DB2</h3>
 <div class="outline-text-3" id="text-89-3">
 <p>
-IBM DB2 Enterprise Server Edition 9.7 for Linux® on AMD64 and Intel® EM64T systems (x64) English (CZ19NEN)        
+IBM DB2 Enterprise Server Edition 9.7 for Linux® on AMD64 and Intel® EM64T systems (x64) English (CZ19NEN)
 </p>
 </div>
 </div>
@@ -3706,9 +3706,9 @@ USE_STYLE="OSX"
 </li>
 <li>LiveUSB Creator can create live USB media either from an image file that you downloaded previously, as described in Section 2.1.3, “Which Files Do I Download?”, or it can download an image file from the Internet. Either:
 click the Browse button under the Use existing LiveCD label, browse to the location where you previously downloaded a Fedora Live ISO file, and select that file.
-select a Fedora Live ISO file from the drop-down menu that LiveUSB Creator presents under the Download Fedora label. Note that image files are large and that it is probably impractical to use LiveUSB Creator to download an image file if you do not have a broadband connection to the Internet. 
+select a Fedora Live ISO file from the drop-down menu that LiveUSB Creator presents under the Download Fedora label. Note that image files are large and that it is probably impractical to use LiveUSB Creator to download an image file if you do not have a broadband connection to the Internet.
 </li>
-<li>Click Create Live USB. 
+<li>Click Create Live USB.
 </li>
 </ol>
 </div>
@@ -3726,7 +3726,7 @@ vi  /etc/sudoers
 </p>
 
 <p>
-Change the last line to 
+Change the last line to
 </p>
 
 <p>
@@ -3851,13 +3851,13 @@ sudo package-cleanup --orphans &gt;/home/will/backup/f19upgrade.sh
 假定将镜像文件下载至 /opt 目录下，将其挂载到 /mnt/cdrom，并进入该目录：
 # mount -t iso9660 -o loop /opt/texliv.....iso /mnt/cdrom
 # cd /mnt/cdrom
-运行 /mnt/cdrom 目录中的 install脚本，进入 TeXLive 安装选单： 
+运行 /mnt/cdrom 目录中的 install脚本，进入 TeXLive 安装选单：
 # ./install-tl.sh
-输入 S，选择 full 安装，然后输入 R 返回主选单。 
-输入 L，选择安装的语言: 
-输入 -，所有的语言均不选中 
+输入 S，选择 full 安装，然后输入 R 返回主选单。
+输入 L，选择安装的语言:
+输入 -，所有的语言均不选中
 输入 d，选择英语和汉语
-输入 R，返回主菜单 
+输入 R，返回主菜单
 输入 I，开始安装。
 安装结束后
 $ vi ~/.bash_profile 修改PATH为:
@@ -3900,8 +3900,8 @@ Below is the real working proftpd.conf
 
 <pre class="example">
 AuthOrder                        mod_auth_file.c. mod_ldap.c
-LoadModule mod_ldap.c                                                                                                                                                           
-#LoadModule mod_auth_file.c                                                                                                                                                     
+LoadModule mod_ldap.c
+#LoadModule mod_auth_file.c
 LDAPServer bluepages.ibm.com
 LDAPDoAuth on "ou=bluepages,o=ibm.com" "(&amp;(mail=%v)(objectclass=person))"
 LDAPDefaultUID 40
@@ -3938,7 +3938,7 @@ LDAPGenerateHomedirPrefixNoUsername on
 <p>
 LDAPServer ldap://bluepages.ibm.com:389
 LDAPBindDN "c=cn,ou=bluepages,o=ibm.com" "admin_password"
-LDAPUsers c=cn,ou=bluepages,o=ibm.com (mail=%u) 
+LDAPUsers c=cn,ou=bluepages,o=ibm.com (mail=%u)
 </p>
 
 
@@ -4054,7 +4054,7 @@ eclipse.ini
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+        . /etc/bashrc
 fi
 
 # User specific aliases and functions
@@ -4360,55 +4360,55 @@ sudo nano /etc/apache2/sites-available/default
 </p>
 
 <pre class="example">
-切换程序 
+切换程序
 切换到下一个程序：Mod4 + j
 切换到上一个程序：Mod4 + k
 切换到主窗口中的第一个程序：Mod4 + Ctrl + Return
 
-切换tag 
+切换tag
 切换到上一个选择的tag：Mod4 + Esc
 切换到某个指定的tag：Mod4 + 1-9
 切换到前一个tag：Mod4 + Left
 切换到下一个tag：Mod4 + Right
 
-程序窗口状态修改 
+程序窗口状态修改
 最大化/非最大化：Mod4 + m
 浮动/平铺：Mod4 + Ctrl + Space
 最小化：Mod4 + n
 从最小化中恢复：Mod4 + Ctrl + n
 关闭程序：Mod4 + Shift + C
 
-程序窗口的转移和显示 
+程序窗口的转移和显示
 转移到某个tag：Mod4 + Shift + 1-9（或在某个tag名上按Mod4+鼠标左键）
 增加到某些tag：Mod4 + Shift + Ctrl + 1-9
 转移到下一个窗口中的位置：Mod4 + Shift + j
 转移到上一个窗口中的位置：Mod4 + Shift + k
 
-布局修改 
+布局修改
 当前程序窗口宽度增加5％：Mod4 + Shift + h
 当前程序窗口宽度减少5％：Mod4 + Shift + l
 切换到下一种布局方式：Mod4 + Space
 切换到上一种布局方式：Mod4 + Ctrl + Space
 
-窗口管理 
+窗口管理
 重启awesome：Mod4 + Ctrl + r
 退出awesome：Mod4 + Shift + q
 运行某个命令：Mod4 + r
 打开awesome菜单：Mod4 + w
 
-多显示器下的操作 
+多显示器下的操作
 切换到下一个屏幕：Mod4 + Ctrl + j
 切换到上一个屏幕：Mod4 + Ctrl + k
 将程序发送到下一个屏幕：Mod4 + o
 
-还需要寻找的操作： 
+还需要寻找的操作：
 关机
 锁定屏幕
 
 
 第一点需要知道程序的class类型。打开一个自己要的程序。在终端输入：
 [html] view plaincopy
-minghe@minghe-Inspiron-1420:~$ xprop   
+minghe@minghe-Inspiron-1420:~$ xprop
 然后用鼠标点一下你打开的那个程序。比如我打开了一个zim，然后输入xprop后点了zim一下，终端中就会有很多信息跳出来。找到
 [html] view plaincopy
 WM_CLASS(STRING) = "zim", "Zim"
@@ -4445,7 +4445,7 @@ gpgcheck=0
 name=Chromium web browser and deps - Source
 baseurl=<a href="http://repos.fedorapeople.org/repos/spot/chromium/fedora-$releasever/SRPMS/">http://repos.fedorapeople.org/repos/spot/chromium/fedora-$releasever/SRPMS/</a>
 enabled=0
-gpgcheck=0 
+gpgcheck=0
 </p>
 </div>
 </div>
@@ -4574,7 +4574,7 @@ edit /etc/proftpd.conf
 </p>
 
 <pre class="example">
-AuthOrder			 mod_auth_file.c. mod_ldap.c
+AuthOrder                        mod_auth_file.c. mod_ldap.c
 # ...
 
 # LDAP support (requires proftpd-ldap package)
@@ -4602,10 +4602,10 @@ LDAPGenerateHomedirPrefixNoUsername on
 <h3 id="sec-109-4">repository</h3>
 <div class="outline-text-3" id="text-109-4">
 <p>
-wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-40.el6.centos.noarch.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-40.el6.centos.noarch.rpm</a> 
-wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm</a>   
+wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-40.el6.centos.noarch.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-40.el6.centos.noarch.rpm</a>
+wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm</a>
 wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.30-14.el6.noarch.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.30-14.el6.noarch.rpm</a>
-wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm</a> 
+wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm</a>
 </p>
 
 <p>
@@ -4658,7 +4658,7 @@ enabled=0
 
 <p>
 [rhel_6_iso]
-name=local iso 
+name=local iso
 baseurl=<a href="file:////media/RHEL_6.3">file:////media/RHEL_6.3</a>\ x86_64\ Disc\ 1/
 gpgcheck=1
 gpgkey=<a href="file:////media/RHEL_6.3">file:////media/RHEL_6.3</a>\ x86_64\ Disc\ 1/RPM-GPG-KEY-redhat-release
@@ -4701,12 +4701,12 @@ yum localinstall --nogpgcheck <a href="http://download1.rpmfusion.org/free/el/up
 </li>
 <li>vncpasswd # pass4jazz
 </li>
-<li>vi /etc/sysconfig/vncservers 
+<li>vi /etc/sysconfig/vncservers
 </li>
 </ul>
 <p>
 VNCSERVERS=”2:ead”
-VNCSERVERARGS<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>=”-geometry 1600x900 -nolisten tcp -localhost” 
+VNCSERVERARGS<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>=”-geometry 1600x900 -nolisten tcp -localhost”
 </p>
 
 
@@ -4714,7 +4714,7 @@ VNCSERVERARGS<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a><
 <li>root@dhcppc1 ~]# vncserver
 </li>
 
-<li>[root@dhcppc1 ~]# chkconfig vncserver on 
+<li>[root@dhcppc1 ~]# chkconfig vncserver on
 </li>
 </ul>
 
@@ -4738,11 +4738,11 @@ VNCSERVERARGS<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a><
 </li>
 <li>vncserver  -geometry 1600x900  -depth 24 &amp;
 </li>
-<li>gedit ~/.vnc/xstartup 
+<li>gedit ~/.vnc/xstartup
 </li>
 </ol>
 <pre class="example">
-#twm 
+#twm
 gnome-session &amp;
 </pre>
 
@@ -4789,10 +4789,10 @@ chkconfig --del xxx
 <p>
 编辑/etc/sysconfig/vncservers，内容如下：
 view plaincopy to clipboardprint?
-VNCSERVERS="1:user1"  
-VNCSERVERARGS<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>="-geometry 1152x864"  
 VNCSERVERS="1:user1"
-VNCSERVERARGS<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>="-geometry 1152x864" 
+VNCSERVERARGS<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>="-geometry 1152x864"
+VNCSERVERS="1:user1"
+VNCSERVERARGS<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>="-geometry 1152x864"
 然后运行sudo chkconfig --level 345 vncserver on ，让VNC Server随系统自动启动最后，运行sudo /etc/init.d/vncserver start 来启动VNC Server
 </p>
 </div>
@@ -4832,7 +4832,7 @@ You can add more than one package file to the end of the command.
 <h2 id="sec-112">is not in the sudoers file</h2>
 <div class="outline-text-2" id="text-112">
 <p>
-$visudo 
+$visudo
 your_user_name ALL=(ALL)  ALL
 </p>
 </div>
@@ -4929,7 +4929,7 @@ service iptables stop # 停止服务
 <h3 id="sec-117-1">获得操作系统基本信息</h3>
 <div class="outline-text-3" id="text-117-1">
 <p>
-查看端口号使用 
+查看端口号使用
 </p>
 <pre class="example">
 netstat -tnl|grep 80
@@ -5116,8 +5116,8 @@ AddType application/x-httpd-php-source .phps
 </p>
 
 <pre class="example">
-&lt;IfModule dir_module&gt;  
-    DirectoryIndex index.html index.php  
+&lt;IfModule dir_module&gt;
+    DirectoryIndex index.html index.php
 &lt;/IfModule&gt;
 </pre>
 <p>
@@ -5204,7 +5204,7 @@ http_proxy=http://127.0.0.1:8087 emacs &amp;
 </ol>
 
 <pre class="example">
-sudo yum remove ibus  
+sudo yum remove ibus
 gsettings set org.gnome.settings-daemon.plugins.keyboard active false
 
 
@@ -5215,14 +5215,14 @@ Fedora 19安装Fcitx输入法并安装搜狗输入法资源包
 个人使用Ubuntu已经很多年了、但是只从ubuntu的界面换了之后我就一直没升级、最近新弄一块SSD硬盘、于是乎就想着安装个Fedora版本来玩玩、下载了最新版本的Fedora19。用U盘做好启动盘并安装到硬盘上之后发现系统自带的Ibus输入法非常的不好用、在Sublime Text下中文根本不能输入、于是想着换成Fcitx。
 
 1、先卸载系统自带的Ibus输入法
-sudo yum remove ibus  
+sudo yum remove ibus
 gsettings set org.gnome.settings-daemon.plugins.keyboard active false
 2、安装Fcitx输入法
 sudo yum install fcitx*
 
 3、配置一下Fcitx、在~/.bashrc中添加:如下内容
-    export GTK_IM_MODULE=fcitx  
-    export QT_IM_MODULE=fcitx  
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
     export XMODIFIERS="@im=fcitx"
 4、由于Fedora 19中取消了注销按钮、就重启下机器吧
 上面步骤完成之后其实就可以使用Fcitx输入法、不过看到搜狗输入法都已经出deb包了(sogou居然没有rpm包)
@@ -5327,7 +5327,7 @@ sudo gedit  /etc/nginx/nginx.conf &amp;
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-03-14</span>
+        <span title="last modification date" class="post-info">2014-03-18</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/端口/">端口</a>, <a href="/tags/jdretail/">jdretail</a>, <a href="/tags/采销平台/">采销平台</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
