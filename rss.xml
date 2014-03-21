@@ -4,10 +4,31 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>五, 21 3月 2014 09:49:49 CST</pubDate>
-    <lastBuildDate>五, 21 3月 2014 09:49:49 CST</lastBuildDate>
+    <pubDate>五, 21 3月 2014 10:20:54 CST</pubDate>
+    <lastBuildDate>五, 21 3月 2014 10:20:54 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>我是如何开始使用redis的</title>
+      <link>http://standino.github.io/blog/2013/12/24/redis</link>
+      <description>redis学习和入门</description>
+      <pubDate>2014-03-21</pubDate>
+      <guid>http://standino.github.io/blog/2013/12/24/redis</guid>
+    </item>
+    <item>
+      <title>JAVA</title>
+      <link>http://standino.github.io/wiki/html/java</link>
+      <description>Java Tips</description>
+      <pubDate>2014-03-21</pubDate>
+      <guid>http://standino.github.io/wiki/html/java</guid>
+    </item>
+    <item>
+      <title>linux</title>
+      <link>http://standino.github.io/wiki/html/linux</link>
+      <description>linux</description>
+      <pubDate>2014-03-21</pubDate>
+      <guid>http://standino.github.io/wiki/html/linux</guid>
+    </item>
     <item>
       <title>版本管理工具</title>
       <link>http://standino.github.io/wiki/html/vesionmanage</link>
@@ -21,13 +42,6 @@
       <description>介绍如何使用Emacs编辑J2EE程序</description>
       <pubDate>2014-03-18</pubDate>
       <guid>http://standino.github.io/blog/2014/03/15/emacs4java</guid>
-    </item>
-    <item>
-      <title>linux</title>
-      <link>http://standino.github.io/wiki/html/linux</link>
-      <description>linux</description>
-      <pubDate>2014-03-18</pubDate>
-      <guid>http://standino.github.io/wiki/html/linux</guid>
     </item>
     <item>
       <title>常用链接</title>
@@ -63,20 +77,6 @@
       <description>介绍如何使用cxf生成客户端</description>
       <pubDate>2014-03-07</pubDate>
       <guid>http://standino.github.io/blog/html/cxf</guid>
-    </item>
-    <item>
-      <title>走进Emacs殿堂</title>
-      <link>http://standino.github.io/blog/2013/12/27/enterEmacs</link>
-      <description>走进Emacs殿堂</description>
-      <pubDate>2014-03-07</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/27/enterEmacs</guid>
-    </item>
-    <item>
-      <title>怀念我的姥姥</title>
-      <link>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</link>
-      <description>怀念我的姥姥</description>
-      <pubDate>2014-03-07</pubDate>
-      <guid>http://standino.github.io/blog/2014/01/29/怀念我的姥姥/</guid>
     </item>
   </channel>
 </rss>

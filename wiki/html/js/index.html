@@ -14,7 +14,6 @@
         <h1 class="masthead-title"><a href="/">Keep going</a></h1>
         <p>努力超越自己！</p>
         <ul>
-          <li><a href="/%appdata%/">%appdata%</a></li>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/media/">Media</a></li>
           <li><a href="/tags/">Tags</a></li>
@@ -56,6 +55,12 @@
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><a href="http://www.w3cschool.cc/bootstrap/bootstrap-intro.html">Bootstrap 简介</a></h2>
 <div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><a href="https://wrapbootstrap.com/">Theme and temaplate</a>
+</li>
+<li><a href="http://reactiveraven.github.io/jqBootstrapValidation/">http://reactiveraven.github.io/jqBootstrapValidation/</a>
+</li>
+</ul>
 <p>
 Bootstrap 是一个用于快速开发 Web 应用程序和网站的前端框架。
 </p>
@@ -90,7 +95,7 @@ Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Table
 
 
 
-    <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">jQuery 1.4.x+</span>
+    <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">jQuery 1.4.x+</span>
     $.each(events.click, <span style="color: #859900;">function</span>(<span style="color: #b58900;">key</span>, <span style="color: #b58900;">handlerObject</span>) {
         console.info(handlerObject.handler);
     });
@@ -106,7 +111,7 @@ Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Table
 <div class="org-src-container">
 
 <pre class="src src-javascript">$.ajaxSetup ({
-    cache: <span style="color: #6c71c4;">false</span> <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #839496; font-style: italic;">&#20851;&#38381;AJAX&#30456;&#24212;&#30340;&#32531;&#23384;</span>
+    cache: <span style="color: #6c71c4;">false</span> <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #93a1a1; font-style: italic;">&#20851;&#38381;AJAX&#30456;&#24212;&#30340;&#32531;&#23384;</span>
 });
 </pre>
 </div>
@@ -181,13 +186,13 @@ Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Table
                 <span style="color: #6c71c4;">this</span>.element.css({background: greenlevels[level]});
                 <span style="color: #6c71c4;">this</span>._trigger(<span style="color: #2aa198;">'change'</span>, 0, level);
         },
-        <span style="color: #268bd2;">_init</span>: <span style="color: #859900;">function</span>() { <span style="color: #6c71c4;">this</span>.setLevel(<span style="color: #6c71c4;">this</span>.getLevel()); }, <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">grab the default value and use it</span>
+        <span style="color: #268bd2;">_init</span>: <span style="color: #859900;">function</span>() { <span style="color: #6c71c4;">this</span>.setLevel(<span style="color: #6c71c4;">this</span>.getLevel()); }, <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">grab the default value and use it</span>
         <span style="color: #268bd2;">darker</span>: <span style="color: #859900;">function</span>() { <span style="color: #6c71c4;">this</span>.setLevel(<span style="color: #6c71c4;">this</span>.getLevel()-1); },
         <span style="color: #268bd2;">lighter</span>: <span style="color: #859900;">function</span>() { <span style="color: #6c71c4;">this</span>.setLevel(<span style="color: #6c71c4;">this</span>.getLevel()+1); },
         <span style="color: #268bd2;">off</span>: <span style="color: #859900;">function</span>() {
                 <span style="color: #6c71c4;">this</span>.element.css({background: <span style="color: #2aa198;">'none'</span>});
                 <span style="color: #6c71c4;">this</span>._trigger(<span style="color: #2aa198;">'done'</span>);
-                <span style="color: #6c71c4;">this</span>.destroy(); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">use the predefined function</span>
+                <span style="color: #6c71c4;">this</span>.destroy(); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">use the predefined function</span>
         },
         options: {
                 level: 15,
@@ -205,11 +210,11 @@ $.widget(<span style="color: #2aa198;">"ui.green5"</span>, Green5);
 </div>
 <div class="org-src-container">
 
-<pre class="src src-javascript"><span style="color: #93a1a1; font-style: italic;">//  </span><span style="color: #839496; font-style: italic;">The on button above does the following:</span>
+<pre class="src src-javascript"><span style="color: #93a1a1; font-style: italic;">//  </span><span style="color: #93a1a1; font-style: italic;">The on button above does the following:</span>
 $(<span style="color: #2aa198;">'.target'</span>).green5({
-        <span style="color: #268bd2;">change</span>: <span style="color: #859900;">function</span>(<span style="color: #b58900;">event</span>, <span style="color: #b58900;">level</span>) { $(<span style="color: #2aa198;">'.level'</span>, <span style="color: #6c71c4;">this</span>).text(level); } <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">callback to handle change event</span>
+        <span style="color: #268bd2;">change</span>: <span style="color: #859900;">function</span>(<span style="color: #b58900;">event</span>, <span style="color: #b58900;">level</span>) { $(<span style="color: #2aa198;">'.level'</span>, <span style="color: #6c71c4;">this</span>).text(level); } <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">callback to handle change event</span>
 });
-$(<span style="color: #2aa198;">'.target'</span>).bind(<span style="color: #2aa198;">'green5done'</span>, <span style="color: #859900;">function</span>() { $(<span style="color: #2aa198;">'.level'</span>, <span style="color: #6c71c4;">this</span>).text(<span style="color: #2aa198;">'undefined'</span>);alert(<span style="color: #2aa198;">'bye!'</span>) }); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">event handler for done event</span>
+$(<span style="color: #2aa198;">'.target'</span>).bind(<span style="color: #2aa198;">'green5done'</span>, <span style="color: #859900;">function</span>() { $(<span style="color: #2aa198;">'.level'</span>, <span style="color: #6c71c4;">this</span>).text(<span style="color: #2aa198;">'undefined'</span>);alert(<span style="color: #2aa198;">'bye!'</span>) }); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">event handler for done event</span>
 </pre>
 </div>
 </div>
@@ -239,19 +244,19 @@ Let's add some mouse control to our greenerizer:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-javascript">Green6 = $.extend({}, $.ui.green5.<span style="color: #6c71c4;">prototype</span>, { <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">leave the old Green5 alone; create a new object</span>
+<pre class="src src-javascript">Green6 = $.extend({}, $.ui.green5.<span style="color: #6c71c4;">prototype</span>, { <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">leave the old Green5 alone; create a new object</span>
         <span style="color: #268bd2;">_init</span>: <span style="color: #859900;">function</span>(){
-                $.ui.green5.<span style="color: #6c71c4;">prototype</span>._init.call(<span style="color: #6c71c4;">this</span>); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">call the original function</span>
-                <span style="color: #6c71c4;">this</span>._mouseInit(); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">start up the mouse handling</span>
+                $.ui.green5.<span style="color: #6c71c4;">prototype</span>._init.call(<span style="color: #6c71c4;">this</span>); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">call the original function</span>
+                <span style="color: #6c71c4;">this</span>._mouseInit(); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">start up the mouse handling</span>
         },
         <span style="color: #268bd2;">destroy</span>: <span style="color: #859900;">function</span>(){
                 <span style="color: #6c71c4;">this</span>._mouseDestroy();
-                $.ui.green5.<span style="color: #6c71c4;">prototype</span>.destroy.call(<span style="color: #6c71c4;">this</span>); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">call the original function</span>
+                $.ui.green5.<span style="color: #6c71c4;">prototype</span>.destroy.call(<span style="color: #6c71c4;">this</span>); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">call the original function</span>
         },
-        <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">need to override the mouse functions</span>
+        <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">need to override the mouse functions</span>
         <span style="color: #268bd2;">_mouseStart</span>: <span style="color: #859900;">function</span>(<span style="color: #b58900;">e</span>){
-                <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">keep track of where the mouse started</span>
-                <span style="color: #6c71c4;">this</span>.xStart = e.pageX; <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #839496; font-style: italic;">not in the options object; this is not something that can be initialized by the user</span>
+                <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">keep track of where the mouse started</span>
+                <span style="color: #6c71c4;">this</span>.xStart = e.pageX; <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">not in the options object; this is not something that can be initialized by the user</span>
                 <span style="color: #6c71c4;">this</span>.levelStart = <span style="color: #6c71c4;">this</span>.options.level;
         },
         <span style="color: #268bd2;">_mouseDrag</span>: <span style="color: #859900;">function</span>(<span style="color: #b58900;">e</span>){
@@ -306,13 +311,69 @@ API: <a href="http://developer.piwik.org/api-reference/tracking-javascript#where
 </p>
 </div>
 </div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Node.js</h2>
+<div class="outline-text-2" id="text-11">
+<ol class="org-ol">
+<li>在Windows下安装Node.js、npm、express <a href="http://blog.uifanr.com/2013/03/12/472">http://blog.uifanr.com/2013/03/12/472</a>
+</li>
+</ol>
+</div>
+<div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><a href="http://getkickstrap.com/docs.html#/first-steps">kickstrap</a></h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+<a href="https://www.firebase.com/tutorial/#session/va7gdy2y5s0">https://www.firebase.com/tutorial/#session/va7gdy2y5s0</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">ajax 乱码</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+encodeURIComponent(
+</p>
+
+<pre class="example">
+$.ajax({
+  url: "/contact/list?keyword="+encodeURIComponent(keyword)+"&amp;pageNum="+page,
+  dataType : "json",
+  success : function(data) {
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">表格截断</h2>
+<div class="outline-text-2" id="text-13">
+<ol class="org-ol">
+<li><a href="http://www.045d.com/post/461.html">http://www.045d.com/post/461.html</a>
+</li>
+<li><a href="http://www.cftea.com/c/2010/12/UVBUCD0J888L2XPQ.asp">http://www.cftea.com/c/2010/12/UVBUCD0J888L2XPQ.asp</a>
+</li>
+</ol>
+
+<p>
+《
+       .notice-td { overflow:hidden;white-space:nowrap;word-break:keep-all;  }
+</p>
+</div>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">autocompte</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+<a href="http://jqueryui.com/autocomplete/#multiple-remote">http://jqueryui.com/autocomplete/#multiple-remote</a>
+</p>
+</div>
+</div>
 
 </div>
 </div>
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-02-07</span>
+        <span title="last modification date" class="post-info">2014-03-12</span>
         <span title="tags" class="post-info"><a href="/tags/js/">js</a>, <a href="/tags/jquery/">jquery</a>, <a href="/tags/dojo/">dojo</a>, <a href="/tags/ajax/">ajax</a>, <a href="/tags/定位元素/">定位元素</a>, <a href="/tags/调试/">调试</a>, <a href="/tags/piwik/">piwik</a>, <a href="/tags/网站统计/">网站统计</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
@@ -347,7 +408,7 @@ API: <a href="http://developer.piwik.org/api-reference/tracking-javascript#where
       <div class="footer">
         <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
         <p>
-          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          Copyright &copy; 2012 - 2014 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
         </p>
