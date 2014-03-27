@@ -7,6 +7,7 @@
     <meta name="description" content="redis学习和入门" />
     <meta name="keywords" content="缓存, redis" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
   <body class="container">
     <div>
@@ -246,17 +247,17 @@ Shell脚本需要7个参数：
 <div class="org-src-container">
 
 <pre class="src src-sh">redis 127.0.0.1:6379&gt; info
-<span style="color: #93a1a1; font-style: italic;"># </span><span style="color: #93a1a1; font-style: italic;">Server</span>
+# Server
 redis_version:2.6.16
 redis_git_sha1:00000000
 ....
-<span style="color: #93a1a1; font-style: italic;"># </span><span style="color: #93a1a1; font-style: italic;">Clients</span>
+# Clients
 connected_clients:2
 client_longest_output_list:0
 client_biggest_input_buf:0
 blocked_clients:0
 
-<span style="color: #93a1a1; font-style: italic;"># </span><span style="color: #93a1a1; font-style: italic;">Memory</span>
+# Memory
 used_memory:624864
 used_memory_human:610.22K
 used_memory_rss:1708032
@@ -290,13 +291,13 @@ mem_allocator:libc
 <div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
 
-<pre class="src src-xml">&lt;<span style="color: #268bd2;">dependency</span>&gt;
-          &lt;<span style="color: #268bd2;">groupId</span>&gt;redis.clients&lt;/<span style="color: #268bd2;">groupId</span>&gt;
-          &lt;<span style="color: #268bd2;">artifactId</span>&gt;jedis&lt;/<span style="color: #268bd2;">artifactId</span>&gt;
-          &lt;<span style="color: #268bd2;">version</span>&gt;2.2.1&lt;/<span style="color: #268bd2;">version</span>&gt;
-          &lt;<span style="color: #268bd2;">type</span>&gt;jar&lt;/<span style="color: #268bd2;">type</span>&gt;
-          &lt;<span style="color: #268bd2;">scope</span>&gt;compile&lt;/<span style="color: #268bd2;">scope</span>&gt;
-&lt;/<span style="color: #268bd2;">dependency</span>&gt;
+<pre class="src src-xml">&lt;dependency&gt;
+          &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+          &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+          &lt;version&gt;2.2.1&lt;/version&gt;
+          &lt;type&gt;jar&lt;/type&gt;
+          &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
 </pre>
 </div>
 </div>
@@ -306,23 +307,23 @@ mem_allocator:libc
 <div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span>( <span style="color: #b58900;">String</span>[] <span style="color: #b58900;">args</span> )
+<pre class="src src-java">public static void main( String[] args )
     {
-        <span style="color: #b58900;">Jedis</span> <span style="color: #b58900;">jedis</span> = <span style="color: #859900;">new</span> <span style="color: #b58900;">Jedis</span>(<span style="color: #2aa198;">"192.168.232.116"</span>);
-        jedis.set(<span style="color: #2aa198;">"foo"</span>, <span style="color: #2aa198;">"bar"</span>);
+        Jedis jedis = new Jedis("192.168.232.116");
+        jedis.set("foo", "bar");
 
-        <span style="color: #b58900;">String</span> <span style="color: #b58900;">value</span> = jedis.get(<span style="color: #2aa198;">"foo"</span>);
-        System.out.println(<span style="color: #2aa198;">"get from redis:"</span>+value);
+        String value = jedis.get("foo");
+        System.out.println("get from redis:"+value);
 
-        jedis.hset(<span style="color: #2aa198;">"ProdSort:1"</span>, <span style="color: #2aa198;">"fatherid"</span>, <span style="color: #2aa198;">"123"</span>);
+        jedis.hset("ProdSort:1", "fatherid", "123");
 
-        value =  jedis.hget(<span style="color: #2aa198;">"ProdSort:1"</span>, <span style="color: #2aa198;">"fatherid"</span>);
+        value =  jedis.hget("ProdSort:1", "fatherid");
 
-        System.out.println(<span style="color: #2aa198;">"get from redis:"</span>+value);
+        System.out.println("get from redis:"+value);
 
-<span style="color: #93a1a1; font-style: italic;">//        </span><span style="color: #93a1a1; font-style: italic;">for( Map i: jedis.hgetAll("ProdSort:1")) {</span>
-<span style="color: #93a1a1; font-style: italic;">//</span>
-<span style="color: #93a1a1; font-style: italic;">//        </span><span style="color: #93a1a1; font-style: italic;">}</span>
+//        for( Map i: jedis.hgetAll("ProdSort:1")) {
+//
+//        }
     }
 </pre>
 </div>
@@ -375,6 +376,9 @@ mem_allocator:libc
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
       <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-46515756-1']);
@@ -386,7 +390,7 @@ mem_allocator:libc
         })();
       </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
           Copyright &copy; 2012 - 2014 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
@@ -394,6 +398,5 @@ mem_allocator:libc
         </p>
       </div>
     </div>
-
   </body>
 </html>

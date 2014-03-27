@@ -7,6 +7,7 @@
     <meta name="description" content="sonar的安装和使用" />
     <meta name="keywords" content="code review, sonar, coding" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
   <body class="container">
     <div>
@@ -65,37 +66,37 @@ settings.xml
 
 <div class="org-src-container">
 
-<pre class="src src-xml">&lt;?<span style="color: #859900;">xml</span> <span style="color: #b58900;">version</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">1.0</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">encoding</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">UTF-8</span><span style="color: #2aa198;">"</span>?&gt;
-&lt;<span style="color: #268bd2;">settings</span>
-    <span style="color: #6c71c4;">xsi</span>:<span style="color: #b58900;">schemaLocation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd</span><span style="color: #2aa198;">"</span>
-    <span style="color: #6c71c4;">xmlns</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://maven.apache.org/SETTINGS/1.0.0</span><span style="color: #2aa198;">"</span> <span style="color: #6c71c4;">xmlns</span>:<span style="color: #b58900;">xsi</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #2aa198;">"</span>&gt;
-  &lt;<span style="color: #268bd2;">profiles</span>&gt;
+<pre class="src src-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;settings
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"
+    xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;profiles&gt;
 
-   &lt;<span style="color: #268bd2;">profile</span>&gt;
-      &lt;<span style="color: #268bd2;">id</span>&gt;sonar&lt;/<span style="color: #268bd2;">id</span>&gt;
-    &lt;<span style="color: #268bd2;">activation</span>&gt;
-      &lt;<span style="color: #268bd2;">activeByDefault</span>&gt;true&lt;/<span style="color: #268bd2;">activeByDefault</span>&gt;
-    &lt;/<span style="color: #268bd2;">activation</span>&gt;
-    &lt;<span style="color: #268bd2;">properties</span>&gt;
-      <span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #93a1a1; font-style: italic;"> Example for MySQL</span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
-      &lt;<span style="color: #268bd2;">sonar.jdbc.url</span>&gt;
+   &lt;profile&gt;
+      &lt;id&gt;sonar&lt;/id&gt;
+    &lt;activation&gt;
+      &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+    &lt;/activation&gt;
+    &lt;properties&gt;
+      &lt;!-- Example for MySQL--&gt;
+      &lt;sonar.jdbc.url&gt;
         jdbc:h2:tcp://localhost:9092/sonar
-      &lt;/<span style="color: #268bd2;">sonar.jdbc.url</span>&gt;
-      &lt;<span style="color: #268bd2;">sonar.jdbc.username</span>&gt;sonar&lt;/<span style="color: #268bd2;">sonar.jdbc.username</span>&gt;
-      &lt;<span style="color: #268bd2;">sonar.jdbc.password</span>&gt;sonar&lt;/<span style="color: #268bd2;">sonar.jdbc.password</span>&gt;
+      &lt;/sonar.jdbc.url&gt;
+      &lt;sonar.jdbc.username&gt;sonar&lt;/sonar.jdbc.username&gt;
+      &lt;sonar.jdbc.password&gt;sonar&lt;/sonar.jdbc.password&gt;
 
-      <span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #93a1a1; font-style: italic;"> Optional URL to server. Default value is http://localhost:9000 </span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
-      &lt;<span style="color: #268bd2;">sonar.host.url</span>&gt;
+      &lt;!-- Optional URL to server. Default value is http://localhost:9000 --&gt;
+      &lt;sonar.host.url&gt;
         http://localhost:9000
-      &lt;/<span style="color: #268bd2;">sonar.host.url</span>&gt;
-    &lt;/<span style="color: #268bd2;">properties</span>&gt;
-    &lt;<span style="color: #268bd2;">configuration</span>&gt;
-      &lt;<span style="color: #268bd2;">argLine</span>&gt;-Xmx1024m&lt;/<span style="color: #268bd2;">argLine</span>&gt;
-    &lt;/<span style="color: #268bd2;">configuration</span>&gt;
-  &lt;/<span style="color: #268bd2;">profile</span>&gt;
-&lt;/<span style="color: #268bd2;">profiles</span>&gt;
+      &lt;/sonar.host.url&gt;
+    &lt;/properties&gt;
+    &lt;configuration&gt;
+      &lt;argLine&gt;-Xmx1024m&lt;/argLine&gt;
+    &lt;/configuration&gt;
+  &lt;/profile&gt;
+&lt;/profiles&gt;
 
-&lt;/<span style="color: #268bd2;">settings</span>&gt;
+&lt;/settings&gt;
 </pre>
 </div>
 </div>
@@ -150,6 +151,9 @@ mvn sonar:sonar
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
       <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-46515756-1']);
@@ -161,7 +165,7 @@ mvn sonar:sonar
         })();
       </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
           Copyright &copy; 2012 - 2014 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
@@ -169,6 +173,5 @@ mvn sonar:sonar
         </p>
       </div>
     </div>
-
   </body>
 </html>

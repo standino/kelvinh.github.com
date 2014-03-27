@@ -7,6 +7,7 @@
     <meta name="description" content="mvn" />
     <meta name="keywords" content="mvn" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
   <body class="container">
     <div>
@@ -129,27 +130,27 @@ mvn archetype:generate   -DarchetypeArtifactId=maven-archetype-webapp   -DgroupI
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 
-<pre class="src src-xml">    &lt;<span style="color: #268bd2;">plugin</span>&gt;
-            &lt;<span style="color: #268bd2;">groupId</span>&gt;org.mortbay.jetty&lt;/<span style="color: #268bd2;">groupId</span>&gt;
-            &lt;<span style="color: #268bd2;">artifactId</span>&gt;jetty-maven-plugin&lt;/<span style="color: #268bd2;">artifactId</span>&gt;
-            &lt;<span style="color: #268bd2;">version</span>&gt;8.1.9.v20130131&lt;/<span style="color: #268bd2;">version</span>&gt;
-            &lt;<span style="color: #268bd2;">configuration</span>&gt;
-&lt;<span style="color: #268bd2;">contextXml</span>&gt;${basedir}/src/main/webapp/WEB-INF/jetty-context.xml&lt;/<span style="color: #268bd2;">contextXml</span>&gt;
-                    &lt;<span style="color: #268bd2;">stopKey</span>&gt;CTRL+C&lt;/<span style="color: #268bd2;">stopKey</span>&gt;
-                    &lt;<span style="color: #268bd2;">stopPort</span>&gt;8999&lt;/<span style="color: #268bd2;">stopPort</span>&gt;
-                    &lt;<span style="color: #268bd2;">scanIntervalSeconds</span>&gt;10&lt;/<span style="color: #268bd2;">scanIntervalSeconds</span>&gt;
-                    &lt;<span style="color: #268bd2;">webAppConfig</span>&gt;
-                            &lt;<span style="color: #268bd2;">contextPath</span>&gt;/&lt;/<span style="color: #268bd2;">contextPath</span>&gt;
-                    &lt;/<span style="color: #268bd2;">webAppConfig</span>&gt;
-                    &lt;<span style="color: #268bd2;">connectors</span>&gt;
-                      &lt;<span style="color: #268bd2;">connector</span> <span style="color: #b58900;">implementation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">org.eclipse.jetty.server.nio.SelectChannelConnector</span><span style="color: #2aa198;">"</span>&gt;
-                        &lt;<span style="color: #268bd2;">port</span>&gt;9090&lt;/<span style="color: #268bd2;">port</span>&gt;
-                        &lt;<span style="color: #268bd2;">maxIdleTime</span>&gt;60000&lt;/<span style="color: #268bd2;">maxIdleTime</span>&gt;
-                      &lt;/<span style="color: #268bd2;">connector</span>&gt;
-                    &lt;/<span style="color: #268bd2;">connectors</span>&gt;
+<pre class="src src-xml">    &lt;plugin&gt;
+            &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
+            &lt;artifactId&gt;jetty-maven-plugin&lt;/artifactId&gt;
+            &lt;version&gt;8.1.9.v20130131&lt;/version&gt;
+            &lt;configuration&gt;
+&lt;contextXml&gt;${basedir}/src/main/webapp/WEB-INF/jetty-context.xml&lt;/contextXml&gt;
+                    &lt;stopKey&gt;CTRL+C&lt;/stopKey&gt;
+                    &lt;stopPort&gt;8999&lt;/stopPort&gt;
+                    &lt;scanIntervalSeconds&gt;10&lt;/scanIntervalSeconds&gt;
+                    &lt;webAppConfig&gt;
+                            &lt;contextPath&gt;/&lt;/contextPath&gt;
+                    &lt;/webAppConfig&gt;
+                    &lt;connectors&gt;
+                      &lt;connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector"&gt;
+                        &lt;port&gt;9090&lt;/port&gt;
+                        &lt;maxIdleTime&gt;60000&lt;/maxIdleTime&gt;
+                      &lt;/connector&gt;
+                    &lt;/connectors&gt;
 
-            &lt;/<span style="color: #268bd2;">configuration</span>&gt;
-    &lt;/<span style="color: #268bd2;">plugin</span>&gt;
+            &lt;/configuration&gt;
+    &lt;/plugin&gt;
 </pre>
 </div>
 
@@ -159,16 +160,16 @@ jetty-context.xml
 
 <div class="org-src-container">
 
-<pre class="src src-xml">&lt;?<span style="color: #859900;">xml</span> <span style="color: #b58900;">version</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">1.0</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">encoding</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">ISO-8859-1</span><span style="color: #2aa198;">"</span>?&gt;
-&lt;!<span style="color: #859900;">DOCTYPE</span> Configure <span style="color: #859900;">PUBLIC</span> <span style="color: #d33682;">"</span><span style="color: #d33682;">-//Mort Bay Consulting//DTD Configure//EN</span><span style="color: #d33682;">"</span>
-        <span style="color: #d33682;">"</span><span style="color: #d33682;">http://www.eclipse.org/jetty/configure.dtd</span><span style="color: #d33682;">"</span>&gt;
+<pre class="src src-xml">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN"
+        "http://www.eclipse.org/jetty/configure.dtd"&gt;
 
-&lt;<span style="color: #268bd2;">Configure</span> <span style="color: #b58900;">class</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">org.eclipse.jetty.webapp.WebAppContext</span><span style="color: #2aa198;">"</span>&gt;
-    &lt;<span style="color: #268bd2;">Call</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">setAttribute</span><span style="color: #2aa198;">"</span>&gt;
-        &lt;<span style="color: #268bd2;">Arg</span>&gt;org.eclipse.jetty.server.webapp.WebInfIncludeJarPattern&lt;/<span style="color: #268bd2;">Arg</span>&gt;
-        &lt;<span style="color: #268bd2;">Arg</span>&gt;.*/.*jsp-api-[^/]\.jar$|./.*jsp-[^/]\.jar$|./.*taglibs[^/]*\.jar$&lt;/<span style="color: #268bd2;">Arg</span>&gt;
-    &lt;/<span style="color: #268bd2;">Call</span>&gt;
-&lt;/<span style="color: #268bd2;">Configure</span>&gt;
+&lt;Configure class="org.eclipse.jetty.webapp.WebAppContext"&gt;
+    &lt;Call name="setAttribute"&gt;
+        &lt;Arg&gt;org.eclipse.jetty.server.webapp.WebInfIncludeJarPattern&lt;/Arg&gt;
+        &lt;Arg&gt;.*/.*jsp-api-[^/]\.jar$|./.*jsp-[^/]\.jar$|./.*taglibs[^/]*\.jar$&lt;/Arg&gt;
+    &lt;/Call&gt;
+&lt;/Configure&gt;
 </pre>
 </div>
 </div>
@@ -201,6 +202,9 @@ jetty-context.xml
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
       <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-46515756-1']);
@@ -212,7 +216,7 @@ jetty-context.xml
         })();
       </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
           Copyright &copy; 2012 - 2014 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
@@ -220,6 +224,5 @@ jetty-context.xml
         </p>
       </div>
     </div>
-
   </body>
 </html>

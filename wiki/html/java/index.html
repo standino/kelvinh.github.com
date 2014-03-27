@@ -7,6 +7,7 @@
     <meta name="description" content="Java Tips" />
     <meta name="keywords" content="java" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
   <body class="container">
     <div>
@@ -59,23 +60,23 @@ applicationContext.xml
 
 <div class="org-src-container">
 
-<pre class="src src-xml">&lt;?<span style="color: #859900;">xml</span> <span style="color: #b58900;">version</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">1.0</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">encoding</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">UTF-8</span><span style="color: #2aa198;">"</span>?&gt;
-&lt;<span style="color: #268bd2;">beans</span> <span style="color: #6c71c4;">xmlns</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://www.springframework.org/schema/beans</span><span style="color: #2aa198;">"</span>
-        <span style="color: #6c71c4;">xmlns</span>:<span style="color: #b58900;">xsi</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #2aa198;">"</span> <span style="color: #6c71c4;">xmlns</span>:<span style="color: #b58900;">context</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://www.springframework.org/schema/context</span><span style="color: #2aa198;">"</span>
-                <span style="color: #6c71c4;">xsi</span>:<span style="color: #b58900;">schemaLocation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span>
-<span style="color: #2aa198;">        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd</span>
-<span style="color: #2aa198;">        </span><span style="color: #2aa198;">"</span>&gt;
+<pre class="src src-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+                xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        "&gt;
 
-        <span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #93a1a1; font-style: italic;"> &#20351;Spring&#25903;&#25345;&#33258;&#21160;&#26816;&#27979;&#32452;&#20214;&#65292;&#22914;&#27880;&#35299;&#30340;Controller </span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
-        &lt;<span style="color: #6c71c4;">context</span>:<span style="color: #268bd2;">annotation-config</span> /&gt;
+        &lt;!-- 使Spring支持自动检测组件，如注解的Controller --&gt;
+        &lt;context:annotation-config /&gt;
 
-        &lt;<span style="color: #6c71c4;">context</span>:<span style="color: #268bd2;">component-scan</span> <span style="color: #b58900;">base-package</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">com.mycompany.pbs</span><span style="color: #2aa198;">"</span>/&gt;
+        &lt;context:component-scan base-package="com.mycompany.pbs"/&gt;
 
-        &lt;<span style="color: #268bd2;">import</span> <span style="color: #b58900;">resource</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">applicationContext-datasource.xml</span><span style="color: #2aa198;">"</span>/&gt;
-        &lt;<span style="color: #268bd2;">import</span> <span style="color: #b58900;">resource</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">applicationContext-service.xml</span><span style="color: #2aa198;">"</span>/&gt;
-        &lt;<span style="color: #268bd2;">import</span> <span style="color: #b58900;">resource</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">applicationContext-schedule.xml</span><span style="color: #2aa198;">"</span> /&gt;
-        &lt;<span style="color: #268bd2;">import</span> <span style="color: #b58900;">resource</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">spring-monitor.xml</span><span style="color: #2aa198;">"</span> /&gt;
-&lt;/<span style="color: #268bd2;">beans</span>&gt;
+        &lt;import resource="applicationContext-datasource.xml"/&gt;
+        &lt;import resource="applicationContext-service.xml"/&gt;
+        &lt;import resource="applicationContext-schedule.xml" /&gt;
+        &lt;import resource="spring-monitor.xml" /&gt;
+&lt;/beans&gt;
 </pre>
 </div>
 </div>
@@ -85,20 +86,20 @@ applicationContext.xml
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
 
-<pre class="src src-xml">    &lt;<span style="color: #268bd2;">bean</span> <span style="color: #b58900;">id</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">propertyConfigurer</span><span style="color: #2aa198;">"</span>
-            <span style="color: #b58900;">class</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">org.springframework.beans.factory.config.PropertyPlaceholderConfigurer</span><span style="color: #2aa198;">"</span>&gt;
-            &lt;<span style="color: #268bd2;">property</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">locations</span><span style="color: #2aa198;">"</span>&gt;
-                    &lt;<span style="color: #268bd2;">list</span>&gt;
-                            &lt;<span style="color: #268bd2;">value</span>&gt;classpath:mycompanybc.properties&lt;/<span style="color: #268bd2;">value</span>&gt;
-                            &lt;<span style="color: #268bd2;">value</span>&gt;classpath:important.properties&lt;/<span style="color: #268bd2;">value</span>&gt;
-                            &lt;<span style="color: #268bd2;">value</span>&gt;classpath:app.properties&lt;/<span style="color: #268bd2;">value</span>&gt;
-                    &lt;/<span style="color: #268bd2;">list</span>&gt;
-            &lt;/<span style="color: #268bd2;">property</span>&gt;
-    &lt;/<span style="color: #268bd2;">bean</span>&gt;
+<pre class="src src-xml">    &lt;bean id="propertyConfigurer"
+            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+            &lt;property name="locations"&gt;
+                    &lt;list&gt;
+                            &lt;value&gt;classpath:mycompanybc.properties&lt;/value&gt;
+                            &lt;value&gt;classpath:important.properties&lt;/value&gt;
+                            &lt;value&gt;classpath:app.properties&lt;/value&gt;
+                    &lt;/list&gt;
+            &lt;/property&gt;
+    &lt;/bean&gt;
 
-&lt;<span style="color: #268bd2;">bean</span> <span style="color: #b58900;">id</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">jedis</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">class</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">redis.clients.jedis.Jedis</span><span style="color: #2aa198;">"</span>&gt;
-    &lt;<span style="color: #268bd2;">constructor-arg</span> <span style="color: #b58900;">value</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">${redis.server.ip}</span><span style="color: #2aa198;">"</span>/&gt;
-&lt;/<span style="color: #268bd2;">bean</span>&gt;
+&lt;bean id="jedis" class="redis.clients.jedis.Jedis"&gt;
+    &lt;constructor-arg value="${redis.server.ip}"/&gt;
+&lt;/bean&gt;
 </pre>
 </div>
 </div>
@@ -108,13 +109,13 @@ applicationContext.xml
 <div class="outline-text-4" id="text-1-1-3">
 <div class="org-src-container">
 
-<pre class="src src-java">@Scheduled(cron = <span style="color: #2aa198;">"${data.sync.cron.expression}"</span>)
-    <span style="color: #da70d6;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">syncData</span>() {
+<pre class="src src-java">@Scheduled(cron = "${data.sync.cron.expression}")
+    public void syncData() {
 
     }
 
-    <span style="color: #da70d6;">public</span> <span style="color: #da70d6;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">String</span>[] <span style="color: #b58900;">args</span>) {
-        <span style="color: #859900;">new</span> <span style="color: #b58900;">ClassPathXmlApplicationContext</span>(<span style="color: #2aa198;">"/spring/applicationContext.xml"</span>, DataSyncWorker.<span style="color: #859900;">class</span>);
+    public static void main(String[] args) {
+        new ClassPathXmlApplicationContext("/spring/applicationContext.xml", DataSyncWorker.class);
     }
 </pre>
 </div>
@@ -129,12 +130,12 @@ applicationContext.xml
 <div class="outline-text-4" id="text-1-2-1">
 <div class="org-src-container">
 
-<pre class="src src-java">@RequestMapping(value = {<span style="color: #2aa198;">"/"</span>,<span style="color: #2aa198;">"/index"</span>}, method = <span style="color: #6c71c4;">RequestMethod</span>.<span style="color: #5f9ea0;">GET</span>)
-    <span style="color: #da70d6;">public</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">index</span>(
-            @RequestParam(value = <span style="color: #2aa198;">"locale"</span>, required = <span style="color: #5f9ea0;">false</span>) <span style="color: #b58900;">Locale</span> <span style="color: #b58900;">locale</span>,
-            <span style="color: #b58900;">HttpServletRequest</span> <span style="color: #b58900;">request</span>,
-            <span style="color: #b58900;">HttpServletResponse</span> <span style="color: #b58900;">response</span>, <span style="color: #b58900;">ModelMap</span> <span style="color: #b58900;">view</span>) {
-        <span style="color: #859900;">if</span> (locale != <span style="color: #5f9ea0;">null</span>) {
+<pre class="src src-java">@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
+    public String index(
+            @RequestParam(value = "locale", required = false) Locale locale,
+            HttpServletRequest request,
+            HttpServletResponse response, ModelMap view) {
+        if (locale != null) {
             localeResolver.setLocale(request, response, locale);
 
         }
@@ -810,16 +811,16 @@ URL映射和拦截器配置:{servletName}-servlet.xml
 </p>
 <div class="org-src-container">
 
-<pre class="src src-xml"><span style="color: #93a1a1; font-style: italic;">&lt;!--</span><span style="color: #93a1a1; font-style: italic;"> url mapping with interceptor </span><span style="color: #93a1a1; font-style: italic;">--&gt;</span>
-    &lt;<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">interceptors</span>&gt;
+<pre class="src src-xml">&lt;!-- url mapping with interceptor --&gt;
+    &lt;mvc:interceptors&gt;
 
-            &lt;<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">interceptor</span>&gt;
-        &lt;<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">mapping</span> <span style="color: #b58900;">path</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">/index/**</span><span style="color: #2aa198;">"</span> /&gt;
-        &lt;<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">mapping</span> <span style="color: #b58900;">path</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">/return/**</span><span style="color: #2aa198;">"</span> /&gt;
-                    &lt;<span style="color: #268bd2;">ref</span> <span style="color: #b58900;">bean</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">_tLoginContextInterceptor</span><span style="color: #2aa198;">"</span> /&gt;
-            &lt;/<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">interceptor</span>&gt;
+            &lt;mvc:interceptor&gt;
+        &lt;mvc:mapping path="/index/**" /&gt;
+        &lt;mvc:mapping path="/return/**" /&gt;
+                    &lt;ref bean="_tLoginContextInterceptor" /&gt;
+            &lt;/mvc:interceptor&gt;
 
-    &lt;/<span style="color: #6c71c4;">mvc</span>:<span style="color: #268bd2;">interceptors</span>&gt;
+    &lt;/mvc:interceptors&gt;
 </pre>
 </div>
 
@@ -842,21 +843,21 @@ public void denied() {
 <div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
 
-<pre class="src src-java">@RequestMapping(method = <span style="color: #6c71c4;">RequestMethod</span>.<span style="color: #5f9ea0;">POST</span> )
-@ResponseStatus(<span style="color: #6c71c4;">HttpStatus</span>.<span style="color: #b58900;">CREATED</span>)
-<span style="color: #da70d6;">public</span> @ResponseBody <span style="color: #b58900;">QuickMenu</span> <span style="color: #268bd2;">addMenuFromForm</span>(<span style="color: #b58900;">QuickMenu</span> <span style="color: #b58900;">quickMenu</span>,
-                                <span style="color: #b58900;">BindingResult</span> <span style="color: #b58900;">bindingResult</span>, <span style="color: #b58900;">ModelMap</span> <span style="color: #b58900;">view</span>) {
-    quickMenu.setUserId(<span style="color: #859900;">this</span>.getUserID());
-    quickMenu.setCreator(<span style="color: #859900;">this</span>.getUserID());
-    <span style="color: #859900;">this</span>.quickMenuService.addMenu(quickMenu);
-    <span style="color: #859900;">return</span> quickMenu;
+<pre class="src src-java">@RequestMapping(method = RequestMethod.POST )
+@ResponseStatus(HttpStatus.CREATED)
+public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
+                                BindingResult bindingResult, ModelMap view) {
+    quickMenu.setUserId(this.getUserID());
+    quickMenu.setCreator(this.getUserID());
+    this.quickMenuService.addMenu(quickMenu);
+    return quickMenu;
 }
 </pre>
 </div>
 
 <div class="org-src-container">
 
-<pre class="src src-javascript">#set($layout = <span style="color: #2aa198;">"/layout/empty.vm"</span>)
+<pre class="src src-javascript">#set($layout = "/layout/empty.vm")
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -864,11 +865,11 @@ public void denied() {
     &lt;style&gt;
 
         a.quickMenu {
-            background: url(<span style="color: #2aa198;">"http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon20-blue.png"</span>) no-repeat;
+            background: url("http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon20-blue.png") no-repeat;
             border-radius: 5px;
             color: #999999;
             display: block;
-            <span style="color: #b58900;">float</span>: left;
+            float: left;
             font-size: 14px;
             font-weight: bold;
             height: 31px;
@@ -900,7 +901,7 @@ public void denied() {
             position: absolute;
             top: 0;
             width: 26px;
-            background: url(<span style="color: #2aa198;">"http://css.eip.mycompany.com/jetui/jetuicss/i/icon-ticked-blue.png"</span>) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+            background: url("http://css.eip.mycompany.com/jetui/jetuicss/i/icon-ticked-blue.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
         }
 
 
@@ -908,13 +909,13 @@ public void denied() {
 
 &lt;/head&gt;
 &lt;body&gt;
-&lt;!-- &#26174;&#31034;&#24050;&#28155;&#21152;&#30340;&#24555;&#25463;&#33756;&#21333; --&gt;
-&lt;div id=<span style="color: #2aa198;">"quickMenuTemplate"</span>&gt;
+&lt;!-- 显示已添加的快捷菜单 --&gt;
+&lt;div id="quickMenuTemplate"&gt;
 
-    #foreach( $menu <span style="color: #859900;">in</span> $menus )
-        &lt;a title=<span style="color: #2aa198;">"${menu.linkName}"</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"quickMenu"</span>
-           style=<span style="color: #2aa198;">"background: url('${menu.linkImgUrl}') no-repeat"</span>
-           href=<span style="color: #2aa198;">"${menu.linkUrl}"</span> target=<span style="color: #2aa198;">"_blank"</span>&gt;
+    #foreach( $menu in $menus )
+        &lt;a title="${menu.linkName}" class="quickMenu"
+           style="background: url('${menu.linkImgUrl}') no-repeat"
+           href="${menu.linkUrl}" target="_blank"&gt;
             &lt;span&gt;${menu.linkName}&lt;/span&gt;
             &lt;em&gt;
                 &lt;b&gt;&lt;/b&gt;
@@ -923,9 +924,9 @@ public void denied() {
     #end
 
 
-    &lt;a id=<span style="color: #2aa198;">"quickMenu_add"</span> title=<span style="color: #2aa198;">"&#28155;&#21152;"</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"quickMenu"</span>
-       style=<span style="color: #2aa198;">"background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/icon21-gray.png') no-repeat"</span>
-       href=<span style="color: #2aa198;">"#"</span> target=<span style="color: #2aa198;">"_blank"</span>&gt;
+    &lt;a id="quickMenu_add" title="添加" class="quickMenu"
+       style="background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/icon21-gray.png') no-repeat"
+       href="#" target="_blank"&gt;
         &lt;span&gt;&lt;/span&gt;
         &lt;em&gt;
             &lt;b&gt;&lt;/b&gt;
@@ -935,45 +936,45 @@ public void denied() {
 
 &lt;/div&gt;
 
-&lt;!--&#26174;&#31034;&#25152;&#26377;&#21487;&#35265;&#33756;&#21333;&#65292;&#20379;&#20379;&#29992;&#25143;&#28155;&#21152;&#21644;&#21024;&#38500; --&gt;
-&lt;div id=<span style="color: #2aa198;">"dialog-form"</span>  title=<span style="color: #2aa198;">"&#28155;&#21152;&#33756;&#21333;"</span> style=<span style="color: #2aa198;">"display: none"</span>&gt;
+&lt;!--显示所有可见菜单，供供用户添加和删除 --&gt;
+&lt;div id="dialog-form"  title="添加菜单" style="display: none"&gt;
 
-    &lt;div id=<span style="color: #2aa198;">"tabs"</span>&gt;
+    &lt;div id="tabs"&gt;
         &lt;ul&gt;
-            &lt;li&gt;&lt;a href=<span style="color: #2aa198;">"#tabs-1"</span>&gt;&#25163;&#21160;&#28155;&#21152;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href=<span style="color: #2aa198;">"#tabs-2"</span>&gt;&#24120;&#29992;&#21151;&#33021;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#tabs-1"&gt;手动添加&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#tabs-2"&gt;常用功能&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
-        &lt;div id=<span style="color: #2aa198;">"tabs-1"</span>&gt;
-            &lt;form id=<span style="color: #2aa198;">"newForm"</span> action=<span style="color: #2aa198;">"#springUrl('/quickMenus')"</span> method=<span style="color: #2aa198;">"post"</span>&gt;
+        &lt;div id="tabs-1"&gt;
+            &lt;form id="newForm" action="#springUrl('/quickMenus')" method="post"&gt;
                 &lt;fieldset&gt;
-                    &lt;label <span style="color: #859900;">for</span>=<span style="color: #2aa198;">"linkName"</span>&gt;&#38142;&#25509;&#21517;&#31216;&lt;/label&gt;
-                    &lt;input type=<span style="color: #2aa198;">"text"</span> name=<span style="color: #2aa198;">"linkName"</span> id=<span style="color: #2aa198;">"linkName"</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"text ui-widget-content ui-corner-all"</span>&gt;
+                    &lt;label for="linkName"&gt;链接名称&lt;/label&gt;
+                    &lt;input type="text" name="linkName" id="linkName" class="text ui-widget-content ui-corner-all"&gt;
                           &lt;br /&gt;
-                    &lt;label <span style="color: #859900;">for</span>=<span style="color: #2aa198;">"linkUrl"</span>&gt;&#38142;&#25509;&#22320;&#22336;&lt;/label&gt;
-                    &lt;input type=<span style="color: #2aa198;">"text"</span> name=<span style="color: #2aa198;">"linkUrl"</span> id=<span style="color: #2aa198;">"linkUrl"</span> value=<span style="color: #2aa198;">""</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"text ui-widget-content ui-corner-all"</span>&gt;
+                    &lt;label for="linkUrl"&gt;链接地址&lt;/label&gt;
+                    &lt;input type="text" name="linkUrl" id="linkUrl" value="" class="text ui-widget-content ui-corner-all"&gt;
                     &lt;br /&gt;
-                    &lt;label <span style="color: #859900;">for</span>=<span style="color: #2aa198;">"linkImgUrl"</span>&gt;&#38142;&#25509;&#22270;&#29255;&lt;/label&gt;
-                    &lt;input type=<span style="color: #2aa198;">"text"</span> name=<span style="color: #2aa198;">"linkImgUrl"</span> id=<span style="color: #2aa198;">"linkImgUrl"</span> value=<span style="color: #2aa198;">""</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"text ui-widget-content ui-corner-all"</span>&gt;
+                    &lt;label for="linkImgUrl"&gt;链接图片&lt;/label&gt;
+                    &lt;input type="text" name="linkImgUrl" id="linkImgUrl" value="" class="text ui-widget-content ui-corner-all"&gt;
                     &lt;br /&gt;
                 &lt;/fieldset&gt;
             &lt;/form&gt;
         &lt;/div&gt;
-        &lt;div id=<span style="color: #2aa198;">"tabs-2"</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"item-warp"</span>&gt;
-            &lt;a title=<span style="color: #2aa198;">"E-learning"</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"quickMenu"</span>
-               style=<span style="color: #2aa198;">"background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon6-blue.png') no-repeat"</span>
-               href=<span style="color: #2aa198;">"javascript:void(0) "</span> target=<span style="color: #2aa198;">"_blank"</span>&gt;
+        &lt;div id="tabs-2" class="item-warp"&gt;
+            &lt;a title="E-learning" class="quickMenu"
+               style="background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon6-blue.png') no-repeat"
+               href="javascript:void(0) " target="_blank"&gt;
                 &lt;span&gt;E-learning&lt;/span&gt;
                 &lt;em&gt;
-                    &lt;b <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"ticked"</span>&gt;&lt;/b&gt;
+                    &lt;b class="ticked"&gt;&lt;/b&gt;
                 &lt;/em&gt;
             &lt;/a&gt;
 
-            &lt;a id=<span style="color: #2aa198;">"timeCard"</span> title=<span style="color: #2aa198;">"&#25171;&#21345;"</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"quickMenu"</span>
-               style=<span style="color: #2aa198;">"background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon1-blue.png') no-repeat"</span>
-               href=<span style="color: #2aa198;">"javascript:void(0)"</span> target=<span style="color: #2aa198;">"_blank"</span>&gt;
-                &lt;span&gt;&#25171;&#21345;&lt;/span&gt;
+            &lt;a id="timeCard" title="打卡" class="quickMenu"
+               style="background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon1-blue.png') no-repeat"
+               href="javascript:void(0)" target="_blank"&gt;
+                &lt;span&gt;打卡&lt;/span&gt;
                 &lt;em&gt;
-                    &lt;b <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"ticked"</span>&gt;&lt;/b&gt;
+                    &lt;b class="ticked"&gt;&lt;/b&gt;
                 &lt;/em&gt;
             &lt;/a&gt;
         &lt;/div&gt;
@@ -984,50 +985,50 @@ public void denied() {
 &lt;/div&gt;
 
 &lt;script&gt;
-    $(<span style="color: #859900;">function</span> () {
-                $( <span style="color: #2aa198;">"#tabs"</span> ).tabs();
+    $(function () {
+                $( "#tabs" ).tabs();
 
-                $(<span style="color: #2aa198;">"#dialog-form"</span>).dialog({
-                    autoOpen: <span style="color: #6c71c4;">false</span>,
+                $("#dialog-form").dialog({
+                    autoOpen: false,
                     height: 600,
                     width: 650,
-                    modal: <span style="color: #6c71c4;">true</span>,
+                    modal: true,
                     buttons: {
-                        <span style="color: #2aa198;">"&#28155;&#21152;"</span>: <span style="color: #859900;">function</span> () {
-<span style="color: #93a1a1; font-style: italic;">//                            </span><span style="color: #93a1a1; font-style: italic;">$("#newForm").submit();</span>
-                            <span style="color: #859900;">var</span> <span style="color: #b58900;">url</span> = <span style="color: #2aa198;">"#springUrl('/quickMenus')"</span>; <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">the script where you handle the form input.</span>
+                        "添加": function () {
+//                            $("#newForm").submit();
+                            var url = "#springUrl('/quickMenus')"; // the script where you handle the form input.
 
                             $.ajax({
-                                type: <span style="color: #2aa198;">"POST"</span>,
+                                type: "POST",
                                 url: url,
-                                data: $(<span style="color: #2aa198;">"#newForm"</span>).serialize(), <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">serializes the form's elements.</span>
-                                <span style="color: #268bd2;">success</span>: <span style="color: #859900;">function</span>(<span style="color: #b58900;">data</span>) {
-<span style="color: #93a1a1; font-style: italic;">//                                    </span><span style="color: #93a1a1; font-style: italic;">alert(data); // show response from the php script.</span>
-                                    console.log(<span style="color: #2aa198;">"&#21019;&#24314;&#24555;&#25463;&#38142;&#25509;"</span> +data);
-                                    $(<span style="color: #6c71c4;">this</span>).dialog(<span style="color: #2aa198;">"close"</span>);
+                                data: $("#newForm").serialize(), // serializes the form's elements.
+                                success: function(data) {
+//                                    alert(data); // show response from the php script.
+                                    console.log("创建快捷链接" +data);
+                                    $(this).dialog("close");
                                     location.reload();
 
                                 }
                             });
 
-<span style="color: #93a1a1; font-style: italic;">//</span>
+//
                         },
-                        <span style="color: #2aa198;">"&#21462;&#28040;"</span>: <span style="color: #859900;">function</span> () {
-                            $(<span style="color: #6c71c4;">this</span>).dialog(<span style="color: #2aa198;">"close"</span>);
+                        "取消": function () {
+                            $(this).dialog("close");
                         }
                     },
-                    <span style="color: #268bd2;">close</span>: <span style="color: #859900;">function</span> () {
+                    close: function () {
                     }
                 });
 
-                $(<span style="color: #2aa198;">"#quickMenu_add"</span>).bind(<span style="color: #2aa198;">'click'</span>, <span style="color: #859900;">function</span> () {
-                    $(<span style="color: #2aa198;">"#dialog-form"</span>).dialog(<span style="color: #2aa198;">"open"</span>);
-                    <span style="color: #859900;">return</span> <span style="color: #6c71c4;">false</span>;
+                $("#quickMenu_add").bind('click', function () {
+                    $("#dialog-form").dialog("open");
+                    return false;
                 })
 
-                $(<span style="color: #2aa198;">"#tabs-2 a"</span>).bind(<span style="color: #2aa198;">'click'</span>, <span style="color: #859900;">function</span> () {
-                    console.log(<span style="color: #2aa198;">"&#35302;&#21457;&#25171;&#38057;"</span>);
-                    $(<span style="color: #6c71c4;">this</span>).find(<span style="color: #2aa198;">"b"</span>).toggleClass(<span style="color: #2aa198;">"ticked"</span>);
+                $("#tabs-2 a").bind('click', function () {
+                    console.log("触发打钩");
+                    $(this).find("b").toggleClass("ticked");
                 })
             }
 
@@ -1050,21 +1051,21 @@ public void denied() {
 </p>
 <div class="org-src-container">
 
-<pre class="src src-xml">&lt;<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">advice</span> <span style="color: #b58900;">id</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">txAdvice</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">transaction-manager</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">transactionManager</span><span style="color: #2aa198;">"</span>&gt;
-                &lt;<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">attributes</span>&gt;
-                        &lt;<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">method</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">insert*</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">rollback-for</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">Throwable</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">propagation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">REQUIRED</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">isolation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">READ_COMMITTED</span><span style="color: #2aa198;">"</span>/&gt;
-                        &lt;<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">method</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">update*</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">rollback-for</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">Throwable</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">propagation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">REQUIRED</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">isolation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">READ_COMMITTED</span><span style="color: #2aa198;">"</span>/&gt;
-            &lt;<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">method</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">add*</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">rollback-for</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">Throwable</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">propagation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">REQUIRED</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">isolation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">READ_COMMITTED</span><span style="color: #2aa198;">"</span>/&gt;
-            &lt;<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">method</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">mod*</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">rollback-for</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">Throwable</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">propagation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">REQUIRED</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">isolation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">READ_COMMITTED</span><span style="color: #2aa198;">"</span>/&gt;
-            &lt;<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">method</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">del*</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">rollback-for</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">Throwable</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">propagation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">REQUIRED</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">isolation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">READ_COMMITTED</span><span style="color: #2aa198;">"</span>/&gt;
-            &lt;<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">method</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">move*</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">rollback-for</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">Throwable</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">propagation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">REQUIRED</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">isolation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">READ_COMMITTED</span><span style="color: #2aa198;">"</span>/&gt;
-                        &lt;<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">method</span> <span style="color: #b58900;">name</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">*</span><span style="color: #2aa198;">"</span>   <span style="color: #b58900;">isolation</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">READ_COMMITTED</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">read-only</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">true</span><span style="color: #2aa198;">"</span>/&gt;
-                &lt;/<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">attributes</span>&gt;
-        &lt;/<span style="color: #6c71c4;">tx</span>:<span style="color: #268bd2;">advice</span>&gt;
+<pre class="src src-xml">&lt;tx:advice id="txAdvice" transaction-manager="transactionManager"&gt;
+                &lt;tx:attributes&gt;
+                        &lt;tx:method name="insert*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+                        &lt;tx:method name="update*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+            &lt;tx:method name="add*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+            &lt;tx:method name="mod*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+            &lt;tx:method name="del*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+            &lt;tx:method name="move*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+                        &lt;tx:method name="*"   isolation="READ_COMMITTED" read-only="true"/&gt;
+                &lt;/tx:attributes&gt;
+        &lt;/tx:advice&gt;
 
-    &lt;<span style="color: #6c71c4;">aop</span>:<span style="color: #268bd2;">config</span> <span style="color: #b58900;">proxy-target-class</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">true</span><span style="color: #2aa198;">"</span>&gt;
-                &lt;<span style="color: #6c71c4;">aop</span>:<span style="color: #268bd2;">advisor</span> <span style="color: #b58900;">pointcut</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">execution(* com.retail.*.service.*.*(..))</span><span style="color: #2aa198;">"</span> <span style="color: #b58900;">advice-ref</span>=<span style="color: #2aa198;">"</span><span style="color: #2aa198;">txAdvice</span><span style="color: #2aa198;">"</span> /&gt;
-        &lt;/<span style="color: #6c71c4;">aop</span>:<span style="color: #268bd2;">config</span>&gt;
+    &lt;aop:config proxy-target-class="true"&gt;
+                &lt;aop:advisor pointcut="execution(* com.retail.*.service.*.*(..))" advice-ref="txAdvice" /&gt;
+        &lt;/aop:config&gt;
 </pre>
 </div>
 </div>
@@ -1259,6 +1260,9 @@ return result;
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
       <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-46515756-1']);
@@ -1270,7 +1274,7 @@ return result;
         })();
       </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
           Copyright &copy; 2012 - 2014 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
@@ -1278,6 +1282,5 @@ return result;
         </p>
       </div>
     </div>
-
   </body>
 </html>

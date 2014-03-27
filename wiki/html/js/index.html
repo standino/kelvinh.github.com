@@ -7,6 +7,7 @@
     <meta name="description" content="Javascript" />
     <meta name="keywords" content="js" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
   <body class="container">
     <div>
@@ -50,6 +51,8 @@
 </li>
 <li><a href="http://www.divcss5.com/jiqiao/j497.shtml">jQuery适用技巧笔记整合</a>
 </li>
+<li><a href="http://kelvinh.github.io/blog/2011/12/17/jquery-ajax-request-and-struts2-ognl-error/">jQuery发送含有数组参数的ajax请求以及后台Struts2的OGNL解析错误</a>
+</li>
 </ul>
 
 <div id="outline-container-sec-1" class="outline-2">
@@ -90,13 +93,13 @@ Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Table
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 
-<pre class="src src-javascript"><span style="color: #859900;">var</span> <span style="color: #b58900;">events</span> = $(<span style="color: #2aa198;">".add"</span>).data(<span style="color: #2aa198;">'events'</span>);
-<span style="color: #859900;">if</span> (events &amp;&amp; events.click) {
+<pre class="src src-javascript">var events = $(".add").data('events');
+if (events &amp;&amp; events.click) {
 
 
 
-    <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">jQuery 1.4.x+</span>
-    $.each(events.click, <span style="color: #859900;">function</span>(<span style="color: #b58900;">key</span>, <span style="color: #b58900;">handlerObject</span>) {
+    // jQuery 1.4.x+
+    $.each(events.click, function(key, handlerObject) {
         console.info(handlerObject.handler);
     });
 }
@@ -111,7 +114,7 @@ Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Table
 <div class="org-src-container">
 
 <pre class="src src-javascript">$.ajaxSetup ({
-    cache: <span style="color: #6c71c4;">false</span> <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #93a1a1; font-style: italic;">&#20851;&#38381;AJAX&#30456;&#24212;&#30340;&#32531;&#23384;</span>
+    cache: false //关闭AJAX相应的缓存
 });
 </pre>
 </div>
@@ -177,44 +180,44 @@ Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Table
 <div class="outline-text-2" id="text-7">
 <div class="org-src-container">
 
-<pre class="src src-javascript"><span style="color: #859900;">var</span> <span style="color: #b58900;">Green5</span>  = {
-        <span style="color: #268bd2;">getLevel</span>: <span style="color: #859900;">function</span> () { <span style="color: #859900;">return</span> <span style="color: #6c71c4;">this</span>.options.level; },
-        <span style="color: #268bd2;">setLevel</span>: <span style="color: #859900;">function</span> (<span style="color: #b58900;">x</span>) {
-                <span style="color: #859900;">var</span> <span style="color: #b58900;">greenlevels</span> = <span style="color: #6c71c4;">this</span>.options.greenlevels;
-                <span style="color: #859900;">var</span> <span style="color: #b58900;">level</span> = Math.floor(Math.min(greenlevels.length-1, Math.max(0,x)));
-                <span style="color: #6c71c4;">this</span>.options.level = level;
-                <span style="color: #6c71c4;">this</span>.element.css({background: greenlevels[level]});
-                <span style="color: #6c71c4;">this</span>._trigger(<span style="color: #2aa198;">'change'</span>, 0, level);
+<pre class="src src-javascript">var Green5  = {
+        getLevel: function () { return this.options.level; },
+        setLevel: function (x) {
+                var greenlevels = this.options.greenlevels;
+                var level = Math.floor(Math.min(greenlevels.length-1, Math.max(0,x)));
+                this.options.level = level;
+                this.element.css({background: greenlevels[level]});
+                this._trigger('change', 0, level);
         },
-        <span style="color: #268bd2;">_init</span>: <span style="color: #859900;">function</span>() { <span style="color: #6c71c4;">this</span>.setLevel(<span style="color: #6c71c4;">this</span>.getLevel()); }, <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">grab the default value and use it</span>
-        <span style="color: #268bd2;">darker</span>: <span style="color: #859900;">function</span>() { <span style="color: #6c71c4;">this</span>.setLevel(<span style="color: #6c71c4;">this</span>.getLevel()-1); },
-        <span style="color: #268bd2;">lighter</span>: <span style="color: #859900;">function</span>() { <span style="color: #6c71c4;">this</span>.setLevel(<span style="color: #6c71c4;">this</span>.getLevel()+1); },
-        <span style="color: #268bd2;">off</span>: <span style="color: #859900;">function</span>() {
-                <span style="color: #6c71c4;">this</span>.element.css({background: <span style="color: #2aa198;">'none'</span>});
-                <span style="color: #6c71c4;">this</span>._trigger(<span style="color: #2aa198;">'done'</span>);
-                <span style="color: #6c71c4;">this</span>.destroy(); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">use the predefined function</span>
+        _init: function() { this.setLevel(this.getLevel()); }, // grab the default value and use it
+        darker: function() { this.setLevel(this.getLevel()-1); },
+        lighter: function() { this.setLevel(this.getLevel()+1); },
+        off: function() {
+                this.element.css({background: 'none'});
+                this._trigger('done');
+                this.destroy(); // use the predefined function
         },
         options: {
                 level: 15,
-                greenlevels: [<span style="color: #2aa198;">'#000'</span>,<span style="color: #2aa198;">'#010'</span>,<span style="color: #2aa198;">'#020'</span>,<span style="color: #2aa198;">'#030'</span>,<span style="color: #2aa198;">'#040'</span>,<span style="color: #2aa198;">'#050'</span>,<span style="color: #2aa198;">'#060'</span>,<span style="color: #2aa198;">'#070'</span>,<span style="color: #2aa198;">'#080'</span>,<span style="color: #2aa198;">'#090'</span>,<span style="color: #2aa198;">'#0a0'</span>,<span style="color: #2aa198;">'#0b0'</span>,<span style="color: #2aa198;">'#0c0'</span>,<span style="color: #2aa198;">'#0d0'</span>,<span style="color: #2aa198;">'#0e0'</span>,<span style="color: #2aa198;">'#0f0'</span>, <span style="color: #2aa198;">'#fff'</span>]
+                greenlevels: ['#000','#010','#020','#030','#040','#050','#060','#070','#080','#090','#0a0','#0b0','#0c0','#0d0','#0e0','#0f0', '#fff']
         }
 };
-$.widget(<span style="color: #2aa198;">"ui.green5"</span>, Green5);
+$.widget("ui.green5", Green5);
 </pre>
 </div>
 
 <div class="org-src-container">
 
-<pre class="src src-html">&lt;<span style="color: #268bd2;">p</span> <span style="color: #b58900;">class</span>=<span style="color: #2aa198;">"target"</span>&gt;This is a test paragraph with <span style="color: #ffffff; background-color: #008000;">green</span> level &lt;<span style="color: #268bd2;">span</span> <span style="color: #b58900;">class</span>=<span style="color: #2aa198;">"level"</span>&gt;undefined&lt;/<span style="color: #268bd2;">span</span>&gt;.&lt;/<span style="color: #268bd2;">p</span>&gt;
+<pre class="src src-html">&lt;p class="target"&gt;This is a test paragraph with green level &lt;span class="level"&gt;undefined&lt;/span&gt;.&lt;/p&gt;
 </pre>
 </div>
 <div class="org-src-container">
 
-<pre class="src src-javascript"><span style="color: #93a1a1; font-style: italic;">//  </span><span style="color: #93a1a1; font-style: italic;">The on button above does the following:</span>
-$(<span style="color: #2aa198;">'.target'</span>).green5({
-        <span style="color: #268bd2;">change</span>: <span style="color: #859900;">function</span>(<span style="color: #b58900;">event</span>, <span style="color: #b58900;">level</span>) { $(<span style="color: #2aa198;">'.level'</span>, <span style="color: #6c71c4;">this</span>).text(level); } <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">callback to handle change event</span>
+<pre class="src src-javascript">//  The on button above does the following:
+$('.target').green5({
+        change: function(event, level) { $('.level', this).text(level); } // callback to handle change event
 });
-$(<span style="color: #2aa198;">'.target'</span>).bind(<span style="color: #2aa198;">'green5done'</span>, <span style="color: #859900;">function</span>() { $(<span style="color: #2aa198;">'.level'</span>, <span style="color: #6c71c4;">this</span>).text(<span style="color: #2aa198;">'undefined'</span>);alert(<span style="color: #2aa198;">'bye!'</span>) }); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">event handler for done event</span>
+$('.target').bind('green5done', function() { $('.level', this).text('undefined');alert('bye!') }); // event handler for done event
 </pre>
 </div>
 </div>
@@ -229,8 +232,8 @@ useful methods for the mouse. All we need to do is add the $.ui.mouse widget to 
 
 <div class="org-src-container">
 
-<pre class="src src-javascript"><span style="color: #859900;">var</span> <span style="color: #b58900;">Green6</span> = {mouse-overriding <span style="color: #859900;">function</span> and widget-specific functions};
-$.widget (<span style="color: #2aa198;">'ui.green6'</span>, $.ui.mouse, Green6);
+<pre class="src src-javascript">var Green6 = {mouse-overriding function and widget-specific functions};
+$.widget ('ui.green6', $.ui.mouse, Green6);
 </pre>
 </div>
 <p>
@@ -244,37 +247,37 @@ Let's add some mouse control to our greenerizer:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-javascript">Green6 = $.extend({}, $.ui.green5.<span style="color: #6c71c4;">prototype</span>, { <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">leave the old Green5 alone; create a new object</span>
-        <span style="color: #268bd2;">_init</span>: <span style="color: #859900;">function</span>(){
-                $.ui.green5.<span style="color: #6c71c4;">prototype</span>._init.call(<span style="color: #6c71c4;">this</span>); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">call the original function</span>
-                <span style="color: #6c71c4;">this</span>._mouseInit(); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">start up the mouse handling</span>
+<pre class="src src-javascript">Green6 = $.extend({}, $.ui.green5.prototype, { // leave the old Green5 alone; create a new object
+        _init: function(){
+                $.ui.green5.prototype._init.call(this); // call the original function
+                this._mouseInit(); // start up the mouse handling
         },
-        <span style="color: #268bd2;">destroy</span>: <span style="color: #859900;">function</span>(){
-                <span style="color: #6c71c4;">this</span>._mouseDestroy();
-                $.ui.green5.<span style="color: #6c71c4;">prototype</span>.destroy.call(<span style="color: #6c71c4;">this</span>); <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">call the original function</span>
+        destroy: function(){
+                this._mouseDestroy();
+                $.ui.green5.prototype.destroy.call(this); // call the original function
         },
-        <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">need to override the mouse functions</span>
-        <span style="color: #268bd2;">_mouseStart</span>: <span style="color: #859900;">function</span>(<span style="color: #b58900;">e</span>){
-                <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">keep track of where the mouse started</span>
-                <span style="color: #6c71c4;">this</span>.xStart = e.pageX; <span style="color: #93a1a1; font-style: italic;">// </span><span style="color: #93a1a1; font-style: italic;">not in the options object; this is not something that can be initialized by the user</span>
-                <span style="color: #6c71c4;">this</span>.levelStart = <span style="color: #6c71c4;">this</span>.options.level;
+        // need to override the mouse functions
+        _mouseStart: function(e){
+                // keep track of where the mouse started
+                this.xStart = e.pageX; // not in the options object; this is not something that can be initialized by the user
+                this.levelStart = this.options.level;
         },
-        <span style="color: #268bd2;">_mouseDrag</span>: <span style="color: #859900;">function</span>(<span style="color: #b58900;">e</span>){
-                <span style="color: #6c71c4;">this</span>.setLevel (<span style="color: #6c71c4;">this</span>.levelStart +(e.pageX-<span style="color: #6c71c4;">this</span>.xStart)/<span style="color: #6c71c4;">this</span>.options.distance);
+        _mouseDrag: function(e){
+                this.setLevel (this.levelStart +(e.pageX-this.xStart)/this.options.distance);
         },
         options: {
                 level: 15,
-                greenlevels: [<span style="color: #2aa198;">'#000'</span>,<span style="color: #2aa198;">'#010'</span>,<span style="color: #2aa198;">'#020'</span>,<span style="color: #2aa198;">'#030'</span>,<span style="color: #2aa198;">'#040'</span>,<span style="color: #2aa198;">'#050'</span>,<span style="color: #2aa198;">'#060'</span>,<span style="color: #2aa198;">'#070'</span>,<span style="color: #2aa198;">'#080'</span>,<span style="color: #2aa198;">'#090'</span>,<span style="color: #2aa198;">'#0a0'</span>,<span style="color: #2aa198;">'#0b0'</span>,<span style="color: #2aa198;">'#0c0'</span>,<span style="color: #2aa198;">'#0d0'</span>,<span style="color: #2aa198;">'#0e0'</span>,<span style="color: #2aa198;">'#0f0'</span>, <span style="color: #2aa198;">'#fff'</span>],
+                greenlevels: ['#000','#010','#020','#030','#040','#050','#060','#070','#080','#090','#0a0','#0b0','#0c0','#0d0','#0e0','#0f0', '#fff'],
                 distance: 10
         }
 });
-$.widget(<span style="color: #2aa198;">"ui.green6"</span>, $.ui.mouse, Green6);
+$.widget("ui.green6", $.ui.mouse, Green6);
 </pre>
 </div>
 
 <div class="org-src-container">
 
-<pre class="src src-html">&lt;<span style="color: #268bd2;">p</span> <span style="color: #b58900;">class</span>=<span style="color: #2aa198;">"target"</span>&gt;This is a test paragraph with <span style="color: #ffffff; background-color: #008000;">green</span> level &lt;<span style="color: #268bd2;">span</span> <span style="color: #b58900;">class</span>=<span style="color: #2aa198;">"level"</span>&gt;undefined&lt;/<span style="color: #268bd2;">span</span>&gt;.&lt;/<span style="color: #268bd2;">p</span>&gt;
+<pre class="src src-html">&lt;p class="target"&gt;This is a test paragraph with green level &lt;span class="level"&gt;undefined&lt;/span&gt;.&lt;/p&gt;
 </pre>
 </div>
 
@@ -285,7 +288,7 @@ ought to be abstracted out into its own method, something like
 
 <div class="org-src-container">
 
-<pre class="src src-javascript">$.ui.green5.subclass(<span style="color: #2aa198;">"green6"</span>, $.ui.mouse, {mouseStart:<span style="color: #859900;">function</span>(){}, mouseDrag: <span style="color: #859900;">function</span>(){}})
+<pre class="src src-javascript">$.ui.green5.subclass("green6", $.ui.mouse, {mouseStart:function(){}, mouseDrag: function(){}})
 </pre>
 </div>
 </div>
@@ -373,7 +376,7 @@ $.ajax({
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-03-12</span>
+        <span title="last modification date" class="post-info">2014-03-27</span>
         <span title="tags" class="post-info"><a href="/tags/js/">js</a>, <a href="/tags/jquery/">jquery</a>, <a href="/tags/dojo/">dojo</a>, <a href="/tags/ajax/">ajax</a>, <a href="/tags/定位元素/">定位元素</a>, <a href="/tags/调试/">调试</a>, <a href="/tags/piwik/">piwik</a>, <a href="/tags/网站统计/">网站统计</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
@@ -395,6 +398,9 @@ $.ajax({
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
       <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-46515756-1']);
@@ -406,7 +412,7 @@ $.ajax({
         })();
       </script>
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
           Copyright &copy; 2012 - 2014 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
@@ -414,6 +420,5 @@ $.ajax({
         </p>
       </div>
     </div>
-
   </body>
 </html>
