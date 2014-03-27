@@ -18,6 +18,7 @@
  - [[http://www.jb51.net/article/18111.htm][jquery控制div下所有连接]]
  - [[https://micate.me/debug-jquery-object-binded-events.note][获取绑定在 jQuery 对象上的事件]]
  - [[http://www.divcss5.com/jiqiao/j497.shtml][jQuery适用技巧笔记整合]]
+ - [[http://kelvinh.github.io/blog/2011/12/17/jquery-ajax-request-and-struts2-ognl-error/][jQuery发送含有数组参数的ajax请求以及后台Struts2的OGNL解析错误]]
 
 *  [[http://www.w3cschool.cc/bootstrap/bootstrap-intro.html][Bootstrap 简介]]
 
