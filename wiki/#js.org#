@@ -220,3 +220,13 @@ encodeURIComponent(
 http://jqueryui.com/autocomplete/#multiple-remote
 * min js
   - http://yui.github.io/yuicompressor/
+  - https://github.com/yui/yuicompressor/releases
+
+#+BEGIN_SRC 
+
+java -jar yuicompressor-x.y.z.jar myfile.js -o myfile-min.js
+java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jquery.portlet.min.js
+
+java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jquery.portlet.pack.js
+
+#+END_SRC
