@@ -4,16 +4,30 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>四, 27 3月 2014 16:51:13 CST</pubDate>
-    <lastBuildDate>四, 27 3月 2014 16:51:13 CST</lastBuildDate>
+    <pubDate>五, 28 3月 2014 16:16:49 CST</pubDate>
+    <lastBuildDate>五, 28 3月 2014 16:16:49 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>js.org</title>
       <link>http://standino.github.io/wiki/html/js</link>
       <description>Javascript</description>
-      <pubDate>2014-03-27</pubDate>
+      <pubDate>2014-03-28</pubDate>
       <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>Emacs 使用笔记</title>
+      <link>http://standino.github.io/wiki/html/html/myemacs/</link>
+      <description>Emacs 使用笔记</description>
+      <pubDate>2014-03-28</pubDate>
+      <guid>http://standino.github.io/wiki/html/html/myemacs/</guid>
+    </item>
+    <item>
+      <title>shell Notes</title>
+      <link>http://standino.github.io/wiki/html/shell</link>
+      <description>shell notes</description>
+      <pubDate>2014-03-28</pubDate>
+      <guid>http://standino.github.io/wiki/html/shell</guid>
     </item>
     <item>
       <title>版本管理工具</title>
@@ -58,25 +72,11 @@
       <guid>http://standino.github.io/wiki/html/mylinks</guid>
     </item>
     <item>
-      <title>Emacs 使用笔记</title>
-      <link>http://standino.github.io/wiki/html/html/myemacs/</link>
-      <description>Emacs 使用笔记</description>
-      <pubDate>2014-03-17</pubDate>
-      <guid>http://standino.github.io/wiki/html/html/myemacs/</guid>
-    </item>
-    <item>
       <title>mvn</title>
       <link>http://standino.github.io/wiki/html/mvn</link>
       <description>mvn</description>
       <pubDate>2014-03-12</pubDate>
       <guid>http://standino.github.io/wiki/html/mvn</guid>
-    </item>
-    <item>
-      <title>使用apache cxf生成web servcie 客户端</title>
-      <link>http://standino.github.io/blog/html/cxf</link>
-      <description>介绍如何使用cxf生成客户端</description>
-      <pubDate>2014-03-07</pubDate>
-      <guid>http://standino.github.io/blog/html/cxf</guid>
     </item>
   </channel>
 </rss>
