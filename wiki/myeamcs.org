@@ -217,8 +217,9 @@ http_proxy=http://127.0.0.1:8087 emacs -nw
   
 
 ** [[http://orgmode.org/][Org mode]]
-
-
+ 
+ - http://home.fnal.gov/~neilsen/notebook/orgExamples/org-examples.html 有UML的例子
+  
 *** Tags
 
 | key         | function | knows about                                                                                                                           | C-u |
