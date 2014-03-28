@@ -495,3 +495,7 @@ find . -type f -name  "*.jsp" -execdir sed -i -e '/<\/www:popupBody>/i\<!--  JSP
 #+END_SRC
 
 
+* shell数组
+
+ - http://www.cnblogs.com/chengmo/archive/2010/09/30/1839632.html
+
