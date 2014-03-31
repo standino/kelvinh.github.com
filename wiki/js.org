@@ -230,3 +230,7 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jquery.portlet.pack.js
 
 #+END_SRC
+
+* Node js
+
+ - http://www.nodebeginner.org/index-zh-cn.html

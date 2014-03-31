@@ -330,17 +330,39 @@ svn co svn+ssh://servername/project
 
 * Git
 
-[[http://git.or.cz/course/svn.html][Git - SVN Crash Course]]
-
-[[http://eagain.net/articles/git-for-computer-scientists/][Tv's cobweb: Git for Computer Scientists]]
-
-[[http://github.com/][git repository hosting]]
-
-[[http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsGit.html][Work with Git from Emacs]]
+ - [[http://git.or.cz/course/svn.html][Git - SVN Crash Course]]
+ - [[http://eagain.net/articles/git-for-computer-scientists/][Tv's cobweb: Git for Computer Scientists]]
+ - [[http://github.com/][git repository hosting]]
+ - [[http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsGit.html][Work with Git from Emacs]]
 
 如果发现git status 发现所有的中文文件名被换成\123\223\145\333.doc文件时，可以使用
 
  git config --global core.quotepath false
+
+** DONE 子模块
+   CLOSED: [2014-03-31 一 11:05]
+   - State "DONE"       from "OKTODAY"    [2014-03-31 一 11:05]
+   - State "OKTODAY"    from "STARTED"    [2014-03-31 一 11:05]
+   :LOGBOOK:
+   CLOCK: [2014-03-31 一 10:33]--[2014-03-31 一 11:05] =>  0:32
+   :END:
+
+
+ 2. http://aoxuis.me/posts/2013/08/07/git-subtree/
+ 3. http://ruby-china.org/topics/13001
+ 1. http://git-scm.com/book/zh/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
+
+#+BEGIN_SRC
+
+git clone https://github.com/standino/easy-portal.git
+
+cd easy-portal/
+
+git remote add -f jquery-ui-portlet https://github.com/standino/jquery-ui-portlet.git
+
+git subtree add --prefix=src/main/webapp/resources/jquery-ui-portlet jquery-ui-portlet master --squash
+
+#+END_SRC
 
 ** [[http://blog.csdn.net/ithomer/article/details/7529841][本文将对Git 命令，做一下全面而系统的简短总结，整理成简洁、明了的图表结构，方便查询]]
 

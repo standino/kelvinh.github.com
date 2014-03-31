@@ -43,3 +43,28 @@ http://weblogs.java.net/blog/caroljmcdonald/archive/2008/07/a_dynamic_ajax.html
 http://robfig.github.io/revel/
 
 http://www.cnblogs.com/ztiandan/archive/2013/01/17/2864498.html
+
+
+* go easy portal
+
+** OKTODAY 安装
+   CLOSED: [2014-03-31 一 14:02]
+   - State "OKTODAY"    from "STARTED"    [2014-03-31 一 14:02]
+   :LOGBOOK:
+   CLOCK: [2014-03-31 一 13:48]--[2014-03-31 一 13:56] =>  0:08
+   :END:
+
+#+BEGIN_SRC
+
+sudo yum install golang
+
+#+END_SRC
+
+
+*** 设置gopath
+
+编辑 .bashrc 文件
+
+#+BEGIN_SRC
+export GOPATH=/home/will/mygo
+#+END_SRC
