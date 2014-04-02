@@ -40,6 +40,18 @@
 <ul>
 <li><a href="#sec-1">安装</a></li>
 <li><a href="#sec-2">SMTP</a></li>
+<li><a href="#sec-3">go easy portal</a>
+<ul>
+<li><a href="#sec-3-1"><span class="done DONE">DONE</span> 安装</a>
+<ul>
+<li><a href="#sec-3-1-1">设置gopath</a></li>
+<li><a href="#sec-3-1-2">beego</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2"><span class="done DONE">DONE</span> 创建项目</a></li>
+<li><a href="#sec-3-3">sqlite db</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -105,12 +117,134 @@ export GOPATH=/ideas/go
 </div>
 </div>
 
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">go easy portal</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><a href="https://github.com/beego/beedoc/blob/master/zh-CN/install/bee.md">https://github.com/beego/beedoc/blob/master/zh-CN/install/bee.md</a>
+</li>
+<li><a href="http://beego.me/docs/quickstart/model.md">http://beego.me/docs/quickstart/model.md</a>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="done DONE">DONE</span> 安装</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>State "DONE"       from "OKTODAY"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-31 一 15:54]</span></span>
+</li>
+<li>State "OKTODAY"    from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-31 一 15:54]</span></span>
+</li>
+<li>State "OKTODAY"    from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-31 一 14:49]</span></span>
+</li>
+<li>State "OKTODAY"    from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-31 一 14:02]</span></span>
+</li>
+</ul>
+<pre class="example">
+sudo yum install -y golang
+#wget -c https://go.googlecode.com/files/go1.2.1.linux-amd64.tar.gz
+</pre>
+</div>
+
+
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1">设置gopath</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+编辑 .bashrc 文件
+</p>
+
+<pre class="example">
+export GOPATH=/home/will/mygo
+export PATH=$GOPATH/bin:$PATH
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2">beego</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<pre class="example">
+go get  github.com/beego/bee
+go get -v -u github.com/mattn/go-sqlite3
+go get -v -u github.com/nsf/gocode
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="done DONE">DONE</span> 创建项目</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>State "DONE"       from "OKTODAY"    <span class="timestamp-wrapper"><span class="timestamp">[2014-04-01 二 11:20]</span></span>
+</li>
+<li>State "OKTODAY"    from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-04-01 二 10:08]</span></span>
+</li>
+<li>State "OKTODAY"    from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-04-01 二 09:31]</span></span>
+</li>
+<li>State "OKTODAY"    from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-04-01 二 09:03]</span></span>
+</li>
+</ul>
+<pre class="example">
+cd $GOPATH/src
+bee new go-easy-portal
+# https://help.github.com/articles/create-a-repo
+cd go-easy-portal
+git init
+[will@localhost go-easy-portal]$ git add conf
+[will@localhost go-easy-portal]$ git add controllers/
+[will@localhost go-easy-portal]$ git add main.go
+[will@localhost go-easy-portal]$ git add routers/
+[will@localhost go-easy-portal]$ git add tests/
+[will@localhost go-easy-portal]$ git add views/
+[will@localhost go-easy-portal]$ git status
+git commit -a -m "init version"
+git remote add origin https://github.com/standino/go-easy-portal
+git pull origin master
+git commit -a -m "init version"
+git push origin master
+
+git remote add -f jquery-ui-portlet https://github.com/standino/jquery-ui-portlet.git
+git subtree add --prefix=static/jquery-ui-portlet jquery-ui-portlet master --squash
+
+git remote add -f FCBKcomplete https://github.com/standino/FCBKcomplete.git
+git subtree add --prefix=static/FCBKcomplete FCBKcomplete master --squash
+
+git remote add -f bootstrap-datetimepicker https://github.com/standino/bootstrap-datetimepicker.git
+git subtree add --prefix=static/bootstrap-datetimepicker bootstrap-datetimepicker master --squash
+
+git remote add -f iCheck https://github.com/standino/iCheck.git
+git subtree add --prefix=static/iCheck iCheck master --squash
+
+git remote add -f bootstrap-calendar https://github.com/standino/bootstrap-calendar.git
+git subtree add --prefix=static/bootstrap-calendar bootstrap-calendar master --squash
+
+git remote add -f bootstrap-paginator https://github.com/standino/bootstrap-paginator.git
+git subtree add --prefix=static/bootstrap-paginator bootstrap-paginator master --squash
+
+git remote add -f bootstrap-select https://github.com/standino/bootstrap-select.git
+git subtree add --prefix=static/bootstrap-select bootstrap-select master --squash
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">sqlite db</h3>
+<div class="outline-text-3" id="text-3-3">
+<pre class="example">
+orm.RegisterDataBase("db2", "sqlite3", "data.db")
+</pre>
+</div>
+</div>
+</div>
+
 </div>
 </div>
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-03-07</span>
+        <span title="last modification date" class="post-info">2014-04-02</span>
         <span title="tags" class="post-info"><a href="/tags/go/">go</a>, <a href="/tags/programming-language/">programming language</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

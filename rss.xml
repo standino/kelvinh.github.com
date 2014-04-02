@@ -4,16 +4,51 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>五, 28 3月 2014 16:37:44 CST</pubDate>
-    <lastBuildDate>五, 28 3月 2014 16:37:44 CST</lastBuildDate>
+    <pubDate>三, 02 4月 2014 14:11:00 CST</pubDate>
+    <lastBuildDate>三, 02 4月 2014 14:11:00 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>Untitled</title>
+      <link>http://standino.github.io/wiki/untitled/</link>
+      <description>No Description</description>
+      <pubDate>2014-04-02</pubDate>
+      <guid>http://standino.github.io/wiki/untitled/</guid>
+    </item>
+    <item>
+      <title>go 语言</title>
+      <link>http://standino.github.io/wiki/html/go</link>
+      <description>go 语言</description>
+      <pubDate>2014-04-02</pubDate>
+      <guid>http://standino.github.io/wiki/html/go</guid>
+    </item>
     <item>
       <title>js.org</title>
       <link>http://standino.github.io/wiki/html/js</link>
       <description>Javascript</description>
-      <pubDate>2014-03-28</pubDate>
+      <pubDate>2014-04-02</pubDate>
       <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>linux</title>
+      <link>http://standino.github.io/wiki/html/linux</link>
+      <description>linux</description>
+      <pubDate>2014-04-02</pubDate>
+      <guid>http://standino.github.io/wiki/html/linux</guid>
+    </item>
+    <item>
+      <title>easymda.org</title>
+      <link>http://standino.github.io/wiki/html/easymda</link>
+      <description>easymda</description>
+      <pubDate>2014-03-31</pubDate>
+      <guid>http://standino.github.io/wiki/html/easymda</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-03-31</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
     </item>
     <item>
       <title>Emacs 使用笔记</title>
@@ -30,13 +65,6 @@
       <guid>http://standino.github.io/wiki/html/shell</guid>
     </item>
     <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-03-27</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
-    </item>
-    <item>
       <title>我是如何开始使用redis的</title>
       <link>http://standino.github.io/blog/2013/12/24/redis</link>
       <description>redis学习和入门</description>
@@ -49,34 +77,6 @@
       <description>Java Tips</description>
       <pubDate>2014-03-21</pubDate>
       <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>linux</title>
-      <link>http://standino.github.io/wiki/html/linux</link>
-      <description>linux</description>
-      <pubDate>2014-03-21</pubDate>
-      <guid>http://standino.github.io/wiki/html/linux</guid>
-    </item>
-    <item>
-      <title>使用Emacs开发J2EE程序</title>
-      <link>http://standino.github.io/blog/2014/03/15/emacs4java</link>
-      <description>介绍如何使用Emacs编辑J2EE程序</description>
-      <pubDate>2014-03-18</pubDate>
-      <guid>http://standino.github.io/blog/2014/03/15/emacs4java</guid>
-    </item>
-    <item>
-      <title>常用链接</title>
-      <link>http://standino.github.io/wiki/html/mylinks</link>
-      <description>常用链接</description>
-      <pubDate>2014-03-18</pubDate>
-      <guid>http://standino.github.io/wiki/html/mylinks</guid>
-    </item>
-    <item>
-      <title>mvn</title>
-      <link>http://standino.github.io/wiki/html/mvn</link>
-      <description>mvn</description>
-      <pubDate>2014-03-12</pubDate>
-      <guid>http://standino.github.io/wiki/html/mvn</guid>
     </item>
   </channel>
 </rss>
