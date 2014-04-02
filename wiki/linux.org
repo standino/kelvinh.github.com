@@ -3192,7 +3192,7 @@ chmod -R 777 piwik
 
 
 *   DONE 在台式机上安装开发环境
-  CLOSED: [2014-03-06 四 16:59]
+    CLOSED: [2014-03-06 四 16:59]
   - State "DONE"       from "STARTED"    [2014-03-06 四 16:59]
   - State "OKTODAY"    from "DONE"       [2014-03-06 四 13:19]
   - State "DONE"       from "WAITING"    [2014-03-06 四 13:19]
@@ -3209,20 +3209,22 @@ chmod -R 777 piwik
   2. 安装IDEA
   3. 安装JOne
   4.
-#+BEGIN_SRC
+  #+BEGIN_SRC
 
 
 
 
-sudo yum install -y  emacs git mercurial w3m maven  subversion openssh-server texlive-beamer yum-plugin-fastestmirror community-mysql pgp-tools meld global claws-mail
+sudo yum install -y  emacs git mercurial w3m maven  subversion openssh-server texlive-beamer
+sudo yum install -y  fastestmirror yum-plugin-fastestmirror community-mysql pgp-tools meld global
+sudo yum install -y  pyOpenSSL python-crypto gcc
 
 sudo yum groupinstall lxde-desktop
-#eclipse maven-eclipse-plugin fastestmirror
+#eclipse maven-eclipse-plugin
 
 http_proxy=http://127.0.0.1:8087 emacs &
 
 
-#+END_SRC
+  #+END_SRC
 
 ** input method
  1. http://www.hiadmin.org/linux/fedora19-fcitx
