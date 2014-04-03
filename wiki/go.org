@@ -140,6 +140,9 @@ git subtree add --prefix=static/bootstrap-paginator bootstrap-paginator master -
 git remote add -f bootstrap-select https://github.com/standino/bootstrap-select.git
 git subtree add --prefix=static/bootstrap-select bootstrap-select master --squash
 
+git remote add -f angular-ui-dashboard https://github.com/nickholub/angular-ui-dashboard
+git subtree add --prefix=static/angular-ui-dashboard angular-ui-dashboard master --squash
+
 
 #+END_SRC
 ** sqlite db
