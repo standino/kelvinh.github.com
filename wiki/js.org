@@ -238,7 +238,7 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 
  - http://www.nodebeginner.org/index-zh-cn.html
 
-*Ember vs Angular
+* Ember vs Angular
 
 通过阅读文章好像Angular更好一些
 
@@ -273,7 +273,7 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 
 #+BEGIN_SRC 
 
-sudo yum install -y npm
+sudo yum install -y npm  nodejs-grunt-cli
 
 #+END_SRC
 

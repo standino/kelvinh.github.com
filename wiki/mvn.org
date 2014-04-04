@@ -134,3 +134,4 @@ jetty-context.xml
 </Configure>
 
 #+END_SRC
+* mvn dependency:tree
