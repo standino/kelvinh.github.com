@@ -3318,3 +3318,21 @@ sudo gedit  /etc/nginx/nginx.conf &
 
 
 #+END_SRC
+
+* brew
+
+#+BEGIN_SRC
+sudo yum groupinstall 'Development Tools' && sudo yum install curl git ruby bzip2-devel curl-devel expat-devel ncurses-devel zlib-devel
+git clone https://github.com/Homebrew/linuxbrew.git ~/.linuxbrew
+#+END_SRC
+
+Add to your .bashrc or .zshrc:
+#+BEGIN_SRC
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+#+END_SRC
+brew install $WHATEVER_YOU_WANT
+
+* One of the configured repositories failed
+
+use dnf instead of yum

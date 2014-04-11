@@ -287,3 +287,9 @@ sudo npm install -g grunt-cli
 sudo npm --proxy http://127.0.0.1:8087 install -g grunt-cli 
 
 #+END_SRC
+
+* CKeditor 
+
+ 1. http://www.mzone.cc/article/288.html
+ 2. http://ipc.iteye.com/blog/695393
+ 3. http://docs.ckeditor.com/
