@@ -65,3 +65,28 @@ mvn sonar:sonar
 
 执行完毕，访问下面的页面查看结果 http://localhost:9000
 用户名/密码：admin/admin
+
+
+* Fedora 20 
+
+pom.xml 
+
+
+#+BEGIN_SRC 
+
+<plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
+      
+
+
+#+END_SRC
+
+#+BEGIN_SRC 
+mvn org.codehaus.sonar:sonar-maven3-plugin:3.7:sonar
+#+END_SRC
+* 参考资料
+
+ - http://www.cnblogs.com/gao241/p/3190701.html

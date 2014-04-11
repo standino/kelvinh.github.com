@@ -39,6 +39,14 @@ http://www.sventon.org/
    - http://blog.csdn.net/yangzhongxuan/article/details/7519948
    - http://zccst.iteye.com/blog/1430823
    - http://www.panweizeng.com/svn-branching-merging.html
+   - 
+
+** 合并
+
+#+BEGIN_SRC
+svn merge -r 44324:44325 http://svn.360buy-develop.com/repos/ipo/retail/branches/sone_1_0_0
+
+#+END_SRC
 
 
 * CVS
