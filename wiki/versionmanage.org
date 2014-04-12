@@ -24,7 +24,7 @@ http://www.sventon.org/
 
   1. http://www.111cn.net/sys/linux/53797.htm
 
-#+BEGIN_SRC 
+#+BEGIN_SRC
 
 [will@localhost sone_1_0_0]$ export EDITOR=gedit
 [will@localhost sone_1_0_0]$ svn propedit svn:ignore .
@@ -39,7 +39,7 @@ http://www.sventon.org/
    - http://blog.csdn.net/yangzhongxuan/article/details/7519948
    - http://zccst.iteye.com/blog/1430823
    - http://www.panweizeng.com/svn-branching-merging.html
-   - 
+   -
 
 ** 合并
 
@@ -49,14 +49,8 @@ svn merge -r 44324:44325 http://svn.360buy-develop.com/repos/ipo/retail/branches
 #+END_SRC
 
 
-* CVS
 
-** CVS merge
-
-http://wiki.aasimon.org/doku.php?id=cvs:merge
-
-
-* hg 
+* hg
 
 [[http://hgbook.red-bean.com/][Mercurial: The Definitive Guide by Bryan O'Sullivan]]
 
@@ -78,7 +72,7 @@ MercurialEclipse supports:
     * diffs
     * histories
     * patches
-    * Mercurial extensions (mqueue, transplant and such) 
+    * Mercurial extensions (mqueue, transplant and such)
 
 
 ** Big file！
@@ -100,9 +94,9 @@ Usage
     * To remove a tracked big file, just delete it.
     * 'hg bstatus' - to examine state of big files in working directory.
     * 'hg brefresh' - to refresh '.bigfiles' and versions directory with added,
-          o removed and modified big files. 
+          o removed and modified big files.
     * 'hg bupdate' - to fetch files from versions directory as recorded in
-          o '.bigfiles', and get a list of necessary files missing in the version directory. 
+          o '.bigfiles', and get a list of necessary files missing in the version directory.
 #+END_SRC
 Configuration
 
@@ -112,7 +106,7 @@ Configure your .hgrc to enable the extension by adding following lines:
 bigfiles = path/to/bigfiles.py
 
 [bigfiles]
-repo = path/to/versions/dir 
+repo = path/to/versions/dir
 #+END_SRC
 
 ** How to manage my files with hg
@@ -122,12 +116,12 @@ home  with branch cygwin and ubuntu
 
  ---ideas with branch idea
 
-I think I need  project --- ideas. 
+I think I need  project --- ideas.
 
 The project "will" is related with os: ubuntu, cygwin and windows. I can pull the will in cygwin from desktop to laptop. So I can
 backup will project.
 
-The project "ideas" on laptop should be same with the one on desktop. 
+The project "ideas" on laptop should be same with the one on desktop.
 
 I can write a shell script to start the will project on port 8000 and ideas project on 8002, then I pull all them to desktop to
 backup the data.
@@ -145,7 +139,7 @@ backup the data.
 
 
 
-
+  
 * [[http://pypi.python.org/pypi/hgsvn][hgsvn]]
 
 <#+BEGIN_SRC >
@@ -160,8 +154,8 @@ $ hgpullsvn
 #+END_SRC
 
 
-	
-* subversion 	
+  
+* subversion
 * 1 create repos
 
 
@@ -220,9 +214,9 @@ will@will-laptop:~/ideas/newlogistics$ svn mv https://newlogistics.googlecode.co
 
 svn export file:///c:/archive/svn/repository my-export20080505
 
-* Check out project 
+* Check out project
 
-svn co svn://www.standino.com/trunk/standino/ideas/eu4db/ 
+svn co svn://www.standino.com/trunk/standino/ideas/eu4db/
 
 * View log
 svn log -v
@@ -230,7 +224,7 @@ svn log -v
 * view the old file
 
 <#+BEGIN_SRC >
-svn cat --revision 2 rules.txt 
+svn cat --revision 2 rules.txt
 #+END_SRC
 
 * EXTERNAL
@@ -238,14 +232,14 @@ svn cat --revision 2 rules.txt
 C:\standino\ideas>svn propedit svn:externals .
 
 
-C:\standino\ideas\logistics\web\#+BEGIN_SRC 
+C:\standino\ideas\logistics\web\#+BEGIN_SRC
 http://svn.dojotoolkit.org/dojo/view/anon/all/trunk" dojo
 
 logic.war https://newlogistics.googlecode.com/svn/new
 
 logistics  https://newlogistics.googlecode.com/svn/trunk
 
-* Make a branch 
+* Make a branch
 
 * Using emacs as editor
 
@@ -311,7 +305,7 @@ A  my-export/quiz
 Exported revision 15.
 #+END_SRC
 
-
+  
 * Cygwin环境下使用Subversion和SSH (Not verified)
 
 Subversion既可以和Apache相结合通过http协议存取，也可以通过ssh协议来存取。本文主要介绍在Cygwin下如何配置Subversion和SSH服务器。
@@ -383,16 +377,16 @@ git subtree add --prefix=src/main/webapp/resources/jquery-ui-portlet jquery-ui-p
 
 一、 Git 常用命令速查
 git branch 查看本地所有分支
-git status 查看当前状态 
-git commit 提交 
+git status 查看当前状态
+git commit 提交
 git branch -a 查看所有的分支
 git branch -r 查看远程所有分支
-git commit -am "init" 提交并且加注释 
+git commit -am "init" 提交并且加注释
 git remote add origin git@192.168.1.119:ndshow
-git push origin master 将文件给推到服务器上 
-git remote show origin 显示远程库origin里的资源 
+git push origin master 将文件给推到服务器上
+git remote show origin 显示远程库origin里的资源
 git push origin master:develop
-git push origin master:hb-dev 将本地库与服务器上的库进行关联 
+git push origin master:hb-dev 将本地库与服务器上的库进行关联
 git checkout --track origin/dev 切换到远程dev分支
 git branch -D master develop 删除本地库develop
 git checkout -b dev 建立一个新的本地分支dev
@@ -444,11 +438,11 @@ git branch -r -d branch_remote_name
 初始化版本库，并提交到远程服务器端
 mkdir WebApp
 cd WebApp
-git init				本地初始化
+git init                                本地初始化
 touch README
-git add README		添加文件
+git add README          添加文件
 git commit -m 'first commit'
-git remote add origin git@github.com:daixu/WebApp.git	增加一个远程服务器端
+git remote add origin git@github.com:daixu/WebApp.git   增加一个远程服务器端
 上面的命令会增加URL地址为'git@github.com:daixu/WebApp.git'，名称为origin的远程服务器库，以后提交代码的时候只需要使用 origin别名即可
 
 
@@ -800,19 +794,8 @@ git-parse-remote
 git-sh-setup
 包含于其他脚本中，提供 shell 编程的函数库
 
-* SVN Layout
-
-#+BEGIN_SRC
-www.standino.com/
-                mp3
-                book
-                software/trunk
-#+END_SRC
 
 * HG
-
-** 方便的安装。
-不论是mac, linux还是windows，不论你是命令行的爱好者还是乌龟的忠实粉丝，你总能找到一款适合你的。
 
 ** 2个命令创建一个Mercuria仓库，
 > hg init
@@ -934,7 +917,7 @@ http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html
 hg revert .amsn/ -r 385
 
 首先，使用hg grep找到被删除的文件恢复。此命令的输出将显示该文件的最新版本是目前的，以及对已删除文件的路径。二，运行hg revert -r
-<revision number> <path to deleted file>被删除的文件现在在你的工作拷贝，准备送回头部。  
+<revision number> <path to deleted file>被删除的文件现在在你的工作拷贝，准备送回头部。
 
 
 ** 4.2. How to declare trust
@@ -950,7 +933,7 @@ Alternately, Bob can decide to trust a group of people (as specified in an opera
 groups = dev-team
 
 
-* 比较两个 branch 
+* 比较两个 branch
 
   http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial
 
@@ -988,7 +971,7 @@ Another way to do this, useful also for branches that you have already merged to
 
 hg diff -r "max(ancestors(foo) and branch(default)):foo"
 Though that can be a pit of a pain, so i'd recommend setting up an alias by adding something like:
-#+BEGIN_SRC 
+#+BEGIN_SRC
 
 [alias]
 branchdiff = diff -r "max(ancestors('$1') and branch(default)):'$1'"
@@ -1016,7 +999,7 @@ hg branchdiff .
 
 # Changes the active directory in the prompt to the newly cloned  directory
 
-cd .emacs.d/ 
+cd .emacs.d/
 
 # Assigns the original repository to a remote called "upstream"
 
@@ -1038,4 +1021,38 @@ git merge upstream/master
 
 
 
-#+END_SRC  
+#+END_SRC
+
+* git submodule
+
+
+git push --recurse-submodules=on-demand
+
+git pull --recurse-submodules origin master
+
+git submodule foreach git pull
+
+
+The 'foreach' command can execute any arbitrary shell script. Two options to pull the very latest might be,
+
+git submodule foreach git pull origin master
+and,
+
+git submodule foreach /path/to/some/cool/script.sh
+That will iterate through all initialized submodules and run the given commands.
+
+* git subtree 
+
+
+  1. http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html
+
+#+BEGIN_SRC 
+
+$git subtree add --prefix=other_project \
+     git://github.com/your_tree/your_project.git master
+$git subtree push --prefix=other_project
+$git subtree pull --prefix=other_project
+
+
+
+#+END_SRC
