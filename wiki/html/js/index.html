@@ -6,8 +6,8 @@
     <meta name="author" content="Will Chang" />
     <meta name="description" content="Javascript" />
     <meta name="keywords" content="js" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+    <link rel="stylesheet" href="http://standino.github.io/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="http://standino.github.io/media/css/prettify.css" type="text/css">
   </head>
   <body class="container">
     <div>
@@ -401,11 +401,11 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 <li><a href="http://www.nodebeginner.org/index-zh-cn.html">http://www.nodebeginner.org/index-zh-cn.html</a>
 </li>
 </ul>
-
-<p>
-*Ember vs Angular
-</p>
-
+</div>
+</div>
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17">Ember vs Angular</h2>
+<div class="outline-text-2" id="text-17">
 <p>
 通过阅读文章好像Angular更好一些
 </p>
@@ -461,9 +461,9 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 </ol>
 </div>
 
-<div id="outline-container-sec-16-1" class="outline-3">
-<h3 id="sec-16-1">NPM</h3>
-<div class="outline-text-3" id="text-16-1">
+<div id="outline-container-sec-17-1" class="outline-3">
+<h3 id="sec-17-1">NPM</h3>
+<div class="outline-text-3" id="text-17-1">
 <ol class="org-ol">
 <li><a href="http://www.cnblogs.com/chyingp/p/npm.html">http://www.cnblogs.com/chyingp/p/npm.html</a>
 </li>
@@ -471,13 +471,13 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 </ol>
 
 <pre class="example">
-sudo yum install -y npm
+sudo yum install -y npm  nodejs-grunt-cli
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-16-2" class="outline-3">
-<h3 id="sec-16-2">grunt</h3>
-<div class="outline-text-3" id="text-16-2">
+<div id="outline-container-sec-17-2" class="outline-3">
+<h3 id="sec-17-2">grunt</h3>
+<div class="outline-text-3" id="text-17-2">
 <ol class="org-ol">
 <li><a href="http://gruntjs.com/getting-started">http://gruntjs.com/getting-started</a>
 </li>
@@ -490,13 +490,68 @@ sudo npm --proxy http://127.0.0.1:8087 install -g grunt-cli
 </div>
 </div>
 </div>
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18">CKeditor</h2>
+<div class="outline-text-2" id="text-18">
+<ol class="org-ol">
+<li><a href="http://www.mzone.cc/article/288.html">http://www.mzone.cc/article/288.html</a>
+</li>
+<li><a href="http://ipc.iteye.com/blog/695393">http://ipc.iteye.com/blog/695393</a>
+</li>
+<li><a href="http://docs.ckeditor.com/">http://docs.ckeditor.com/</a>
+</li>
+</ol>
+
+<p>
+代码在ideas/ckeditorPlugin目录下
+config.js
+</p>
+
+<pre class="example">
+/**
+ * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights
+ *          reserved. For licensing, see LICENSE.html or
+ *          http://ckeditor.com/license
+ */
+
+CKEDITOR.editorConfig = function(config) {
+	// Define changes to default configuration here. For example:
+	//config.language = 'cn';
+        config.font_names=' 宋体/宋体;黑体/黑体;仿宋/仿宋_GB2312;楷体/楷体_GB2312;隶书/隶书;幼圆/幼圆;微软雅黑/微软雅黑;'+ config.font_names;
+	// config.uiColor = '#AADC6E';
+        config.pasteFromWordRemoveStyles = false;
+        config.pasteFromWordRemoveFontStyles = false;
+     	config.toolbar = [
+			[ 'Source', '-', 'NewPage', '-', 'Templates' ],
+			[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-',
+					'Print', 'SpellChecker', 'Scayt' ],
+			[ 'Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll',
+					'RemoveFormat' ],
+			[ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select',
+					'Button', 'ImageButton', 'HiddenField' ],
+			'/',
+			[ 'Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript',
+					'Superscript' ],
+			[ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
+					'Blockquote' ],
+			[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
+			[ 'Link', 'Unlink', 'Anchor' ],
+			[ 'jdupload','Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
+					'SpecialChar', 'PageBreak' ], '/',
+			[ 'Styles', 'Format', 'Font', 'FontSize' ],
+			[ 'TextColor', 'BGColor' ] ];
+        config.extraPlugins += (config.extraPlugins ? ',jdupload' : 'jdupload');
+};
+</pre>
+</div>
+</div>
 
 </div>
 </div>
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-04-03</span>
+        <span title="last modification date" class="post-info">2014-04-12</span>
         <span title="tags" class="post-info"><a href="/tags/js/">js</a>, <a href="/tags/jquery/">jquery</a>, <a href="/tags/dojo/">dojo</a>, <a href="/tags/ajax/">ajax</a>, <a href="/tags/定位元素/">定位元素</a>, <a href="/tags/调试/">调试</a>, <a href="/tags/piwik/">piwik</a>, <a href="/tags/网站统计/">网站统计</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

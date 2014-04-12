@@ -6,8 +6,8 @@
     <meta name="author" content="Will Chang" />
     <meta name="description" content="MySQL数据库" />
     <meta name="keywords" content="mysql,sql" />
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+    <link rel="stylesheet" href="http://standino.github.io/media/css/main.css" type="text/css">
+    <link rel="stylesheet" href="http://standino.github.io/media/css/prettify.css" type="text/css">
   </head>
   <body class="container">
     <div>
@@ -54,13 +54,53 @@ AND (find_in_set(#{tags},tags)
 </p>
 </div>
 </div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Communications link failure</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="http://zeusami.iteye.com/blog/1112827">http://zeusami.iteye.com/blog/1112827</a>
+</li>
+</ul>
+
+<p>
+2.直接用sql命令行修改  mysql&gt; set global wait_timeout=604800; 
+2.直接用sql命令行修改  mysql&gt; set global wait_timeout=604800; 
+</p>
+
+<p>
+除了wait_timeout，还有一个'interactive_timeout' 
+</p>
+
+<p>
+同样可以执行SHOW GLOBAL VARIABLES LIKE  'interactive_timeout'来查询 
+执行set global interactive_timeout=604800;来设置
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">trim</h2>
+<div class="outline-text-2" id="text-3">
+<ol class="org-ol">
+<li><a href="http://blog.itpub.net/25281640/viewspace-710084/">http://blog.itpub.net/25281640/viewspace-710084/</a>
+</li>
+</ol>
+
+<p>
+SQL 中的 TRIM 函数是用来移除掉一个字串中的字头或字尾.最常见的用途是移除字首或字尾的空白.
+TRIM ([[位置] [要移除的字串] FROM ] 字串): [位置] 的可能值为 LEADING (起头),TRAILING (结尾), or BOTH (起头及结尾).这个函数将把 [要移除的字串] 从字串的起头、结尾，或是起头及结尾移除.如果我们没有列出 [要移除的字串] 是什么的话，那空白就会被移除.
+TRIM(字串): 将所有字串起头或结尾的空白移除
+LTRIM(字串): 将所有字串起头的空白移除.
+RTRIM(字串): 将所有字串结尾的空白移除.
+</p>
+</div>
+</div>
 
 </div>
 </div>
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-03-07</span>
+        <span title="last modification date" class="post-info">2014-04-11</span>
         <span title="tags" class="post-info"><a href="/tags/mysql/">mysql</a>, <a href="/tags/mybatis/">mybatis</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
