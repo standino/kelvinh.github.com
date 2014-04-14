@@ -148,7 +148,6 @@ git remote add -f angular-dashboard-app https://github.com/nickholub/angular-das
 git subtree add --prefix=static/angular-dashboard-app angular-dashboard-app master --squash
 
 
-
 #+END_SRC
 ** sqlite db
 #+BEGIN_SRC
