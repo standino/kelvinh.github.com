@@ -3279,6 +3279,14 @@ sudo visudo
 ## Same thing without a password
 %wheel  ALL=(ALL)       NOPASSWD: ALL
 
+** lync
+
+  - http://fisil.com/linuxlync.html
+
+  - sip.jd.com
+
+  - sip.360buytech.com
+
 * Fedora 20 SSH
 
 在红帽和centos下，一般安装完后会自带ssh，然后可以通过/etc/init.d/sshd start的方式运行，但是在Fedora 20下，系统改用了另外一套服务开启机制。
