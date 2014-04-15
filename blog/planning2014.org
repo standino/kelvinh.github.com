@@ -6,83 +6,14 @@
 #+KEYWORDS:    goal,plan
 #+TAGS:        :goal:plan:project:文件整理:
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t  tasks:nil
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t  tasks:nil
 #+DESCRIPTION: 为明年做一下计划
 #+SEQ_TODO: TODO(t)   STARTED(s!) | DELEGATED(f@)  WAITING(w@/!) OKTODAY(o!) |  DONE(d!) |  DEFERRED(l!) | CANCELED(c!)
 
 
 * 编程技术学习
 
-** Jquery
-
-** 大数据 redis, hadoop 等
-
-学习笔记就记录在@@html:<a href="/wiki/html/bigdata">这里吧</a>@@
-
-** TODO [#B] [1/1]  学习和研究项目中使用到的技术   [2013-10-22 周二]            :OFFICE:
-:RESULTS:
-- State "OKTODAY"    from "STARTED"    [2013-11-22 周五 18:00]
-- State "STARTED"    from "STARTED"    [2013-11-22 周五 16:01]
-CLOCK: [2013-11-22 周五 16:01]--[2013-11-22 周五 18:00] =>  1:59
-- State "OKTODAY"    from "STARTED"    [2013-11-08 周五 15:06]
-- State "STARTED"    from "STARTED"    [2013-11-08 周五 14:52]
-CLOCK: [2013-11-08 周五 14:52]--[2013-11-08 周五 15:06] =>  0:14
-- State "OKTODAY"    from "STARTED"    [2013-11-02 周六 10:36]
-- State "STARTED"    from "STARTED"    [2013-11-02 周六 10:10]
-CLOCK: [2013-11-02 周六 10:10]--[2013-11-02 周六 10:36] =>  0:26
-- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 14:34]
-- State "STARTED"    from "STARTED"    [2013-10-28 周一 13:13]
-CLOCK: [2013-10-28 周一 13:13]--[2013-10-28 周一 14:34] =>  1:21
-- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 11:46]
-- State "STARTED"    from "STARTED"    [2013-10-28 周一 11:16]
-CLOCK: [2013-10-28 周一 11:16]--[2013-10-28 周一 11:46] =>  0:30
-- State "OKTODAY"    from "OKTODAY"    [2013-10-28 周一 11:13]
-- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 11:10]
-- State "STARTED"    from "STARTED"    [2013-10-28 周一 10:44]
-CLOCK: [2013-10-28 周一 10:44]--[2013-10-28 周一 11:10] =>  0:26
-- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 10:24]
-- State "STARTED"    from "STARTED"    [2013-10-28 周一 10:12]
-CLOCK: [2013-10-28 周一 10:12]--[2013-10-28 周一 10:24] =>  0:12
-- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 10:01]
-- State "STARTED"    from "STARTED"    [2013-10-28 周一 09:41]
-CLOCK: [2013-10-28 周一 09:41]--[2013-10-28 周一 10:01] =>  0:20
-- State "OKTODAY"    from "STARTED"    [2013-10-25 周五 18:59]
-- State "STARTED"    from "STARTED"    [2013-10-25 周五 18:52]
-CLOCK: [2013-10-25 周五 18:52]--[2013-10-25 周五 18:59] =>  0:07
-- State "OKTODAY"    from "STARTED"    [2013-10-25 周五 18:00]
-- State "STARTED"    from "STARTED"    [2013-10-25 周五 17:43]
-CLOCK: [2013-10-25 周五 17:43]--[2013-10-25 周五 18:00] =>  0:17
-- State "OKTODAY"    from "STARTED"    [2013-10-22 周二 18:49]
-- State "STARTED"    from "STARTED"    [2013-10-22 周二 18:35]
-CLOCK: [2013-10-22 周二 18:35]--[2013-10-22 周二 18:49] =>  0:14
-:END:
-*** DONE redis
-CLOSED: [2013-12-24 周二 14:17]
-- State "DONE"       from "STARTED"    [2013-12-24 周二 14:17]
-- State "STARTED"    from "STARTED"    [2013-12-24 周二 13:49]
-- State "OKTODAY"    from "STARTED"    [2013-12-24 周二 13:39]
-- State "STARTED"    from "STARTED"    [2013-12-24 周二 13:04]
-- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 16:41]
-- State "STARTED"    from "STARTED"    [2013-12-23 周一 16:35]
-- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 14:58]
-- State "STARTED"    from "STARTED"    [2013-12-23 周一 14:32]
-- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 14:22]
-- State "STARTED"    from "STARTED"    [2013-12-23 周一 13:57]
-:LOGBOOK:
-CLOCK: [2013-12-24 周二 13:49]--[2013-12-24 周二 14:17] =>  0:28
-CLOCK: [2013-12-24 周二 13:04]--[2013-12-24 周二 13:39] =>  0:35
-CLOCK: [2013-12-23 周一 16:35]--[2013-12-23 周一 16:41] =>  0:06
-CLOCK: [2013-12-23 周一 14:32]--[2013-12-23 周一 14:58] =>  0:26
-CLOCK: [2013-12-23 周一 13:57]--[2013-12-23 周一 14:22] =>  0:25
-:END:
-*** hadoop
-*** IDEA
-*** tomcat
-*** mvn
-*** svn
-*** Spring
-
-
+** Javascript(Jquery + Angular + meteor)
 ** 面向对象设计和重构
 
 软件开发了这么多年，需要提供一下设计能力了。
@@ -360,6 +291,74 @@ CLOCK: [2013-12-20 Fri 15:03]--[2013-12-20 Fri 15:10] =>  0:07
 :END:
 
 
+
+
+** 大数据 redis, hadoop 等
+
+学习笔记就记录在@@html:<a href="/wiki/html/bigdata">这里吧</a>@@
+
+** TODO [#B] [1/1]  学习和研究项目中使用到的技术   [2013-10-22 周二]            :OFFICE:
+:RESULTS:
+- State "OKTODAY"    from "STARTED"    [2013-11-22 周五 18:00]
+- State "STARTED"    from "STARTED"    [2013-11-22 周五 16:01]
+CLOCK: [2013-11-22 周五 16:01]--[2013-11-22 周五 18:00] =>  1:59
+- State "OKTODAY"    from "STARTED"    [2013-11-08 周五 15:06]
+- State "STARTED"    from "STARTED"    [2013-11-08 周五 14:52]
+CLOCK: [2013-11-08 周五 14:52]--[2013-11-08 周五 15:06] =>  0:14
+- State "OKTODAY"    from "STARTED"    [2013-11-02 周六 10:36]
+- State "STARTED"    from "STARTED"    [2013-11-02 周六 10:10]
+CLOCK: [2013-11-02 周六 10:10]--[2013-11-02 周六 10:36] =>  0:26
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 14:34]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 13:13]
+CLOCK: [2013-10-28 周一 13:13]--[2013-10-28 周一 14:34] =>  1:21
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 11:46]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 11:16]
+CLOCK: [2013-10-28 周一 11:16]--[2013-10-28 周一 11:46] =>  0:30
+- State "OKTODAY"    from "OKTODAY"    [2013-10-28 周一 11:13]
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 11:10]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 10:44]
+CLOCK: [2013-10-28 周一 10:44]--[2013-10-28 周一 11:10] =>  0:26
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 10:24]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 10:12]
+CLOCK: [2013-10-28 周一 10:12]--[2013-10-28 周一 10:24] =>  0:12
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 10:01]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 09:41]
+CLOCK: [2013-10-28 周一 09:41]--[2013-10-28 周一 10:01] =>  0:20
+- State "OKTODAY"    from "STARTED"    [2013-10-25 周五 18:59]
+- State "STARTED"    from "STARTED"    [2013-10-25 周五 18:52]
+CLOCK: [2013-10-25 周五 18:52]--[2013-10-25 周五 18:59] =>  0:07
+- State "OKTODAY"    from "STARTED"    [2013-10-25 周五 18:00]
+- State "STARTED"    from "STARTED"    [2013-10-25 周五 17:43]
+CLOCK: [2013-10-25 周五 17:43]--[2013-10-25 周五 18:00] =>  0:17
+- State "OKTODAY"    from "STARTED"    [2013-10-22 周二 18:49]
+- State "STARTED"    from "STARTED"    [2013-10-22 周二 18:35]
+CLOCK: [2013-10-22 周二 18:35]--[2013-10-22 周二 18:49] =>  0:14
+:END:
+*** DONE redis
+CLOSED: [2013-12-24 周二 14:17]
+- State "DONE"       from "STARTED"    [2013-12-24 周二 14:17]
+- State "STARTED"    from "STARTED"    [2013-12-24 周二 13:49]
+- State "OKTODAY"    from "STARTED"    [2013-12-24 周二 13:39]
+- State "STARTED"    from "STARTED"    [2013-12-24 周二 13:04]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 16:41]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 16:35]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 14:58]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 14:32]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 14:22]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 13:57]
+:LOGBOOK:
+CLOCK: [2013-12-24 周二 13:49]--[2013-12-24 周二 14:17] =>  0:28
+CLOCK: [2013-12-24 周二 13:04]--[2013-12-24 周二 13:39] =>  0:35
+CLOCK: [2013-12-23 周一 16:35]--[2013-12-23 周一 16:41] =>  0:06
+CLOCK: [2013-12-23 周一 14:32]--[2013-12-23 周一 14:58] =>  0:26
+CLOCK: [2013-12-23 周一 13:57]--[2013-12-23 周一 14:22] =>  0:25
+:END:
+*** hadoop
+*** IDEA
+*** tomcat
+*** mvn
+*** svn
+*** Spring
 
 
 * 读书
