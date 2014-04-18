@@ -3344,3 +3344,20 @@ brew install $WHATEVER_YOU_WANT
 * One of the configured repositories failed
 
 use dnf instead of yum
+
+* boot usb
+
+#+BEGIN_SRC
+[will@localhost ~]$ sudo blkid
+/dev/sda1: UUID="79c1b8b4-7523-4804-bf77-8b825ec4ff4f" TYPE="ext4" PARTUUID="0009c1bd-01"
+/dev/sda2: UUID="0ZWw1v-tnkz-KFJh-xjPV-Kvqm-C77f-Y4U7R8" TYPE="LVM2_member" PARTUUID="0009c1bd-02"
+/dev/mapper/fedora-swap: UUID="3d8fb393-26a4-43a9-be3e-761640661add" TYPE="swap"
+/dev/mapper/fedora-root: UUID="bded09cf-a101-4736-a1c9-d7a5abaa2f59" TYPE="ext4"
+/dev/mapper/fedora-home: UUID="4ce86c83-719c-4238-890d-297b0bd0e9d1" TYPE="ext4"
+/dev/sdb1: LABEL="UUI" UUID="1C0C-0D44" TYPE="vfat" PARTUUID="000c2844-01"
+[will@localhost ~]$ sudo dd if=u of=/dev/sdb
+ubuntukylin-14.04-desktop-amd64.iso  unetbootin-linux-585
+[will@localhost ~]$ sudo dd if=ubuntukylin-14.04-desktop-amd64.iso of=/dev/sdb
+
+
+#+END_SRC
