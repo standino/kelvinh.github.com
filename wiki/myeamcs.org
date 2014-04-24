@@ -2497,13 +2497,6 @@ You can also browse the repository at:
   : M-x list-registers    ; 显示所有寄存器中的内容
   : M-x view-register R   ; 查看寄存器R中的内容
 
-* 书签操作：
-
-  | C-x r m Bookmark | bookmark-set         | 设置一个名为 Bookmark 的书签。              |
-  | C-x r l          | bookmarks-bmenu-list | 列出所有已保存的书签。                      |
-  |                  | bookmark-delete      | 删除一个书签。                              |
-  | C-x r b Bookmark | bookmark-jump        | 跳转至名为 Bookmark 的书签中所设置的位置。  |
-  |                  | bookmark-save        | 将所有的书签保存到书签文件 ~/.emac.bmk 中。 |
 
 * 删除空行：
 
@@ -2515,50 +2508,24 @@ You can also browse the repository at:
 
 
 
-* [[http://web-mode.org/][web mode]]
 
- 1. https://github.com/fxbois/web-mode
- 2. https://github.com/fgallina/multi-web-mode
 
 * 配置和使用软件开发环境
 ** DONE 安装和配置Java开发环境
-** 
-   CLOSED: [2014-02-26 三 13:45]
+   CLOSED: [2014-04-21 一 18:05]
    :LOGBOOK:
+   CLOCK: [2014-04-21 一 17:38]--[2014-04-21 一 18:04] =>  0:26
    CLOCK: [2014-02-26 三 11:19]--[2014-02-26 三 13:03] =>  1:44
    CLOCK: [2014-02-26 三 10:31]--[2014-02-26 三 11:19] =>  0:48
    :END:
 
-  - https://github.com/senny/emacs-eclim
-  - http://www.skybert.net/emacs/java/
-
-#+BEGIN_SRC 
-
-wget -c http://jaist.dl.sourceforge.net/project/eclim/eclim/2.3.2/eclim_2.3.2.jar？
-java -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=8087 -jar eclim_2.3.2.jar
-
-## .eclimrc 
-
-osgi.instance.area.default=@user.home/JD/projects
-
-# increase heap size
--Xmx256M
-
-# increase perm gen size
--XX:PermSize=64m
--XX:MaxPermSize=128m
-
--XX:-UseCompressedOops
-
-#+END_SRC
 ** TODO 在emacs中收邮件
    :LOGBOOK:
    CLOCK: [2014-02-28 五 12:23]--[2014-02-28 五 13:15] =>  0:52
    :END:
-http://emacser.com/mew.htm
+  - http://emacser.com/mew.htm
+  - https://github.com/hkhn/personal-configuration/blob/master/.mew.el
 
-https://github.com/hkhn/personal-configuration/blob/master/.mew.el
+*  macro
 
-* macro
-
-http://www.emacswiki.org/emacs/KeyboardMacros
+ - http://www.emacswiki.org/emacs/KeyboardMacros

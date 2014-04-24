@@ -41,3 +41,39 @@ TRIM ([[位置] [要移除的字串] FROM ] 字串): [位置] 的可能值为 LE
 TRIM(字串): 将所有字串起头或结尾的空白移除
 LTRIM(字串): 将所有字串起头的空白移除.
 RTRIM(字串): 将所有字串结尾的空白移除.
+
+* case 
+
+ 1. http://www.phpzixue.cn/detail1064.shtml
+
+
+
+CASE 
+WHEN price IS NULL THEN 'Unpriced' 
+WHEN price < 10 THEN 'Bargain' 
+WHEN price BETWEEN 10 and 20 THEN 'Average' 
+ELSE 'Gift to impress relatives' 
+END 
+
+
+* mysql coalesce的函数用法
+
+
+ http://huangyunbin.iteye.com/blog/1137815
+
+
+实例一： 
+
+              select coalesce（null,"carrot","apple"） 
+
+          返回结果：carrot 
+
+       实例二： 
+
+              select coalesce(1,"carrot","apple") 
+
+           返回结果：1 
+
+        友情提示：coalesce里的参数如果是字符串的话，务必用单引号或者双引号廓起来； 
+
+                           这些语句可以直接在mysql里运行。

@@ -899,3 +899,27 @@ return result;
  1. http://yuguanyin.iteye.com/blog/226549
 
 * beanshell
+
+* mybatis 
+
+ 1. http://blog.csdn.net/liaoxiaohua1981/article/details/6862764
+ 2. http://my.oschina.net/linuxred/blog/38802
+ 3. MyBatis中出现Mapped Statements collection does not contain value异常解决方案
+ http://blog.csdn.net/wikiwang/article/details/7571108  
+
+
+#+BEGIN_SRC 
+
+另外MyBatis还提供了一个使用注解来参入多个参数的方式。这种方式需要在接口的参数上添加@Param注解
+示例：
+接口方法
+[java] view plaincopy
+public List<Teacher> selectTeacher(@Param(value="id") String id,@Param(value="sex") String sex);  
+
+XML文件
+[html] view plaincopy
+<select id="selectTeacher"  resultType="com.myapp.domain.Teacher">  
+    select * from Teacher where c_id=#{id} and sex=#{sex}  
+</select>  
+
+#+END_SRC

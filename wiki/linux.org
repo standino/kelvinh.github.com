@@ -3361,3 +3361,12 @@ ubuntukylin-14.04-desktop-amd64.iso  unetbootin-linux-585
 
 
 #+END_SRC
+
+* 在Ubuntu上安装开发环境
+
+#+BEGIN_SRC
+org.codehaus.plexus
+sudo apt-cache search lexus-interpolation
+
+sudo apt-get install eclipse-subclipse-graph eclipse-wtp-webtools
+#+END_SRC

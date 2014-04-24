@@ -1083,3 +1083,7 @@ $git subtree pull --prefix=other_project
 
 
 #+END_SRC
+
+* Linux 下svn恢复到某一版本
+
+ - http://blog.163.com/xiaoy2002@126/blog/static/679795342012811102449474/ 

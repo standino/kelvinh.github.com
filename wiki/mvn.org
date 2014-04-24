@@ -135,3 +135,48 @@ jetty-context.xml
 
 #+END_SRC
 * mvn dependency:tree
+
+* settings
+ cat ~/.m2/settings.xml
+#+BEGIN_SRC xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"
+    xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <profiles>
+
+   <profile>
+      <id>sonar</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <properties>
+      <!-- Example for MySQL-->
+      <sonar.jdbc.url>
+        jdbc:h2:tcp://localhost:9092/sonar
+      </sonar.jdbc.url>
+      <sonar.jdbc.username>sonar</sonar.jdbc.username>
+      <sonar.jdbc.password>sonar</sonar.jdbc.password>
+
+      <!-- Optional URL to server. Default value is http://localhost:9000 -->
+      <sonar.host.url>
+        http://localhost:9000
+      </sonar.host.url>
+    </properties>
+  </profile>
+</profiles>
+
+<proxies>
+<proxy>
+      <id>optional</id>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>127.0.0.1</host>
+      <port>8087</port>
+      <nonProxyHosts></nonProxyHosts>
+</proxy>
+</proxies>
+</settings>
+
+#+END_SRC

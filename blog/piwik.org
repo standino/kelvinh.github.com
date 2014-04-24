@@ -31,13 +31,13 @@ Codename:       Final
 * 编译安装Nginx
 #+BEGIN_SRC
 
-wget -c http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip
-wget -c http://nginx.org/download/nginx-1.5.10.tar.gz?
-unzip pcre-8.31.zip
-tar -zxvf nginx-1.5.10.tar.gz
+wget -c http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip?
+wget -c http://nginx.org/download/nginx-1.5.13.tar.gz?
+unzip pcre-8.34.zip
+tar -zxvf nginx-1.5.13.tar.gz
 
 cd nginx*
-./configure --with-http_stub_status_module  --prefix=/usr/local/nginx1.5.10 --with-pcre=../pcre-8.34
+./configure --with-http_stub_status_module  --prefix=/home/will/nginx --with-pcre=../pcre-8.34
 make && make install
 
 #+END_SRC
@@ -59,8 +59,14 @@ rpm -ivh MySQL-server-community-5.1.73-1.rhel5.x86_64.rpm
 
 #+BEGIN_SRC
 
+wget -c wget -c http://cn2.php.net/distributions/php-5.5.8.tar.gz? -O php-5.5.8.tar.gz
+
+tar -zxvf php-5.5.8.tar.gz
+
 cd php-5.5.8
+
 make clean
+
 ./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/lib --with-mysqli --with-zlib --enable-track-vars --with-xml --with-gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2/freetype/ --with-mbstring --enable-mbstring=all
 make && make install
 
@@ -94,7 +100,7 @@ lsof -i:80
 ** 启动php的fastcgi进程
 
 #+BEGIN_SRC
-./php-cgi   -b   3344
+[root@localhost ] /usr/local/php/bin/php-cgi   -b   3344 &
 #+END_SRC
 
 ** 配置nginx
@@ -148,7 +154,7 @@ vi conf/nginx.conf
 启动nginx
 
 #+BEGIN_SRC
-  vi /usr/local/nginx1.5.10/sbin/nginx
+ /usr/local/nginx1.5.10/sbin/nginx
 #+END_SRC
 
 如果nginx说端口已经占用，可以使用下面的命令来查看端口占用情况，并杀掉相关进程。
