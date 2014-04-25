@@ -2511,8 +2511,7 @@ You can also browse the repository at:
 
 
 * 配置和使用软件开发环境
-** DONE 安装和配置Java开发环境
-   CLOSED: [2014-04-21 一 18:05]
+** STARTED 安装和配置Java开发环境
    :LOGBOOK:
    CLOCK: [2014-04-21 一 17:38]--[2014-04-21 一 18:04] =>  0:26
    CLOCK: [2014-02-26 三 11:19]--[2014-02-26 三 13:03] =>  1:44
