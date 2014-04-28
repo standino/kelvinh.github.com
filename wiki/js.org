@@ -263,13 +263,12 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 **Portal 
  1. https://github.com/nickholub/angular-ui-dashboard
  2. http://nickholub.github.io/angular-dashboard-app/#/
-
  3. https://github.com/flamejs/flame.js
 
 ** meteor
 
  1. http://www.likebin.net/meteorlist.html
-    
+
 
 In this book, we're using camelCase because it's the usual JavaScript way of doing things (after all, it's JavaScript,
 not java_script!).
@@ -280,19 +279,13 @@ CSS syntax itself already uses hyphens (font-family, text-align, etc.).
 ** NPM
 
   1. http://www.cnblogs.com/chyingp/p/npm.html
-  2. 
 
 #+BEGIN_SRC 
-
 sudo yum install -y npm 
 sudo npm install -g bower
-
 sudo npm install -g grunt-cli
-
 sudo npm install -g meteorite
-
 mrt create microscope
-
 #+END_SRC
 
 ** grunt
@@ -305,7 +298,7 @@ sudo npm install -g grunt-cli
 sudo npm --proxy http://127.0.0.1:8087 install -g grunt-cli 
 
 #+END_SRC
-  
+
 
 * CKeditor 
 
