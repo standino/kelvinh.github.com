@@ -1072,6 +1072,7 @@ That will iterate through all initialized submodules and run the given commands.
 
 
   1. http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html
+  2. http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree
 
 #+BEGIN_SRC 
 
@@ -1081,7 +1082,10 @@ $git subtree push --prefix=other_project
 $git subtree pull --prefix=other_project
 
 
+he way that I have in the past re-created that relationship was by doing a subtree merge.
 
+git pull -s subtree <lib> master
+even if there is nothing to merge in/pull it should simply return without doing anything. Feel free to add --squash to the above pull so that you don't pull in any remote history.
 #+END_SRC
 
 * Linux 下svn恢复到某一版本
