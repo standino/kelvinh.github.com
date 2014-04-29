@@ -153,3 +153,9 @@ git subtree add --prefix=static/angular-dashboard-app angular-dashboard-app mast
 #+BEGIN_SRC
  orm.RegisterDataBase("db2", "sqlite3", "data.db")
 #+END_SRC
+** DONE 加入angular js
+   CLOSED: [2014-04-28 一 17:53]
+   - State "DONE"       from "STARTED"    [2014-04-28 一 17:53]
+   :LOGBOOK:
+   CLOCK: [2014-04-28 一 17:10]--[2014-04-28 一 17:53] =>  0:43
+   :END:

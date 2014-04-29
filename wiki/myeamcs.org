@@ -2519,12 +2519,17 @@ You can also browse the repository at:
    CLOCK: [2014-02-26 三 10:31]--[2014-02-26 三 11:19] =>  0:48
    :END:
 
-** TODO 在emacs中收邮件
+**  在emacs中收邮件
    :LOGBOOK:
+   CLOCK: [2014-04-28 一 09:17]--[2014-04-28 一 10:26] =>  1:09
    CLOCK: [2014-02-28 五 12:23]--[2014-02-28 五 13:15] =>  0:52
    :END:
   - http://emacser.com/mew.htm
   - https://github.com/hkhn/personal-configuration/blob/master/.mew.el
+  - http://wenshanren.org/?p=111
+  - http://dreamland.blog.51cto.com/417830/87510
+
+
 
 *  macro
 

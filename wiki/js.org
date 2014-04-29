@@ -238,7 +238,7 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 
  - http://www.nodebeginner.org/index-zh-cn.html
 
-* Angular + meteor
+* [[https://angularjs.org/][Angular]] + meteor
 
 通过阅读文章好像Angular更好一些
 
@@ -264,6 +264,9 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
  1. https://github.com/nickholub/angular-ui-dashboard
  2. http://nickholub.github.io/angular-dashboard-app/#/
  3. https://github.com/flamejs/flame.js
+ 4. JQuery UI - sortable 排序插件参数详解 http://www.cnblogs.com/yoyogehei/archive/2011/07/28/2119910.html
+ 5. http://www.hongkiat.com/blog/jquery-ui-sortable/
+ 6. AngularJS入门教程 http://www.ituring.com.cn/minibook/303
 
 ** meteor
 
