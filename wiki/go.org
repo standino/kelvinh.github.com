@@ -147,6 +147,8 @@ git subtree add --prefix=static/angular-ui-dashboard angular-ui-dashboard master
 git remote add -f angular-dashboard-app https://github.com/nickholub/angular-dashboard-app
 git subtree add --prefix=static/angular-dashboard-app angular-dashboard-app master --squash
 
+git remote add -f d3 https://github.com/standino/d3
+git subtree add --prefix=static/d3 d3 master
 
 #+END_SRC
 ** sqlite db
