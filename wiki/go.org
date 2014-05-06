@@ -150,6 +150,10 @@ git subtree add --prefix=static/angular-dashboard-app angular-dashboard-app mast
 git remote add -f d3 https://github.com/standino/d3
 git subtree add --prefix=static/d3 d3 master
 
+git remote add -f angular-d3-demo https://github.com/standino/angular-d3-demo.git
+git subtree add --prefix=static/angular-d3-demo angular-d3-demo master
+
+
 #+END_SRC
 ** sqlite db
 #+BEGIN_SRC
