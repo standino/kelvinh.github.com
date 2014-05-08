@@ -259,6 +259,7 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
  15. http://angular-ui.github.io/bootstrap/
  16. http://www.csdn.net/article/2013-03-14/2814486-Meteor-Web-App
  17. http://angular-ui.github.io/
+ 18. [[http://www.infoq.com/cn/news/2014/05/angularjs-front-end-architecture?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global][基于AngularJS的企业软件前端架构]]
 
 **Portal 
  1. https://github.com/nickholub/angular-ui-dashboard

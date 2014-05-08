@@ -3270,3 +3270,7 @@ sudo apt-cache search lexus-interpolation
 
 sudo apt-get install eclipse-subclipse-graph eclipse-wtp-webtools
 #+END_SRC
+
+* Ubuntu Kylin
+
+ - http://www.ubuntukylin.com/
