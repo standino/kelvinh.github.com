@@ -180,3 +180,11 @@ jetty-context.xml
 </settings>
 
 #+END_SRC
+
+* 下载源代码
+
+#+BEGIN_SRC
+mvn dependency:sources
+mvn dependency:resolve -Dclassifier=javadoc
+
+#+END_SRC
