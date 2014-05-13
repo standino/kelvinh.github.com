@@ -268,6 +268,7 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
  4. JQuery UI - sortable 排序插件参数详解 http://www.cnblogs.com/yoyogehei/archive/2011/07/28/2119910.html
  5. http://www.hongkiat.com/blog/jquery-ui-sortable/
  6. AngularJS入门教程 http://www.ituring.com.cn/minibook/303
+ 7. [[http://blog.pusher.com/making-angular-js-realtime-with-pusher/][Making Angular.js realtime with Websockets]]
 
 ** meteor
 
