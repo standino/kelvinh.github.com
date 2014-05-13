@@ -1,0 +1,106 @@
+#+TITLE:       Jquery ajax 提交和controler 定义之间的关系
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2014-05-13 Thu
+#+URI:         /wiki/html/jqueryajaxspringmvc
+#+KEYWORDS:    jquery,ajax,js,spring
+#+TAGS:        :jquery:ajax:spring:java:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: ajax 提交和controler 定义之间的关系
+#+STARTUP: content
+#+STARTUP: indent
+#+STARTUP: hidestars
+
+* get
+
+javascript代码：
+
+dueDate是一个日期控件，赋值的时候需要做一下转换。
+
+#+BEGIN_SRC 
+         $.ajax({
+             url: "/pub/" + id,
+             type: "GET",
+             success: function(mydata) {
+                 $('#publishedWork_dueTime').val(new Date(mydata.task.dueDate).format('yyyy-MM-dd hh:mm'));
+
+#+END_SRC
+
+Controller 代码
+
+#+BEGIN_SRC java
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelMap view(@PathVariable Integer id,ModelMap view){
+
+
+#+END_SRC
+
+* put
+
+#+BEGIN_SRC java
+	@RequestMapping(value = "/save", method = {RequestMethod.POST,RequestMethod.PUT},produces = "application/json")
+	@ResponseStatus(HttpStatus.OK)
+	public void save(Task task,ModelMap view) {
+
+#+END_SRC
+* delete
+#+BEGIN_SRC java
+	@RequestMapping(value = "/delete/{id}", method = {RequestMethod.POST,RequestMethod.DELETE})
+	@ResponseStatus(HttpStatus.OK)
+	public void delete(@PathVariable Integer id,ModelMap view) {
+
+#+END_SRC
+* post 
+
+javascript 代码:
+
+其中accessList是一个 select 会提交多个值, dueDate是一个日期选择框，需要做一下日期格式的转换。
+
+#+BEGIN_SRC 
+
+  $.ajax({
+    url : "/save",
+    type : "POST",
+    data : {
+      'name' : $('#knowledgeName').val(),
+      'content' : $("#knowledgeContent").val(),
+      'isParent' : $('input[name=isParent]:checked').val(),
+	'dueDate': new Date(Date.parse($("#publishWork_dueTime").val().replace(/-/g,   "/"))),
+      'accessList': $('#addkbGroup').val()? $('#addkbGroup').val().toString():''
+    },
+
+    success : function(mydata) {
+  
+    }
+    }
+  });
+
+
+#+END_SRC
+
+controller 方法
+
+#+BEGIN_SRC java
+    @RequestMapping(value="/save",method = {RequestMethod.POST,RequestMethod.GET},produces="application/json")
+    @ResponseBody
+    public Message save( KnowledgeBase knowledgeBase, Model view) throws Exception {
+        Message msg= null;
+
+#+END_SRC
+
+domain 对象
+Spring mvc 制动的把accessList映射到List<String>中。
+
+#+BEGIN_SRC java
+public class KnowledgeBase  {
+	private Integer pId;
+	private Integer isParent;
+	private String name;
+	private String content;
+	private Date dueDate;
+      private List<String> accessList;
+
+#+END_SRC
