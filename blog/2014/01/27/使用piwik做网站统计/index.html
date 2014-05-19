@@ -106,17 +106,18 @@ Codename:       Final
 <h2 id="sec-1">编译安装Nginx</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="example">
-wget -c http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip
-wget -c http://nginx.org/download/nginx-1.5.10.tar.gz?
-unzip pcre-8.31.zip
-tar -zxvf nginx-1.5.10.tar.gz
+wget -c http://softlayer-ams.dl.sourceforge.net/project/pcre/pcre/8.34/pcre-8.34.zip?
+wget -c http://nginx.org/download/nginx-1.5.13.tar.gz?
+unzip pcre-8.34.zip
+tar -zxvf nginx-1.5.13.tar.gz
 
 cd nginx*
-./configure --with-http_stub_status_module  --prefix=/usr/local/nginx1.5.10 --with-pcre=../pcre-8.34
+./configure --with-http_stub_status_module  --prefix=/home/will/nginx --with-pcre=../pcre-8.34
 make &amp;&amp; make install
 </pre>
 </div>
 </div>
+
 
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2">安装 mysql</h2>
@@ -131,17 +132,25 @@ rpm -ivh MySQL-server-community-5.1.73-1.rhel5.x86_64.rpm
 </div>
 </div>
 
+
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">安装php</h2>
 <div class="outline-text-2" id="text-3">
 <pre class="example">
+wget -c wget -c http://cn2.php.net/distributions/php-5.5.8.tar.gz? -O php-5.5.8.tar.gz
+
+tar -zxvf php-5.5.8.tar.gz
+
 cd php-5.5.8
+
 make clean
+
 ./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/lib --with-mysqli --with-zlib --enable-track-vars --with-xml --with-gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2/freetype/ --with-mbstring --enable-mbstring=all
 make &amp;&amp; make install
 </pre>
 </div>
 </div>
+
 
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">配置nginx 和 php</h2>
@@ -175,10 +184,11 @@ lsof -i:80
 <h3 id="sec-4-1">启动php的fastcgi进程</h3>
 <div class="outline-text-3" id="text-4-1">
 <pre class="example">
-./php-cgi   -b   3344
+[root@localhost ] /usr/local/php/bin/php-cgi   -b   3344 &amp;
 </pre>
 </div>
 </div>
+
 <div id="outline-container-sec-4-2" class="outline-3">
 <h3 id="sec-4-2">配置nginx</h3>
 <div class="outline-text-3" id="text-4-2">
@@ -226,6 +236,7 @@ server {
 </pre>
 </div>
 </div>
+
 <div id="outline-container-sec-4-3" class="outline-3">
 <h3 id="sec-4-3">测试安装是否成功</h3>
 <div class="outline-text-3" id="text-4-3">
@@ -234,7 +245,7 @@ server {
 </p>
 
 <pre class="example">
-vi /usr/local/nginx1.5.10/sbin/nginx
+/usr/local/nginx1.5.10/sbin/nginx
 </pre>
 
 <p>
@@ -273,6 +284,7 @@ phpinfo();
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">piwik</h2>
 <div class="outline-text-2" id="text-5">
@@ -294,6 +306,7 @@ chmod -R 777 piwik
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-5-2" class="outline-3">
 <h3 id="sec-5-2">使用piwik</h3>
 <div class="outline-text-3" id="text-5-2">
@@ -354,6 +367,7 @@ chmod -R 777 piwik
 </div>
 </div>
 
+
 <div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6">参考</h2>
 <div class="outline-text-2" id="text-6">
@@ -387,6 +401,7 @@ wget -c http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-server-community-5.1.73-1
 </pre>
 </div>
 </div>
+
 
 <div id="outline-container-sec-6-2" class="outline-3">
 <h3 id="sec-6-2">编译apache</h3>
@@ -441,7 +456,7 @@ cd -
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2014-01-27</span>
-        <span title="last modification date" class="post-info">2014-03-07</span>
+        <span title="last modification date" class="post-info">2014-04-24</span>
         <span title="tags" class="post-info"><a href="/tags/piwik/">piwik</a>, <a href="/tags/js/">js</a>, <a href="/tags/linux/">linux</a>, <a href="/tags/centos/">centos</a>, <a href="/tags/apache/">apache</a>, <a href="/tags/mysql/">mysql</a>, <a href="/tags/shell/">shell</a>, <a href="/tags/php/">php</a>, <a href="/tags/端口/">端口</a>, <a href="/tags/nginx/">nginx</a></span>
         <span title="author" class="post-info">standino</span>
       </div>

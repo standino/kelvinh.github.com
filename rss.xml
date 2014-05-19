@@ -4,10 +4,24 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>二, 13  5月 2014 10:16:56 CST</pubDate>
-    <lastBuildDate>二, 13  5月 2014 10:16:56 CST</lastBuildDate>
+    <pubDate>一, 19  5月 2014 13:22:14 CST</pubDate>
+    <lastBuildDate>一, 19  5月 2014 13:22:14 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>JAVA</title>
+      <link>http://standino.github.io/wiki/html/java</link>
+      <description>Java Tips</description>
+      <pubDate>2014-05-19</pubDate>
+      <guid>http://standino.github.io/wiki/html/java</guid>
+    </item>
+    <item>
+      <title>javascript</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-05-19</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
     <item>
       <title>使用 go + angular 开发系统门户</title>
       <link>http://standino.github.io/wiki/html/goeasyportal</link>
@@ -16,18 +30,11 @@
       <guid>http://standino.github.io/wiki/html/goeasyportal</guid>
     </item>
     <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
+      <title>Jquery ajax 提交和controler 定义之间的关系</title>
+      <link>http://standino.github.io/wiki/html/jqueryajaxspringmvc</link>
+      <description>ajax 提交和controler 定义之间的关系</description>
       <pubDate>2014-05-13</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
-    </item>
-    <item>
-      <title>JAVA</title>
-      <link>http://standino.github.io/wiki/html/java</link>
-      <description>Java Tips</description>
-      <pubDate>2014-05-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/java</guid>
+      <guid>http://standino.github.io/wiki/html/jqueryajaxspringmvc</guid>
     </item>
     <item>
       <title>mvn</title>
@@ -70,13 +77,6 @@
       <description>piwik</description>
       <pubDate>2014-04-24</pubDate>
       <guid>http://standino.github.io/blog/2014/01/27/使用piwik做网站统计/</guid>
-    </item>
-    <item>
-      <title>mysql</title>
-      <link>http://standino.github.io/wiki/html/mysql</link>
-      <description>MySQL数据库</description>
-      <pubDate>2014-04-24</pubDate>
-      <guid>http://standino.github.io/wiki/html/mysql</guid>
     </item>
   </channel>
 </rss>
