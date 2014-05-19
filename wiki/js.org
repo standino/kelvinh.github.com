@@ -361,3 +361,18 @@ CKEDITOR.editorConfig = function(config) {
 * Json 在线查看工具
 
  1 http://jsonviewer.stack.hu/
+
+* html 缓存
+
+如下代码会禁用html缓存
+
+#+BEGIN_SRC
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="0"> 
+#+END_SRC
+
+针对ajax，需要如下设置:
+
+方法一：加时间戳 var url = BaseURL + "&timeStamp=" + new Date().getTime();
+方法二：加随机数 var url = BaseURL + "&r=" + Math.random();

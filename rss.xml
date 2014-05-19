@@ -4,10 +4,24 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>一, 12  5月 2014 12:33:59 CST</pubDate>
-    <lastBuildDate>一, 12  5月 2014 12:33:59 CST</lastBuildDate>
+    <pubDate>二, 13  5月 2014 10:16:56 CST</pubDate>
+    <lastBuildDate>二, 13  5月 2014 10:16:56 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>使用 go + angular 开发系统门户</title>
+      <link>http://standino.github.io/wiki/html/goeasyportal</link>
+      <description>go 语言</description>
+      <pubDate>2014-05-13</pubDate>
+      <guid>http://standino.github.io/wiki/html/goeasyportal</guid>
+    </item>
+    <item>
+      <title>javascript</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-05-13</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
     <item>
       <title>JAVA</title>
       <link>http://standino.github.io/wiki/html/java</link>
@@ -28,13 +42,6 @@
       <description>go 语言</description>
       <pubDate>2014-05-08</pubDate>
       <guid>http://standino.github.io/wiki/html/go</guid>
-    </item>
-    <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-05-08</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
     <item>
       <title>linux</title>
@@ -70,13 +77,6 @@
       <description>MySQL数据库</description>
       <pubDate>2014-04-24</pubDate>
       <guid>http://standino.github.io/wiki/html/mysql</guid>
-    </item>
-    <item>
-      <title>2014年计划</title>
-      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
-      <description>为明年做一下计划</description>
-      <pubDate>2014-04-15</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
     </item>
   </channel>
 </rss>

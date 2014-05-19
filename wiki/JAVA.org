@@ -924,4 +924,10 @@ XML文件
 
 #+END_SRC
 
-* TODO [#C] 编写ajax 提交和controler 定义之间的关系的blog
+* DONE [#C] 编写ajax 提交和controler 定义之间的关系的blog
+  CLOSED: [2014-05-13 二 13:29]
+  - State "DONE"       from "STARTED"    [2014-05-13 二 13:29]
+  :LOGBOOK:
+  CLOCK: [2014-05-13 二 13:10]--[2014-05-13 二 13:29] =>  0:19
+  :END:
+
