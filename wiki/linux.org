@@ -3274,3 +3274,16 @@ sudo apt-get install eclipse-subclipse-graph eclipse-wtp-webtools
 * Ubuntu Kylin
 
  - http://www.ubuntukylin.com/
+* 休眠
+  - https://help.ubuntu.com/lts/ubuntu-help/power-hibernate.html
+
+#+BEGIN_SRC
+
+sudo gedit /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+
+[Re-enable hibernate by default]
+Identity=unix-user:*
+Action=org.freedesktop.upower.hibernate
+ResultActive=yes
+
+#+END_SRC
