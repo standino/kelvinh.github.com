@@ -288,7 +288,7 @@ muse 提供很方便修改 muse-mode 中高亮的接口。我写了一个函数�
 还没有想好如何结合 muse 使用。目前只写了一个简单的命令用于生成我的网站
 的 rss 文件。
 
-下载我的 [[../etc/muse-conf.tar.gz][Muse 配置和头文件]]。
+
 
 
 *  Customize xml file 

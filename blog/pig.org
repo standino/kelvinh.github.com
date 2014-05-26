@@ -1,0 +1,24 @@
+#+TITLE:       使用pig脚本
+#+AUTHOR:      Will
+#+EMAIL:       will@will-K42JA
+#+DATE:        2014-05-26 一
+#+URI:         /blog/%y/%m/%d/pig
+#+KEYWORDS:    pig, hadoop,
+#+TAGS:        pig, hadoop,
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: pig 脚本
+
+#+BEGIN_SRC
+product = load '/user/dt=2014-05-25/*.lzo' USING PigStorage('\t') AS(brand_id, brand_name);
+
+-- dim_brand
+brand = foreach product generate  brand_id as dim_brand_id, brand_cd, brand_name;
+uniqBrand = distinct brand;
+store uniqBrand  into '/user/run/dim_brand' using PigStorage('\t');
+
+#+END_SRC
+
+ 1. lzo文件是压缩文件，有时候在同一级目录下还有lzo.index文件，这时如果指定目录，而不用*.lzo来限定读取文件。那么store的文件会有
+    *.lzo.index里的内容，这是我们不希望的。所以，如果使用压缩文件，最好使用*.lzo来限定文件。
+ 2. distinct 用来去重。
