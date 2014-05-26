@@ -4,23 +4,30 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>一, 19  5月 2014 13:22:14 CST</pubDate>
-    <lastBuildDate>一, 19  5月 2014 13:22:14 CST</lastBuildDate>
+    <pubDate>一, 26  5月 2014 18:20:03 CST</pubDate>
+    <lastBuildDate>一, 26  5月 2014 18:20:03 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>javascript</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-05-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>linux</title>
+      <link>http://standino.github.io/wiki/html/linux</link>
+      <description>linux</description>
+      <pubDate>2014-05-26</pubDate>
+      <guid>http://standino.github.io/wiki/html/linux</guid>
+    </item>
     <item>
       <title>JAVA</title>
       <link>http://standino.github.io/wiki/html/java</link>
       <description>Java Tips</description>
       <pubDate>2014-05-19</pubDate>
       <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-05-19</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
     <item>
       <title>使用 go + angular 开发系统门户</title>
@@ -49,13 +56,6 @@
       <description>go 语言</description>
       <pubDate>2014-05-08</pubDate>
       <guid>http://standino.github.io/wiki/html/go</guid>
-    </item>
-    <item>
-      <title>linux</title>
-      <link>http://standino.github.io/wiki/html/linux</link>
-      <description>linux</description>
-      <pubDate>2014-05-08</pubDate>
-      <guid>http://standino.github.io/wiki/html/linux</guid>
     </item>
     <item>
       <title>Emacs 使用笔记</title>
