@@ -376,3 +376,7 @@ CKEDITOR.editorConfig = function(config) {
 
 方法一：加时间戳 var url = BaseURL + "&timeStamp=" + new Date().getTime();
 方法二：加随机数 var url = BaseURL + "&r=" + Math.random();
+
+* 查询股票
+
+ - [[http://shenhai.zqmyw.cn/thread-2203-1-1.html][如何使用新浪股票接口获取恒生指数及美国的一些股票指数？]]

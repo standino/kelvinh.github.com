@@ -1144,6 +1144,9 @@ WINEARCH=win32 WINEPREFIX=~/.wine winecfg
   1. 安装 corefont 和 all chinese font
   2. 安装 rich editor 2.0
 
+** 中文输入
+ http://bbs.archlinuxcn.org/viewtopic.php?id=2052
+
 * 伪装成Textmate的gEdit
 
 Textmate-like Gedit in few steps
@@ -3287,3 +3290,8 @@ Action=org.freedesktop.upower.hibernate
 ResultActive=yes
 
 #+END_SRC
+
+
+* 给ubuntu 报 bug
+
+ https://bugs.launchpad.net/ubuntukylin
