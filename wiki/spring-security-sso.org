@@ -2,7 +2,7 @@
 #+AUTHOR:      Will
 #+EMAIL:       will@will-K42JA
 #+DATE:        2014-05-28 三
-#+URI:         wiki/html/sssso
+#+URI:         ./wiki/html/sssso
 #+KEYWORDS:    spring, sso, java
 #+TAGS:        spring, sso, java
 #+LANGUAGE:    en
