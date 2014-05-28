@@ -4,16 +4,16 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>三, 28  5月 2014 15:34:49 CST</pubDate>
-    <lastBuildDate>三, 28  5月 2014 15:34:49 CST</lastBuildDate>
+    <pubDate>三, 28  5月 2014 15:38:57 CST</pubDate>
+    <lastBuildDate>三, 28  5月 2014 15:38:57 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>Spring Security with SSO Headers - integrating with OAM WebGate</title>
-      <link>http://standino.github.io/blog/2014/05/28/Spring Security with SSO Headers - integrating with OAM WebGate</link>
+      <link>http://standino.github.io/wiki/html/sssso</link>
       <description>Spring Security with SSO Headers - integrating with OAM WebGate</description>
       <pubDate>2014-05-28</pubDate>
-      <guid>http://standino.github.io/blog/2014/05/28/Spring Security with SSO Headers - integrating with OAM WebGate</guid>
+      <guid>http://standino.github.io/wiki/html/sssso</guid>
     </item>
     <item>
       <title>使用pig脚本</title>
