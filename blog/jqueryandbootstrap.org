@@ -64,7 +64,6 @@ $.widget("nmk.progressbar", {
       this.element
           .removeClass('progressbar')
           .text("");
-     //
      $.Widget.prototype.destroy.call(this);
 
   }
@@ -85,14 +84,12 @@ $('.loadding').progressbar(
 #+END_SRC
 
 ** 基于 JQuery UI 编写插件 - 代码说明
-
- - destroy()：将widget实例从dom对象上移除，在开发widget的时候一般此方法是必须的。就是移除你自己在dom element上添加的样式和行为以及dom结构
  - options：在这里面保存的是widget的配置信息，在创建widget的时候需要设置一些配置参数。
  - element：就是widget作用的dom对象。
  - _create() 这个方法就是创建widget的方法，在页面调用widget的时候，就会执行此方法，来构建widget。Widget的绝大大多数行为和结构都是在这里创建的。
  - _setOption():此方法提供了options的属性的设置。
  - _trigger一般用来回调用户传入options的callback。在插件内部调用_trigger(‘myEvent’)即相当于调用options里面的myEvent这个回调函数。
-
+ - _destroy()：将widget实例从dom对象上移除，在开发widget的时候一般此方法是必须的。就是移除你自己在dom element上添加的样式和行为以及dom结构
 ** JQuery UI Portlet
 
 #+BEGIN_SRC javascript

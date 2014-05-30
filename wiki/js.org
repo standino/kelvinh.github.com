@@ -24,6 +24,7 @@
 
   - [[https://wrapbootstrap.com/][Theme and temaplate]]
   - http://reactiveraven.github.io/jqBootstrapValidation/
+  - http://www.html5cn.com.cn/bootstrap/docs/index.html
 Bootstrap 是一个用于快速开发 Web 应用程序和网站的前端框架。
 
 在现代 Web 开发中，有几个几乎所有的 Web 项目中都需要的组件。
@@ -79,6 +80,8 @@ if (events && events.click) {
 * Jquery widget 编写
 
  1. http://bililite.com/blog/understanding-jquery-ui-widgets-a-tutorial/
+ 2. [[http://www.cnblogs.com/dc10101/archive/2012/05/03/2481004.html][编写jQueryUI插件(widget)]]
+ 3. [[http://coding-coding.com/%E4%BD%BF%E7%94%A8jquery-ui-widget-factory%E7%BC%96%E5%86%99jquery%E6%8F%92%E4%BB%B6/][使用jquery-ui-widget-factory编写jquery插件]]
 
 #+BEGIN_SRC javascript
 

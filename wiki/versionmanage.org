@@ -1091,3 +1091,7 @@ even if there is nothing to merge in/pull it should simply return without doing 
 * Linux 下svn恢复到某一版本
 
  - http://blog.163.com/xiaoy2002@126/blog/static/679795342012811102449474/ 
+
+* git 常用操作
+
+ 1. [[http://blog.csdn.net/jackystudio/article/details/12271839][【Git入门之六】远程仓库]]
