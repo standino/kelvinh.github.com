@@ -13,7 +13,7 @@
 
 * SVN
 
-http://www.subversion.org.cn/svnbook/
+ - http://www.subversion.org.cn/svnbook/
 
 ** web svn
 
@@ -25,13 +25,8 @@ http://www.sventon.org/
   1. http://www.111cn.net/sys/linux/53797.htm
 
 #+BEGIN_SRC
-
-[will@localhost sone_1_0_0]$ export EDITOR=gedit
-[will@localhost sone_1_0_0]$ svn propedit svn:ignore .
-
-
-
-
+ export EDITOR=gedit
+ svn propedit svn:ignore .
 #+END_SRC
 
 ** 分支和tag
@@ -40,126 +35,17 @@ http://www.sventon.org/
    - http://zccst.iteye.com/blog/1430823
    - http://www.panweizeng.com/svn-branching-merging.html
    -
-
 ** 合并
 
 #+BEGIN_SRC
-svn merge -r 44324:44325 http://svn.360buy-develop.com/repos/ipo/retail/branches/sone_1_0_0
-
+svn merge -r 44324:44325 http://svn.
 #+END_SRC
 
+** 1 create repos
 
 
-* hg
+#+BEGIN_SRC
 
-[[http://hgbook.red-bean.com/][Mercurial: The Definitive Guide by Bryan O'Sullivan]]
-
-http://wiki.alliedmods.net/Mercurial_Tutorial
-
- [[http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html][Mercurial: The Definitive Guide]]
-
-* [[http://www.javaforge.com/project/HGE][MercurialEclipse]]
-
-MercurialEclipse is a plugin providing support for the highly popular Mercurial distributed version control system within the Eclipse IDE.
-
-MercurialEclipse supports:
-
-    * cloning repositories and importing them as Eclipse projects
-    * push, pull and convenient syncronization
-    * working with branches (branch, merge and rebase)
-    * tags
-    * undo (backout, rollback and strip)
-    * diffs
-    * histories
-    * patches
-    * Mercurial extensions (mqueue, transplant and such)
-
-
-** Big file！
-
- http://mercurial.selenic.com/wiki/html/BigfilesExtension
-
- http://mercurial.selenic.com/wiki/html/HandlingLargeFiles
-
-Usage
-
-  1. 'hg add', ignoring the size warning.
-  2. hg bstat
-  3. hg bupdate
-
-<#+BEGIN_SRC >
-    * The extension overrides 'hg update', so that it can compare contents of '.bigfiles' before and after the update to remove and fetch appropriate big files.
-    * The directory storing versions of big files can be synced with the remote one (the extension doesn't do this, but tells the list of the necessary files). The versions corresponding to old changesets can be removed to save space.
-    * To add a new big file, use normal 'hg add', ignoring the size warning.
-    * To remove a tracked big file, just delete it.
-    * 'hg bstatus' - to examine state of big files in working directory.
-    * 'hg brefresh' - to refresh '.bigfiles' and versions directory with added,
-          o removed and modified big files.
-    * 'hg bupdate' - to fetch files from versions directory as recorded in
-          o '.bigfiles', and get a list of necessary files missing in the version directory.
-#+END_SRC
-Configuration
-
-Configure your .hgrc to enable the extension by adding following lines:
-<#+BEGIN_SRC >
-[extensions]
-bigfiles = path/to/bigfiles.py
-
-[bigfiles]
-repo = path/to/versions/dir
-#+END_SRC
-
-** How to manage my files with hg
-
-
-home  with branch cygwin and ubuntu
-
- ---ideas with branch idea
-
-I think I need  project --- ideas.
-
-The project "will" is related with os: ubuntu, cygwin and windows. I can pull the will in cygwin from desktop to laptop. So I can
-backup will project.
-
-The project "ideas" on laptop should be same with the one on desktop.
-
-I can write a shell script to start the will project on port 8000 and ideas project on 8002, then I pull all them to desktop to
-backup the data.
-
-** Branch and tags
-
-
-  hg clone myproject myproject-merge
-
-  hg branches
-
-  hg branch foo
-
-
-
-
-
-  
-* [[http://pypi.python.org/pypi/hgsvn][hgsvn]]
-
-<#+BEGIN_SRC >
-$ mkdir nose && cd nose
-  # Make SVN checkout, initialize hg repository with first SVN revision
-$ hgimportsvn http://python-nose.googlecode.com/svn/trunk
-hgimportsvn svn://changwei.dyn.webahead.ibm.com
-$ cd trunk
-  # Pull all history from SVN, creating a new hg changeset for each SVN rev
-$ hgpullsvn
-
-#+END_SRC
-
-
-  
-* subversion
-* 1 create repos
-
-
-<#+BEGIN_SRC >
 $ svnadmin create /path/to/repos
 $ ls /path/to/repos
 conf/  dav/  db/  format  hooks/  locks/  README.txt
@@ -176,7 +62,7 @@ conf/  dav/  db/  format  hooks/  locks/  README.txt
 
 #+END_SRC
 
-* 2 Import projects
+** 2 Import projects
 
 
 <#+BEGIN_SRC >
@@ -210,52 +96,35 @@ will@will-laptop:~/ideas/newlogistics$ svn mv https://newlogistics.googlecode.co
 
 #+END_SRC
 
-* Export repos
+** Export repos
 
 svn export file:///c:/archive/svn/repository my-export20080505
 
-* Check out project
+** Check out project
 
 svn co svn://www.standino.com/trunk/standino/ideas/eu4db/
 
-* View log
+** View log
 svn log -v
 
-* view the old file
+** view the old file
 
 <#+BEGIN_SRC >
 svn cat --revision 2 rules.txt
 #+END_SRC
 
-* EXTERNAL
+** EXTERNAL
 
 C:\standino\ideas>svn propedit svn:externals .
 
-
-C:\standino\ideas\logistics\web\#+BEGIN_SRC
+C:\standino\ideas\logistics\web\src
 http://svn.dojotoolkit.org/dojo/view/anon/all/trunk" dojo
 
 logic.war https://newlogistics.googlecode.com/svn/new
 
 logistics  https://newlogistics.googlecode.com/svn/trunk
 
-* Make a branch
-
-* Using emacs as editor
-
-update .bahrc
-
-<#+BEGIN_SRC >
-
-export EDITOR="emacs-nox.exe -q"
-
-#+END_SRC
-
-
-
-
-
-* svn export — Export a clean directory tree.
+** svn export — Export a clean directory tree.
 
 #+BEGIN_SRC
 Synopsis
@@ -305,12 +174,12 @@ A  my-export/quiz
 Exported revision 15.
 #+END_SRC
 
-  
-* Cygwin环境下使用Subversion和SSH (Not verified)
+
+** Cygwin环境下使用Subversion和SSH (Not verified)
 
 Subversion既可以和Apache相结合通过http协议存取，也可以通过ssh协议来存取。本文主要介绍在Cygwin下如何配置Subversion和SSH服务器。
 
-** 配置SSH服务器
+*** 配置SSH服务器
 
 首先从http://www.cygwin.com下载Cygwin安装程序，安装过程中一定要选择以下包，其他安装包可以根据需要来选择。
 
@@ -328,7 +197,7 @@ tty ntsec
 
 至此，ssh服务器已经配置完毕，可以通过Windows服务管理器来启动或停止ssh服务，也可以通过命令行 net [start|stop] sshd来控制。
 
-** 配置访问Svbversion服务器
+*** 配置访问Svbversion服务器
 
 Subversion的具体使用方法可以参考[[http://www.subversion.org.cn/svnbook/][使用手册]]。通过ssh访问SubVersion的方法：
 
@@ -336,6 +205,9 @@ svn co svn+ssh://servername/project
 
 其他任何机器都可以通过ssh客户端来访问此Subversion服务器，用户名和密码就是这台Windows系统的用户名和密码。如果不想输入用户名和密码，可以通过配置SSH的密钥验证来实现。
 
+** Linux 下svn恢复到某一版本
+
+  - http://blog.163.com/xiaoy2002@126/blog/static/679795342012811102449474/ 
 
 * Git
 
@@ -449,353 +321,401 @@ git remote add origin git@github.com:daixu/WebApp.git   增加一个远程服务
 二、 Git 命令速查表
 
 1、常用的Git命令
-命令
-简要说明
-git add
-添加至暂存区
-git add–interactive
-交互式添加
-git apply
-应用补丁
-git am
-应用邮件格式补丁
-git annotate
-同义词，等同于 git blame
-git archive
-文件归档打包
-git bisect
-二分查找
-git blame
-文件逐行追溯
-git branch
-分支管理
-git cat-file
-版本库对象研究工具
-git checkout
-检出到工作区、切换或创建分支
-git cherry-pick
-提交拣选
-git citool
-图形化提交，相当于 git gui 命令
-git clean
-清除工作区未跟踪文件
-git clone
-克隆版本库
-git commit
-提交
-git config
-查询和修改配置
-git describe
-通过里程碑直观地显示提交ID
-git diff
-差异比较
-git difftool
-调用图形化差异比较工具
-git fetch
-获取远程版本库的提交
-git format-patch
-创建邮件格式的补丁文件。参见 git am 命令
-git grep
-文件内容搜索定位工具
-git gui
-基于Tcl/Tk的图形化工具，侧重提交等操作
-git help
-帮助
-git init
-版本库初始化
-git init-db*
-同义词，等同于 git init
-git log
-显示提交日志
-git merge
-分支合并
-git mergetool
-图形化冲突解决
-git mv
-重命名
-git pull
-拉回远程版本库的提交
-git push
-推送至远程版本库
-git rebase
-分支变基
-git rebase–interactive
-交互式分支变基
-git reflog
-分支等引用变更记录管理
-git remote
-远程版本库管理
-git repo-config*
-同义词，等同于 git config
-git reset
-重置改变分支“游标”指向
-git rev-parse
-将各种引用表示法转换为哈希值等
-git revert
-反转提交
-git rm
-删除文件
-git show
-显示各种类型的对象
-git stage*
-同义词，等同于 git add
-git stash
-保存和恢复进度
-git status
-显示工作区文件状态
-git tag
-里程碑管理
+| 命令                   | 简要说明                                 |
+| git add                | 添加至暂存区                             |
+| git add–interactive    | 交互式添加                               |
+| git apply              | 应用补丁                                 |
+| git am                 | 应用邮件格式补丁                         |
+| git annotate           | 同义词，等同于 git blame                 |
+| git archive            | 文件归档打包                             |
+| git bisect             | 二分查找                                 |
+| git blame              | 文件逐行追溯                             |
+| git branch             | 分支管理                                 |
+| git cat-file           | 版本库对象研究工具                       |
+| git checkout           | 检出到工作区、切换或创建分支             |
+| git cherry-pick        | 提交拣选                                 |
+| git citool             | 图形化提交，相当于 git gui 命令          |
+| git clean              | 清除工作区未跟踪文件                     |
+| git clone              | 克隆版本库                               |
+| git commit             | 提交                                     |
+| git config             | 查询和修改配置                           |
+| git describe           | 通过里程碑直观地显示提交ID               |
+| git diff               | 差异比较                                 |
+| git difftool           | 调用图形化差异比较工具                   |
+| git fetch              | 获取远程版本库的提交                     |
+| git format-patch       | 创建邮件格式的补丁文件。参见 git am 命令 |
+| git grep               | 文件内容搜索定位工具                     |
+| git gui                | 基于Tcl/Tk的图形化工具，侧重提交等操作   |
+| git help               | 帮助                                     |
+| git init               | 版本库初始化                             |
+| git init-db*           | 同义词，等同于 git init                  |
+| git log                | 显示提交日志                             |
+| git merge              | 分支合并                                 |
+| git mergetool          | 图形化冲突解决                           |
+| git mv                 | 重命名                                   |
+| git pull               | 拉回远程版本库的提交                     |
+| git push               | 推送至远程版本库                         |
+| git rebase             | 分支变基                                 |
+| git rebase–interactive | 交互式分支变基                           |
+| git reflog             | 分支等引用变更记录管理                   |
+| git remote             | 远程版本库管理                           |
+| git repo-config*       | 同义词，等同于 git config                |
+| git reset              | 重置改变分支“游标”指向                 |
+| git rev-parse          | 将各种引用表示法转换为哈希值等           |
+| git revert             | 反转提交                                 |
+| git rm                 | 删除文件                                 |
+| git show               | 显示各种类型的对象                       |
+| git stage*             | 同义词，等同于 git add                   |
+| git stash              | 保存和恢复进度                           |
+| git status             | 显示工作区文件状态                       |
+| git tag                | 里程碑管理                               |
 
 2、对象库操作相关命令
-命令
-简要说明
-git commit-tree
-从树对象创建提交
-git hash-object
-从标准输入或文件计算哈希值或创建对象
-git ls-files
-显示工作区和暂存区文件
-git ls-tree
-显示树对象包含的文件
-git mktag
-读取标准输入创建一个里程碑对象
-git mktree
-读取标准输入创建一个树对象
-git read-tree
-读取树对象到暂存区
-git update-index
-工作区内容注册到暂存区及暂存区管理
-git unpack-file
-创建临时文件包含指定 blob 的内容
-git write-tree
-从暂存区创建一个树对象
+| 命令             | 简要说明                             |
+| git commit-tree  | 从树对象创建提交                     |
+| git hash-object  | 从标准输入或文件计算哈希值或创建对象 |
+| git ls-files     | 显示工作区和暂存区文件               |
+| git ls-tree      | 显示树对象包含的文件                 |
+| git mktag        | 读取标准输入创建一个里程碑对象       |
+| git mktree       | 读取标准输入创建一个树对象           |
+| git read-tree    | 读取树对象到暂存区                   |
+| git update-index | 工作区内容注册到暂存区及暂存区管理   |
+| git unpack-file  | 创建临时文件包含指定 blob 的内容     |
+| git write-tree   | 从暂存区创建一个树对象               |
 
 3、引用操作相关命令
-命令
-简要说明
-git check-ref-format
-检查引用名称是否符合规范
-git for-each-ref
-引用迭代器，用于shell编程
-git ls-remote
-显示远程版本库的引用
-git name-rev
-将提交ID显示为友好名称
-git peek-remote*
-过时命令，请使用 git ls-remote
-git rev-list
-显示版本范围
-git show-branch
-显示分支列表及拓扑关系
-git show-ref
-显示本地引用
-git symbolic-ref
-显示或者设置符号引用
-git update-ref
-更新引用的指向
-git verify-tag
-校验 GPG 签名的Tag
+| 命令                 | 简要说明                       |
+| git check-ref-format | 检查引用名称是否符合规范       |
+| git for-each-ref     | 引用迭代器，用于shell编程      |
+| git ls-remote        | 显示远程版本库的引用           |
+| git name-rev         | 将提交ID显示为友好名称         |
+| git peek-remote*     | 过时命令，请使用 git ls-remote |
+| git rev-list         | 显示版本范围                   |
+| git show-branch      | 显示分支列表及拓扑关系         |
+| git show-ref         | 显示本地引用                   |
+| git symbolic-ref     | 显示或者设置符号引用           |
+| git update-ref       | 更新引用的指向                 |
+| git verify-tag       | 校验 GPG 签名的Tag             |
 
 4、版本库管理相关命令
-命令
-简要说明
-git count-objects
-显示松散对象的数量和磁盘占用
-git filter-branch
-版本库重构
-git fsck
-对象库完整性检查
-git fsck-objects*
-同义词，等同于 git fsck
-git gc
-版本库存储优化
-git index-pack
-从打包文件创建对应的索引文件
-git lost-found*
-过时，请使用 git fsck –lost-found 命令
-git pack-objects
-从标准输入读入对象ID，打包到文件
-git pack-redundant
-查找多余的 pack 文件
-git pack-refs
-将引用打包到 .git/packed-refs 文件中
-git prune
-从对象库删除过期对象
-git prune-packed
-将已经打包的松散对象删除
-git relink
-为本地版本库中相同的对象建立硬连接
-git repack
-将版本库未打包的松散对象打包
-git show-index
-读取包的索引文件，显示打包文件中的内容
-git unpack-objects
-从打包文件释放文件
-git verify-pack
-校验对象库打包文件
+| 命令               | 简要说明                               |
+| git count-objects  | 显示松散对象的数量和磁盘占用           |
+| git filter-branch  | 版本库重构                             |
+| git fsck           | 对象库完整性检查                       |
+| git fsck-objects*  | 同义词，等同于 git fsck                |
+| git gc             | 版本库存储优化                         |
+| git index-pack     | 从打包文件创建对应的索引文件           |
+| git lost-found*    | 过时，请使用 git fsck –lost-found 命令 |
+| git pack-objects   | 从标准输入读入对象ID，打包到文件       |
+| git pack-redundant | 查找多余的 pack 文件                   |
+| git pack-refs      | 将引用打包到 .git/packed-refs 文件中   |
+| git prune          | 从对象库删除过期对象                   |
+| git prune-packed   | 将已经打包的松散对象删除               |
+| git relink         | 为本地版本库中相同的对象建立硬连接     |
+| git repack         | 将版本库未打包的松散对象打包           |
+| git show-index     | 读取包的索引文件，显示打包文件中的内容 |
+| git unpack-objects | 从打包文件释放文件                     |
+| git verify-pack    | 校验对象库打包文件                     |
+|                    |                                        |
 
 5、数据传输相关命令
-命令
-简要说明
-git fetch-pack
-执行 git fetch 或 git pull 命令时在本地执行此命令，用于从其他版本库获取缺失的对象
-git receive-pack
-执行 git push 命令时在远程执行的命令，用于接受推送的数据
-git send-pack
-执行 git push 命令时在本地执行的命令，用于向其他版本库推送数据
-git upload-archive
-执行 git archive –remote 命令基于远程版本库创建归档时，远程版本库执行此命令传送归档
-git upload-pack
-执行 git fetch 或 git pull 命令时在远程执行此命令，将对象打包、上传
+| 命令               | 简要说明                                                                            |
+| git fetch-pack     | 执行 git fetch 或 git pull 命令时在本地执行此命令，用于从其他版本库获取缺失的对象   |
+| git receive-pack   | 执行 git push 命令时在远程执行的命令，用于接受推送的数据                            |
+| git send-pack      | 执行 git push 命令时在本地执行的命令，用于向其他版本库推送数据                      |
+| git upload-archive | 执行 git archive –remote 命令基于远程版本库创建归档时，远程版本库执行此命令传送归档 |
+| git upload-pack    | 执行 git fetch 或 git pull 命令时在远程执行此命令，将对象打包、上传                 |
 
 6、邮件相关命令
-命令
-简要说明
-git imap-send
-将补丁通过 IMAP 发送
-git mailinfo
-从邮件导出提交说明和补丁
-git mailsplit
-将 mbox 或 Maildir 格式邮箱中邮件逐一提取为文件
-git request-pull
-创建包含提交间差异和执行PULL操作地址的信息
-git send-email
-发送邮件
+| 命令               | 简要说明                                                                            |
+| git imap-send      | 将补丁通过 IMAP 发送                                                                |
+| git mailinfo       | 从邮件导出提交说明和补丁                                                            |
+| git mailsplit      | 将 mbox 或 Maildir 格式邮箱中邮件逐一提取为文件                                     |
+| git request-pull   | 创建包含提交间差异和执行PULL操作地址的信息                                          |
+| git send-email     | 发送邮件                                                                            |
 
 7、协议相关命令
-命令
-简要说明
-git daemon
-实现Git协议
-git http-backend
-实现HTTP协议的CGI程序，支持智能HTTP协议
-git instaweb
-即时启动浏览器通过 gitweb 浏览当前版本库
-git shell
-受限制的shell，提供仅执行Git命令的SSH访问
-git update-server-info
-更新哑协议需要的辅助文件
-git http-fetch
-通过HTTP协议获取版本库
-git http-push
-通过HTTP/DAV协议推送
-git remote-ext
-由Git命令调用，通过外部命令提供扩展协议支持
-git remote-fd
-由Git命令调用，使用文件描述符作为协议接口
-git remote-ftp
-由Git命令调用，提供对FTP协议的支持
-git remote-ftps
-由Git命令调用，提供对FTPS协议的支持
-git remote-http
-由Git命令调用，提供对HTTP协议的支持
-git remote-https
-由Git命令调用，提供对HTTPS协议的支持
-git remote-testgit
-协议扩展示例脚本
+| 命令                   | 简要说明                                    |
+| git daemon             | 实现Git协议                                 |
+| git http-backend       | 实现HTTP协议的CGI程序，支持智能HTTP协议     |
+| git instaweb           | 即时启动浏览器通过 gitweb 浏览当前版本库    |
+| git shell              | 受限制的shell，提供仅执行Git命令的SSH访问   |
+| git update-server-info | 更新哑协议需要的辅助文件                    |
+| git http-fetch         | 通过HTTP协议获取版本库                      |
+| git http-push          | 通过HTTP/DAV协议推送                        |
+| git remote-ext         | 由Git命令调用，通过外部命令提供扩展协议支持 |
+| git remote-fd          | 由Git命令调用，使用文件描述符作为协议接口   |
+| git remote-ftp         | 由Git命令调用，提供对FTP协议的支持          |
+| git remote-ftps        | 由Git命令调用，提供对FTPS协议的支持         |
+| git remote-http        | 由Git命令调用，提供对HTTP协议的支持         |
+| git remote-https       | 由Git命令调用，提供对HTTPS协议的支持        |
+| git remote-testgit     | 协议扩展示例脚本                            |
 
 8、版本库转换和交互相关命令
-命令
-简要说明
-git archimport
-导入Arch版本库到Git
-git bundle
-提交打包和解包，以便在不同版本库间传递
-git cvsexportcommit
-将Git的一个提交作为一个CVS检出
-git cvsimport
-导入CVS版本库到Git。或者使用 cvs2git
-git cvsserver
-Git的CVS协议模拟器，可供CVS命令访问Git版本库
-git fast-export
-将提交导出为 git-fast-import 格式
-git fast-import
-其他版本库迁移至Git的通用工具
-git svn
-Git 作为前端操作 Subversion
+| 命令                | 简要说明                                     |
+| git archimport      | 导入Arch版本库到Git                          |
+| git bundle          | 提交打包和解包，以便在不同版本库间传递       |
+| git cvsexportcommit | 将Git的一个提交作为一个CVS检出               |
+| git cvsimport       | 导入CVS版本库到Git。或者使用 cvs2git         |
+| git cvsserver       | Git的CVS协议模拟器，可供CVS命令访问Git版本库 |
+| git fast-export     | 将提交导出为 git-fast-import 格式            |
+| git fast-import     | 其他版本库迁移至Git的通用工具                |
+| git svn             | Git 作为前端操作 Subversion                  |
 
 9、合并相关的辅助命令
-命令
-简要说明
-git merge-base
-供其他脚本调用，找到两个或多个提交最近的共同祖先
-git merge-file
-针对文件的两个不同版本执行三向文件合并
-git merge-index
-对index中的冲突文件调用指定的冲突解决工具
-git merge-octopus
-合并两个以上分支。参见 git merge 的octopus合并策略
-git merge-one-file
-由 git merge-index 调用的标准辅助程序
-git merge-ours
-合并使用本地版本，抛弃他人版本。参见 git merge 的ours合并策略
-git merge-recursive
-针对两个分支的三向合并。参见 git merge 的recursive合并策略
-git merge-resolve
-针对两个分支的三向合并。参见 git merge 的resolve合并策略
-git merge-subtree
-子树合并。参见 git merge 的 subtree 合并策略
-git merge-tree
-显式三向合并结果，不改变暂存区
-git fmt-merge-msg
-供执行合并操作的脚本调用，用于创建一个合并提交说明
-git rerere
-重用所记录的冲突解决方案
+| 命令                | 简要说明                                                      |
+| git merge-base      | 供其他脚本调用，找到两个或多个提交最近的共同祖先              |
+| git merge-file      | 针对文件的两个不同版本执行三向文件合并                        |
+| git merge-index     | 对index中的冲突文件调用指定的冲突解决工具                     |
+| git merge-octopus   | 合并两个以上分支。参见 git merge 的octopus合并策略            |
+| git merge-one-file  | 由 git merge-index 调用的标准辅助程序                         |
+| git merge-ours      | 合并使用本地版本，抛弃他人版本。参见 git merge 的ours合并策略 |
+| git merge-recursive | 针对两个分支的三向合并。参见 git merge 的recursive合并策略    |
+| git merge-resolve   | 针对两个分支的三向合并。参见 git merge 的resolve合并策略      |
+| git merge-subtree   | 子树合并。参见 git merge 的 subtree 合并策略                  |
+| git merge-tree      | 显式三向合并结果，不改变暂存区                                |
+| git fmt-merge-msg   | 供执行合并操作的脚本调用，用于创建一个合并提交说明            |
+| git rerere          | 重用所记录的冲突解决方案                                      |
 
 10、 杂项
-命令
-简要说明
-git bisect–helper
-由 git bisect 命令调用，确认二分查找进度
-git check-attr
-显示某个文件是否设置了某个属性
-git checkout-index
-从暂存区拷贝文件至工作区
-git cherry
-查找没有合并到上游的提交
-git diff-files
-比较暂存区和工作区，相当于 git diff –raw
-git diff-index
-比较暂存区和版本库，相当于 git diff –cached –raw
-git diff-tree
-比较两个树对象，相当于 git diff –raw A B
-git difftool–helper
-由 git difftool 命令调用，默认要使用的差异比较工具
-git get-tar-commit-id
-从 git archive 创建的 tar 包中提取提交ID
-git gui–askpass
-命令 git gui 的获取用户口令输入界面
-git notes
-提交评论管理
-git patch-id
-补丁过滤行号和空白字符后生成补丁唯一ID
-git quiltimport
-将Quilt补丁列表应用到当前分支
-git replace
-提交替换
-git shortlog
-对 git log 的汇总输出，适合于产品发布说明
-git stripspace
-删除空行，供其他脚本调用
-git submodule
-子模组管理
-git tar-tree
-过时命令，请使用 git archive
-git var
-显示 Git 环境变量
-git web–browse
-启动浏览器以查看目录或文件
-git whatchanged
-显示提交历史及每次提交的改动
-git-mergetool–lib
-包含于其他脚本中，提供合并/差异比较工具的选择和执行
-git-parse-remote
-包含于其他脚本中，提供操作远程版本库的函数
-git-sh-setup
-包含于其他脚本中，提供 shell 编程的函数库
+| 命令                  | 简要说明                                            |
+| git bisect–helper     | 由 git bisect 命令调用，确认二分查找进度            |
+| git check-attr        | 显示某个文件是否设置了某个属性                      |
+| git checkout-index    | 从暂存区拷贝文件至工作区                            |
+| git cherry            | 查找没有合并到上游的提交                            |
+| git diff-files        | 比较暂存区和工作区，相当于 git diff –raw            |
+| git diff-index        | 比较暂存区和版本库，相当于 git diff –cached –raw    |
+| git diff-tree         | 比较两个树对象，相当于 git diff –raw A B            |
+| git difftool–helper   | 由 git difftool 命令调用，默认要使用的差异比较工具  |
+| git get-tar-commit-id | 从 git archive 创建的 tar 包中提取提交ID            |
+| git gui–askpass       | 命令 git gui 的获取用户口令输入界面                 |
+| git notes             | 提交评论管理                                        |
+| git patch-id          | 补丁过滤行号和空白字符后生成补丁唯一ID              |
+| git quiltimport       | 将Quilt补丁列表应用到当前分支                       |
+| git replace           | 提交替换                                            |
+| git shortlog          | 对 git log 的汇总输出，适合于产品发布说明           |
+| git stripspace        | 删除空行，供其他脚本调用                            |
+| git submodule         | 子模组管理                                          |
+| git tar-tree          | 过时命令，请使用 git archive                        |
+| git var               | 显示 Git 环境变量                                   |
+| git web–browse        | 启动浏览器以查看目录或文件                          |
+| git whatchanged       | 显示提交历史及每次提交的改动                        |
+| git-mergetool–lib     | 包含于其他脚本中，提供合并/差异比较工具的选择和执行 |
+| git-parse-remote      | 包含于其他脚本中，提供操作远程版本库的函数          |
+| git-sh-setup          | 包含于其他脚本中，提供 shell 编程的函数库           |
 
 
-* HG
+
+
+** github 不需要用户名密码push
+
+ - https://help.github.com/articles/generating-ssh-keys
+ - https://help.github.com/articles/using-ssh-over-the-https-port
+
+编辑SSH config文件，将连接端口改成443:
+#+BEGIN_SRC 
+$ gedit ~/.ssh/config
+#+END_SRC
+
+添加如下代码：
+#+BEGIN_SRC 
+
+Host github.com
+User standino
+Port 443
+Hostname ssh.github.com
+
+#+END_SRC
+
+再试一下命令：
+#+BEGIN_SRC 
+chmod 700 config
+git config --global url."https://".insteadOf git://
+$ ssh -T git@github.com
+#+END_SRC
+
+
+
+
+
+** 如何使用 github
+  - [[https://help.github.com/articles/fork-a-repo][Fork A Repo
+]]
+
+#+BEGIN_SRC sh
+
+# Changes the active directory in the prompt to the newly cloned  directory
+
+cd .emacs.d/
+
+# Assigns the original repository to a remote called "upstream"
+
+git remote add upstream https://github.com/purcell/emacs.d.git
+
+# Pulls in changes not present in your local repository, without modifying your files
+
+git fetch upstream
+
+# Fetches any new changes from the original repository
+
+git fetch upstream
+
+# Merges any changes fetched into your working files
+
+git merge upstream/master
+
+
+
+
+
+#+END_SRC
+
+** git submodule
+
+
+git push --recurse-submodules=on-demand
+
+git pull --recurse-submodules origin master
+
+git submodule foreach git pull
+
+
+The 'foreach' command can execute any arbitrary shell script. Two options to pull the very latest might be,
+
+git submodule foreach git pull origin master
+and,
+
+git submodule foreach /path/to/some/cool/script.sh
+That will iterate through all initialized submodules and run the given commands.
+
+** git subtree 
+
+
+  1. http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html
+  2. http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree
+
+#+BEGIN_SRC 
+
+$git subtree add --prefix=other_project \
+     git://github.com/your_tree/your_project.git master
+$git subtree push --prefix=other_project
+$git subtree pull --prefix=other_project
+
+
+he way that I have in the past re-created that relationship was by doing a subtree merge.
+
+git pull -s subtree <lib> master
+even if there is nothing to merge in/pull it should simply return without doing anything. Feel free to add --squash to the above pull so that you don't pull in any remote history.
+#+END_SRC
+
+
+** git 常用操作
+
+  1. [[http://blog.csdn.net/jackystudio/article/details/12271839][【Git入门之六】远程仓库]]
+
+* hg
+
+[[http://hgbook.red-bean.com/][Mercurial: The Definitive Guide by Bryan O'Sullivan]]
+
+http://wiki.alliedmods.net/Mercurial_Tutorial
+
+ [[http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html][Mercurial: The Definitive Guide]]
+
+** [[http://www.javaforge.com/project/HGE][MercurialEclipse]]
+
+MercurialEclipse is a plugin providing support for the highly popular Mercurial distributed version control system within the Eclipse IDE.
+
+MercurialEclipse supports:
+
+    * cloning repositories and importing them as Eclipse projects
+    * push, pull and convenient syncronization
+    * working with branches (branch, merge and rebase)
+    * tags
+    * undo (backout, rollback and strip)
+    * diffs
+    * histories
+    * patches
+    * Mercurial extensions (mqueue, transplant and such)
+
+
+*** Big file！
+
+ http://mercurial.selenic.com/wiki/html/BigfilesExtension
+
+ http://mercurial.selenic.com/wiki/html/HandlingLargeFiles
+
+Usage
+
+  1. 'hg add', ignoring the size warning.
+  2. hg bstat
+  3. hg bupdate
+
+<#+BEGIN_SRC >
+    * The extension overrides 'hg update', so that it can compare contents of '.bigfiles' before and after the update to remove and fetch appropriate big files.
+    * The directory storing versions of big files can be synced with the remote one (the extension doesn't do this, but tells the list of the necessary files). The versions corresponding to old changesets can be removed to save space.
+    * To add a new big file, use normal 'hg add', ignoring the size warning.
+    * To remove a tracked big file, just delete it.
+    * 'hg bstatus' - to examine state of big files in working directory.
+    * 'hg brefresh' - to refresh '.bigfiles' and versions directory with added,
+          o removed and modified big files.
+    * 'hg bupdate' - to fetch files from versions directory as recorded in
+          o '.bigfiles', and get a list of necessary files missing in the version directory.
+#+END_SRC
+Configuration
+
+Configure your .hgrc to enable the extension by adding following lines:
+<#+BEGIN_SRC >
+[extensions]
+bigfiles = path/to/bigfiles.py
+
+[bigfiles]
+repo = path/to/versions/dir
+#+END_SRC
+
+*** How to manage my files with hg
+
+
+home  with branch cygwin and ubuntu
+
+ ---ideas with branch idea
+
+I think I need  project --- ideas.
+
+The project "will" is related with os: ubuntu, cygwin and windows. I can pull the will in cygwin from desktop to laptop. So I can
+backup will project.
+
+The project "ideas" on laptop should be same with the one on desktop.
+
+I can write a shell script to start the will project on port 8000 and ideas project on 8002, then I pull all them to desktop to
+backup the data.
+
+*** Branch and tags
+
+
+   hg clone myproject myproject-merge
+
+   hg branches
+
+   hg branch foo
+
+
+
+
+
+   
+** [[http://pypi.python.org/pypi/hgsvn][hgsvn]]
+
+<#+BEGIN_SRC >
+$ mkdir nose && cd nose
+  # Make SVN checkout, initialize hg repository with first SVN revision
+$ hgimportsvn http://python-nose.googlecode.com/svn/trunk
+hgimportsvn svn://changwei.dyn.webahead.ibm.com
+$ cd trunk
+  # Pull all history from SVN, creating a new hg changeset for each SVN rev
+$ hgpullsvn
+
+#+END_SRC
+
 
 ** 2个命令创建一个Mercuria仓库，
 > hg init
@@ -900,19 +820,19 @@ username=will
 
 Good Luck.
 
-* My setup
+** My setup
 
 hg clone http://changweilaptop.dyn.webahead.ibm.com:8000/ ideas
 
 
 hg clone http://9.186.119.53:8000/ ideas
 
-* How to use Emacs to work with Mercurial
+** How to use Emacs to work with Mercurial
 
 http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html
 
 
-** revert files
+*** revert files
 
 hg revert .amsn/ -r 385
 
@@ -920,7 +840,7 @@ hg revert .amsn/ -r 385
 <revision number> <path to deleted file>被删除的文件现在在你的工作拷贝，准备送回头部。
 
 
-** 4.2. How to declare trust
+*** 4.2. How to declare trust
 
 Users can add settings to their $HOME/.hgrc to tell Mercurial to trust other users. For instance, if Bob has decided he can trust Alice not to try to delete his files when he looks at her repository, he could add:
 
@@ -933,7 +853,7 @@ Alternately, Bob can decide to trust a group of people (as specified in an opera
 groups = dev-team
 
 
-* 比较两个 branch
+** 比较两个 branch
 
   http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial
 
@@ -985,113 +905,3 @@ hg branchdiff .
 #+END_SRC
 
 
-
-
-* github 不需要用户名密码push
-
- - https://help.github.com/articles/generating-ssh-keys
- - https://help.github.com/articles/using-ssh-over-the-https-port
-
-编辑SSH config文件，将连接端口改成443:
-#+BEGIN_SRC 
-$ gedit ~/.ssh/config
-#+END_SRC
-
-添加如下代码：
-#+BEGIN_SRC 
-
-Host github.com
-User standino
-Port 443
-Hostname ssh.github.com
-
-#+END_SRC
-
-再试一下命令：
-#+BEGIN_SRC 
-chmod 700 config
-git config --global url."https://".insteadOf git://
-$ ssh -T git@github.com
-#+END_SRC
-
-
-
-
-
-* 如何使用 github
-  - [[https://help.github.com/articles/fork-a-repo][Fork A Repo
-]]
-
-#+BEGIN_SRC sh
-
-# Changes the active directory in the prompt to the newly cloned  directory
-
-cd .emacs.d/
-
-# Assigns the original repository to a remote called "upstream"
-
-git remote add upstream https://github.com/purcell/emacs.d.git
-
-# Pulls in changes not present in your local repository, without modifying your files
-
-git fetch upstream
-
-# Fetches any new changes from the original repository
-
-git fetch upstream
-
-# Merges any changes fetched into your working files
-
-git merge upstream/master
-
-
-
-
-
-#+END_SRC
-
-* git submodule
-
-
-git push --recurse-submodules=on-demand
-
-git pull --recurse-submodules origin master
-
-git submodule foreach git pull
-
-
-The 'foreach' command can execute any arbitrary shell script. Two options to pull the very latest might be,
-
-git submodule foreach git pull origin master
-and,
-
-git submodule foreach /path/to/some/cool/script.sh
-That will iterate through all initialized submodules and run the given commands.
-
-* git subtree 
-
-
-  1. http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html
-  2. http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree
-
-#+BEGIN_SRC 
-
-$git subtree add --prefix=other_project \
-     git://github.com/your_tree/your_project.git master
-$git subtree push --prefix=other_project
-$git subtree pull --prefix=other_project
-
-
-he way that I have in the past re-created that relationship was by doing a subtree merge.
-
-git pull -s subtree <lib> master
-even if there is nothing to merge in/pull it should simply return without doing anything. Feel free to add --squash to the above pull so that you don't pull in any remote history.
-#+END_SRC
-
-* Linux 下svn恢复到某一版本
-
- - http://blog.163.com/xiaoy2002@126/blog/static/679795342012811102449474/ 
-
-* git 常用操作
-
- 1. [[http://blog.csdn.net/jackystudio/article/details/12271839][【Git入门之六】远程仓库]]
