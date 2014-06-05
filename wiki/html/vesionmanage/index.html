@@ -43,15 +43,84 @@
 <div>
 <div class="post">
 <h1>版本管理工具</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">SVN</a>
+<ul>
+<li><a href="#sec-1-1">web svn</a></li>
+<li><a href="#sec-1-2">设置忽略</a></li>
+<li><a href="#sec-1-3">分支和tag</a></li>
+<li><a href="#sec-1-4">合并</a></li>
+<li><a href="#sec-1-5">1 create repos</a></li>
+<li><a href="#sec-1-6">2 Import projects</a></li>
+<li><a href="#sec-1-7">Export repos</a></li>
+<li><a href="#sec-1-8">Check out project</a></li>
+<li><a href="#sec-1-9">View log</a></li>
+<li><a href="#sec-1-10">view the old file</a></li>
+<li><a href="#sec-1-11">EXTERNAL</a></li>
+<li><a href="#sec-1-12">svn export — Export a clean directory tree.</a></li>
+<li><a href="#sec-1-13">Cygwin环境下使用Subversion和SSH (Not verified)</a>
+<ul>
+<li><a href="#sec-1-13-1">配置SSH服务器</a></li>
+<li><a href="#sec-1-13-2">配置访问Svbversion服务器</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-14">Linux 下svn恢复到某一版本</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">Git</a>
+<ul>
+<li><a href="#sec-2-1"><span class="done DONE">DONE</span> 子模块</a></li>
+<li><a href="#sec-2-2">本文将对Git 命令，做一下全面而系统的简短总结，整理成简洁、明了的图表结构，方便查询</a></li>
+<li><a href="#sec-2-3">github 不需要用户名密码push</a></li>
+<li><a href="#sec-2-4">如何使用 github</a></li>
+<li><a href="#sec-2-5">git submodule</a></li>
+<li><a href="#sec-2-6">git subtree</a></li>
+<li><a href="#sec-2-7">git 常用操作</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">hg</a>
+<ul>
+<li><a href="#sec-3-1">MercurialEclipse</a>
+<ul>
+<li><a href="#sec-3-1-1">Big file！</a></li>
+<li><a href="#sec-3-1-2">How to manage my files with hg</a></li>
+<li><a href="#sec-3-1-3">Branch and tags</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">hgsvn</a></li>
+<li><a href="#sec-3-3">2个命令创建一个Mercuria仓库，</a></li>
+<li><a href="#sec-3-4">方便的分布式功能</a></li>
+<li><a href="#sec-3-5">便捷的本地提交</a></li>
+<li><a href="#sec-3-6">离线操作</a></li>
+<li><a href="#sec-3-7">速度优势</a></li>
+<li><a href="#sec-3-8">基于patch的管理</a></li>
+<li><a href="#sec-3-9">更多的便捷操作</a></li>
+<li><a href="#sec-3-10">My setup</a></li>
+<li><a href="#sec-3-11">How to use Emacs to work with Mercurial</a>
+<ul>
+<li><a href="#sec-3-11-1">revert files</a></li>
+<li><a href="#sec-3-11-2">4.2. How to declare trust</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-12">比较两个 branch</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 
 
 
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">SVN</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-<a href="http://www.subversion.org.cn/svnbook/">http://www.subversion.org.cn/svnbook/</a>
-</p>
+<ul class="org-ul">
+<li><a href="http://www.subversion.org.cn/svnbook/">http://www.subversion.org.cn/svnbook/</a>
+</li>
+</ul>
 </div>
 
 <div id="outline-container-sec-1-1" class="outline-3">
@@ -73,8 +142,8 @@
 </ol>
 
 <pre class="example">
-[will@localhost sone_1_0_0]$ export EDITOR=gedit
-[will@localhost sone_1_0_0]$ svn propedit svn:ignore .
+export EDITOR=gedit
+svn propedit svn:ignore .
 </pre>
 </div>
 </div>
@@ -93,247 +162,39 @@
 </ul>
 </div>
 </div>
-
 <div id="outline-container-sec-1-4" class="outline-3">
 <h3 id="sec-1-4">合并</h3>
 <div class="outline-text-3" id="text-1-4">
 <pre class="example">
-svn merge -r 44324:44325 http://svn.360buy-develop.com/repos/ipo/retail/branches/sone_1_0_0
+svn merge -r 44324:44325 http://svn.
 </pre>
 </div>
 </div>
-</div>
 
-
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">hg</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-<a href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide by Bryan O'Sullivan</a>
-</p>
-
-<p>
-<a href="http://wiki.alliedmods.net/Mercurial_Tutorial">http://wiki.alliedmods.net/Mercurial_Tutorial</a>
-</p>
-
-<p>
-<a href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html">Mercurial: The Definitive Guide</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><a href="http://www.javaforge.com/project/HGE">MercurialEclipse</a></h2>
-<div class="outline-text-2" id="text-3">
-<p>
-MercurialEclipse is a plugin providing support for the highly popular Mercurial distributed version control system within the Eclipse IDE.
-</p>
-
-<p>
-MercurialEclipse supports:
-</p>
-
-<ul class="org-ul">
-<li>cloning repositories and importing them as Eclipse projects
-</li>
-<li>push, pull and convenient syncronization
-</li>
-<li>working with branches (branch, merge and rebase)
-</li>
-<li>tags
-</li>
-<li>undo (backout, rollback and strip)
-</li>
-<li>diffs
-</li>
-<li>histories
-</li>
-<li>patches
-</li>
-<li>Mercurial extensions (mqueue, transplant and such)
-</li>
-</ul>
-</div>
-
-
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1">Big file！</h3>
-<div class="outline-text-3" id="text-3-1">
-<p>
-<a href="http://mercurial.selenic.com/wiki/html/BigfilesExtension">http://mercurial.selenic.com/wiki/html/BigfilesExtension</a>
-</p>
-
-<p>
-<a href="http://mercurial.selenic.com/wiki/html/HandlingLargeFiles">http://mercurial.selenic.com/wiki/html/HandlingLargeFiles</a>
-</p>
-
-<p>
-Usage
-</p>
-
-<ol class="org-ol">
-<li>'hg add', ignoring the size warning.
-</li>
-<li>hg bstat
-</li>
-<li>hg bupdate
-</li>
-</ol>
-
-<p>
-&lt;#+BEGIN_SRC &gt;
-</p>
-<ul class="org-ul">
-<li>The extension overrides 'hg update', so that it can compare contents of '.bigfiles' before and after the update to remove and fetch appropriate big files.
-</li>
-<li>The directory storing versions of big files can be synced with the remote one (the extension doesn't do this, but tells the list of the necessary files). The versions corresponding to old changesets can be removed to save space.
-</li>
-<li>To add a new big file, use normal 'hg add', ignoring the size warning.
-</li>
-<li>To remove a tracked big file, just delete it.
-</li>
-<li>'hg bstatus' - to examine state of big files in working directory.
-</li>
-<li>'hg brefresh' - to refresh '.bigfiles' and versions directory with added,
-o removed and modified big files.
-</li>
-<li>'hg bupdate' - to fetch files from versions directory as recorded in
-o '.bigfiles', and get a list of necessary files missing in the version directory.
-</li>
-</ul>
-<p>
-#+END_SRC
-Configuration
-</p>
-
-<p>
-Configure your .hgrc to enable the extension by adding following lines:
-&lt;#+BEGIN_SRC &gt;
-[extensions]
-bigfiles = path/to/bigfiles.py
-</p>
-
-<p>
-[bigfiles]
-repo = path/to/versions/dir
-#+END_SRC
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2">How to manage my files with hg</h3>
-<div class="outline-text-3" id="text-3-2">
-<p>
-home  with branch cygwin and ubuntu
-</p>
-
-<p>
----ideas with branch idea
-</p>
-
-<p>
-I think I need  project --- ideas.
-</p>
-
-<p>
-The project "will" is related with os: ubuntu, cygwin and windows. I can pull the will in cygwin from desktop to laptop. So I can
-backup will project.
-</p>
-
-<p>
-The project "ideas" on laptop should be same with the one on desktop.
-</p>
-
-<p>
-I can write a shell script to start the will project on port 8000 and ideas project on 8002, then I pull all them to desktop to
-backup the data.
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3">Branch and tags</h3>
-<div class="outline-text-3" id="text-3-3">
-<p>
-hg clone myproject myproject-merge
-</p>
-
-<p>
-hg branches
-</p>
-
-<p>
-hg branch foo
-</p>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><a href="http://pypi.python.org/pypi/hgsvn">hgsvn</a></h2>
-<div class="outline-text-2" id="text-4">
-<p>
-&lt;#+BEGIN_SRC &gt;
-$ mkdir nose &amp;&amp; cd nose
-</p>
-<p>
-$ hgimportsvn <a href="http://python-nose.googlecode.com/svn/trunk">http://python-nose.googlecode.com/svn/trunk</a>
-hgimportsvn svn://changwei.dyn.webahead.ibm.com
-$ cd trunk
-</p>
-<p>
-$ hgpullsvn
-</p>
-
-<p>
-#+END_SRC
-</p>
-</div>
-</div>
-
-
-
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">subversion</h2>
-</div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">1 create repos</h2>
-<div class="outline-text-2" id="text-6">
-<p>
-&lt;#+BEGIN_SRC &gt;
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5">1 create repos</h3>
+<div class="outline-text-3" id="text-1-5">
+<pre class="example">
 $ svnadmin create /path/to/repos
-$ ls <i>path/to/repos
-conf</i>  dav/  db/  format  hooks/  locks/  README.txt
-</p>
+$ ls /path/to/repos
+conf/  dav/  db/  format  hooks/  locks/  README.txt
 
 
 
-<p>
-<i>tmp/project/branches</i>
-<i>tmp/project/tags</i>
-<i>tmp/project/trunk</i>
+/tmp/project/branches/
+/tmp/project/tags/
+/tmp/project/trunk/
                foo.c
                bar.c
                Makefile
                ¡­
-</p>
-
-<p>
-#+END_SRC
-</p>
+</pre>
 </div>
 </div>
 
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">2 Import projects</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6">2 Import projects</h3>
+<div class="outline-text-3" id="text-1-6">
 <p>
 &lt;#+BEGIN_SRC &gt;
 </p>
@@ -393,36 +254,36 @@ will@will-laptop:~/ideas/newlogistics$ svn mv <a href="https://newlogistics.goog
 </div>
 </div>
 
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">Export repos</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7">Export repos</h3>
+<div class="outline-text-3" id="text-1-7">
 <p>
 svn export <a href="file:///c:/archive/svn/repository">file:///c:/archive/svn/repository</a> my-export20080505
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">Check out project</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8">Check out project</h3>
+<div class="outline-text-3" id="text-1-8">
 <p>
 svn co svn://www.standino.com/trunk/standino/ideas/eu4db/
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">View log</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9">View log</h3>
+<div class="outline-text-3" id="text-1-9">
 <p>
 svn log -v
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11">view the old file</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10">view the old file</h3>
+<div class="outline-text-3" id="text-1-10">
 <p>
 &lt;#+BEGIN_SRC &gt;
 svn cat --revision 2 rules.txt
@@ -431,16 +292,15 @@ svn cat --revision 2 rules.txt
 </div>
 </div>
 
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">EXTERNAL</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11">EXTERNAL</h3>
+<div class="outline-text-3" id="text-1-11">
 <p>
 C:\standino\ideas&gt;svn propedit svn:externals .
 </p>
 
-
 <p>
-C:\standino\ideas\logistics\web\#+BEGIN_SRC
+C:\standino\ideas\logistics\web\src
 <a href="http://svn.dojotoolkit.org/dojo/view/anon/all/trunk">http://svn.dojotoolkit.org/dojo/view/anon/all/trunk</a>" dojo
 </p>
 
@@ -454,38 +314,9 @@ logistics  <a href="https://newlogistics.googlecode.com/svn/trunk">https://newlo
 </div>
 </div>
 
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">Make a branch</h2>
-</div>
-
-<div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14">Using emacs as editor</h2>
-<div class="outline-text-2" id="text-14">
-<p>
-update .bahrc
-</p>
-
-<p>
-&lt;#+BEGIN_SRC &gt;
-</p>
-
-<p>
-export EDITOR="emacs-nox.exe -q"
-</p>
-
-<p>
-#+END_SRC
-</p>
-</div>
-</div>
-
-
-
-
-
-<div id="outline-container-sec-15" class="outline-2">
-<h2 id="sec-15">svn export — Export a clean directory tree.</h2>
-<div class="outline-text-2" id="text-15">
+<div id="outline-container-sec-1-12" class="outline-3">
+<h3 id="sec-1-12">svn export — Export a clean directory tree.</h3>
+<div class="outline-text-3" id="text-1-12">
 <pre class="example">
 Synopsis
 
@@ -537,17 +368,17 @@ Exported revision 15.
 </div>
 
 
-<div id="outline-container-sec-16" class="outline-2">
-<h2 id="sec-16">Cygwin环境下使用Subversion和SSH (Not verified)</h2>
-<div class="outline-text-2" id="text-16">
+<div id="outline-container-sec-1-13" class="outline-3">
+<h3 id="sec-1-13">Cygwin环境下使用Subversion和SSH (Not verified)</h3>
+<div class="outline-text-3" id="text-1-13">
 <p>
 Subversion既可以和Apache相结合通过http协议存取，也可以通过ssh协议来存取。本文主要介绍在Cygwin下如何配置Subversion和SSH服务器。
 </p>
 </div>
 
-<div id="outline-container-sec-16-1" class="outline-3">
-<h3 id="sec-16-1">配置SSH服务器</h3>
-<div class="outline-text-3" id="text-16-1">
+<div id="outline-container-sec-1-13-1" class="outline-4">
+<h4 id="sec-1-13-1">配置SSH服务器</h4>
+<div class="outline-text-4" id="text-1-13-1">
 <p>
 首先从<a href="http://www.cygwin.com%E4%B8%8B%E8%BD%BDCygwin%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%B8%80%E5%AE%9A%E8%A6%81%E9%80%89%E6%8B%A9%E4%BB%A5%E4%B8%8B%E5%8C%85%EF%BC%8C%E5%85%B6%E4%BB%96%E5%AE%89%E8%A3%85%E5%8C%85%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E6%9D%A5%E9%80%89%E6%8B%A9">http://www.cygwin.com%E4%B8%8B%E8%BD%BDCygwin%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%B8%80%E5%AE%9A%E8%A6%81%E9%80%89%E6%8B%A9%E4%BB%A5%E4%B8%8B%E5%8C%85%EF%BC%8C%E5%85%B6%E4%BB%96%E5%AE%89%E8%A3%85%E5%8C%85%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E6%9D%A5%E9%80%89%E6%8B%A9</a>。
 </p>
@@ -580,9 +411,9 @@ tty ntsec
 </div>
 </div>
 
-<div id="outline-container-sec-16-2" class="outline-3">
-<h3 id="sec-16-2">配置访问Svbversion服务器</h3>
-<div class="outline-text-3" id="text-16-2">
+<div id="outline-container-sec-1-13-2" class="outline-4">
+<h4 id="sec-1-13-2">配置访问Svbversion服务器</h4>
+<div class="outline-text-4" id="text-1-13-2">
 <p>
 Subversion的具体使用方法可以参考<a href="http://www.subversion.org.cn/svnbook/">使用手册</a>。通过ssh访问SubVersion的方法：
 </p>
@@ -598,10 +429,20 @@ svn co svn+ssh://servername/project
 </div>
 </div>
 
+<div id="outline-container-sec-1-14" class="outline-3">
+<h3 id="sec-1-14">Linux 下svn恢复到某一版本</h3>
+<div class="outline-text-3" id="text-1-14">
+<ul class="org-ul">
+<li><a href="http://blog.163.com/xiaoy2002@126/blog/static/679795342012811102449474/">http://blog.163.com/xiaoy2002@126/blog/static/679795342012811102449474/</a> 
+</li>
+</ul>
+</div>
+</div>
+</div>
 
-<div id="outline-container-sec-17" class="outline-2">
-<h2 id="sec-17">Git</h2>
-<div class="outline-text-2" id="text-17">
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Git</h2>
+<div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><a href="http://git.or.cz/course/svn.html">Git - SVN Crash Course</a>
 </li>
@@ -622,9 +463,9 @@ git config --global core.quotepath false
 </p>
 </div>
 
-<div id="outline-container-sec-17-1" class="outline-3">
-<h3 id="sec-17-1"><span class="done DONE">DONE</span> 子模块</h3>
-<div class="outline-text-3" id="text-17-1">
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="done DONE">DONE</span> 子模块</h3>
+<div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>State "DONE"       from "OKTODAY"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-31 一 11:05]</span></span>
 </li>
@@ -652,9 +493,9 @@ git subtree add --prefix=src/main/webapp/resources/jquery-ui-portlet jquery-ui-p
 </div>
 </div>
 
-<div id="outline-container-sec-17-2" class="outline-3">
-<h3 id="sec-17-2"><a href="http://blog.csdn.net/ithomer/article/details/7529841">本文将对Git 命令，做一下全面而系统的简短总结，整理成简洁、明了的图表结构，方便查询</a></h3>
-<div class="outline-text-3" id="text-17-2">
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><a href="http://blog.csdn.net/ithomer/article/details/7529841">本文将对Git 命令，做一下全面而系统的简短总结，整理成简洁、明了的图表结构，方便查询</a></h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
 一、 Git 常用命令速查
 git branch 查看本地所有分支
@@ -746,380 +587,1312 @@ git remote add origin git@github.com:daixu/WebApp.git   增加一个远程服务
 
 <p>
 1、常用的Git命令
-命令
-简要说明
-git add
-添加至暂存区
-git add–interactive
-交互式添加
-git apply
-应用补丁
-git am
-应用邮件格式补丁
-git annotate
-同义词，等同于 git blame
-git archive
-文件归档打包
-git bisect
-二分查找
-git blame
-文件逐行追溯
-git branch
-分支管理
-git cat-file
-版本库对象研究工具
-git checkout
-检出到工作区、切换或创建分支
-git cherry-pick
-提交拣选
-git citool
-图形化提交，相当于 git gui 命令
-git clean
-清除工作区未跟踪文件
-git clone
-克隆版本库
-git commit
-提交
-git config
-查询和修改配置
-git describe
-通过里程碑直观地显示提交ID
-git diff
-差异比较
-git difftool
-调用图形化差异比较工具
-git fetch
-获取远程版本库的提交
-git format-patch
-创建邮件格式的补丁文件。参见 git am 命令
-git grep
-文件内容搜索定位工具
-git gui
-基于Tcl/Tk的图形化工具，侧重提交等操作
-git help
-帮助
-git init
-版本库初始化
-git init-db*
-同义词，等同于 git init
-git log
-显示提交日志
-git merge
-分支合并
-git mergetool
-图形化冲突解决
-git mv
-重命名
-git pull
-拉回远程版本库的提交
-git push
-推送至远程版本库
-git rebase
-分支变基
-git rebase–interactive
-交互式分支变基
-git reflog
-分支等引用变更记录管理
-git remote
-远程版本库管理
-git repo-config*
-同义词，等同于 git config
-git reset
-重置改变分支“游标”指向
-git rev-parse
-将各种引用表示法转换为哈希值等
-git revert
-反转提交
-git rm
-删除文件
-git show
-显示各种类型的对象
-git stage*
-同义词，等同于 git add
-git stash
-保存和恢复进度
-git status
-显示工作区文件状态
-git tag
-里程碑管理
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git add</td>
+<td class="left">添加至暂存区</td>
+</tr>
+
+<tr>
+<td class="left">git add–interactive</td>
+<td class="left">交互式添加</td>
+</tr>
+
+<tr>
+<td class="left">git apply</td>
+<td class="left">应用补丁</td>
+</tr>
+
+<tr>
+<td class="left">git am</td>
+<td class="left">应用邮件格式补丁</td>
+</tr>
+
+<tr>
+<td class="left">git annotate</td>
+<td class="left">同义词，等同于 git blame</td>
+</tr>
+
+<tr>
+<td class="left">git archive</td>
+<td class="left">文件归档打包</td>
+</tr>
+
+<tr>
+<td class="left">git bisect</td>
+<td class="left">二分查找</td>
+</tr>
+
+<tr>
+<td class="left">git blame</td>
+<td class="left">文件逐行追溯</td>
+</tr>
+
+<tr>
+<td class="left">git branch</td>
+<td class="left">分支管理</td>
+</tr>
+
+<tr>
+<td class="left">git cat-file</td>
+<td class="left">版本库对象研究工具</td>
+</tr>
+
+<tr>
+<td class="left">git checkout</td>
+<td class="left">检出到工作区、切换或创建分支</td>
+</tr>
+
+<tr>
+<td class="left">git cherry-pick</td>
+<td class="left">提交拣选</td>
+</tr>
+
+<tr>
+<td class="left">git citool</td>
+<td class="left">图形化提交，相当于 git gui 命令</td>
+</tr>
+
+<tr>
+<td class="left">git clean</td>
+<td class="left">清除工作区未跟踪文件</td>
+</tr>
+
+<tr>
+<td class="left">git clone</td>
+<td class="left">克隆版本库</td>
+</tr>
+
+<tr>
+<td class="left">git commit</td>
+<td class="left">提交</td>
+</tr>
+
+<tr>
+<td class="left">git config</td>
+<td class="left">查询和修改配置</td>
+</tr>
+
+<tr>
+<td class="left">git describe</td>
+<td class="left">通过里程碑直观地显示提交ID</td>
+</tr>
+
+<tr>
+<td class="left">git diff</td>
+<td class="left">差异比较</td>
+</tr>
+
+<tr>
+<td class="left">git difftool</td>
+<td class="left">调用图形化差异比较工具</td>
+</tr>
+
+<tr>
+<td class="left">git fetch</td>
+<td class="left">获取远程版本库的提交</td>
+</tr>
+
+<tr>
+<td class="left">git format-patch</td>
+<td class="left">创建邮件格式的补丁文件。参见 git am 命令</td>
+</tr>
+
+<tr>
+<td class="left">git grep</td>
+<td class="left">文件内容搜索定位工具</td>
+</tr>
+
+<tr>
+<td class="left">git gui</td>
+<td class="left">基于Tcl/Tk的图形化工具，侧重提交等操作</td>
+</tr>
+
+<tr>
+<td class="left">git help</td>
+<td class="left">帮助</td>
+</tr>
+
+<tr>
+<td class="left">git init</td>
+<td class="left">版本库初始化</td>
+</tr>
+
+<tr>
+<td class="left">git init-db*</td>
+<td class="left">同义词，等同于 git init</td>
+</tr>
+
+<tr>
+<td class="left">git log</td>
+<td class="left">显示提交日志</td>
+</tr>
+
+<tr>
+<td class="left">git merge</td>
+<td class="left">分支合并</td>
+</tr>
+
+<tr>
+<td class="left">git mergetool</td>
+<td class="left">图形化冲突解决</td>
+</tr>
+
+<tr>
+<td class="left">git mv</td>
+<td class="left">重命名</td>
+</tr>
+
+<tr>
+<td class="left">git pull</td>
+<td class="left">拉回远程版本库的提交</td>
+</tr>
+
+<tr>
+<td class="left">git push</td>
+<td class="left">推送至远程版本库</td>
+</tr>
+
+<tr>
+<td class="left">git rebase</td>
+<td class="left">分支变基</td>
+</tr>
+
+<tr>
+<td class="left">git rebase–interactive</td>
+<td class="left">交互式分支变基</td>
+</tr>
+
+<tr>
+<td class="left">git reflog</td>
+<td class="left">分支等引用变更记录管理</td>
+</tr>
+
+<tr>
+<td class="left">git remote</td>
+<td class="left">远程版本库管理</td>
+</tr>
+
+<tr>
+<td class="left">git repo-config*</td>
+<td class="left">同义词，等同于 git config</td>
+</tr>
+
+<tr>
+<td class="left">git reset</td>
+<td class="left">重置改变分支“游标”指向</td>
+</tr>
+
+<tr>
+<td class="left">git rev-parse</td>
+<td class="left">将各种引用表示法转换为哈希值等</td>
+</tr>
+
+<tr>
+<td class="left">git revert</td>
+<td class="left">反转提交</td>
+</tr>
+
+<tr>
+<td class="left">git rm</td>
+<td class="left">删除文件</td>
+</tr>
+
+<tr>
+<td class="left">git show</td>
+<td class="left">显示各种类型的对象</td>
+</tr>
+
+<tr>
+<td class="left">git stage*</td>
+<td class="left">同义词，等同于 git add</td>
+</tr>
+
+<tr>
+<td class="left">git stash</td>
+<td class="left">保存和恢复进度</td>
+</tr>
+
+<tr>
+<td class="left">git status</td>
+<td class="left">显示工作区文件状态</td>
+</tr>
+
+<tr>
+<td class="left">git tag</td>
+<td class="left">里程碑管理</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 2、对象库操作相关命令
-命令
-简要说明
-git commit-tree
-从树对象创建提交
-git hash-object
-从标准输入或文件计算哈希值或创建对象
-git ls-files
-显示工作区和暂存区文件
-git ls-tree
-显示树对象包含的文件
-git mktag
-读取标准输入创建一个里程碑对象
-git mktree
-读取标准输入创建一个树对象
-git read-tree
-读取树对象到暂存区
-git update-index
-工作区内容注册到暂存区及暂存区管理
-git unpack-file
-创建临时文件包含指定 blob 的内容
-git write-tree
-从暂存区创建一个树对象
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git commit-tree</td>
+<td class="left">从树对象创建提交</td>
+</tr>
+
+<tr>
+<td class="left">git hash-object</td>
+<td class="left">从标准输入或文件计算哈希值或创建对象</td>
+</tr>
+
+<tr>
+<td class="left">git ls-files</td>
+<td class="left">显示工作区和暂存区文件</td>
+</tr>
+
+<tr>
+<td class="left">git ls-tree</td>
+<td class="left">显示树对象包含的文件</td>
+</tr>
+
+<tr>
+<td class="left">git mktag</td>
+<td class="left">读取标准输入创建一个里程碑对象</td>
+</tr>
+
+<tr>
+<td class="left">git mktree</td>
+<td class="left">读取标准输入创建一个树对象</td>
+</tr>
+
+<tr>
+<td class="left">git read-tree</td>
+<td class="left">读取树对象到暂存区</td>
+</tr>
+
+<tr>
+<td class="left">git update-index</td>
+<td class="left">工作区内容注册到暂存区及暂存区管理</td>
+</tr>
+
+<tr>
+<td class="left">git unpack-file</td>
+<td class="left">创建临时文件包含指定 blob 的内容</td>
+</tr>
+
+<tr>
+<td class="left">git write-tree</td>
+<td class="left">从暂存区创建一个树对象</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 3、引用操作相关命令
-命令
-简要说明
-git check-ref-format
-检查引用名称是否符合规范
-git for-each-ref
-引用迭代器，用于shell编程
-git ls-remote
-显示远程版本库的引用
-git name-rev
-将提交ID显示为友好名称
-git peek-remote*
-过时命令，请使用 git ls-remote
-git rev-list
-显示版本范围
-git show-branch
-显示分支列表及拓扑关系
-git show-ref
-显示本地引用
-git symbolic-ref
-显示或者设置符号引用
-git update-ref
-更新引用的指向
-git verify-tag
-校验 GPG 签名的Tag
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git check-ref-format</td>
+<td class="left">检查引用名称是否符合规范</td>
+</tr>
+
+<tr>
+<td class="left">git for-each-ref</td>
+<td class="left">引用迭代器，用于shell编程</td>
+</tr>
+
+<tr>
+<td class="left">git ls-remote</td>
+<td class="left">显示远程版本库的引用</td>
+</tr>
+
+<tr>
+<td class="left">git name-rev</td>
+<td class="left">将提交ID显示为友好名称</td>
+</tr>
+
+<tr>
+<td class="left">git peek-remote*</td>
+<td class="left">过时命令，请使用 git ls-remote</td>
+</tr>
+
+<tr>
+<td class="left">git rev-list</td>
+<td class="left">显示版本范围</td>
+</tr>
+
+<tr>
+<td class="left">git show-branch</td>
+<td class="left">显示分支列表及拓扑关系</td>
+</tr>
+
+<tr>
+<td class="left">git show-ref</td>
+<td class="left">显示本地引用</td>
+</tr>
+
+<tr>
+<td class="left">git symbolic-ref</td>
+<td class="left">显示或者设置符号引用</td>
+</tr>
+
+<tr>
+<td class="left">git update-ref</td>
+<td class="left">更新引用的指向</td>
+</tr>
+
+<tr>
+<td class="left">git verify-tag</td>
+<td class="left">校验 GPG 签名的Tag</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 4、版本库管理相关命令
-命令
-简要说明
-git count-objects
-显示松散对象的数量和磁盘占用
-git filter-branch
-版本库重构
-git fsck
-对象库完整性检查
-git fsck-objects*
-同义词，等同于 git fsck
-git gc
-版本库存储优化
-git index-pack
-从打包文件创建对应的索引文件
-git lost-found*
-过时，请使用 git fsck –lost-found 命令
-git pack-objects
-从标准输入读入对象ID，打包到文件
-git pack-redundant
-查找多余的 pack 文件
-git pack-refs
-将引用打包到 .git/packed-refs 文件中
-git prune
-从对象库删除过期对象
-git prune-packed
-将已经打包的松散对象删除
-git relink
-为本地版本库中相同的对象建立硬连接
-git repack
-将版本库未打包的松散对象打包
-git show-index
-读取包的索引文件，显示打包文件中的内容
-git unpack-objects
-从打包文件释放文件
-git verify-pack
-校验对象库打包文件
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git count-objects</td>
+<td class="left">显示松散对象的数量和磁盘占用</td>
+</tr>
+
+<tr>
+<td class="left">git filter-branch</td>
+<td class="left">版本库重构</td>
+</tr>
+
+<tr>
+<td class="left">git fsck</td>
+<td class="left">对象库完整性检查</td>
+</tr>
+
+<tr>
+<td class="left">git fsck-objects*</td>
+<td class="left">同义词，等同于 git fsck</td>
+</tr>
+
+<tr>
+<td class="left">git gc</td>
+<td class="left">版本库存储优化</td>
+</tr>
+
+<tr>
+<td class="left">git index-pack</td>
+<td class="left">从打包文件创建对应的索引文件</td>
+</tr>
+
+<tr>
+<td class="left">git lost-found*</td>
+<td class="left">过时，请使用 git fsck –lost-found 命令</td>
+</tr>
+
+<tr>
+<td class="left">git pack-objects</td>
+<td class="left">从标准输入读入对象ID，打包到文件</td>
+</tr>
+
+<tr>
+<td class="left">git pack-redundant</td>
+<td class="left">查找多余的 pack 文件</td>
+</tr>
+
+<tr>
+<td class="left">git pack-refs</td>
+<td class="left">将引用打包到 .git/packed-refs 文件中</td>
+</tr>
+
+<tr>
+<td class="left">git prune</td>
+<td class="left">从对象库删除过期对象</td>
+</tr>
+
+<tr>
+<td class="left">git prune-packed</td>
+<td class="left">将已经打包的松散对象删除</td>
+</tr>
+
+<tr>
+<td class="left">git relink</td>
+<td class="left">为本地版本库中相同的对象建立硬连接</td>
+</tr>
+
+<tr>
+<td class="left">git repack</td>
+<td class="left">将版本库未打包的松散对象打包</td>
+</tr>
+
+<tr>
+<td class="left">git show-index</td>
+<td class="left">读取包的索引文件，显示打包文件中的内容</td>
+</tr>
+
+<tr>
+<td class="left">git unpack-objects</td>
+<td class="left">从打包文件释放文件</td>
+</tr>
+
+<tr>
+<td class="left">git verify-pack</td>
+<td class="left">校验对象库打包文件</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 5、数据传输相关命令
-命令
-简要说明
-git fetch-pack
-执行 git fetch 或 git pull 命令时在本地执行此命令，用于从其他版本库获取缺失的对象
-git receive-pack
-执行 git push 命令时在远程执行的命令，用于接受推送的数据
-git send-pack
-执行 git push 命令时在本地执行的命令，用于向其他版本库推送数据
-git upload-archive
-执行 git archive –remote 命令基于远程版本库创建归档时，远程版本库执行此命令传送归档
-git upload-pack
-执行 git fetch 或 git pull 命令时在远程执行此命令，将对象打包、上传
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git fetch-pack</td>
+<td class="left">执行 git fetch 或 git pull 命令时在本地执行此命令，用于从其他版本库获取缺失的对象</td>
+</tr>
+
+<tr>
+<td class="left">git receive-pack</td>
+<td class="left">执行 git push 命令时在远程执行的命令，用于接受推送的数据</td>
+</tr>
+
+<tr>
+<td class="left">git send-pack</td>
+<td class="left">执行 git push 命令时在本地执行的命令，用于向其他版本库推送数据</td>
+</tr>
+
+<tr>
+<td class="left">git upload-archive</td>
+<td class="left">执行 git archive –remote 命令基于远程版本库创建归档时，远程版本库执行此命令传送归档</td>
+</tr>
+
+<tr>
+<td class="left">git upload-pack</td>
+<td class="left">执行 git fetch 或 git pull 命令时在远程执行此命令，将对象打包、上传</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 6、邮件相关命令
-命令
-简要说明
-git imap-send
-将补丁通过 IMAP 发送
-git mailinfo
-从邮件导出提交说明和补丁
-git mailsplit
-将 mbox 或 Maildir 格式邮箱中邮件逐一提取为文件
-git request-pull
-创建包含提交间差异和执行PULL操作地址的信息
-git send-email
-发送邮件
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git imap-send</td>
+<td class="left">将补丁通过 IMAP 发送</td>
+</tr>
+
+<tr>
+<td class="left">git mailinfo</td>
+<td class="left">从邮件导出提交说明和补丁</td>
+</tr>
+
+<tr>
+<td class="left">git mailsplit</td>
+<td class="left">将 mbox 或 Maildir 格式邮箱中邮件逐一提取为文件</td>
+</tr>
+
+<tr>
+<td class="left">git request-pull</td>
+<td class="left">创建包含提交间差异和执行PULL操作地址的信息</td>
+</tr>
+
+<tr>
+<td class="left">git send-email</td>
+<td class="left">发送邮件</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 7、协议相关命令
-命令
-简要说明
-git daemon
-实现Git协议
-git http-backend
-实现HTTP协议的CGI程序，支持智能HTTP协议
-git instaweb
-即时启动浏览器通过 gitweb 浏览当前版本库
-git shell
-受限制的shell，提供仅执行Git命令的SSH访问
-git update-server-info
-更新哑协议需要的辅助文件
-git http-fetch
-通过HTTP协议获取版本库
-git http-push
-通过HTTP/DAV协议推送
-git remote-ext
-由Git命令调用，通过外部命令提供扩展协议支持
-git remote-fd
-由Git命令调用，使用文件描述符作为协议接口
-git remote-ftp
-由Git命令调用，提供对FTP协议的支持
-git remote-ftps
-由Git命令调用，提供对FTPS协议的支持
-git remote-http
-由Git命令调用，提供对HTTP协议的支持
-git remote-https
-由Git命令调用，提供对HTTPS协议的支持
-git remote-testgit
-协议扩展示例脚本
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git daemon</td>
+<td class="left">实现Git协议</td>
+</tr>
+
+<tr>
+<td class="left">git http-backend</td>
+<td class="left">实现HTTP协议的CGI程序，支持智能HTTP协议</td>
+</tr>
+
+<tr>
+<td class="left">git instaweb</td>
+<td class="left">即时启动浏览器通过 gitweb 浏览当前版本库</td>
+</tr>
+
+<tr>
+<td class="left">git shell</td>
+<td class="left">受限制的shell，提供仅执行Git命令的SSH访问</td>
+</tr>
+
+<tr>
+<td class="left">git update-server-info</td>
+<td class="left">更新哑协议需要的辅助文件</td>
+</tr>
+
+<tr>
+<td class="left">git http-fetch</td>
+<td class="left">通过HTTP协议获取版本库</td>
+</tr>
+
+<tr>
+<td class="left">git http-push</td>
+<td class="left">通过HTTP/DAV协议推送</td>
+</tr>
+
+<tr>
+<td class="left">git remote-ext</td>
+<td class="left">由Git命令调用，通过外部命令提供扩展协议支持</td>
+</tr>
+
+<tr>
+<td class="left">git remote-fd</td>
+<td class="left">由Git命令调用，使用文件描述符作为协议接口</td>
+</tr>
+
+<tr>
+<td class="left">git remote-ftp</td>
+<td class="left">由Git命令调用，提供对FTP协议的支持</td>
+</tr>
+
+<tr>
+<td class="left">git remote-ftps</td>
+<td class="left">由Git命令调用，提供对FTPS协议的支持</td>
+</tr>
+
+<tr>
+<td class="left">git remote-http</td>
+<td class="left">由Git命令调用，提供对HTTP协议的支持</td>
+</tr>
+
+<tr>
+<td class="left">git remote-https</td>
+<td class="left">由Git命令调用，提供对HTTPS协议的支持</td>
+</tr>
+
+<tr>
+<td class="left">git remote-testgit</td>
+<td class="left">协议扩展示例脚本</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 8、版本库转换和交互相关命令
-命令
-简要说明
-git archimport
-导入Arch版本库到Git
-git bundle
-提交打包和解包，以便在不同版本库间传递
-git cvsexportcommit
-将Git的一个提交作为一个CVS检出
-git cvsimport
-导入CVS版本库到Git。或者使用 cvs2git
-git cvsserver
-Git的CVS协议模拟器，可供CVS命令访问Git版本库
-git fast-export
-将提交导出为 git-fast-import 格式
-git fast-import
-其他版本库迁移至Git的通用工具
-git svn
-Git 作为前端操作 Subversion
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git archimport</td>
+<td class="left">导入Arch版本库到Git</td>
+</tr>
+
+<tr>
+<td class="left">git bundle</td>
+<td class="left">提交打包和解包，以便在不同版本库间传递</td>
+</tr>
+
+<tr>
+<td class="left">git cvsexportcommit</td>
+<td class="left">将Git的一个提交作为一个CVS检出</td>
+</tr>
+
+<tr>
+<td class="left">git cvsimport</td>
+<td class="left">导入CVS版本库到Git。或者使用 cvs2git</td>
+</tr>
+
+<tr>
+<td class="left">git cvsserver</td>
+<td class="left">Git的CVS协议模拟器，可供CVS命令访问Git版本库</td>
+</tr>
+
+<tr>
+<td class="left">git fast-export</td>
+<td class="left">将提交导出为 git-fast-import 格式</td>
+</tr>
+
+<tr>
+<td class="left">git fast-import</td>
+<td class="left">其他版本库迁移至Git的通用工具</td>
+</tr>
+
+<tr>
+<td class="left">git svn</td>
+<td class="left">Git 作为前端操作 Subversion</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 9、合并相关的辅助命令
-命令
-简要说明
-git merge-base
-供其他脚本调用，找到两个或多个提交最近的共同祖先
-git merge-file
-针对文件的两个不同版本执行三向文件合并
-git merge-index
-对index中的冲突文件调用指定的冲突解决工具
-git merge-octopus
-合并两个以上分支。参见 git merge 的octopus合并策略
-git merge-one-file
-由 git merge-index 调用的标准辅助程序
-git merge-ours
-合并使用本地版本，抛弃他人版本。参见 git merge 的ours合并策略
-git merge-recursive
-针对两个分支的三向合并。参见 git merge 的recursive合并策略
-git merge-resolve
-针对两个分支的三向合并。参见 git merge 的resolve合并策略
-git merge-subtree
-子树合并。参见 git merge 的 subtree 合并策略
-git merge-tree
-显式三向合并结果，不改变暂存区
-git fmt-merge-msg
-供执行合并操作的脚本调用，用于创建一个合并提交说明
-git rerere
-重用所记录的冲突解决方案
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git merge-base</td>
+<td class="left">供其他脚本调用，找到两个或多个提交最近的共同祖先</td>
+</tr>
+
+<tr>
+<td class="left">git merge-file</td>
+<td class="left">针对文件的两个不同版本执行三向文件合并</td>
+</tr>
+
+<tr>
+<td class="left">git merge-index</td>
+<td class="left">对index中的冲突文件调用指定的冲突解决工具</td>
+</tr>
+
+<tr>
+<td class="left">git merge-octopus</td>
+<td class="left">合并两个以上分支。参见 git merge 的octopus合并策略</td>
+</tr>
+
+<tr>
+<td class="left">git merge-one-file</td>
+<td class="left">由 git merge-index 调用的标准辅助程序</td>
+</tr>
+
+<tr>
+<td class="left">git merge-ours</td>
+<td class="left">合并使用本地版本，抛弃他人版本。参见 git merge 的ours合并策略</td>
+</tr>
+
+<tr>
+<td class="left">git merge-recursive</td>
+<td class="left">针对两个分支的三向合并。参见 git merge 的recursive合并策略</td>
+</tr>
+
+<tr>
+<td class="left">git merge-resolve</td>
+<td class="left">针对两个分支的三向合并。参见 git merge 的resolve合并策略</td>
+</tr>
+
+<tr>
+<td class="left">git merge-subtree</td>
+<td class="left">子树合并。参见 git merge 的 subtree 合并策略</td>
+</tr>
+
+<tr>
+<td class="left">git merge-tree</td>
+<td class="left">显式三向合并结果，不改变暂存区</td>
+</tr>
+
+<tr>
+<td class="left">git fmt-merge-msg</td>
+<td class="left">供执行合并操作的脚本调用，用于创建一个合并提交说明</td>
+</tr>
+
+<tr>
+<td class="left">git rerere</td>
+<td class="left">重用所记录的冲突解决方案</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 10、 杂项
-命令
-简要说明
-git bisect–helper
-由 git bisect 命令调用，确认二分查找进度
-git check-attr
-显示某个文件是否设置了某个属性
-git checkout-index
-从暂存区拷贝文件至工作区
-git cherry
-查找没有合并到上游的提交
-git diff-files
-比较暂存区和工作区，相当于 git diff –raw
-git diff-index
-比较暂存区和版本库，相当于 git diff –cached –raw
-git diff-tree
-比较两个树对象，相当于 git diff –raw A B
-git difftool–helper
-由 git difftool 命令调用，默认要使用的差异比较工具
-git get-tar-commit-id
-从 git archive 创建的 tar 包中提取提交ID
-git gui–askpass
-命令 git gui 的获取用户口令输入界面
-git notes
-提交评论管理
-git patch-id
-补丁过滤行号和空白字符后生成补丁唯一ID
-git quiltimport
-将Quilt补丁列表应用到当前分支
-git replace
-提交替换
-git shortlog
-对 git log 的汇总输出，适合于产品发布说明
-git stripspace
-删除空行，供其他脚本调用
-git submodule
-子模组管理
-git tar-tree
-过时命令，请使用 git archive
-git var
-显示 Git 环境变量
-git web–browse
-启动浏览器以查看目录或文件
-git whatchanged
-显示提交历史及每次提交的改动
-git-mergetool–lib
-包含于其他脚本中，提供合并/差异比较工具的选择和执行
-git-parse-remote
-包含于其他脚本中，提供操作远程版本库的函数
-git-sh-setup
-包含于其他脚本中，提供 shell 编程的函数库
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">命令</td>
+<td class="left">简要说明</td>
+</tr>
+
+<tr>
+<td class="left">git bisect–helper</td>
+<td class="left">由 git bisect 命令调用，确认二分查找进度</td>
+</tr>
+
+<tr>
+<td class="left">git check-attr</td>
+<td class="left">显示某个文件是否设置了某个属性</td>
+</tr>
+
+<tr>
+<td class="left">git checkout-index</td>
+<td class="left">从暂存区拷贝文件至工作区</td>
+</tr>
+
+<tr>
+<td class="left">git cherry</td>
+<td class="left">查找没有合并到上游的提交</td>
+</tr>
+
+<tr>
+<td class="left">git diff-files</td>
+<td class="left">比较暂存区和工作区，相当于 git diff –raw</td>
+</tr>
+
+<tr>
+<td class="left">git diff-index</td>
+<td class="left">比较暂存区和版本库，相当于 git diff –cached –raw</td>
+</tr>
+
+<tr>
+<td class="left">git diff-tree</td>
+<td class="left">比较两个树对象，相当于 git diff –raw A B</td>
+</tr>
+
+<tr>
+<td class="left">git difftool–helper</td>
+<td class="left">由 git difftool 命令调用，默认要使用的差异比较工具</td>
+</tr>
+
+<tr>
+<td class="left">git get-tar-commit-id</td>
+<td class="left">从 git archive 创建的 tar 包中提取提交ID</td>
+</tr>
+
+<tr>
+<td class="left">git gui–askpass</td>
+<td class="left">命令 git gui 的获取用户口令输入界面</td>
+</tr>
+
+<tr>
+<td class="left">git notes</td>
+<td class="left">提交评论管理</td>
+</tr>
+
+<tr>
+<td class="left">git patch-id</td>
+<td class="left">补丁过滤行号和空白字符后生成补丁唯一ID</td>
+</tr>
+
+<tr>
+<td class="left">git quiltimport</td>
+<td class="left">将Quilt补丁列表应用到当前分支</td>
+</tr>
+
+<tr>
+<td class="left">git replace</td>
+<td class="left">提交替换</td>
+</tr>
+
+<tr>
+<td class="left">git shortlog</td>
+<td class="left">对 git log 的汇总输出，适合于产品发布说明</td>
+</tr>
+
+<tr>
+<td class="left">git stripspace</td>
+<td class="left">删除空行，供其他脚本调用</td>
+</tr>
+
+<tr>
+<td class="left">git submodule</td>
+<td class="left">子模组管理</td>
+</tr>
+
+<tr>
+<td class="left">git tar-tree</td>
+<td class="left">过时命令，请使用 git archive</td>
+</tr>
+
+<tr>
+<td class="left">git var</td>
+<td class="left">显示 Git 环境变量</td>
+</tr>
+
+<tr>
+<td class="left">git web–browse</td>
+<td class="left">启动浏览器以查看目录或文件</td>
+</tr>
+
+<tr>
+<td class="left">git whatchanged</td>
+<td class="left">显示提交历史及每次提交的改动</td>
+</tr>
+
+<tr>
+<td class="left">git-mergetool–lib</td>
+<td class="left">包含于其他脚本中，提供合并/差异比较工具的选择和执行</td>
+</tr>
+
+<tr>
+<td class="left">git-parse-remote</td>
+<td class="left">包含于其他脚本中，提供操作远程版本库的函数</td>
+</tr>
+
+<tr>
+<td class="left">git-sh-setup</td>
+<td class="left">包含于其他脚本中，提供 shell 编程的函数库</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">github 不需要用户名密码push</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><a href="https://help.github.com/articles/generating-ssh-keys">https://help.github.com/articles/generating-ssh-keys</a>
+</li>
+<li><a href="https://help.github.com/articles/using-ssh-over-the-https-port">https://help.github.com/articles/using-ssh-over-the-https-port</a>
+</li>
+</ul>
+
+<p>
+编辑SSH config文件，将连接端口改成443:
+</p>
+<pre class="example">
+$ gedit ~/.ssh/config
+</pre>
+
+<p>
+添加如下代码：
+</p>
+<pre class="example">
+Host github.com
+User standino
+Port 443
+Hostname ssh.github.com
+</pre>
+
+<p>
+再试一下命令：
+</p>
+<pre class="example">
+chmod 700 config
+git config --global url."https://".insteadOf git://
+$ ssh -T git@github.com
+</pre>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">如何使用 github</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>[[<a href="https://help.github.com/articles/fork-a-repo][Fork">https://help.github.com/articles/fork-a-repo][Fork</a> A Repo
+</li>
+</ul>
+<p>
+]]
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># Changes the active directory in the prompt to the newly cloned  directory
+
+cd .emacs.d/
+
+# Assigns the original repository to a remote called "upstream"
+
+git remote add upstream https://github.com/purcell/emacs.d.git
+
+# Pulls in changes not present in your local repository, without modifying your files
+
+git fetch upstream
+
+# Fetches any new changes from the original repository
+
+git fetch upstream
+
+# Merges any changes fetched into your working files
+
+git merge upstream/master
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">git submodule</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+git push --recurse-submodules=on-demand
+</p>
+
+<p>
+git pull --recurse-submodules origin master
+</p>
+
+<p>
+git submodule foreach git pull
+</p>
+
+
+<p>
+The 'foreach' command can execute any arbitrary shell script. Two options to pull the very latest might be,
+</p>
+
+<p>
+git submodule foreach git pull origin master
+and,
+</p>
+
+<p>
+git submodule foreach /path/to/some/cool/script.sh
+That will iterate through all initialized submodules and run the given commands.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6">git subtree</h3>
+<div class="outline-text-3" id="text-2-6">
+<ol class="org-ol">
+<li><a href="http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html">http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html</a>
+</li>
+<li><a href="http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree">http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree</a>
+</li>
+</ol>
+
+<pre class="example">
+$git subtree add --prefix=other_project \
+     git://github.com/your_tree/your_project.git master
+$git subtree push --prefix=other_project
+$git subtree pull --prefix=other_project
+
+
+he way that I have in the past re-created that relationship was by doing a subtree merge.
+
+git pull -s subtree &lt;lib&gt; master
+even if there is nothing to merge in/pull it should simply return without doing anything. Feel free to add --squash to the above pull so that you don't pull in any remote history.
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7">git 常用操作</h3>
+<div class="outline-text-3" id="text-2-7">
+<ol class="org-ol">
+<li><a href="http://blog.csdn.net/jackystudio/article/details/12271839">【Git入门之六】远程仓库</a>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">hg</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<a href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide by Bryan O'Sullivan</a>
+</p>
+
+<p>
+<a href="http://wiki.alliedmods.net/Mercurial_Tutorial">http://wiki.alliedmods.net/Mercurial_Tutorial</a>
+</p>
+
+<p>
+<a href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html">Mercurial: The Definitive Guide</a>
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><a href="http://www.javaforge.com/project/HGE">MercurialEclipse</a></h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+MercurialEclipse is a plugin providing support for the highly popular Mercurial distributed version control system within the Eclipse IDE.
+</p>
+
+<p>
+MercurialEclipse supports:
+</p>
+
+<ul class="org-ul">
+<li>cloning repositories and importing them as Eclipse projects
+</li>
+<li>push, pull and convenient syncronization
+</li>
+<li>working with branches (branch, merge and rebase)
+</li>
+<li>tags
+</li>
+<li>undo (backout, rollback and strip)
+</li>
+<li>diffs
+</li>
+<li>histories
+</li>
+<li>patches
+</li>
+<li>Mercurial extensions (mqueue, transplant and such)
+</li>
+</ul>
+</div>
+
+
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1">Big file！</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+<a href="http://mercurial.selenic.com/wiki/html/BigfilesExtension">http://mercurial.selenic.com/wiki/html/BigfilesExtension</a>
+</p>
+
+<p>
+<a href="http://mercurial.selenic.com/wiki/html/HandlingLargeFiles">http://mercurial.selenic.com/wiki/html/HandlingLargeFiles</a>
+</p>
+
+<p>
+Usage
+</p>
+
+<ol class="org-ol">
+<li>'hg add', ignoring the size warning.
+</li>
+<li>hg bstat
+</li>
+<li>hg bupdate
+</li>
+</ol>
+
+<p>
+&lt;#+BEGIN_SRC &gt;
+</p>
+<ul class="org-ul">
+<li>The extension overrides 'hg update', so that it can compare contents of '.bigfiles' before and after the update to remove and fetch appropriate big files.
+</li>
+<li>The directory storing versions of big files can be synced with the remote one (the extension doesn't do this, but tells the list of the necessary files). The versions corresponding to old changesets can be removed to save space.
+</li>
+<li>To add a new big file, use normal 'hg add', ignoring the size warning.
+</li>
+<li>To remove a tracked big file, just delete it.
+</li>
+<li>'hg bstatus' - to examine state of big files in working directory.
+</li>
+<li>'hg brefresh' - to refresh '.bigfiles' and versions directory with added,
+o removed and modified big files.
+</li>
+<li>'hg bupdate' - to fetch files from versions directory as recorded in
+o '.bigfiles', and get a list of necessary files missing in the version directory.
+</li>
+</ul>
+<p>
+#+END_SRC
+Configuration
+</p>
+
+<p>
+Configure your .hgrc to enable the extension by adding following lines:
+&lt;#+BEGIN_SRC &gt;
+[extensions]
+bigfiles = path/to/bigfiles.py
+</p>
+
+<p>
+[bigfiles]
+repo = path/to/versions/dir
+#+END_SRC
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2">How to manage my files with hg</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+home  with branch cygwin and ubuntu
+</p>
+
+<p>
+---ideas with branch idea
+</p>
+
+<p>
+I think I need  project --- ideas.
+</p>
+
+<p>
+The project "will" is related with os: ubuntu, cygwin and windows. I can pull the will in cygwin from desktop to laptop. So I can
+backup will project.
+</p>
+
+<p>
+The project "ideas" on laptop should be same with the one on desktop.
+</p>
+
+<p>
+I can write a shell script to start the will project on port 8000 and ideas project on 8002, then I pull all them to desktop to
+backup the data.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-3" class="outline-4">
+<h4 id="sec-3-1-3">Branch and tags</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+hg clone myproject myproject-merge
+</p>
+
+<p>
+hg branches
+</p>
+
+<p>
+hg branch foo
 </p>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-sec-18" class="outline-2">
-<h2 id="sec-18">HG</h2>
-<div class="outline-text-2" id="text-18">
-</div><div id="outline-container-sec-18-1" class="outline-3">
-<h3 id="sec-18-1">2个命令创建一个Mercuria仓库，</h3>
-<div class="outline-text-3" id="text-18-1">
+
+
+
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><a href="http://pypi.python.org/pypi/hgsvn">hgsvn</a></h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+&lt;#+BEGIN_SRC &gt;
+$ mkdir nose &amp;&amp; cd nose
+</p>
+<p>
+$ hgimportsvn <a href="http://python-nose.googlecode.com/svn/trunk">http://python-nose.googlecode.com/svn/trunk</a>
+hgimportsvn svn://changwei.dyn.webahead.ibm.com
+$ cd trunk
+</p>
+<p>
+$ hgpullsvn
+</p>
+
+<p>
+#+END_SRC
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">2个命令创建一个Mercuria仓库，</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 &gt; hg init
 &gt; hg serve，
@@ -1128,9 +1901,9 @@ git-sh-setup
 </div>
 </div>
 
-<div id="outline-container-sec-18-2" class="outline-3">
-<h3 id="sec-18-2">方便的分布式功能</h3>
-<div class="outline-text-3" id="text-18-2">
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">方便的分布式功能</h3>
+<div class="outline-text-3" id="text-3-4">
 <p>
 上一次在印度我想在一台新电脑上安装源代码，无奈网络速度太慢，于是乎，我找到一个存有源码的机器，hg serve，这样我得到了一个本地服务器，通过它，我在1分钟内拿到了代码，然后将hgrc(一个mercurial的配置文件)的URL指向在中国的服务器，继续更新后面的几个patch。 将一个1个小时的操作变成2分钟的操作。
 </p>
@@ -1145,9 +1918,9 @@ git-sh-setup
 </div>
 </div>
 
-<div id="outline-container-sec-18-3" class="outline-3">
-<h3 id="sec-18-3">便捷的本地提交</h3>
-<div class="outline-text-3" id="text-18-3">
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">便捷的本地提交</h3>
+<div class="outline-text-3" id="text-3-5">
 <p>
 使用Mercurial，你可以在没有网络的情况下通过
 &gt; hg ci
@@ -1156,36 +1929,36 @@ git-sh-setup
 </div>
 </div>
 
-<div id="outline-container-sec-18-4" class="outline-3">
-<h3 id="sec-18-4">离线操作</h3>
-<div class="outline-text-3" id="text-18-4">
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6">离线操作</h3>
+<div class="outline-text-3" id="text-3-6">
 <p>
 不论是Mercurial的提交或者是diff，rollback，strip, merge都可以在没有网络的情况下进行，想像一下在中国开发，服务器在美国的痛苦：那缓慢爬行的小乌龟。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-18-5" class="outline-3">
-<h3 id="sec-18-5">速度优势</h3>
-<div class="outline-text-3" id="text-18-5">
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7">速度优势</h3>
+<div class="outline-text-3" id="text-3-7">
 <p>
 Mercurial是增量存储，并且它会每隔一段时间进行对整个Repository打一个快照，这样当你去clone repository(相当于svn checkout)的时候，它可以找到最近的一个快照，并在它的基础上应用后续的patch。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-18-6" class="outline-3">
-<h3 id="sec-18-6">基于patch的管理</h3>
-<div class="outline-text-3" id="text-18-6">
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8">基于patch的管理</h3>
+<div class="outline-text-3" id="text-3-8">
 <p>
 Mercurial将你的提交作为一个patch管理， 你可以很容易拿到别人的patch，通过hg客户端或者linux上的 patch命令将别人最新的修正打在你的工作目录里面。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-18-7" class="outline-3">
-<h3 id="sec-18-7">更多的便捷操作</h3>
-<div class="outline-text-3" id="text-18-7">
+<div id="outline-container-sec-3-9" class="outline-3">
+<h3 id="sec-3-9">更多的便捷操作</h3>
+<div class="outline-text-3" id="text-3-9">
 <p>
 你想将本地的某些提交取消? hg strip
 你想将server上的某些changeset取消？hg backout
@@ -1312,11 +2085,10 @@ Good Luck.
 </p>
 </div>
 </div>
-</div>
 
-<div id="outline-container-sec-19" class="outline-2">
-<h2 id="sec-19">My setup</h2>
-<div class="outline-text-2" id="text-19">
+<div id="outline-container-sec-3-10" class="outline-3">
+<h3 id="sec-3-10">My setup</h3>
+<div class="outline-text-3" id="text-3-10">
 <p>
 hg clone <a href="http://changweilaptop.dyn.webahead.ibm.com:8000/">http://changweilaptop.dyn.webahead.ibm.com:8000/</a> ideas
 </p>
@@ -1328,18 +2100,18 @@ hg clone <a href="http://9.186.119.53:8000/">http://9.186.119.53:8000/</a> ideas
 </div>
 </div>
 
-<div id="outline-container-sec-20" class="outline-2">
-<h2 id="sec-20">How to use Emacs to work with Mercurial</h2>
-<div class="outline-text-2" id="text-20">
+<div id="outline-container-sec-3-11" class="outline-3">
+<h3 id="sec-3-11">How to use Emacs to work with Mercurial</h3>
+<div class="outline-text-3" id="text-3-11">
 <p>
 <a href="http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html">http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html</a>
 </p>
 </div>
 
 
-<div id="outline-container-sec-20-1" class="outline-3">
-<h3 id="sec-20-1">revert files</h3>
-<div class="outline-text-3" id="text-20-1">
+<div id="outline-container-sec-3-11-1" class="outline-4">
+<h4 id="sec-3-11-1">revert files</h4>
+<div class="outline-text-4" id="text-3-11-1">
 <p>
 hg revert .amsn/ -r 385
 </p>
@@ -1352,9 +2124,9 @@ hg revert .amsn/ -r 385
 </div>
 
 
-<div id="outline-container-sec-20-2" class="outline-3">
-<h3 id="sec-20-2">4.2. How to declare trust</h3>
-<div class="outline-text-3" id="text-20-2">
+<div id="outline-container-sec-3-11-2" class="outline-4">
+<h4 id="sec-3-11-2">4.2. How to declare trust</h4>
+<div class="outline-text-4" id="text-3-11-2">
 <p>
 Users can add settings to their $HOME/.hgrc to tell Mercurial to trust other users. For instance, if Bob has decided he can trust Alice not to try to delete his files when he looks at her repository, he could add:
 </p>
@@ -1377,9 +2149,9 @@ groups = dev-team
 </div>
 
 
-<div id="outline-container-sec-21" class="outline-2">
-<h2 id="sec-21">比较两个 branch</h2>
-<div class="outline-text-2" id="text-21">
+<div id="outline-container-sec-3-12" class="outline-3">
+<h3 id="sec-3-12">比较两个 branch</h3>
+<div class="outline-text-3" id="text-3-12">
 <p>
 <a href="http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial">http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial</a>
 </p>
@@ -1442,154 +2214,6 @@ hg branchdiff .
 </pre>
 </div>
 </div>
-
-
-
-
-<div id="outline-container-sec-22" class="outline-2">
-<h2 id="sec-22">github 不需要用户名密码push</h2>
-<div class="outline-text-2" id="text-22">
-<ul class="org-ul">
-<li><a href="https://help.github.com/articles/generating-ssh-keys">https://help.github.com/articles/generating-ssh-keys</a>
-</li>
-<li><a href="https://help.github.com/articles/using-ssh-over-the-https-port">https://help.github.com/articles/using-ssh-over-the-https-port</a>
-</li>
-</ul>
-
-<p>
-编辑SSH config文件，将连接端口改成443:
-</p>
-<pre class="example">
-$ gedit ~/.ssh/config
-</pre>
-
-<p>
-添加如下代码：
-</p>
-<pre class="example">
-Host github.com
-User standino
-Port 443
-Hostname ssh.github.com
-</pre>
-
-<p>
-再试一下命令：
-</p>
-<pre class="example">
-chmod 700 config
-git config --global url."https://".insteadOf git://
-$ ssh -T git@github.com
-</pre>
-</div>
-</div>
-
-
-
-
-
-<div id="outline-container-sec-23" class="outline-2">
-<h2 id="sec-23">如何使用 github</h2>
-<div class="outline-text-2" id="text-23">
-<ul class="org-ul">
-<li>[[<a href="https://help.github.com/articles/fork-a-repo][Fork">https://help.github.com/articles/fork-a-repo][Fork</a> A Repo
-</li>
-</ul>
-<p>
-]]
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-sh"># Changes the active directory in the prompt to the newly cloned  directory
-
-cd .emacs.d/
-
-# Assigns the original repository to a remote called "upstream"
-
-git remote add upstream https://github.com/purcell/emacs.d.git
-
-# Pulls in changes not present in your local repository, without modifying your files
-
-git fetch upstream
-
-# Fetches any new changes from the original repository
-
-git fetch upstream
-
-# Merges any changes fetched into your working files
-
-git merge upstream/master
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-24" class="outline-2">
-<h2 id="sec-24">git submodule</h2>
-<div class="outline-text-2" id="text-24">
-<p>
-git push --recurse-submodules=on-demand
-</p>
-
-<p>
-git pull --recurse-submodules origin master
-</p>
-
-<p>
-git submodule foreach git pull
-</p>
-
-
-<p>
-The 'foreach' command can execute any arbitrary shell script. Two options to pull the very latest might be,
-</p>
-
-<p>
-git submodule foreach git pull origin master
-and,
-</p>
-
-<p>
-git submodule foreach /path/to/some/cool/script.sh
-That will iterate through all initialized submodules and run the given commands.
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-25" class="outline-2">
-<h2 id="sec-25">git subtree</h2>
-<div class="outline-text-2" id="text-25">
-<ol class="org-ol">
-<li><a href="http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html">http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html</a>
-</li>
-<li><a href="http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree">http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree</a>
-</li>
-</ol>
-
-<pre class="example">
-$git subtree add --prefix=other_project \
-     git://github.com/your_tree/your_project.git master
-$git subtree push --prefix=other_project
-$git subtree pull --prefix=other_project
-
-
-he way that I have in the past re-created that relationship was by doing a subtree merge.
-
-git pull -s subtree &lt;lib&gt; master
-even if there is nothing to merge in/pull it should simply return without doing anything. Feel free to add --squash to the above pull so that you don't pull in any remote history.
-</pre>
-</div>
-</div>
-
-<div id="outline-container-sec-26" class="outline-2">
-<h2 id="sec-26">Linux 下svn恢复到某一版本</h2>
-<div class="outline-text-2" id="text-26">
-<ul class="org-ul">
-<li><a href="http://blog.163.com/xiaoy2002@126/blog/static/679795342012811102449474/">http://blog.163.com/xiaoy2002@126/blog/static/679795342012811102449474/</a> 
-</li>
-</ul>
-</div>
 </div>
 
 </div>
@@ -1597,7 +2221,7 @@ even if there is nothing to merge in/pull it should simply return without doing 
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-04-29</span>
+        <span title="last modification date" class="post-info">2014-06-05</span>
         <span title="tags" class="post-info"><a href="/tags/svn/">svn</a>, <a href="/tags/cvs/">cvs</a>, <a href="/tags/git/">git</a>, <a href="/tags/hg/">hg</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

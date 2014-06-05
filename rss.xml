@@ -4,10 +4,52 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>四, 29  5月 2014 10:15:27 CST</pubDate>
-    <lastBuildDate>四, 29  5月 2014 10:15:27 CST</lastBuildDate>
+    <pubDate>四, 05  6月 2014 15:49:59 CST</pubDate>
+    <lastBuildDate>四, 05  6月 2014 15:49:59 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>大数据</title>
+      <link>http://standino.github.io/wiki/html/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2014-06-05</pubDate>
+      <guid>http://standino.github.io/wiki/html/bigdata</guid>
+    </item>
+    <item>
+      <title>linux</title>
+      <link>http://standino.github.io/wiki/html/linux</link>
+      <description>linux</description>
+      <pubDate>2014-06-05</pubDate>
+      <guid>http://standino.github.io/wiki/html/linux</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-06-05</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
+    </item>
+    <item>
+      <title>jquery, bootstrap 和它们的插件们</title>
+      <link>http://standino.github.io/blog/2014/05/30/jquerybootstrap</link>
+      <description>本文主要介绍jquery，bootstrap和它们的插件的使用</description>
+      <pubDate>2014-05-30</pubDate>
+      <guid>http://standino.github.io/blog/2014/05/30/jquerybootstrap</guid>
+    </item>
+    <item>
+      <title>javascript</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-05-30</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>mysql</title>
+      <link>http://standino.github.io/wiki/html/mysql</link>
+      <description>MySQL数据库</description>
+      <pubDate>2014-05-30</pubDate>
+      <guid>http://standino.github.io/wiki/html/mysql</guid>
+    </item>
     <item>
       <title>Spring Security with SSO Headers - integrating with OAM WebGate</title>
       <link>http://standino.github.io./wiki/html/sssso</link>
@@ -23,20 +65,6 @@
       <guid>http://standino.github.io/blog/2014/05/26/pig</guid>
     </item>
     <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-05-26</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
-    </item>
-    <item>
-      <title>linux</title>
-      <link>http://standino.github.io/wiki/html/linux</link>
-      <description>linux</description>
-      <pubDate>2014-05-26</pubDate>
-      <guid>http://standino.github.io/wiki/html/linux</guid>
-    </item>
-    <item>
       <title>Emacs publish</title>
       <link>http://standino.github.io/wiki/html/muse</link>
       <description>muse</description>
@@ -49,34 +77,6 @@
       <description>Java Tips</description>
       <pubDate>2014-05-19</pubDate>
       <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>使用 go + angular 开发系统门户</title>
-      <link>http://standino.github.io/wiki/html/goeasyportal</link>
-      <description>go 语言</description>
-      <pubDate>2014-05-13</pubDate>
-      <guid>http://standino.github.io/wiki/html/goeasyportal</guid>
-    </item>
-    <item>
-      <title>Jquery ajax 提交和controler 定义之间的关系</title>
-      <link>http://standino.github.io/wiki/html/jqueryajaxspringmvc</link>
-      <description>ajax 提交和controler 定义之间的关系</description>
-      <pubDate>2014-05-13</pubDate>
-      <guid>http://standino.github.io/wiki/html/jqueryajaxspringmvc</guid>
-    </item>
-    <item>
-      <title>mvn</title>
-      <link>http://standino.github.io/wiki/html/mvn</link>
-      <description>mvn</description>
-      <pubDate>2014-05-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/mvn</guid>
-    </item>
-    <item>
-      <title>go 语言</title>
-      <link>http://standino.github.io/wiki/html/go</link>
-      <description>go 语言</description>
-      <pubDate>2014-05-08</pubDate>
-      <guid>http://standino.github.io/wiki/html/go</guid>
     </item>
   </channel>
 </rss>

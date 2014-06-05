@@ -3137,11 +3137,11 @@ gzip -dc  grep.2.5.1.tar.Z | tar -xvf -
 <h2 id="sec-65">Remote run ssh</h2>
 <div class="outline-text-2" id="text-65">
 <p>
-ssh -l changwei etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/#+BEGIN_SRC "
+ssh -l changwei etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src "
 </p>
 
 <p>
-ssh  changwei@etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/#+BEGIN_SRC "
+ssh  changwei@etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src "
 </p>
 
 <p>
@@ -3149,12 +3149,11 @@ scp id_rsa.pub changwei@etlbdswws01.etl.ibm.com:/home/changwei/.ssh/authorized_k
 </p>
 
 <p>
-./checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote2 -f 2011-06-09 -t 2011-06-10 -c PRICING -u changwei@cn.ibm.com -p
-t5y6u7i8
+./checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote2 -f 2011-06-09 -t 2011-06-10 -c PRICING -u test@x.com -p t5y6u7i8
 </p>
 
 <p>
-/home/fvtoper/quotelogtool/checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote4 -f 2011-06-09 -t 2011-06-10 -c PRICING -u changwei@cn.ibm.com
+/home/fvtoper/quotelogtool/checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote4 -f 2011-06-09 -t 2011-06-10 -c PRICING -u test@x.com
 </p>
 </div>
 </div>
@@ -5200,7 +5199,7 @@ ResultActive=yes
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-05-26</span>
+        <span title="last modification date" class="post-info">2014-06-05</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/端口/">端口</a>, <a href="/tags/jdretail/">jdretail</a>, <a href="/tags/采销平台/">采销平台</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
