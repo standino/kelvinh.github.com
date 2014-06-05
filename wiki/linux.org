@@ -1926,16 +1926,15 @@ gzip -dc  grep.2.5.1.tar.Z | tar -xvf -
 
 * Remote run ssh
 
-ssh -l changwei etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/#+BEGIN_SRC "
+ssh -l changwei etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src "
 
-ssh  changwei@etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/#+BEGIN_SRC "
+ssh  changwei@etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src "
 
 scp id_rsa.pub changwei@etlbdswws01.etl.ibm.com:/home/changwei/.ssh/authorized_keys2
 
-./checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote2 -f 2011-06-09 -t 2011-06-10 -c PRICING -u changwei@cn.ibm.com -p
-t5y6u7i8
+./checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote2 -f 2011-06-09 -t 2011-06-10 -c PRICING -u test@x.com -p t5y6u7i8
 
-/home/fvtoper/quotelogtool/checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote4 -f 2011-06-09 -t 2011-06-10 -c PRICING -u changwei@cn.ibm.com
+/home/fvtoper/quotelogtool/checklog4sap_remote -s FVT -w 0001721975 -d /tmp/cw/remote4 -f 2011-06-09 -t 2011-06-10 -c PRICING -u test@x.com
 
 * FreeNX --- faster vnc
 

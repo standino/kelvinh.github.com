@@ -6,7 +6,7 @@
 #+KEYWORDS:    svn,cvs,git,hg
 #+TAGS:        :svn:cvs:git:hg:
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION:  Version control
 
 

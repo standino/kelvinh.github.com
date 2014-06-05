@@ -4,7 +4,7 @@
 #+DATE:        2013-12-20 Fri
 #+URI:         /wiki/html/bigdata
 #+KEYWORDS:    big data, hadoop, redis
-#+TAGS:        :big data:hadoop:redis:
+#+TAGS:        :big data:hadoop:redis:spark:
 #+LANGUAGE:    en
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 研究互联网用到的大数据技术
@@ -21,3 +21,15 @@
  9. [[http://www.blogways.net/blog/2013/06/02/jedis-demo.html][Redis的Java客户端Jedis的八种调用方式]]
  10. [[http://mina-java.iteye.com/blog/1149452][Redis最好的Java客户端jedis入门]]
  11. [[http://projects.spring.io/spring-data-redis/][Spring redis]]
+
+* spark
+
+ 1. http://spark.apache.org/docs/latest/quick-start.html
+
+
+ [[http://img.my.csdn.net/uploads/201212/25/1356437707_3798.jpg]]
+
+
+* Mahout
+
+  1. http://www.ibm.com/developerworks/cn/java/j-mahout/
