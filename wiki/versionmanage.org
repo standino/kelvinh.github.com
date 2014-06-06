@@ -539,8 +539,7 @@ $ ssh -T git@github.com
 
 
 ** 如何使用 github
-  - [[https://help.github.com/articles/fork-a-repo][Fork A Repo
-]]
+  - [[https://help.github.com/articles/fork-a-repo][Fork A Repo]]
 
 #+BEGIN_SRC sh
 
