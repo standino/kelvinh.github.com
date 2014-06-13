@@ -220,32 +220,10 @@ svn co svn+ssh://servername/project
 
  git config --global core.quotepath false
 
-** DONE 子模块
-   CLOSED: [2014-03-31 一 11:05]
-   - State "DONE"       from "OKTODAY"    [2014-03-31 一 11:05]
-   - State "OKTODAY"    from "STARTED"    [2014-03-31 一 11:05]
-   :LOGBOOK:
-   CLOCK: [2014-03-31 一 10:33]--[2014-03-31 一 11:05] =>  0:32
-   :END:
 
 
- 2. http://aoxuis.me/posts/2013/08/07/git-subtree/
- 3. http://ruby-china.org/topics/13001
- 1. http://git-scm.com/book/zh/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
 
-#+BEGIN_SRC
-
-git clone https://github.com/standino/easy-portal.git
-
-cd easy-portal/
-
-git remote add -f jquery-ui-portlet https://github.com/standino/jquery-ui-portlet.git
-
-git subtree add --prefix=src/main/webapp/resources/jquery-ui-portlet jquery-ui-portlet master --squash
-
-#+END_SRC
-
-** [[http://blog.csdn.net/ithomer/article/details/7529841][本文将对Git 命令，做一下全面而系统的简短总结，整理成简洁、明了的图表结构，方便查询]]
+** [[http://blog.csdn.net/ithomer/article/details/7529841][Git 命令简短总结]]
 
 一、 Git 常用命令速查
 git branch 查看本地所有分支
@@ -592,11 +570,28 @@ That will iterate through all initialized submodules and run the given commands.
 
   1. http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html
   2. http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree
+  2. http://aoxuis.me/posts/2013/08/07/git-subtree/
+  3. http://ruby-china.org/topics/13001
+  1. http://git-scm.com/book/zh/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
+
+#+BEGIN_SRC
+
+git clone https://github.com/standino/easy-portal.git
+
+cd easy-portal/
+
+git remote add -f jquery-ui-portlet https://github.com/standino/jquery-ui-portlet.git
+
+git subtree add --prefix=src/main/webapp/resources/jquery-ui-portlet jquery-ui-portlet master --squash
+
+git subtree push --prefix=src/main/webapp/resources/jquery-ui-portlet jquery-ui-portlet master 
+
+
+#+END_SRC
 
 #+BEGIN_SRC 
 
-$git subtree add --prefix=other_project \
-     git://github.com/your_tree/your_project.git master
+$git subtree add --prefix=other_project   git://github.com/your_tree/your_project.git master
 $git subtree push --prefix=other_project
 $git subtree pull --prefix=other_project
 

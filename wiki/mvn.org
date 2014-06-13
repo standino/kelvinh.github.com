@@ -9,6 +9,7 @@
 #+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: mvn
 
+
  - http://maven.apache.org/guides/getting-started/index.html
  - http://www.infoq.com/cn/news/2011/05/xxb-maven-8-plugin
  - http://mojo.codehaus.org/versions-maven-plugin/
@@ -134,6 +135,7 @@ jetty-context.xml
 </Configure>
 
 #+END_SRC
+
 * mvn dependency:tree
 
 * settings
@@ -187,4 +189,21 @@ jetty-context.xml
 mvn dependency:sources
 mvn dependency:resolve -Dclassifier=javadoc
 
+#+END_SRC
+
+* 测试
+
+Run Unit Test
+See below examples to run unit test with Maven.
+
+Example 1
+To run the entire unit test (TestApp1 and TestApp2), issue this command :
+#+BEGIN_SRC
+mvn test
+#+END_SRC
+
+Example 2
+To run single test (TestApp1), issue this command :
+#+BEGIN_SRC
+mvn -Dtest=TestApp1 test
 #+END_SRC
