@@ -6,11 +6,8 @@
 #+KEYWORDS:    saiku,sso
 #+TAGS:        :sakiu:sso:
 #+LANGUAGE:    en
-#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: saiku单点登录方案
-
-* 目录 :TOC:
-
 
 * 基本思路
 
@@ -433,3 +430,8 @@ public class UserDetailsServices implements UserDetailsService {
 
 
 #+END_SRC
+
+* 参考资料
+
+  1. [[http://blog.sbeynon.net/2011/12/spring-security-with-sso-headers.html][Spring Security with SSO Headers - integrating with OAM WebGate]]
+  2. [[http://www.blogjava.net/youxia/archive/2008/12/07/244883.html][SpringSide 3 中的安全框架]]
