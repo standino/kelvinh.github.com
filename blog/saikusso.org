@@ -139,27 +139,6 @@ spring-security.xml
 SSORequestHeaderAuthenticationFilter.java
 
 #+BEGIN_SRC java
-package com.standino.ipc.dashboard.interceptor;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
-
-import static org.apache.commons.lang.Validate.notNull;
-import org.apache.commons.lang.Validate;
-import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
-import org.springframework.security.web.authentication.preauth.PreAuthenticatedCredentialsNotFoundException;
-import org.springframework.util.Assert;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.security.authentication.AuthenticationDetailsSource;
-import org.apache.log4j.Logger;
-import javax.servlet.http.Cookie;
-import com.standino.ipc.dashboard.util.CookieUtil;
-import com.standino.ipc.dashboard.sso.SSOUtil;
-
-// import com.standino.ipc.dashboard.security.UserService;
-
 /**
  * Handles for SSO request headers to create Authorization ids.
  * Optional operations can be assigned by setting the {@link SSOLoginHandler};
@@ -186,8 +165,8 @@ public class SSORequestHeaderAuthenticationFilter extends AbstractPreAuthenticat
      *             <tt>exceptionIfHeaderMissing</tt> is set to <tt>true</tt>.
      */
     protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
-        // 下面两个变量的值测试环境和开发环境不同，需要在pom.xml配置。具体实现请参考sone中的pom.xml文件。
-        String ssoCookieName = "erp.jd.com";
+
+        String ssoCookieName = "erp";
         String ssoAuthenticationKey="8B6697227CBCA902B1A0925D40FAA00B353F2DF4359D2099";
         String  erpUser = "没有设置";
         Cookie   cookie = CookieUtil.getCookie(request, ssoCookieName);
@@ -386,34 +365,12 @@ public class HeaderAuthenticationDetails extends AuthenticationDetailsSourceImpl
 UserDetailsServices.java
 
 #+BEGIN_SRC java
-/**
- *
- */
-package com.standino.ipc.dashboard.security;
-
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.dao.DataAccessException;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
-
-import java.util.Set;
-import java.util.HashSet;
-
 
 public class UserDetailsServices implements UserDetailsService {
     /**
      * Logger for this class
      */
-    private static final Logger logger = Logger
-        .getLogger(UserDetailsServices.class);
-
-
-
+    private static final Logger logger = Logger.getLogger(UserDetailsServices.class);
 
     public  UserDetails loadUserByUsername(String userName)  throws  UsernameNotFoundException, DataAccessException {
 
@@ -422,13 +379,8 @@ public class UserDetailsServices implements UserDetailsService {
         authorities.add(new  GrantedAuthorityImpl("ROLE_USER"));
 
         return   new  UserToken("admin","admin" , authorities);
-
     }
-
-
 }
-
-
 #+END_SRC
 
 * 参考资料
