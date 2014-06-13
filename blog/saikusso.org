@@ -2,7 +2,7 @@
 #+AUTHOR:      Will
 #+EMAIL:       will@will-K42JA
 #+DATE:        2014-06-12 四
-#+URI:         /blog/%y/%m/%d/saikusso
+#+URI:         ./blog/%y/%m/%d/saikusso
 #+KEYWORDS:    saiku,sso
 #+TAGS:        :sakiu:sso:
 #+LANGUAGE:    en
