@@ -201,7 +201,7 @@ public class SSORequestHeaderAuthenticationFilter extends AbstractPreAuthenticat
     protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
 
         String ssoCookieName = "erp";
-        String ssoAuthenticationKey="8B6697227CBCA902B1A0925D40FAA00B353F2DF4359D2099";
+        String ssoAuthenticationKey="2099";
         String  erpUser = "没有设置";
         Cookie   cookie = CookieUtil.getCookie(request, ssoCookieName);
         if (cookie != null) {
