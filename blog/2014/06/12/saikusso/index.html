@@ -79,8 +79,6 @@
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"&gt;
-
-  &lt;!-- &lt;import resource="applicationContext-spring-security-memory.xml"/&gt; --&gt;
   &lt;import resource="spring-security.xml"/&gt;
 &lt;/beans&gt;
 </pre>
@@ -93,28 +91,9 @@ spring-security.xml
 <div class="org-src-container">
 
 <pre class="src src-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:security="http://www.springframework.org/schema/security"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-                           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
-                           http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2.xsd
-                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-                           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"&gt;
-
-  &lt;context:component-scan base-package="com.standino.ipc.dashboard"/&gt;
-
-
   &lt;bean id="ssoHeaderFilter"
         class="com.standino.ipc.dashboard.interceptor.SSORequestHeaderAuthenticationFilter"&gt;
     &lt;property name="principalRequestHeader" value="REMOTE_USER"/&gt;
-    &lt;!-- &lt;property name="authenticationManager" ref="authenticationManager"/&gt; --&gt;
-    &lt;!-- &lt;property name="allowPreAuthenticatedPrincipals" value="true"/&gt; --&gt;
-    &lt;!-- &lt;property name="exceptionIfHeaderMissing" value="false"/&gt; --&gt;
-    &lt;!-- &lt;constructor-arg index="0" ref="userDetailsService"/&gt; --&gt;
-    &lt;!-- &lt;constructor-arg index="1" ref="ssoLoginHandler"/&gt; --&gt;
 
     &lt;!-- fall back to other authentication providers is OAM SSO is not there --&gt;
     &lt;property name="exceptionIfHeaderMissing" value="false" /&gt;
@@ -147,13 +126,10 @@ spring-security.xml
           &lt;set&gt;
             &lt;value&gt;ROLE_ADMIN&lt;/value&gt;
             &lt;value&gt;ROLE_USER&lt;/value&gt;
-
           &lt;/set&gt;
         &lt;/property&gt;
       &lt;/bean&gt;
     &lt;/property&gt;
-
-
   &lt;/bean&gt;
 
   &lt;bean id="preauthAuthProvider"
@@ -167,7 +143,6 @@ spring-security.xml
   &lt;bean id="securityContextHolderAwareRequestFilter"
     class="org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter" /&gt;
 
-
   &lt;security:authentication-manager alias="authenticationManager"&gt;
   &lt;security:authentication-provider ref="preauthAuthProvider" /&gt;
 
@@ -179,13 +154,6 @@ spring-security.xml
    &lt;/security:user-service&gt;
   &lt;/security:authentication-provider&gt;
   &lt;/security:authentication-manager&gt;
-
-
-  &lt;!-- &lt;security:authentication-manager alias="authenticationManager"&gt; --&gt;
-  &lt;!--   &lt;security:authentication-provider user-service-ref='userDetailsService'&gt; --&gt;
-  &lt;!--     &lt;security:password-encoder hash="plaintext" /&gt; --&gt;
-  &lt;!--   &lt;/security:authentication-provider&gt; --&gt;
-  &lt;!-- &lt;/security:authentication-manager&gt; --&gt;
 
   &lt;bean id="userDetailsService"
         class="com.standino.ipc.dashboard.security.UserDetailsServices" /&gt;
@@ -304,25 +272,7 @@ HeaderAuthenticationDetails.java
 </p>
 <div class="org-src-container">
 
-<pre class="src src-java">package com.standino.ipc.dashboard.security;
-
-import org.springframework.security.authentication.AuthenticationDetailsSourceImpl;
-
-import org.apache.log4j.Logger;
-
-import java.util.HashSet;
-import org.springframework.security.core.authority.mapping.SimpleAttributes2GrantedAuthoritiesMapper;
-import org.springframework.security.web.authentication.preauth.PreAuthenticatedGrantedAuthoritiesWebAuthenticationDetails;
-import java.util.List;
-import org.springframework.security.core.authority.MutableGrantedAuthoritiesContainer;
-import java.util.Collection;
-import java.util.ArrayList;
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.security.core.authority.mapping.Attributes2GrantedAuthoritiesMapper;
-import java.util.Set;
-import org.springframework.security.core.GrantedAuthority;
-
-public class HeaderAuthenticationDetails extends AuthenticationDetailsSourceImpl {
+<pre class="src src-java">public class HeaderAuthenticationDetails extends AuthenticationDetailsSourceImpl {
         private static final Logger log = Logger.getLogger(HeaderAuthenticationDetails.class);
 
 
