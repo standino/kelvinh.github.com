@@ -933,3 +933,21 @@ XML文件
   CLOCK: [2014-05-13 二 13:10]--[2014-05-13 二 13:29] =>  0:19
   :END:
 
+* TODO [#C] Guava
+
+* TODO [#C] Joda Time
+
+* TODO [#C] jmockit vs  Hamcrest和Mockito
+  :LOGBOOK:
+  CLOCK: [2014-06-13 五 16:25]--[2014-06-13 五 17:07] =>  0:42
+  :END:
+
+* TODO [#C] DropWizard
+
+* TODO [#C] REST API的框架，比如用Jersey加上Jackson。
+
+* TODO [#C] SLF4J
+
+* TODO [#C] Gradle
+
+* TODO [#C] Docker
