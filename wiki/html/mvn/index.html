@@ -186,6 +186,7 @@ jetty-context.xml
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">mvn dependency:tree</h2>
 </div>
@@ -251,12 +252,38 @@ mvn dependency:resolve -Dclassifier=javadoc
 </div>
 </div>
 
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">测试</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Run Unit Test
+See below examples to run unit test with Maven.
+</p>
+
+<p>
+Example 1
+To run the entire unit test (TestApp1 and TestApp2), issue this command :
+</p>
+<pre class="example">
+mvn test
+</pre>
+
+<p>
+Example 2
+To run single test (TestApp1), issue this command :
+</p>
+<pre class="example">
+mvn -Dtest=TestApp1 test
+</pre>
+</div>
+</div>
+
 </div>
 </div>
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-30</span>
-        <span title="last modification date" class="post-info">2014-05-09</span>
+        <span title="last modification date" class="post-info">2014-06-13</span>
         <span title="tags" class="post-info"><a href="/tags/mvn/">mvn</a>, <a href="/tags/work/">work</a>, <a href="/tags/jetty/">jetty</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

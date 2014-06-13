@@ -72,13 +72,12 @@
 </li>
 <li><a href="#sec-2">Git</a>
 <ul>
-<li><a href="#sec-2-1"><span class="done DONE">DONE</span> 子模块</a></li>
-<li><a href="#sec-2-2">本文将对Git 命令，做一下全面而系统的简短总结，整理成简洁、明了的图表结构，方便查询</a></li>
-<li><a href="#sec-2-3">github 不需要用户名密码push</a></li>
-<li><a href="#sec-2-4">如何使用 github</a></li>
-<li><a href="#sec-2-5">git submodule</a></li>
-<li><a href="#sec-2-6">git subtree</a></li>
-<li><a href="#sec-2-7">git 常用操作</a></li>
+<li><a href="#sec-2-1">Git 命令简短总结</a></li>
+<li><a href="#sec-2-2">github 不需要用户名密码push</a></li>
+<li><a href="#sec-2-3">如何使用 github</a></li>
+<li><a href="#sec-2-4">git submodule</a></li>
+<li><a href="#sec-2-5">git subtree</a></li>
+<li><a href="#sec-2-6">git 常用操作</a></li>
 </ul>
 </li>
 <li><a href="#sec-3">hg</a>
@@ -463,39 +462,12 @@ git config --global core.quotepath false
 </p>
 </div>
 
+
+
+
 <div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="done DONE">DONE</span> 子模块</h3>
+<h3 id="sec-2-1"><a href="http://blog.csdn.net/ithomer/article/details/7529841">Git 命令简短总结</a></h3>
 <div class="outline-text-3" id="text-2-1">
-<ul class="org-ul">
-<li>State "DONE"       from "OKTODAY"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-31 一 11:05]</span></span>
-</li>
-<li>State "OKTODAY"    from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-31 一 11:05]</span></span>
-</li>
-</ul>
-<ol class="org-ol">
-<li><a href="http://aoxuis.me/posts/2013/08/07/git-subtree/">http://aoxuis.me/posts/2013/08/07/git-subtree/</a>
-</li>
-<li><a href="http://ruby-china.org/topics/13001">http://ruby-china.org/topics/13001</a>
-</li>
-<li><a href="http://git-scm.com/book/zh/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97">http://git-scm.com/book/zh/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97</a>
-</li>
-</ol>
-
-<pre class="example">
-git clone https://github.com/standino/easy-portal.git
-
-cd easy-portal/
-
-git remote add -f jquery-ui-portlet https://github.com/standino/jquery-ui-portlet.git
-
-git subtree add --prefix=src/main/webapp/resources/jquery-ui-portlet jquery-ui-portlet master --squash
-</pre>
-</div>
-</div>
-
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><a href="http://blog.csdn.net/ithomer/article/details/7529841">本文将对Git 命令，做一下全面而系统的简短总结，整理成简洁、明了的图表结构，方便查询</a></h3>
-<div class="outline-text-3" id="text-2-2">
 <p>
 一、 Git 常用命令速查
 git branch 查看本地所有分支
@@ -1550,9 +1522,9 @@ git remote add origin git@github.com:daixu/WebApp.git   增加一个远程服务
 
 
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3">github 不需要用户名密码push</h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">github 不需要用户名密码push</h3>
+<div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li><a href="https://help.github.com/articles/generating-ssh-keys">https://help.github.com/articles/generating-ssh-keys</a>
 </li>
@@ -1592,16 +1564,13 @@ $ ssh -T git@github.com
 
 
 
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4">如何使用 github</h3>
-<div class="outline-text-3" id="text-2-4">
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">如何使用 github</h3>
+<div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
-<li>[[<a href="https://help.github.com/articles/fork-a-repo][Fork">https://help.github.com/articles/fork-a-repo][Fork</a> A Repo
+<li><a href="https://help.github.com/articles/fork-a-repo">Fork A Repo</a>
 </li>
 </ul>
-<p>
-]]
-</p>
 
 <div class="org-src-container">
 
@@ -1629,9 +1598,9 @@ git merge upstream/master
 </div>
 </div>
 
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5">git submodule</h3>
-<div class="outline-text-3" id="text-2-5">
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">git submodule</h3>
+<div class="outline-text-3" id="text-2-4">
 <p>
 git push --recurse-submodules=on-demand
 </p>
@@ -1661,19 +1630,36 @@ That will iterate through all initialized submodules and run the given commands.
 </div>
 </div>
 
-<div id="outline-container-sec-2-6" class="outline-3">
-<h3 id="sec-2-6">git subtree</h3>
-<div class="outline-text-3" id="text-2-6">
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">git subtree</h3>
+<div class="outline-text-3" id="text-2-5">
 <ol class="org-ol">
 <li><a href="http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html">http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html</a>
 </li>
 <li><a href="http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree">http://stackoverflow.com/questions/3202674/procedure-for-cloning-git-repos-that-use-subtree</a>
 </li>
+<li><a href="http://aoxuis.me/posts/2013/08/07/git-subtree/">http://aoxuis.me/posts/2013/08/07/git-subtree/</a>
+</li>
+<li><a href="http://ruby-china.org/topics/13001">http://ruby-china.org/topics/13001</a>
+</li>
+<li><a href="http://git-scm.com/book/zh/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97">http://git-scm.com/book/zh/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97</a>
+</li>
 </ol>
 
 <pre class="example">
-$git subtree add --prefix=other_project \
-     git://github.com/your_tree/your_project.git master
+git clone https://github.com/standino/easy-portal.git
+
+cd easy-portal/
+
+git remote add -f jquery-ui-portlet https://github.com/standino/jquery-ui-portlet.git
+
+git subtree add --prefix=src/main/webapp/resources/jquery-ui-portlet jquery-ui-portlet master --squash
+
+git subtree push --prefix=src/main/webapp/resources/jquery-ui-portlet jquery-ui-portlet master
+</pre>
+
+<pre class="example">
+$git subtree add --prefix=other_project   git://github.com/your_tree/your_project.git master
 $git subtree push --prefix=other_project
 $git subtree pull --prefix=other_project
 
@@ -1687,9 +1673,9 @@ even if there is nothing to merge in/pull it should simply return without doing 
 </div>
 
 
-<div id="outline-container-sec-2-7" class="outline-3">
-<h3 id="sec-2-7">git 常用操作</h3>
-<div class="outline-text-3" id="text-2-7">
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6">git 常用操作</h3>
+<div class="outline-text-3" id="text-2-6">
 <ol class="org-ol">
 <li><a href="http://blog.csdn.net/jackystudio/article/details/12271839">【Git入门之六】远程仓库</a>
 </li>
@@ -2221,7 +2207,7 @@ hg branchdiff .
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-06-05</span>
+        <span title="last modification date" class="post-info">2014-06-13</span>
         <span title="tags" class="post-info"><a href="/tags/svn/">svn</a>, <a href="/tags/cvs/">cvs</a>, <a href="/tags/git/">git</a>, <a href="/tags/hg/">hg</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
