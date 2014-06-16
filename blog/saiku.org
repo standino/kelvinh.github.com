@@ -1,0 +1,283 @@
+#+TITLE:       基于saiku开发OLAP应用
+#+AUTHOR:      Will
+#+EMAIL:       will@will-K42JA
+#+DATE:        2014-06-16 一
+#+URI:         ./blog/%y/%m/%d/saiku
+#+KEYWORDS:    saiku
+#+TAGS:        :saiku:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 使用saiku开发OLAP系统
+
+* OLAP 介绍
+
+Online analytical processing(OLAP)即 联机分析处理 。
+
+联机分析处理（OLAP）系统是数据仓库系统最主要的应用，专门设计用于支持复杂的分析操作，侧重对决策人员和高层管理人员的决策支持，可以根
+据分析人员的要求快速、灵活地进行大数据量的复杂查询处理，并且以一种直观而易懂的形式将查询结果提供给决策人员，以便他们准确掌握企业
+（公司）的经营状况，了解对象的需求，制定正确的方案。
+
+** 逻辑概念
+
+  - 维（Dimension）：是人们观察数据的特定角度，是考虑问题时的一类属性，属性集合构成一个维（时间维、地理维等）。
+  - 维的层次（Level）：人们观察数据的某个特定角度（即某个维）还可以存在细节程度不同的各个描述方面（时间维：日期、月份、季度、年）。
+  - 维的成员（Member）：维的一个取值，是数据项在某维中位置的描述。（“某年某月某日”是在时间维上位置的描述）。
+  - 度量（Measure）：多维数组的取值。（2000年1月，上海，笔记本电脑，0000）。
+  - OLAP的基本多维分析操作有钻取（Drill-up和Drill-down）、切片（Slice）和切块（Dice）、以及旋转（Pivot）等。
+  - 钻取：是改变维的层次，变换分析的粒度。它包括向下钻取（Drill-down）和向上钻取（Drill-up）/上卷(Roll-up)。Drill-up是在某一维上将低层次的细节数据概括到高层次的汇总数据，或者减少维数；而Drill-down则相反，它从汇总数据深入到细节数据进行观察或增加新维。
+  - 切片和切块：是在一部分维上选定值后，关心度量数据在剩余维上的分布。如果剩余的维只有两个，则是切片；如果有三个或以上，则是切块。
+  - 旋转：是变换维的方向，即在表格中重新安排维的放置（例如行列互换）。
+** 星形结构
+
+事实(Fact)和维(Dimension)         当我们观察数据时，通常想察看聚合数据的某种顺序。这些数据叫做度量(measure)。度量就是可以度量和相
+加的数值。比如销售金额就是一种度量，每个订单都有销售金额。假设每天销售20个产品，每个5美元，销售总额就是100美元。销售金额就是我们想
+关注的一种度量。此外我们可能还想知道当天的顾客数，是5位顾客一共买了20个产品，还是1位顾客买了所有的20个产品呢？销售金额和顾客数量就
+是我们想关注的两个度量。        仅仅关心度量还不够。我们观察度量的时候都需要”by”条件。这些”by”条件就叫做维(dimension)。讨论销
+售金额的时候，总要指定是某一天，某个季度或者某年的销售金额。几乎我们关心的任何度量都离不开时间维。我们可能还想按照产品名称或者产品
+类型查看销售金额，这些条件都要对应到相应的维上。
+        由上可知，设计星型数据库的时候，我们首先要确定我们想看什么信息(确定度量)，如何看这些信息(确定维)。
+
+
+当我们开始创建维表的时候，有一些规则要牢记在心。第一，所有维表都要有一个基于单列的主键。这一主键列通常只是一标识列，包含自动递增的
+数值，并没有真正的含义。有含义的信息都在其他列中，这些列包含了我们要查看的所有描述信息。比如在产品维中，包含了产品描述、类别、子类
+等等。这些字段不能用来作为连接字段和其他表关联，但是包含了产品的所有描述信息。维表通常都比较胖，因为字段都比较多，每一字段都比较宽
+
+创建事实表(Fact Table)
+        事实表存放度量(measure)信息，或者称事实(fact)信息。度量是根据各个维计算出来的一些数值。比如说销售金额是个数值，我们可以按产品、安类型查看总数，可以查看任何时间段的所有总数。
+        跟维表的又矮又胖相比，事实表一般显得又高又瘦。事实表很高，是因为他们拥有的记录数一般都很巨大。
+
+* Mondrian 介绍
+
+Mondrian是一个BI开源项目。一个用Java写成的OLAP（在线分析性处理）引擎。它用MDX语言实现查询，从关系数据库(RDBMS)中读取数据。然后经过Java API用多维的方式对结果进行展示。
+
+* 编写 Mondrian Schema
+
+** Cube
+创建数据立文体（CUBE）。在Mondrian里面的cube是以XML的形式定义的，他有一个GUI工具workbench来制作cube. 下面是一个例子。
+
+** 权限
+权限分为两种，一种是顶一下在Mondrian的cube中。可以设置cube，维度和度量的权限，具体例子见下节中的例子。另一种是数据权限，这个需要编写Java类实现。下面是一个例子。
+
+SaikuMondrianHelper.java  setRoles
+#+BEGIN_SRC java
+    public static class PeopleRole extends DelegatingRole {
+        private final String repName;
+
+        public PeopleRole(Role role, Schema schema, String repName) {
+            super(((RoleImpl)role).makeMutableClone());
+            this.repName = repName;
+            defineGrantsForUser(schema);
+            defineGrantsForCategory(schema);
+        }
+
+        private void defineGrantsForUser(Schema schema) {
+            RoleImpl role = (RoleImpl)this.role;
+            role.grant(schema, Access.NONE);
+
+            Cube cube = schema.lookupCube("采销财务大表", true);
+            role.grant(cube, Access.ALL);
+
+            Hierarchy hierarchy = cube.lookupHierarchy(
+                new Id.NameSegment("部门"), false);
+
+            mondrian.olap.Level[] levels = hierarchy.getLevels();
+            mondrian.olap.Level topLevel = levels[6];
+
+            role.grant(hierarchy, Access.CUSTOM, null, null, RollupPolicy.FULL);
+            role.grant(hierarchy.getAllMember(), Access.NONE);
+
+            boolean foundMember = false;
+
+            List <Member> members =
+                schema.getSchemaReader().withLocus()
+                    .getLevelMembers(topLevel, true);
+
+            for (Member member : members) {
+                //   System.out.println("memeber unique name"+member.getUniqueName());
+                if (member.getUniqueName().contains("[" + repName + "]")) {
+                    foundMember = true;
+                    role.grant(member, Access.ALL);
+                }
+            }
+        }
+
+    private void defineGrantsForCategory(Schema schema) {
+            RoleImpl role = (RoleImpl)this.role;
+            role.grant(schema, Access.NONE);
+
+            Cube cube = schema.lookupCube("采销财务大表", true);
+            role.grant(cube, Access.ALL);
+
+            Hierarchy hierarchy = cube.lookupHierarchy(
+                new Id.NameSegment("分类"), false);
+
+            mondrian.olap.Level[] levels = hierarchy.getLevels();
+            mondrian.olap.Level topLevel = levels[6];
+
+            role.grant(hierarchy, Access.CUSTOM, null, null, RollupPolicy.FULL);
+            role.grant(hierarchy.getAllMember(), Access.NONE);
+
+            boolean foundMember = false;
+
+            List <Member> members =
+                schema.getSchemaReader().withLocus()
+                    .getLevelMembers(topLevel, true);
+
+            for (Member member : members) {
+                //   System.out.println("memeber unique name"+member.getUniqueName());
+                if (member.getUniqueName().contains("[" + 3396 + "]")) {
+                    foundMember = true;
+                    role.grant(member, Access.ALL);
+                }
+            }
+        }
+    }
+
+
+#+END_SRC
+
+
+** 例子
+#+BEGIN_SRC xml
+<Schema name="Sone">
+  <Cube name="userInfo" caption="%{cube.user.info}" visible="true" cache="true" enabled="true">
+    <Table name="factUserInfo">
+    </Table>
+    <Dimension visible="true" foreignKey="gender" highCardinality="false" name="Gender" caption="%{compensation.dimension.gender.caption}">
+      <Hierarchy visible="true" hasAll="true" allMemberName="All Genders" primaryKey="value">
+        <Table name="dimGender">
+        </Table>
+        <Level name="Gender" visible="true" column="name" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Count Person" column="userId" datatype="Integer" formatString="#,###" aggregator="count">
+    </Measure>
+  </Cube>
+  <Cube name="&#37319;&#38144;&#36130;&#21153;&#22823;&#34920;" caption="&#37319;&#38144;&#36130;&#21153;&#22823;&#34920;" visible="true" description="&#37319;&#38144;&#36130;&#21153;&#22823;&#34920;" cache="true" enabled="true">
+    <Table name="fact_sales_money">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="dim_department_id" highCardinality="false" name="&#37096;&#38376;">
+      <Hierarchy visible="true" hasAll="true" allMemberName="&#25152;&#26377;&#37096;&#38376;" primaryKey="dim_department_id">
+        <Table name="dim_department">
+        </Table>
+        <Level name="&#19968;&#32423;&#37096;&#38376;" visible="true" column="dept_level_1" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#20108;&#32423;&#37096;&#38376;" visible="true" column="dept_level_2" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#19977;&#32423;&#37096;&#38376;" visible="true" column="dept_level_3" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#19968;&#32423;&#23703;&#20301;" visible="true" column="position_level_1" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#20108;&#32423;&#23703;&#20301;" visible="true" column="position_level_2" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#19977;&#32423;&#23703;&#20301;" visible="true" column="position_level_3" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="dim_vendor_id" highCardinality="false" name="&#20379;&#24212;&#21830;">
+      <Hierarchy visible="true" hasAll="true" allMemberName="&#25152;&#26377;&#20379;&#24212;&#21830;" primaryKey="dim_vendor_id">
+        <Table name="dim_vendor">
+        </Table>
+        <Level name="&#20379;&#24212;&#21830;&#31616;&#30721;" visible="true" column="vendor_code" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#20379;&#24212;&#21830;&#21517;&#31216;" visible="true" column="vendor_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="dim_brand_id" highCardinality="false" name="&#21697;&#29260;">
+      <Hierarchy visible="true" hasAll="true" allMemberName="&#25152;&#26377;&#21697;&#29260;" primaryKey="dim_brand_id">
+        <Table name="dim_brand">
+        </Table>
+        <Level name="&#21697;&#29260;ID" visible="true" column="brand_id" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#21697;&#29260;&#21517;&#31216;" visible="true" column="brand_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="dim_categories_id" highCardinality="false" name="&#20998;&#31867;">
+      <Hierarchy visible="true" hasAll="true" allMemberName="&#25152;&#26377;&#20998;&#31867;" primaryKey="dim_categories_id">
+        <Table name="dim_categories">
+        </Table>
+        <Level name="&#19968;&#32423;&#20998;&#31867;&#32534;&#30721;" visible="true" column="code_level_1" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#19968;&#32423;&#20998;&#31867;&#21517;&#31216;" visible="true" column="name_level_1" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#20108;&#32423;&#20998;&#31867;&#32534;&#30721;" visible="true" column="code_level_2" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#20108;&#32423;&#20998;&#31867;&#21517;&#31216;" visible="true" column="name_level_2" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#19977;&#32423;&#20998;&#31867;&#32534;&#30721;" visible="true" column="code_level_3" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="&#19977;&#32423;&#20998;&#31867;&#21517;&#31216;" visible="true" column="name_level_3" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="dim_form_type_id" highCardinality="false" name="&#34920;&#21333;&#31867;&#22411;">
+      <Hierarchy visible="true" hasAll="true" allMemberName="&#25152;&#26377;&#34920;&#21333;" primaryKey="dim_form_type_id">
+        <Table name="dim_form_type">
+        </Table>
+        <Level name="&#34920;&#21333;&#31867;&#22411;" visible="true" column="form_type" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="TimeDimension" visible="true" foreignKey="dim_time_id" highCardinality="false" name="&#26102;&#38388;">
+      <Hierarchy visible="true" hasAll="true" allMemberName="&#25152;&#26377;&#26102;&#38388;" primaryKey="dim_time_id">
+        <Table name="dim_time">
+        </Table>
+        <Level name="&#24180;" visible="true" column="dim_year" type="String" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="&#26376;" visible="true" column="dim_month" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+        </Level>
+        <Level name="&#26085;" visible="true" column="dim_day" type="String" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+        </Level>
+        <Level name="&#23395;&#24230;" visible="true" column="quarter" type="String" uniqueMembers="false" levelType="TimeQuarters" hideMemberIf="Never">
+        </Level>
+        <Level name="&#21608;" visible="true" column="week" type="String" uniqueMembers="false" levelType="TimeWeeks" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="&#26410;&#32467;&#31639;&#37329;&#39069;" column="outstanding_amount" datatype="Numeric" formatString="#,###" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="&#24050;&#32467;&#31639;&#37329;&#39069;" column="settlement_amount" datatype="Numeric" formatString="#,###" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="&#24050;&#26680;&#38144;&#37329;&#39069;" column="verification_amount" datatype="Numeric" formatString="#,###" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="&#26410;&#26680;&#38144;&#37329;&#39069;" column="un_verification_amount" datatype="Numeric" formatString="#,###" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Role name="ROLE_ADMIN">
+    <SchemaGrant access="all">
+      <CubeGrant cube="userInfo" access="all">
+      </CubeGrant>
+      <CubeGrant cube="&#37319;&#38144;&#36130;&#21153;&#22823;&#34920;" access="all">
+      </CubeGrant>
+    </SchemaGrant>
+  </Role>
+  <Role name="ROLE_USER">
+    <SchemaGrant access="none">
+      <CubeGrant cube="userInfo" access="none">
+      </CubeGrant>
+      <CubeGrant cube="&#37319;&#38144;&#36130;&#21153;&#22823;&#34920;" access="all">
+      </CubeGrant>
+    </SchemaGrant>
+  </Role>
+</Schema>
+
+#+END_SRC
+* Saiku介绍
+
+
+* Saiku 基本配置
+
+** 连接数据库
+
+** 自定义角色
+
+
+* 参考资料
+
+ - [[http://blog.csdn.net/leamonjxl/article/details/6681112][数据仓库的架构主要有星型和雪花型两种方式]]
+ - http://wenku.baidu.com/view/7a2615a20029bd64783e2cf1.html
+ - http://blog.sina.com.cn/s/blog_7d8f0a900100qplj.html
+ - http://www.huqiwen.com/2012/06/15/olap-abstruct-and-mondrian-quick-start/
