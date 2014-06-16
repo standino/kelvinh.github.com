@@ -190,11 +190,25 @@ Mondrian是一个BI开源项目。一个用Java写成的OLAP（在线分析性�
 #+END_SRC
 * Saiku介绍
 
+Saiku是一个模块化的开源分析套件，它提供轻量级的OLAP（联机分析处理），并且可嵌入、可扩展、可配置。
 
 * Saiku 基本配置
 
-** 连接数据库
+** Schema 文件
 
+  saiku/saiku-core/saiku-web-ui/src/main/resources/schema/sone.mondrian.xml
+
+** 连接数据库
+  #+BEGIN_SRC
+type=OLAP
+name=saiku_sone
+driver=mondrian.olap4j.MondrianOlap4jDriver
+location=jdbc:mondrian:Jdbc=jdbc:mysql://192.168.229.76:3306/sone?characterEncoding=UTF-8;Catalog=res:schema/sone.mondrian.xml;JdbcDrivers=com.mysql.jdbc.Driver;DynamicSchemaProcessor=mondrian.i18n.LocalizingDynamicSchemaProcessor;Locale=zh_CN;
+username=root
+password=123456
+security.enabled=true
+security.type=one2one
+  #+END_SRC
 ** 自定义角色
 SaikuMondrianHelper.java  setRoles
 #+BEGIN_SRC java
@@ -281,3 +295,7 @@ SaikuMondrianHelper.java  setRoles
  - http://wenku.baidu.com/view/7a2615a20029bd64783e2cf1.html
  - http://blog.sina.com.cn/s/blog_7d8f0a900100qplj.html
  - http://www.huqiwen.com/2012/06/15/olap-abstruct-and-mondrian-quick-start/
+ - [[http://customme.iteye.com/blog/1880478][Saiku Server环境搭建]]
+ - [[http://blog.csdn.net/longshenlmj/article/details/19111227][Saiku去掉登录模块]]
+ - https://github.com/pentaho/mondrian
+ - https://github.com/OSBI/saiku
