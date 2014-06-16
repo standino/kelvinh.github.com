@@ -64,8 +64,9 @@
 <li><a href="#sec-4">Saiku介绍</a></li>
 <li><a href="#sec-5">Saiku 基本配置</a>
 <ul>
-<li><a href="#sec-5-1">连接数据库</a></li>
-<li><a href="#sec-5-2">自定义角色</a></li>
+<li><a href="#sec-5-1">Schema 文件</a></li>
+<li><a href="#sec-5-2">连接数据库</a></li>
+<li><a href="#sec-5-3">自定义角色</a></li>
 </ul>
 </li>
 <li><a href="#sec-6">参考资料</a></li>
@@ -307,19 +308,43 @@ Mondrian是一个BI开源项目。一个用Java写成的OLAP（在线分析性�
 </div>
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">Saiku介绍</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Saiku是一个模块化的开源分析套件，它提供轻量级的OLAP（联机分析处理），并且可嵌入、可扩展、可配置。
+</p>
 </div>
-
+</div>
 
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">Saiku 基本配置</h2>
 <div class="outline-text-2" id="text-5">
 </div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1">连接数据库</h3>
+<h3 id="sec-5-1">Schema 文件</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+saiku/saiku-core/saiku-web-ui/src/main/resources/schema/sone.mondrian.xml
+</p>
+</div>
 </div>
 
 <div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2">自定义角色</h3>
+<h3 id="sec-5-2">连接数据库</h3>
 <div class="outline-text-3" id="text-5-2">
+<pre class="example">
+type=OLAP
+name=saiku_sone
+driver=mondrian.olap4j.MondrianOlap4jDriver
+location=jdbc:mondrian:Jdbc=jdbc:mysql://192.168.229.76:3306/sone?characterEncoding=UTF-8;Catalog=res:schema/sone.mondrian.xml;JdbcDrivers=com.mysql.jdbc.Driver;DynamicSchemaProcessor=mondrian.i18n.LocalizingDynamicSchemaProcessor;Locale=zh_CN;
+username=root
+password=123456
+security.enabled=true
+security.type=one2one
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3">自定义角色</h3>
+<div class="outline-text-3" id="text-5-3">
 <p>
 SaikuMondrianHelper.java  setRoles
 </p>
@@ -415,6 +440,14 @@ private void defineGrantsForCategory(Schema schema) {
 <li><a href="http://blog.sina.com.cn/s/blog_7d8f0a900100qplj.html">http://blog.sina.com.cn/s/blog_7d8f0a900100qplj.html</a>
 </li>
 <li><a href="http://www.huqiwen.com/2012/06/15/olap-abstruct-and-mondrian-quick-start/">http://www.huqiwen.com/2012/06/15/olap-abstruct-and-mondrian-quick-start/</a>
+</li>
+<li><a href="http://customme.iteye.com/blog/1880478">Saiku Server环境搭建</a>
+</li>
+<li><a href="http://blog.csdn.net/longshenlmj/article/details/19111227">Saiku去掉登录模块</a>
+</li>
+<li><a href="https://github.com/pentaho/mondrian">https://github.com/pentaho/mondrian</a>
+</li>
+<li><a href="https://github.com/OSBI/saiku">https://github.com/OSBI/saiku</a>
 </li>
 </ul>
 </div>
