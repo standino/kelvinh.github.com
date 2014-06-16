@@ -111,8 +111,6 @@
 </div>
 </div>
 
-
-
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">SVN</h2>
 <div class="outline-text-2" id="text-1">
@@ -165,7 +163,21 @@ svn propedit svn:ignore .
 <h3 id="sec-1-4">合并</h3>
 <div class="outline-text-3" id="text-1-4">
 <pre class="example">
-svn merge -r 44324:44325 http://svn.
+# 获得svn的地址
+svn info
+
+# 获得版本历史
+svn log | less
+
+# 合并change set. 版本号从你修改的内容的前一个版本号，到你最后一次提交的版本号
+svn merge -r 45693:46318 http://svn.360buy-develop.com/repos/ipo/retail/branches/sone_1_0_0/
+
+# 获得change list用于抽包
+svn st
+
+#使用对比工具，比较两个目录，确定代码合并是否准确
+
+# 测试合并的代码是否工作正常
 </pre>
 </div>
 </div>

@@ -4,23 +4,30 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>五, 13  6月 2014 10:26:26 CST</pubDate>
-    <lastBuildDate>五, 13  6月 2014 10:26:26 CST</lastBuildDate>
+    <pubDate>一, 16  6月 2014 11:19:55 CST</pubDate>
+    <lastBuildDate>一, 16  6月 2014 11:19:55 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>基于saiku开发OLAP应用</title>
+      <link>http://standino.github.io./blog/2014/06/16/saiku</link>
+      <description>使用saiku开发OLAP系统</description>
+      <pubDate>2014-06-16</pubDate>
+      <guid>http://standino.github.io./blog/2014/06/16/saiku</guid>
+    </item>
+    <item>
+      <title>常用链接</title>
+      <link>http://standino.github.io/wiki/html/mylinks</link>
+      <description>常用链接</description>
+      <pubDate>2014-06-16</pubDate>
+      <guid>http://standino.github.io/wiki/html/mylinks</guid>
+    </item>
     <item>
       <title>saiku单点登录方案</title>
       <link>http://standino.github.io./blog/2014/06/12/saikusso</link>
       <description>saiku单点登录方案</description>
       <pubDate>2014-06-13</pubDate>
       <guid>http://standino.github.io./blog/2014/06/12/saikusso</guid>
-    </item>
-    <item>
-      <title>Untitled</title>
-      <link>http://standino.github.io/wiki/html/untitled/</link>
-      <description>No Description</description>
-      <pubDate>2014-06-13</pubDate>
-      <guid>http://standino.github.io/wiki/html/untitled/</guid>
     </item>
     <item>
       <title>Eclipse</title>
@@ -70,13 +77,6 @@
       <description>本文主要介绍jquery，bootstrap和它们的插件的使用</description>
       <pubDate>2014-05-30</pubDate>
       <guid>http://standino.github.io/blog/2014/05/30/jquerybootstrap</guid>
-    </item>
-    <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-05-30</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
   </channel>
 </rss>
