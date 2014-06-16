@@ -53,88 +53,11 @@ Mondrian是一个BI开源项目。一个用Java写成的OLAP（在线分析性�
 * 编写 Mondrian Schema
 
 ** Cube
-创建数据立文体（CUBE）。在Mondrian里面的cube是以XML的形式定义的，他有一个GUI工具workbench来制作cube. 下面是一个例子。
+创建数据立文体（CUBE）。在Mondrian里面的cube是以XML的形式定义的，他有一个GUI工具workbench来制作cube.具体例子见下节中的例子。
 
 ** 权限
-权限分为两种，一种是顶一下在Mondrian的cube中。可以设置cube，维度和度量的权限，具体例子见下节中的例子。另一种是数据权限，这个需要编写Java类实现。下面是一个例子。
+权限分为两种，一种是顶一下在Mondrian的cube中。可以设置cube，维度和度量的权限，具体例子见下节中的例子。另一种是数据权限，这个需要编写Java类实现。具体例子将在下面saiku相关小节进行介绍。
 
-SaikuMondrianHelper.java  setRoles
-#+BEGIN_SRC java
-    public static class PeopleRole extends DelegatingRole {
-        private final String repName;
-
-        public PeopleRole(Role role, Schema schema, String repName) {
-            super(((RoleImpl)role).makeMutableClone());
-            this.repName = repName;
-            defineGrantsForUser(schema);
-            defineGrantsForCategory(schema);
-        }
-
-        private void defineGrantsForUser(Schema schema) {
-            RoleImpl role = (RoleImpl)this.role;
-            role.grant(schema, Access.NONE);
-
-            Cube cube = schema.lookupCube("采销财务大表", true);
-            role.grant(cube, Access.ALL);
-
-            Hierarchy hierarchy = cube.lookupHierarchy(
-                new Id.NameSegment("部门"), false);
-
-            mondrian.olap.Level[] levels = hierarchy.getLevels();
-            mondrian.olap.Level topLevel = levels[6];
-
-            role.grant(hierarchy, Access.CUSTOM, null, null, RollupPolicy.FULL);
-            role.grant(hierarchy.getAllMember(), Access.NONE);
-
-            boolean foundMember = false;
-
-            List <Member> members =
-                schema.getSchemaReader().withLocus()
-                    .getLevelMembers(topLevel, true);
-
-            for (Member member : members) {
-                //   System.out.println("memeber unique name"+member.getUniqueName());
-                if (member.getUniqueName().contains("[" + repName + "]")) {
-                    foundMember = true;
-                    role.grant(member, Access.ALL);
-                }
-            }
-        }
-
-    private void defineGrantsForCategory(Schema schema) {
-            RoleImpl role = (RoleImpl)this.role;
-            role.grant(schema, Access.NONE);
-
-            Cube cube = schema.lookupCube("采销财务大表", true);
-            role.grant(cube, Access.ALL);
-
-            Hierarchy hierarchy = cube.lookupHierarchy(
-                new Id.NameSegment("分类"), false);
-
-            mondrian.olap.Level[] levels = hierarchy.getLevels();
-            mondrian.olap.Level topLevel = levels[6];
-
-            role.grant(hierarchy, Access.CUSTOM, null, null, RollupPolicy.FULL);
-            role.grant(hierarchy.getAllMember(), Access.NONE);
-
-            boolean foundMember = false;
-
-            List <Member> members =
-                schema.getSchemaReader().withLocus()
-                    .getLevelMembers(topLevel, true);
-
-            for (Member member : members) {
-                //   System.out.println("memeber unique name"+member.getUniqueName());
-                if (member.getUniqueName().contains("[" + 3396 + "]")) {
-                    foundMember = true;
-                    role.grant(member, Access.ALL);
-                }
-            }
-        }
-    }
-
-
-#+END_SRC
 
 
 ** 例子
@@ -273,6 +196,83 @@ SaikuMondrianHelper.java  setRoles
 ** 连接数据库
 
 ** 自定义角色
+SaikuMondrianHelper.java  setRoles
+#+BEGIN_SRC java
+    public static class PeopleRole extends DelegatingRole {
+        private final String repName;
+
+        public PeopleRole(Role role, Schema schema, String repName) {
+            super(((RoleImpl)role).makeMutableClone());
+            this.repName = repName;
+            defineGrantsForUser(schema);
+            defineGrantsForCategory(schema);
+        }
+
+        private void defineGrantsForUser(Schema schema) {
+            RoleImpl role = (RoleImpl)this.role;
+            role.grant(schema, Access.NONE);
+
+            Cube cube = schema.lookupCube("采销财务大表", true);
+            role.grant(cube, Access.ALL);
+
+            Hierarchy hierarchy = cube.lookupHierarchy(
+                new Id.NameSegment("部门"), false);
+
+            mondrian.olap.Level[] levels = hierarchy.getLevels();
+            mondrian.olap.Level topLevel = levels[6];
+
+            role.grant(hierarchy, Access.CUSTOM, null, null, RollupPolicy.FULL);
+            role.grant(hierarchy.getAllMember(), Access.NONE);
+
+            boolean foundMember = false;
+
+            List <Member> members =
+                schema.getSchemaReader().withLocus()
+                    .getLevelMembers(topLevel, true);
+
+            for (Member member : members) {
+                //   System.out.println("memeber unique name"+member.getUniqueName());
+                if (member.getUniqueName().contains("[" + repName + "]")) {
+                    foundMember = true;
+                    role.grant(member, Access.ALL);
+                }
+            }
+        }
+
+    private void defineGrantsForCategory(Schema schema) {
+            RoleImpl role = (RoleImpl)this.role;
+            role.grant(schema, Access.NONE);
+
+            Cube cube = schema.lookupCube("采销财务大表", true);
+            role.grant(cube, Access.ALL);
+
+            Hierarchy hierarchy = cube.lookupHierarchy(
+                new Id.NameSegment("分类"), false);
+
+            mondrian.olap.Level[] levels = hierarchy.getLevels();
+            mondrian.olap.Level topLevel = levels[6];
+
+            role.grant(hierarchy, Access.CUSTOM, null, null, RollupPolicy.FULL);
+            role.grant(hierarchy.getAllMember(), Access.NONE);
+
+            boolean foundMember = false;
+
+            List <Member> members =
+                schema.getSchemaReader().withLocus()
+                    .getLevelMembers(topLevel, true);
+
+            for (Member member : members) {
+                //   System.out.println("memeber unique name"+member.getUniqueName());
+                if (member.getUniqueName().contains("[" + 3396 + "]")) {
+                    foundMember = true;
+                    role.grant(member, Access.ALL);
+                }
+            }
+        }
+    }
+
+
+#+END_SRC
 
 
 * 参考资料
