@@ -299,3 +299,4 @@ SaikuMondrianHelper.java  setRoles
  - [[http://blog.csdn.net/longshenlmj/article/details/19111227][Saiku去掉登录模块]]
  - https://github.com/pentaho/mondrian
  - https://github.com/OSBI/saiku
+ - http://ci.analytical-labs.com/
