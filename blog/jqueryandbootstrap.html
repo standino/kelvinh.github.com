@@ -7,6 +7,7 @@
 <meta name="author" content="(Will)"/>
 <meta name="description" content="本文主要介绍jquery，bootstrap和它们的插件的使用"/>
 <meta name="keywords" content="jquery,bootstrap,js,插件"/>
+
 <link rel="stylesheet" href="./reveal.js/css/reveal.min.css"/>
 <link rel="stylesheet" href="./reveal.js/css/theme/moon.css" id="theme"/>
 
@@ -124,31 +125,30 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
         value: 0
     },
 
-    <span style="color: #268bd2;">_create</span>: <span style="color: #859900;">function</span>() {
-        <span style="color: #6c71c4;">this</span>.element.addClass(<span style="color: #2aa198;">"progressbar"</span>);
-        <span style="color: #6c71c4;">this</span>._update();
+    <span style="color: #b58900;">_create</span>: <span style="color: #859900;">function</span>() {
+        <span style="color: #268bd2;">this</span>.element.addClass(<span style="color: #2aa198;">"progressbar"</span>);
+        <span style="color: #268bd2;">this</span>._update();
     },
 
-    <span style="color: #268bd2;">_setOption</span>: <span style="color: #859900;">function</span>(<span style="color: #b58900;">key</span>, <span style="color: #b58900;">value</span>) {
-        <span style="color: #6c71c4;">this</span>.options[key] = value;
-        <span style="color: #6c71c4;">this</span>._update();
+    <span style="color: #b58900;">_setOption</span>: <span style="color: #859900;">function</span>(<span style="color: #6c71c4;">key</span>, <span style="color: #6c71c4;">value</span>) {
+        <span style="color: #268bd2;">this</span>.options[key] = value;
+        <span style="color: #268bd2;">this</span>._update();
     },
 
-    <span style="color: #268bd2;">_update</span>: <span style="color: #859900;">function</span>() {
-        <span style="color: #859900;">var</span> <span style="color: #b58900;">progress</span> = <span style="color: #6c71c4;">this</span>.options.value + <span style="color: #2aa198;">"%"</span>;
-        <span style="color: #6c71c4;">this</span>.element.text(progress);
+    <span style="color: #b58900;">_update</span>: <span style="color: #859900;">function</span>() {
+        <span style="color: #859900;">var</span> <span style="color: #6c71c4;">progress</span> = <span style="color: #268bd2;">this</span>.options.value + <span style="color: #2aa198;">"%"</span>;
+        <span style="color: #268bd2;">this</span>.element.text(progress);
         <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #93a1a1; font-style: italic;">trigger a event when progressbar is complate</span>
-        <span style="color: #859900;">if</span>(<span style="color: #6c71c4;">this</span>.options.value == 100){
-              <span style="color: #6c71c4;">this</span>._trigger(<span style="color: #2aa198;">'complate'</span>,<span style="color: #6c71c4;">null</span>,{value:100});
+        <span style="color: #859900;">if</span>(<span style="color: #268bd2;">this</span>.options.value == 100){
+              <span style="color: #268bd2;">this</span>._trigger(<span style="color: #2aa198;">'complate'</span>,<span style="color: #268bd2;">null</span>,{value:100});
        }
     },
 
-   <span style="color: #268bd2;">_destroy</span>:<span style="color: #859900;">function</span>(){
-      <span style="color: #6c71c4;">this</span>.element
+   <span style="color: #b58900;">_destroy</span>:<span style="color: #859900;">function</span>(){
+      <span style="color: #268bd2;">this</span>.element
           .removeClass(<span style="color: #2aa198;">'progressbar'</span>)
           .text(<span style="color: #2aa198;">""</span>);
-     <span style="color: #93a1a1; font-style: italic;">//</span>
-     $.Widget.<span style="color: #6c71c4;">prototype</span>.destroy.call(<span style="color: #6c71c4;">this</span>);
+     $.Widget.<span style="color: #268bd2;">prototype</span>.destroy.call(<span style="color: #268bd2;">this</span>);
 
   }
 
@@ -163,7 +163,7 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 
 <pre  class="src src-javascript">$(<span style="color: #2aa198;">'.loadding'</span>).progressbar(
   {value:1,
-   <span style="color: #268bd2;">complate</span>: <span style="color: #859900;">function</span>(){
+   <span style="color: #b58900;">complate</span>: <span style="color: #859900;">function</span>(){
      console.log(<span style="color: #2aa198;">'complate event has been triggered!'</span>);
      <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #93a1a1; font-style: italic;">you can return false or true ;</span>
    }
@@ -176,8 +176,6 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 
 <h3>基于 JQuery UI 编写插件 - 代码说明</h3>
 <ul class="org-ul">
-<li>destroy()：将widget实例从dom对象上移除，在开发widget的时候一般此方法是必须的。就是移除你自己在dom element上添加的样式和行为以及dom结构
-</li>
 <li>options：在这里面保存的是widget的配置信息，在创建widget的时候需要设置一些配置参数。
 </li>
 <li>element：就是widget作用的dom对象。
@@ -188,8 +186,9 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 </li>
 <li>_trigger一般用来回调用户传入options的callback。在插件内部调用_trigger(‘myEvent’)即相当于调用options里面的myEvent这个回调函数。
 </li>
+<li>_destroy()：将widget实例从dom对象上移除，在开发widget的时候一般此方法是必须的。就是移除你自己在dom element上添加的样式和行为以及dom结构
+</li>
 </ul>
-
 </section>
 <section id="sec-1-5" >
 
@@ -209,11 +208,11 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
     title: <span style="color: #2aa198;">'&#25105;&#30340;&#20219;&#21153;'</span>,
 
     singleView:{
-      <span style="color: #268bd2;">enable</span>: <span style="color: #859900;">function</span> (){
+      <span style="color: #b58900;">enable</span>: <span style="color: #859900;">function</span> (){
         $(<span style="color: #2aa198;">'#myWork_portletDiv'</span>).hide();
         $(<span style="color: #2aa198;">'#myWork_pageDiv'</span>).show();
       },
-      <span style="color: #268bd2;">recovery</span>: <span style="color: #859900;">function</span> (){
+      <span style="color: #b58900;">recovery</span>: <span style="color: #859900;">function</span> (){
         $(<span style="color: #2aa198;">'#myWork_portletDiv'</span>).show();
         $(<span style="color: #2aa198;">'#myWork_pageDiv'</span>).hide();
 
@@ -280,9 +279,9 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 <pre  class="src src-javascript">&lt;script&gt;
    $(<span style="color: #859900;">function</span>(){
        $(<span style="color: #2aa198;">'#myModal'</span>).modal({
-           backdrop:<span style="color: #6c71c4;">false</span>,
-           keyboard:<span style="color: #6c71c4;">true</span>,
-           show:<span style="color: #6c71c4;">false</span>
+           backdrop:<span style="color: #268bd2;">false</span>,
+           keyboard:<span style="color: #268bd2;">true</span>,
+           show:<span style="color: #268bd2;">false</span>
        });
    });
 &lt;/script&gt;
@@ -309,7 +308,7 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 
 <pre  class="src src-javascript">&lt;a href=<span style="color: #2aa198;">"javascript:void(0);"</span> onclick=<span style="color: #2aa198;">"showDiv();"</span>&gt;&#24377;&#20986;&lt;/a&gt;
 
-<span style="color: #859900;">function</span> <span style="color: #268bd2;">showDiv</span>(){
+<span style="color: #859900;">function</span> <span style="color: #b58900;">showDiv</span>(){
    $(<span style="color: #2aa198;">'#myModal'</span>).modal(<span style="color: #2aa198;">'show'</span>);
 }
 </pre>
@@ -322,30 +321,30 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 <h3>Bootstrap分页</h3>
 <div class="org-src-container">
 
-<pre  class="src src-javascript"><span style="color: #859900;">function</span> <span style="color: #268bd2;">listSalesNoticeInPage</span>(<span style="color: #b58900;">container</span>, <span style="color: #b58900;">page</span>) {
+<pre  class="src src-javascript"><span style="color: #859900;">function</span> <span style="color: #b58900;">listSalesNoticeInPage</span>(<span style="color: #6c71c4;">container</span>, <span style="color: #6c71c4;">page</span>) {
     $.ajax({
-            url : <span style="color: #2aa198;">"/salesNotice/queryByGroup.json?page="</span>+page+<span style="color: #2aa198;">"&amp;pageSize="</span>+20+<span style="color: #2aa198;">"&amp;date="</span>+<span style="color: #859900;">new</span> <span style="color: #b58900;">Date</span>(),
+            url : <span style="color: #2aa198;">"/salesNotice/queryByGroup.json?page="</span>+page+<span style="color: #2aa198;">"&amp;pageSize="</span>+20+<span style="color: #2aa198;">"&amp;date="</span>+<span style="color: #859900;">new</span> <span style="color: #268bd2;">Date</span>(),
             dataType : <span style="color: #2aa198;">"json"</span>,
-            async:<span style="color: #6c71c4;">false</span>,
-            <span style="color: #268bd2;">success</span> : <span style="color: #859900;">function</span>(<span style="color: #b58900;">data</span>) {
-                    <span style="color: #859900;">var</span> <span style="color: #b58900;">result</span> = <span style="color: #2aa198;">""</span>;
-                    <span style="color: #859900;">if</span> (data.rows != <span style="color: #6c71c4;">null</span>) {
+            async:<span style="color: #268bd2;">false</span>,
+            <span style="color: #b58900;">success</span> : <span style="color: #859900;">function</span>(<span style="color: #6c71c4;">data</span>) {
+                    <span style="color: #859900;">var</span> <span style="color: #6c71c4;">result</span> = <span style="color: #2aa198;">""</span>;
+                    <span style="color: #859900;">if</span> (data.rows != <span style="color: #268bd2;">null</span>) {
                             $.each(data.rows, <span style="color: #859900;">function</span>() {
-                        row += <span style="color: #2aa198;">"&lt;td&gt;"</span> + <span style="color: #859900;">new</span> <span style="color: #b58900;">Date</span>(<span style="color: #6c71c4;">this</span>.updateTime).format(<span style="color: #2aa198;">'yyyy-MM-dd hh:mm:ss'</span>) + <span style="color: #2aa198;">"&lt;/td&gt;"</span>;
+                        row += <span style="color: #2aa198;">"&lt;td&gt;"</span> + <span style="color: #859900;">new</span> <span style="color: #268bd2;">Date</span>(<span style="color: #268bd2;">this</span>.updateTime).format(<span style="color: #2aa198;">'yyyy-MM-dd hh:mm:ss'</span>) + <span style="color: #2aa198;">"&lt;/td&gt;"</span>;
                     }
 
                     container.empty().append(result);
-                    <span style="color: #859900;">var</span> <span style="color: #b58900;">totalPages</span> = Math.ceil(data.total/20);
-                    <span style="color: #859900;">var</span> <span style="color: #b58900;">pagerOptions</span> = {
+                    <span style="color: #859900;">var</span> <span style="color: #6c71c4;">totalPages</span> = Math.ceil(data.total/20);
+                    <span style="color: #859900;">var</span> <span style="color: #6c71c4;">pagerOptions</span> = {
                             bootstrapMajorVersion : 3,
                             currentPage : page,
                             numberOfPages : 10,
                             totalPages : totalPages&lt;=0?1:totalPages,
-                            <span style="color: #268bd2;">onPageClicked</span> : <span style="color: #859900;">function</span>(<span style="color: #b58900;">e</span>, <span style="color: #b58900;">originalEvent</span>, <span style="color: #b58900;">type</span>, <span style="color: #b58900;">page</span>) {
+                            <span style="color: #b58900;">onPageClicked</span> : <span style="color: #859900;">function</span>(<span style="color: #6c71c4;">e</span>, <span style="color: #6c71c4;">originalEvent</span>, <span style="color: #6c71c4;">type</span>, <span style="color: #6c71c4;">page</span>) {
                                             e.stopImmediatePropagation();
                                     listSalesNoticeInPage(container, page);
                             },
-                <span style="color: #268bd2;">tooltipTitles</span>: <span style="color: #859900;">function</span> (<span style="color: #b58900;">type</span>, <span style="color: #b58900;">page</span>, <span style="color: #b58900;">current</span>) {
+                <span style="color: #b58900;">tooltipTitles</span>: <span style="color: #859900;">function</span> (<span style="color: #6c71c4;">type</span>, <span style="color: #6c71c4;">page</span>, <span style="color: #6c71c4;">current</span>) {
                   <span style="color: #859900;">switch</span> (type) {
                   <span style="color: #859900;">case</span> <span style="color: #2aa198;">"first"</span>:
                     <span style="color: #859900;">return</span> <span style="color: #2aa198;">"&#39318;&#39029;"</span>;
@@ -364,13 +363,13 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 
 <pre  class="src src-javascript">$(<span style="color: #2aa198;">"#publishWork_taskAssignerErpLbl"</span>).fcbkcomplete({
     json_url: <span style="color: #2aa198;">"/ldap/fcsearch"</span>,
-    addontab: <span style="color: #6c71c4;">true</span>,
+    addontab: <span style="color: #268bd2;">true</span>,
     maxitems: 100,
     input_min_size: 2,
     height: 10,
-    cache: <span style="color: #6c71c4;">false</span>,
-    newel: <span style="color: #6c71c4;">false</span>,
-    filter: <span style="color: #6c71c4;">false</span>,
+    cache: <span style="color: #268bd2;">false</span>,
+    newel: <span style="color: #268bd2;">false</span>,
+    filter: <span style="color: #268bd2;">false</span>,
     complete_text: <span style="color: #2aa198;">"&#36755;&#20837;&#30005;&#23376;&#37038;&#20214;&#65288;@&#31526;&#21495;&#30340;&#21069;&#21322;&#37096;&#20998;&#65289;&#36827;&#34892;&#27169;&#31946;&#26597;&#25214;..."</span>
 });
 </pre>
@@ -390,45 +389,43 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 </section>
 </div>
 </div>
+
 <script src="./reveal.js/lib/js/head.min.js"></script>
 <script src="./reveal.js/js/reveal.min.js"></script>
+
 <script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
 
-        		// Full list of configuration options available here:
-        		// https://github.com/hakimel/reveal.js#configuration
-        		Reveal.initialize({
-        			controls: true,
-        			progress: true,
-        			history: false,
-        			center: true,
-                                slideNumber: true,
-        			rollingLinks: true,
-        			keyboard: true,
-        			overview: true,
-        			width: 1200, // slide width
-        			height: 800, // slide height
-        			margin: 0.10, // slide margin
-        			minScale: 0.50, // slide minimum scaling factor
-        			maxScale: 2.50, // slide maximum scaling factor
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
 
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
 
-        			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        			transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
-        			transitionSpeed: 'default',
-
-        			// Optional libraries used to extend on reveal.js
-        			dependencies: [
-        				{ src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } }
-        				,{ src: './reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
-        				,{ src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
-        				,{ src: './reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-        				,{ src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
-        				,{ src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-        				// { src: './reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-        				// { src: './reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-         				
-        			]
-        		});
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
 </script>
 </body>
 </html>
