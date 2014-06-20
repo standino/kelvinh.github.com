@@ -933,7 +933,12 @@ XML文件
   CLOCK: [2014-05-13 二 13:10]--[2014-05-13 二 13:29] =>  0:19
   :END:
 
-* TODO [#C] Guava
+* DONE [#C] Guava
+  CLOSED: [2014-06-19 四 11:14]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2014-06-19 四 11:14]
+  CLOCK: [2014-06-19 四 11:11]--[2014-06-19 四 11:14] =>  0:03
+  :END:
 
 * TODO [#C] Joda Time
 
@@ -946,8 +951,21 @@ XML文件
 
 * TODO [#C] REST API的框架，比如用Jersey加上Jackson。
 
-* TODO [#C] SLF4J
+* DONE [#C] SLF4J
+  CLOSED: [2014-06-19 四 11:18]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2014-06-19 四 11:18]
+  CLOCK: [2014-06-19 四 11:15]--[2014-06-19 四 11:18] =>  0:03
+  :END:
+   - http://www.oschina.net/translate/why-use-sl4j-over-log4j-for-logging
+   - http://zhaoming.iteye.com/blog/266996
 
+使用SLF4J，你可以使用更简洁的格式达到同样的效果，如下: 1 logger.debug("Processing trade with id: {} and symbol : {} ", id,
+symbol);在SLF4J中，我们不需要进行字符串拼接，不会导致使用临时字符串带来的消耗。相反，我们使用带占位符的模板消息来记录日志信息，并
+提供实际值作为参数。也许你会想，要是有多个参数该怎么办，你可以使用带参数版的日志方法，也可以通过Object数组传入。这确实是非常方便而
+且高效的记日志的方法。记住，在为日志信息产生最终的字符串之前，该方法会检查是否开启了特定的日志级别，这不仅降低了内存占用，而且预先
+减少了执行字符串拼接所消耗的CPU时间。下面的SLF4J日志方法的代码，来自于slf4j-log4j12-1.6.1.jar包里的Log4j的适配器类
+Log4jLoggerAdapter.
 * TODO [#C] Gradle
 
 * TODO [#C] Docker

@@ -2,7 +2,7 @@
 #+AUTHOR:      Will
 #+EMAIL:       changwei.cn@gmail.com
 #+DATE:        2014-05-30 五
-#+URI:         /blog/%y/%m/%d/jquerybootstrap
+#+URI:         ./blog/%y/%m/%d/jquerybootstrap
 #+KEYWORDS:    jquery,bootstrap,js,插件
 #+TAGS:        :jquery:bootstrap:js:插件:
 #+LANGUAGE:    cn
