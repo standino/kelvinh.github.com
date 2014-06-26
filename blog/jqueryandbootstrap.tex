@@ -1,0 +1,274 @@
+% Created 2014-06-24 二 10:17
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{Will}
+\date{2014-05-30 五}
+\title{jquery, bootstrap 和它们的插件们}
+\hypersetup{
+  pdfkeywords={jquery,bootstrap,js,插件},
+  pdfsubject={本文主要介绍jquery，bootstrap和它们的插件的使用},
+  pdfcreator={Emacs 24.4.50.2 (Org mode 8.2.7)}}
+\begin{document}
+
+\maketitle
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+
+\section*{JQuery}
+\label{sec-1}
+jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
+\begin{itemize}
+\item HTML 元素选取
+\item HTML 元素操作
+\item CSS 操作
+\item HTML 事件函数
+\item JavaScript 特效和动画
+\item HTML DOM 遍历和修改
+\item AJAX
+\item Utilities
+\end{itemize}
+
+\subsection*{JQuery UI}
+\label{sec-1-1}
+\begin{itemize}
+\item jQuery UI 是 jQuery 的一部分, 是在jQuery之上的一套专门用于UI交互的类库.
+\item 使用jQuery UI可以实现底层交互, 各种高级特效, 动画, 并且可定制主题.
+\end{itemize}
+
+\subsection*{基于 JQuery UI 编写插件 - 定义插件}
+\label{sec-1-2}
+\begin{verbatim}
+$.widget("nmk.progressbar", {
+    options: {
+        value: 0
+    },
+
+    _create: function() {
+        this.element.addClass("progressbar");
+        this._update();
+    },
+
+    _setOption: function(key, value) {
+        this.options[key] = value;
+        this._update();
+    },
+
+    _update: function() {
+        var progress = this.options.value + "%";
+        this.element.text(progress);
+        //trigger a event when progressbar is complate
+        if(this.options.value == 100){
+              this._trigger('complate',null,{value:100});
+       }
+    },
+
+   _destroy:function(){
+      this.element
+          .removeClass('progressbar')
+          .text("");
+     $.Widget.prototype.destroy.call(this);
+
+  }
+
+});
+\end{verbatim}
+\subsection*{基于 JQuery UI 编写插件 - 使用插件}
+\label{sec-1-3}
+
+\begin{verbatim}
+$('.loadding').progressbar(
+  {value:1,
+   complate: function(){
+     console.log('complate event has been triggered!');
+     //you can return false or true ;
+   }
+  });
+\end{verbatim}
+
+\subsection*{基于 JQuery UI 编写插件 - 代码说明}
+\label{sec-1-4}
+\begin{itemize}
+\item options：在这里面保存的是widget的配置信息，在创建widget的时候需要设置一些配置参数。
+\item element：就是widget作用的dom对象。
+\item \_create() 这个方法就是创建widget的方法，在页面调用widget的时候，就会执行此方法，来构建widget。Widget的绝大大多数行为和结构都是在这里创建的。
+\item \_setOption():此方法提供了options的属性的设置。
+\item \_trigger一般用来回调用户传入options的callback。在插件内部调用\_trigger(‘myEvent’)即相当于调用options里面的myEvent这个回调函数。
+\item \_destroy()：将widget实例从dom对象上移除，在开发widget的时候一般此方法是必须的。就是移除你自己在dom element上添加的样式和行为以及dom结构
+\end{itemize}
+\subsection*{JQuery UI Portlet}
+\label{sec-1-5}
+
+\begin{verbatim}
+$('#portlet-demo').portlet('option', 'add', {
+  position: {
+    x: 0,
+    y: 1
+  },
+  portlet: {
+    attrs: {
+      id: '$portlet.id',
+      itemId: '$portlet.itemId'
+    },
+    title: '我的任务',
+
+    singleView:{
+      enable: function (){
+        $('#myWork_portletDiv').hide();
+        $('#myWork_pageDiv').show();
+      },
+      recovery: function (){
+        $('#myWork_portletDiv').show();
+        $('#myWork_pageDiv').hide();
+
+      }
+    },
+
+    content: {
+      type: 'ajax',
+      url:'#springUrl('/resources/portletTemplate/')myWork.html',
+    }
+  }});
+\end{verbatim}
+
+\section*{Bootstrap}
+\label{sec-2}
+
+\begin{itemize}
+\item Bootstrap是Twitter推出的一个用于前端开发的开源工具包。它由Twitter的设计师Mark Otto和Jacob Thornton合作开发，是一个CSS/HTML框架。
+
+\item Bootstrap 是一个用于快速开发 Web 应用程序和网站的前端框架。在现代 Web 开发中，有几个几乎所有的 Web 项目中都需要的组件。Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Tables、Forms、Buttons 和 Responsiveness。
+
+\item 此外，还有大量其他有用的前端组件，比如 Dropdowns、Navigation、Modals、Typehead、Pagination、Carousal、Breadcrumb、Tab、Thumbnails、Headers 等等。
+
+\item 有了这些，你可以搭建一个 Web 项目，并让它运行地更快速更轻松。
+\end{itemize}
+
+
+\subsection*{Bootstrap弹出效果 - 页面初始化代码}
+\label{sec-2-1}
+\begin{verbatim}
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+       <h5 id="myModalLabel">弹出标题</h5>
+   </div>
+   <div class="modal-body">
+          <p>中间显示的内容</p>
+   </div>
+   <div class="modal-footer">
+       <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+       <button class="btn btn-primary">确定</button>
+   </div>
+</div>
+\end{verbatim}
+
+\subsection*{Bootstrap弹出效果 - 设置初始化样式}
+\label{sec-2-2}
+
+\begin{verbatim}
+<script>
+   $(function(){
+       $('#myModal').modal({
+           backdrop:false,
+           keyboard:true,
+           show:false
+       });
+   });
+</script>
+\end{verbatim}
+
+初始化参数介绍：
+\begin{itemize}
+\item backdrop（默认true）：为模态对话框添加一个背景元素。
+\item keyboard（默认true）：按下esc键时关闭模态对话框。
+\item show（默认true）：初始化时即显示模态对话框。
+\end{itemize}
+
+\subsection*{Bootstrap弹出效果 - 点击事件}
+\label{sec-2-3}
+
+\begin{verbatim}
+<a href="javascript:void(0);" onclick="showDiv();">弹出</a>
+
+function showDiv(){
+   $('#myModal').modal('show');
+}
+\end{verbatim}
+
+
+\subsection*{Bootstrap分页}
+\label{sec-2-4}
+\begin{verbatim}
+function listSalesNoticeInPage(container, page) {
+    $.ajax({
+            url : "/salesNotice/queryByGroup.json?page="+page+"&pageSize="+20+"&date="+new Date(),
+            dataType : "json",
+            async:false,
+            success : function(data) {
+                    var result = "";
+                    if (data.rows != null) {
+                            $.each(data.rows, function() {
+                        row += "<td>" + new Date(this.updateTime).format('yyyy-MM-dd hh:mm:ss') + "</td>";
+                    }
+
+                    container.empty().append(result);
+                    var totalPages = Math.ceil(data.total/20);
+                    var pagerOptions = {
+                            bootstrapMajorVersion : 3,
+                            currentPage : page,
+                            numberOfPages : 10,
+                            totalPages : totalPages<=0?1:totalPages,
+                            onPageClicked : function(e, originalEvent, type, page) {
+                                            e.stopImmediatePropagation();
+                                    listSalesNoticeInPage(container, page);
+                            },
+                tooltipTitles: function (type, page, current) {
+                  switch (type) {
+                  case "first":
+                    return "首页";
+                  };
+                  $('#salesNotice_pager').bootstrapPaginator(pagerOptions);
+            }
+    });
+}
+\end{verbatim}
+\subsection*{FCBKcomplete}
+\label{sec-2-5}
+\begin{verbatim}
+$("#publishWork_taskAssignerErpLbl").fcbkcomplete({
+    json_url: "/ldap/fcsearch",
+    addontab: true,
+    maxitems: 100,
+    input_min_size: 2,
+    height: 10,
+    cache: false,
+    newel: false,
+    filter: false,
+    complete_text: "输入电子邮件（@符号的前半部分）进行模糊查找..."
+});
+\end{verbatim}
+
+\section*{参考资料}
+\label{sec-3}
+
+\begin{itemize}
+\item \url{http://jira.360buy.com/confluence/pages/viewpage.action?pageId=30154029}
+\end{itemize}
+% Emacs 24.4.50.2 (Org mode 8.2.7)
+\end{document}

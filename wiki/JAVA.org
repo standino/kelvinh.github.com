@@ -969,3 +969,8 @@ Log4jLoggerAdapter.
 * TODO [#C] Gradle
 
 * TODO [#C] Docker
+
+
+* Jetty
+
+ - https://gist.github.com/naaman/1053217

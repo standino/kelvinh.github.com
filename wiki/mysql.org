@@ -78,3 +78,10 @@ END
         友情提示：coalesce里的参数如果是字符串的话，务必用单引号或者双引号廓起来； 
 
                            这些语句可以直接在mysql里运行。
+
+* 导出数据库表结构
+
+#+BEGIN_SRC
+ mysqldump -u root -h 192.168.229.76 -P 3306  -p dashboard calculate_data_job
+
+#+END_SRC
