@@ -239,7 +239,7 @@ svn co svn+ssh://servername/project
  git config --global core.quotepath false
 
 
-
+ git push -u new master
 
 ** [[http://blog.csdn.net/ithomer/article/details/7529841][Git 命令简短总结]]
 
@@ -624,6 +624,13 @@ even if there is nothing to merge in/pull it should simply return without doing 
 ** git 常用操作
 
   1. [[http://blog.csdn.net/jackystudio/article/details/12271839][【Git入门之六】远程仓库]]
+
+** SKIP GIT SSL VERIFICATION
+#+BEGIN_SRC
+
+export GIT_SSL_NO_VERIFY=1
+
+#+END_SRC
 
 * hg
 
