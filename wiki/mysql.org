@@ -84,4 +84,7 @@ END
 #+BEGIN_SRC
  mysqldump -u root -h 192.168.229.76 -P 3306  -p dashboard calculate_data_job
 
+ mysqldump -u root -h 192.168.229.76 -P 3306  -p piwik  piwik_user_dashboard
+ mysqldump -u root -h 192.168.229.76 -P 3306  -p piwik  piwik_segment
+
 #+END_SRC

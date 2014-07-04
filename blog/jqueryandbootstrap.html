@@ -140,7 +140,7 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
         <span style="color: #268bd2;">this</span>.element.text(progress);
         <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #93a1a1; font-style: italic;">trigger a event when progressbar is complate</span>
         <span style="color: #859900;">if</span>(<span style="color: #268bd2;">this</span>.options.value == 100){
-              <span style="color: #268bd2;">this</span>._trigger(<span style="color: #2aa198;">'complate'</span>,<span style="color: #268bd2;">null</span>,{value:100});
+              <span style="color: #268bd2;">this</span>._trigger(<span style="color: #2aa198;">'complete'</span>,<span style="color: #268bd2;">null</span>,{value:100});
        }
     },
 
@@ -164,7 +164,7 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 <pre  class="src src-javascript">$(<span style="color: #2aa198;">'.loadding'</span>).progressbar(
   {value:1,
    <span style="color: #b58900;">complate</span>: <span style="color: #859900;">function</span>(){
-     console.log(<span style="color: #2aa198;">'complate event has been triggered!'</span>);
+     console.log(<span style="color: #2aa198;">'complete event has been triggered!'</span>);
      <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #93a1a1; font-style: italic;">you can return false or true ;</span>
    }
   });
