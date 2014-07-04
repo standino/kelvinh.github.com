@@ -24,6 +24,7 @@
         <p>努力超越自己！</p>
         <ul>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/html/">Html</a></li>
           <li><a href="/media/">Media</a></li>
           <li><a href="/tags/">Tags</a></li>
           <li><a href="/wiki/">Wiki</a></li>
@@ -132,7 +133,7 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
         this.element.text(progress);
         //trigger a event when progressbar is complate
         if(this.options.value == 100){
-              this._trigger('complate',null,{value:100});
+              this._trigger('complete',null,{value:100});
        }
     },
 
@@ -157,7 +158,7 @@ jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
 <pre class="src src-javascript">$('.loadding').progressbar(
   {value:1,
    complate: function(){
-     console.log('complate event has been triggered!');
+     console.log('complete event has been triggered!');
      //you can return false or true ;
    }
   });
@@ -392,7 +393,7 @@ function showDiv(){
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2014-05-30</span>
-        <span title="last modification date" class="post-info">2014-06-20</span>
+        <span title="last modification date" class="post-info">2014-07-04</span>
         <span title="tags" class="post-info"><a href="/tags/jquery/">jquery</a>, <a href="/tags/bootstrap/">bootstrap</a>, <a href="/tags/js/">js</a>, <a href="/tags/插件/">插件</a></span>
         <span title="author" class="post-info">Will</span>
       </div>

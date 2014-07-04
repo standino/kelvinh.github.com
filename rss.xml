@@ -4,22 +4,36 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>五, 20  6月 2014 15:45:00 CST</pubDate>
-    <lastBuildDate>五, 20  6月 2014 15:45:00 CST</lastBuildDate>
+    <pubDate>五, 04  7月 2014 11:16:08 CST</pubDate>
+    <lastBuildDate>五, 04  7月 2014 11:16:08 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>jquery, bootstrap 和它们的插件们</title>
       <link>http://standino.github.io./blog/2014/05/30/jquerybootstrap</link>
       <description>本文主要介绍jquery，bootstrap和它们的插件的使用</description>
-      <pubDate>2014-06-20</pubDate>
+      <pubDate>2014-07-04</pubDate>
       <guid>http://standino.github.io./blog/2014/05/30/jquerybootstrap</guid>
+    </item>
+    <item>
+      <title>mysql</title>
+      <link>http://standino.github.io/wiki/html/mysql</link>
+      <description>MySQL数据库</description>
+      <pubDate>2014-07-04</pubDate>
+      <guid>http://standino.github.io/wiki/html/mysql</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-07-04</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
     </item>
     <item>
       <title>JAVA</title>
       <link>http://standino.github.io/wiki/html/java</link>
       <description>Java Tips</description>
-      <pubDate>2014-06-20</pubDate>
+      <pubDate>2014-06-26</pubDate>
       <guid>http://standino.github.io/wiki/html/java</guid>
     </item>
     <item>
@@ -58,25 +72,11 @@
       <guid>http://standino.github.io/wiki/html/mvn</guid>
     </item>
     <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-06-13</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
-    </item>
-    <item>
       <title>大数据</title>
       <link>http://standino.github.io/wiki/html/bigdata</link>
       <description>研究互联网用到的大数据技术</description>
       <pubDate>2014-06-05</pubDate>
       <guid>http://standino.github.io/wiki/html/bigdata</guid>
-    </item>
-    <item>
-      <title>linux</title>
-      <link>http://standino.github.io/wiki/html/linux</link>
-      <description>linux</description>
-      <pubDate>2014-06-05</pubDate>
-      <guid>http://standino.github.io/wiki/html/linux</guid>
     </item>
   </channel>
 </rss>
