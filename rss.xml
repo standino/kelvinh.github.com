@@ -4,10 +4,24 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>五, 04  7月 2014 11:47:23 CST</pubDate>
-    <lastBuildDate>五, 04  7月 2014 11:47:23 CST</lastBuildDate>
+    <pubDate>四, 10  7月 2014 18:07:59 CST</pubDate>
+    <lastBuildDate>四, 10  7月 2014 18:07:59 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>大数据</title>
+      <link>http://standino.github.io/wiki/html/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2014-07-10</pubDate>
+      <guid>http://standino.github.io/wiki/html/bigdata</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-07-10</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
+    </item>
     <item>
       <title>jquery, bootstrap 和它们的插件们</title>
       <link>http://standino.github.io./blog/2014/05/30/jquerybootstrap</link>
@@ -21,13 +35,6 @@
       <description>MySQL数据库</description>
       <pubDate>2014-07-04</pubDate>
       <guid>http://standino.github.io/wiki/html/mysql</guid>
-    </item>
-    <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-07-04</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
     </item>
     <item>
       <title>JAVA</title>
@@ -70,13 +77,6 @@
       <description>mvn</description>
       <pubDate>2014-06-13</pubDate>
       <guid>http://standino.github.io/wiki/html/mvn</guid>
-    </item>
-    <item>
-      <title>大数据</title>
-      <link>http://standino.github.io/wiki/html/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2014-06-05</pubDate>
-      <guid>http://standino.github.io/wiki/html/bigdata</guid>
     </item>
   </channel>
 </rss>
