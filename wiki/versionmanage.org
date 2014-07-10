@@ -50,6 +50,7 @@ svn log | less
 svn merge -r 45693:46318 http://branches/sone_1_0_0/
 
 
+
 # 获得change list用于抽包
 svn st
 
