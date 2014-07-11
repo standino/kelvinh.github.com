@@ -35,3 +35,12 @@
   1. http://www.ibm.com/developerworks/cn/java/j-mahout/
 * oozie
  - http://oozie.apache.org/
+ -
+
+* sqoop
+
+ - http://shiyanjun.cn/archives/624.html
+
+* pig
+
+  http://pig.apache.org/docs/r0.13.0/basic.html#null_operators
