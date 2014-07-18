@@ -88,3 +88,6 @@ END
  mysqldump -u root -h 192.168.229.76 -P 3306  -p piwik  piwik_segment
 
 #+END_SRC
+* 建立索引
+
+CREATE INDEX index_name ON table_name (column_list)

@@ -289,6 +289,35 @@ SaikuMondrianHelper.java  setRoles
 #+END_SRC
 
 
+
+* saiku 插件编写
+
+  1. https://github.com/OSBI/saiku-ui/wiki/Plugins
+
+
+
+** SaikuChartPlus  https://github.com/it4biz/SaikuChartPlus
+
+How to install
+
+For Pentaho BA Users, please use Pentaho Marketplace
+
+For Saiku Server Users, please follow the tutorial at section "Advanced instalation"
+
+Advanced instalation
+1) Edit the file saiku-server/tomcat/webapps/ROOT/index.html, insert the code below:
+
+<!--search for this and put the files under this-->
+<script type="text/javascript" src="js/saiku/plugins/CCC_Chart/plugin.js" ></script>
+<!--start js SaikuChartPlus-->
+<script type="text/javascript" src="js/saiku/plugins/saiku-chart-plus/plugin.js" ></script>
+<!--end js SaikuChartPlus-->
+2) Download the project and extract the content of folder saiku-server on saiku-server/tomcat/webapps/ROOT/js/saiku/plugins/
+
+That's it!
+
+
+
 * 参考资料
 
  - [[http://blog.csdn.net/leamonjxl/article/details/6681112][数据仓库的架构主要有星型和雪花型两种方式]]
@@ -300,3 +329,4 @@ SaikuMondrianHelper.java  setRoles
  - https://github.com/pentaho/mondrian
  - https://github.com/OSBI/saiku
  - http://ci.analytical-labs.com/
+ - http://docs.analytical-labs.com/
