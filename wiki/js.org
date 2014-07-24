@@ -383,3 +383,8 @@ CKEDITOR.editorConfig = function(config) {
 * 查询股票
 
  - [[http://shenhai.zqmyw.cn/thread-2203-1-1.html][如何使用新浪股票接口获取恒生指数及美国的一些股票指数？]]
+
+
+* 
+
+  - Backbone入门指南（一）：什么是Backbone? http://yujianshenbing.iteye.com/blog/1748447

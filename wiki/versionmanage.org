@@ -51,6 +51,7 @@ svn merge -r 45693:46318 http://branches/sone_1_0_0/
 
 svn merge -r r47606:r47744  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
 
+svn merge -r r47757:r48054  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
 
 # 获得change list用于抽包
 svn st

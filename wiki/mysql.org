@@ -91,3 +91,5 @@ END
 * 建立索引
 
 CREATE INDEX index_name ON table_name (column_list)
+
+创建表的时候创建索引（1） http://book.51cto.com/art/201012/240956.htm
