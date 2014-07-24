@@ -4,23 +4,65 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>四, 10  7月 2014 18:07:59 CST</pubDate>
-    <lastBuildDate>四, 10  7月 2014 18:07:59 CST</lastBuildDate>
+    <pubDate>四, 24  7月 2014 09:16:01 CST</pubDate>
+    <lastBuildDate>四, 24  7月 2014 09:16:01 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>大数据</title>
-      <link>http://standino.github.io/wiki/html/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2014-07-10</pubDate>
-      <guid>http://standino.github.io/wiki/html/bigdata</guid>
+      <title>javascript</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-07-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>mysql</title>
+      <link>http://standino.github.io/wiki/html/mysql</link>
+      <description>MySQL数据库</description>
+      <pubDate>2014-07-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/mysql</guid>
+    </item>
+    <item>
+      <title>敏捷软件开发</title>
+      <link>http://standino.github.io/wiki/html/scrum</link>
+      <description>敏捷软件开发</description>
+      <pubDate>2014-07-24</pubDate>
+      <guid>http://standino.github.io/wiki/html/scrum</guid>
     </item>
     <item>
       <title>版本管理工具</title>
       <link>http://standino.github.io/wiki/html/vesionmanage</link>
       <description>Version control</description>
-      <pubDate>2014-07-10</pubDate>
+      <pubDate>2014-07-24</pubDate>
       <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
+    </item>
+    <item>
+      <title>linux</title>
+      <link>http://standino.github.io/wiki/html/linux</link>
+      <description>linux</description>
+      <pubDate>2014-07-21</pubDate>
+      <guid>http://standino.github.io/wiki/html/linux</guid>
+    </item>
+    <item>
+      <title>基于saiku开发OLAP应用</title>
+      <link>http://standino.github.io./blog/2014/06/16/saiku</link>
+      <description>使用saiku开发OLAP系统</description>
+      <pubDate>2014-07-18</pubDate>
+      <guid>http://standino.github.io./blog/2014/06/16/saiku</guid>
+    </item>
+    <item>
+      <title>JAVA</title>
+      <link>http://standino.github.io/wiki/html/java</link>
+      <description>Java Tips</description>
+      <pubDate>2014-07-11</pubDate>
+      <guid>http://standino.github.io/wiki/html/java</guid>
+    </item>
+    <item>
+      <title>大数据</title>
+      <link>http://standino.github.io/wiki/html/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2014-07-11</pubDate>
+      <guid>http://standino.github.io/wiki/html/bigdata</guid>
     </item>
     <item>
       <title>jquery, bootstrap 和它们的插件们</title>
@@ -30,53 +72,11 @@
       <guid>http://standino.github.io./blog/2014/05/30/jquerybootstrap</guid>
     </item>
     <item>
-      <title>mysql</title>
-      <link>http://standino.github.io/wiki/html/mysql</link>
-      <description>MySQL数据库</description>
-      <pubDate>2014-07-04</pubDate>
-      <guid>http://standino.github.io/wiki/html/mysql</guid>
-    </item>
-    <item>
-      <title>JAVA</title>
-      <link>http://standino.github.io/wiki/html/java</link>
-      <description>Java Tips</description>
-      <pubDate>2014-06-26</pubDate>
-      <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>基于saiku开发OLAP应用</title>
-      <link>http://standino.github.io./blog/2014/06/16/saiku</link>
-      <description>使用saiku开发OLAP系统</description>
-      <pubDate>2014-06-17</pubDate>
-      <guid>http://standino.github.io./blog/2014/06/16/saiku</guid>
-    </item>
-    <item>
       <title>常用链接</title>
       <link>http://standino.github.io/wiki/html/mylinks</link>
       <description>常用链接</description>
       <pubDate>2014-06-16</pubDate>
       <guid>http://standino.github.io/wiki/html/mylinks</guid>
-    </item>
-    <item>
-      <title>saiku单点登录方案</title>
-      <link>http://standino.github.io./blog/2014/06/12/saikusso</link>
-      <description>saiku单点登录方案</description>
-      <pubDate>2014-06-13</pubDate>
-      <guid>http://standino.github.io./blog/2014/06/12/saikusso</guid>
-    </item>
-    <item>
-      <title>Eclipse</title>
-      <link>http://standino.github.io/wiki/html/eclipse</link>
-      <description>eclipse</description>
-      <pubDate>2014-06-13</pubDate>
-      <guid>http://standino.github.io/wiki/html/eclipse</guid>
-    </item>
-    <item>
-      <title>mvn</title>
-      <link>http://standino.github.io/wiki/html/mvn</link>
-      <description>mvn</description>
-      <pubDate>2014-06-13</pubDate>
-      <guid>http://standino.github.io/wiki/html/mvn</guid>
     </item>
   </channel>
 </rss>

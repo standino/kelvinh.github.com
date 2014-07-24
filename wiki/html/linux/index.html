@@ -1071,6 +1071,57 @@ dig www.gdufs.edu.cn
 <h2 id="sec-23">Cron Job Examples</h2>
 <div class="outline-text-2" id="text-23">
 <p>
+#+BEGIN_SRC
+</p>
+
+<p>
+基本格式 :
+*　　*　　*　　*　　*　　command
+分　时　日　月　周　命令
+第1列表示分钟1～59 每分钟用*或者 */1表示
+第2列表示小时1～23（0表示0点）
+第3列表示日期1～31
+第4列表示月份1～12
+第5列标识号星期0～6（0表示星期天）
+第6列要运行的命令
+crontab文件的一些例子：
+30 21 * * * /usr/local/etc/rc.d/lighttpd restart
+上面的例子表示每晚的21:30重启lighttpd 。
+45 4 1,10,22 * * /usr/local/etc/rc.d/lighttpd restart
+上面的例子表示每月1、10、22日的4 : 45重启lighttpd 。
+10 1 * * 6,0 /usr/local/etc/rc.d/lighttpd restart
+上面的例子表示每周六、周日的1 : 10重启lighttpd 。
+0,30 18-23 * * * /usr/local/etc/rc.d/lighttpd restart
+上面的例子表示在每天18 : 00至23 : 00之间每隔30分钟重启lighttpd 。
+0 23 * * 6 /usr/local/etc/rc.d/lighttpd restart
+上面的例子表示每星期六的11 : 00 pm重启lighttpd 。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24">*/1 * * * /usr/local/etc/rc.d/lighttpd restart</h2>
+<div class="outline-text-2" id="text-24">
+<p>
+每一小时重启lighttpd
+</p>
+</div>
+</div>
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25">23-7/1 * * * /usr/local/etc/rc.d/lighttpd restart</h2>
+<div class="outline-text-2" id="text-25">
+<p>
+晚上11点到早上7点之间，每隔一小时重启lighttpd
+0 11 4 * mon-wed /usr/local/etc/rc.d/lighttpd restart
+每月的4号与每周一到周三的11点重启lighttpd
+0 4 1 jan * /usr/local/etc/rc.d/lighttpd restart
+一月一号的4点重启lighttpd
+</p>
+
+<p>
+#+END_SRC
+</p>
+
+<p>
 <a href="https://help.ubuntu.com/community/CronHowto">https://help.ubuntu.com/community/CronHowto</a>
 </p>
 
@@ -1119,9 +1170,9 @@ Note: This will install the cron-file.txt to your crontab, which will also remov
 </div>
 </div>
 
-<div id="outline-container-sec-24" class="outline-2">
-<h2 id="sec-24">Notes</h2>
-<div class="outline-text-2" id="text-24">
+<div id="outline-container-sec-26" class="outline-2">
+<h2 id="sec-26">Notes</h2>
+<div class="outline-text-2" id="text-26">
 <p>
 Q11. I keep seeing references to File -&gt; Application -&gt; Install or File -&gt; Application -&gt; Application Management, but I don't have those menu items. What do I do?
 A11. To make these menu items appear, exit Notes. Edit the plugin_customization.ini file using your favorite editor:
@@ -1201,9 +1252,9 @@ generalized yet, so let's build the wisdom here.
 </div>
 
 
-<div id="outline-container-sec-25" class="outline-2">
-<h2 id="sec-25">Kernel</h2>
-<div class="outline-text-2" id="text-25">
+<div id="outline-container-sec-27" class="outline-2">
+<h2 id="sec-27">Kernel</h2>
+<div class="outline-text-2" id="text-27">
 <pre class="example">
 update-initramfs -u -k ${MODVER}
 
@@ -1229,9 +1280,9 @@ boot
 </div>
 </div>
 
-<div id="outline-container-sec-26" class="outline-2">
-<h2 id="sec-26">密码和加密密钥</h2>
-<div class="outline-text-2" id="text-26">
+<div id="outline-container-sec-28" class="outline-2">
+<h2 id="sec-28">密码和加密密钥</h2>
+<div class="outline-text-2" id="text-28">
 <p>
 <a href="http://ubuntuabc.com/123/?p=27">http://ubuntuabc.com/123/?p=27</a>
 症状：
@@ -1255,9 +1306,9 @@ boot
 </div>
 </div>
 
-<div id="outline-container-sec-27" class="outline-2">
-<h2 id="sec-27">解决aMule和Firefox关联</h2>
-<div class="outline-text-2" id="text-27">
+<div id="outline-container-sec-29" class="outline-2">
+<h2 id="sec-29">解决aMule和Firefox关联</h2>
+<div class="outline-text-2" id="text-29">
 <p>
 可能火星了，但是可能有些人还不了解。这个方法可以解决直接点击verycd的“下载选中链接”的问题。
 </p>
@@ -1279,18 +1330,18 @@ boot
 </div>
 </div>
 
-<div id="outline-container-sec-28" class="outline-2">
-<h2 id="sec-28">Skype</h2>
-<div class="outline-text-2" id="text-28">
+<div id="outline-container-sec-30" class="outline-2">
+<h2 id="sec-30">Skype</h2>
+<div class="outline-text-2" id="text-30">
 <p>
 <a href="http://forum.ubuntu.org.cn/viewtopic.php?f=48&t=204294&p=1281873#p1281873">http://forum.ubuntu.org.cn/viewtopic.php?f=48&t=204294&p=1281873#p1281873</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-29" class="outline-2">
-<h2 id="sec-29">Rime 输入法</h2>
-<div class="outline-text-2" id="text-29">
+<div id="outline-container-sec-31" class="outline-2">
+<h2 id="sec-31">Rime 输入法</h2>
+<div class="outline-text-2" id="text-31">
 <p>
 cd <i>etc/yum.repos.d</i>
 sudo wget <a href="http://heimu-packages.stor.sinaapp.com/fedora/heimu.repo">http://heimu-packages.stor.sinaapp.com/fedora/heimu.repo</a>
@@ -1299,9 +1350,9 @@ sudo yum install ibus-rime
 </div>
 </div>
 
-<div id="outline-container-sec-30" class="outline-2">
-<h2 id="sec-30">小企鹅输入法(fcitx)</h2>
-<div class="outline-text-2" id="text-30">
+<div id="outline-container-sec-32" class="outline-2">
+<h2 id="sec-32">小企鹅输入法(fcitx)</h2>
+<div class="outline-text-2" id="text-32">
 <p>
 小企鹅输入法(fcitx)重新回归，并且添加了“五笔拼音”码表，对我这一半五笔一半拼音的人来说，实在再方便不过。在Windows下用习惯了极点五笔，到Linux下如果没有类似的，还真是降低了文档编写效率，现在好了，小企鹅实现了，也有人做了 scim 的极点五笔，不过个人喜欢小企鹅，配置如下：
 </p>
@@ -1468,9 +1519,9 @@ sudo yum install ibus-rime
 </div>
 </div>
 
-<div id="outline-container-sec-31" class="outline-2">
-<h2 id="sec-31">配置gedit支持中文</h2>
-<div class="outline-text-2" id="text-31">
+<div id="outline-container-sec-33" class="outline-2">
+<h2 id="sec-33">配置gedit支持中文</h2>
+<div class="outline-text-2" id="text-33">
 <p>
 　　虽然 vi 很方便，但也不可能不用 gedit ，而 gedit 编辑非utf8编码的文本文件时，中文会乱码，这个需要解决掉，不然需要每次加参数才能正常显示。
 </p>
@@ -1493,9 +1544,9 @@ sudo yum install ibus-rime
 </div>
 </div>
 
-<div id="outline-container-sec-32" class="outline-2">
-<h2 id="sec-32">Session</h2>
-<div class="outline-text-2" id="text-32">
+<div id="outline-container-sec-34" class="outline-2">
+<h2 id="sec-34">Session</h2>
+<div class="outline-text-2" id="text-34">
 <p>
 cd ~/.config/autostart
 </p>
@@ -1535,9 +1586,9 @@ cd ~/.config/autostart
 </div>
 
 
-<div id="outline-container-sec-33" class="outline-2">
-<h2 id="sec-33">Host</h2>
-<div class="outline-text-2" id="text-33">
+<div id="outline-container-sec-35" class="outline-2">
+<h2 id="sec-35">Host</h2>
+<div class="outline-text-2" id="text-35">
 <p>
  HOWTO: Editing /etc/hosts
 Here is a quick how to, to edit your /etc/hosts file.
@@ -1579,9 +1630,9 @@ Then browse for the connected interface (eth0, wlan0, etc)
 </div>
 
 
-<div id="outline-container-sec-34" class="outline-2">
-<h2 id="sec-34"><a href="http://w3.tap.ibm.com/w3ki03/display/linuxportal/Open+Client+for+Linux+Debian+Community">Open Client for Ubuntu Installation </a></h2>
-<div class="outline-text-2" id="text-34">
+<div id="outline-container-sec-36" class="outline-2">
+<h2 id="sec-36"><a href="http://w3.tap.ibm.com/w3ki03/display/linuxportal/Open+Client+for+Linux+Debian+Community">Open Client for Ubuntu Installation </a></h2>
+<div class="outline-text-2" id="text-36">
 <ol class="org-ol">
 <li>Download iso file from  <a href="http://software.linux.ibm.com/pub/">http://software.linux.ibm.com/pub/</a>
 </li>
@@ -1611,9 +1662,9 @@ Then browse for the connected interface (eth0, wlan0, etc)
 
 
 
-<div id="outline-container-sec-35" class="outline-2">
-<h2 id="sec-35">Connect to windows</h2>
-<div class="outline-text-2" id="text-35">
+<div id="outline-container-sec-37" class="outline-2">
+<h2 id="sec-37">Connect to windows</h2>
+<div class="outline-text-2" id="text-37">
 <p>
 execute myremotedesk shell.
 </p>
@@ -1625,18 +1676,18 @@ use ctrl+alt+enter to toggle full screen.
 </div>
 
 
-<div id="outline-container-sec-36" class="outline-2">
-<h2 id="sec-36">IE6</h2>
-<div class="outline-text-2" id="text-36">
+<div id="outline-container-sec-38" class="outline-2">
+<h2 id="sec-38">IE6</h2>
+<div class="outline-text-2" id="text-38">
 <p>
 <a href="../etc/UbuntuIE.html">../etc/UbuntuIE.html</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-37" class="outline-2">
-<h2 id="sec-37">Recite Word</h2>
-<div class="outline-text-2" id="text-37">
+<div id="outline-container-sec-39" class="outline-2">
+<h2 id="sec-39">Recite Word</h2>
+<div class="outline-text-2" id="text-39">
 <p>
 <a href="../etc/reciteword.html">../etc/reciteword.html</a>
 </p>
@@ -1654,9 +1705,9 @@ See install.sh for detail.
 </div>
 
 
-<div id="outline-container-sec-38" class="outline-2">
-<h2 id="sec-38">Dock</h2>
-<div class="outline-text-2" id="text-38">
+<div id="outline-container-sec-40" class="outline-2">
+<h2 id="sec-40">Dock</h2>
+<div class="outline-text-2" id="text-40">
 <p>
 先添加源
 deb <a href="http://repository.cairo-dock.org/ubuntu">http://repository.cairo-dock.org/ubuntu</a> hardy cairo-dock
@@ -1667,9 +1718,9 @@ wget -q <a href="http://repository.cairo-dock.org/ubuntu/cairo-dock.gpg">http://
 </div>
 </div>
 
-<div id="outline-container-sec-39" class="outline-2">
-<h2 id="sec-39">Remove old kernel</h2>
-<div class="outline-text-2" id="text-39">
+<div id="outline-container-sec-41" class="outline-2">
+<h2 id="sec-41">Remove old kernel</h2>
+<div class="outline-text-2" id="text-41">
 <p>
 uname -a　　＃使用这个命令可以查看当前系统使用的内核。
 dpkg --get-selections|grep linux ＃列出当前内核。带image的则是已经安装的内核，可以用以下命令卸载：sudo apt-get remove linux-image-2.6.24-11-generic ＃其中 linux-image-2.6.24-11-generic 为版本号，输全。
@@ -1677,9 +1728,9 @@ dpkg --get-selections|grep linux ＃列出当前内核。带image的则是已经
 </div>
 </div>
 
-<div id="outline-container-sec-40" class="outline-2">
-<h2 id="sec-40">Generate Deb package</h2>
-<div class="outline-text-2" id="text-40">
+<div id="outline-container-sec-42" class="outline-2">
+<h2 id="sec-42">Generate Deb package</h2>
+<div class="outline-text-2" id="text-42">
 <p>
 第一个，checkinstall
 </p>
@@ -1721,18 +1772,18 @@ sudo checkinstall
 
 
 
-<div id="outline-container-sec-41" class="outline-2">
-<h2 id="sec-41">Gnome DO</h2>
-<div class="outline-text-2" id="text-41">
+<div id="outline-container-sec-43" class="outline-2">
+<h2 id="sec-43">Gnome DO</h2>
+<div class="outline-text-2" id="text-43">
 <p>
 <a href="https://wiki.ubuntu.com/GnomeDo/Manual">https://wiki.ubuntu.com/GnomeDo/Manual</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-42" class="outline-2">
-<h2 id="sec-42">xorg X11上面SCIM丢失焦点问题的workaround</h2>
-<div class="outline-text-2" id="text-42">
+<div id="outline-container-sec-44" class="outline-2">
+<h2 id="sec-44">xorg X11上面SCIM丢失焦点问题的workaround</h2>
+<div class="outline-text-2" id="text-44">
 <p>
 自己的机器上装了Debian 4，从etch换到sid，又从xfce换到gnome(这么换还真是不适应...)，SCIM丢失焦点的问题一直让我很郁闷，特别是java app，比较严重的说。当时也没找时间解决，一直用 Alt+Tab 解决大部分问题。
 不多说，先看下SCIM的架构特点， FrontEnd, Server, Config 三大部分，并且都实现了模块化, 可以通过动态模块来实现具体的功能, 支持不同的系统和环境. 大大增强了 SCIM 的灵活性和可移植性.
@@ -1787,9 +1838,9 @@ QT_IM_MODULE=xim
 
 
 
-<div id="outline-container-sec-43" class="outline-2">
-<h2 id="sec-43">File permission</h2>
-<div class="outline-text-2" id="text-43">
+<div id="outline-container-sec-45" class="outline-2">
+<h2 id="sec-45">File permission</h2>
+<div class="outline-text-2" id="text-45">
 <p>
 ls –l filename
 </p>
@@ -1830,9 +1881,9 @@ chmod o-x junk
 
 
 
-<div id="outline-container-sec-44" class="outline-2">
-<h2 id="sec-44">硬盘启动 ubuntu-8.04.1-desktop-i386.iso</h2>
-<div class="outline-text-2" id="text-44">
+<div id="outline-container-sec-46" class="outline-2">
+<h2 id="sec-46">硬盘启动 ubuntu-8.04.1-desktop-i386.iso</h2>
+<div class="outline-text-2" id="text-46">
 <p>
 操作环境：win xp （vista 未试）
 </p>
@@ -1863,9 +1914,9 @@ chmod o-x junk
 </div>
 </div>
 
-<div id="outline-container-sec-45" class="outline-2">
-<h2 id="sec-45"><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=54&t=85074&st=0&sk=t&sd=a"> FTP</a></h2>
-<div class="outline-text-2" id="text-45">
+<div id="outline-container-sec-47" class="outline-2">
+<h2 id="sec-47"><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=54&t=85074&st=0&sk=t&sd=a"> FTP</a></h2>
+<div class="outline-text-2" id="text-47">
 <p>
 因为不想用WIN，不方便和周围同学共享文件，于是想在Ubuntu下建个FTP用。一阵论坛和google搜索后终于找到了正确的方法 (vsftpd,Ubuntu7.04)，至少保证周围局域网内用户可以访问。至于配置文件，内容比较少，反正对我来讲能用就ok了~不知道会不会很弱
 有一个不错的中文联机手册可以参考：<a href="http://etony.9966.org/doc/other/vsftpd-man-zh.html">http://etony.9966.org/doc/other/vsftpd-man-zh.html</a>
@@ -1960,21 +2011,21 @@ sudo /etc/init.d/vsftpd stop
 </div>
 
 
-<div id="outline-container-sec-46" class="outline-2">
-<h2 id="sec-46">Virtualbox</h2>
-<div class="outline-text-2" id="text-46">
+<div id="outline-container-sec-48" class="outline-2">
+<h2 id="sec-48">Virtualbox</h2>
+<div class="outline-text-2" id="text-48">
 <p>
 <a href="http://forum.ubuntu.org.cn/viewtopic.php?t=45983">http://forum.ubuntu.org.cn/viewtopic.php?t=45983</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-47" class="outline-2">
-<h2 id="sec-47">Wine</h2>
-<div class="outline-text-2" id="text-47">
-</div><div id="outline-container-sec-47-1" class="outline-3">
-<h3 id="sec-47-1">How do I create a 32-bit WINE prefix?</h3>
-<div class="outline-text-3" id="text-47-1">
+<div id="outline-container-sec-49" class="outline-2">
+<h2 id="sec-49">Wine</h2>
+<div class="outline-text-2" id="text-49">
+</div><div id="outline-container-sec-49-1" class="outline-3">
+<h3 id="sec-49-1">How do I create a 32-bit WINE prefix?</h3>
+<div class="outline-text-3" id="text-49-1">
 <p>
 This Is how I did it not for me the above answer did not work
 </p>
@@ -2001,9 +2052,9 @@ WINEARCH=win32 WINEPREFIX=~/.wine winecfg
 </div>
 </div>
 
-<div id="outline-container-sec-47-2" class="outline-3">
-<h3 id="sec-47-2"><span class="done DONE">DONE</span> 安装咚咚和QQ</h3>
-<div class="outline-text-3" id="text-47-2">
+<div id="outline-container-sec-49-2" class="outline-3">
+<h3 id="sec-49-2"><span class="done DONE">DONE</span> 安装咚咚和QQ</h3>
+<div class="outline-text-3" id="text-49-2">
 <ul class="org-ul">
 <li>State "DONE"       from "WAITING"    <span class="timestamp-wrapper"><span class="timestamp">[2014-04-24 四 12:52]</span></span>
 </li>
@@ -2021,9 +2072,9 @@ WINEARCH=win32 WINEPREFIX=~/.wine winecfg
 </div>
 </div>
 
-<div id="outline-container-sec-47-3" class="outline-3">
-<h3 id="sec-47-3">中文输入</h3>
-<div class="outline-text-3" id="text-47-3">
+<div id="outline-container-sec-49-3" class="outline-3">
+<h3 id="sec-49-3">中文输入</h3>
+<div class="outline-text-3" id="text-49-3">
 <p>
 <a href="http://bbs.archlinuxcn.org/viewtopic.php?id=2052">http://bbs.archlinuxcn.org/viewtopic.php?id=2052</a>
 </p>
@@ -2031,9 +2082,9 @@ WINEARCH=win32 WINEPREFIX=~/.wine winecfg
 </div>
 </div>
 
-<div id="outline-container-sec-48" class="outline-2">
-<h2 id="sec-48">伪装成Textmate的gEdit</h2>
-<div class="outline-text-2" id="text-48">
+<div id="outline-container-sec-50" class="outline-2">
+<h2 id="sec-50">伪装成Textmate的gEdit</h2>
+<div class="outline-text-2" id="text-50">
 <p>
 Textmate-like Gedit in few steps
 </p>
@@ -2077,9 +2128,9 @@ The list of the plugins avalaible is growing fast; this is a list of plugins tha
 </div>
 </div>
 
-<div id="outline-container-sec-49" class="outline-2">
-<h2 id="sec-49">Mplayer</h2>
-<div class="outline-text-2" id="text-49">
+<div id="outline-container-sec-51" class="outline-2">
+<h2 id="sec-51">Mplayer</h2>
+<div class="outline-text-2" id="text-51">
 <pre class="example">
 本文所要探讨的，除却一般的使用方法之外，更包括一些鲜为人知的提示和诀窍。相信在阅读此文后，你的多媒体播放体验将会增色不少。
 
@@ -2278,9 +2329,9 @@ ao="pcm:file=dumpedaudio.wav"
 </div>
 </div>
 
-<div id="outline-container-sec-50" class="outline-2">
-<h2 id="sec-50">Network Interfaces</h2>
-<div class="outline-text-2" id="text-50">
+<div id="outline-container-sec-52" class="outline-2">
+<h2 id="sec-52">Network Interfaces</h2>
+<div class="outline-text-2" id="text-52">
 <p>
 如果要讓更動立刻生效，最有效的辦法是重新開機，最聰明的辦法是以 root 身份下達以下指令
 </p>
@@ -2288,9 +2339,9 @@ ao="pcm:file=dumpedaudio.wav"
 </div>
 
 
-<div id="outline-container-sec-51" class="outline-2">
-<h2 id="sec-51">Bash readline 的使用技巧</h2>
-<div class="outline-text-2" id="text-51">
+<div id="outline-container-sec-53" class="outline-2">
+<h2 id="sec-53">Bash readline 的使用技巧</h2>
+<div class="outline-text-2" id="text-53">
 <p>
 Bash readline 的使用技巧
 </p>
@@ -2762,9 +2813,9 @@ $bind -v
 </div>
 </div>
 
-<div id="outline-container-sec-52" class="outline-2">
-<h2 id="sec-52">警报声</h2>
-<div class="outline-text-2" id="text-52">
+<div id="outline-container-sec-54" class="outline-2">
+<h2 id="sec-54">警报声</h2>
+<div class="outline-text-2" id="text-54">
 <p>
 系统－－》首选项－－》音效
 </p>
@@ -2776,18 +2827,18 @@ $bind -v
 </div>
 
 
-<div id="outline-container-sec-53" class="outline-2">
-<h2 id="sec-53">窗口关闭按钮的位置修改</h2>
-<div class="outline-text-2" id="text-53">
+<div id="outline-container-sec-55" class="outline-2">
+<h2 id="sec-55">窗口关闭按钮的位置修改</h2>
+<div class="outline-text-2" id="text-55">
 <pre class="example">
 gconftool-2 --set /apps/metacity/general/button_layout --type string "menu:minimize,maximize,close"
 </pre>
 </div>
 </div>
 
-<div id="outline-container-sec-54" class="outline-2">
-<h2 id="sec-54">sed常用命令整理</h2>
-<div class="outline-text-2" id="text-54">
+<div id="outline-container-sec-56" class="outline-2">
+<h2 id="sec-56">sed常用命令整理</h2>
+<div class="outline-text-2" id="text-56">
 <pre class="example">
 sed '1,3d' file //删除1-3行
 sed -n '/[Aa]bc/p' file //打印包含Abc或者abc的行
@@ -2815,9 +2866,9 @@ sed 's/1\|2\|3/*/g' //在GNU里将不管是1或2或者是3替换成*
 </div>
 
 
-<div id="outline-container-sec-55" class="outline-2">
-<h2 id="sec-55">awesome</h2>
-<div class="outline-text-2" id="text-55">
+<div id="outline-container-sec-57" class="outline-2">
+<h2 id="sec-57">awesome</h2>
+<div class="outline-text-2" id="text-57">
 <pre class="example">
 当然你可以通过修改配置文件来更改这些键位。这里的Mod4可以在配置文件中定义，默认是Windows键。
 
@@ -2879,9 +2930,9 @@ Mod4 + Shift + r
 </div>
 </div>
 
-<div id="outline-container-sec-56" class="outline-2">
-<h2 id="sec-56">Linux网卡配置文件的含义</h2>
-<div class="outline-text-2" id="text-56">
+<div id="outline-container-sec-58" class="outline-2">
+<h2 id="sec-58">Linux网卡配置文件的含义</h2>
+<div class="outline-text-2" id="text-58">
 <p>
 /etc/sysconfig/network-scripts/ifcfg-interfacename
 </p>
@@ -2933,9 +2984,9 @@ Mod4 + Shift + r
 </div>
 
 
-<div id="outline-container-sec-57" class="outline-2">
-<h2 id="sec-57">DNS</h2>
-<div class="outline-text-2" id="text-57">
+<div id="outline-container-sec-59" class="outline-2">
+<h2 id="sec-59">DNS</h2>
+<div class="outline-text-2" id="text-59">
 <p>
 <a href="http://hi.baidu.com/eshifangs/item/e2bc80a77a465c348819d366">http://hi.baidu.com/eshifangs/item/e2bc80a77a465c348819d366</a>
 </p>
@@ -2962,9 +3013,9 @@ DOMAIN=dswdev3
 </div>
 
 
-<div id="outline-container-sec-58" class="outline-2">
-<h2 id="sec-58">Golden dict</h2>
-<div class="outline-text-2" id="text-58">
+<div id="outline-container-sec-60" class="outline-2">
+<h2 id="sec-60">Golden dict</h2>
+<div class="outline-text-2" id="text-60">
 <p>
 I put the setup script in myapt.
 </p>
@@ -2980,9 +3031,9 @@ I put the setup script in myapt.
 </div>
 
 
-<div id="outline-container-sec-59" class="outline-2">
-<h2 id="sec-59"><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=77&t=290844">使用wubi-hd在windows下不用光驱硬盘安装ubuntu(发现的最简单硬盘安装方法</a>）</h2>
-<div class="outline-text-2" id="text-59">
+<div id="outline-container-sec-61" class="outline-2">
+<h2 id="sec-61"><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=77&t=290844">使用wubi-hd在windows下不用光驱硬盘安装ubuntu(发现的最简单硬盘安装方法</a>）</h2>
+<div class="outline-text-2" id="text-61">
 <p>
 windows下使用wubi-hd硬盘安装ubuntu，适合ubuntu各个版本包括8.04,8.10,9.04,9.10,10.04以及衍生版等
 </p>
@@ -3021,9 +3072,9 @@ D盘空闲5G以上,建议使用NTFS分区，磁盘标识使用英文
 
 
 
-<div id="outline-container-sec-60" class="outline-2">
-<h2 id="sec-60">add-apt-repository</h2>
-<div class="outline-text-2" id="text-60">
+<div id="outline-container-sec-62" class="outline-2">
+<h2 id="sec-62">add-apt-repository</h2>
+<div class="outline-text-2" id="text-62">
 <p>
 Step 1: On the PPA's overview page, look for the heading that reads Adding this PPA to your system. Make a note of the PPA's location, which looks like:
 </p>
@@ -3046,9 +3097,9 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 </div>
 </div>
 
-<div id="outline-container-sec-61" class="outline-2">
-<h2 id="sec-61">Setup script</h2>
-<div class="outline-text-2" id="text-61">
+<div id="outline-container-sec-63" class="outline-2">
+<h2 id="sec-63">Setup script</h2>
+<div class="outline-text-2" id="text-63">
 <p>
 &lt; include file="~/ideas/bin/myinstall" markup="#+BEGIN_SRC "&gt;
 </p>
@@ -3056,9 +3107,9 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 </div>
 
 
-<div id="outline-container-sec-62" class="outline-2">
-<h2 id="sec-62">IPv6</h2>
-<div class="outline-text-2" id="text-62">
+<div id="outline-container-sec-64" class="outline-2">
+<h2 id="sec-64">IPv6</h2>
+<div class="outline-text-2" id="text-64">
 <p>
 &lt;  include file="/home/will/ideas/Muse/tools/ipaddress.txt" markup="#+BEGIN_SRC " &gt;
 </p>
@@ -3066,9 +3117,9 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 </div>
 
 
-<div id="outline-container-sec-63" class="outline-2">
-<h2 id="sec-63">Printer</h2>
-<div class="outline-text-2" id="text-63">
+<div id="outline-container-sec-65" class="outline-2">
+<h2 id="sec-65">Printer</h2>
+<div class="outline-text-2" id="text-65">
 <p>
 <a href="http://w3.tap.ibm.com/w3ki03/display/linuxportal/Open+Client+Linux+Global+Printing+Guide">http://w3.tap.ibm.com/w3ki03/display/linuxportal/Open+Client+Linux+Global+Printing+Guide</a>
 </p>
@@ -3076,12 +3127,12 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 </div>
 
 
-<div id="outline-container-sec-64" class="outline-2">
-<h2 id="sec-64">AIX</h2>
-<div class="outline-text-2" id="text-64">
-</div><div id="outline-container-sec-64-1" class="outline-3">
-<h3 id="sec-64-1">要确定您安装的 AIX 的级别，请运行以下命令：</h3>
-<div class="outline-text-3" id="text-64-1">
+<div id="outline-container-sec-66" class="outline-2">
+<h2 id="sec-66">AIX</h2>
+<div class="outline-text-2" id="text-66">
+</div><div id="outline-container-sec-66-1" class="outline-3">
+<h3 id="sec-66-1">要确定您安装的 AIX 的级别，请运行以下命令：</h3>
+<div class="outline-text-3" id="text-66-1">
 <p>
 或
 </p>
@@ -3111,9 +3162,9 @@ Replace ppa:user/ppa-name with the PPA's location that you noted above.
 </div>
 </div>
 
-<div id="outline-container-sec-64-2" class="outline-3">
-<h3 id="sec-64-2">wget</h3>
-<div class="outline-text-3" id="text-64-2">
+<div id="outline-container-sec-66-2" class="outline-3">
+<h3 id="sec-66-2">wget</h3>
+<div class="outline-text-3" id="text-66-2">
 <p>
 <a href="http://computer-refuge.org/classiccmp/aixpdslib/pub/wget/RISC/5.3/exec/">http://computer-refuge.org/classiccmp/aixpdslib/pub/wget/RISC/5.3/exec/</a>
 </p>
@@ -3133,9 +3184,9 @@ gzip -dc  grep.2.5.1.tar.Z | tar -xvf -
 </div>
 </div>
 
-<div id="outline-container-sec-65" class="outline-2">
-<h2 id="sec-65">Remote run ssh</h2>
-<div class="outline-text-2" id="text-65">
+<div id="outline-container-sec-67" class="outline-2">
+<h2 id="sec-67">Remote run ssh</h2>
+<div class="outline-text-2" id="text-67">
 <p>
 ssh -l changwei etlbdswws01.etl.ibm.com  "wc -l /web/quotelogtool/src "
 </p>
@@ -3158,9 +3209,9 @@ scp id_rsa.pub changwei@etlbdswws01.etl.ibm.com:/home/changwei/.ssh/authorized_k
 </div>
 </div>
 
-<div id="outline-container-sec-66" class="outline-2">
-<h2 id="sec-66">FreeNX --- faster vnc</h2>
-<div class="outline-text-2" id="text-66">
+<div id="outline-container-sec-68" class="outline-2">
+<h2 id="sec-68">FreeNX --- faster vnc</h2>
+<div class="outline-text-2" id="text-68">
 <p>
 <a href="https://help.ubuntu.com/community/FreeNX">https://help.ubuntu.com/community/FreeNX</a>
 </p>
@@ -3191,9 +3242,9 @@ sudo /usr/lib/nx/nxsetup --install
 
 
 
-<div id="outline-container-sec-67" class="outline-2">
-<h2 id="sec-67">E: Sub-process /usr/bin/dpkg returned an error code (1)</h2>
-<div class="outline-text-2" id="text-67">
+<div id="outline-container-sec-69" class="outline-2">
+<h2 id="sec-69">E: Sub-process /usr/bin/dpkg returned an error code (1)</h2>
+<div class="outline-text-2" id="text-69">
 <p>
 此时可以这样解决：
 cd /var/lib/dpkg
@@ -3206,9 +3257,9 @@ sudo apt-get --reinstall install ttf-dustin khangman kdeedu kde
 </div>
 
 
-<div id="outline-container-sec-68" class="outline-2">
-<h2 id="sec-68">A copy of the C library was found in an unexpected directory:</h2>
-<div class="outline-text-2" id="text-68">
+<div id="outline-container-sec-70" class="outline-2">
+<h2 id="sec-70">A copy of the C library was found in an unexpected directory:</h2>
+<div class="outline-text-2" id="text-70">
 <p>
   '/lib/i386-linux-gnu/libm-2.13.so'
 It is not safe to upgrade the C library in this situation;
@@ -3243,9 +3294,9 @@ sudo cp /tmp/lib/libpthread.so.0 .
 </div>
 
 
-<div id="outline-container-sec-69" class="outline-2">
-<h2 id="sec-69">Notes setup</h2>
-<div class="outline-text-2" id="text-69">
+<div id="outline-container-sec-71" class="outline-2">
+<h2 id="sec-71">Notes setup</h2>
+<div class="outline-text-2" id="text-71">
 <p>
 gedit ~/.local/share/applications/mimeapps.list
 </p>
@@ -3271,12 +3322,12 @@ Exec='/opt/ibm/lotus/notes/notes' %U
 </div>
 
 
-<div id="outline-container-sec-70" class="outline-2">
-<h2 id="sec-70">RSA</h2>
-<div class="outline-text-2" id="text-70">
-</div><div id="outline-container-sec-70-1" class="outline-3">
-<h3 id="sec-70-1">Can't find libstdc++</h3>
-<div class="outline-text-3" id="text-70-1">
+<div id="outline-container-sec-72" class="outline-2">
+<h2 id="sec-72">RSA</h2>
+<div class="outline-text-2" id="text-72">
+</div><div id="outline-container-sec-72-1" class="outline-3">
+<h3 id="sec-72-1">Can't find libstdc++</h3>
+<div class="outline-text-3" id="text-72-1">
 <p>
 <a href="http://ibmforums.ibm.com/forums/thread.jspa?threadID=577740&tstart=100">http://ibmforums.ibm.com/forums/thread.jspa?threadID=577740&tstart=100</a>
 </p>
@@ -3303,9 +3354,9 @@ sudo ln -s ../lib/i386-linux-gnu/libstdc++.so.6 .
 </div>
 
 
-<div id="outline-container-sec-71" class="outline-2">
-<h2 id="sec-71">Mount</h2>
-<div class="outline-text-2" id="text-71">
+<div id="outline-container-sec-73" class="outline-2">
+<h2 id="sec-73">Mount</h2>
+<div class="outline-text-2" id="text-73">
 <pre class="example">
 will@will-ThinkPad-T420:/media$ cat /etc/fstab
 # /etc/fstab: static file system information.
@@ -3326,9 +3377,9 @@ UUID=4305604E4A5B9CB8 /media/win7               ntfs    errors=remount-ro,auto,e
 </div>
 </div>
 
-<div id="outline-container-sec-72" class="outline-2">
-<h2 id="sec-72">Fedaro</h2>
-<div class="outline-text-2" id="text-72">
+<div id="outline-container-sec-74" class="outline-2">
+<h2 id="sec-74">Fedaro</h2>
+<div class="outline-text-2" id="text-74">
 <p>
 <a href="https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/(optional)%20Add%20additional%20repositories">https://w3-connections.ibm.com/wikis/home?lang=en_US#/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/(optional)%20Add%20additional%20repositories</a>
 </p>
@@ -3351,27 +3402,27 @@ sudo yum install mercurial.x86_6 emacs-mercurial-el.x86_64 aspell aspell-en
 </pre>
 </div>
 
-<div id="outline-container-sec-72-1" class="outline-3">
-<h3 id="sec-72-1">Flash</h3>
-<div class="outline-text-3" id="text-72-1">
+<div id="outline-container-sec-74-1" class="outline-3">
+<h3 id="sec-74-1">Flash</h3>
+<div class="outline-text-3" id="text-74-1">
 <p>
 sudo yum install gnash-plugin.x86_64
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-72-2" class="outline-3">
-<h3 id="sec-72-2">Input method in notes or sametime</h3>
-<div class="outline-text-3" id="text-72-2">
+<div id="outline-container-sec-74-2" class="outline-3">
+<h3 id="sec-74-2">Input method in notes or sametime</h3>
+<div class="outline-text-3" id="text-74-2">
 <p>
 sudo yum install ibus-gtk2.i686
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-72-3" class="outline-3">
-<h3 id="sec-72-3">DB2</h3>
-<div class="outline-text-3" id="text-72-3">
+<div id="outline-container-sec-74-3" class="outline-3">
+<h3 id="sec-74-3">DB2</h3>
+<div class="outline-text-3" id="text-74-3">
 <p>
 IBM DB2 Enterprise Server Edition 9.7 for Linux® on AMD64 and Intel® EM64T systems (x64) English (CZ19NEN)
 </p>
@@ -3380,9 +3431,9 @@ IBM DB2 Enterprise Server Edition 9.7 for Linux® on AMD64 and Intel® EM64T sys
 
 
 
-<div id="outline-container-sec-72-4" class="outline-3">
-<h3 id="sec-72-4">美化</h3>
-<div class="outline-text-3" id="text-72-4">
+<div id="outline-container-sec-74-4" class="outline-3">
+<h3 id="sec-74-4">美化</h3>
+<div class="outline-text-3" id="text-74-4">
 <p>
 sudo rpm -Uvh <a href="http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm">http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm</a>
 sudo yum install freetype-infinality fontconfig-infinality
@@ -3408,9 +3459,9 @@ USE_STYLE="OSX"
 </div>
 </div>
 
-<div id="outline-container-sec-72-5" class="outline-3">
-<h3 id="sec-72-5">Installation</h3>
-<div class="outline-text-3" id="text-72-5">
+<div id="outline-container-sec-74-5" class="outline-3">
+<h3 id="sec-74-5">Installation</h3>
+<div class="outline-text-3" id="text-74-5">
 <p>
 <a href="http://docs.fedoraproject.org/en-US/Fedora/17/html/Installation_Guide/pt-install-info-x86.html">http://docs.fedoraproject.org/en-US/Fedora/17/html/Installation_Guide/pt-install-info-x86.html</a>
 </p>
@@ -3428,9 +3479,9 @@ select a Fedora Live ISO file from the drop-down menu that LiveUSB Creator prese
 </div>
 </div>
 
-<div id="outline-container-sec-72-6" class="outline-3">
-<h3 id="sec-72-6">Fix sudo issue</h3>
-<div class="outline-text-3" id="text-72-6">
+<div id="outline-container-sec-74-6" class="outline-3">
+<h3 id="sec-74-6">Fix sudo issue</h3>
+<div class="outline-text-3" id="text-74-6">
 <p>
 reboot and login recovery mod
 </p>
@@ -3459,9 +3510,9 @@ chmod 440 /etc/sudoers
 </div>
 </div>
 
-<div id="outline-container-sec-72-7" class="outline-3">
-<h3 id="sec-72-7">Updgrad</h3>
-<div class="outline-text-3" id="text-72-7">
+<div id="outline-container-sec-74-7" class="outline-3">
+<h3 id="sec-74-7">Updgrad</h3>
+<div class="outline-text-3" id="text-74-7">
 <p>
 #注意操作前记得备份数据噢。
 </p>
@@ -3509,9 +3560,9 @@ upgrade 完成后，reboot 一下，That`s all。
 </div>
 
 
-<div id="outline-container-sec-72-8" class="outline-3">
-<h3 id="sec-72-8">Upgrade with fedup</h3>
-<div class="outline-text-3" id="text-72-8">
+<div id="outline-container-sec-74-8" class="outline-3">
+<h3 id="sec-74-8">Upgrade with fedup</h3>
+<div class="outline-text-3" id="text-74-8">
 <p>
 sudo fedup-cli --network 19 --instrepo <a href="http://alt.fedoraproject.org/pub/fedora/linux/development/19/x86_64/os/">http://alt.fedoraproject.org/pub/fedora/linux/development/19/x86_64/os/</a>
 </p>
@@ -3548,14 +3599,14 @@ sudo package-cleanup --orphans &gt;/home/will/backup/f19upgrade.sh
 </div>
 
 
-<div id="outline-container-sec-72-9" class="outline-3">
-<h3 id="sec-72-9">RTC 3.0 p2 install</h3>
+<div id="outline-container-sec-74-9" class="outline-3">
+<h3 id="sec-74-9">RTC 3.0 p2 install</h3>
 </div>
 
 
-<div id="outline-container-sec-72-10" class="outline-3">
-<h3 id="sec-72-10">在Fedora14下的latex+CJK中文安装</h3>
-<div class="outline-text-3" id="text-72-10">
+<div id="outline-container-sec-74-10" class="outline-3">
+<h3 id="sec-74-10">在Fedora14下的latex+CJK中文安装</h3>
+<div class="outline-text-3" id="text-74-10">
 <p>
 <a href="http://hi.baidu.com/w176177082/blog/item/e5b874345bad9659241f1402.html">http://hi.baidu.com/w176177082/blog/item/e5b874345bad9659241f1402.html</a>
 </p>
@@ -3603,9 +3654,9 @@ Url：<a href="http://bj.soulinfo.com/~hugang/tex/tex2007/YueWang-zhfonts-final_
 </div>
 
 
-<div id="outline-container-sec-73" class="outline-2">
-<h2 id="sec-73">FTP setup</h2>
-<div class="outline-text-2" id="text-73">
+<div id="outline-container-sec-75" class="outline-2">
+<h2 id="sec-75">FTP setup</h2>
+<div class="outline-text-2" id="text-75">
 <hr  />
 
 <p>
@@ -3638,9 +3689,9 @@ LDAPGenerateHomedirPrefixNoUsername on
 </p>
 </div>
 
-<div id="outline-container-sec-73-1" class="outline-3">
-<h3 id="sec-73-1">Reference</h3>
-<div class="outline-text-3" id="text-73-1">
+<div id="outline-container-sec-75-1" class="outline-3">
+<h3 id="sec-75-1">Reference</h3>
+<div class="outline-text-3" id="text-75-1">
 <p>
 <a href="http://www.worldhello.net/2010/06/29/1384.html">LDAP 做为fpt认证源</a>
 </p>
@@ -3708,9 +3759,9 @@ AuthGroupFile /etc/ftpd.group
 </div>
 
 
-<div id="outline-container-sec-74" class="outline-2">
-<h2 id="sec-74">Download Linxu setup image</h2>
-<div class="outline-text-2" id="text-74">
+<div id="outline-container-sec-76" class="outline-2">
+<h2 id="sec-76">Download Linxu setup image</h2>
+<div class="outline-text-2" id="text-76">
 <ol class="org-ol">
 <li><a href="http://software.linux.ibm.com/pub/">http://software.linux.ibm.com/pub/</a>
 </li>
@@ -3719,18 +3770,18 @@ AuthGroupFile /etc/ftpd.group
 </div>
 
 
-<div id="outline-container-sec-75" class="outline-2">
-<h2 id="sec-75">SSH</h2>
-<div class="outline-text-2" id="text-75">
+<div id="outline-container-sec-77" class="outline-2">
+<h2 id="sec-77">SSH</h2>
+<div class="outline-text-2" id="text-77">
 <p>
 <a href="http://www.jonathanmoeller.com/screed/?p=3606">http://www.jonathanmoeller.com/screed/?p=3606</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-76" class="outline-2">
-<h2 id="sec-76">xulrunner</h2>
-<div class="outline-text-2" id="text-76">
+<div id="outline-container-sec-78" class="outline-2">
+<h2 id="sec-78">xulrunner</h2>
+<div class="outline-text-2" id="text-78">
 <p>
 <a href="https://w3-connections.ibm.com/forums/html/topic?id=a0cb48ab-d7a7-4354-9e3b-e1d03d5c6a45#172d9087-2454-4031-a17a-8d08aa8eb74d">https://w3-connections.ibm.com/forums/html/topic?id=a0cb48ab-d7a7-4354-9e3b-e1d03d5c6a45#172d9087-2454-4031-a17a-8d08aa8eb74d</a>
 </p>
@@ -3794,9 +3845,9 @@ export LD_PRELOAD=/usr/lib64/libfreetype.so.6
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-77" class="outline-2">
-<h2 id="sec-77"><a href="http://linuxtoy.org/archives/a-tour-through-open-source-creative-tools.html">开源创作工具一览</a></h2>
-<div class="outline-text-2" id="text-77">
+<div id="outline-container-sec-79" class="outline-2">
+<h2 id="sec-79"><a href="http://linuxtoy.org/archives/a-tour-through-open-source-creative-tools.html">开源创作工具一览</a></h2>
+<div class="outline-text-2" id="text-79">
 <p>
 来自 Red Hat 的 Máirín Duffy 在前段时间的峰会上快速演示了大量 Linux 平台上的众多创作工具。
 </p>
@@ -4029,9 +4080,9 @@ ok
 </div>
 
 
-<div id="outline-container-sec-78" class="outline-2">
-<h2 id="sec-78">fedora 中文输入法 REMI</h2>
-<div class="outline-text-2" id="text-78">
+<div id="outline-container-sec-80" class="outline-2">
+<h2 id="sec-80">fedora 中文输入法 REMI</h2>
+<div class="outline-text-2" id="text-80">
 <pre class="example">
 $ sudo yum install cmake gtest-devel boost-devel yaml-cpp-devel kyotocabinet-devel opencc-devel ibus-devel libnotify-devel zlib-devel gcc-c++ fcitx fcitx-devel glog-devel.x86_64
 $ wget https://rimeime.googlecode.com/files/librime-0.9.4.tar.gz
@@ -4047,12 +4098,12 @@ $ ./install.sh
 </div>
 </div>
 
-<div id="outline-container-sec-79" class="outline-2">
-<h2 id="sec-79">Apahce</h2>
-<div class="outline-text-2" id="text-79">
-</div><div id="outline-container-sec-79-1" class="outline-3">
-<h3 id="sec-79-1">Ubuntu</h3>
-<div class="outline-text-3" id="text-79-1">
+<div id="outline-container-sec-81" class="outline-2">
+<h2 id="sec-81">Apahce</h2>
+<div class="outline-text-2" id="text-81">
+</div><div id="outline-container-sec-81-1" class="outline-3">
+<h3 id="sec-81-1">Ubuntu</h3>
+<div class="outline-text-3" id="text-81-1">
 <p>
 sudo apt-get install apache2
 </p>
@@ -4068,18 +4119,18 @@ sudo nano /etc/apache2/sites-available/default
 </div>
 </div>
 
-<div id="outline-container-sec-80" class="outline-2">
-<h2 id="sec-80">Ubuntu backup iso</h2>
-<div class="outline-text-2" id="text-80">
+<div id="outline-container-sec-82" class="outline-2">
+<h2 id="sec-82">Ubuntu backup iso</h2>
+<div class="outline-text-2" id="text-82">
 <p>
 <a href="http://www.geekconnection.org/remastersys/ubuntu.html">http://www.geekconnection.org/remastersys/ubuntu.html</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-81" class="outline-2">
-<h2 id="sec-81">Awesome</h2>
-<div class="outline-text-2" id="text-81">
+<div id="outline-container-sec-83" class="outline-2">
+<h2 id="sec-83">Awesome</h2>
+<div class="outline-text-2" id="text-83">
 <p>
 <a href="http://blog.csdn.net/wearenoth/article/details/7489157">http://blog.csdn.net/wearenoth/article/details/7489157</a>
 </p>
@@ -4142,9 +4193,9 @@ WM_CLASS(STRING) = "zim", "Zim"
 </div>
 
 
-<div id="outline-container-sec-82" class="outline-2">
-<h2 id="sec-82">FDUP</h2>
-<div class="outline-text-2" id="text-82">
+<div id="outline-container-sec-84" class="outline-2">
+<h2 id="sec-84">FDUP</h2>
+<div class="outline-text-2" id="text-84">
 <ol class="org-ol">
 <li><a href="http://fedoraproject.org/wiki/html/Upgrading">http://fedoraproject.org/wiki/html/Upgrading</a>
 </li>
@@ -4156,9 +4207,9 @@ WM_CLASS(STRING) = "zim", "Zim"
 
 
 
-<div id="outline-container-sec-83" class="outline-2">
-<h2 id="sec-83">Chrome</h2>
-<div class="outline-text-2" id="text-83">
+<div id="outline-container-sec-85" class="outline-2">
+<h2 id="sec-85">Chrome</h2>
+<div class="outline-text-2" id="text-85">
 <p>
 [fedora-chromium]
 name=Chromium web browser and deps
@@ -4178,9 +4229,9 @@ gpgcheck=0
 </div>
 
 
-<div id="outline-container-sec-84" class="outline-2">
-<h2 id="sec-84"><a href="http://ocfedora.hursley.ibm.com/">Open Client Fedora Community Repositories</a></h2>
-<div class="outline-text-2" id="text-84">
+<div id="outline-container-sec-86" class="outline-2">
+<h2 id="sec-86"><a href="http://ocfedora.hursley.ibm.com/">Open Client Fedora Community Repositories</a></h2>
+<div class="outline-text-2" id="text-86">
 <p>
 *i3wm
 </p>
@@ -4191,9 +4242,9 @@ gpgcheck=0
 </div>
 </div>
 
-<div id="outline-container-sec-85" class="outline-2">
-<h2 id="sec-85">Stop firewalld in fedora 18</h2>
-<div class="outline-text-2" id="text-85">
+<div id="outline-container-sec-87" class="outline-2">
+<h2 id="sec-87">Stop firewalld in fedora 18</h2>
+<div class="outline-text-2" id="text-87">
 <p>
 sudo systemctl stop firewalld.service
 </p>
@@ -4204,9 +4255,9 @@ sudo systemctl status firewalld.service
 </div>
 </div>
 
-<div id="outline-container-sec-86" class="outline-2">
-<h2 id="sec-86">WIKI热点</h2>
-<div class="outline-text-2" id="text-86">
+<div id="outline-container-sec-88" class="outline-2">
+<h2 id="sec-88">WIKI热点</h2>
+<div class="outline-text-2" id="text-88">
 <p>
 <a href="http://blog.csdn.net/qihuanfengyun/article/details/6790990">http://blog.csdn.net/qihuanfengyun/article/details/6790990</a>
 <a href="http://www.cnblogs.com/heart-runner/archive/2011/12/14/2287370.html">http://www.cnblogs.com/heart-runner/archive/2011/12/14/2287370.html</a>
@@ -4214,9 +4265,9 @@ sudo systemctl status firewalld.service
 </div>
 </div>
 
-<div id="outline-container-sec-87" class="outline-2">
-<h2 id="sec-87"><a href="https://w3-connections.ibm.com/wikis/home?lang=zh_CN#!/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/Installed%20IBM%20Notes%209%20-%20SUT%20doesn't%20work">Installed IBM Notes 9 - SUT doesn't work</a></h2>
-<div class="outline-text-2" id="text-87">
+<div id="outline-container-sec-89" class="outline-2">
+<h2 id="sec-89"><a href="https://w3-connections.ibm.com/wikis/home?lang=zh_CN#!/wiki/html/W693fcc3e568b_4f4f_9b2c_30a585ebb3d3/page/Installed%20IBM%20Notes%209%20-%20SUT%20doesn't%20work">Installed IBM Notes 9 - SUT doesn't work</a></h2>
+<div class="outline-text-2" id="text-89">
 <p>
 Problem
 After having installed IBM Notes V9 Gold (Code Drop Link) and installing the IBM template (IBM Template), the SUT functionality does not work anymore.
@@ -4237,18 +4288,18 @@ IBM Notes 9 Reference
 </div>
 
 
-<div id="outline-container-sec-88" class="outline-2">
-<h2 id="sec-88">gnome plugin</h2>
-<div class="outline-text-2" id="text-88">
+<div id="outline-container-sec-90" class="outline-2">
+<h2 id="sec-90">gnome plugin</h2>
+<div class="outline-text-2" id="text-90">
 <p>
 gnome-tweak-tool
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-89" class="outline-2">
-<h2 id="sec-89">Java</h2>
-<div class="outline-text-2" id="text-89">
+<div id="outline-container-sec-91" class="outline-2">
+<h2 id="sec-91">Java</h2>
+<div class="outline-text-2" id="text-91">
 <p>
 <a href="http://www.if-not-true-then-false.com/2010/install-sun-oracle-java-jdk-jre-6-on-fedora-centos-red-hat-rhel/">http://www.if-not-true-then-false.com/2010/install-sun-oracle-java-jdk-jre-6-on-fedora-centos-red-hat-rhel/</a>
 </p>
@@ -4259,9 +4310,9 @@ gnome-tweak-tool
 </div>
 </div>
 
-<div id="outline-container-sec-90" class="outline-2">
-<h2 id="sec-90">Add user</h2>
-<div class="outline-text-2" id="text-90">
+<div id="outline-container-sec-92" class="outline-2">
+<h2 id="sec-92">Add user</h2>
+<div class="outline-text-2" id="text-92">
 <p>
 useradd -groot ead
 </p>
@@ -4269,9 +4320,9 @@ useradd -groot ead
 </div>
 
 
-<div id="outline-container-sec-91" class="outline-2">
-<h2 id="sec-91">字体美化</h2>
-<div class="outline-text-2" id="text-91">
+<div id="outline-container-sec-93" class="outline-2">
+<h2 id="sec-93">字体美化</h2>
+<div class="outline-text-2" id="text-93">
 <p>
 第一步我就不多说了。我说要说的就是丑的字体AR UMING系列。由于这一系列的字体里面含有中文，且名字是A开头的，排在前面。所以系统里面的中文字用的就是这个字体。只要把这个字体删除就没事了。
 删除方法：
@@ -4284,12 +4335,12 @@ useradd -groot ead
 </div>
 
 
-<div id="outline-container-sec-92" class="outline-2">
-<h2 id="sec-92">VM Setup</h2>
-<div class="outline-text-2" id="text-92">
-</div><div id="outline-container-sec-92-1" class="outline-3">
-<h3 id="sec-92-1">Apahce</h3>
-<div class="outline-text-3" id="text-92-1">
+<div id="outline-container-sec-94" class="outline-2">
+<h2 id="sec-94">VM Setup</h2>
+<div class="outline-text-2" id="text-94">
+</div><div id="outline-container-sec-94-1" class="outline-3">
+<h3 id="sec-94-1">Apahce</h3>
+<div class="outline-text-3" id="text-94-1">
 <pre class="example">
 apachectl start
 
@@ -4303,9 +4354,9 @@ repositories
 </div>
 </div>
 
-<div id="outline-container-sec-92-2" class="outline-3">
-<h3 id="sec-92-2">FTP</h3>
-<div class="outline-text-3" id="text-92-2">
+<div id="outline-container-sec-94-2" class="outline-3">
+<h3 id="sec-94-2">FTP</h3>
+<div class="outline-text-3" id="text-94-2">
 <p>
 edit /etc/proftpd.conf
 </p>
@@ -4332,13 +4383,13 @@ LDAPGenerateHomedirPrefixNoUsername on
 </div>
 </div>
 
-<div id="outline-container-sec-92-3" class="outline-3">
-<h3 id="sec-92-3"><a href="https://pic.dhe.ibm.com/infocenter/cchelp/v7r1m0/index.jsp?topic=/com.ibm.rational.clearcase.cc_ms_install.doc/topics/c_packaging_intro_rsar.htm">IBM Packaging Utility</a></h3>
+<div id="outline-container-sec-94-3" class="outline-3">
+<h3 id="sec-94-3"><a href="https://pic.dhe.ibm.com/infocenter/cchelp/v7r1m0/index.jsp?topic=/com.ibm.rational.clearcase.cc_ms_install.doc/topics/c_packaging_intro_rsar.htm">IBM Packaging Utility</a></h3>
 </div>
 
-<div id="outline-container-sec-92-4" class="outline-3">
-<h3 id="sec-92-4">repository</h3>
-<div class="outline-text-3" id="text-92-4">
+<div id="outline-container-sec-94-4" class="outline-3">
+<h3 id="sec-94-4">repository</h3>
+<div class="outline-text-3" id="text-94-4">
 <p>
 wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-40.el6.centos.noarch.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-40.el6.centos.noarch.rpm</a>
 wget <a href="http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm">http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm</a>
@@ -4420,12 +4471,12 @@ yum localinstall --nogpgcheck <a href="http://download1.rpmfusion.org/free/el/up
 </div>
 
 
-<div id="outline-container-sec-92-5" class="outline-3">
-<h3 id="sec-92-5">VNC</h3>
-<div class="outline-text-3" id="text-92-5">
-</div><div id="outline-container-sec-92-5-1" class="outline-4">
-<h4 id="sec-92-5-1">Install</h4>
-<div class="outline-text-4" id="text-92-5-1">
+<div id="outline-container-sec-94-5" class="outline-3">
+<h3 id="sec-94-5">VNC</h3>
+<div class="outline-text-3" id="text-94-5">
+</div><div id="outline-container-sec-94-5-1" class="outline-4">
+<h4 id="sec-94-5-1">Install</h4>
+<div class="outline-text-4" id="text-94-5-1">
 <p>
 <a href="http://ithelpblog.com/os/linux/redhat/centos-redhat/howto-install-and-configure-vnc-server-on-centos-6-3-or-redhat-rhel/">http://ithelpblog.com/os/linux/redhat/centos-redhat/howto-install-and-configure-vnc-server-on-centos-6-3-or-redhat-rhel/</a>
 </p>
@@ -4468,9 +4519,9 @@ VNCSERVERARGS<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a><
 </div>
 
 
-<div id="outline-container-sec-92-5-2" class="outline-4">
-<h4 id="sec-92-5-2">Setup</h4>
-<div class="outline-text-4" id="text-92-5-2">
+<div id="outline-container-sec-94-5-2" class="outline-4">
+<h4 id="sec-94-5-2">Setup</h4>
+<div class="outline-text-4" id="text-94-5-2">
 <ol class="org-ol">
 <li>sudo apt-get install vnc4server # <a href="http://www.walkernews.net/2007/07/05/how-to-setup-linux-vnc-server/">http://www.walkernews.net/2007/07/05/how-to-setup-linux-vnc-server/</a>
 </li>
@@ -4542,9 +4593,9 @@ VNCSERVERARGS<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1
 
 
 
-<div id="outline-container-sec-93" class="outline-2">
-<h2 id="sec-93">Remove notes Error in PREUN scriptlet \u2026 file was supposed to be removed but is not</h2>
-<div class="outline-text-2" id="text-93">
+<div id="outline-container-sec-95" class="outline-2">
+<h2 id="sec-95">Remove notes Error in PREUN scriptlet \u2026 file was supposed to be removed but is not</h2>
+<div class="outline-text-2" id="text-95">
 <p>
 To fix the problem run:
 </p>
@@ -4560,9 +4611,9 @@ You can add more than one package file to the end of the command.
 </div>
 
 
-<div id="outline-container-sec-94" class="outline-2">
-<h2 id="sec-94">Redhat 6 Chrome</h2>
-<div class="outline-text-2" id="text-94">
+<div id="outline-container-sec-96" class="outline-2">
+<h2 id="sec-96">Redhat 6 Chrome</h2>
+<div class="outline-text-2" id="text-96">
 <p>
 <a href="http://jfbcb.com/article/detail/how-to-install-chrome-latest-version-on-centos64/">http://jfbcb.com/article/detail/how-to-install-chrome-latest-version-on-centos64/</a>
 </p>
@@ -4571,9 +4622,9 @@ You can add more than one package file to the end of the command.
 
 
 
-<div id="outline-container-sec-95" class="outline-2">
-<h2 id="sec-95">is not in the sudoers file</h2>
-<div class="outline-text-2" id="text-95">
+<div id="outline-container-sec-97" class="outline-2">
+<h2 id="sec-97">is not in the sudoers file</h2>
+<div class="outline-text-2" id="text-97">
 <p>
 $visudo
 your_user_name ALL=(ALL)  ALL
@@ -4581,9 +4632,9 @@ your_user_name ALL=(ALL)  ALL
 </div>
 </div>
 
-<div id="outline-container-sec-96" class="outline-2">
-<h2 id="sec-96">查看Linux下端口被哪个进程占用</h2>
-<div class="outline-text-2" id="text-96">
+<div id="outline-container-sec-98" class="outline-2">
+<h2 id="sec-98">查看Linux下端口被哪个进程占用</h2>
+<div class="outline-text-2" id="text-98">
 <p>
 今天配置mfs服务器时遇到问题，发现9425端口被占用，为了查明是哪个进程在用此端口，可用如下命令：
 lsof -i:9425
@@ -4594,9 +4645,9 @@ kill -9 PID  （其中PID就写要杀死进程的具体进程号即可）
 </div>
 
 
-<div id="outline-container-sec-97" class="outline-2">
-<h2 id="sec-97">Setup Java  in Fedora</h2>
-<div class="outline-text-2" id="text-97">
+<div id="outline-container-sec-99" class="outline-2">
+<h2 id="sec-99">Setup Java  in Fedora</h2>
+<div class="outline-text-2" id="text-99">
 <pre class="example">
 1.到oracle官网下载
 jdk-7u4-linux-x64.rpm
@@ -4625,9 +4676,9 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 
 
-<div id="outline-container-sec-98" class="outline-2">
-<h2 id="sec-98">centos 打开端口</h2>
-<div class="outline-text-2" id="text-98">
+<div id="outline-container-sec-100" class="outline-2">
+<h2 id="sec-100">centos 打开端口</h2>
+<div class="outline-text-2" id="text-100">
 <p>
 #关闭防火墙
 /etc/init.d/iptables stop
@@ -4651,9 +4702,9 @@ service iptables stop # 停止服务
 </div>
 </div>
 
-<div id="outline-container-sec-99" class="outline-2">
-<h2 id="sec-99">Tomcat 修改root context</h2>
-<div class="outline-text-2" id="text-99">
+<div id="outline-container-sec-101" class="outline-2">
+<h2 id="sec-101">Tomcat 修改root context</h2>
+<div class="outline-text-2" id="text-101">
 <p>
 /confg/server.xml
 </p>
@@ -4670,12 +4721,12 @@ service iptables stop # 停止服务
 </div>
 
 
-<div id="outline-container-sec-100" class="outline-2">
-<h2 id="sec-100"><a href="http://www.cnblogs.com/zhuque/archive/2012/11/03/2763351.html">安装PHP环境</a></h2>
-<div class="outline-text-2" id="text-100">
-</div><div id="outline-container-sec-100-1" class="outline-3">
-<h3 id="sec-100-1">获得操作系统基本信息</h3>
-<div class="outline-text-3" id="text-100-1">
+<div id="outline-container-sec-102" class="outline-2">
+<h2 id="sec-102"><a href="http://www.cnblogs.com/zhuque/archive/2012/11/03/2763351.html">安装PHP环境</a></h2>
+<div class="outline-text-2" id="text-102">
+</div><div id="outline-container-sec-102-1" class="outline-3">
+<h3 id="sec-102-1">获得操作系统基本信息</h3>
+<div class="outline-text-3" id="text-102-1">
 <p>
 查看端口号使用
 </p>
@@ -4685,9 +4736,9 @@ netstat -tnl|grep 80
 </div>
 </div>
 
-<div id="outline-container-sec-100-2" class="outline-3">
-<h3 id="sec-100-2">下载</h3>
-<div class="outline-text-3" id="text-100-2">
+<div id="outline-container-sec-102-2" class="outline-3">
+<h3 id="sec-102-2">下载</h3>
+<div class="outline-text-3" id="text-102-2">
 <p>
 wget -c <a href="http://cn2.php.net/distributions/php-5.5.8.tar.gz">http://cn2.php.net/distributions/php-5.5.8.tar.gz</a>
 wget -c <a href="http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.7.tar.gz">http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.7.tar.gz</a>
@@ -4721,9 +4772,9 @@ scp pcre-8.34.zip jalimay@192.168.229.77:/usr/changwei
 </div>
 
 
-<div id="outline-container-sec-100-3" class="outline-3">
-<h3 id="sec-100-3">编译安装apache</h3>
-<div class="outline-text-3" id="text-100-3">
+<div id="outline-container-sec-102-3" class="outline-3">
+<h3 id="sec-102-3">编译安装apache</h3>
+<div class="outline-text-3" id="text-102-3">
 <pre class="example">
   [root@localhost bin]# tar -zxf apr-1.4.5.tar.gz
   [root@localhost apr-1.4.5]# ./configure --prefix=/usr/local/apr
@@ -4798,9 +4849,9 @@ make &amp;&amp; make install
 </div>
 </div>
 
-<div id="outline-container-sec-100-4" class="outline-3">
-<h3 id="sec-100-4">安装mysql</h3>
-<div class="outline-text-3" id="text-100-4">
+<div id="outline-container-sec-102-4" class="outline-3">
+<h3 id="sec-102-4">安装mysql</h3>
+<div class="outline-text-3" id="text-102-4">
 <p>
 rpm -ivh MySQL-client-5.6.15-1.el6.x86_64.rpm
 </p>
@@ -4817,9 +4868,9 @@ wget -c <a href="http://cdn.mysql.com/Downloads/MySQL-5.1/MySQL-server-community
 </div>
 </div>
 
-<div id="outline-container-sec-100-5" class="outline-3">
-<h3 id="sec-100-5">编译安装php</h3>
-<div class="outline-text-3" id="text-100-5">
+<div id="outline-container-sec-102-5" class="outline-3">
+<h3 id="sec-102-5">编译安装php</h3>
+<div class="outline-text-3" id="text-102-5">
 <pre class="example">
 find / -name mysql.h
 
@@ -4841,18 +4892,18 @@ cp php.ini-production /usr/local/lib/php.ini
 </div>
 
 
-<div id="outline-container-sec-100-6" class="outline-3">
-<h3 id="sec-100-6">配置apache使其支持php</h3>
-<div class="outline-text-3" id="text-100-6">
+<div id="outline-container-sec-102-6" class="outline-3">
+<h3 id="sec-102-6">配置apache使其支持php</h3>
+<div class="outline-text-3" id="text-102-6">
 <p>
 vi /etc/httpd/conf/httpd.conf
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-100-7" class="outline-3">
-<h3 id="sec-100-7">1、在LoadModule中添加：LoadModule php5_module     modules/libphp5.so</h3>
-<div class="outline-text-3" id="text-100-7">
+<div id="outline-container-sec-102-7" class="outline-3">
+<h3 id="sec-102-7">1、在LoadModule中添加：LoadModule php5_module     modules/libphp5.so</h3>
+<div class="outline-text-3" id="text-102-7">
 <p>
 2、在AddType application/x-gzip .gz .tgz下面添加：
 </p>
@@ -4897,9 +4948,9 @@ phpinfo();
 </div>
 </div>
 
-<div id="outline-container-sec-100-8" class="outline-3">
-<h3 id="sec-100-8"><a href="http://piwik.org/docs/installation/">安装 piwik</a></h3>
-<div class="outline-text-3" id="text-100-8">
+<div id="outline-container-sec-102-8" class="outline-3">
+<h3 id="sec-102-8"><a href="http://piwik.org/docs/installation/">安装 piwik</a></h3>
+<div class="outline-text-3" id="text-102-8">
 <pre class="example">
 wget http://builds.piwik.org/latest.zip
 
@@ -4915,9 +4966,9 @@ chmod -R 777 piwik
 
 
 
-<div id="outline-container-sec-101" class="outline-2">
-<h2 id="sec-101"><span class="done DONE">DONE</span> 在台式机上安装开发环境</h2>
-<div class="outline-text-2" id="text-101">
+<div id="outline-container-sec-103" class="outline-2">
+<h2 id="sec-103"><span class="done DONE">DONE</span> 在台式机上安装开发环境</h2>
+<div class="outline-text-2" id="text-103">
 <ul class="org-ul">
 <li>State "DONE"       from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-06 四 16:59]</span></span>
 </li>
@@ -4953,9 +5004,9 @@ http_proxy=http://127.0.0.1:8087 emacs &amp;
 </pre>
 </div>
 
-<div id="outline-container-sec-101-1" class="outline-3">
-<h3 id="sec-101-1">input method</h3>
-<div class="outline-text-3" id="text-101-1">
+<div id="outline-container-sec-103-1" class="outline-3">
+<h3 id="sec-103-1">input method</h3>
+<div class="outline-text-3" id="text-103-1">
 <ol class="org-ol">
 <li><a href="http://www.hiadmin.org/linux/fedora19-fcitx">http://www.hiadmin.org/linux/fedora19-fcitx</a>
 </li>
@@ -5003,13 +5054,13 @@ sudo mv fcitx-sogoupinyin.so /usr/lib64/fcitx/
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-101-2" class="outline-3">
-<h3 id="sec-101-2">Chrome</h3>
+<div id="outline-container-sec-103-2" class="outline-3">
+<h3 id="sec-103-2">Chrome</h3>
 </div>
 
-<div id="outline-container-sec-101-3" class="outline-3">
-<h3 id="sec-101-3">sudo无秘密</h3>
-<div class="outline-text-3" id="text-101-3">
+<div id="outline-container-sec-103-3" class="outline-3">
+<h3 id="sec-103-3">sudo无秘密</h3>
+<div class="outline-text-3" id="text-103-3">
 <p>
 sudo visudo
 </p>
@@ -5021,9 +5072,9 @@ sudo visudo
 </div>
 </div>
 
-<div id="outline-container-sec-101-4" class="outline-3">
-<h3 id="sec-101-4">lync</h3>
-<div class="outline-text-3" id="text-101-4">
+<div id="outline-container-sec-103-4" class="outline-3">
+<h3 id="sec-103-4">lync</h3>
+<div class="outline-text-3" id="text-103-4">
 <ul class="org-ul">
 <li><a href="http://fisil.com/linuxlync.html">http://fisil.com/linuxlync.html</a>
 </li>
@@ -5038,9 +5089,9 @@ sudo visudo
 </div>
 </div>
 
-<div id="outline-container-sec-102" class="outline-2">
-<h2 id="sec-102">Fedora 20 SSH</h2>
-<div class="outline-text-2" id="text-102">
+<div id="outline-container-sec-104" class="outline-2">
+<h2 id="sec-104">Fedora 20 SSH</h2>
+<div class="outline-text-2" id="text-104">
 <p>
 在红帽和centos下，一般安装完后会自带ssh，然后可以通过/etc/init.d/sshd start的方式运行，但是在Fedora 20下，系统改用了另外一套服务开启机制。
 </p>
@@ -5061,9 +5112,9 @@ systemctl start sshd.service
 </div>
 </div>
 
-<div id="outline-container-sec-103" class="outline-2">
-<h2 id="sec-103"><span class="todo SOMEDAY">SOMEDAY</span> Fedora 20 nginx</h2>
-<div class="outline-text-2" id="text-103">
+<div id="outline-container-sec-105" class="outline-2">
+<h2 id="sec-105"><span class="todo SOMEDAY">SOMEDAY</span> Fedora 20 nginx</h2>
+<div class="outline-text-2" id="text-105">
 <p>
 <a href="http://www.if-not-true-then-false.com/2011/install-nginx-php-fpm-on-fedora-centos-red-hat-rhel/">http://www.if-not-true-then-false.com/2011/install-nginx-php-fpm-on-fedora-centos-red-hat-rhel/</a>
 </p>
@@ -5087,9 +5138,9 @@ sudo gedit  /etc/nginx/nginx.conf &amp;
 </div>
 </div>
 
-<div id="outline-container-sec-104" class="outline-2">
-<h2 id="sec-104">brew</h2>
-<div class="outline-text-2" id="text-104">
+<div id="outline-container-sec-106" class="outline-2">
+<h2 id="sec-106">brew</h2>
+<div class="outline-text-2" id="text-106">
 <pre class="example">
 sudo yum groupinstall 'Development Tools' &amp;&amp; sudo yum install curl git ruby bzip2-devel curl-devel expat-devel ncurses-devel zlib-devel
 git clone https://github.com/Homebrew/linuxbrew.git ~/.linuxbrew
@@ -5108,18 +5159,18 @@ brew install $WHATEVER_YOU_WANT
 </div>
 </div>
 
-<div id="outline-container-sec-105" class="outline-2">
-<h2 id="sec-105">One of the configured repositories failed</h2>
-<div class="outline-text-2" id="text-105">
+<div id="outline-container-sec-107" class="outline-2">
+<h2 id="sec-107">One of the configured repositories failed</h2>
+<div class="outline-text-2" id="text-107">
 <p>
 use dnf instead of yum
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-106" class="outline-2">
-<h2 id="sec-106">boot usb</h2>
-<div class="outline-text-2" id="text-106">
+<div id="outline-container-sec-108" class="outline-2">
+<h2 id="sec-108">boot usb</h2>
+<div class="outline-text-2" id="text-108">
 <pre class="example">
 [will@localhost ~]$ sudo blkid
 /dev/sda1: UUID="79c1b8b4-7523-4804-bf77-8b825ec4ff4f" TYPE="ext4" PARTUUID="0009c1bd-01"
@@ -5135,9 +5186,9 @@ ubuntukylin-14.04-desktop-amd64.iso  unetbootin-linux-585
 </div>
 </div>
 
-<div id="outline-container-sec-107" class="outline-2">
-<h2 id="sec-107">在Ubuntu上安装开发环境</h2>
-<div class="outline-text-2" id="text-107">
+<div id="outline-container-sec-109" class="outline-2">
+<h2 id="sec-109">在Ubuntu上安装开发环境</h2>
+<div class="outline-text-2" id="text-109">
 <pre class="example">
 org.codehaus.plexus
 sudo apt-cache search lexus-interpolation
@@ -5147,18 +5198,18 @@ sudo apt-get install eclipse-subclipse-graph eclipse-wtp-webtools
 </div>
 </div>
 
-<div id="outline-container-sec-108" class="outline-2">
-<h2 id="sec-108">Ubuntu Kylin</h2>
-<div class="outline-text-2" id="text-108">
+<div id="outline-container-sec-110" class="outline-2">
+<h2 id="sec-110">Ubuntu Kylin</h2>
+<div class="outline-text-2" id="text-110">
 <ul class="org-ul">
 <li><a href="http://www.ubuntukylin.com/">http://www.ubuntukylin.com/</a>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-109" class="outline-2">
-<h2 id="sec-109">休眠</h2>
-<div class="outline-text-2" id="text-109">
+<div id="outline-container-sec-111" class="outline-2">
+<h2 id="sec-111">休眠</h2>
+<div class="outline-text-2" id="text-111">
 <ul class="org-ul">
 <li><a href="https://help.ubuntu.com/lts/ubuntu-help/power-hibernate.html">https://help.ubuntu.com/lts/ubuntu-help/power-hibernate.html</a>
 </li>
@@ -5176,9 +5227,9 @@ ResultActive=yes
 </div>
 
 
-<div id="outline-container-sec-110" class="outline-2">
-<h2 id="sec-110">给ubuntu 报 bug</h2>
-<div class="outline-text-2" id="text-110">
+<div id="outline-container-sec-112" class="outline-2">
+<h2 id="sec-112">给ubuntu 报 bug</h2>
+<div class="outline-text-2" id="text-112">
 <p>
 <a href="https://bugs.launchpad.net/ubuntukylin">https://bugs.launchpad.net/ubuntukylin</a></p>
 </div>
@@ -5199,7 +5250,7 @@ ResultActive=yes
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-06-05</span>
+        <span title="last modification date" class="post-info">2014-07-21</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a>, <a href="/tags/端口/">端口</a>, <a href="/tags/jdretail/">jdretail</a>, <a href="/tags/采销平台/">采销平台</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
