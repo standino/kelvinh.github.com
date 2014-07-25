@@ -248,6 +248,7 @@ svn co svn+ssh://servername/project
  git push -u new master
 
 ** [[http://blog.csdn.net/ithomer/article/details/7529841][Git 命令简短总结]]
+#+BEGIN_SRC 
 
 一、 Git 常用命令速查
 git branch 查看本地所有分支
@@ -319,6 +320,7 @@ git commit -m 'first commit'
 git remote add origin git@github.com:daixu/WebApp.git   增加一个远程服务器端
 上面的命令会增加URL地址为'git@github.com:daixu/WebApp.git'，名称为origin的远程服务器库，以后提交代码的时候只需要使用 origin别名即可
 
+#+END_SRC
 
 二、 Git 命令速查表
 

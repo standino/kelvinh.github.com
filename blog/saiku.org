@@ -330,3 +330,5 @@ That's it!
  - https://github.com/OSBI/saiku
  - http://ci.analytical-labs.com/
  - http://docs.analytical-labs.com/
+ - How to quickly add a date dimension to a Pentaho Mondrian OLAP cube http://www.freeportmetrics.com/devblog/2012/11/02/how-to-quickly-add-date-dimension-to-pentaho-mondrian-olap-cube/
+ - Mondrian 文档 http://mondrian.pentaho.com/documentation/schema.php#Time_dimensions
