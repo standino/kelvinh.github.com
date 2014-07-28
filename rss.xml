@@ -4,10 +4,31 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>四, 24  7月 2014 09:16:01 CST</pubDate>
-    <lastBuildDate>四, 24  7月 2014 09:16:01 CST</lastBuildDate>
+    <pubDate>一, 28  7月 2014 12:50:44 CST</pubDate>
+    <lastBuildDate>一, 28  7月 2014 12:50:44 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>基于saiku开发OLAP应用</title>
+      <link>http://standino.github.io./blog/2014/06/16/saiku</link>
+      <description>使用saiku开发OLAP系统</description>
+      <pubDate>2014-07-28</pubDate>
+      <guid>http://standino.github.io./blog/2014/06/16/saiku</guid>
+    </item>
+    <item>
+      <title>敏捷软件开发</title>
+      <link>http://standino.github.io/wiki/html/scrum</link>
+      <description>敏捷软件开发</description>
+      <pubDate>2014-07-25</pubDate>
+      <guid>http://standino.github.io/wiki/html/scrum</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-07-25</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
+    </item>
     <item>
       <title>javascript</title>
       <link>http://standino.github.io/wiki/html/js</link>
@@ -23,32 +44,11 @@
       <guid>http://standino.github.io/wiki/html/mysql</guid>
     </item>
     <item>
-      <title>敏捷软件开发</title>
-      <link>http://standino.github.io/wiki/html/scrum</link>
-      <description>敏捷软件开发</description>
-      <pubDate>2014-07-24</pubDate>
-      <guid>http://standino.github.io/wiki/html/scrum</guid>
-    </item>
-    <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-07-24</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
-    </item>
-    <item>
       <title>linux</title>
       <link>http://standino.github.io/wiki/html/linux</link>
       <description>linux</description>
       <pubDate>2014-07-21</pubDate>
       <guid>http://standino.github.io/wiki/html/linux</guid>
-    </item>
-    <item>
-      <title>基于saiku开发OLAP应用</title>
-      <link>http://standino.github.io./blog/2014/06/16/saiku</link>
-      <description>使用saiku开发OLAP系统</description>
-      <pubDate>2014-07-18</pubDate>
-      <guid>http://standino.github.io./blog/2014/06/16/saiku</guid>
     </item>
     <item>
       <title>JAVA</title>
