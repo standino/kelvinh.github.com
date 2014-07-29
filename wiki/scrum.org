@@ -26,6 +26,26 @@
 * Scrum
  1. http://www.infoq.com/cn/articles/scrum-pseudo-code
 
+* Scrum master 做什么
+
+ - http://jlins.iteye.com/blog/1395494
+
+Scrum Master 不是团队的 “ 老板 ”
+       1、不负责为团队分配任务（注意：这里说的是团队）
+       2、不会帮团队做决定（注意：这里说的是团队）
+    Scrum Master 做什么事情？
+       1、服务团队
+            (1)、帮助团队排除障碍和问题（ “ 绊脚石 ” ）
+            (2)、促进协作，包括团队内、团队和 Product Owner 间
+       2、保护团队
+            (1)、保护团队，使之免收外界干扰或威胁
+       3、教导团队
+            (1)、帮助团队和 Product Owner 改进工作的有效性
+            (2)、帮助团队和 Product Owner  面对并解决困难和问题
+       4、引导 Scrum 的有效应用
+            (1)、把 Scrum 教给团队、 Product Owner 和整个公司
+            (2)、确保所有标准 Scrum 实践得到遵循
+
 
 * 全员会议
 
