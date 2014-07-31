@@ -176,7 +176,10 @@ svn merge -r 45693:46318 http://branches/sone_1_0_0/
 
 svn merge -r r47606:r47744  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
 
-svn merge -r r47757:r48054  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
+svn merge -r r48488:r48598  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
+
+
+
 
 # 获得change list用于抽包
 svn st
@@ -184,6 +187,12 @@ svn st
 #使用对比工具，比较两个目录，确定代码合并是否准确
 
 # 测试合并的代码是否工作正常
+
+# 生成patch 文件
+export LANG=us_EN.UTF-8
+
+svn diff -r r48233:r48476 &gt; ~/backup/review.patch
+export LANG=zh_CN.UTF-8
 </pre>
 </div>
 </div>
@@ -2231,7 +2240,7 @@ hg branchdiff .
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-07-25</span>
+        <span title="last modification date" class="post-info">2014-07-31</span>
         <span title="tags" class="post-info"><a href="/tags/svn/">svn</a>, <a href="/tags/cvs/">cvs</a>, <a href="/tags/git/">git</a>, <a href="/tags/hg/">hg</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
