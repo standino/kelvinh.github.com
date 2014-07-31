@@ -51,7 +51,10 @@ svn merge -r 45693:46318 http://branches/sone_1_0_0/
 
 svn merge -r r47606:r47744  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
 
-svn merge -r r47757:r48054  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
+svn merge -r r48488:r48598  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
+
+
+
 
 # 获得change list用于抽包
 svn st
@@ -60,7 +63,11 @@ svn st
 
 # 测试合并的代码是否工作正常
 
+# 生成patch 文件
+export LANG=us_EN.UTF-8
 
+svn diff -r r48233:r48476 > ~/backup/review.patch
+export LANG=zh_CN.UTF-8
 #+END_SRC
 
 ** 1 create repos
