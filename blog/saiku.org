@@ -9,6 +9,18 @@
 #+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 使用saiku开发OLAP系统
 
+  - http://blog.analytical-labs.com/
+  - http://forums.meteorite.bi/
+  - http://jira.meteorite.bi/secure/Dashboard.jspa
+  - http://docs.analytical-labs.com/
+  - http://jira.pentaho.com/browse/MONDRIAN-1584
+
+/?mode=table&plugin=true#query/open/aaf.saiku
+
+http://saiku.sone.jd.com/saiku-ui/?mode=table&plugin=true#query/open/demo.saiku
+
+http://saiku.sone.jd.com/saiku-ui/?mode=view&plugin=true#query/open/demo.saiku
+
 * OLAP 介绍
 
 Online analytical processing(OLAP)即 联机分析处理 。
