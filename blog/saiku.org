@@ -14,6 +14,7 @@
   - http://jira.meteorite.bi/secure/Dashboard.jspa
   - http://docs.analytical-labs.com/
   - http://jira.pentaho.com/browse/MONDRIAN-1584
+  - Backbone入门指南（一）：什么是Backbone? http://yujianshenbing.iteye.com/blog/1748447
 
 /?mode=table&plugin=true#query/open/aaf.saiku
 
