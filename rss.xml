@@ -4,16 +4,30 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>四, 31  7月 2014 17:21:31 CST</pubDate>
-    <lastBuildDate>四, 31  7月 2014 17:21:31 CST</lastBuildDate>
+    <pubDate>一, 11  8月 2014 17:43:34 CST</pubDate>
+    <lastBuildDate>一, 11  8月 2014 17:43:34 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>基于saiku开发OLAP应用</title>
       <link>http://standino.github.io./blog/2014/06/16/saiku</link>
       <description>使用saiku开发OLAP系统</description>
-      <pubDate>2014-07-31</pubDate>
+      <pubDate>2014-08-08</pubDate>
       <guid>http://standino.github.io./blog/2014/06/16/saiku</guid>
+    </item>
+    <item>
+      <title>javascript</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-08-08</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-08-08</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
     </item>
     <item>
       <title>sonar的安装和使用</title>
@@ -21,20 +35,6 @@
       <description>sonar的安装和使用</description>
       <pubDate>2014-07-31</pubDate>
       <guid>http://standino.github.io/blog/2013/12/24/sonar</guid>
-    </item>
-    <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-07-31</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
-    </item>
-    <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-07-31</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
     </item>
     <item>
       <title>敏捷软件开发</title>
