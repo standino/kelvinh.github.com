@@ -15,12 +15,13 @@
   - http://docs.analytical-labs.com/
   - http://jira.pentaho.com/browse/MONDRIAN-1584
   - Backbone入门指南（一）：什么是Backbone? http://yujianshenbing.iteye.com/blog/1748447
+  - http://documentcloud.github.com/underscore/
 
 /?mode=table&plugin=true#query/open/aaf.saiku
 
-http://saiku.sone.jd.com/saiku-ui/?mode=table&plugin=true#query/open/demo.saiku
+http://saiku.sone.__my_company_1__.com/saiku-ui/?mode=table&plugin=true#query/open/demo.saiku
 
-http://saiku.sone.jd.com/saiku-ui/?mode=view&plugin=true#query/open/demo.saiku
+http://saiku.sone.__my_company_1__.com/saiku-ui/?mode=view&plugin=true#query/open/demo.saiku
 
 * OLAP 介绍
 
@@ -216,7 +217,7 @@ Saiku是一个模块化的开源分析套件，它提供轻量级的OLAP（联�
 type=OLAP
 name=saiku_sone
 driver=mondrian.olap4j.MondrianOlap4jDriver
-location=jdbc:mondrian:Jdbc=jdbc:mysql://192.168.229.76:3306/sone?characterEncoding=UTF-8;Catalog=res:schema/sone.mondrian.xml;JdbcDrivers=com.mysql.jdbc.Driver;DynamicSchemaProcessor=mondrian.i18n.LocalizingDynamicSchemaProcessor;Locale=zh_CN;
+location=__my_company_1__bc:mondrian:Jdbc=__my_company_1__bc:mysql://192.168.229.76:3306/sone?characterEncoding=UTF-8;Catalog=res:schema/sone.mondrian.xml;JdbcDrivers=com.mysql.__my_company_1__bc.Driver;DynamicSchemaProcessor=mondrian.i18n.LocalizingDynamicSchemaProcessor;Locale=zh_CN;
 username=root
 password=123456
 security.enabled=true
@@ -422,6 +423,19 @@ That's it!
 点击报表中的单元格，可以进行灵活的钻取查看。
 
 [[file:saiku15.png]]
+
+
+
+* MDX
+
+#+BEGIN_SRC
+
+SELECT
+NON EMPTY {Hierarchize({[Measures].[已结算金额]})} ON COLUMNS,
+NON EMPTY {Hierarchize({{[Time.按周统计].[18], [Time.按周统计].[19], [Time.按周统计].[20], [Time.按周统计].[21]}})} ON ROWS
+FROM [SalesMoneyReportv2]
+
+#+END_SRC
 
 * 参考资料
 

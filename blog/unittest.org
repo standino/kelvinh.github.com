@@ -21,7 +21,7 @@ public class AllocationWebServiceClientTest extends AbstractTransactionalJUnit4S
     private static Log log = LogFactory.getLog(AllocationWebServiceClientTest.class);
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate __my_company_1__bcTemplate;
     @Autowired
     private AllocationWebServiceClient allocationWebServiceClient;
 
@@ -40,7 +40,7 @@ public class AllocationWebServiceClientTest extends AbstractTransactionalJUnit4S
             }
         };
 
-        productWraps = jdbcTemplate.query(sql, rowMapper);
+        productWraps = __my_company_1__bcTemplate.query(sql, rowMapper);
     }
 
     @Test

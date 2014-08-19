@@ -308,6 +308,27 @@ sudo npm --proxy http://127.0.0.1:8087 install -g grunt-cli
 
 #+END_SRC
 
+** METEOR AND METEORITE ON WINDOWS
+
+#+BEGIN_SRC
+
+
+TUE AUG 05 2014
+Both Meteor and Meteorite are unofficially supported on Windows, and these are the required steps to make it work.
+Install Node and NPM from http://nodejs.org/.
+Install the unofficial Meteor from http://win.meteor.com/.
+Install git from http://git-scm.com/downloads.
+To get Meteorite (package management for Meteor) to work on Windows, a special branch of the Meteorite project must used. Clone the Meteorite repository:
+git clone https://github.com/danielsvane/meteorite
+Step into the downloaded repo:
+cd meteorite
+Then switch the branch to the Windows supported one:
+git checkout windows-updates
+Install the branch globally with NPM:
+npm install -g
+You now have a working Meteor and Meteorite development setup on Windows. When adding a new package using Meteorite use meteorite instead of mrt, as this name is already used on Windows.
+
+#+END_SRC
 
 * CKeditor 
 
@@ -347,11 +368,11 @@ CKEDITOR.editorConfig = function(config) {
 					'Blockquote' ],
 			[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
 			[ 'Link', 'Unlink', 'Anchor' ],
-			[ 'jdupload','Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
+			[ '__my_company_1__upload','Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
 					'SpecialChar', 'PageBreak' ], '/',
 			[ 'Styles', 'Format', 'Font', 'FontSize' ],
 			[ 'TextColor', 'BGColor' ] ];
-        config.extraPlugins += (config.extraPlugins ? ',jdupload' : 'jdupload');
+        config.extraPlugins += (config.extraPlugins ? ',__my_company_1__upload' : '__my_company_1__upload');
 };
 
 #+END_SRC
@@ -396,3 +417,7 @@ CKEDITOR.editorConfig = function(config) {
   - http://echarts.baidu.com/doc/example.html
   - http://www.highcharts.com/studies/map-from-svg.htm
   - 
+
+* dashboard 
+
+ - http://ehesp.github.io/Responsive-Dashboard/#

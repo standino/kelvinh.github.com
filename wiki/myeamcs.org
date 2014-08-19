@@ -1415,7 +1415,7 @@ that will be filled with the previoous context information.
 #+END_SRC
 
 
-* [[http://jdee.sourceforge.net/][ JDEE]]
+* [[http://__my_company_1__ee.sourceforge.net/][ JDEE]]
 
  1. http://www.linuxidc.com/Linux/2014-02/97080.htm
  2. http://www.linuxidc.com/Linux/2014-02/97082.htm
@@ -1440,7 +1440,7 @@ that will be filled with the previoous context information.
 
 ;; subdirectory of your home directory.
 
-(add-to-list ''''load-path (expand-file-name "~/emacs/site/jde/lisp"))
+(add-to-list ''''load-path (expand-file-name "~/emacs/site/__my_company_1__e/lisp"))
 
 (add-to-list ''''load-path (expand-file-name "~/emacs/site/cedet/common"))
 
@@ -1454,41 +1454,41 @@ that will be filled with the previoous context information.
 
 ;; Java file, edit the following line
 
-(setq defer-loading-jde nil)
+(setq defer-loading-__my_company_1__e nil)
 
 ;; to read:
 
 ;;
 
-;;  (setq defer-loading-jde t)
+;;  (setq defer-loading-__my_company_1__e t)
 
 ;; 
 
-(if defer-loading-jde
+(if defer-loading-__my_company_1__e
 
     (progn
 
-      (autoload ''''jde-mode "jde" "JDE mode." t)
+      (autoload ''''__my_company_1__e-mode "__my_company_1__e" "JDE mode." t)
 
       (setq auto-mode-alist
 
            (append
 
-            ''''(("\\.java\\''''" . jde-mode))
+            ''''(("\\.java\\''''" . __my_company_1__e-mode))
 
             auto-mode-alist)))
 
-  (require ''''jde)) 
+  (require ''''__my_company_1__e)) 
 
 ;; Sets the basic indentation for Java source files
 
 ;; to two spaces.
 
-(defun my-jde-mode-hook ()
+(defun my-__my_company_1__e-mode-hook ()
 
   (setq c-basic-offset 2))
 
-(add-hook ''''jde-mode-hook ''''my-jde-mode-hook) 
+(add-hook ''''__my_company_1__e-mode-hook ''''my-__my_company_1__e-mode-hook) 
 
 ;; Include the following only if you want to run
 

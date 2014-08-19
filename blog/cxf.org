@@ -19,12 +19,12 @@
 
 #+BEGIN_SRC
 set CXF_HOME=D:\cxf\apache-cxf-2.3.1
-set JAVA_HOME=C:\Java\jdk1.6.0_24
+set JAVA_HOME=C:\Java\__my_company_1__k1.6.0_24
 #+END_SRC
 
 * 拷贝jaxb-api jar 文件
 
-jdk安装目录下的jre/lib下新建endorsed目录，再把jaxb-api-2.1.jar拷贝到其中
+__my_company_1__k安装目录下的jre/lib下新建endorsed目录，再把jaxb-api-2.1.jar拷贝到其中
 
 #+BEGIN_SRC
 mkdir $JAVA_HOME/jre/lib/endorsed
