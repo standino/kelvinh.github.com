@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="utf-8"/>
+<title>jquery, bootstrap 和它们的插件们</title>
+<meta name="author" content="(Will)"/>
+<meta name="description" content="本文主要介绍jquery，bootstrap和它们的插件的使用"/>
+<meta name="keywords" content="jquery,bootstrap,js,插件"/>
+
+<link rel="stylesheet" href="./reveal.js/css/reveal.min.css"/>
+<link rel="stylesheet" href="./reveal.js/css/theme/moon.css" id="theme"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h1>jquery, bootstrap 和它们的插件们</h1>
+<h2>Will</h2>
+<h2><a href="mailto:changwei.cn@gmail.com">changwei.cn@gmail.com</a></h2>
+<h2>2014-05-30 五</h2></section>
+<section>
+<h2>Table of Contents</h2><ul>
+<li>
+<a href="#sec-1">JQuery</a>
+<ul>
+<li>
+<a href="#sec-1-1">JQuery UI</a>
+</li>
+<li>
+<a href="#sec-1-2">基于 JQuery UI 编写插件 - 定义插件</a>
+</li>
+<li>
+<a href="#sec-1-3">基于 JQuery UI 编写插件 - 使用插件</a>
+</li>
+<li>
+<a href="#sec-1-4">基于 JQuery UI 编写插件 - 代码说明</a>
+</li>
+<li>
+<a href="#sec-1-5">JQuery UI Portlet</a>
+</li>
+</ul>
+<li>
+<a href="#sec-2">Bootstrap</a>
+<ul>
+<li>
+<a href="#sec-2-1">Bootstrap弹出效果 - 页面初始化代码</a>
+</li>
+<li>
+<a href="#sec-2-2">Bootstrap弹出效果 - 设置初始化样式</a>
+</li>
+<li>
+<a href="#sec-2-3">Bootstrap弹出效果 - 点击事件</a>
+</li>
+<li>
+<a href="#sec-2-4">Bootstrap分页</a>
+</li>
+<li>
+<a href="#sec-2-5">FCBKcomplete</a>
+</li>
+</ul>
+<li>
+<a href="#sec-3">参考资料</a>
+</li>
+</ul>
+</section>
+
+<section>
+<section id="sec-1" >
+
+<h2>JQuery</h2>
+<p>
+jQuery 是一个 JavaScript 函数库。jQuery 库包含以下特性：
+</p>
+<ul class="org-ul">
+<li>HTML 元素选取
+</li>
+<li>HTML 元素操作
+</li>
+<li>CSS 操作
+</li>
+<li>HTML 事件函数
+</li>
+<li>JavaScript 特效和动画
+</li>
+<li>HTML DOM 遍历和修改
+</li>
+<li>AJAX
+</li>
+<li>Utilities
+</li>
+</ul>
+
+</section>
+<section id="sec-1-1" >
+
+<h3>JQuery UI</h3>
+<ul class="org-ul">
+<li>jQuery UI 是 jQuery 的一部分, 是在jQuery之上的一套专门用于UI交互的类库.
+</li>
+<li>使用jQuery UI可以实现底层交互, 各种高级特效, 动画, 并且可定制主题.
+</li>
+</ul>
+
+</section>
+<section id="sec-1-2" >
+
+<h3>基于 JQuery UI 编写插件 - 定义插件</h3>
+<div class="org-src-container">
+
+<pre  class="src src-javascript">$.widget(<span style="color: #2aa198;">"nmk.progressbar"</span>, {
+    options: {
+        value: 0
+    },
+
+    <span style="color: #b58900;">_create</span>: <span style="color: #859900;">function</span>() {
+        <span style="color: #268bd2;">this</span>.element.addClass(<span style="color: #2aa198;">"progressbar"</span>);
+        <span style="color: #268bd2;">this</span>._update();
+    },
+
+    <span style="color: #b58900;">_setOption</span>: <span style="color: #859900;">function</span>(<span style="color: #6c71c4;">key</span>, <span style="color: #6c71c4;">value</span>) {
+        <span style="color: #268bd2;">this</span>.options[key] = value;
+        <span style="color: #268bd2;">this</span>._update();
+    },
+
+    <span style="color: #b58900;">_update</span>: <span style="color: #859900;">function</span>() {
+        <span style="color: #859900;">var</span> <span style="color: #6c71c4;">progress</span> = <span style="color: #268bd2;">this</span>.options.value + <span style="color: #2aa198;">"%"</span>;
+        <span style="color: #268bd2;">this</span>.element.text(progress);
+        <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #93a1a1; font-style: italic;">trigger a event when progressbar is complate</span>
+        <span style="color: #859900;">if</span>(<span style="color: #268bd2;">this</span>.options.value == 100){
+              <span style="color: #268bd2;">this</span>._trigger(<span style="color: #2aa198;">'complete'</span>,<span style="color: #268bd2;">null</span>,{value:100});
+       }
+    },
+
+   <span style="color: #b58900;">_destroy</span>:<span style="color: #859900;">function</span>(){
+      <span style="color: #268bd2;">this</span>.element
+          .removeClass(<span style="color: #2aa198;">'progressbar'</span>)
+          .text(<span style="color: #2aa198;">""</span>);
+     $.Widget.<span style="color: #268bd2;">prototype</span>.destroy.call(<span style="color: #268bd2;">this</span>);
+
+  }
+
+});
+</pre>
+</div>
+</section>
+<section id="sec-1-3" >
+
+<h3>基于 JQuery UI 编写插件 - 使用插件</h3>
+<div class="org-src-container">
+
+<pre  class="src src-javascript">$(<span style="color: #2aa198;">'.loadding'</span>).progressbar(
+  {value:1,
+   <span style="color: #b58900;">complate</span>: <span style="color: #859900;">function</span>(){
+     console.log(<span style="color: #2aa198;">'complete event has been triggered!'</span>);
+     <span style="color: #93a1a1; font-style: italic;">//</span><span style="color: #93a1a1; font-style: italic;">you can return false or true ;</span>
+   }
+  });
+</pre>
+</div>
+
+</section>
+<section id="sec-1-4" >
+
+<h3>基于 JQuery UI 编写插件 - 代码说明</h3>
+<ul class="org-ul">
+<li>options：在这里面保存的是widget的配置信息，在创建widget的时候需要设置一些配置参数。
+</li>
+<li>element：就是widget作用的dom对象。
+</li>
+<li>_create() 这个方法就是创建widget的方法，在页面调用widget的时候，就会执行此方法，来构建widget。Widget的绝大大多数行为和结构都是在这里创建的。
+</li>
+<li>_setOption():此方法提供了options的属性的设置。
+</li>
+<li>_trigger一般用来回调用户传入options的callback。在插件内部调用_trigger(‘myEvent’)即相当于调用options里面的myEvent这个回调函数。
+</li>
+<li>_destroy()：将widget实例从dom对象上移除，在开发widget的时候一般此方法是必须的。就是移除你自己在dom element上添加的样式和行为以及dom结构
+</li>
+</ul>
+</section>
+<section id="sec-1-5" >
+
+<h3>JQuery UI Portlet</h3>
+<div class="org-src-container">
+
+<pre  class="src src-javascript">$(<span style="color: #2aa198;">'#portlet-demo'</span>).portlet(<span style="color: #2aa198;">'option'</span>, <span style="color: #2aa198;">'add'</span>, {
+  position: {
+    x: 0,
+    y: 1
+  },
+  portlet: {
+    attrs: {
+      id: <span style="color: #2aa198;">'$portlet.id'</span>,
+      itemId: <span style="color: #2aa198;">'$portlet.itemId'</span>
+    },
+    title: <span style="color: #2aa198;">'&#25105;&#30340;&#20219;&#21153;'</span>,
+
+    singleView:{
+      <span style="color: #b58900;">enable</span>: <span style="color: #859900;">function</span> (){
+        $(<span style="color: #2aa198;">'#myWork_portletDiv'</span>).hide();
+        $(<span style="color: #2aa198;">'#myWork_pageDiv'</span>).show();
+      },
+      <span style="color: #b58900;">recovery</span>: <span style="color: #859900;">function</span> (){
+        $(<span style="color: #2aa198;">'#myWork_portletDiv'</span>).show();
+        $(<span style="color: #2aa198;">'#myWork_pageDiv'</span>).hide();
+
+      }
+    },
+
+    content: {
+      type: <span style="color: #2aa198;">'ajax'</span>,
+      url:<span style="color: #2aa198;">'#springUrl('</span>/resources/portletTemplate/<span style="color: #2aa198;">')myWork.html'</span>,
+    }
+  }});
+</pre>
+</div>
+</section>
+
+</section>
+<section>
+<section id="sec-2" >
+
+<h2>Bootstrap</h2>
+<ul class="org-ul">
+<li>Bootstrap是Twitter推出的一个用于前端开发的开源工具包。它由Twitter的设计师Mark Otto和Jacob Thornton合作开发，是一个CSS/HTML框架。
+</li>
+
+<li>Bootstrap 是一个用于快速开发 Web 应用程序和网站的前端框架。在现代 Web 开发中，有几个几乎所有的 Web 项目中都需要的组件。Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Tables、Forms、Buttons 和 Responsiveness。
+</li>
+
+<li>此外，还有大量其他有用的前端组件，比如 Dropdowns、Navigation、Modals、Typehead、Pagination、Carousal、Breadcrumb、Tab、Thumbnails、Headers 等等。
+</li>
+
+<li>有了这些，你可以搭建一个 Web 项目，并让它运行地更快速更轻松。
+</li>
+</ul>
+
+
+</section>
+<section id="sec-2-1" >
+
+<h3>Bootstrap弹出效果 - 页面初始化代码</h3>
+<div class="org-src-container">
+
+<pre  class="src src-javascript">&lt;div id=<span style="color: #2aa198;">"myModal"</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"modal hide fade"</span> tabindex=<span style="color: #2aa198;">"-1"</span> role=<span style="color: #2aa198;">"dialog"</span> aria-labelledby=<span style="color: #2aa198;">"myModalLabel"</span> aria-hidden=<span style="color: #2aa198;">"true"</span>&gt;
+   &lt;div <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"modal-header"</span>&gt;
+       &lt;button type=<span style="color: #2aa198;">"button"</span> <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"close"</span> data-dismiss=<span style="color: #2aa198;">"modal"</span> aria-hidden=<span style="color: #2aa198;">"true"</span>&gt;&#215;&lt;/button&gt;
+       &lt;h5 id=<span style="color: #2aa198;">"myModalLabel"</span>&gt;&#24377;&#20986;&#26631;&#39064;&lt;/h5&gt;
+   &lt;/div&gt;
+   &lt;div <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"modal-body"</span>&gt;
+          &lt;p&gt;&#20013;&#38388;&#26174;&#31034;&#30340;&#20869;&#23481;&lt;/p&gt;
+   &lt;/div&gt;
+   &lt;div <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"modal-footer"</span>&gt;
+       &lt;button <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"btn"</span> data-dismiss=<span style="color: #2aa198;">"modal"</span> aria-hidden=<span style="color: #2aa198;">"true"</span>&gt;&#21462;&#28040;&lt;/button&gt;
+       &lt;button <span style="color: #859900;">class</span>=<span style="color: #2aa198;">"btn btn-primary"</span>&gt;&#30830;&#23450;&lt;/button&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</div>
+
+</section>
+<section id="sec-2-2" >
+
+<h3>Bootstrap弹出效果 - 设置初始化样式</h3>
+<div class="org-src-container">
+
+<pre  class="src src-javascript">&lt;script&gt;
+   $(<span style="color: #859900;">function</span>(){
+       $(<span style="color: #2aa198;">'#myModal'</span>).modal({
+           backdrop:<span style="color: #268bd2;">false</span>,
+           keyboard:<span style="color: #268bd2;">true</span>,
+           show:<span style="color: #268bd2;">false</span>
+       });
+   });
+&lt;/script&gt;
+</pre>
+</div>
+
+<p>
+初始化参数介绍：
+</p>
+<ul class="org-ul">
+<li>backdrop（默认true）：为模态对话框添加一个背景元素。
+</li>
+<li>keyboard（默认true）：按下esc键时关闭模态对话框。
+</li>
+<li>show（默认true）：初始化时即显示模态对话框。
+</li>
+</ul>
+
+</section>
+<section id="sec-2-3" >
+
+<h3>Bootstrap弹出效果 - 点击事件</h3>
+<div class="org-src-container">
+
+<pre  class="src src-javascript">&lt;a href=<span style="color: #2aa198;">"javascript:void(0);"</span> onclick=<span style="color: #2aa198;">"showDiv();"</span>&gt;&#24377;&#20986;&lt;/a&gt;
+
+<span style="color: #859900;">function</span> <span style="color: #b58900;">showDiv</span>(){
+   $(<span style="color: #2aa198;">'#myModal'</span>).modal(<span style="color: #2aa198;">'show'</span>);
+}
+</pre>
+</div>
+
+
+</section>
+<section id="sec-2-4" >
+
+<h3>Bootstrap分页</h3>
+<div class="org-src-container">
+
+<pre  class="src src-javascript"><span style="color: #859900;">function</span> <span style="color: #b58900;">listSalesNoticeInPage</span>(<span style="color: #6c71c4;">container</span>, <span style="color: #6c71c4;">page</span>) {
+    $.ajax({
+            url : <span style="color: #2aa198;">"/salesNotice/queryByGroup.json?page="</span>+page+<span style="color: #2aa198;">"&amp;pageSize="</span>+20+<span style="color: #2aa198;">"&amp;date="</span>+<span style="color: #859900;">new</span> <span style="color: #268bd2;">Date</span>(),
+            dataType : <span style="color: #2aa198;">"json"</span>,
+            async:<span style="color: #268bd2;">false</span>,
+            <span style="color: #b58900;">success</span> : <span style="color: #859900;">function</span>(<span style="color: #6c71c4;">data</span>) {
+                    <span style="color: #859900;">var</span> <span style="color: #6c71c4;">result</span> = <span style="color: #2aa198;">""</span>;
+                    <span style="color: #859900;">if</span> (data.rows != <span style="color: #268bd2;">null</span>) {
+                            $.each(data.rows, <span style="color: #859900;">function</span>() {
+                        row += <span style="color: #2aa198;">"&lt;td&gt;"</span> + <span style="color: #859900;">new</span> <span style="color: #268bd2;">Date</span>(<span style="color: #268bd2;">this</span>.updateTime).format(<span style="color: #2aa198;">'yyyy-MM-dd hh:mm:ss'</span>) + <span style="color: #2aa198;">"&lt;/td&gt;"</span>;
+                    }
+
+                    container.empty().append(result);
+                    <span style="color: #859900;">var</span> <span style="color: #6c71c4;">totalPages</span> = Math.ceil(data.total/20);
+                    <span style="color: #859900;">var</span> <span style="color: #6c71c4;">pagerOptions</span> = {
+                            bootstrapMajorVersion : 3,
+                            currentPage : page,
+                            numberOfPages : 10,
+                            totalPages : totalPages&lt;=0?1:totalPages,
+                            <span style="color: #b58900;">onPageClicked</span> : <span style="color: #859900;">function</span>(<span style="color: #6c71c4;">e</span>, <span style="color: #6c71c4;">originalEvent</span>, <span style="color: #6c71c4;">type</span>, <span style="color: #6c71c4;">page</span>) {
+                                            e.stopImmediatePropagation();
+                                    listSalesNoticeInPage(container, page);
+                            },
+                <span style="color: #b58900;">tooltipTitles</span>: <span style="color: #859900;">function</span> (<span style="color: #6c71c4;">type</span>, <span style="color: #6c71c4;">page</span>, <span style="color: #6c71c4;">current</span>) {
+                  <span style="color: #859900;">switch</span> (type) {
+                  <span style="color: #859900;">case</span> <span style="color: #2aa198;">"first"</span>:
+                    <span style="color: #859900;">return</span> <span style="color: #2aa198;">"&#39318;&#39029;"</span>;
+                  };
+                  $(<span style="color: #2aa198;">'#salesNotice_pager'</span>).bootstrapPaginator(pagerOptions);
+            }
+    });
+}
+</pre>
+</div>
+</section>
+<section id="sec-2-5" >
+
+<h3>FCBKcomplete</h3>
+<div class="org-src-container">
+
+<pre  class="src src-javascript">$(<span style="color: #2aa198;">"#publishWork_taskAssignerErpLbl"</span>).fcbkcomplete({
+    json_url: <span style="color: #2aa198;">"/ldap/fcsearch"</span>,
+    addontab: <span style="color: #268bd2;">true</span>,
+    maxitems: 100,
+    input_min_size: 2,
+    height: 10,
+    cache: <span style="color: #268bd2;">false</span>,
+    newel: <span style="color: #268bd2;">false</span>,
+    filter: <span style="color: #268bd2;">false</span>,
+    complete_text: <span style="color: #2aa198;">"&#36755;&#20837;&#30005;&#23376;&#37038;&#20214;&#65288;@&#31526;&#21495;&#30340;&#21069;&#21322;&#37096;&#20998;&#65289;&#36827;&#34892;&#27169;&#31946;&#26597;&#25214;..."</span>
+});
+</pre>
+</div>
+</section>
+
+</section>
+<section>
+<section id="sec-3" >
+
+<h2>参考资料</h2>
+<ul class="org-ul">
+<li><a href="http://jira.__my_company_2__.com/confluence/pages/viewpage.action?pageId=30154029">http://jira.__my_company_2__.com/confluence/pages/viewpage.action?pageId=30154029</a>
+</li>
+</ul>
+</section>
+</section>
+</div>
+</div>
+
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+</script>
+</body>
+</html>

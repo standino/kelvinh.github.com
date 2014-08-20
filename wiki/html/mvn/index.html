@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>mvn - Keep going</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Will Chang" />
+    <meta name="description" content="mvn" />
+    <meta name="keywords" content="mvn" />
+
+  <link rel="stylesheet" href="http://standino.github.io/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="http://standino.github.io/media/css/prettify.css" type="text/css">
+
+  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+
+  <link rel="stylesheet" href="../../../media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="../../../media/css/prettify.css" type="text/css">
+
+</head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>努力超越自己！</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/html/">Html</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>mvn</h1>
+<ul class="org-ul">
+<li><a href="http://maven.apache.org/guides/getting-started/index.html">http://maven.apache.org/guides/getting-started/index.html</a>
+</li>
+<li><a href="http://www.infoq.com/cn/news/2011/05/xxb-maven-8-plugin">http://www.infoq.com/cn/news/2011/05/xxb-maven-8-plugin</a>
+</li>
+<li><a href="http://mojo.codehaus.org/versions-maven-plugin/">http://mojo.codehaus.org/versions-maven-plugin/</a>
+</li>
+</ul>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">建立偶过个模块的mvn项目</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">使用下面的命令创建子项目</h3>
+<div class="outline-text-3" id="text-1-1">
+<pre class="example">
+mkdir calc
+cd calc
+mvn archetype:generate    -DgroupId=com.stcalc   -DartifactId=common -DinteractiveMode=false
+mvn archetype:generate    -DgroupId=com.stcalc   -DartifactId=business-rule -DinteractiveMode=false
+mvn archetype:generate    -DgroupId=com.stcalc   -DartifactId=sheduler -DinteractiveMode=false
+mvn archetype:generate   -DarchetypeArtifactId=maven-archetype-webapp   -DgroupId=com.stcalc   -DartifactId=web
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">在 calc目录下创建pom.xml文件</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+使用 &lt;modules&gt; 标签定义子项目
+</p>
+
+<pre class="example">
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;properties&gt;
+    &lt;full.version&gt;1.0.0&lt;/full.version&gt;
+  &lt;/properties&gt;
+
+  &lt;groupId&gt;com.stcalc &lt;/groupId&gt;
+  &lt;artifactId&gt;calc&lt;/artifactId&gt;
+  &lt;version&gt;${full.version}&lt;/version&gt;
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+
+  &lt;modules&gt;
+    &lt;module&gt;common&lt;/module&gt;
+    &lt;module&gt;business-rule&lt;/module&gt;
+    &lt;module&gt;sheduler&lt;/module&gt;
+    &lt;module&gt;web&lt;/module&gt;
+  &lt;/modules&gt;
+&lt;/project&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">修改子项目pom.xml定义parent</h3>
+<div class="outline-text-3" id="text-1-3">
+<pre class="example">
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;parent&gt;
+      &lt;groupId&gt;com.stcalc&lt;/groupId&gt;
+      &lt;artifactId&gt;calc&lt;/artifactId&gt;
+      &lt;version&gt;${full.version}&lt;/version&gt;
+  &lt;/parent&gt;
+
+  &lt;groupId&gt;com.stcalc&lt;/groupId&gt;
+  &lt;artifactId&gt;common&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;${full.version}&lt;/version&gt;
+   &lt;name&gt;common&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+
+
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Jetty plugin</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+
+<pre class="src src-xml">    &lt;plugin&gt;
+            &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
+            &lt;artifactId&gt;jetty-maven-plugin&lt;/artifactId&gt;
+            &lt;version&gt;8.1.9.v20130131&lt;/version&gt;
+            &lt;configuration&gt;
+&lt;contextXml&gt;${basedir}/src/main/webapp/WEB-INF/jetty-context.xml&lt;/contextXml&gt;
+                    &lt;stopKey&gt;CTRL+C&lt;/stopKey&gt;
+                    &lt;stopPort&gt;8999&lt;/stopPort&gt;
+                    &lt;scanIntervalSeconds&gt;10&lt;/scanIntervalSeconds&gt;
+                    &lt;webAppConfig&gt;
+                            &lt;contextPath&gt;/&lt;/contextPath&gt;
+                    &lt;/webAppConfig&gt;
+                    &lt;connectors&gt;
+                      &lt;connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector"&gt;
+                        &lt;port&gt;9090&lt;/port&gt;
+                        &lt;maxIdleTime&gt;60000&lt;/maxIdleTime&gt;
+                      &lt;/connector&gt;
+                    &lt;/connectors&gt;
+
+            &lt;/configuration&gt;
+    &lt;/plugin&gt;
+</pre>
+</div>
+
+<p>
+jetty-context.xml
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN"
+        "http://www.eclipse.org/jetty/configure.dtd"&gt;
+
+&lt;Configure class="org.eclipse.jetty.webapp.WebAppContext"&gt;
+    &lt;Call name="setAttribute"&gt;
+        &lt;Arg&gt;org.eclipse.jetty.server.webapp.WebInfIncludeJarPattern&lt;/Arg&gt;
+        &lt;Arg&gt;.*/.*jsp-api-[^/]\.jar$|./.*jsp-[^/]\.jar$|./.*taglibs[^/]*\.jar$&lt;/Arg&gt;
+    &lt;/Call&gt;
+&lt;/Configure&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">mvn dependency:tree</h2>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">settings</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+cat ~/.m2/settings.xml
+</p>
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;settings
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"
+    xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;profiles&gt;
+
+   &lt;profile&gt;
+      &lt;id&gt;sonar&lt;/id&gt;
+    &lt;activation&gt;
+      &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+    &lt;/activation&gt;
+    &lt;properties&gt;
+      &lt;!-- Example for MySQL--&gt;
+      &lt;sonar.jdbc.url&gt;
+        jdbc:h2:tcp://localhost:9092/sonar
+      &lt;/sonar.jdbc.url&gt;
+      &lt;sonar.jdbc.username&gt;sonar&lt;/sonar.jdbc.username&gt;
+      &lt;sonar.jdbc.password&gt;sonar&lt;/sonar.jdbc.password&gt;
+
+      &lt;!-- Optional URL to server. Default value is http://localhost:9000 --&gt;
+      &lt;sonar.host.url&gt;
+        http://localhost:9000
+      &lt;/sonar.host.url&gt;
+    &lt;/properties&gt;
+  &lt;/profile&gt;
+&lt;/profiles&gt;
+
+&lt;proxies&gt;
+&lt;proxy&gt;
+      &lt;id&gt;optional&lt;/id&gt;
+      &lt;active&gt;true&lt;/active&gt;
+      &lt;protocol&gt;http&lt;/protocol&gt;
+      &lt;host&gt;127.0.0.1&lt;/host&gt;
+      &lt;port&gt;8087&lt;/port&gt;
+      &lt;nonProxyHosts&gt;&lt;/nonProxyHosts&gt;
+&lt;/proxy&gt;
+&lt;/proxies&gt;
+&lt;/settings&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">下载源代码</h2>
+<div class="outline-text-2" id="text-5">
+<pre class="example">
+mvn dependency:sources
+mvn dependency:resolve -Dclassifier=javadoc
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">测试</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Run Unit Test
+See below examples to run unit test with Maven.
+</p>
+
+<p>
+Example 1
+To run the entire unit test (TestApp1 and TestApp2), issue this command :
+</p>
+<pre class="example">
+mvn test
+</pre>
+
+<p>
+Example 2
+To run single test (TestApp1), issue this command :
+</p>
+<pre class="example">
+mvn -Dtest=TestApp1 test
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2013-12-30</span>
+        <span title="last modification date" class="post-info">2014-06-13</span>
+        <span title="tags" class="post-info"><a href="/tags/mvn/">mvn</a>, <a href="/tags/work/">work</a>, <a href="/tags/jetty/">jetty</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/wiki/html/mvn";
+          var disqus_url = "http://standino.github.io/wiki/html/mvn";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - 2014 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

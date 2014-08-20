@@ -1,0 +1,339 @@
+#+TITLE:       saiku单点登录方案
+#+AUTHOR:      Will
+#+EMAIL:       will@will-K42JA
+#+DATE:        2014-06-12 四
+#+URI:         ./blog/%y/%m/%d/saikusso
+#+KEYWORDS:    saiku,sso
+#+TAGS:        :sakiu:sso:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: saiku单点登录方案
+
+* 基本思路
+
+公司已经有了SSO 单点登陆方案。登陆成功后，浏览器中会有加密过的cookie信息。Saiku的安全机制是基于Spring security的。在Spring security中有Pre-Authentication机制。
+我们要做的就是实现Pre-Authentication，通过读取公司SSO系统中的cookie信息获得登陆人，并且编写角色赋权的逻辑，然后传给spring security。这样saiku系统就会使用我们传给它的
+角色来确定显示哪些cube。
+
+* 修改Spring 配置信息
+
+修改 /src/main/webapp/WEB-INF/applicationContext-spring-security.xml
+#+BEGIN_SRC xml
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+  <import resource="spring-security.xml"/>
+</beans>
+#+END_SRC
+
+spring-security.xml
+
+#+BEGIN_SRC xml
+<?xml version="1.0" encoding="UTF-8"?>
+  <bean id="ssoHeaderFilter"
+        class="com.standino.ipc.dashboard.interceptor.SSORequestHeaderAuthenticationFilter">
+    <property name="principalRequestHeader" value="REMOTE_USER"/>
+
+    <!-- fall back to other authentication providers is OAM SSO is not there -->
+    <property name="exceptionIfHeaderMissing" value="false" />
+    <!-- hard code a testUserId for local tests -->
+    <property name="testUserId" value="admin" />
+
+    <property name="authenticationManager" ref="authenticationManager" />
+
+    <property name="authenticationDetailsSource">
+      <bean class="com.standino.ipc.dashboard.security.HeaderAuthenticationDetails">
+        <!-- look for the request header set by the webgate and map to local
+          roles -->
+        <property name="roleHeaderName" value="ROLES" />
+        <property name="userRoles2GrantedAuthoritiesMapper">
+          <bean
+            class="org.springframework.security.core.authority.mapping.SimpleAttributes2GrantedAuthoritiesMapper">
+            <property name="convertAttributeToUpperCase" value="true" />
+          </bean>
+        </property>
+        <!-- setup a testing role if not deployed with a webgate - this only
+          applies if ENV_NAME != uat/prod -->
+        <property name="testingRoles">
+          <set>
+            <value>ROLE_ADMIN</value>
+            <value>ROLE_USER</value>
+          </set>
+        </property>
+        <!-- all available roles for this application -->
+        <property name="allRoles">
+          <set>
+            <value>ROLE_ADMIN</value>
+            <value>ROLE_USER</value>
+          </set>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <bean id="preauthAuthProvider"
+    class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+    <property name="preAuthenticatedUserDetailsService" ref="preAuthenticatedUserDetailsService" />
+  </bean>
+  <!-- magically map the user header to a valid user object -->
+  <bean id="preAuthenticatedUserDetailsService"
+    class="org.springframework.security.web.authentication.preauth.PreAuthenticatedGrantedAuthoritiesUserDetailsService" />
+
+  <bean id="securityContextHolderAwareRequestFilter"
+    class="org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter" />
+
+  <security:authentication-manager alias="authenticationManager">
+  <security:authentication-provider ref="preauthAuthProvider" />
+
+  <!-- this is an example of alternate user authentication providers, although
+   we only have the PRE_AUTH_FILTER defined above, so it isn't used. -->
+  <security:authentication-provider>
+   <security:user-service>
+    <security:user authorities="ROLE_USER" name="guest" password="guest" />
+   </security:user-service>
+  </security:authentication-provider>
+  </security:authentication-manager>
+
+  <bean id="userDetailsService"
+        class="com.standino.ipc.dashboard.security.UserDetailsServices" />
+
+</beans>
+#+END_SRC
+
+* 实现 java 类
+
+SSORequestHeaderAuthenticationFilter.java
+
+#+BEGIN_SRC java
+/**
+ * Handles for SSO request headers to create Authorization ids.
+ * Optional operations can be assigned by setting the {@link SSOLoginHandler};
+ * for example, to create corresponding user accounts if the user doesn't exist.
+ */
+public class SSORequestHeaderAuthenticationFilter extends AbstractPreAuthenticatedProcessingFilter  {
+
+    private static final Logger log = Logger.getLogger(SSORequestHeaderAuthenticationFilter.class);
+    private String principalRequestHeader = "REMOTE_USER";
+    /**
+     * Configure a value in the applicationContext-security for local tests.
+     */
+    private String testUserId = "admin";
+    /**
+     * Configure whether a missing SSO header is an exception.
+     */
+    private boolean exceptionIfHeaderMissing = false;
+
+    /**
+     * Read and return header named by <tt>principalRequestHeader</tt> from Request
+     *
+     * @throws PreAuthenticatedCredentialsNotFoundException
+     *             if the header is missing and
+     *             <tt>exceptionIfHeaderMissing</tt> is set to <tt>true</tt>.
+     */
+    protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
+
+        String ssoCookieName = "erp";
+        String ssoAuthenticationKey="2099";
+        String  erpUser = "没有设置";
+        Cookie   cookie = CookieUtil.getCookie(request, ssoCookieName);
+        if (cookie != null) {
+            erpUser = SSOUtil.getErpUserName(cookie.getValue(), ssoAuthenticationKey);
+        }
+
+        //        System.out.println("获得erp用户 =="+erpUser);
+
+        String principal = request.getHeader(principalRequestHeader);
+
+        if (principal == null) {
+            if (exceptionIfHeaderMissing) {
+                throw new PreAuthenticatedCredentialsNotFoundException(principalRequestHeader
+                                                                       + " header not found in request.");
+            } if (StringUtils.isNotBlank(testUserId)) {
+                // log.warn("spring configuration has a test user id " + testUserId);
+                principal = testUserId;
+            } else if (request.getSession().getAttribute("session_user") != null) {
+                // A bit of a hack for testers - allow the principal to be
+                // obtained by session. Must be set by a page with no security filters enabled.
+                // should remove for production.
+                principal = (String) request.getSession().getAttribute("session_user");
+            }
+        }
+        // also set it into the session, sometimes that's easier for jsp/faces
+        // to get at..
+        request.getSession().setAttribute("session_user", principal);
+        return principal;
+    }
+
+    /**
+     * Credentials aren't applicable here for OAM WebGate SSO.
+     */
+    protected Object getPreAuthenticatedCredentials(HttpServletRequest request) {
+        return "password_not_applicable";
+    }
+
+    public void setPrincipalRequestHeader(String principalRequestHeader) {
+        Assert.hasText(principalRequestHeader, "principalRequestHeader must not be empty or null");
+        this.principalRequestHeader = principalRequestHeader;
+    }
+
+    public void setTestUserId(String testId) {
+        if (StringUtils.isNotBlank(testId)) {
+            this.testUserId = testId;
+        }
+    }
+
+    /**
+     * Exception if the principal header is missing. Default <tt>false</tt>
+     * @param exceptionIfHeaderMissing
+     */
+    public void setExceptionIfHeaderMissing(boolean exceptionIfHeaderMissing) {
+        this.exceptionIfHeaderMissing = exceptionIfHeaderMissing;
+    }
+
+    public void setAuthenticationDetailsSource(AuthenticationDetailsSource source) {
+        //    log.info("testing authenticationDetailsSource set " + source);
+        super.setAuthenticationDetailsSource(source);
+    }
+}
+#+END_SRC
+
+
+HeaderAuthenticationDetails.java
+#+BEGIN_SRC java
+public class HeaderAuthenticationDetails extends AuthenticationDetailsSourceImpl {
+        private static final Logger log = Logger.getLogger(HeaderAuthenticationDetails.class);
+
+
+
+  /**
+   * Can be setup in applicationContext-security if the ROLES header value is
+   * not found.
+   */
+  private Set<String> testingRoles = new HashSet<String>();
+
+  /**
+   * Security principal will only contain roles from "allRoles" - letting us
+   * cut down the irrelevant values setup by the webgate SSO header.
+   */
+  protected Set<String> allRoles = new HashSet<String>();
+
+  /**
+   * setup in applicationContext-security
+   */
+  private String roleHeaderName = "ROLES";
+
+  protected Attributes2GrantedAuthoritiesMapper grantedAuthoritiesMapper
+    = new SimpleAttributes2GrantedAuthoritiesMapper();
+
+  public HeaderAuthenticationDetails() {
+    super.setClazz(PreAuthenticatedGrantedAuthoritiesWebAuthenticationDetails.class);
+  }
+
+  /**
+   * Build the authentication details object. If the specified authentication
+   * details class implements {@link MutableGrantedAuthoritiesContainer}, a
+   * list of pre-authenticated Granted Authorities will be set based on the
+   * roles for the current user.
+   */
+  public Object buildDetails(Object context) {
+    Object result = super.buildDetails(context);
+    List<GrantedAuthority> userGas = new ArrayList<GrantedAuthority>();
+    if (result instanceof MutableGrantedAuthoritiesContainer) {
+      Collection<String> userRoles = getUserRoles(context, allRoles);
+      userGas = grantedAuthoritiesMapper.getGrantedAuthorities(userRoles);
+      ((MutableGrantedAuthoritiesContainer) result).setGrantedAuthorities(userGas);
+    }
+    return result;
+  }
+
+  /**
+   * Allows the roles of the current user to be determined from the context
+   * object
+   *
+   * @param context
+   *            the context object (HttpRequest, PortletRequest etc)
+   * @param mappableRoles
+   *            the possible roles determined by the
+   *            MappableAttributesRetriever
+   * @return Collection<string> subset of mappable roles current user has.
+   */
+  protected Collection<String> getUserRoles(Object context, Set<String> mappableRoles) {
+    ArrayList<String> requestRoles = new ArrayList<String>();
+    if (((HttpServletRequest) context).getHeader(roleHeaderName) != null) {
+      String[] roles = ((HttpServletRequest) context).getHeader(roleHeaderName).split(",");
+      for (int i = 0; i < roles.length; i++) {
+        if (mappableRoles.contains(roles[i])) {
+          requestRoles.add(roles[i]);
+        }
+      }
+    } else if ( testingRoles != null) {
+      log.warn("Failed to retrieve Roles from Header, for debug purposes set to testingRole"+testingRoles);
+      requestRoles.addAll(testingRoles);
+    } else {
+      log.warn("Failed to retrieve Roles from Header, setup as 'user' role.");
+      requestRoles.add("USER");
+    }
+    // add them to the session for convenience
+    ((HttpServletRequest) context).getSession().setAttribute("ROLES", requestRoles);
+    return requestRoles;
+  }
+
+  /**
+   * @param mapper
+   *            The Attributes2GrantedAuthoritiesMapper to use
+   */
+  public void setUserRoles2GrantedAuthoritiesMapper(Attributes2GrantedAuthoritiesMapper mapper) {
+    grantedAuthoritiesMapper = mapper;
+  }
+
+  /**
+   * All available roles for this application
+   *
+   * @param allRoles
+   */
+  public void setAllRoles(Set<String> allRoles) {
+    this.allRoles = allRoles;
+  }
+  /**
+   * @param roleHeaderName
+   */
+  public void setRoleHeaderName(String roleHeaderName) {
+    this.roleHeaderName = roleHeaderName;
+  }
+  /**
+   * @param testingRole
+   */
+  public void setTestingRoles(Set<String> testingRole) {
+    this.testingRoles = testingRole;
+  }
+}
+#+END_SRC
+
+
+UserDetailsServices.java
+
+#+BEGIN_SRC java
+
+public class UserDetailsServices implements UserDetailsService {
+    /**
+     * Logger for this class
+     */
+    private static final Logger logger = Logger.getLogger(UserDetailsServices.class);
+
+    public  UserDetails loadUserByUsername(String userName)  throws  UsernameNotFoundException, DataAccessException {
+
+        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+        authorities.add(new  GrantedAuthorityImpl("ROLE_ADMIN"));
+        authorities.add(new  GrantedAuthorityImpl("ROLE_USER"));
+
+        return   new  UserToken("admin","admin" , authorities);
+    }
+}
+#+END_SRC
+
+* 参考资料
+
+  1. [[http://blog.sbeynon.net/2011/12/spring-security-with-sso-headers.html][Spring Security with SSO Headers - integrating with OAM WebGate]]
+  2. [[http://www.blogjava.net/youxia/archive/2008/12/07/244883.html][SpringSide 3 中的安全框架]]
