@@ -154,8 +154,8 @@ ibmdb2.SMALLINT.type = 5
 &lt;#+BEGIN_SRC &gt;
 </p>
 <p>
-sqlunit.driver = COM.ibm.db2.jdbc.app.DB2Driver
-sqlunit.url = jdbc:db2:sample
+sqlunit.driver = COM.ibm.db2.__my_company_1__bc.app.DB2Driver
+sqlunit.url = __my_company_1__bc:db2:sample
 </p>
 <p>
 #+END_SRC
@@ -179,34 +179,34 @@ sqlunit.url = jdbc:db2:sample
 <pre class="example">
 &lt;sql&gt;
      &lt;stmt&gt;INSERT INTO sods2.ibm_emp_dlgtn (
-      	       IBM_EMP_NUM, EMP_CNTRY_CODE, PROG_CODE, MIGRTN_CODE, REVN_STREAM_CODE,
-		       SAP_SALES_ORG_CODE, PAYER_CNTRY_CODE, PROG_MIGRTN_CODE,
-		       DLGTN_PCT, VALID_TO_DATE, VALID_FROM_DATE, EMP_NAME_FULL,
-		       INTL_PHN_NUM_FULL, INTL_FAX_NUM_FULL, EMAIL_ADR,
-		       INACT_FLAG, MOD_DATE, MOD_BY_HRCL_NAME)
-		       VALUES(?, ?, ?, ?, ?, ?,  	
+      	   IBM_EMP_NUM, EMP_CNTRY_CODE, PROG_CODE, MIGRTN_CODE, REVN_STREAM_CODE,
+		   SAP_SALES_ORG_CODE, PAYER_CNTRY_CODE, PROG_MIGRTN_CODE,
+		   DLGTN_PCT, VALID_TO_DATE, VALID_FROM_DATE, EMP_NAME_FULL,
+		   INTL_PHN_NUM_FULL, INTL_FAX_NUM_FULL, EMAIL_ADR,
+		   INACT_FLAG, MOD_DATE, MOD_BY_HRCL_NAME)
+		   VALUES(?, ?, ?, ?, ?, ?,  	
 				  ?, ?, ?, ?, ?, ?,
 				  ?, ?, ?, ?, ?, ?
-		       )
+		   )
      &lt;/stmt&gt;
-	       &lt;param id="1" type="CHAR"&gt;${vIBM_EMP_NUM}&lt;/param&gt;
-	       &lt;param id="2" type="CHAR"&gt;${vEMP_CNTRY_CODE}&lt;/param&gt;
-	       &lt;param id="3" type="CHAR"&gt;${vPROG_CODE}&lt;/param&gt;
-	       &lt;param id="4" type="CHAR"&gt;${vMIGRTN_CODE}&lt;/param&gt;
-	       &lt;param id="5" type="CHAR"&gt;${vREVN_STREAM_CODE1}&lt;/param&gt;
-	       &lt;param id="6" type="CHAR"&gt;${vSAP_SALES_ORG_CODE}&lt;/param&gt;
-	       &lt;param id="7" type="CHAR"&gt;${vPAYER_CNTRY_CODE}&lt;/param&gt;
-	       &lt;param id="8" type="CHAR"&gt;${vPROG_MIGRTN_CODE}&lt;/param&gt;
-	       &lt;param id="9" type="FLOAT"&gt;${vDLGTN_PCT1}&lt;/param&gt;			
-	       &lt;param id="10" type="DATE"&gt;${vVALID_TO_DATE}&lt;/param&gt;
-	       &lt;param id="11" type="DATE"&gt;${vVALID_FROM_DATE}&lt;/param&gt;
-	       &lt;param id="12" type="VARCHAR"&gt;${vEMP_NAME_FULL}&lt;/param&gt;
-	       &lt;param id="13" type="VARCHAR"&gt;${vINTL_PHN_NUM_FULL}&lt;/param&gt;
-	       &lt;param id="14" type="VARCHAR"&gt;${vINTL_FAX_NUM_FULL}&lt;/param&gt;
-	       &lt;param id="15" type="VARCHAR"&gt;${vEMAIL_ADR}&lt;/param&gt;
-	       &lt;param id="16" type="SMALLINT"&gt;${vINACT_FLAG}&lt;/param&gt;
-	       &lt;param id="17" type="TIMESTAMP"&gt;${vMOD_DATE}&lt;/param&gt;
-	       &lt;param id="18" type="VARCHAR"&gt;${vMOD_BY_HRCL_NAME}&lt;/param&gt;
+	   &lt;param id="1" type="CHAR"&gt;${vIBM_EMP_NUM}&lt;/param&gt;
+	   &lt;param id="2" type="CHAR"&gt;${vEMP_CNTRY_CODE}&lt;/param&gt;
+	   &lt;param id="3" type="CHAR"&gt;${vPROG_CODE}&lt;/param&gt;
+	   &lt;param id="4" type="CHAR"&gt;${vMIGRTN_CODE}&lt;/param&gt;
+	   &lt;param id="5" type="CHAR"&gt;${vREVN_STREAM_CODE1}&lt;/param&gt;
+	   &lt;param id="6" type="CHAR"&gt;${vSAP_SALES_ORG_CODE}&lt;/param&gt;
+	   &lt;param id="7" type="CHAR"&gt;${vPAYER_CNTRY_CODE}&lt;/param&gt;
+	   &lt;param id="8" type="CHAR"&gt;${vPROG_MIGRTN_CODE}&lt;/param&gt;
+	   &lt;param id="9" type="FLOAT"&gt;${vDLGTN_PCT1}&lt;/param&gt;			
+	   &lt;param id="10" type="DATE"&gt;${vVALID_TO_DATE}&lt;/param&gt;
+	   &lt;param id="11" type="DATE"&gt;${vVALID_FROM_DATE}&lt;/param&gt;
+	   &lt;param id="12" type="VARCHAR"&gt;${vEMP_NAME_FULL}&lt;/param&gt;
+	   &lt;param id="13" type="VARCHAR"&gt;${vINTL_PHN_NUM_FULL}&lt;/param&gt;
+	   &lt;param id="14" type="VARCHAR"&gt;${vINTL_FAX_NUM_FULL}&lt;/param&gt;
+	   &lt;param id="15" type="VARCHAR"&gt;${vEMAIL_ADR}&lt;/param&gt;
+	   &lt;param id="16" type="SMALLINT"&gt;${vINACT_FLAG}&lt;/param&gt;
+	   &lt;param id="17" type="TIMESTAMP"&gt;${vMOD_DATE}&lt;/param&gt;
+	   &lt;param id="18" type="VARCHAR"&gt;${vMOD_BY_HRCL_NAME}&lt;/param&gt;
    &lt;/sql&gt;
 </pre>
 </li>
@@ -224,46 +224,46 @@ sqlunit.url = jdbc:db2:sample
 <p>
 &lt;test name="Test S_Q0_CNTRY_SLSORG"&gt; 
 &lt;call connection-id="duke"&gt;
+    &lt;stmt&gt;{call EBIZ1.S_Q0_CNTRY_SLSORG (?, ?, ?)}&lt;/stmt&gt; 
+    &lt;param id="1" name="poGenStatus" type="INTEGER" inout="out"&gt;${poGenStatus}&lt;/param&gt; 
+    &lt;param id="2" name="piPartnerCntry" type="VARCHAR" inout="in"&gt;${v_partnerCntry}&lt;/param&gt; 
+    &lt;param id="3" name="piLOBCode" type="VARCHAR" inout="in"&gt;${v_LOBCode}&lt;/param&gt; 
+&lt;/call&gt; 
+&lt;result&gt; 
+    &lt;outparam id="1" name="poGenStatus" type="INTEGER"&gt;0&lt;/outparam&gt; 
+    &lt;resultset id="1" partial="true"&gt; 
+        &lt;row id="1"&gt; 
+            &lt;col id="1" name="CNTRY_CODE" type="CHAR"&gt;ARM&lt;/col&gt; 
+        &lt;/row&gt; 
+    &lt;/resultset&gt; 
+&lt;/result&gt; 
+&lt;/test&gt;     
+&lt;diff name="Diffing different resultset\/multiple matchers" failure-message="Diff test #3 failed"&gt;
+    &lt;match col-id="1" matcher="net.sourceforge.sqlunit.matchers.AllOrNothingMatcher"&gt;
+        &lt;arg name="match" value="true" /&gt;
+    &lt;/match&gt;
+    &lt;match col-id="2" matcher="net.sourceforge.sqlunit.matchers.RangeMatcher"&gt;
+        &lt;arg name="tolerance" value="50" /&gt;
+    &lt;/match&gt;
+    &lt;match col-id="3" matcher="net.sourceforge.sqlunit.matchers.PercentageRangeMatcher"&gt;
+        &lt;arg name="pc-tolerance" value="10" /&gt;
+    &lt;/match&gt;  
+</p>
+
+<p>
+    &lt;call connection-id="duke"&gt; 
         &lt;stmt&gt;{call EBIZ1.S_Q0_CNTRY_SLSORG (?, ?, ?)}&lt;/stmt&gt; 
         &lt;param id="1" name="poGenStatus" type="INTEGER" inout="out"&gt;${poGenStatus}&lt;/param&gt; 
         &lt;param id="2" name="piPartnerCntry" type="VARCHAR" inout="in"&gt;${v_partnerCntry}&lt;/param&gt; 
         &lt;param id="3" name="piLOBCode" type="VARCHAR" inout="in"&gt;${v_LOBCode}&lt;/param&gt; 
-&lt;/call&gt; 
-&lt;result&gt; 
-        &lt;outparam id="1" name="poGenStatus" type="INTEGER"&gt;0&lt;/outparam&gt; 
-        &lt;resultset id="1" partial="true"&gt; 
-                &lt;row id="1"&gt; 
-                        &lt;col id="1" name="CNTRY_CODE" type="CHAR"&gt;ARM&lt;/col&gt; 
-                &lt;/row&gt; 
-        &lt;/resultset&gt; 
-&lt;/result&gt; 
-&lt;/test&gt;         
-&lt;diff name="Diffing different resultset\/multiple matchers" failure-message="Diff test #3 failed"&gt;
-        &lt;match col-id="1" matcher="net.sourceforge.sqlunit.matchers.AllOrNothingMatcher"&gt;
-                &lt;arg name="match" value="true" /&gt;
-        &lt;/match&gt;
-        &lt;match col-id="2" matcher="net.sourceforge.sqlunit.matchers.RangeMatcher"&gt;
-                &lt;arg name="tolerance" value="50" /&gt;
-        &lt;/match&gt;
-        &lt;match col-id="3" matcher="net.sourceforge.sqlunit.matchers.PercentageRangeMatcher"&gt;
-                &lt;arg name="pc-tolerance" value="10" /&gt;
-        &lt;/match&gt;  
-</p>
-
-<p>
-        &lt;call connection-id="duke"&gt; 
-                &lt;stmt&gt;{call EBIZ1.S_Q0_CNTRY_SLSORG (?, ?, ?)}&lt;/stmt&gt; 
-                &lt;param id="1" name="poGenStatus" type="INTEGER" inout="out"&gt;${poGenStatus}&lt;/param&gt; 
-                &lt;param id="2" name="piPartnerCntry" type="VARCHAR" inout="in"&gt;${v_partnerCntry}&lt;/param&gt; 
-                &lt;param id="3" name="piLOBCode" type="VARCHAR" inout="in"&gt;${v_LOBCode}&lt;/param&gt; 
-        &lt;/call&gt; 
-        &lt;call connection-id="duke"&gt; 
-                &lt;stmt&gt;{call EBIZ1.S_Q0_CNTRY_SLSORG (?, ?, ?)}&lt;/stmt&gt; 
-                &lt;param id="1" name="poGenStatus" type="INTEGER" inout="out"&gt;${poGenStatus}&lt;/param&gt; 
-                &lt;param id="2" name="piPartnerCntry" type="VARCHAR" inout="in"&gt;${v_partnerCntry}&lt;/param&gt; 
-                &lt;param id="3" name="piLOBCode" type="VARCHAR" inout="in"&gt;${v_LOBCode}&lt;/param&gt; 
-        &lt;/call&gt;
-&lt;/diff&gt;        
+    &lt;/call&gt; 
+    &lt;call connection-id="duke"&gt; 
+        &lt;stmt&gt;{call EBIZ1.S_Q0_CNTRY_SLSORG (?, ?, ?)}&lt;/stmt&gt; 
+        &lt;param id="1" name="poGenStatus" type="INTEGER" inout="out"&gt;${poGenStatus}&lt;/param&gt; 
+        &lt;param id="2" name="piPartnerCntry" type="VARCHAR" inout="in"&gt;${v_partnerCntry}&lt;/param&gt; 
+        &lt;param id="3" name="piLOBCode" type="VARCHAR" inout="in"&gt;${v_LOBCode}&lt;/param&gt; 
+    &lt;/call&gt;
+&lt;/diff&gt;    
 </p>
 
 
@@ -351,8 +351,8 @@ Using connection tag to define a connection
 </p>
 
 <p>
-sqlunit.driver = COM.ibm.db2.jdbc.app.DB2Driver
-sqlunit.url = jdbc:db2:sample
+sqlunit.driver = COM.ibm.db2.__my_company_1__bc.app.DB2Driver
+sqlunit.url = __my_company_1__bc:db2:sample
 </p>
 <p>
 Importing a xml file to define a connection 
@@ -413,8 +413,8 @@ Setup  Test data
     &lt;/sql&gt;
 Test Tag
 Attributes for test
-name         Specifies a human-readable name for the test, which will be printed to the log as part of SQLUnit's progress messages.         Yes
-assert         Specifies a single or comma-separated list of assertions that must be true for the test.         No, defaults to equal
+name     Specifies a human-readable name for the test, which will be printed to the log as part of SQLUnit's progress messages.     Yes
+assert     Specifies a single or comma-separated list of assertions that must be true for the test.     No, defaults to equal
 </p>
 
 <p>
@@ -422,12 +422,12 @@ Nested Elements
 </p>
 
 <p>
-skip         Indicates whether the test should be skipped or not.         No
-match         Specifies zero or match elements that should be applied to match the result returned with that specified.         No
-prepare         Specifies SQL setup code that must be run on a per-test basis.         No
-sql         Specifies the SQL statement that must be run for this test.         Either one of sql, call, methodinvoker, dynamicsql or sub
-call         Specifies a stored procedure that must be run for the test.         Either one of sql, call, methodinvoker, dynamicsql or sub
-result         Specifies the expected result from the test.         Yes
+skip     Indicates whether the test should be skipped or not.     No
+match     Specifies zero or match elements that should be applied to match the result returned with that specified.     No
+prepare     Specifies SQL setup code that must be run on a per-test basis.     No
+sql     Specifies the SQL statement that must be run for this test.     Either one of sql, call, methodinvoker, dynamicsql or sub
+call     Specifies a stored procedure that must be run for the test.     Either one of sql, call, methodinvoker, dynamicsql or sub
+result     Specifies the expected result from the test.     Yes
 </p>
 
 <p>
@@ -457,7 +457,7 @@ Test Tag
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-03-07</span>
+        <span title="last modification date" class="post-info">2014-08-20</span>
         <span title="tags" class="post-info"><a href="/tags/ibm/">ibm</a>, <a href="/tags/sql/">sql</a>, <a href="/tags/unit-test/">unit test</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

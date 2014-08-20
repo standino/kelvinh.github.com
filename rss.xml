@@ -4,79 +4,79 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>一, 11  8月 2014 17:43:34 CST</pubDate>
-    <lastBuildDate>一, 11  8月 2014 17:43:34 CST</lastBuildDate>
+    <pubDate>Wed, 20 Aug 2014 17:05:45 CST</pubDate>
+    <lastBuildDate>Wed, 20 Aug 2014 17:05:45 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>基于saiku开发OLAP应用</title>
-      <link>http://standino.github.io./blog/2014/06/16/saiku</link>
-      <description>使用saiku开发OLAP系统</description>
-      <pubDate>2014-08-08</pubDate>
-      <guid>http://standino.github.io./blog/2014/06/16/saiku</guid>
+      <title>使用apache cxf生成web servcie 客户端</title>
+      <link>http://standino.github.io/blog/html/cxf</link>
+      <description>介绍如何使用cxf生成客户端</description>
+      <pubDate>2014-08-20</pubDate>
+      <guid>http://standino.github.io/blog/html/cxf</guid>
     </item>
     <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-08-08</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
+      <title>使用Emacs开发J2EE程序</title>
+      <link>http://standino.github.io/blog/2014/03/15/emacs4java</link>
+      <description>介绍如何使用Emacs编辑J2EE程序</description>
+      <pubDate>2014-08-20</pubDate>
+      <guid>http://standino.github.io/blog/2014/03/15/emacs4java</guid>
     </item>
     <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-08-08</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
+      <title>走进Emacs殿堂</title>
+      <link>http://standino.github.io/blog/2013/12/27/enterEmacs</link>
+      <description>走进Emacs殿堂</description>
+      <pubDate>2014-08-20</pubDate>
+      <guid>http://standino.github.io/blog/2013/12/27/enterEmacs</guid>
+    </item>
+    <item>
+      <title>怀念我的姥姥</title>
+      <link>http://standino.github.io/blog/html/2014/01/29/怀念我的姥姥/</link>
+      <description>怀念我的姥姥</description>
+      <pubDate>2014-08-20</pubDate>
+      <guid>http://standino.github.io/blog/html/2014/01/29/怀念我的姥姥/</guid>
+    </item>
+    <item>
+      <title>使用伪代码做详细设计</title>
+      <link>http://standino.github.io/blog/2014/01/09/使用伪代码做详细设计</link>
+      <description>使用伪代码做详细设计</description>
+      <pubDate>2014-08-20</pubDate>
+      <guid>http://standino.github.io/blog/2014/01/09/使用伪代码做详细设计</guid>
+    </item>
+    <item>
+      <title>使用piwik做网站统计</title>
+      <link>http://standino.github.io/blog/html/2014/01/27/使用piwik做网站统计/</link>
+      <description>piwik</description>
+      <pubDate>2014-08-20</pubDate>
+      <guid>http://standino.github.io/blog/html/2014/01/27/使用piwik做网站统计/</guid>
+    </item>
+    <item>
+      <title>2014年计划</title>
+      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
+      <description>为明年做一下计划</description>
+      <pubDate>2014-08-20</pubDate>
+      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
+    </item>
+    <item>
+      <title>我是如何开始使用redis的</title>
+      <link>http://standino.github.io/blog/2013/12/24/redis</link>
+      <description>redis学习和入门</description>
+      <pubDate>2014-08-20</pubDate>
+      <guid>http://standino.github.io/blog/2013/12/24/redis</guid>
+    </item>
+    <item>
+      <title>使用shell批量修改文件</title>
+      <link>http://standino.github.io/blog/html/2014/01/02/shellfind</link>
+      <description>使用find和sed来批量修改文件</description>
+      <pubDate>2014-08-20</pubDate>
+      <guid>http://standino.github.io/blog/html/2014/01/02/shellfind</guid>
     </item>
     <item>
       <title>sonar的安装和使用</title>
       <link>http://standino.github.io/blog/2013/12/24/sonar</link>
       <description>sonar的安装和使用</description>
-      <pubDate>2014-07-31</pubDate>
+      <pubDate>2014-08-20</pubDate>
       <guid>http://standino.github.io/blog/2013/12/24/sonar</guid>
-    </item>
-    <item>
-      <title>敏捷软件开发</title>
-      <link>http://standino.github.io/wiki/html/scrum</link>
-      <description>敏捷软件开发</description>
-      <pubDate>2014-07-29</pubDate>
-      <guid>http://standino.github.io/wiki/html/scrum</guid>
-    </item>
-    <item>
-      <title>mysql</title>
-      <link>http://standino.github.io/wiki/html/mysql</link>
-      <description>MySQL数据库</description>
-      <pubDate>2014-07-24</pubDate>
-      <guid>http://standino.github.io/wiki/html/mysql</guid>
-    </item>
-    <item>
-      <title>linux</title>
-      <link>http://standino.github.io/wiki/html/linux</link>
-      <description>linux</description>
-      <pubDate>2014-07-21</pubDate>
-      <guid>http://standino.github.io/wiki/html/linux</guid>
-    </item>
-    <item>
-      <title>JAVA</title>
-      <link>http://standino.github.io/wiki/html/java</link>
-      <description>Java Tips</description>
-      <pubDate>2014-07-11</pubDate>
-      <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>大数据</title>
-      <link>http://standino.github.io/wiki/html/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2014-07-11</pubDate>
-      <guid>http://standino.github.io/wiki/html/bigdata</guid>
-    </item>
-    <item>
-      <title>jquery, bootstrap 和它们的插件们</title>
-      <link>http://standino.github.io./blog/2014/05/30/jquerybootstrap</link>
-      <description>本文主要介绍jquery，bootstrap和它们的插件的使用</description>
-      <pubDate>2014-07-04</pubDate>
-      <guid>http://standino.github.io./blog/2014/05/30/jquerybootstrap</guid>
     </item>
   </channel>
 </rss>

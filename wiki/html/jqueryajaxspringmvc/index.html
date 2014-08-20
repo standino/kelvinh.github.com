@@ -131,7 +131,7 @@ $.ajax({
     'name' : $('#knowledgeName').val(),
     'content' : $("#knowledgeContent").val(),
     'isParent' : $('input[name=isParent]:checked').val(),
-      'dueDate': new Date(Date.parse($("#publishWork_dueTime").val().replace(/-/g,   "/"))),
+  'dueDate': new Date(Date.parse($("#publishWork_dueTime").val().replace(/-/g,   "/"))),
     'accessList': $('#addkbGroup').val()? $('#addkbGroup').val().toString():''
   },
 
@@ -163,11 +163,11 @@ Spring mvc 制动的把accessList映射到List&lt;String&gt;中。
 <div class="org-src-container">
 
 <pre class="src src-java">public class KnowledgeBase  {
-        private Integer pId;
-        private Integer isParent;
-        private String name;
-        private String content;
-        private Date dueDate;
+    private Integer pId;
+    private Integer isParent;
+    private String name;
+    private String content;
+    private Date dueDate;
       private List&lt;String&gt; accessList;
 </pre>
 </div>

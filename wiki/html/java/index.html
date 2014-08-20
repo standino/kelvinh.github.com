@@ -47,7 +47,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">目录&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TOC">TOC</span></span></a></li>
+<li><a href="#sec-1">目录</a></li>
 <li><a href="#sec-2">Spring</a>
 <ul>
 <li><a href="#sec-2-1">Spring bean</a>
@@ -130,20 +130,20 @@ applicationContext.xml
 
 <pre class="src src-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-                xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        "&gt;
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    "&gt;
 
-        &lt;!-- 使Spring支持自动检测组件，如注解的Controller --&gt;
-        &lt;context:annotation-config /&gt;
+    &lt;!-- 使Spring支持自动检测组件，如注解的Controller --&gt;
+    &lt;context:annotation-config /&gt;
 
-        &lt;context:component-scan base-package="com.mycompany.pbs"/&gt;
+    &lt;context:component-scan base-package="com.mycompany.pbs"/&gt;
 
-        &lt;import resource="applicationContext-datasource.xml"/&gt;
-        &lt;import resource="applicationContext-service.xml"/&gt;
-        &lt;import resource="applicationContext-schedule.xml" /&gt;
-        &lt;import resource="spring-monitor.xml" /&gt;
+    &lt;import resource="applicationContext-datasource.xml"/&gt;
+    &lt;import resource="applicationContext-service.xml"/&gt;
+    &lt;import resource="applicationContext-schedule.xml" /&gt;
+    &lt;import resource="spring-monitor.xml" /&gt;
 &lt;/beans&gt;
 </pre>
 </div>
@@ -155,16 +155,16 @@ applicationContext.xml
 <div class="outline-text-4" id="text-2-1-2">
 <div class="org-src-container">
 
-<pre class="src src-xml">    &lt;bean id="propertyConfigurer"
-            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
-            &lt;property name="locations"&gt;
-                    &lt;list&gt;
-                            &lt;value&gt;classpath:mycompanybc.properties&lt;/value&gt;
-                            &lt;value&gt;classpath:important.properties&lt;/value&gt;
-                            &lt;value&gt;classpath:app.properties&lt;/value&gt;
-                    &lt;/list&gt;
-            &lt;/property&gt;
-    &lt;/bean&gt;
+<pre class="src src-xml">&lt;bean id="propertyConfigurer"
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+    &lt;property name="locations"&gt;
+        &lt;list&gt;
+            &lt;value&gt;classpath:mycompanybc.properties&lt;/value&gt;
+            &lt;value&gt;classpath:important.properties&lt;/value&gt;
+            &lt;value&gt;classpath:app.properties&lt;/value&gt;
+        &lt;/list&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
 
 &lt;bean id="jedis" class="redis.clients.jedis.Jedis"&gt;
     &lt;constructor-arg value="${redis.server.ip}"/&gt;
@@ -230,19 +230,19 @@ web.xml中的声明：
     &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
 &lt;/listener&gt;
 
-    &lt;servlet&gt;
-	    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-	    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-	    &lt;init-param&gt;
-	      &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-	      &lt;param-value&gt;classpath:spring/springmvc-servlet.xml&lt;/param-value&gt;
-	    &lt;/init-param&gt;
+&lt;servlet&gt;
+	&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+	&lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+	&lt;init-param&gt;
+	  &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+	  &lt;param-value&gt;classpath:spring/springmvc-servlet.xml&lt;/param-value&gt;
+	&lt;/init-param&gt;
     &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-    &lt;/servlet&gt;
-    &lt;servlet-mapping&gt;
-	    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-	    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-    &lt;/servlet-mapping&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+	&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+	&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
 </pre>
 
 <p>
@@ -499,11 +499,11 @@ mapping and narrow request to method.
 </p>
 
 <p>
-1、        value：url限定，比如方法上的/{id}/edit和/new。
+1、    value：url限定，比如方法上的/{id}/edit和/new。
 </p>
 
 <p>
-2、        method：http方法限定。GET/POST/PUT/DELETE等。当url一样时，通过http方法来区分。
+2、    method：http方法限定。GET/POST/PUT/DELETE等。当url一样时，通过http方法来区分。
 </p>
 
 <p>
@@ -517,7 +517,7 @@ public String show(...
 </p>
 
 <p>
-3、        consumes或produces：根据请求或响应的ContentType来区分。当url和http方法一样，以此来区分。
+3、    consumes或produces：根据请求或响应的ContentType来区分。当url和http方法一样，以此来区分。
     @RequestMapping(value = "/query", method = RequestMethod.GET,
             produces = "text/html")
     public String query(...
@@ -531,23 +531,23 @@ public Model queryJson(...
 </p>
 
 <p>
-4、        params/header限定请参考API。
+4、    params/header限定请参考API。
 </p>
 
 
 <p>
 controller类方法签名：允许的方法参数类型
-1、        spring替你准备好这些参数，不用管抽取、类型转换等细节。
+1、    spring替你准备好这些参数，不用管抽取、类型转换等细节。
 </p>
 
 <p>
-2、        @PathVariable注解的参数，抽取url占位符代表的值
+2、    @PathVariable注解的参数，抽取url占位符代表的值
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
 public String edit(@PathVariable("id") Long id, Model view) {
 </p>
 
 <p>
-3、        Model/Map等视图模型，被spring自动注入，如上例。将它暴露到视图层。
+3、    Model/Map等视图模型，被spring自动注入，如上例。将它暴露到视图层。
     public String edit(@PathVariable("id") Long id, Model view) {
         // add to view model to render edit page
         view.addAttribute("order", order);
@@ -555,12 +555,12 @@ public String edit(@PathVariable("id") Long id, Model view) {
 </p>
 
 <p>
-4、        @RequestParam注解的参数，抽取http request中相应参数的值。
+4、    @RequestParam注解的参数，抽取http request中相应参数的值。
     public Model queryJson(
             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
             @RequestParam(value = "rows", required = false, defaultValue = "20") int pageSize, 
 …
-5、        表单绑定对象(command/form object)/输入校验结果对象(BindingResult/Errors)
+5、    表单绑定对象(command/form object)/输入校验结果对象(BindingResult/Errors)
     public String create(@Valid @ModelAttribute("order") ReturnOrderDTO command,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -571,20 +571,20 @@ public String edit(@PathVariable("id") Long id, Model view) {
 </p>
 
 <p>
-6、        HttpServletRequest/HttpServletResponse等，如：
+6、    HttpServletRequest/HttpServletResponse等，如：
 @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(
             @RequestParam(value = "locale", required = false) Locale locale,
             HttpServletRequest request,
             HttpServletResponse response)
-7、        其他可使用的参数类型见@RequestParam类API文档。
-8、        spring3.1的 HandlerMethodArgumentResolver扩展，应该可以允许更多的自定义类型参数。
+7、    其他可使用的参数类型见@RequestParam类API文档。
+8、    spring3.1的 HandlerMethodArgumentResolver扩展，应该可以允许更多的自定义类型参数。
 </p>
 
 
 <p>
 controller类方法签名：允许的返回值类型
-1、        String，表示视图的逻辑名，例如下例将使用/WEB-INF/view/return/order-edit.vm为模板视图：
+1、    String，表示视图的逻辑名，例如下例将使用/WEB-INF/view/return/order-edit.vm为模板视图：
     public String edit(@PathVariable("id") Long id, Model view) {
         ...
         view.addAttribute("order", order);
@@ -604,7 +604,7 @@ controller类方法签名：允许的返回值类型
 </p>
 
 <p>
-2、        ModelAndView，比如：
+2、    ModelAndView，比如：
     @ExceptionHandler
     public ModelAndView notfound(NoSuchEntityException exception) {
         return new ModelAndView("return/order-notfound")
@@ -613,7 +613,7 @@ controller类方法签名：允许的返回值类型
 </p>
 
 <p>
-3、        @ResponseBody 注解的，返回值将被序列化，比如下例将返回值转换成json：
+3、    @ResponseBody 注解的，返回值将被序列化，比如下例将返回值转换成json：
    @ResponseBody
     public Model queryJson(
             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
@@ -632,13 +632,13 @@ controller类方法签名：允许的返回值类型
 </p>
 
 <p>
-4、        void，由应用自己处理响应，比如只返回http状态：
+4、    void，由应用自己处理响应，比如只返回http状态：
     public void create(..., HttpServletResponse response){
         ...
         response.setStatus(201);
     }
-5、        其他的返回值类型可参考@RequestParam类API文档。
-6、        spring3.1的 HandlerMethodReturnValueHandler 扩展，应该可以允许更多的自定义返回值类型。
+5、    其他的返回值类型可参考@RequestParam类API文档。
+6、    spring3.1的 HandlerMethodReturnValueHandler 扩展，应该可以允许更多的自定义返回值类型。
 </p>
 
 
@@ -679,23 +679,23 @@ public static class ReturnOrderDTO {
 </p>
 
 <p>
-1、        输出：#springFormInput是spring提供的velocity宏，”order.orderQty”表示视图模型中有一个名称为order的对象，orderQty为其属性。
+1、    输出：#springFormInput是spring提供的velocity宏，”order.orderQty”表示视图模型中有一个名称为order的对象，orderQty为其属性。
 </p>
 
 <p>
-2、        输入：参数@ModelAttribute("order") ReturnOrderDTO command接收输入，当返回时，自动将其内容暴露给视图模板。
+2、    输入：参数@ModelAttribute("order") ReturnOrderDTO command接收输入，当返回时，自动将其内容暴露给视图模板。
 </p>
 
 <p>
-3、        服务端验证：在表单绑定对象加上@Valid注解，即可自动验证表单对象属性设置的各种JSR303约束规则。
+3、    服务端验证：在表单绑定对象加上@Valid注解，即可自动验证表单对象属性设置的各种JSR303约束规则。
 </p>
 
 <p>
-4、        客户端验证：js框架,class="easyui-validatebox" required="true"。
+4、    客户端验证：js框架,class="easyui-validatebox" required="true"。
 </p>
 
 <p>
-5、        自定义转换器，详见demo代码。
+5、    自定义转换器，详见demo代码。
 </p>
 
 
@@ -703,78 +703,78 @@ public static class ReturnOrderDTO {
 视图层（以velocity为例）
 默认视图处理器
     &lt;!-- template view --&gt;
-        &lt;bean id="velocityConfig"
-                class="org.springframework.web.servlet.view.velocity.VelocityConfigurer"&gt;
-                &lt;property name="resourceLoaderPath" value="<i>WEB-INF/views</i>" /&gt;
-                &lt;property name="velocityProperties"&gt;
-                        &lt;props&gt;
-                                &lt;prop key="input.encoding"&gt;UTF-8&lt;/prop&gt;
-                                &lt;prop key="output.encoding"&gt;UTF-8&lt;/prop&gt;
-                                &lt;prop key="contentType"&gt;text/html;charset=UTF-8&lt;/prop&gt;
-                                &lt;prop key="velocimacro.library"&gt;macro.vm&lt;/prop&gt;
-                        &lt;/props&gt;
-                &lt;/property&gt;
-        &lt;/bean&gt;
-        &lt;bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver"&gt;
-                &lt;property name="layoutUrl" value="layout/default.vm" /&gt;
-                &lt;property name="cache" value="false" /&gt;
-                &lt;property name="suffix" value=".vm" /&gt;
-                &lt;property name="exposeSpringMacroHelpers" value="true" /&gt;
-                &lt;property name="dateToolAttribute" value="dateTool" /&gt;
-                &lt;property name="numberToolAttribute" value="numberTool" /&gt;
-                &lt;!-- Merge urlBuilderMap to view context for convenience. You can put your tools which must be thread safe. --&gt;
-                &lt;property name="attributesMap" ref="_urlBuilderMap" /&gt;
-                &lt;property name="contentType" value="text/html;charset=UTF-8" /&gt;
-        &lt;/bean&gt;
+    &lt;bean id="velocityConfig"
+        class="org.springframework.web.servlet.view.velocity.VelocityConfigurer"&gt;
+        &lt;property name="resourceLoaderPath" value="<i>WEB-INF/views</i>" /&gt;
+        &lt;property name="velocityProperties"&gt;
+            &lt;props&gt;
+                &lt;prop key="input.encoding"&gt;UTF-8&lt;/prop&gt;
+                &lt;prop key="output.encoding"&gt;UTF-8&lt;/prop&gt;
+                &lt;prop key="contentType"&gt;text/html;charset=UTF-8&lt;/prop&gt;
+                &lt;prop key="velocimacro.library"&gt;macro.vm&lt;/prop&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver"&gt;
+        &lt;property name="layoutUrl" value="layout/default.vm" /&gt;
+        &lt;property name="cache" value="false" /&gt;
+        &lt;property name="suffix" value=".vm" /&gt;
+        &lt;property name="exposeSpringMacroHelpers" value="true" /&gt;
+        &lt;property name="dateToolAttribute" value="dateTool" /&gt;
+        &lt;property name="numberToolAttribute" value="numberTool" /&gt;
+        &lt;!-- Merge urlBuilderMap to view context for convenience. You can put your tools which must be thread safe. --&gt;
+        &lt;property name="attributesMap" ref="_urlBuilderMap" /&gt;
+        &lt;property name="contentType" value="text/html;charset=UTF-8" /&gt;
+    &lt;/bean&gt;
 </p>
 
 <p>
-1、        模板中使用spring宏:
+1、    模板中使用spring宏:
 见上面的例子
 </p>
 
 <p>
-2、        使用自定义的线程安全的对象方法：
+2、    使用自定义的线程安全的对象方法：
 #set($pageUrl = $homeModule.forPath('/return/order/query').put({"id":$!id}))
 </p>
 
 <p>
-3、        布局
+3、    布局
 见/WEB-INF/views/layout/default.vm
 </p>
 
 
 <p>
 内容协商视图：{servletName}-servlet.xml配置
-        &lt;bean        class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"&gt;
-                &lt;property name="defaultContentType" value="text/html" /&gt;
-                &lt;!-- not by accept header --&gt;
-                &lt;property name="ignoreAcceptHeader" value="true"/&gt;
-                &lt;!-- by extension --&gt;
-                &lt;property name="mediaTypes"&gt;
-                        &lt;map&gt;
-                            &lt;entry key="xml" value="application/xml" /&gt;
-                                &lt;entry key="json" value="application/json" /&gt;
-                        &lt;/map&gt;
-                &lt;/property&gt;
-                &lt;property name="viewResolvers"&gt;
-                        &lt;list&gt;
+    &lt;bean    class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"&gt;
+        &lt;property name="defaultContentType" value="text/html" /&gt;
+        &lt;!-- not by accept header --&gt;
+        &lt;property name="ignoreAcceptHeader" value="true"/&gt;
+        &lt;!-- by extension --&gt;
+        &lt;property name="mediaTypes"&gt;
+            &lt;map&gt;
+                &lt;entry key="xml" value="application/xml" /&gt;
+                &lt;entry key="json" value="application/json" /&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+        &lt;property name="viewResolvers"&gt;
+            &lt;list&gt;
                 &lt;ref bean="velocityViewResolver"/&gt;
-                        &lt;/list&gt;
-                &lt;/property&gt;
-                  &lt;property name="defaultViews"&gt;
-                        &lt;list&gt;
-                                &lt;!-- for application/json --&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+          &lt;property name="defaultViews"&gt;
+            &lt;list&gt;
+                &lt;!-- for application/json --&gt;
                 &lt;bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" /&gt;
-                        &lt;/list&gt;
-                &lt;/property&gt;
-        &lt;/bean&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 </p>
 
 <p>
-        以扩展名来获取json格式的资源：
+    以扩展名来获取json格式的资源：
 return/order/query.json
-        还可以特定参数、accept 头的设定来制定同一资源的不同表示。
+    还可以特定参数、accept 头的设定来制定同一资源的不同表示。
 </p>
 
 
@@ -786,19 +786,19 @@ return/order/query.json
 <p>
 &lt;!-- locale related --&gt;
 &lt;bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"&gt;
-&lt;property name="cookieName" value="_clientlocale"/&gt;
-&lt;property name="defaultLocale" value="zh_CN"/&gt;
-&lt;property name="cookieMaxAge" value="2147483647"/&gt;
+    &lt;property name="cookieName" value="_clientlocale"/&gt;
+    &lt;property name="defaultLocale" value="zh_CN"/&gt;
+    &lt;property name="cookieMaxAge" value="2147483647"/&gt;
 &lt;/bean&gt;
 </p>
 
 <p>
-        &lt;!-- Access resource bundles with the specified basename --&gt;
-        &lt;bean id="messageSource"
+    &lt;!-- Access resource bundles with the specified basename --&gt;
+    &lt;bean id="messageSource"
 class="org.springframework.context.support.ReloadableResourceBundleMessageSource"&gt;
-                &lt;property name="basenames" value="/WEB-INF/i18n/content,/WEB-INF/i18n/validation,/WEB-INF/i18n/asset,/WEB-INF/i18n/enum" /&gt;
-                &lt;property name="cacheSeconds" value="5" /&gt;
-        &lt;/bean&gt;
+        &lt;property name="basenames" value="/WEB-INF/i18n/content,/WEB-INF/i18n/validation,/WEB-INF/i18n/asset,/WEB-INF/i18n/enum" /&gt;
+        &lt;property name="cacheSeconds" value="5" /&gt;
+    &lt;/bean&gt;
 </p>
 
 <p>
@@ -823,8 +823,8 @@ public class IndexController {
 
 <p>
 页面上显示本地化信息，使用spring宏：
-1、        内容：#springMessage('return.order.col.id')
-2、        验证错误：#springShowErrors， validation.properties中，key以typeMismatch.开头。
+1、    内容：#springMessage('return.order.col.id')
+2、    验证错误：#springShowErrors， validation.properties中，key以typeMismatch.开头。
 </p>
 
 
@@ -832,16 +832,16 @@ public class IndexController {
 <p>
 异常映射
 {servletName}-servlet.xml配置全局的:
-        &lt;!-- exception related --&gt;
-        &lt;!-- all exception handler will be registered by DispatcherServlet default (detectAllHandlerExceptionResolvers=true) --&gt;
-        &lt;bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"&gt;
-           &lt;property name="defaultErrorView" value="error/uncaught"/&gt;
-           &lt;property name="exceptionMappings"&gt;
-               &lt;props&gt;
-                   &lt;prop key="com.mycompany.common.hrm.IllegalHrmPrivilegeException"&gt;error/access-denied&lt;/prop&gt;
-                &lt;/props&gt;
-            &lt;/property&gt;
-        &lt;/bean&gt;
+    &lt;!-- exception related --&gt;
+    &lt;!-- all exception handler will be registered by DispatcherServlet default (detectAllHandlerExceptionResolvers=true) --&gt;
+    &lt;bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"&gt;
+       &lt;property name="defaultErrorView" value="error/uncaught"/&gt;
+       &lt;property name="exceptionMappings"&gt;
+           &lt;props&gt;
+               &lt;prop key="com.mycompany.common.hrm.IllegalHrmPrivilegeException"&gt;error/access-denied&lt;/prop&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 </p>
 
 
@@ -877,7 +877,7 @@ public class IndexController {
 
 <p>
 spring mvc的拦截器，类似于servlet的filter。
-        比filter好的地方是，interceptor可以被spring ioc容器管理。
+    比filter好的地方是，interceptor可以被spring ioc容器管理。
 </p>
 
 <p>
@@ -886,15 +886,15 @@ URL映射和拦截器配置:{servletName}-servlet.xml
 <div class="org-src-container">
 
 <pre class="src src-xml">&lt;!-- url mapping with interceptor --&gt;
-    &lt;mvc:interceptors&gt;
+&lt;mvc:interceptors&gt;
 
-            &lt;mvc:interceptor&gt;
+    &lt;mvc:interceptor&gt;
         &lt;mvc:mapping path="/index/**" /&gt;
         &lt;mvc:mapping path="/return/**" /&gt;
-                    &lt;ref bean="_tLoginContextInterceptor" /&gt;
-            &lt;/mvc:interceptor&gt;
+        &lt;ref bean="_tLoginContextInterceptor" /&gt;
+    &lt;/mvc:interceptor&gt;
 
-    &lt;/mvc:interceptors&gt;
+&lt;/mvc:interceptors&gt;
 </pre>
 </div>
 
@@ -1128,20 +1128,20 @@ public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
 <div class="org-src-container">
 
 <pre class="src src-xml">&lt;tx:advice id="txAdvice" transaction-manager="transactionManager"&gt;
-                &lt;tx:attributes&gt;
-                        &lt;tx:method name="insert*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
-                        &lt;tx:method name="update*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+        &lt;tx:attributes&gt;
+            &lt;tx:method name="insert*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+            &lt;tx:method name="update*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
             &lt;tx:method name="add*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
             &lt;tx:method name="mod*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
             &lt;tx:method name="del*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
             &lt;tx:method name="move*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
-                        &lt;tx:method name="*"   isolation="READ_COMMITTED" read-only="true"/&gt;
-                &lt;/tx:attributes&gt;
-        &lt;/tx:advice&gt;
+            &lt;tx:method name="*"   isolation="READ_COMMITTED" read-only="true"/&gt;
+        &lt;/tx:attributes&gt;
+    &lt;/tx:advice&gt;
 
     &lt;aop:config proxy-target-class="true"&gt;
-                &lt;aop:advisor pointcut="execution(* com.retail.*.service.*.*(..))" advice-ref="txAdvice" /&gt;
-        &lt;/aop:config&gt;
+        &lt;aop:advisor pointcut="execution(* com.retail.*.service.*.*(..))" advice-ref="txAdvice" /&gt;
+    &lt;/aop:config&gt;
 </pre>
 </div>
 </div>
@@ -1433,7 +1433,7 @@ Log4jLoggerAdapter.
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-07-11</span>
+        <span title="last modification date" class="post-info">2014-08-20</span>
         <span title="tags" class="post-info"><a href="/tags/java/">java</a>, <a href="/tags/rest/">rest</a>, <a href="/tags/spring/">spring</a>, <a href="/tags/ajax/">ajax</a>, <a href="/tags/log4j/">log4j</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

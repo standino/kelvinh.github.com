@@ -550,8 +550,29 @@ sudo npm --proxy http://127.0.0.1:8087 install -g grunt-cli
 </pre>
 </div>
 </div>
-</div>
 
+<div id="outline-container-sec-17-4" class="outline-3">
+<h3 id="sec-17-4">METEOR AND METEORITE ON WINDOWS</h3>
+<div class="outline-text-3" id="text-17-4">
+<pre class="example">
+TUE AUG 05 2014
+Both Meteor and Meteorite are unofficially supported on Windows, and these are the required steps to make it work.
+Install Node and NPM from http://nodejs.org/.
+Install the unofficial Meteor from http://win.meteor.com/.
+Install git from http://git-scm.com/downloads.
+To get Meteorite (package management for Meteor) to work on Windows, a special branch of the Meteorite project must used. Clone the Meteorite repository:
+git clone https://github.com/danielsvane/meteorite
+Step into the downloaded repo:
+cd meteorite
+Then switch the branch to the Windows supported one:
+git checkout windows-updates
+Install the branch globally with NPM:
+npm install -g
+You now have a working Meteor and Meteorite development setup on Windows. When adding a new package using Meteorite use meteorite instead of mrt, as this name is already used on Windows.
+</pre>
+</div>
+</div>
+</div>
 
 <div id="outline-container-sec-18" class="outline-2">
 <h2 id="sec-18">CKeditor</h2>
@@ -599,11 +620,11 @@ CKEDITOR.editorConfig = function(config) {
 					'Blockquote' ],
 			[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
 			[ 'Link', 'Unlink', 'Anchor' ],
-			[ 'jdupload','Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
+			[ '__my_company_1__upload','Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
 					'SpecialChar', 'PageBreak' ], '/',
 			[ 'Styles', 'Format', 'Font', 'FontSize' ],
 			[ 'TextColor', 'BGColor' ] ];
-        config.extraPlugins += (config.extraPlugins ? ',jdupload' : 'jdupload');
+        config.extraPlugins += (config.extraPlugins ? ',__my_company_1__upload' : '__my_company_1__upload');
 };
 </pre>
 </div>
@@ -691,12 +712,22 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 </div>
 
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25">dashboard</h2>
+<div class="outline-text-2" id="text-25">
+<ul class="org-ul">
+<li><a href="http://ehesp.github.io/Responsive-Dashboard/">http://ehesp.github.io/Responsive-Dashboard/</a>#
+</li>
+</ul>
+</div>
+</div>
+
 </div>
 </div>
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-08-08</span>
+        <span title="last modification date" class="post-info">2014-08-20</span>
         <span title="tags" class="post-info"><a href="/tags/js/">js</a>, <a href="/tags/jquery/">jquery</a>, <a href="/tags/dojo/">dojo</a>, <a href="/tags/ajax/">ajax</a>, <a href="/tags/定位元素/">定位元素</a>, <a href="/tags/调试/">调试</a>, <a href="/tags/piwik/">piwik</a>, <a href="/tags/网站统计/">网站统计</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

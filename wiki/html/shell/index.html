@@ -269,14 +269,14 @@ find /some/dir -name "*.txt" -type f
 
 <p>
 type 后面的字母表示文件类型。
-b |        block (buffered) special
-c |        character (unbuffered) special
-d |        directory
-p |        named pipe (FIFO)
-f |        regular file
-l |        symbolic link
-s |        socket
-D |        door (Solaris)
+b |    block (buffered) special
+c |    character (unbuffered) special
+d |    directory
+p |    named pipe (FIFO)
+f |    regular file
+l |    symbolic link
+s |    socket
+D |    door (Solaris)
 </p>
 
 <p>
@@ -470,7 +470,7 @@ ${var:?string} |  $var            |     (返回 string 然后退出)
 </p>
 
 <p>
-    形式       |          结果
+    形式       |      结果
 ${var%suffix}  |  删除位于 var 结尾的 suffix 最小匹配模式
 ${var%%suffix} |  删除位于 var 结尾的 suffix 最大匹配模式
 ${var#prefix}  |  删除位于 var 开头的 prefix 最小匹配模式
@@ -707,18 +707,18 @@ fi
 
 <p>
 表 1. 更强的字符串处理
-功能         语法         样例
-求起始位置为 index 的子串        ${param:offset}        &gt; echo ${string:3}
+功能     语法     样例
+求起始位置为 index 的子串    ${param:offset}    &gt; echo ${string:3}
 123abc
-求起始位置为 index 和长度 num 的子串        ${param:offset:num}        &gt; echo ${string:1:3}
+求起始位置为 index 和长度 num 的子串    ${param:offset:num}    &gt; echo ${string:1:3}
 bc1
-替换第一个出现的 pattern为 repl        ${parm/pattern/repl}        &gt; echo ${string/abc/def}
+替换第一个出现的 pattern为 repl    ${parm/pattern/repl}    &gt; echo ${string/abc/def}
 def123abc
-替换所有出现的 pattern 为 repl        ${parm//pattern/repl}        &gt; echo ${string//abc/def}
+替换所有出现的 pattern 为 repl    ${parm//pattern/repl}    &gt; echo ${string//abc/def}
 def123def
-替换开头的 pattern         ${parm/#pattern/repl}        &gt; echo ${string/#abc/def}
+替换开头的 pattern     ${parm/#pattern/repl}    &gt; echo ${string/#abc/def}
 def123abc
-替换结尾的 pattern         ${parm/%pattern/repl}        &gt; echo ${string/%abc/def}
+替换结尾的 pattern     ${parm/%pattern/repl}    &gt; echo ${string/%abc/def}
 abc123def
 </p>
 
@@ -766,7 +766,7 @@ find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:popupBody&gt;/i\&lt
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-03-28</span>
+        <span title="last modification date" class="post-info">2014-08-20</span>
         <span title="tags" class="post-info"><a href="/tags/shell/">shell</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

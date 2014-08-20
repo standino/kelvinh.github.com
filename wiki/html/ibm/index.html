@@ -471,19 +471,19 @@ China WAS Question DB =&gt; <i>Notes://CSDLD01/482570960036D876/</i>
 </p>
 
 <p>
-WAS Central DB         =&gt;  <i>Notes://D27DBL06/862569E70075B687/</i>
+WAS Central DB     =&gt;  <i>Notes://D27DBL06/862569E70075B687/</i>
 </p>
 
 <p>
-WAS 6.1 infocenter         =&gt;        <a href="http://publib.boulder.ibm.com/infocenter/wasinfo/v6r1/index.jsp">http://publib.boulder.ibm.com/infocenter/wasinfo/v6r1/index.jsp</a>
+WAS 6.1 infocenter     =&gt;    <a href="http://publib.boulder.ibm.com/infocenter/wasinfo/v6r1/index.jsp">http://publib.boulder.ibm.com/infocenter/wasinfo/v6r1/index.jsp</a>
 </p>
 
 <p>
-WebSphere Application Server detailed system requirements        =&gt;        <a href="http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg27006921">http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg27006921</a>
+WebSphere Application Server detailed system requirements    =&gt;    <a href="http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg27006921">http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg27006921</a>
 </p>
 
 <p>
-Redbooks WebSphere domian        =&gt;         <a href="http://www.redbooks.ibm.com/portals/websphere">http://www.redbooks.ibm.com/portals/websphere</a>
+Redbooks WebSphere domian    =&gt;     <a href="http://www.redbooks.ibm.com/portals/websphere">http://www.redbooks.ibm.com/portals/websphere</a>
 Publish Error on RAD 7.5 + WAS 7.0
 Sometimes if you stop mannually the publish process for you application at the middle, and will meet the following exception while republishing your application:
 [19/06/09 10:53:42:046 BST] 00000036 SystemErr R com.ibm.websphere.management.exception.AdminException: A composition unit with name Edu_________t already exists. Select a different application name.
@@ -616,7 +616,7 @@ you must change the version of the WID profile
 <ol class="org-ol">
 <li>You can remove the additional languages for installation manager to just have de and en
 installed
-        &lt;data key='eclipseLocation' value='/opt/IBM/InstallationManager/eclipse'/&gt;
+    &lt;data key='eclipseLocation' value='/opt/IBM/InstallationManager/eclipse'/&gt;
 
 <p>
 &lt;data key='cic.selector.nl' value='en,de'/&gt;
@@ -982,10 +982,10 @@ Debugging IBM WebSphere 5.x/6.x
 (Thanks to Michael Murphy)
 Open WebSphere 5.X/6.X Console
 Navigate to Servers
-Application Servers        [SERVERNAME]        Process Definition        Java Virtual Machine
+Application Servers    [SERVERNAME]    Process Definition    Java Virtual Machine
 Check off Debug Mode
 Arguments can be edited in the field called Debug arguments. You can paste this line and use the same port 1044 to debug from Eclipse:
-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=1044
+Xdebug -Xrun__my_company_1__wp:transport=dt_socket,server=y,suspend=n,address=1044
 create profile
 WAS admin setup
 login admin console: Users and Groups —&gt; Administrative user roles —&gt; add
@@ -1908,95 +1908,95 @@ RTC 301
 <p>
 WSVR0501E: 创建组件 com.ibm.ws.cluster.runtime.ProcessRuntimeImpl 时出错
 java.lang.NoClassDefFoundError: com.ibm.websphere.cluster.topography.DescriptionManagerFactory (initialization failure)
-        at java.lang.J9VMInternals.initialize(J9VMInternals.java:140)
-        at com.ibm.ws.cluster.runtime.ProcessRuntimeImpl.initialize(ProcessRuntimeImpl.java:369)
-        at com.ibm.ws.runtime.component.ContainerHelper.initWsComponent(ContainerHelper.java:1191)
-        at com.ibm.ws.runtime.component.ContainerHelper.initializeComponent(ContainerHelper.java:1098)
-        at com.ibm.ws.runtime.component.ContainerHelper.initializeComponents(ContainerHelper.java:900)
-        at com.ibm.ws.runtime.component.ContainerImpl.initializeComponents(ContainerImpl.java:776)
-        at com.ibm.ws.runtime.component.ContainerImpl.initializeComponents(ContainerImpl.java:750)
-        at com.ibm.ws.runtime.component.ServerImpl.initialize(ServerImpl.java:332)
-        at com.ibm.ws.runtime.WsServerImpl.bootServerContainer(WsServerImpl.java:280)
-        at com.ibm.ws.runtime.WsServerImpl.start(WsServerImpl.java:214)
-        at com.ibm.ws.runtime.WsServerImpl.main(WsServerImpl.java:666)
-        at com.ibm.ws.runtime.WsServer.main(WsServer.java:59)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-        at java.lang.reflect.Method.invoke(Method.java:600)
-        at com.ibm.wsspi.bootstrap.WSLauncher.launchMain(WSLauncher.java:213)
-        at com.ibm.wsspi.bootstrap.WSLauncher.main(WSLauncher.java:93)
-        at com.ibm.wsspi.bootstrap.WSLauncher.run(WSLauncher.java:74)
-        at org.eclipse.core.internal.runtime.PlatformActivator$1.run(PlatformActivator.java:78)
-        at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:92)
-        at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:68)
-        at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:400)
-        at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:177)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-        at java.lang.reflect.Method.invoke(Method.java:600)
-        at org.eclipse.core.launcher.Main.invokeFramework(Main.java:340)
-        at org.eclipse.core.launcher.Main.basicRun(Main.java:282)
-        at org.eclipse.core.launcher.Main.run(Main.java:981)
-        at com.ibm.wsspi.bootstrap.WSPreLauncher.launchEclipse(WSPreLauncher.java:341)
-        at com.ibm.wsspi.bootstrap.WSPreLauncher.main(WSPreLauncher.java:111)
+    at java.lang.J9VMInternals.initialize(J9VMInternals.java:140)
+    at com.ibm.ws.cluster.runtime.ProcessRuntimeImpl.initialize(ProcessRuntimeImpl.java:369)
+    at com.ibm.ws.runtime.component.ContainerHelper.initWsComponent(ContainerHelper.java:1191)
+    at com.ibm.ws.runtime.component.ContainerHelper.initializeComponent(ContainerHelper.java:1098)
+    at com.ibm.ws.runtime.component.ContainerHelper.initializeComponents(ContainerHelper.java:900)
+    at com.ibm.ws.runtime.component.ContainerImpl.initializeComponents(ContainerImpl.java:776)
+    at com.ibm.ws.runtime.component.ContainerImpl.initializeComponents(ContainerImpl.java:750)
+    at com.ibm.ws.runtime.component.ServerImpl.initialize(ServerImpl.java:332)
+    at com.ibm.ws.runtime.WsServerImpl.bootServerContainer(WsServerImpl.java:280)
+    at com.ibm.ws.runtime.WsServerImpl.start(WsServerImpl.java:214)
+    at com.ibm.ws.runtime.WsServerImpl.main(WsServerImpl.java:666)
+    at com.ibm.ws.runtime.WsServer.main(WsServer.java:59)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:600)
+    at com.ibm.wsspi.bootstrap.WSLauncher.launchMain(WSLauncher.java:213)
+    at com.ibm.wsspi.bootstrap.WSLauncher.main(WSLauncher.java:93)
+    at com.ibm.wsspi.bootstrap.WSLauncher.run(WSLauncher.java:74)
+    at org.eclipse.core.internal.runtime.PlatformActivator$1.run(PlatformActivator.java:78)
+    at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:92)
+    at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:68)
+    at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:400)
+    at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:177)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:600)
+    at org.eclipse.core.launcher.Main.invokeFramework(Main.java:340)
+    at org.eclipse.core.launcher.Main.basicRun(Main.java:282)
+    at org.eclipse.core.launcher.Main.run(Main.java:981)
+    at com.ibm.wsspi.bootstrap.WSPreLauncher.launchEclipse(WSPreLauncher.java:341)
+    at com.ibm.wsspi.bootstrap.WSPreLauncher.main(WSPreLauncher.java:111)
 Caused by: java.lang.IllegalStateException: java.lang.NullPointerException
-        at com.ibm.ws.util.ImplFactory.loadImplFromClass(ImplFactory.java:354)
-        at com.ibm.ws.util.ImplFactory.loadImplFromKey(ImplFactory.java:328)
-        at com.ibm.ws.util.ImplFactory.loadImplFromKey(ImplFactory.java:332)
-        at com.ibm.ws.wlm.Factory$4.run(Factory.java:141)
-        at java.security.AccessController.doPrivileged(AccessController.java:251)
-        at com.ibm.ws.wlm.Factory.loadImpl(Factory.java:139)
-        at com.ibm.websphere.cluster.topography.DescriptionManagerFactory.&lt;clinit&gt;(DescriptionManagerFactory.java:50)
-        at java.lang.J9VMInternals.initializeImpl(Native Method)
-        at java.lang.J9VMInternals.initialize(J9VMInternals.java:200)
-        at com.ibm.ws.cluster.selection.AdvisorMediatorA.&lt;clinit&gt;(AdvisorMediatorA.java:60)
-        at java.lang.J9VMInternals.initializeImpl(Native Method)
-        at java.lang.J9VMInternals.initialize(J9VMInternals.java:200)
-        at java.lang.J9VMInternals.initialize(J9VMInternals.java:167)
-        at java.lang.J9VMInternals.newInstanceImpl(Native Method)
-        at java.lang.Class.newInstance(Class.java:1345)
-        at com.ibm.ws.util.ImplFactory.loadImplFromClass(ImplFactory.java:349)
-        at com.ibm.ws.util.ImplFactory.loadImplFromKey(ImplFactory.java:328)
-        at com.ibm.ws.util.ImplFactory.loadImplFromKey(ImplFactory.java:332)
-        at com.ibm.ws.wlm.Factory$4.run(Factory.java:141)
-        at java.security.AccessController.doPrivileged(AccessController.java:251)
-        at com.ibm.ws.wlm.Factory.loadImpl(Factory.java:139)
-        at com.ibm.wsspi.cluster.monitor.AdvisorFactory.&lt;clinit&gt;(AdvisorFactory.java:47)
-        at java.lang.J9VMInternals.initializeImpl(Native Method)
-        at java.lang.J9VMInternals.initialize(J9VMInternals.java:200)
-        at com.ibm.ws.cluster.runtime.WLMDiagnosticModule.ffdcDumpDefaultAdvisorMediator(WLMDiagnosticModule.java:367)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-        at java.lang.reflect.Method.invoke(Method.java:600)
-        at com.ibm.ws.ffdc.DiagnosticModule.getDataForDirective(DiagnosticModule.java:305)
-        at com.ibm.ws.ffdc.DiagnosticModule.getDataForDirectives(DiagnosticModule.java:279)
-        at com.ibm.ws.ffdc.DiagnosticModule.dumpComponentData(DiagnosticModule.java:144)
-        at com.ibm.ws.ffdc.impl.DMAdapter.processDM(DMAdapter.java:123)
-        at com.ibm.ws.ffdc.impl.DMAdapter.formatTo(DMAdapter.java:114)
-        at com.ibm.ffdc.util.provider.IncidentLogger.writeIncidentTo(IncidentLogger.java:63)
-        at com.ibm.ws.ffdc.impl.FfdcProvider.logIncident(FfdcProvider.java:206)
-        at com.ibm.ws.ffdc.impl.FfdcProvider.logIncident(FfdcProvider.java:135)
-        at com.ibm.ffdc.util.provider.FfdcProvider.log(FfdcProvider.java:259)
-        at com.ibm.ws.ffdc.impl.FfdcProvider.log(FfdcProvider.java:148)
-        at com.ibm.ffdc.util.provider.IncidentEntry.log(IncidentEntry.java:105)
-        at com.ibm.ffdc.util.provider.Ffdc.log(Ffdc.java:90)
-        at com.ibm.ws.ffdc.FFDCFilter.processException(FFDCFilter.java:114)
-        at com.ibm.ws.cluster.ProcessProperties.&lt;init&gt;(ProcessProperties.java:287)
-        at com.ibm.ws.cluster.ProcessProperties.&lt;clinit&gt;(ProcessProperties.java:240)
-        at java.lang.J9VMInternals.initializeImpl(Native Method)
-        at java.lang.J9VMInternals.initialize(J9VMInternals.java:200)
-        at com.ibm.ws.cluster.runtime.ProcessRuntimeImpl.initialize(ProcessRuntimeImpl.java:310)
-        ... 31 more
+    at com.ibm.ws.util.ImplFactory.loadImplFromClass(ImplFactory.java:354)
+    at com.ibm.ws.util.ImplFactory.loadImplFromKey(ImplFactory.java:328)
+    at com.ibm.ws.util.ImplFactory.loadImplFromKey(ImplFactory.java:332)
+    at com.ibm.ws.wlm.Factory$4.run(Factory.java:141)
+    at java.security.AccessController.doPrivileged(AccessController.java:251)
+    at com.ibm.ws.wlm.Factory.loadImpl(Factory.java:139)
+    at com.ibm.websphere.cluster.topography.DescriptionManagerFactory.&lt;clinit&gt;(DescriptionManagerFactory.java:50)
+    at java.lang.J9VMInternals.initializeImpl(Native Method)
+    at java.lang.J9VMInternals.initialize(J9VMInternals.java:200)
+    at com.ibm.ws.cluster.selection.AdvisorMediatorA.&lt;clinit&gt;(AdvisorMediatorA.java:60)
+    at java.lang.J9VMInternals.initializeImpl(Native Method)
+    at java.lang.J9VMInternals.initialize(J9VMInternals.java:200)
+    at java.lang.J9VMInternals.initialize(J9VMInternals.java:167)
+    at java.lang.J9VMInternals.newInstanceImpl(Native Method)
+    at java.lang.Class.newInstance(Class.java:1345)
+    at com.ibm.ws.util.ImplFactory.loadImplFromClass(ImplFactory.java:349)
+    at com.ibm.ws.util.ImplFactory.loadImplFromKey(ImplFactory.java:328)
+    at com.ibm.ws.util.ImplFactory.loadImplFromKey(ImplFactory.java:332)
+    at com.ibm.ws.wlm.Factory$4.run(Factory.java:141)
+    at java.security.AccessController.doPrivileged(AccessController.java:251)
+    at com.ibm.ws.wlm.Factory.loadImpl(Factory.java:139)
+    at com.ibm.wsspi.cluster.monitor.AdvisorFactory.&lt;clinit&gt;(AdvisorFactory.java:47)
+    at java.lang.J9VMInternals.initializeImpl(Native Method)
+    at java.lang.J9VMInternals.initialize(J9VMInternals.java:200)
+    at com.ibm.ws.cluster.runtime.WLMDiagnosticModule.ffdcDumpDefaultAdvisorMediator(WLMDiagnosticModule.java:367)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:600)
+    at com.ibm.ws.ffdc.DiagnosticModule.getDataForDirective(DiagnosticModule.java:305)
+    at com.ibm.ws.ffdc.DiagnosticModule.getDataForDirectives(DiagnosticModule.java:279)
+    at com.ibm.ws.ffdc.DiagnosticModule.dumpComponentData(DiagnosticModule.java:144)
+    at com.ibm.ws.ffdc.impl.DMAdapter.processDM(DMAdapter.java:123)
+    at com.ibm.ws.ffdc.impl.DMAdapter.formatTo(DMAdapter.java:114)
+    at com.ibm.ffdc.util.provider.IncidentLogger.writeIncidentTo(IncidentLogger.java:63)
+    at com.ibm.ws.ffdc.impl.FfdcProvider.logIncident(FfdcProvider.java:206)
+    at com.ibm.ws.ffdc.impl.FfdcProvider.logIncident(FfdcProvider.java:135)
+    at com.ibm.ffdc.util.provider.FfdcProvider.log(FfdcProvider.java:259)
+    at com.ibm.ws.ffdc.impl.FfdcProvider.log(FfdcProvider.java:148)
+    at com.ibm.ffdc.util.provider.IncidentEntry.log(IncidentEntry.java:105)
+    at com.ibm.ffdc.util.provider.Ffdc.log(Ffdc.java:90)
+    at com.ibm.ws.ffdc.FFDCFilter.processException(FFDCFilter.java:114)
+    at com.ibm.ws.cluster.ProcessProperties.&lt;init&gt;(ProcessProperties.java:287)
+    at com.ibm.ws.cluster.ProcessProperties.&lt;clinit&gt;(ProcessProperties.java:240)
+    at java.lang.J9VMInternals.initializeImpl(Native Method)
+    at java.lang.J9VMInternals.initialize(J9VMInternals.java:200)
+    at com.ibm.ws.cluster.runtime.ProcessRuntimeImpl.initialize(ProcessRuntimeImpl.java:310)
+    ... 31 more
 Caused by: java.lang.NullPointerException
-        at com.ibm.ws.cluster.WLMCustomPropertyUtility.getBBCallbacksEnableWLMThreads(WLMCustomPropertyUtility.java:528)
-        at com.ibm.ws.cluster.propagation.bulletinboard.BBDescriptionManager.&lt;init&gt;(BBDescriptionManager.java:166)
-        at java.lang.J9VMInternals.newInstanceImpl(Native Method)
-        at java.lang.Class.newInstance(Class.java:1345)
-        at com.ibm.ws.util.ImplFactory.loadImplFromClass(ImplFactory.java:349)
-        ... 77 more
+    at com.ibm.ws.cluster.WLMCustomPropertyUtility.getBBCallbacksEnableWLMThreads(WLMCustomPropertyUtility.java:528)
+    at com.ibm.ws.cluster.propagation.bulletinboard.BBDescriptionManager.&lt;init&gt;(BBDescriptionManager.java:166)
+    at java.lang.J9VMInternals.newInstanceImpl(Native Method)
+    at java.lang.Class.newInstance(Class.java:1345)
+    at com.ibm.ws.util.ImplFactory.loadImplFromClass(ImplFactory.java:349)
+    ... 77 more
 </p>
 </div>
 
@@ -2019,7 +2019,7 @@ edit /etc/hosts and add the hostname to the file.
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-03-07</span>
+        <span title="last modification date" class="post-info">2014-08-20</span>
         <span title="tags" class="post-info"><a href="/tags/ibm/">ibm</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
