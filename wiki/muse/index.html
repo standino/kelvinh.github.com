@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Emacs publish - Keep going</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Will Chang" />
+    <meta name="description" content="muse" />
+    <meta name="keywords" content="muse" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>努力超越自己！</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>Emacs publish</h1>
+
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">什么是 Muse</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+如果你知道 Wiki，那一定很快就能熟悉 Muse。因为 Muse 就是一个本地的Wiki
+发布系统，它的前身就是 &lt;literal&gt;EmacsWiki&lt;/literal&gt;。Muse 把 &lt;literal&gt;EmacsWiki&lt;/literal&gt; 的代码重写一遍，强调
+了它的编辑(authoring) 和发布 (publishing) 功能。目标是能产生好看并且多
+种格式兼容的文档。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">特性</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Muse 是由 &lt;literal&gt;EmacsWiki&lt;/literal&gt; 衍生的，自然 &lt;literal&gt;EmacsWiki&lt;/literal&gt; 大部分的特性都保留下
+来，<a href="http://www.emacswiki.org/cgi-bin/wiki/EmacsWikiMode#toc1">EmacsWikiMode</a> 上列举了一堆，我列一些吸引我使用 Muse 的原因：
+</p>
+
+<ul class="org-ul">
+<li>标记简单，实际上也没有用到那么多标记
+</li>
+<li>部分所见即所得，在 Emacs 中看到的文档很清爽
+</li>
+<li>支持多种格式，你把 Muse 文档发布成 html，latex，docbook 等等多种格
+</li>
+</ul>
+<p>
+式，如果还有需要生成其它格式文档，可以自己写一个转换的插件
+</p>
+<ul class="org-ul">
+<li>可定制，有 elisp 支持，所以很容易写出自己需要的功能或扩展
+</li>
+<li>兼容 org 表格 
+</li>
+<li>高亮源代码
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">安装</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+闲话少说，让我们直接进入实战吧。首先下载最新版本的 muse。如果是老手使
+用哪个版本没有关系，但是新手最好使用这时我使用的版本 <a href="http://mwolson.org/static/dist/muse/muse-3.12.tar.gz">muse-3.12</a>，以防止
+muse 接口改变，使用一些配置不能用（当然，自己有能力研究也可以无视版本）。
+</p>
+
+<p>
+和一般的 emacs 包一样，你可以选择按作者提供的方式安装，也可以直接把所
+有 el 文件放到 load-path 中的某个目录中就行了。如果你在 linux 下或
+windows 上安装了一般的 unix 开发环境，比如 msys 或 cygwin，还是推荐用
+make 来安装。可以根据自己的情况修改
+Makefile.defs<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup> 文件中相关参数，比较重要的安装目录参数，比如
+PREFIX，ELISPDIR。修改完后运行 &lt;code&gt;make&lt;/code&gt; 和 &lt;code&gt;make
+install&lt;/code&gt; 两个命令。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">基本配置</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Muse 文档中说在 .emacs 加上这样的基本配置：
+</p>
+
+<p>
+&lt;src lang="lisp"&gt;
+</p>
+
+<p>
+(add-to-list 'load-path "&lt;path to Muse&gt;")
+</p>
+
+<p>
+(require 'muse-mode)     ; load authoring mode
+(require 'muse-html)     ; load publishing styles I use
+(require 'muse-latex)
+(require 'muse-texinfo)
+(require 'muse-docbook)
+(require 'muse-project)  ; publish files in projects
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+
+<p>
+但是我推荐如果你不是每天都用 muse 写东西，还是在使用时再导入需要的库。
+方法是把你所有有关 muse 的配置写到一个 muse-init.el 文件中，放到 load-path
+下的某个目录中，然后在 .emacs 中写：
+&lt;src lang="lisp"&gt;
+(add-to-list 'load-path "&lt;path to Muse&gt;")
+(add-to-list 'auto-mode-alist '("\\.muse$" . muse-mode))
+;; Tricks to load feature when needed
+(defun muse-mode ()
+  (require 'muse-init)
+  (muse-mode-choose-mode))
+&lt;/src&gt;
+</p>
+
+<p>
+不要担心你这里定义了 muse-mode，因为当你导入 muse-init 时会同时导入
+muse-mode，这样 muse-mode 就重定义成真正起作用的函数了。
+</p>
+
+<p>
+在 muse-init.el 文件中除了加上前面一堆的 require，还有一些需要配置的东
+西，你可以选择用 M-x customize-group RET muse 一个一个设定，也可以直接
+写到 muse-init.el 文件中。我推荐的一些基本设置如下：
+</p>
+
+<p>
+&lt;src lang="lisp"&gt;
+(setq
+ ;; 使用 ido 来补全
+ muse-completing-read-function 'ido-completing-read
+ ;; 使用 lisp 标签时不在打开 muse 文件时求值
+ muse-colors-evaluate-lisp-tags nil
+ ;; 设置 (muse-publishing-directive "date") 的格式
+ muse-publish-date-format "%Y 年 %m 月 %d 日"
+ ;; 单独的项目名字不会成为 wiki 链接
+ muse-wiki-ignore-bare-project-names t)
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">创建第一个 muse 文件</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+使用上面的配置之后你就可以创建 muse 文件了。例如：
+&lt;example&gt;
+#title hello, Muse
+</p>
+
+<p>
+This is my first file in Muse.
+&lt;/example&gt;
+</p>
+
+<p>
+写完后用 C-c C-t 发布所写的文档，会让你选择发布的格式和目录。如果没有
+什么意外，每种格式都是能用的<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>。你可以尝试各种标记方法，这里我就不罗
+嗦了。在你下载的 muse 安装包中的 example 目录中有 QuickStart.muse，或
+者参考翻译的<a href="http://www.zhyfly.org/projects/QuickStart.cn.html">中文网页</a>。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">创建项目目录</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+如果你的文件比较多，应该使用项目来管理 muse 文件。项目可以让你的 muse
+有统一的发布目录和风格，可以在各个项目中创建内部的 wiki 链接。项目由三
+部分组成：
+</p>
+<ul class="org-ul">
+<li>项目名字，虽然理论上中文也可以，但是我想还是老实有 E 文好
+</li>
+<li>项目源文件设置，包括源文件目录及其它
+</li>
+<li>项目输出文件设置，包括输入格式，保存目录等
+</li>
+</ul>
+
+<p>
+在创建项目之前必须先考虑好项目之间的关系。虽然 muse 支持子目录发布，也就是
+说在一个目录下包括子目录都使用相同的设置，但是我不推荐这样，因为这会让
+内部的 wiki 链接很难写。使用子目录的形式唯一的好处是配置简单，可以同时
+发布所有源文件。而一个目录一个项目的好处是可以精细调整参数，wiki 链接
+写起来简单。另外在有<i>命令行发布的程序</i>后，一次发布多个项目也很容易就能实
+现。
+</p>
+
+<p>
+这里列一些我的项目设置：
+&lt;src lang="lisp"&gt;
+(setq muse-project-alist
+      `(("Emacs"
+         ("~/Muse/Emacs" :default "index"
+</p>
+<p>
+  :force-publish (,ywb-muse-recentchanges-page "WikiIndex"))
+ (:base "html" :path "~/public_html/emacs"))
+("ElispIntro"
+ ("~/Muse/ElispIntro" :default "index"
+</p>
+<p>
+ :force-publish (,ywb-muse-recentchanges-page "WikiIndex"))
+(:base "html" :path "~/public_html/elispintro")
+(:base "latexbook" :path "~/Muse/latex/elispintro"
+</p>
+<p>
+                :exclude ,(regexp-opt '("index" "RecentChanges" "WikiIndex"))))))
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">一些使用经验</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1">模板文件中的链接</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+如果发布到多层目录有一个问题是在共同的模板文件，比如 muse-html-header
+文件中如何写链接，比如使用的相同的 css 文件链接或导航链接等。使用发布
+的绝对路径当然没有问题，有没有使用相对路径的解决方案呢？
+</p>
+
+<p>
+我写了一个 ywb-muse-relative-path 函数用于把发布文件所在的目录转换成与
+发布根目录的相对路径。这样在你的头文件中可以用：
+&lt;example&gt;
+&lt;lisp&gt;(ywb-muse-relative-path "css/style.css")&lt;/lisp&gt;
+&lt;/example&gt;
+</p>
+
+<p>
+来引用在发布根目录下的 css/style.css 文件。这样发布的 html 文件中，根
+目录下 index.html 这个链接为 "./css/style.css"，而在 emacs/index.html
+文件中这个链接为 "../css/style.css"。
+</p>
+
+<p>
+#command-line
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2">使用命令行发布项目</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+如果一次要发布的页面太多，确实这个还是很有必要的。当然这要借助命令行来
+完成。在发布的源文件 examples 目录里有一个 publish-project 命令。没有
+找到没有关系，就这几行：
+</p>
+
+<p>
+&lt;src lang="sh"&gt;
+#! /bin/bash
+emacs -q -batch -l muse-init.el -f muse-project-batch-publish "$@"
+&lt;/src&gt;
+</p>
+
+<p>
+我稍微修改了一下 muse-project-batch-publish，可以用
+&lt;literal&gt;--all&lt;/literal&gt;
+选项来发布所有定义的 project。
+</p>
+
+<p>
+你可以以下面的方式使用这个命令：
+</p>
+
+<p>
+&lt;example&gt;
+publish-project [--force] [--all | ProjectName1 ProjectName2 ...]
+&lt;/example&gt;
+</p>
+
+<p>
+&lt;literal&gt;--force&lt;/literal&gt; 参数不考虑已发布文件的修改时间与源文件的关系，强制发布全部页面。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3">如何使用不同的模板</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+如果想让一个项目使用不同的模板文件，最简单的办法是重新定义一种发布格式。
+看上去好像很复杂，实际上非常简单：
+&lt;src lang="emacs-lisp"&gt;
+(muse-derive-style "my-html" "html"
+</p>
+<p>
+:header 'my-muse-html-header
+</p>
+<p>
+:footer 'my-muse-html-footer
+</p>
+<p>
+:style-sheet 'my-muse-html-style-sheet
+</p>
+<p>
+                   :maintainer "Ye Wenbin")
+&lt;/src&gt;
+这里我定义一种新的发布格式 "my-html"，其中 my-muse-html-header 和
+my-muse-html-footer 同 muse-html-header 和 muse-html-footer 一样既可以
+是一个字符串，也可以是一个文件名。其它没有修改参数就和发布格式 html 完
+全一样。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7-4" class="outline-3">
+<h3 id="sec-7-4">如何安排其它目录</h3>
+<div class="outline-text-3" id="text-7-4">
+<p>
+在 muse 文件中如果引用了图片或其它外部文件，muse 中的文件链接和发布文件
+中的链接的有效性是一个问题。在 linux 上很简单，创建目录的符号链接就行了。
+Windows 上我曾经研究过，相当野蛮，要修改 muse 的代码。不知道现在还能
+不能用了，所以就不贴上来了。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7-5" class="outline-3">
+<h3 id="sec-7-5">高亮源代码的问题</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+muse 实现在 html 中高亮源代码。这个功能需要 htmlize 1.34 版的。
+但是调用的 htmlize-region-for-paste 函数强制使用 inline-css，可以考虑
+修改这个函数，把 <code>(htmlize-output-type 'inline-css)</code> 这一部分
+注释了。
+</p>
+
+<p>
+如果你也和我一样使用 executable 来自动加入shebang 行和设置文件模式，可
+能会遇到一个问题是这些代码中可能也会自己加上 shebang 行。我的解决办法是
+在使用 executable-set-magic 之前先检查当前 buffer 是否关联文件，比如：
+</p>
+
+<p>
+&lt;src lang="emacs-lisp"&gt;
+(add-hook 'cperl-mode-hook
+          (lambda ()
+            (when buffer-file-name
+              (executable-set-magic "perl" "-w" t t))))
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7-6" class="outline-3">
+<h3 id="sec-7-6">方便的插入标签</h3>
+<div class="outline-text-3" id="text-7-6">
+<p>
+如果你用 html-mode，应该用到一个按键 C-c C-t，作用是成对的插入 html 标
+签。在 muse-mode 也可以用这个命令：
+</p>
+
+<p>
+&lt;src lang="emacs-lisp"&gt;
+(autoload 'sgml-tag "sgml-mode" "" t)
+(defvar muse-tag-alist
+  '(("example")
+    ("literal")
+    ("lisp" n)
+    ("src" ("lang" ("emacs-lisp") ("perl") ("sql") ("c++") ("sh")) n))
+  "Tag list for `sgml-tag'.")
+(add-hook 'muse-mode-hook
+          (lambda ()
+            (set (make-local-variable 'sgml-tag-alist) muse-tag-alist)
+            (modify-syntax-entry ?&gt; ")" muse-mode-syntax-table)
+            (modify-syntax-entry ?&lt; "(" muse-mode-syntax-table)
+            (define-key muse-mode-map (kbd "C-c /") 'sgml-close-tag)
+            (define-key muse-mode-map (kbd "C-c t") 'sgml-tag)))
+&lt;/src&gt;
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">我写的一些扩展</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1">增加预览的方式</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Muse 只支持一种浏览方式，可以通过设置这个 style 的 :browser 属性实现。
+对于 html 默认是用 browser-url 打开 html 文件，我增加两种浏览方式，一种
+是直接打开 html 文件，绑定到 C-c C-c，另一种是用 w3m 打开，绑定到 C-c
+C-m。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2">在 muse 源文件中高亮源代码</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+muse 提供很方便修改 muse-mode 中高亮的接口。我写了一个函数用于在 muse-mode
+中高亮源代码，增加的一个功能是可以在 src 中使用 number 属性用于显示代
+码的行号。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3">在目录索引中显示标题</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+在文件中使用 &lt;code&gt;&lt;lisp&gt;(muse-index-as-string t t t)&lt;/lisp&gt;&lt;/code&gt; 可
+以产生项目的索引。但是这样产生的链接文字是文件名，我觉得不是很有用，所
+以写了一个兼容的函数 ywb-muse-index-as-string，可以使链接文字为实际的标
+题。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-4" class="outline-3">
+<h3 id="sec-8-4">产生最近更新页面</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+这个功能我觉得还是比较实用，但是 muse 没有实现，我自己写了一个，效果还
+好。用法与生成目录类似，在文件中加入：
+&lt;example&gt;
+&lt;lisp&gt;(ywb-muse-generate-recentchanges)&lt;/lisp&gt;
+&lt;/example&gt;
+</p>
+
+<p>
+但是需要注意的是这个文件中最好只有这一句，因为这个函数是会修改这个文件
+的。如果有其它文字，很有可能有影响。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-5" class="outline-3">
+<h3 id="sec-8-5">显示项目文件的树状图</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+这个扩展能直观显示所有项目的树图。在光标在节点上时，可以用鼠标或按键发
+布项目或文件。我想实现的另一个更重要的功能是能够自动提示你什么文件需要
+重新输出发布文件，然后可以很容易就能发布。暂时这个功能还没有实现。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-6" class="outline-3">
+<h3 id="sec-8-6">生成文件的 rss</h3>
+<div class="outline-text-3" id="text-8-6">
+<p>
+虽然 Muse 有一个 muse-journal 的扩展，但是我一般不写 Journal，而且
+它的那个生成 rss 的函数比较简单，不太容易扩展。
+我写了一个<i>扩展</i>专门用于创建和修改 rss 文件，目前只支持 rss version 2.0。
+还没有想好如何结合 muse 使用。目前只写了一个简单的命令用于生成我的网站
+的 rss 文件。
+</p>
+
+<p>
+下载我的 <a href="../etc/muse-conf.tar.gz">Muse 配置和头文件</a>。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Customize xml file</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+We can change the value of muse-xml-header, muse-html-footer and
+muse-xml-markup-regexps
+to generate developworks xml file.
+</p>
+
+<p>
+&lt;src lang="lisp"&gt;
+</p>
+
+<p>
+(defcustom muse-xml-header
+  "&lt;?xml version=\"1.0\" encoding=\"&lt;lisp&gt;
+  (muse-xml-encoding)&lt;/lisp&gt;\"?&gt;
+&lt;MUSE&gt;
+  &lt;pageinfo&gt;
+    &lt;title&gt;&lt;lisp&gt;(muse-publishing-directive \"title\")&lt;/lisp&gt;&lt;/title&gt;
+    &lt;author&gt;&lt;lisp&gt;(muse-publishing-directive \"author\")&lt;/lisp&gt;&lt;/author&gt;
+    &lt;maintainer&gt;&lt;lisp&gt;(muse-style-element :maintainer)&lt;/lisp&gt;&lt;/maintainer&gt;
+    &lt;pubdate&gt;&lt;lisp&gt;(muse-publishing-directive \"date\")&lt;/lisp&gt;&lt;/pubdate&gt;
+  &lt;/pageinfo&gt;
+  &lt;!-- Page published by Emacs Muse begins here --&gt;\n"
+  "Header used for publishing XML files.
+This may be text or a filename."
+</p>
+<p>
+:type 'string
+</p>
+<p>
+:group 'muse-xml)
+</p>
+
+<p>
+(defcustom muse-xml-footer "
+  &lt;!-- Page published by Emacs Muse ends here --&gt;
+&lt;/MUSE&gt;\n"
+  "Footer used for publishing XML files.
+This may be text or a filename."
+</p>
+<p>
+:type 'string
+</p>
+<p>
+:group 'muse-xml)
+</p>
+
+<p>
+(defcustom muse-xml-markup-regexps
+  `(;; Beginning of doc, end of doc, or plain paragraph separator
+    (10000 ,(concat "\\(\\(\n\\(?:[" muse-regexp-blank "]*\n\\)*"
+                    "\\([" muse-regexp-blank "]*\n\\)\\)"
+                    "\\|\\`\\s-*\\|\\s-*\\'\\)")
+           ;; this is somewhat repetitive because we only require the
+           ;; line just before the paragraph beginning to be not
+           ;; read-only
+           3 muse-xml-markup-paragraph))
+  "List of markup rules for publishing a Muse page to XML.
+For more on the structure of this list, see `muse-publish-markup-regexps'."
+</p>
+<p>
+:type '(repeat (choice
+                (list :tag "Markup rule"
+                      integer
+                      (choice regexp symbol)
+                      integer
+                      (choice string function symbol))
+                function))
+</p>
+<p>
+:group 'muse-xml)
+</p>
+
+<p>
+(defcustom muse-xml-markup-functions
+  '((anchor . muse-xml-markup-anchor)
+    (table . muse-xml-markup-table))
+  "An alist of style types to custom functions for that kind of text.
+For more on the structure of this list, see
+`muse-publish-markup-functions'."
+</p>
+<p>
+:type '(alist :key-type symbol :value-type function)
+</p>
+<p>
+:group 'muse-xml)
+</p>
+
+<p>
+(defcustom muse-xml-markup-strings
+  '((image-with-desc . "&lt;image href=\"%s.%s\"&gt;%s&lt;/image&gt;")
+    (image           . "&lt;image href=\"%s.%s\"&gt;&lt;/image&gt;")
+    (image-link      . "&lt;link type=\"image\" href=\"%s\"&gt;%s.%s&lt;/link&gt;")
+    (anchor-ref      . "&lt;link type=\"url\" href=\"#%s\"&gt;%s&lt;/link&gt;")
+    (url             . "&lt;link type=\"url\" href=\"%s\"&gt;%s&lt;/link&gt;")
+    (link            . "&lt;link type=\"url\" href=\"%s\"&gt;%s&lt;/link&gt;")
+    (link-and-anchor . "&lt;link type=\"url\" href=\"%s#%s\"&gt;%s&lt;/link&gt;")
+    (email-addr      . "&lt;link type=\"email\" href=\"%s\"&gt;%s&lt;/link&gt;")
+    (anchor          . "&lt;anchor id=\"%s\" /&gt;\n")
+    (emdash          . "%s--%s")
+    (comment-begin   . "&lt;!-- ")
+    (comment-end     . " --&gt;")
+    (rule            . "&lt;hr /&gt;")
+    (fn-sep          . "&lt;hr /&gt;\n")
+    (no-break-space  . "&amp;nbsp;")
+    (line-break      . "&lt;br&gt;")
+    (enddots         . "....")
+    (dots            . "...")
+    (section         . "&lt;section level=\"1\"&gt;&lt;title&gt;")
+    (section-end     . "&lt;/title&gt;")
+    (subsection      . "&lt;section level=\"2\"&gt;&lt;title&gt;")
+    (subsection-end  . "&lt;/title&gt;")
+    (subsubsection   . "&lt;section level=\"3\"&gt;&lt;title&gt;")
+    (subsubsection-end . "&lt;/title&gt;")
+    (section-other   . "&lt;section level=\"%s\"&gt;&lt;title&gt;")
+    (section-other-end . "&lt;/title&gt;")
+    (section-close   . "&lt;/section&gt;")
+    (footnote        . "&lt;footnote&gt;")
+    (footnote-end    . "&lt;/footnote&gt;")
+    (begin-underline . "&lt;format type=\"underline\"&gt;")
+    (end-underline   . "&lt;/format&gt;")
+    (begin-literal   . "&lt;code&gt;")
+    (end-literal     . "&lt;/code&gt;")
+    (begin-emph      . "&lt;format type=\"emphasis\" level=\"1\"&gt;")
+    (end-emph        . "&lt;/format&gt;")
+    (begin-more-emph . "&lt;format type=\"emphasis\" level=\"2\"&gt;")
+    (end-more-emph   . "&lt;/format&gt;")
+    (begin-most-emph . "&lt;format type=\"emphasis\" level=\"3\"&gt;")
+    (end-most-emph   . "&lt;/format&gt;")
+    (begin-verse     . "&lt;verse&gt;\n")
+    (begin-verse-line . "&lt;line&gt;")
+    (end-verse-line  . "&lt;/line&gt;")
+    (empty-verse-line . "&lt;line /&gt;")
+    (begin-last-stanza-line . "&lt;line&gt;")
+    (end-last-stanza-line . "&lt;/line&gt;")
+    (end-verse       . "&lt;/verse&gt;")
+    (begin-example   . "&lt;example&gt;")
+    (end-example     . "&lt;/example&gt;")
+    (begin-center    . "&lt;p&gt;&lt;format type=\"center\"&gt;\n")
+    (end-center      . "\n&lt;/format&gt;&lt;/p&gt;")
+    (begin-quote     . "&lt;blockquote&gt;\n")
+    (end-quote       . "\n&lt;/blockquote&gt;")
+    (begin-cite      . "&lt;cite&gt;")
+    (begin-cite-author . "&lt;cite type=\"author\"&gt;")
+    (begin-cite-year . "&lt;cite type=\"year\"&gt;")
+    (end-cite        . "&lt;/cite&gt;")
+    (begin-quote-item . "&lt;p&gt;")
+    (end-quote-item  . "&lt;/p&gt;")
+    (begin-uli       . "&lt;list type=\"unordered\"&gt;\n")
+    (end-uli         . "\n&lt;/list&gt;")
+    (begin-uli-item  . "&lt;item&gt;")
+    (end-uli-item    . "&lt;/item&gt;")
+    (begin-oli       . "&lt;list type=\"ordered\"&gt;\n")
+    (end-oli         . "\n&lt;/list&gt;")
+    (begin-oli-item  . "&lt;item&gt;")
+    (end-oli-item    . "&lt;/item&gt;")
+    (begin-dl        . "&lt;list type=\"definition\"&gt;\n")
+    (end-dl          . "\n&lt;/list&gt;")
+    (begin-dl-item   . "&lt;item&gt;\n")
+    (end-dl-item     . "\n&lt;/item&gt;")
+    (begin-ddt       . "&lt;term&gt;")
+    (end-ddt         . "&lt;/term&gt;")
+    (begin-dde       . "&lt;definition&gt;")
+    (end-dde         . "&lt;/definition&gt;")
+    (begin-table     . "&lt;table%s&gt;\n")
+    (end-table       . "&lt;/table&gt;")
+    (begin-table-row . "    &lt;tr&gt;\n")
+    (end-table-row   . "    &lt;/tr&gt;\n")
+    (begin-table-entry . "      &lt;%s&gt;")
+    (end-table-entry . "&lt;/%s&gt;\n"))
+</p>
+
+<p>
+;;{{{  自定义图片 html 标记代码
+(setcdr (assoc 'image-with-desc muse-html-markup-strings)
+        "&lt;div class=\"figure\"&gt;
+                &lt;div class=\"photo\"&gt;
+        &lt;img src=\"%1%.%2%\" alt=\"%3%\"/&gt;        &lt;/div&gt;
+                &lt;p&gt;%3%&lt;/p&gt;
+        &lt;/div&gt;")
+;;}}}
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+
+
+<p>
+Footnotes: 
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+Makefile.defs.default 两个文件都可以，你可以拷贝
+Makefile.defs.default 成 Makefile.defs，这样修改后者可以防止错误修改文
+件中的参数
+</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+可能 latex 或 pdf 有点问题，因为文件中的日期是
+中文的，如果使用 latexcjk 或 pdfcjk 的话，这个文件中没有汉字，所以无法判定文件编
+码，将使用默认编码 gb2312，如果你使用 utf-8 保存文件的话，会因为文件编
+码内文件中指定的编码不一致而出错，可以通过设置变量
+muse-latexcjk-encoding-default
+为 &lt;code&gt;"{UTF8}{song}"&lt;/code&gt; 来顺利产生 latex 文件或 pdf 文件。
+</p></div>
+
+
+</div>
+</div>
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2013-12-19</span>
+        <span title="last modification date" class="post-info">2013-12-19</span>
+        <span title="tags" class="post-info"><a href="/tags/muse/">muse</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/wiki/muse";
+          var disqus_url = "http://standino.github.io/wiki/muse";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

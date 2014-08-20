@@ -1,0 +1,977 @@
+#+TITLE:       JAVA
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/html/java
+#+KEYWORDS:    java
+#+TAGS:        :java:rest:spring:ajax:log4j:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Java Tips
+
+* 目录                                                                          :TOC:
+
+* Spring
+
+
+ - [[http://www.blogjava.net/freeman1984/archive/2007/12/07/166112.html][ibatis学习（三）---ibatis与spring的整合]]
+ - [[http://hi.baidu.com/delete_h/item/7b65023c1d9cab5f80f1a77e][Spring中使用Quartz的２种方法]]
+ - [[http://docs.spring.io/spring-roo/reference/html/beginning.html][Spring roo]] [[http://it-ebooks.info/read/741/][Spring roo in action]]
+
+** Spring bean
+
+*** 使用注解声明bean
+
+applicationContext.xml
+
+#+BEGIN_SRC xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	">
+
+	<!-- 使Spring支持自动检测组件，如注解的Controller -->
+	<context:annotation-config />
+
+	<context:component-scan base-package="com.mycompany.pbs"/>
+
+	<import resource="applicationContext-datasource.xml"/>
+	<import resource="applicationContext-service.xml"/>
+	<import resource="applicationContext-schedule.xml" />
+	<import resource="spring-monitor.xml" />
+</beans>
+
+#+END_SRC
+
+*** 使用propertes 
+
+#+BEGIN_SRC xml
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:mycompanybc.properties</value>
+				<value>classpath:important.properties</value>
+				<value>classpath:app.properties</value>
+			</list>
+		</property>
+	</bean>
+
+    <bean id="jedis" class="redis.clients.jedis.Jedis">
+        <constructor-arg value="${redis.server.ip}"/>
+    </bean>
+
+#+END_SRC
+
+*** 运行worker
+
+#+BEGIN_SRC java
+
+@Scheduled(cron = "${data.sync.cron.expression}")
+    public void syncData() {
+
+    }
+
+    public static void main(String[] args) {
+        new ClassPathXmlApplicationContext("/spring/applicationContext.xml", DataSyncWorker.class);
+    }
+
+#+END_SRC
+
+** SpringMVC概要
+
+*** Controler 一个方法对应多个url
+
+#+BEGIN_SRC java
+@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
+    public String index(
+            @RequestParam(value = "locale", required = false) Locale locale,
+            HttpServletRequest request,
+            HttpServletResponse response, ModelMap view) {
+        if (locale != null) {
+            localeResolver.setLocale(request, response, locale);
+
+        }
+#+END_SRC
+
+*** Spring MVC的总控：DispatcherServlet
+web.xml中的声明：
+#+BEGIN_SRC 
+     <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/app-*.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+		  <param-name>contextConfigLocation</param-name>
+		  <param-value>classpath:spring/springmvc-servlet.xml</param-value>
+		</init-param>
+        <load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+#+END_SRC
+
+1、ContextLoaderListener创建root webApplicationContext 
+2、DispatcherServlet创建servlet-specific 的webApplicationContext，继承并覆盖root的定义。init-param可选，缺省查找/WEB-INF/{servletName}-servlet.xml。示例中该文件放在classpath中便于使用maven resources插件进行环境变量替换。
+3、DispatcherServlet会默认初始化一些特定类型的bean，见/org/springframework/web/servlet/DispatcherServlet.properties中的说明。
+4、这些特定类型的Bean，可在*-servlet.xml中声明，覆盖默认定义，或者声明多个不同实现，spring根据他们的order属性来做优先级处理。这些类构建了spring mvc的整个处理流程的主体。见下图（图片来源《Spring3.x企业应用开发实战》）
+
+
+ 
+
+{servletName}-servlet.xml配置, 初始化默认的框架级别的bean。
+#+BEGIN_SRC 
+<mvc:annotation-driven />
+#+END_SRC
+
+
+
+spring 3.1 mvc默认实现变化：
+HandlerMapping和HandlerAdapter ，spring3.1的这两个接口的默认实现：
+#+BEGIN_SRC 
+
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+Creates RequestMappingInfo instances from type and method-level @RequestMapping annotations in  @Controller classes.
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
+An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature -- method argument and  return types, defined in @RequestMapping. 
+
+#+END_SRC
+多了几个接口：HandlerMethodArgumentResolver/HandlerMethodReturnValueHandler，因此MVC XML Namespace下的配置有些变化，可扩展点更多。暂时只需了解即可。
+#+BEGIN_SRC 
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+    ">
+
+	<mvc:annotation-driven conversion-service="conversionService">
+		<mvc:argument-resolvers>
+			<bean/>
+			<bean/>
+		</mvc:argument-resolvers>
+		<mvc:message-converters register-defaults="true">
+            <bean/>
+		</mvc:message-converters>
+		<mvc:return-value-handlers>
+            <bean/>
+		</mvc:return-value-handlers>
+	</mvc:annotation-driven>
+
+#+END_SRC
+
+** Restful MVC
+*** URL规划
+
+ | URL                     | HTTP方法 | MIME             | 含义       |
+ | /return/order           | GET      | text/html        | 退货单首页 |
+ | /return/order/new       | GET      | text/html        | 显示新增页 |
+ | /return/order           | POST     |                  | 创建退货单 |
+ | /return/order/{id}/edit | GET      | text/html        | 显示修改页 |
+ | /return/order/{id}      | PUT      |                  | 修改退货单 |
+ | /return/order/{id}      | GET      | text/html        | 显示退货单 |
+ | /return/order/{id}      | DELETE   |                  | 删除退货单 |
+ | /return/order/query     | GET      | text/html        | 查询结果   |
+ | /return/order/query     | GET      | application/json | 查询结果   |
+
+
+HTTP方法，表达了针对资源的动作
+	- GET：检索资源。具有幂等性，可以充分使用客户端的缓存。
+	- POST：创建一个新资源，不具有幂等性（多次操作会产生多个新资源）。建议使用Post/Redirect/Get模式。
+	- PUT：更新资源数据，如果资源不存在的话，则可根据此URI创建一个新的资源。具有幂等性。
+	- DELETE，删除一个资源。具有幂等性，可以多次操作它，直到得出结果，删除不存在的东西没有任何问题。
+	- HEAD/OPTIONS，略。
+
+ajax框架可指定http方法，浏览器一般只能GET/POST，spring通过一个表单隐藏域来模拟其他方法。
+
+#+BEGIN_SRC 
+
+<form action="#springUrl('')/return/order/$id" method="POST">
+...
+<input name="_method" type="hidden" value="PUT" />
+<input type="submit" value="保存修改"/>
+<input type="button" value="删除" onclick="javascript:this.form['_method'].value='DELETE';this.form.submit();" />
+</ins>
+</form>
+
+web.xml
+
+    <filter>
+		<filter-name>HiddenHttpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>HiddenHttpMethodFilter</filter-name>
+		<servlet-name>springmvc</servlet-name>
+	</filter-mapping>
+
+Controller
+使用注解编写Restful Controller：
+@Controller
+@RequestMapping("/return/order")
+public class ReturnOrderController {
+    @Autowired
+    ReturnOrderService service;
+
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    public String edit(@PathVariable("id") Long id, Model view) {
+        // load from backend by id
+        ReturnOrder order = service.getById(id);
+
+        // add to view model to render edit page
+        view.addAttribute("order", order);
+        return "return/order-edit";
+    }
+    ...
+}
+#+END_SRC
+spring扫描并管理：
+#+BEGIN_SRC 
+
+<context:component-scan  base-package="com.mycompany.bluedragon.web.controller" />
+
+#+END_SRC
+controller类声明：
+
+ 1. @Controller注解bean，由spring ioc管理，默认为单例。其value属性可指定bean name，默认为首字母小写的类名。
+ 2. @RequestMapping("/return/order")，将http请求限定到类，映射资源url的起始路径。
+
+controller类方法签名：
+ - 1、@RequestMapping注解，将http请求限定到类方法：映射从起始路径开始的url路径，http方法, http头、请求参数等等。
+ - 2、方法名，无特殊规定，建议有意义的命名。
+ - 3、允许的方法参数，详尽@RequestMapping的API文档，稍后举例。
+ - 4、允许的返回值，详见@RequestMapping的API文档，稍后举例。
+ - 5、异常，无特殊规定。
+
+
+controller类方法签名：@RequestMapping的作用
+mapping and narrow request to method.
+
+1、	value：url限定，比如方法上的/{id}/edit和/new。
+
+2、	method：http方法限定。GET/POST/PUT/DELETE等。当url一样时，通过http方法来区分。
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public String update(...
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+public String show(...
+
+3、	consumes或produces：根据请求或响应的ContentType来区分。当url和http方法一样，以此来区分。
+    @RequestMapping(value = "/query", method = RequestMethod.GET,
+            produces = "text/html")
+    public String query(...
+
+    @RequestMapping(value = "/query", method = RequestMethod.GET,
+            produces = "application/json")
+    @ResponseBody
+    public Model queryJson(...
+
+4、	params/header限定请参考API。
+
+
+controller类方法签名：允许的方法参数类型
+1、	spring替你准备好这些参数，不用管抽取、类型转换等细节。
+
+2、	@PathVariable注解的参数，抽取url占位符代表的值
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+public String edit(@PathVariable("id") Long id, Model view) {
+
+3、	Model/Map等视图模型，被spring自动注入，如上例。将它暴露到视图层。
+    public String edit(@PathVariable("id") Long id, Model view) {
+        // add to view model to render edit page
+        view.addAttribute("order", order);
+        return "return/order-edit";
+
+4、	@RequestParam注解的参数，抽取http request中相应参数的值。
+    public Model queryJson(
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+            @RequestParam(value = "rows", required = false, defaultValue = "20") int pageSize, 
+…
+5、	表单绑定对象(command/form object)/输入校验结果对象(BindingResult/Errors)
+    public String create(@Valid @ModelAttribute("order") ReturnOrderDTO command,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "return/order-new";
+        }
+        ReturnOrder order = new ReturnOrder();
+        order.setOrg(command.getOrg());
+
+6、	HttpServletRequest/HttpServletResponse等，如：
+@RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index(
+            @RequestParam(value = "locale", required = false) Locale locale,
+            HttpServletRequest request,
+            HttpServletResponse response)
+7、	其他可使用的参数类型见@RequestParam类API文档。
+8、	spring3.1的 HandlerMethodArgumentResolver扩展，应该可以允许更多的自定义类型参数。
+
+
+controller类方法签名：允许的返回值类型
+1、	String，表示视图的逻辑名，例如下例将使用/WEB-INF/view/return/order-edit.vm为模板视图：
+    public String edit(@PathVariable("id") Long id, Model view) {
+        ...
+        view.addAttribute("order", order);
+        return "return/order-edit";
+    }
+
+又如，下例将重定向到/return/order
+    public String update( …) {
+
+        // redirect to index
+        return "redirect:/return/order";
+    }
+
+2、	ModelAndView，比如：
+    @ExceptionHandler
+    public ModelAndView notfound(NoSuchEntityException exception) {
+        return new ModelAndView("return/order-notfound")
+                .addObject("exception", exception);
+    }
+
+3、	@ResponseBody 注解的，返回值将被序列化，比如下例将返回值转换成json：
+   @ResponseBody
+    public Model queryJson(
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+            @RequestParam(value = "rows", required = false, defaultValue = "20") int pageSize,
+            Model view) {
+        PagedList<ReturnOrder> orders = service
+                .findReturnOrders(page, pageSize);
+
+        view.addAttribute("rows", orders);
+        view.addAttribute("total", orders.getItemCount());
+        return view;
+        // return new PagesBar<ReturnOrder>(orders, 7);
+    }
+
+4、	void，由应用自己处理响应，比如只返回http状态：
+    public void create(..., HttpServletResponse response){
+        ...
+        response.setStatus(201);
+    }
+5、	其他的返回值类型可参考@RequestParam类API文档。
+6、	spring3.1的 HandlerMethodReturnValueHandler 扩展，应该可以允许更多的自定义返回值类型。
+
+
+表单对象绑定/输入验证/自定义转换器
+假设一个场景，输入错误后返回输入页面
+    public String create(@Valid @ModelAttribute("order") ReturnOrderDTO command,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "return/order-new";
+        }
+        …
+    }
+
+    /**
+     * DTO (or VO, or else), demonstrate JSR 303 validation in spring mvc.
+     */
+    public static class ReturnOrderDTO {
+        @Min(1)
+        private int orderQty;
+        //getter/setter
+
+
+<form id="orderform" action="#springUrl('')/return/order" method="POST">
+<p>
+<label for="orderQty">订单数量</label>
+#springFormInput('order.orderQty', 'class="easyui-validatebox" required="true"') #springShowErrors('<br/>','')
+</p>
+
+1、	输出：#springFormInput是spring提供的velocity宏，”order.orderQty”表示视图模型中有一个名称为order的对象，orderQty为其属性。
+
+2、	输入：参数@ModelAttribute("order") ReturnOrderDTO command接收输入，当返回时，自动将其内容暴露给视图模板。
+
+3、	服务端验证：在表单绑定对象加上@Valid注解，即可自动验证表单对象属性设置的各种JSR303约束规则。
+
+4、	客户端验证：js框架,class="easyui-validatebox" required="true"。
+
+5、	自定义转换器，详见demo代码。
+
+
+视图层（以velocity为例）
+默认视图处理器
+    <!-- template view -->
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/views/" />
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+				<prop key="contentType">text/html;charset=UTF-8</prop>
+				<prop key="velocimacro.library">macro.vm</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+		<property name="layoutUrl" value="layout/default.vm" />
+		<property name="cache" value="false" />
+		<property name="suffix" value=".vm" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="dateToolAttribute" value="dateTool" />
+		<property name="numberToolAttribute" value="numberTool" />
+		<!-- Merge urlBuilderMap to view context for convenience. You can put your tools which must be thread safe. -->
+		<property name="attributesMap" ref="_urlBuilderMap" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+
+1、	模板中使用spring宏:
+见上面的例子
+
+2、	使用自定义的线程安全的对象方法：
+#set($pageUrl = $homeModule.forPath('/return/order/query').put({"id":$!id}))
+
+3、	布局
+见/WEB-INF/views/layout/default.vm
+
+
+内容协商视图：{servletName}-servlet.xml配置
+	<bean	class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="defaultContentType" value="text/html" />
+		<!-- not by accept header -->
+		<property name="ignoreAcceptHeader" value="true"/>
+		<!-- by extension -->
+		<property name="mediaTypes">
+			<map>
+			    <entry key="xml" value="application/xml" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+                <ref bean="velocityViewResolver"/>
+			</list>
+		</property>
+  		<property name="defaultViews">
+			<list>
+				<!-- for application/json -->
+                <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+			</list>
+		</property>
+	</bean>
+
+	以扩展名来获取json格式的资源：
+return/order/query.json
+	还可以特定参数、accept 头的设定来制定同一资源的不同表示。
+
+
+本地化
+{servletName}-servlet.xml配置:
+
+	<!-- locale related -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="cookieName" value="_clientlocale"/>
+        <property name="defaultLocale" value="zh_CN"/>
+        <property name="cookieMaxAge" value="2147483647"/>
+	</bean>
+
+	<!-- Access resource bundles with the specified basename -->
+	<bean id="messageSource"
+class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames" value="/WEB-INF/i18n/content,/WEB-INF/i18n/validation,/WEB-INF/i18n/asset,/WEB-INF/i18n/enum" />
+		<property name="cacheSeconds" value="5" />
+	</bean>
+
+配置一个localeResolver和相关的本地化资源文件，资源文件不同用途使用不同的命名规则。
+
+一个允许用户更改并存储locale的入口：
+public class IndexController {
+    @Autowired
+    LocaleResolver localeResolver;
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index(
+            @RequestParam(value = "locale", required = false) Locale locale,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+        if (locale != null) {
+            localeResolver.setLocale(request, response, locale);
+        }
+        …
+
+页面上显示本地化信息，使用spring宏：
+1、	内容：#springMessage('return.order.col.id')
+2、	验证错误：#springShowErrors， validation.properties中，key以typeMismatch.开头。
+
+
+
+异常映射
+{servletName}-servlet.xml配置全局的:
+	<!-- exception related -->
+	<!-- all exception handler will be registered by DispatcherServlet default (detectAllHandlerExceptionResolvers=true) -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	   <property name="defaultErrorView" value="error/uncaught"/>
+	   <property name="exceptionMappings">
+	       <props>
+	           <prop key="com.mycompany.common.hrm.IllegalHrmPrivilegeException">error/access-denied</prop>
+	        </props>
+	    </property>
+	</bean>
+
+
+注解，定义controller特定的异常处理
+    @ExceptionHandler
+    public ModelAndView notfound(NoSuchEntityException exception) {
+        return new ModelAndView("return/order-notfound")
+                .addObject("exception", exception);
+    }
+
+
+
+*** 拦截器，
+
+静态资源映射，不使用拦截器：{servletName}-servlet.xml
+#+BEGIN_SRC 
+
+
+	<mvc:default-servlet-handler />
+
+	<!-- static resources -->
+	<mvc:resources location="/static/" mapping="/static/**"
+		cache-period="864000"/><!-- 24 * 3600 * 10 -->
+#+END_SRC
+使用servlet容器默认的servlet，而不使用spring的DispatcherServlet来处理，快速，还可加缓存时间。在生产环境中，有可能被前端的proxy给拦截掉。
+
+spring mvc的拦截器，类似于servlet的filter。
+	比filter好的地方是，interceptor可以被spring ioc容器管理。
+
+URL映射和拦截器配置:{servletName}-servlet.xml
+#+BEGIN_SRC xml
+
+
+    <!-- url mapping with interceptor -->
+	<mvc:interceptors>
+
+		<mvc:interceptor>
+            <mvc:mapping path="/index/**" />
+            <mvc:mapping path="/return/**" />
+			<ref bean="_tLoginContextInterceptor" />
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+#+END_SRC
+
+权限相关：在controller方法上加上自定义的注解
+
+#+BEGIN_SRC 
+
+
+    @HrmPrivilege("ceo,cto")
+    @RequestMapping(value = "/access-denied", method = RequestMethod.GET)
+    public void denied() {
+        // throw in interceptor
+    }
+
+#+END_SRC
+
+** Ajax 调用
+
+#+BEGIN_SRC java
+    @RequestMapping(method = RequestMethod.POST )
+    @ResponseStatus(HttpStatus.CREATED)
+    public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
+                                    BindingResult bindingResult, ModelMap view) {
+        quickMenu.setUserId(this.getUserID());
+        quickMenu.setCreator(this.getUserID());
+        this.quickMenuService.addMenu(quickMenu);
+        return quickMenu;
+    }
+#+END_SRC
+
+#+BEGIN_SRC javascript
+#set($layout = "/layout/empty.vm")
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+
+        a.quickMenu {
+            background: url("http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon20-blue.png") no-repeat;
+            border-radius: 5px;
+            color: #999999;
+            display: block;
+            float: left;
+            font-size: 14px;
+            font-weight: bold;
+            height: 31px;
+            margin: 0 5px 5px 0;
+            padding-top: 55px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s ease-out 0s;
+            width: 86px;
+        }
+
+        span {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            color: #0095CD;
+            display: inline-block;
+            height: 30px;
+            overflow: hidden;
+            width: 82px;
+            position: relative;
+        }
+
+        .item-warp a b.ticked {
+            display: block;
+            height: 26px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 26px;
+            background: url("http://css.eip.mycompany.com/jetui/jetuicss/i/icon-ticked-blue.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+        }
+
+
+    </style>
+
+</head>
+<body>
+<!-- 显示已添加的快捷菜单 -->
+<div id="quickMenuTemplate">
+
+    #foreach( $menu in $menus )
+        <a title="${menu.linkName}" class="quickMenu"
+           style="background: url('${menu.linkImgUrl}') no-repeat"
+           href="${menu.linkUrl}" target="_blank">
+            <span>${menu.linkName}</span>
+            <em>
+                <b></b>
+            </em>
+        </a>
+    #end
+
+
+    <a id="quickMenu_add" title="添加" class="quickMenu"
+       style="background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/icon21-gray.png') no-repeat"
+       href="#" target="_blank">
+        <span></span>
+        <em>
+            <b></b>
+        </em>
+    </a>
+
+
+</div>
+
+<!--显示所有可见菜单，供供用户添加和删除 -->
+<div id="dialog-form"  title="添加菜单" style="display: none">
+
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">手动添加</a></li>
+            <li><a href="#tabs-2">常用功能</a></li>
+        </ul>
+        <div id="tabs-1">
+            <form id="newForm" action="#springUrl('/quickMenus')" method="post">
+                <fieldset>
+                    <label for="linkName">链接名称</label>
+                    <input type="text" name="linkName" id="linkName" class="text ui-widget-content ui-corner-all">
+                          <br />
+                    <label for="linkUrl">链接地址</label>
+                    <input type="text" name="linkUrl" id="linkUrl" value="" class="text ui-widget-content ui-corner-all">
+                    <br />
+                    <label for="linkImgUrl">链接图片</label>
+                    <input type="text" name="linkImgUrl" id="linkImgUrl" value="" class="text ui-widget-content ui-corner-all">
+                    <br />
+                </fieldset>
+            </form>
+        </div>
+        <div id="tabs-2" class="item-warp">
+            <a title="E-learning" class="quickMenu"
+               style="background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon6-blue.png') no-repeat"
+               href="javascript:void(0) " target="_blank">
+                <span>E-learning</span>
+                <em>
+                    <b class="ticked"></b>
+                </em>
+            </a>
+
+            <a id="timeCard" title="打卡" class="quickMenu"
+               style="background: url('http://css.eip.mycompany.com/jetui/jetuicss/i/default-icon1-blue.png') no-repeat"
+               href="javascript:void(0)" target="_blank">
+                <span>打卡</span>
+                <em>
+                    <b class="ticked"></b>
+                </em>
+            </a>
+        </div>
+
+    </div>
+
+
+</div>
+
+<script>
+    $(function () {
+                $( "#tabs" ).tabs();
+
+                $("#dialog-form").dialog({
+                    autoOpen: false,
+                    height: 600,
+                    width: 650,
+                    modal: true,
+                    buttons: {
+                        "添加": function () {
+//                            $("#newForm").submit();
+                            var url = "#springUrl('/quickMenus')"; // the script where you handle the form input.
+
+                            $.ajax({
+                                type: "POST",
+                                url: url,
+                                data: $("#newForm").serialize(), // serializes the form's elements.
+                                success: function(data) {
+//                                    alert(data); // show response from the php script.
+                                    console.log("创建快捷链接" +data);
+                                    $(this).dialog("close");
+                                    location.reload();
+
+                                }
+                            });
+
+//
+                        },
+                        "取消": function () {
+                            $(this).dialog("close");
+                        }
+                    },
+                    close: function () {
+                    }
+                });
+
+                $("#quickMenu_add").bind('click', function () {
+                    $("#dialog-form").dialog("open");
+                    return false;
+                })
+
+                $("#tabs-2 a").bind('click', function () {
+                    console.log("触发打钩");
+                    $(this).find("b").toggleClass("ticked");
+                })
+            }
+
+    );
+
+</script>
+
+
+</body>
+</html>
+#+END_SRC
+
+** 事务控制
+
+下面的配置里，只有insert,update, add, mod,del和move开头的servcie方法有数据库commit权限。
+#+BEGIN_SRC xml
+<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+			<tx:method name="update*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="add*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="mod*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="del*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="move*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+			<tx:method name="*"   isolation="READ_COMMITTED" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+
+    <aop:config proxy-target-class="true">
+		<aop:advisor pointcut="execution(* com.retail.*.service.*.*(..))" advice-ref="txAdvice" />
+	</aop:config>
+#+END_SRC
+* Copy files from a jar
+
+http://stackoverflow.com/questions/1386809/copy-a-directory-from-a-jar-file
+
+* Google App Engine 
+
+http://code.google.com/intl/zh-CN/appengine/docs/python/gettingstarted/uploading.html
+
+
+
+* J2EE User Management 
+
+[[http://www.onjava.com/pub/a/onjava/2002/06/12/form.html][J2EE Form-based Authentication]]
+
+[[../etc/form.html][J2EE Form-based Authentication]]
+
+* 在Eclipse中设置中文JavaDOC
+[[http://www.cnblogs.com/kay/archive/2008/05/26/1207956.html][在Eclipse中设置中文JavaDOC]]
+
+在Eclipse中，我们常常看一些英文的JavaDoc提示或者没有相应的提示是很不习惯的，如下图所示：
+
+我们现在要把这种不习惯的提示改为中文的JavaDOC提示，首先先
+到http://download.java.net/mycompanyk/mycompanyk-api-localizations/mycompanyk-api-zh-cn/publish/1.6.0/html_zh_CN.zip 
+下载中文的JavaDOC，版本为javaSE6.0。
+然后在Eclipse中选择window-->Preferences，
+在图中对应位置输入“jre”：
+
+然后点击黑色字体处的Instralls JRES:
+
+然后点击jre6.0，选择右边的Edit：
+
+在弹出的窗体中选择rt.jar后点击Javadoc Location：
+
+选择下面的Javadoc in archive ,在Archive path中选择下载到的html_zh_CN.zip的路径，然后点击Path within archive右边的Browse，弹出如下窗口：
+
+点击图中的树状结构选择到api节点为止后，点击所有的弹出窗体的ok按钮。
+在看我们编辑窗口的提示：
+
+现在已经变成了中文。
+
+* Java decompiler
+
+Jad home page: http://www.geocities.com/kpdus/jad.html
+
+http://www.varaneckas.com/jad 
+
+*  Grails
+
+http://grails.org/plugin/app-engine
+
+
+* Java core dump
+
+ [[http://www.alphaworks.ibm.com/tech/jca][IBM Thread and Monitor Dump Analyzer for Java]]
+
+
+* Automation test
+
+ http://www.ibm.com/developerworks/java/library/j-ap03137/index.html
+
+
+* AIO
+
+连接数多且长的需要使用AIO, AIO使用的时候需要使用多线程。
+
+
+
+
+*正则表达式
+
+#+BEGIN_SRC 
+
+
+String splitReqString = "uid=923933544/sid=DFS32DSFS";
+String uid = getMatcher("uid=([\\d]+)", splitReqString);
+String sid = getMatcher("sid=([0-9a-zA-Z]+)", splitReqString);
+
+public static String getMatcher(String regex, String source) {
+String splitReqString = "uid=923933544/sid=DFS32DSFS";
+String uid = getMatcher("uid=([\\d]+)", splitReqString);
+String sid = getMatcher("sid=([0-9a-zA-Z]+)", splitReqString);
+
+public static String getMatcher(String regex, String source) {
+String result = "";
+Pattern pattern = Pattern.compile(regex);
+Matcher matcher = pattern.matcher(source);
+while (matcher.find()) {
+result = matcher.group(1);//只取第一组
+}
+return result;
+}
+#+END_SRC
+
+
+* log4j
+
+ 1. http://yuguanyin.iteye.com/blog/226549
+ 2. http://wiki.alfresco.com/wiki/Log4J_Configuration
+
+* beanshell
+
+* mybatis 
+
+ 1. http://blog.csdn.net/liaoxiaohua1981/article/details/6862764
+ 2. http://my.oschina.net/linuxred/blog/38802
+ 3. MyBatis中出现Mapped Statements collection does not contain value异常解决方案
+ http://blog.csdn.net/wikiwang/article/details/7571108  
+
+
+#+BEGIN_SRC 
+
+另外MyBatis还提供了一个使用注解来参入多个参数的方式。这种方式需要在接口的参数上添加@Param注解
+示例：
+接口方法
+[java] view plaincopy
+public List<Teacher> selectTeacher(@Param(value="id") String id,@Param(value="sex") String sex);  
+
+XML文件
+[html] view plaincopy
+<select id="selectTeacher"  resultType="com.myapp.domain.Teacher">  
+    select * from Teacher where c_id=#{id} and sex=#{sex}  
+</select>  
+
+#+END_SRC
+
+* DONE [#C] 编写ajax 提交和controler 定义之间的关系的blog
+  CLOSED: [2014-05-13 二 13:29]
+  - State "DONE"       from "STARTED"    [2014-05-13 二 13:29]
+  :LOGBOOK:
+  CLOCK: [2014-05-13 二 13:10]--[2014-05-13 二 13:29] =>  0:19
+  :END:
+
+* DONE [#C] Guava
+  CLOSED: [2014-06-19 四 11:14]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2014-06-19 四 11:14]
+  CLOCK: [2014-06-19 四 11:11]--[2014-06-19 四 11:14] =>  0:03
+  :END:
+
+* TODO [#C] Joda Time
+
+* TODO [#C] jmockit vs  Hamcrest和Mockito
+  :LOGBOOK:
+  CLOCK: [2014-06-13 五 16:25]--[2014-06-13 五 17:07] =>  0:42
+  :END:
+
+* TODO [#C] DropWizard
+
+* TODO [#C] REST API的框架，比如用Jersey加上Jackson。
+
+* DONE [#C] SLF4J
+  CLOSED: [2014-06-19 四 11:18]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2014-06-19 四 11:18]
+  CLOCK: [2014-06-19 四 11:15]--[2014-06-19 四 11:18] =>  0:03
+  :END:
+   - http://www.oschina.net/translate/why-use-sl4j-over-log4j-for-logging
+   - http://zhaoming.iteye.com/blog/266996
+
+使用SLF4J，你可以使用更简洁的格式达到同样的效果，如下: 1 logger.debug("Processing trade with id: {} and symbol : {} ", id,
+symbol);在SLF4J中，我们不需要进行字符串拼接，不会导致使用临时字符串带来的消耗。相反，我们使用带占位符的模板消息来记录日志信息，并
+提供实际值作为参数。也许你会想，要是有多个参数该怎么办，你可以使用带参数版的日志方法，也可以通过Object数组传入。这确实是非常方便而
+且高效的记日志的方法。记住，在为日志信息产生最终的字符串之前，该方法会检查是否开启了特定的日志级别，这不仅降低了内存占用，而且预先
+减少了执行字符串拼接所消耗的CPU时间。下面的SLF4J日志方法的代码，来自于slf4j-log4j12-1.6.1.jar包里的Log4j的适配器类
+Log4jLoggerAdapter.
+* TODO [#C] Gradle
+
+* TODO [#C] Docker
+
+
+* Jetty
+
+ - https://gist.github.com/naaman/1053217

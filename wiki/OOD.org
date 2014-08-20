@@ -1,0 +1,10 @@
+#+TITLE:       面向对象设计和重构
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-20 Fri
+#+URI:         /wiki/html/ood
+#+KEYWORDS:    ood, refactor
+#+TAGS:        :ood:refactor:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 面向对象设计

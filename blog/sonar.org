@@ -1,0 +1,92 @@
+#+TITLE:       sonar的安装和使用
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-24 周二
+#+URI:         /blog/%y/%m/%d/sonar
+#+KEYWORDS:    code review, sonar, coding
+#+TAGS:        :code review:sonar:coding
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: sonar的安装和使用
+
+* 安装
+
+**　下载
+ 1. http://www.sonarqube.org/downloads/
+
+* 配置maven 
+settings.xml
+
+#+BEGIN_SRC xml :file settings.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"
+    xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <profiles>
+
+   <profile>
+      <id>sonar</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <properties>
+      <!-- Example for MySQL-->
+      <sonar.__my_company_1__bc.url>
+        __my_company_1__bc:h2:tcp://localhost:9092/sonar
+      </sonar.__my_company_1__bc.url>
+      <sonar.__my_company_1__bc.username>sonar</sonar.__my_company_1__bc.username>
+      <sonar.__my_company_1__bc.password>sonar</sonar.__my_company_1__bc.password>
+      
+      <!-- Optional URL to server. Default value is http://localhost:9000 -->
+      <sonar.host.url>
+        http://localhost:9000
+      </sonar.host.url>
+    </properties>
+    <configuration>
+      <argLine>-Xmx1024m</argLine>
+    </configuration>
+  </profile>
+</profiles>
+
+</settings>
+
+#+END_SRC
+ 
+
+* 执行 sonar
+ 1. 启动sonar server
+ 2. 在项目目录中执行mvn命令：mvn sonar:sonar
+#+BEGIN_SRC 
+start sonar-3.6.2\bin\windows-x86-32\StartSonar.bat
+set MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=128m
+mvn sonar:sonar
+#+END_SRC
+
+执行完毕，访问下面的页面查看结果 http://localhost:9000
+用户名/密码：admin/admin
+
+
+* Fedora 20 
+
+pom.xml 
+
+
+#+BEGIN_SRC 
+
+<plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
+      
+
+
+#+END_SRC
+
+#+BEGIN_SRC 
+mvn org.codehaus.sonar:sonar-maven3-plugin:3.7:sonar
+#+END_SRC
+* 参考资料
+
+ - http://www.cnblogs.com/gao241/p/3190701.html 

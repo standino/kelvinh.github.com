@@ -1,0 +1,30 @@
+#+TITLE:       cygwin
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 周四
+#+URI:         /wiki/html/cygwin
+#+KEYWORDS:    cygwin,linux
+#+TAGS:        :cygwin:linux:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+
+
+* cyg-apt
+
+http://software.jessies.org/salma-hayek/cygwin-setup.html
+
+http://download.linuxaudio.org/lilypond/binaries/cygwin/cyg-apt
+
+
+
+* Reference 
+
+   1. [[http://forum.ubuntu.org.cn/viewtopic.php?f=8&t=66302][ 终端软件的选择：rxvt-unicode]]
+   1. http://www.khngai.com/emacs/cygwin.php
+   1. [[http://www.yuanma.org/data/2007/0403/article_2487.htm][Cygwin上ssh服务的putty自动登录问题]]
+   1. [[http://blog.csdn.net/easwy/archive/2007/10/05/1812242.aspx][使用rxvt做为cygwin终端]]
+   1. [[file://C:/dsw/usr/share/doc/cygwin-doc-1.4/cygwin-api.html][Cygwin API Reference]]
+   1. [[file://C:/dsw//usr/share/doc/cygwin-doc-1.4/html/faq/index.html][Cygwin FAQ]]
+   1. [[file://C:/dsw//usr/share/doc/cygwin-doc-1.4/html/cygwin-ug-net/index.html][Cygwin User's Guide]]
+   1. [[file://C:/dsw//usr/share/doc/cygwin-doc-1.4/cygwin-ug-net.html][User's Guide (One file)]]
+ 

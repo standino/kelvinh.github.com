@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>cygwin - Keep going</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Will Chang" />
+    <meta name="description" content="cygwin的使用技巧" />
+    <meta name="keywords" content="cygwin,linux" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>努力超越自己！</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>cygwin</h1>
+<hr  />
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">设置时区</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+.bashrc
+</p>
+
+<p>
+export TZ=Asia/Chongqing
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">How do I get crontab started running when using cygwin?</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+I can't remember where I found it, but using this series of commands from the cygwin prompt got the crontab system enabled for me. First this command:
+</p>
+
+<p>
+for cygwin 1.5:
+</p>
+
+<p>
+&lt;src&gt;
+cygrunsrv -I cron -p /usr/sbin/cron -a -D
+&lt;/src&gt;
+</p>
+
+<p>
+for cygwin 1.7:
+</p>
+
+<p>
+&lt;src&gt;
+</p>
+
+<p>
+cygrunsrv --install cron --path=/usr/sbin/cron --desc='Cygwin cron service' --type=auto --neverexits -a '-n'
+</p>
+
+<p>
+&lt;/src&gt;
+followed by:
+</p>
+
+<p>
+net start cron
+</p>
+
+<p>
+I haven't used this cygwin feature before, so it feels weird knowing that crontab is running on my Windows system under cygwin.
+</p>
+
+<p>
+I don't have much in the crontab yet, just one entry that runs a wget command to a certain URL every night. Here's the actual crontab entry, which actually calls a Bourne shell script that I wrote for this purpose:
+</p>
+
+<p>
+45 18 * * * /cygdrive/c/Al/Reports/do_nightly_wget.sh 
+</p>
+
+<p>
+<a href="http://www.ibm.com/developerworks/cn/aix/library/au-spunix_cygwin/?ca=drs-tp4608">在 Windows 上使用 Cygwin</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Install</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+To tuning my desktop, I moved the cygwin from C:\dsw to E:\cygwin. first, I uninstalled the cygwin in C:\dsw with the cygwin
+setup.exe. 
+</p>
+
+<p>
+<a href="http://www.cygwin.cn/site/install/">http://www.cygwin.cn/site/install/</a> 
+</p>
+
+<p>
+<a href="http://www.cygwin.net.cn/">http://www.cygwin.net.cn/</a>
+</p>
+
+<p>
+Add site: <a href="http://www.cygwin.cn">http://www.cygwin.cn</a> 
+</p>
+
+<p>
+Or input in URL <a href="http://www.cygwin.cn/pub/">http://www.cygwin.cn/pub/</a> 
+</p>
+
+<p>
+Or input URL <a href="http://ftp.ntu.edu.tw/ftp/pub/cygwin/">http://ftp.ntu.edu.tw/ftp/pub/cygwin/</a>
+</p>
+
+
+<p>
+Choose:
+</p>
+
+<ul class="org-ul">
+<li>emacs, emacs-el, emacs-X11
+</li>
+<li>wget
+</li>
+<li>mercurial, cvs, subversion, git
+</li>
+<li>aspell, aspell-en
+</li>
+<li>xorg-server,xinit
+</li>
+<li>openssh
+</li>
+<li>unzip
+</li>
+</ul>
+
+<p>
+Add cygwin\bin to %PATH%
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">SSH</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<a href="http://pigtail.net/LRP/printsrv/cygwin-sshd.html">http://pigtail.net/LRP/printsrv/cygwin-sshd.html</a>
+</p>
+
+<ol class="org-ol">
+<li>create ssh server: ssh-host-config  -y 
+</li>
+<li>start sever: cygrunsrv  --start  sshd
+</li>
+<li>stop server: cygrunsrv  --stop  sshd
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Uninstall</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+在这里我说一下这个问题的解决方案：记得在安装cygwin的时候那个setup文件了吗，我们卸载它也要用这个文件，进入setup后还在按照步骤下一
+步....下一步，之后会来到您需要安装文件包的那个环节，如果你先前选择了All-install,则这些则把这一项改为all-uninstall即可。如果你之前
+安装选择了自定义的安装，则把对应项改为uninstall即可。就是这么简单是吧！！！然后点击下一步，一切就都OK了！ 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Install Emacs in cygwin</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<a href="http://www.webalice.it/angelo.graziosi/cygwin/emacs/Emacs.html">http://www.webalice.it/angelo.graziosi/cygwin/emacs/Emacs.html</a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Display Chinese words</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+&lt;example&gt;
+</p>
+
+<ol class="org-ol">
+<li>.bashrc
+<p>
+export LANG=en_US.UTF-8
+export LC_CTYPE="zh_CN"
+</p>
+<p>
+alias ls='ls --show-control-chars'
+alias dir='ls --show-control-chars'
+alias less='less --raw-control-chars'
+</p>
+</li>
+
+<li>.inputrc
+<p>
+set convert-meta off
+set input-meta on
+set output-meta on
+</p>
+</li>
+</ol>
+
+<p>
+&lt;/example&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Shell</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+&lt;src&gt; 
+</p>
+
+<p>
+ln -s /cygdrive/c/standino ./standino 
+</p>
+
+<p>
+ln -s "<i>cygdrive/c/My Documents</i>" ~/My_Documents
+</p>
+
+<p>
+ln -s "/cygdrive/c/Documents and Settings/Administrator/Desktop" ~/Desktop
+</p>
+
+<p>
+ln -s "<i>cygdrive/c</i>" /c
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+
+<p>
+Terminal program: setting the terminal type to TTY
+If you are using Emacs in the clumsy Windows "Command" window (command.exe), you might benefit from setting the terminal type so
+that more control characters work. Do this by changing the startup script, cygwin.bat, to contain the following commands, setting
+the CYGWIN tty and binary modes. For example: 
+&lt;src&gt;
+@echo off
+</p>
+
+<p>
+C:
+chdir \cygwin\bin
+</p>
+
+<p>
+set CYGWIN=tty binmode
+bash --login -i 
+&lt;/src&gt;
+</p>
+<ul class="org-ul">
+<li>install rxvt from setup.exe
+</li>
+<li>copy the cygwin.bat startup script in your Cygwin root directory, e.g. C:\cygwin\cygwin.bat to C:\cygwin\cygwin-rxvt.bat
+</li>
+<li>Make the following change to cygwin-rxvt.bat
+</li>
+</ul>
+
+<p>
+&lt;src&gt;
+@echo off
+</p>
+
+<p>
+C:
+chdir C:\cygwin\bin
+</p>
+
+<p>
+set SHELL=/bin/bash
+rxvt --loginShell -sr
+#bash --login -i
+&lt;/src&gt;
+</p>
+
+<p>
+get from server : &lt;src&gt; rsync -avuz -e ssh --delete changwei.dyn.webahead.ibm.com:/Latest / &lt;/src&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">SSH without password</h2>
+<div class="outline-text-2" id="text-8">
+<ol class="org-ol">
+<li>分别从A和B上登录作为root后运行ssh-keygen，目的是简单地在/root下创建目录.ssh,当提示输入
+</li>
+</ol>
+<p>
+　　 passphase时打入两次回车。这将生成/root/.ssh/identity and/root/.ssh/identity.pub
+</p>
+<ol class="org-ol">
+<li>先测试一下，从A登录作为root，打入#ssh B,会要求提示root password。
+</li>
+<li>现在从A登录作为root，运行 &lt;src&gt;scp ~/.ssh/id_rsa.pub changwei.dyn.webahead.ibm.com:~/.ssh/authorized_keys&lt;/src&gt;　　文件名必须不能弄错。
+</li>
+<li>现在再从A运行#ssh B则不需要密码了：)
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">DB2</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+I have different machines with cygwin and db2 installed 
+There is 1 machine that is acting differently from the other machines, although I don't modify many setting in cygwin/windows 
+The case is that if I connect to database : this is successfull but this connection is immediatly lost. I execute another command against the db and message indicates : no connection.   as if the connect would be executed in a different shell (subshell) and not this connection not available in the current shell. 
+Anyone already encountered this or any idea which setting could force this ? 
+I start db2cmd /i /c /w c:\cygwin\cygwin.bat to get the db2 window with cygwin interface on all machines. 
+Thanks for all info 
+Best Regards, Guy Przytula
+</p>
+
+<hr  />
+
+<p>
+Just to inform others that the problem has been corrected by db2 team. 
+export DB2CLP=**$$**   corrected the problem... 
+Best Regards, Guy Przytula
+</p>
+
+
+<p>
+cygpath工具提供了在shell脚本中进行win32-posix路径格式转换的能力。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">如何打造绿色版cygwin</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+You can use 
+&lt;src&gt;
+ mount -m &gt; mymount.bat
+&lt;/src&gt;
+to generate a mount bat
+</p>
+
+<p>
+Yesterday I wanted to reinstall cygwin on my notebook. I just copied the whole cygwin directory from desktop to notebook. When I run cygwin.bat, it always complained that "bash.exe: could not find /tmp, please create!".
+</p>
+
+<p>
+There is something wrong with cygwin's mount table. According to cygwin faq, To save the mount information to a file for later restoration, use `mount -m &gt; mounts.bat' To remove all mount information use `umount -A'. To reincorporate saved mount information just run the batch file.
+Displaying the current set of mount points
+</p>
+
+<p>
+&lt;src&gt;
+c:\&gt; mount
+f:\cygwin\bin on /usr/bin type system (binmode)
+f:\cygwin\lib on /usr/lib type system (binmode)
+f:\cygwin on / type system (binmode)
+e:\src on /usr/src type system (binmode)
+c: on /cygdrive/c type user (binmode,noumount)
+e: on /cygdrive/e type user (binmode,noumount)
+&lt;/src&gt;
+</p>
+
+<p>
+Run mounts.bat to setup mount points to solve the problem
+</p>
+
+<p>
+No bash command, just run mount from cmd.exe. At that moment, bash still complains "no /tmp", we can't use it, use mount directly. After we run this batch file, we can check system-wide registry "HKLM/Software/Cygnus Solutions/Cygwin/mounts2".
+&lt;src&gt;
+mount -f -s -b "d:/cygwin/bin" "/usr/bin"
+mount -f -s -b "d:/cygwin/lib" "/usr/lib"
+mount -f -s -b "d:/cygwin" "/"
+mount -s -b --change-cygdrive-prefix "/cygdrive"
+&lt;/src&gt;
+Following are from cygwin's faq
+</p>
+
+<p>
+The mapping is stored in the current user's Cygwin mount table in the Windows registry so that the information will be retrieved next time the user logs in. Because it is sometimes desirable to have system-wide as well as user-specific mounts, there is also a system-wide mount table that all Cygwin users inherit. The system-wide table may only be modified by a user with the appropriate privileges (Administrator privileges in Windows NT).
+</p>
+
+<p>
+The current user's table is located under "HKEY_CURRENT_USER/Software/Cygnus Solutions/Cygwin/mounts v" where is the latest registry version associated with the Cygwin library (this version is not the same as the release number). The system-wide table is located under the same subkeys under HKEY_LOCAL_MACHINE. The user mount table takes precedence over the system-wide table if a path is mounted in both. This includes the setting of the cygdrive prefix.
+</p>
+
+<p>
+The mount command can set the POSIX root / to any directory in the Windows file system. In absence of such a mount, Cygwin maps / to the root of the current Windows working directory (for example, H:\ or \\computer\share). Normally Cygwin's setup.exe creates the initial mount point for the POSIX root. 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">cyg-apt</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+<a href="http://software.jessies.org/salma-hayek/cygwin-setup.html">http://software.jessies.org/salma-hayek/cygwin-setup.html</a>
+</p>
+
+<p>
+<a href="http://download.linuxaudio.org/lilypond/binaries/cygwin/cyg-apt">http://download.linuxaudio.org/lilypond/binaries/cygwin/cyg-apt</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">Reference</h2>
+<div class="outline-text-2" id="text-12">
+<ol class="org-ol">
+<li><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=8&t=66302"> 终端软件的选择：rxvt-unicode</a>
+</li>
+<li><a href="http://www.khngai.com/emacs/cygwin.php">http://www.khngai.com/emacs/cygwin.php</a>
+</li>
+<li><a href="http://www.yuanma.org/data/2007/0403/article_2487.htm">Cygwin上ssh服务的putty自动登录问题</a>
+</li>
+<li><a href="http://blog.csdn.net/easwy/archive/2007/10/05/1812242.aspx">使用rxvt做为cygwin终端</a>
+</li>
+<li><a href="file:////C:/dsw/usr/share/doc/cygwin-doc-1.4/cygwin-api.html">Cygwin API Reference</a>
+</li>
+<li><a href="file:////C:/dsw/usr/share/doc/cygwin-doc-1.4/html/faq/index.html">Cygwin FAQ</a>
+</li>
+<li><a href="file:////C:/dsw/usr/share/doc/cygwin-doc-1.4/html/cygwin-ug-net/index.html">Cygwin User's Guide</a>
+</li>
+<li><a href="file:////C:/dsw/usr/share/doc/cygwin-doc-1.4/cygwin-ug-net.html">User's Guide (One file)</a>
+</li>
+</ol>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2013-12-19</span>
+        <span title="last modification date" class="post-info">2013-12-19</span>
+        <span title="tags" class="post-info"><a href="/tags/cygwin/">cygwin</a>, <a href="/tags/linux/">linux</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/wiki/cygwin";
+          var disqus_url = "http://standino.github.io/wiki/cygwin";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,183 @@
+#+TITLE:       Emacs introduction
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/html/emacsintroduction
+#+KEYWORDS:    <TODO: insert your keywords here>
+#+TAGS:        :emacs:ppt:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Emacs introduction 
+
+
+
+* Pick a powerful editor and learn it well
+** List of What Makes a Perfect Editor
+<slide title=" List of What Makes a Perfect Editor">
+ - A macro recorder
+ - Launchable from the command line
+ - Regular expression search and replace
+ - Additive cut and copy commands
+ - Cross-platform & Open source
+ - Column edit
+</slide>
+
+** The Candidates
+<slide title="VI">
+
+  VI is incredibly hard to learn; it has a virtual cliff-face learning curve. But,
+  once you've mastered it, you are the most effective manipulator of text possible. Watching
+  experienced VI editors, people say that the cursor just follows their eyes.
+                               
+                                  --- Neal Ford   "The Productive Programmer"
+
+</slide>
+
+<slide title="Emacs">
+
+  The ultimate in big editors, containing every feature that any editor has
+  ever had, Emacs has a near-vertical learning curve, but repays handsomely
+  once you've mastered it. It also makes a great mail and news reader,
+  address book, calendar and diary, adventure game, ….
+
+                                 --- Andrew Hunt, David Thomas "Pragmatic Programmer"
+
+</slide>
+
+<slide title="JEdit">
+
+  It has become a very capable editor, with a host of plug-ins that
+  allow it to utilize lots of third-party tools (like Ant) and support lots of languages. It is built
+  on top of BeanShell, meaning that it is easy to customize and modify, especially for Java
+  developers.
+
+                                 --- Neal Ford   "The Productive Programmer"
+
+</slide>
+
+* Using Emacs
+** Edit Text Files
+<slide title=" Installation">
+ - Install Emacs
+
+ftp://ftp.gnu.org/gnu/emacs/windows/ 
+
+ - Use ELAP to install Emacs Lisp packages
+
+http://tromey.com/elpa/install.html
+
+ - Install Cygwin 
+
+http://www.cygwin.cn/site/install/
+
+</slide>
+
+<slide title=" Edit Text Files">
+
+  Short cuts || action
+  C-x C-c | Exit and close Emacs
+  C-x C-z | Exit and hang on Emacs
+  C-x C-f | Open file or folder
+  C-x i   | Insert file 
+  C-x C-r | Open a file with read only mode
+  C-x u Or C-/   | Undo
+  C-x C-s | Save
+  C-x s   | Save all unsaved files
+  C-x C-w | Save as...
+  C-l     | Refresh the buffer 
+
+</slide>
+
+<slide title=" Get help">
+
+Ctrl + h
+
+ - a  command-apropos.  Type a list of words or a regexp; it shows a list of commands whose names match.  See also the  apropos  command.
+  
+ - b  describe-bindings.  Display a table of all key bindings.
+  
+ - c  describe-key-briefly.  Type a key sequence;it displays the command name run by that key sequence.
+  
+ - d  apropos-documentation.  Type a pattern (a list of words or a regexp), and shows a list of functions, variables, and other items whose
+documentation matches that pattern.  See also the apropos command.
+  
+</slide>
+
+** Lisp
+
+
+#+BEGIN_SRC
+01  (defun my-switch-buffer ()
+02    "Like switch-buffer but in the opposite direction"
+03    (interactive "")
+04    (other-window -1)
+05  )
+#+END_SRC
+
+
+ Test || table
+ 1 || 2
+
+<slide title="  Customize Emacs">
+
+(require 'color-theme)
+
+(color-theme-initialize)
+
+(color-theme-billw)
+
+</slide>
+
+** Programing in Emacs
+<slide title="Programing in Emacs">
+
+ -  Tabbar
+ -  Spell Check
+ -  SQL
+ -  Template
+ -  Auto-completion
+ -  Version Control
+
+</slide>
+
+** More Editing Tasks
+<slide title="Planning---Org">
+
+Org-mode is a mode for keeping notes, maintaining TODO lists, and doing project planning with a fast and effective plain-text system.
+</slide>
+
+<slide title="Taking notes---muse">
+
+Emacs Muse is an authoring and publishing environment for Emacs. It simplifies the process of writings documents 
+and publishing them to various output formats. Muse uses a very simple Wiki-like format as input.
+
+</slide>
+
+* Extending Emacs
+
+** Get the last version automatically
+<slide title="Get the last version automatically" >
+
+(add-hook 'find-file-hooks 'my-vc-update)
+
+(defun my-vc-update()
+  (condition-case nil
+      (if (vc-registered (buffer-file-name))
+           (vc-update))
+    (error nil))
+
+)
+
+</slide>
+
+** Run SQLunit Test
+<slide title=" Run SQLunit Test">
+
+(defun sqlunit-run-file ()
+     "Run sqlunit on current buffer"
+     (interactive )
+     (shell-command 
+      (format "ant -f %s../build.xml  -Dscript.name=%s &" (buffer-dir)  (buffer-name))))
+</slide>
+
+

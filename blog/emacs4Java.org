@@ -1,0 +1,28 @@
+#+TITLE:       使用Emacs开发J2EE程序
+#+AUTHOR:      Will
+#+EMAIL:       will@localhost.localdomain
+#+DATE:        2014-03-15 六
+#+URI:         /blog/%y/%m/%d/emacs4java
+#+KEYWORDS:    java, emacs
+#+TAGS:        java, emacs
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 介绍如何使用Emacs编辑J2EE程序
+
+
+* 所需要的 emacs 扩展
+
+  1. ggtags
+  2. web-mode
+  3. swoop
+  4. helm
+  5. projectile
+
+具体如何配置上面的扩展，可以参考[[https://github.com/standino/emacs.d][我的配置]]。
+
+* 如何使用扩展
+
+**  M-. : 获得Java变量和方法的引用或声明
+**  M-x swoop-multi : 在打开的 buffer 查找某个关键字
+**  M-x projectile-grep: searching for a string inside your project
+**  C-cf : 打开文件

@@ -1,0 +1,851 @@
+#+TITLE:       ruby.org
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/html/ruby
+#+KEYWORDS:    ruby
+#+TAGS:        :ruby:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Learning ruby 
+
+
+* 数学计算
+
+ 1. [[http://www.kuqin.com/rubycndocument/man/built-in-class/module_math.html][Ruby参考]]
+
+在计算三角函数sina，cos，或者各种指数，平方根时，必须在程序前面加上include Math这一句话。sin值可以用sina方法求的，平方根可以用sprt
+方法求的。
+
+下面，让我们尝试计算3的平方： 
+
+3**2
+
+在Ruby语言中，**表示幂运算。那么如何计算平方根呢？ 
+
+
+
+
+<#+BEGIN_SRC >
+
+include Math
+print("sin(3.14)=",sin(3.14),"\n")
+print("cos(3.14)=",cos(3.14),"\n")
+print("sqrt(10000)=",sqrt(10000),"\n")
+#+END_SRC
+
+----
+ -  [[http://express.engineyard.com/][Could computing with ruby and erlang]]
+ -  [[http://antoniocangiano.com/2008/02/08/essential-guide-to-the-ruby-driver-for-db2/][ Ruby and DB2]]
+ -  [[http://antoniocangiano.com/rubypython-and-db2-drivers/][Guide to setting up the IBM Ruby and Python drivers for DB2 on Linux (32 or 64 bit)]]
+ -  
+ -  [[http://olabini.com/blog/2008/09/language-generation/][AI in ruby]] 
+ -  ruby的gems有 [[www.ruby-toolbox.com]] 
+ -  rails的plugins有 [[agilewebdevelopment.com/plugins]]
+
+* ruby differ
+
+http://github.com/pvande/differ
+
+#+BEGIN_SRC
+will@will-laptop:~/Desktop/diff$ irb -rubygems
+irb(main):001:0> irb -rubygems
+NameError: undefined local variable or method `rubygems' for main:Object
+	from (irb):1
+irb(main):002:0> require 'differ'
+=> true
+irb(main):003:0> @original = "Epic lolcat fail!"
+=> "Epic lolcat fail!"
+irb(main):004:0>   @current  = "Epic wolfman fail!"
+=> "Epic wolfman fail!"
+irb(main):005:0> @diff = Differ.diff_by_line(@current, @original)
+=> #<Differ::Diff:0xb75103a8 @raw=[{"Epic lolcat fail!" >> "Epic wolfman fail!"}]>
+irb(main):006:0> require 'differ/string'
+=> true
+irb(main):007:0> @diff = (@current - @original)
+=> #<Differ::Diff:0xb750a110 @raw=[{"Epic lolcat fail!" >> "Epic wolfman fail!"}]>
+irb(main):008:0>   @diff.format_as(:color)
+=> "\e[31mEpic lolcat fail!\e[0m\e[32mEpic wolfman fail!\e[0m"
+irb(main):009:0>   @diff.format_as(:html)
+=> "<del class=\"differ\">Epic lolcat fail!</del><ins class=\"differ\">Epic wolfman fail!</ins>"
+irb(main):010:0> $; = ' '
+=> " "
+irb(main):011:0> @diff = (@current - @original)
+=> #<Differ::Diff:0xb74fdc44 @raw=["Epic ", {"lolcat" >> "wolfman"}, " fail!"]>
+irb(main):012:0>   @diff.format_as(:html)
+=> "Epic <del class=\"differ\">lolcat</del><ins class=\"differ\">wolfman</ins> fail!"
+irb(main):013:0> $; = ';'
+=> ";"
+irb(main):014:0> @diff = (@current - @original)
+=> #<Differ::Diff:0xb74f3014 @raw=[{"Epic lolcat fail!" >> "Epic wolfman fail!"}]>
+irb(main):015:0> 
+
+#+END_SRC
+
+* Execute cmd and get the output
+
+IO.popen("help") {|d| d.readlines.each {|x|puts x} } 
+
+
+
+* Ruy gem
+
+http://rubygems.org/read/chapter/5
+http://www.hhtong.com/blog1/articles/2007/06/10/ruby-gpgen-20070603
+
+#+BEGIN_SRC
+gem install gem_plugin 
+gpgen easywebtest
+
+#+END_SRC
+
+RubyGems是一个库和程序的标准化打包以及安装框架，它使定位、安装、升级和卸载Ruby包变的很容易。rails以及它的大部分插件都是以gem形式发布的。本文描述一个自己创建ruby Gems的过程。
+    假设你今天用ruby实现了一个stack结构，你想发布到网上让别人可以共享，OK，工作开始了。首先你的程序当然要先写好了：
+Ruby代码
+
+   1. #stacklike.rb  
+   2. module Stacklike  
+   3.  attr_reader:stack  
+   4.  def initialize  
+   5.     @stack=Array.new  
+   6.  end  
+   7.  def add_to_stack(obj)  
+   8.     @stack.push(obj)  
+   9.  end   
+  10.  def take_from_stack  
+  11.     @stack.pop  
+  12.  end  
+  13.  def size  
+  14.     @stack.length  
+  15.  end  
+  16.  alias length size  
+  17.    
+  18.  def clear  
+  19.    @stack.clear  
+  20.  end  
+  21. end        
+
+#stacklike.rb
+module Stacklike
+ attr_reader:stack
+ def initialize
+    @stack=Array.new
+ end
+ def add_to_stack(obj)
+    @stack.push(obj)
+ end 
+ def take_from_stack
+    @stack.pop
+ end
+ def size
+    @stack.length
+ end
+ alias length size
+ 
+ def clear
+   @stack.clear
+ end
+end      
+
+
+然后就是我们的Stack类，引入这个Module，请注意，我们这里只是特意这样做，增加点复杂度：
+Ruby代码
+
+   1. #stack.rb  
+   2. require 'stacklike'  
+   3. class Stack  
+   4.  include Stacklike  
+   5. end  
+
+#stack.rb
+require 'stacklike'
+class Stack
+ include Stacklike
+end
+
+
+作为一个要被"大众"使用的小程序，一定要有完备的测试代码，OK,ruby内置了单元测试库，我们来写个单元测试来测试Stack：
+Ruby代码
+
+   1. require 'stack'  
+   2. require 'test/unit'  
+   3. class TestStack <Test::Unit::TestCase  
+   4.   def testStack  
+   5.     stack=Stack.new  
+   6.     assert_equal(0,stack.size)  
+   7.     assert_equal(stack.length,stack.size)   
+   8.     stack.add_to_stack(1)  
+   9.     assert_equal(1,stack.length)  
+  10.     assert_equal(1,stack.take_from_stack)  
+  11.       
+  12.     stack.clear  
+  13.     assert_equal(0,stack.length)  
+  14.     assert_nil(stack.take_from_stack)  
+  15.       
+  16.     10.times{|i| stack.add_to_stack(i)}  
+  17.     assert_equal(10,stack.size)  
+  18.     assert_equal(stack.length,stack.size)  
+  19.     9.downto(4){|i| assert_equal(i,stack.take_from_stack)}   
+  20.       
+  21.     assert_equal(4,stack.length)  
+  22.     assert_equal(3,stack.take_from_stack)  
+  23.     assert_equal(3,stack.length)  
+  24.       
+  25.     stack.clear  
+  26.     assert_equal(0,stack.length)  
+  27.     assert_nil(stack.take_from_stack)  
+  28.   end  
+  29. end  
+
+require 'stack'
+require 'test/unit'
+class TestStack <Test::Unit::TestCase
+  def testStack
+    stack=Stack.new
+    assert_equal(0,stack.size)
+    assert_equal(stack.length,stack.size) 
+    stack.add_to_stack(1)
+    assert_equal(1,stack.length)
+    assert_equal(1,stack.take_from_stack)
+    
+    stack.clear
+    assert_equal(0,stack.length)
+    assert_nil(stack.take_from_stack)
+    
+    10.times{|i| stack.add_to_stack(i)}
+    assert_equal(10,stack.size)
+    assert_equal(stack.length,stack.size)
+    9.downto(4){|i| assert_equal(i,stack.take_from_stack)} 
+    
+    assert_equal(4,stack.length)
+    assert_equal(3,stack.take_from_stack)
+    assert_equal(3,stack.length)
+    
+    stack.clear
+    assert_equal(0,stack.length)
+    assert_nil(stack.take_from_stack)
+  end
+end
+
+
+如果你使用radrails或者RDT运行这段代码，你将看到让人舒服的greenbar，一切正常。程序写好了，接下来就是关键步骤了，怎么发布成ruby Gems呢？
+
+第一步，写Gems规范文件
+   gemspec是ruby或者YAML形式的元数据集，用来提供这个gem的关键信息，我们创建一个文件夹就叫stack，然后在下面建立2个目录两个文件：
+lib目录：用于存放库的源代码，比如这个例子中的stack.rb,stacklike.rb
+test目录：用于存放单元测试代码。
+README文件：描述你的库的基本信息和版权许可证等
+stack.gemspec：gems规范文件，用以生成gem
+当然，也可以有docs目录用以存放rdoc文档和ext目录用以存放ruby扩展，我们这个简单例子就免了。
+看看我们的规范文件：
+Ruby代码
+
+   1. #stack.spec  
+   2. require 'rubygems'  
+   3. SPEC=Gem::Specification.new do |s|  
+   4.   s.name="Stack"  
+   5.   s.version='0.01'  
+   6.   s.author='dennis zane'  
+   7.   s.email="killme2008@gmail.com"  
+   8.   s.homepage="http://www.rubyeye.net"  
+   9.   s.platform=Gem::Platform::RUBY  
+  10.   s.summary="ruby实现的Stack"  
+  11.   condidates =Dir.glob("{bin,lib,docs,test}/**/*")  
+  12.   s.files=condidates.delete_if do |item|  
+  13.     item.include?("CVS")|| item.include?("rdoc")  
+  14.   end  
+  15.   s.require_path="lib"  
+  16.   s.autorequire='stack,stacklike'  
+  17.   s.test_file="test/ts_stack.rb"  
+  18.   s.has_rdoc=false  
+  19.   s.extra_rdoc_files=["README"]  
+  20. end    
+
+#+BEGIN_SRC
+#stack.spec
+require 'rubygems'
+SPEC=Gem::Specification.new do |s|
+  s.name="Stack"
+  s.version='0.01'
+  s.author='dennis zane'
+  s.email="killme2008@gmail.com"
+  s.homepage="http://www.rubyeye.net"
+  s.platform=Gem::Platform::RUBY
+  s.summary="ruby实现的Stack"
+  condidates =Dir.glob("{bin,lib,docs,test}/**/*")
+  s.files=condidates.delete_if do |item|
+    item.include?("CVS")|| item.include?("rdoc")
+  end
+  s.require_path="lib"
+  s.autorequire='stack,stacklike'
+  s.test_file="test/ts_stack.rb"
+  s.has_rdoc=false
+  s.extra_rdoc_files=["README"]
+end  
+#+END_SRC
+
+很明显，规范文件也是ruby程序（也可以用YAML描述），设置了这个gem的主要关键信息：名称、作者信息、平台,需要注意的就是files 数组过滤掉了cvs和rdoc文件，require_path和auto_require让你指定了require_gem装入gem时会被添加到$ LOAS_PATH（ruby查找库的路径）中的目录（也就是我们源代码存放的lib），auto_require指定了装载的文件名，我们没有 rdoc，所有设置has_rdoc为false，附带文档就是README。
+
+第二步 修改单元测试文件引用路径
+过去我们假设ts_stack.rb与stack.rb、stacklike.rb在同一个目录下，可是我们现在将它们分别放在lib和test目录，TestStack 怎么引用测试的类呢？答案是在ts_stack.rb开头加上一行：
+Ruby代码
+
+   1. $:.unshift File.join(File.dirname(__FILE__),"..","lib")  
+
+$:.unshift File.join(File.dirname(__FILE__),"..","lib")
+
+
+最后一步 构建gem
+在stack目录执行下列命令：
+Ruby代码
+
+   1. ruby stack.gemspec  
+
+ruby stack.gemspec
+
+
+或者:
+Ruby代码
+
+   1. gem build stack.gemspec  
+
+gem build stack.gemspec
+
+
+将生成一个文件，你可以将这个文件共享给朋友们咯。你的朋友只要下载这个文件，执行：
+Ruby代码
+
+   1. gem install Stack.0.01.gem  
+
+gem install Stack.0.01.gem
+
+
+将在他们的ruby环境中安装你写的stack，比较遗憾的是，你这个stack确实太简陋了，哈哈。 
+
+
+* web server
+
+http://snippets.dzone.com/tag/webrick
+
+ 
+ * Ruby send mail with attathment
+ 
+ <#+BEGIN_SRC >
+ gem install actionmailer
+ gem install mime-types
+#+END_SRC
+
+* Ruby dummy mail server
+
+<#+BEGIN_SRC >
+  gem sources -a http://gems.github.com
+  gem install koseki-mocksmtpd
+cd ~/.gem/ruby/1.8/bin
+  ./mocksmtpd  init ~/testmail
+  sudo ./mocksmtpd -f ~/testmail/mocksmtpd.conf 
+#+END_SRC
+
+send mail to test@changweilaptop.dyn.webahead.ibm.com
+
+You will get the mail in  file:///home/will/testmail/inbox/index.html
+
+But the mail body is not readable.
+
+
+* Ruby to exe
+
+http://rubyforge.org/projects/ocra 
+
+http://github.com/larsch/ocra 
+
+（水果党和 linuser 先站一边去 ……） 
+One-Click Ruby Application，就是把解释器、gem 什么的打包在一起做成独立 exe。 
+  比 rubyscript2exe 和 exerb 先进，支持 1.9。 
+
+安装： 
+Console代码 
+gem install ocra  
+
+或者下载 stand alone not complex 的 .exe 
+
+假设要把 testo.rb 做成 exe，只需： 
+Console代码 
+ocra.rb.bat testo.rb  
+
+
+输出看起来像这样（它把用到的东西都打包到 exe 里面了）： 
+=== Loading script to check dependencies 
+testo vooo 
+=== Building testo.exe 
+m #+BEGIN_SRC  
+a #+BEGIN_SRC  
+m bin 
+a bin\ruby.exe 
+a bin\msvcr100-ruby191.dll 
+a bin\MSVCR100.dll 
+m lib 
+m lib\ruby 
+m lib\ruby\1.9.1 
+m lib\ruby\1.9.1\i386-mswin32_100 
+m lib\ruby\1.9.1\i386-mswin32_100\enc 
+a lib\ruby\1.9.1\i386-mswin32_100\enc\encdb.so 
+a lib\ruby\1.9.1\i386-mswin32_100\enc\euc_kr.so 
+a lib\ruby\1.9.1\i386-mswin32_100\enc\gb2312.so 
+m lib\ruby\1.9.1\i386-mswin32_100\enc\trans 
+a lib\ruby\1.9.1\i386-mswin32_100\enc\trans\transdb.so 
+a lib\ruby\1.9.1\i386-mswin32_100\enc\gbk.so 
+a lib\ruby\1.9.1\rubygems.rb 
+e RUBYOPT rubygems 
+e RUBYLIB 
+l bin\ruby.exe ruby.exe  \#+BEGIN_SRC  
+=== Compressing 
+=== Finished (Final size was 781622) - 只有 781k 的 standalone 
+
+一些琐碎的东西： 
+
+   
+ ocra 之前，路径变量中应该包含 ruby_home\bin，ocra 是根据 path 中找到的第一个 ruby 解释器来决定库文件位置的。设定路径变量例：
+Console代码 
+set path=d:\Ruby\ruby1.9.1\bin;%path%  
+
+
+   
+ 需要 win32-api gem，如果你的 ruby 不是官方 1.8.x 二进制，安装 win32-api gem 前记得先把编译器环境设好。
+
+   
+ 一般 ocra 一个文件就行了（例如你要打包一个 rails app 的话，就去 ocra.rb.bat script\server）
+有些依赖关系不能通过 require 或者 load 体现，得手动添加。例子：（添加图片和一个目录） 
+Cosole代码 
+ocra.rb.bat mainscript.rb someimage.jpeg docs/  
+
+
+   
+ 对于 GUI 程序，在 main loop 之前加个判断，避免在打包过程中启动程序弹出窗口：
+Ruby代码 
+unless defined? Ocra  
+  app.main_loop  
+end  
+
+
+   
+ 注意工作目录，最简易的手段是加上
+Ruby代码 
+Dir.chdir File.dirname __FILE__  
+
+
+   
+ 某些情况可能需要 mingw 编译 stub，所以到 http://rubyinstaller.org/downloads/ 下载一个 devkit 可以有备无患。
+
+
+可用选项： 
+Options代码 
+--dll dllname    将额外的 dll 包含进 bin 目录  
+--no-lzma        取消可执行文件的 LZMA 压缩（体积大一点，运行是否快一点就看你硬盘不是/是 SSD 了）  
+--quiet          格林..达姆自己  
+--help           显示帮助  
+--windows        产生窗口程序（rubyw.exe）  
+--console        产生控制台程序（ruby.exe）  
+--no-autoload    不预先加载/包含脚本文件的 autoloads（感觉对速度没什么影响）  
+--icon <ico>     自定图标  
+--version        显示版本号  
+
+
+* Ruby trick
+
+http://www.javaeye.com/topic/414412
+
+<#+BEGIN_SRC >
+match, text, number = * "Something 981".match(/([A-z]*) ([0-9]*)/)  
+#+END_SRC
+
+hash作参数： 
+
+Ruby代码 
+<#+BEGIN_SRC >
+def m option={}  
+  arg2 = option[:arg2]  
+  arg1 = option[:arg1]  
+  print arg2,arg1  
+end  
+  
+m :arg2 =>"Hi", :arg1 = > "hooopo"  
+ #Hihooopo  
+
+#+END_SRC
+
+* JRuby
+
+jruby -S gem install antwrap 
+
+
+[[http://wiki.jruby.org/wiki/html/Running_Rails_with_ActiveRecord-JDBC][Jruby on rails]]
+
+
+* DB2 
+this version run gem install ibm_db on Windows. On Linux run the following:
+<#+BEGIN_SRC >
+$ . /home/db2inst1/db2profile
+$ export IBM_DB_DIR=/opt/ibm/db2/V9.5
+$ export IBM_DB_LIB=/opt/ibm/db2/V9.5/lib32
+$ sudo gem install ibm_db
+#+END_SRC
+* GUI
+
+http://shoooes.net/
+
+* mail
+
+<#+BEGIN_SRC >
+require 'rubygems' 
+require 'action_mailer' 
+require 'mime/types' 
+
+ActionMailer::Base.smtp_settings = { :address  =>   
+'10.209.3.26', :domain => '3dlabs.com'} 
+
+class Mailer < ActionMailer::Base 
+        def message (title, body) 
+                from 'Dave Baldwin <dave.baldwin@...>' 
+                recipients 'dave.baldwin@...' 
+                subject        title 
+                body body 
+
+                # Include all the pdf files in the PDF subdirectory as attachments. 
+                FileList['PDF/*.pdf'].each do |path| 
+                        file = File.basename(path) 
+                        mime_type = MIME::Types.of(file).first 
+                        content_type = mime_type ? mime_type.content_type : 'application/ 
+binary' 
+                        attachment (content_type) do |a| 
+                                a.body = File.read(path) 
+                                a.filename = file 
+                                a.transfer_encoding = 'quoted-printable' if content_type =~ /^text 
+\// 
+                        end 
+                end 
+        end 
+end 
+
+Mailer.deliver_message('some title', 'the body message') 
+
+#+END_SRC
+
+
+* passing parameter to ruby main
+
+#+BEGIN_SRC
+if ARGV.size != 1
+  puts "Usage: gencr time  15:00 or \"3/4 15:00\""
+  exit
+end
+
+
+copyfilesbefore ARGV[0]
+#+END_SRC
+
+* Time
+
+#+BEGIN_SRC
+    Time.local(2008, 3, 5, 11, 20, 00)
+    # Suppose it is "Thu Nov 29 14:33:20 GMT 2001" now and
+    # your timezone is GMT:
+    Time.parse("16:30")     #=> Thu Nov 29 16:30:00 GMT 2001
+    Time.parse("7/23")      #=> Mon Jul 23 00:00:00 GMT 2001
+    Time.parse("Aug 31")    #=> Fri Aug 31 00:00:00 GMT 2001
+#+END_SRC
+
+* audio file
+
+http://ruby-audiofile.sourceforge.net/
+
+http://id3lib-ruby.rubyforge.org/
+
+[[http://mp3splt.sourceforge.net/mp3splt_page/home.php][http://mp3splt.sourceforge.net/mp3splt_page/home.php]]
+
+* Ruby web test framework
+
+
+ 1. [[http://watirwebdriver.com/][Watir WebDriver]]
+
+sudo apt-get install curl git-core
+
+bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
+
+rvm pkg install openssl
+
+rvm install 1.9.3-p125 --with-openssl-dir=$rvm_path/usr
+
+
+
+HomePage http://wiki.openqa.org/dashboard.action
+
+http://wtr.rubyforge.org/install.html
+
+http://code.google.com/p/tg4rb/
+
+<#+BEGIN_SRC >
+require 'rubygems'
+require 'firewatir' 
+#+END_SRC
+
+
+You need install firefox plugin too.
+
+
+Unit test sample code is in the /var/lib/gems/1.8/gems/firewatir-1.6.2/unittests
+
+http://wiki.openqa.org/display/WTR/Tutorial
+
+** [[http://wiki.openqa.org/display/WTR/Cheat+Sheet][Cheat Sheet]]
+
+*** Getting Started
+
+Load the Watir library
+
+#+BEGIN_SRC
+require 'watir'
+#+END_SRC
+
+Open a browser (default: Internet Explorer)
+
+#+BEGIN_SRC
+browser = Watir::Browser.new
+#+END_SRC
+
+Open Browser at the specified URL
+#+BEGIN_SRC
+browser = Watir::Browser.start("http://google.com")
+#+END_SRC
+
+Go to a specified URL
+#+BEGIN_SRC
+browser.goto("http://amazon.com")
+#+END_SRC
+
+Close the browser
+#+BEGIN_SRC
+browser.close
+#+END_SRC
+	
+*** Browser options (IE only)
+
+Speed up execution
+(or use the "-b" command line switch)
+#+BEGIN_SRC
+browser.speed = :fast
+#+END_SRC
+
+Maximize browser window
+#+BEGIN_SRC
+browser.maximize
+#+END_SRC
+
+Pop browser window to front
+#+BEGIN_SRC
+browser.bring_to_front
+#+END_SRC
+
+*** Access an Element
+
+Text box or text area
+#+BEGIN_SRC
+t = browser.text_field(:name, "username")
+#+END_SRC
+Button
+#+BEGIN_SRC
+b = browser.button(:value, "Click Here")
+#+END_SRC
+Drop down list
+#+BEGIN_SRC
+d = browser.select_list(:name, "month")
+#+END_SRC
+Check box
+#+BEGIN_SRC
+c = browser.checkbox(:name, "enabled")
+#+END_SRC
+Radio button
+#+BEGIN_SRC
+r = browser.radio(:name, "payment type")
+#+END_SRC
+Form
+#+BEGIN_SRC
+f = browser.form(:name, "address")
+f = browser.form(:action, "submit")
+#+END_SRC
+Link
+#+BEGIN_SRC
+l = browser.link(:url, "http://google.com")
+l = browser.link(:href, "http://google.com")
+#+END_SRC
+Table cell in a table (2nd row, 1st column)
+#+BEGIN_SRC
+td = browser.table(:name, 'recent_records')[2][1]
+#+END_SRC
+	
+*** Manipulate the Element
+
+Click a button or link
+#+BEGIN_SRC
+b.click
+l.click
+#+END_SRC
+Enter text in a text box
+#+BEGIN_SRC
+t.set("mickey mouse")
+#+END_SRC
+Enter multiple lines in a multi-line text box
+#+BEGIN_SRC
+t.set("line 1\nline2")
+#+END_SRC
+Set radio button or check box
+#+BEGIN_SRC
+c.set
+r.set
+#+END_SRC
+Clear an element
+#+BEGIN_SRC
+t.clear
+c.clear
+r.clear
+#+END_SRC
+Select an option in a drop down list
+#+BEGIN_SRC
+d.select "cash"
+d.set "cash"
+#+END_SRC
+Clear a drop down list
+#+BEGIN_SRC
+d.clearSelection
+#+END_SRC
+Submit a form
+#+BEGIN_SRC
+f.submit
+#+END_SRC
+Flash any element (useful from the watir-console)
+#+BEGIN_SRC
+e.flash
+#+END_SRC
+
+*** Check the Contents
+
+Return the html of the page or any element
+#+BEGIN_SRC
+browser.html
+e.html
+#+END_SRC
+Return the text of the page or any element
+#+BEGIN_SRC
+browser.text
+e.text
+#+END_SRC
+Return the title of the document
+#+BEGIN_SRC
+browser.title
+#+END_SRC
+	
+
+Get text from status bar.
+#+BEGIN_SRC
+browser.status
+=> "Done"
+#+END_SRC
+Return true if the specified text appears on the page
+#+BEGIN_SRC
+browser.text.include? 'llama'
+#+END_SRC
+Return the contents of a table as an array
+#+BEGIN_SRC
+browser.table(:id, 'recent_records').to_a
+#+END_SRC
+
+** Firefox
+
+ http://wiki.openqa.org/display/WTR/FireWatir+Installation#FireWatirInstallation-InstalltheJSSHFirefoxExtension
+
+** FAQ
+
+http://wiki.openqa.org/display/WTR/FAQ#FAQ-HowdoIgenerateXMLreportsfrommytestcaseresults%3F
+
+** FireWatir
+
+http://wiki.openqa.org/display/WTR/FireWatir
+
+** How do I deal with timing issues and not use sleep?
+
+Sometimes you need to wait for something to happen in the Application under test before you interact with it. Sleep statements are hardcoded and lock you down into a certain number of seconds before moving through your test. To avoid that, we've written a polling mechanism in the latest versions of Watir - the wait_until method.
+
+An example might be that you're loading the Google home page and for some reason it's taking time to load. Here's a basic contrived script with a sleep statement.
+
+require 'watir'
+
+browser = Watir::IE.start('http://www.google.com')
+sleep 5     # we need to wait for the page to load and on a subjective basis I've chosen 5 seconds which works on my machine
+browser.text_field(:name, 'q').set('ruby poignant')
+....
+
+Unfortunately the sleep is hardcoded and doesn't work for anyone else on my team who have slower network connections, my connection has gotten faster, but it still waits for 5 seconds before setting the text field.
+
+Watir 1.5.x has added a wait_until method that can poll for a certain condition to return true before continuing on or erroring out. By default it checks the condition every half second up until 60 seconds. So I rewrite my code to look like this:
+
+require 'watir'
+
+browser = Watir::IE.start('http://www.google.com')
+Watir::Waiter.wait_until{ browser.text_field(:name, 'q').exists? }    # in this case all I care about is the text field existing, you could check title, text, anything you're
+                                                        # expecting before continuing
+browser.text_field(:name, 'q')set('ruby poignant')
+...
+
+It now works for me with a half second delay, but also works for the other members of my team who have network delays up to a
+minute. If you're considering using sleep, use wait_until instead. It will make your test code more resilient to timing issues in
+those cases where you really need to use it. 
+
+*  在Cygwin使用Ruby问题
+
+
+Aug 08
+
+Tech Cheery 1 Comment »
+
+E-texteditor需要cygwin来使用Bundles的功能，在默认的安装的情况下在cygwin中调用ruby会出现
+/usr/bin/ruby: no such file to load -- ubygems (LoadError)
+的错误提示。n
+
+这是因为cygwin中虽然声明了RUBYOPT环境变量，但是rubygem却并没有安装。
+declare -x RUBYOPT="-rubygems"
+
+一种解决方法是使用
+unset RUBYOPT
+清楚此变量，可以将其写入cygwin的用户profile中。
+
+另一种彻底的解决方法是到rubyforge上下载[[http://rubyforge.org/frs/download.php/35283/rubygems-1.1.1.tgz][rubygem]]然后在cygwin下安装，一劳永逸。
+
+安装方法，解压下载的压缩包，在cygwin下进入其目录，先使用unset RUBYOPT，然后ruby setup.rb 即可完成安装。
+
+
+* ruby 规范
+
+http://www.javaeye.com/topic/370007
+
+
+* Unit Test
+
+<#+BEGIN_SRC >
+
+If we want, we can ask it to run just a particular test method:
+% ruby test_roman.rb -n test_range
+Loaded suite test_roman
+Started
+.
+Finished in 0.000600 seconds.
+1 tests, 2 assertions, 0 failures, 0 errors, 0 skips
+or tests whose names match a regular expression:
+% ruby test_roman.rb -n /range/
+Loaded suite test_roman
+Started
+.
+Finished in 0.001036 seconds.
+1 tests, 2 assertions, 0 failures, 0 errors, 0 skips
+
+#+END_SRC
+
+

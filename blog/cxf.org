@@ -1,0 +1,71 @@
+#+TITLE:       使用apache cxf生成web servcie 客户端
+#+AUTHOR:      Will Chang
+#+EMAIL:
+#+DATE:        2013-12-24 周二
+#+URI:         /blog/html/cxf
+#+KEYWORDS:    web servcie, apache, cxf
+#+TAGS:        :web servcie:apache:cxf:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 介绍如何使用cxf生成客户端
+
+* 下载 cxf 包
+
+可以在[[http://cxf.apache.org/download.html][apache cxf]]下载zip包
+
+* 修改wsdl2java.bat中两个变量
+
+配置cxf home和java home.
+
+#+BEGIN_SRC
+set CXF_HOME=D:\cxf\apache-cxf-2.3.1
+set JAVA_HOME=C:\Java\__my_company_1__k1.6.0_24
+#+END_SRC
+
+* 拷贝jaxb-api jar 文件
+
+__my_company_1__k安装目录下的jre/lib下新建endorsed目录，再把jaxb-api-2.1.jar拷贝到其中
+
+#+BEGIN_SRC
+mkdir $JAVA_HOME/jre/lib/endorsed
+cp $CXF_HOME/lib/jaxb-api-2.2.1.jar $JAVA_HOME/jre/lib/endorsed
+#+END_SRC
+
+* 根据wsdl文件生成java客户端
+
+#+BEGIN_SRC
+
+$CXF_HOME/bin/wsdl2java -p  com.mysite.cxf.client  -d d:/   http://admin.ebook.buy.net/services/services/ebookQueryWs?wsdl
+
+#+END_SRC
+
+ 1. -p 后的 com.mysite.cxf.client 指的是生成的java文件的包。
+ 2. -d 后的d:/ 指的是文件生成的本地路径。
+ 3. 最后的uri指的是wsdl的访问地址。
+
+* 与spring 集成
+
+xml 内容如下
+
+#+BEGIN_SRC
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+  <import resource="classpath:META-INF/cxf/cxf.xml" />
+  <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+  <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+  <jaxws:client id="wareServicer"
+                address="${webservice.address.ware}"
+                serviceClass="com.buy.emall.rpc.server.wares.EbookQueryInfoWsService">
+  </jaxws:client>
+  <jaxws:client id="categoryServicer"
+                address="${webservice.address.category}"
+                serviceClass="com.buy.emall.rpc.server.category.CategoryWebService">
+  </jaxws:client>
+</beans>
+
+#+END_SRC

@@ -1,0 +1,97 @@
+#+TITLE:       IBM_Data_Studio_back.org
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/html/datastudio
+#+KEYWORDS:    db2,ibm
+#+TAGS:        :db2:ibm:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: date stduio
+
+----
+* wasce eclipse plug-in udpate site
+
+http://download.boulder.ibm.com/ibmdl/pub/software/websphere/wasce/updates/
+
+
+* Install
+
+ - Installed all the feature when we install the IBM data studio.
+ - Go to bin\IBM\SDP70\dsdev\bin, click wasce_setup-1.1.exe to setup wasce. default user/password: system/manager
+
+* setup Preferences
+
+** Under Date node
+ Change Password Settings
+ Database Explorer Connection Settings
+
+ 
+----
+* Backup
+----
+
+
+
+** Connect to DB2 and Run SQL
+
+The first one is connect to database and execute sql statement or stored procedure.
+ All the DB2 connection will be listed in 
+the Database Explore view. 
+Later, I will show how to connect to database, switch database and run some SQL.
+
+** content assist and code template
+
+The following two features are very useful. content assist and code template. 
+Type Alt+/ or right click---> Content Assist, 
+IBM Data Studio will pop-up a list. 
+This list contains table names or column names in the Database.
+We can define some templates to help us write sql or stored procedure effectively. 
+
+** Visual Explain
+
+We can use Visual Explain for routines to view the explained SQL statements as a graph. 
+We can use the information available from the graph to tune our SQL queries for better performance.
+
+** Deploy and  Debug Stored Procedure
+
+This feature only works when connect to db2 v9 database. 
+We can load stored procedure and set break points to debug it.
+It helps us to find bugs in the stored procedures.
+
+** Data web service
+
+IBM Data Studio lets we create Web services using a drag-and-drop interface.
+Drag and drop any DML operation or stored procedure call into a Web service 
+container to create ready-to-deploy Web services.
+
+
+** Develop DB2 Stored Procedure
+
+***  Create table ebiz1.web_quote
+
+Now, Let's create a quote table. Let's copy the table DDL from the dataStudioDemoComplete project.
+
+First we need set statement terminator:
+ 1. Right-click on SQL Editor,
+ 1. Select Set Statement Terminator,
+ 1. Input @, OK.
+ 1. One new line was inserted into the SQL Editor. <#+BEGIN_SRC >
+
+Then load the table to database:
+ 1. Right-click on SQL Editor, 
+ 1. Select Run SQL in the pop-up menu. 
+
+We can see the "Run Successful" message in the Data output view. The web_quote table has been created.
+
+*** Create Stored Procedure EBIZ1.I_QT_QUOTE
+
+I have loaded the I_QT_QUOTE stored procedure into the database. Let's get the source code from database.
+ 1. Drag the stored procedure from Database explorer and drop it to Data Project explorer. 
+ 1. Then redeploy it to database. 
+    1. Right-click on I_QT_QUOTE; 
+    1. Select Deploy in the pop-up menu; 
+    1. Specify the schema to EBIZ1; 
+    1. Click finish.
+
+Now we load the I_QT_QUOTE to database.

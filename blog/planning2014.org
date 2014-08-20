@@ -1,0 +1,410 @@
+#+TITLE:       2014年计划
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-20 Fri
+#+URI:         /blog/%y/%m/%d/planning2014/
+#+KEYWORDS:    goal,plan
+#+TAGS:        :goal:plan:project:文件整理:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t  tasks:nil
+#+DESCRIPTION: 为明年做一下计划
+#+SEQ_TODO: TODO(t)   STARTED(s!) | DELEGATED(f@)  WAITING(w@/!) OKTODAY(o!) |  DONE(d!) |  DEFERRED(l!) | CANCELED(c!)
+
+
+* 编程技术学习
+
+** Javascript(Jquery + Angular + meteor)
+** 面向对象设计和重构
+
+软件开发了这么多年，需要提供一下设计能力了。
+
+学习笔记就记录在@@html:<a href="/wiki/html/ood">这里吧</a>@@
+
+** Lisp 编程
+
+一直在使用Emacs，但是对于编写它的插件还是不是很了解。读一下这本书：<[[http://www.amazon.com/Writing-GNU-Emacs-Extensions-Glickstein/dp/1565922611][Writing GNU Emacs Extensions]] by Bob Glickstein>
+学习笔记就记录在@@html:<a href="/wiki/html/lisp">这里吧</a>@@
+
+** go 语言
+
+google大牛开发的编程语言，应该很有前途。早点搭上这班车吧。考虑使用它替代shell编写一些小脚本。
+学习笔记就记录在@@html:<a href="/wiki/html/go/">这里吧</a>@@
+
+*** TODO 学习 go 语言
+    :LOGBOOK:
+    CLOCK: [2014-01-03 周五 13:26]--[2014-01-03 周五 13:59] =>  0:33
+    :END:
+
+**** 阅读 go 文章
+
+** Emacs 使用
+
+重点学习一个org的使用
+
+学习笔记就记录在@@html:<a href="/wiki/html/myemacs">这里吧</a>@@
+
+*** TODO [#C] Using org to implement GTD and potodoro technique                 :PROJECT:
+
+** TODO 学习Emacs做项目计划，improve personal productivity
+**** TODO [#C] Learn emacs
+- State "STARTED"    from "STARTED"    [2013-12-16 Mon 10:46]
+- State "OKTODAY"    from "STARTED"    [2013-12-16 Mon 10:13]
+- State "STARTED"    from "STARTED"    [2013-12-16 Mon 09:49]
+- State "OKTODAY"    from "STARTED"    [2013-12-16 Mon 09:34]
+- State "STARTED"    from "STARTED"    [2013-12-16 Mon 09:33]
+- State "STARTED"    from "STARTED"    [2013-12-16 Mon 09:08]
+:LOGBOOK:
+CLOCK: [2013-12-16 Mon 10:46]--[2013-12-16 Mon 10:55] =>  0:09
+CLOCK: [2013-12-16 Mon 09:49]--[2013-12-16 Mon 10:13] =>  0:24
+CLOCK: [2013-12-16 Mon 09:08]--[2013-12-16 Mon 09:34] =>  0:26
+- State "OKTODAY"    from "STARTED"    [2013-12-02 周一 14:30]
+- State "STARTED"    from "STARTED"    [2013-12-02 周一 14:17]
+CLOCK: [2013-12-02 周一 14:17]--[2013-12-02 周一 14:30] =>  0:13
+CLOSED: [2013-12-02 周一 13:38]
+- State "OKTODAY"    from "STARTED"    [2013-12-02 周一 13:38]
+- State "STARTED"    from "STARTED"    [2013-12-02 周一 13:21]
+CLOCK: [2013-12-02 周一 13:21]--[2013-12-02 周一 13:38] =>  0:17
+- State "OKTODAY"    from "STARTED"    [2013-12-02 周一 09:29]
+- State "STARTED"    from "STARTED"    [2013-12-02 周一 08:54]
+CLOCK: [2013-12-02 周一 08:54]--[2013-12-02 周一 09:29] =>  0:35
+- State "OKTODAY"    from "STARTED"    [2013-11-08 周五 14:44]
+- State "STARTED"    from "STARTED"    [2013-11-08 周五 14:43]
+CLOCK: [2013-11-08 周五 14:43]--[2013-11-08 周五 14:44] =>  0:01
+- State "OKTODAY"    from "STARTED"    [2013-11-08 周五 14:41]
+- State "STARTED"    from "STARTED"    [2013-11-08 周五 14:40]
+- State "STARTED"    from "STARTED"    [2013-11-08 周五 14:40]
+CLOCK: [2013-11-08 周五 14:40]--[2013-11-08 周五 14:41] =>  0:01
+- State "OKTODAY"    from "STARTED"    [2013-11-08 周五 14:40]
+CLOCK: [2013-11-08 周五 14:39]--[2013-11-08 周五 14:40] =>  0:01
+- State "STARTED"    from "STARTED"    [2013-11-08 周五 14:38]
+CLOCK: [2013-11-08 周五 14:38]--[2013-11-08 周五 14:39] =>  0:01
+- State "STARTED"    from "OKTODAY"    [2013-11-08 周五 14:38]
+- State "OKTODAY"    from "STARTED"    [2013-11-08 周五 14:38]
+- State "STARTED"    from "STARTED"    [2013-11-08 周五 14:26]
+CLOCK: [2013-11-08 周五 14:26]--[2013-11-08 周五 14:38] =>  0:12
+- State "OKTODAY"    from "STARTED"    [2013-11-04 周一 08:57]
+- State "STARTED"    from "STARTED"    [2013-11-02 周六 11:04]
+CLOCK: [2013-11-02 周六 11:04]--[2013-11-04 周一 08:57] => 45:53
+:END:
+  [2013-11-02 周六] :OFFICE:
+ what are the results:
+***** TODO [#C] 修改org的配置，能够自动生成日报和周报
+      - State "OKTODAY"    from "STARTED"    [2014-02-10 周一 17:06]
+      - State "STARTED"    from "STARTED"    [2014-02-10 周一 16:40]
+- State "OKTODAY"    from "STARTED"    [2013-12-18 周三 19:27]
+- State "STARTED"    from "STARTED"    [2013-12-18 周三 17:15]
+:LOGBOOK:
+CLOCK: [2014-02-10 周一 16:40]--[2014-02-10 周一 17:06] =>  0:26
+CLOCK: [2013-12-18 周三 17:15]--[2013-12-18 周三 19:27] =>  2:12
+:END:
+******* DONE [#C] [/]  如何建立个人网站   [2013-08-26 一]                 :OFFICE:
+CLOSED: [2013-12-17 周二 16:00]
+- State "DONE"       from "STARTED"    [2013-12-17 周二 16:00]
+- State "STARTED"    from "STARTED"    [2013-12-17 周二 14:20]
+- State "OKTODAY"    from "STARTED"    [2013-12-17 周二 14:20]
+- State "STARTED"    from "STARTED"    [2013-12-17 周二 13:31]
+:LOGBOOK:
+CLOCK: [2013-12-17 周二 14:20]--[2013-12-17 周二 16:00] =>  1:40
+CLOCK: [2013-12-17 周二 13:31]--[2013-12-17 周二 14:20] =>  0:49
+:END:
+- State "STARTED"    from "STARTED"    [2013-08-30 五 15:14]
+CLOCK: [2013-08-30 五 15:14]--[2013-08-30 五 15:34] =>  0:20
+- State "OKTODAY"    from "STARTED"    [2013-08-30 五 15:14]
+- State "STARTED"    from "STARTED"    [2013-08-30 五 15:14]
+- State "STARTED"    from "STARTED"    [2013-08-30 五 14:48]
+CLOCK: [2013-08-30 五 14:48]--[2013-08-30 五 15:14] =>  0:26
+- State "OKTODAY"    from "STARTED"    [2013-08-26 一 11:11]
+- State "STARTED"    from "STARTED"    [2013-08-26 一 10:46]
+CLOCK: [2013-08-26 一 10:46]--[2013-08-26 一 11:11] =>  0:25
+   - [ ] http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html
+   - [[http://ifq.github.io/blog/2012/08/10/org-octopress/][emacs + org-mode + octopress + github]]
+   - [[http://blog.crackcell.com/posts/2012/04/01/blog_transfer.html][博客迁移记]]
+   - [[http://mx1.absrnd.com/blog/emacs-jekyll-blog-setup.html][Create a website with Emacs and Jekyll]]
+   - https://appengine.google.com/
+   - https://github.com/Arachnid/bloggart
+   - http://blog.notdot.net/2009/10/Writing-a-blog-system-on-App-Engine
+   - http://b3log.org/
+   - http://developer.baidu.com/
+   -http://octopress.org/docs/setup/
+   - [ ]
+   - [ ]
+***** TODO [#C] task统计时间不准确
+***** DONE [#C] [/]  做计划，如何使用org 和 muse
+CLOSED: [2014-01-02 周四 20:18]
+- State "DONE"       from "TODO"       [2014-01-02 周四 20:18]
+- State "OKTODAY"    from "OKTODAY"    [2013-12-12 Thu 09:59]
+- State "OKTODAY"    from "STARTED"    [2013-12-12 Thu 09:55]
+- State "STARTED"    from "STARTED"    [2013-12-12 Thu 08:43]
+- State "OKTODAY"    from "STARTED"    [2013-12-12 Thu 08:42]
+- State "STARTED"    from "STARTED"    [2013-12-12 Thu 08:14]
+- State "OKTODAY"    from "STARTED"    [2013-12-12 Thu 08:09]
+- State "STARTED"    from "STARTED"    [2013-12-12 Thu 07:44]
+- State "OKTODAY"    from "STARTED"    [2013-12-12 Thu 07:44]
+- State "STARTED"    from "STARTED"    [2013-12-12 Thu 07:43]
+- State "STARTED"    from "OKTODAY"    [2013-12-12 Thu 07:12]
+- State "OKTODAY"    from "STARTED"    [2013-12-12 Thu 07:12]
+- State "STARTED"    from "OKTODAY"    [2013-12-12 Thu 06:05]
+- State "OKTODAY"    from "STARTED"    [2013-12-12 Thu 06:05]
+:LOGBOOK:
+CLOCK: [2013-12-12 Thu 08:42]--[2013-12-12 Thu 09:55] =>  1:13
+CLOCK: [2013-12-12 Thu 07:44]--[2013-12-12 Thu 08:09] =>  0:25
+CLOCK: [2013-12-12 Thu 07:12]--[2013-12-12 Thu 07:44] =>  0:32
+- State "STARTED"    from "STARTED"    [2013-12-12 周四 10:35]
+CLOCK: [2013-12-12 周四 10:35]--[2013-12-12 Thu 04:19] => -7:44
+:END:
+- State "OKTODAY"    from "STARTED"    [2013-10-11 周五 16:58]
+- State "STARTED"    from "STARTED"    [2013-10-11 周五 16:53]
+CLOCK: [2013-10-11 周五 16:53]--[2013-10-11 周五 16:53] =>  0:00
+- State "OKTODAY"    from "OKTODAY"    [2013-10-11 周五 16:53]
+- State "OKTODAY"    from "OKTODAY"    [2013-10-11 周五 16:52]
+- State "OKTODAY"    from "STARTED"    [2013-10-11 周五 16:52]
+
+- State "STARTED"    from "STARTED"    [2013-10-11 周五 16:39]
+CLOCK: [2013-10-11 周五 16:39]--[2013-10-11 周五 16:52] =>  0:13
+- State "OKTODAY"    from "STARTED"    [2013-09-30 周一 16:47]
+- State "STARTED"    from "STARTED"    [2013-09-30 周一 16:28]
+- State "STARTED"    from "TODO"       [2013-09-30 周一 16:28]
+- State "OKTODAY"    from "STARTED"    [2013-08-14 三 10:52]
+- State "STARTED"    from "STARTED"    [2013-08-14 三 09:25]
+CLOCK: [2013-08-14 三 09:25]--[2013-08-14 三 10:52] =>  1:27
+- State "OKTODAY"    from "STARTED"    [2013-07-29 一 15:35]
+- State "STARTED"    from "STARTED"    [2013-07-29 一 13:46]
+CLOCK: [2013-07-29 一 13:46]--[2013-07-29 一 15:35] =>  1:49
+- State "DONE"       from "OKTODAY"    [2013-07-12 五 09:17]
+- State "STARTED"    from "STARTED"    [2013-07-12 五 08:57]
+CLOCK: [2013-07-12 五 08:57]--[2013-07-12 五 09:17] =>  0:20
+- State "STARTED"    from "STARTED"    [2013-01-07 一 18:17]
+CLOCK: [2013-01-07 一 18:17]--[2013-01-08 二 09:24] => 15:07
+- State "STARTED"    from "STARTED"    [2012-12-31 一 11:03]
+CLOCK: [2012-12-31 一 11:03]--[2012-12-31 一 17:24] =>  6:21
+- State "STARTED"    from "STARTED"    [2012-12-31 一 10:36]
+CLOCK: [2012-12-31 一 10:36]--[2012-12-31 一 11:03] =>  0:27
+- State "STARTED"    from "STARTED"    [2012-12-31 一 09:41]
+CLOCK: [2012-12-31 一 09:41]--[2012-12-31 一 10:04] =>  0:23
+   [2012-12-31 一]   :OFFICE:
+
+***** DONE 如何同步 org-mod文件
+CLOSED: [2013-12-20 Fri 14:11]
+- State "DONE"       from ""           [2013-12-20 Fri 14:11]
+***同步我的org-mod文件到印象笔记 evernote-mode r198
+http://sachachua.com/blog/2012/08/zomg-evernote-emacs/
+http://emacser.com/evernote-mode.htm
+***使用hg push到网络上
+***拷贝到windows和linux下
+***拷贝到u盘
+***拷贝到移动硬盘
+**安装这个文档 编写项目模板
+http://members.optusnet.com.au/~charles57/GTD/Natural_Project_Planning.html
+**本地文本搜索
+anything
+*番茄学习法
+*提高写作能力
+*提高演讲沟通能力
+*提高理财能力
+**阅读理财图书
+
+***** TODO [#C] 阅读《WritingGNUEmacsExtensions》
+:LOGBOOK:
+CLOSED: [2013-12-27 周五 15:15]
+- State "OKTODAY"    from "STARTED"    [2013-12-27 周五 15:15]
+- State "STARTED"    from "STARTED"    [2013-12-27 周五 14:56]
+- State "OKTODAY"    from "STARTED"    [2013-12-27 周五 10:06]
+- State "STARTED"    from "STARTED"    [2013-12-27 周五 09:41]
+- State "OKTODAY"    from "STARTED"    [2013-12-26 周四 15:48]
+- State "STARTED"    from "STARTED"    [2013-12-26 周四 15:13]
+- State "OKTODAY"    from "STARTED"    [2013-12-26 周四 11:43]
+- State "STARTED"    from "STARTED"    [2013-12-26 周四 11:36]
+- State "OKTODAY"    from "STARTED"    [2013-12-26 周四 11:30]
+- State "STARTED"    from "STARTED"    [2013-12-26 周四 11:05]
+- State "OKTODAY"    from "STARTED"    [2013-12-26 周四 10:25]
+- State "STARTED"    from "STARTED"    [2013-12-26 周四 10:07]
+- State "OKTODAY"    from "STARTED"    [2013-12-26 周四 09:21]
+- State "STARTED"    from "STARTED"    [2013-12-26 周四 08:56]
+- State "OKTODAY"    from "STARTED"    [2013-12-25 周三 16:18]
+- State "STARTED"    from "STARTED"    [2013-12-25 周三 15:52]
+- State "OKTODAY"    from "STARTED"    [2013-12-25 周三 13:16]
+- State "STARTED"    from "STARTED"    [2013-12-25 周三 11:33]
+- State "OKTODAY"    from "STARTED"    [2013-12-25 周三 10:03]
+- State "STARTED"    from "STARTED"    [2013-12-25 周三 09:38]
+- State "OKTODAY"    from "STARTED"    [2013-12-25 周三 09:00]
+- State "STARTED"    from "STARTED"    [2013-12-25 周三 08:33]
+- State "OKTODAY"    from "STARTED"    [2013-12-24 周二 14:53]
+- State "STARTED"    from "STARTED"    [2013-12-24 周二 14:28]
+- State "OKTODAY"    from "STARTED"    [2013-12-24 周二 09:01]
+- State "STARTED"    from "STARTED"    [2013-12-24 周二 08:30]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 18:33]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 18:08]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 18:05]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 17:39]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 17:35]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 17:08]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 17:00]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 16:42]
+
+CLOCK: [2013-12-27 周五 14:56]--[2013-12-27 周五 15:15] =>  0:19
+CLOCK: [2013-12-27 周五 09:41]--[2013-12-27 周五 10:06] =>  0:25
+CLOCK: [2013-12-26 周四 15:13]--[2013-12-26 周四 15:48] =>  0:35
+CLOCK: [2013-12-26 周四 11:36]--[2013-12-26 周四 11:43] =>  0:07
+CLOCK: [2013-12-26 周四 11:05]--[2013-12-26 周四 11:30] =>  0:25
+CLOCK: [2013-12-26 周四 10:07]--[2013-12-26 周四 10:25] =>  0:18
+CLOCK: [2013-12-26 周四 08:56]--[2013-12-26 周四 09:21] =>  0:25
+CLOCK: [2013-12-25 周三 15:52]--[2013-12-25 周三 16:18] =>  0:26
+CLOCK: [2013-12-25 周三 11:33]--[2013-12-25 周三 13:16] =>  1:43
+CLOCK: [2013-12-25 周三 09:38]--[2013-12-25 周三 10:03] =>  0:25
+CLOCK: [2013-12-25 周三 08:33]--[2013-12-25 周三 09:00] =>  0:27
+CLOCK: [2013-12-24 周二 14:28]--[2013-12-24 周二 14:53] =>  0:25
+CLOCK: [2013-12-24 周二 08:30]--[2013-12-24 周二 09:01] =>  0:31
+CLOCK: [2013-12-23 周一 18:08]--[2013-12-23 周一 18:33] =>  0:25
+CLOCK: [2013-12-23 周一 17:39]--[2013-12-23 周一 18:05] =>  0:26
+CLOCK: [2013-12-23 周一 17:08]--[2013-12-23 周一 17:35] =>  0:27
+CLOCK: [2013-12-23 周一 16:42]--[2013-12-23 周一 17:00] =>  0:18
+:END:
+***** TODO [#C] 优化emacs的配置
+- State "OKTODAY"    from "STARTED"    [2013-12-20 周五 17:44]
+- State "STARTED"    from "STARTED"    [2013-12-20 周五 17:07]
+- State "OKTODAY"    from "STARTED"    [2013-12-20 周五 17:07]
+- State "STARTED"    from "STARTED"    [2013-12-20 周五 17:06]
+- State "OKTODAY"    from "STARTED"    [2013-12-20 周五 17:06]
+- State "STARTED"    from "STARTED"    [2013-12-20 周五 16:04]
+:LOGBOOK:
+CLOCK: [2013-12-20 周五 17:07]--[2013-12-20 周五 17:37] =>  0:30
+CLOCK: [2013-12-20 周五 17:06]--[2013-12-20 周五 17:07] =>  0:01
+CLOCK: [2013-12-20 周五 16:04]--[2013-12-20 周五 17:06] =>  1:02
+:END:
+
+***** TODO [#C] 编写插件使得emacs可以查询java引用
+***** DONE [#C] Emacs 乱码问题
+CLOSED: [2013-12-20 Fri 15:28]
+- State "DONE"       from "OKTODAY"    [2013-12-20 Fri 15:32]
+- State "OKTODAY"    from "STARTED"    [2013-12-20 Fri 15:28]
+- State "STARTED"    from "STARTED"    [2013-12-20 Fri 15:11]
+:LOGBOOK:
+CLOCK: [2013-12-20 Fri 15:11]--[2013-12-20 Fri 15:28] =>  0:17
+:END:
+***** DONE fix org不倒计时的bug<2013-12-20 Fri>
+CLOSED: [2013-12-20 Fri 15:10] SCHEDULED: <2013-12-20 Fri>
+- State "DONE"       from "OKTODAY"    [2013-12-20 Fri 15:10]
+- State "OKTODAY"    from "STARTED"    [2013-12-20 Fri 15:10]
+- State "STARTED"    from "STARTED"    [2013-12-20 Fri 15:03]
+:LOGBOOK:
+CLOCK: [2013-12-20 Fri 15:03]--[2013-12-20 Fri 15:10] =>  0:07
+:END:
+
+
+
+
+** 大数据 redis, hadoop 等
+
+学习笔记就记录在@@html:<a href="/wiki/html/bigdata">这里吧</a>@@
+
+** TODO [#B] [1/1]  学习和研究项目中使用到的技术   [2013-10-22 周二]            :OFFICE:
+:RESULTS:
+- State "OKTODAY"    from "STARTED"    [2013-11-22 周五 18:00]
+- State "STARTED"    from "STARTED"    [2013-11-22 周五 16:01]
+CLOCK: [2013-11-22 周五 16:01]--[2013-11-22 周五 18:00] =>  1:59
+- State "OKTODAY"    from "STARTED"    [2013-11-08 周五 15:06]
+- State "STARTED"    from "STARTED"    [2013-11-08 周五 14:52]
+CLOCK: [2013-11-08 周五 14:52]--[2013-11-08 周五 15:06] =>  0:14
+- State "OKTODAY"    from "STARTED"    [2013-11-02 周六 10:36]
+- State "STARTED"    from "STARTED"    [2013-11-02 周六 10:10]
+CLOCK: [2013-11-02 周六 10:10]--[2013-11-02 周六 10:36] =>  0:26
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 14:34]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 13:13]
+CLOCK: [2013-10-28 周一 13:13]--[2013-10-28 周一 14:34] =>  1:21
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 11:46]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 11:16]
+CLOCK: [2013-10-28 周一 11:16]--[2013-10-28 周一 11:46] =>  0:30
+- State "OKTODAY"    from "OKTODAY"    [2013-10-28 周一 11:13]
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 11:10]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 10:44]
+CLOCK: [2013-10-28 周一 10:44]--[2013-10-28 周一 11:10] =>  0:26
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 10:24]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 10:12]
+CLOCK: [2013-10-28 周一 10:12]--[2013-10-28 周一 10:24] =>  0:12
+- State "OKTODAY"    from "STARTED"    [2013-10-28 周一 10:01]
+- State "STARTED"    from "STARTED"    [2013-10-28 周一 09:41]
+CLOCK: [2013-10-28 周一 09:41]--[2013-10-28 周一 10:01] =>  0:20
+- State "OKTODAY"    from "STARTED"    [2013-10-25 周五 18:59]
+- State "STARTED"    from "STARTED"    [2013-10-25 周五 18:52]
+CLOCK: [2013-10-25 周五 18:52]--[2013-10-25 周五 18:59] =>  0:07
+- State "OKTODAY"    from "STARTED"    [2013-10-25 周五 18:00]
+- State "STARTED"    from "STARTED"    [2013-10-25 周五 17:43]
+CLOCK: [2013-10-25 周五 17:43]--[2013-10-25 周五 18:00] =>  0:17
+- State "OKTODAY"    from "STARTED"    [2013-10-22 周二 18:49]
+- State "STARTED"    from "STARTED"    [2013-10-22 周二 18:35]
+CLOCK: [2013-10-22 周二 18:35]--[2013-10-22 周二 18:49] =>  0:14
+:END:
+*** DONE redis
+CLOSED: [2013-12-24 周二 14:17]
+- State "DONE"       from "STARTED"    [2013-12-24 周二 14:17]
+- State "STARTED"    from "STARTED"    [2013-12-24 周二 13:49]
+- State "OKTODAY"    from "STARTED"    [2013-12-24 周二 13:39]
+- State "STARTED"    from "STARTED"    [2013-12-24 周二 13:04]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 16:41]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 16:35]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 14:58]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 14:32]
+- State "OKTODAY"    from "STARTED"    [2013-12-23 周一 14:22]
+- State "STARTED"    from "STARTED"    [2013-12-23 周一 13:57]
+:LOGBOOK:
+CLOCK: [2013-12-24 周二 13:49]--[2013-12-24 周二 14:17] =>  0:28
+CLOCK: [2013-12-24 周二 13:04]--[2013-12-24 周二 13:39] =>  0:35
+CLOCK: [2013-12-23 周一 16:35]--[2013-12-23 周一 16:41] =>  0:06
+CLOCK: [2013-12-23 周一 14:32]--[2013-12-23 周一 14:58] =>  0:26
+CLOCK: [2013-12-23 周一 13:57]--[2013-12-23 周一 14:22] =>  0:25
+:END:
+*** hadoop
+*** IDEA
+*** tomcat
+*** mvn
+*** svn
+*** Spring
+
+
+* 读书
+
+这个在前面学习编程技术的过程就包括了。这里再提一下算做强调。
+
+** [[www.lixiaolai.com][把时间当作朋友]]
+
+ 1. 控制你的大脑
+ 2. 记录时间开销，使用列表做计划
+ 3. 万事皆可提前准备
+ 4. 打造人脉不如打造自己
+ 5. 效率低下的原因：回避困难
+
+
+** 《代码大全》
+
+ 1. 使用伪代码进行详细设计
+
+* 提高自己使用GTD和番茄工作法的能力
+
+ 每天下班后，要总结当天任务，计划第二天的任务
+ 任务的大小不要超过三天
+
+* 文件组织方式
+
+使用cygwin或者Linux, 所以所有的文件都是在Home目录下,并使用git subtree 方式组织。
+
+#+BEGIN_SRC
+
+Home
++—— ideas 所有的个人项目，需要使用 git 进行版本管理
++———— orgpage
++———— shell 存放有个人使用的一些shell脚本
+
++—— [个人开源项目] 例如.emacs.d 代码使用github来管理
+
++—— [公司名称] 存放公司项目开发的代码，文档和工具。
++———— docs
++———— tools
++———— project A
+
++—— sync 网络同步盘 个人文档，图书，个人开发项目使用的工具
++———— books
++———— software
+
++—— backup 备份文件和临时文件存放，临时项目试验场，
+
+#+END_SRC

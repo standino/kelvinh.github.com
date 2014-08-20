@@ -1,0 +1,24 @@
+#+TITLE:        Web automation
+#+AUTHOR:       Will Chang
+#+EMAIL:        changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/html/webautomation
+#+KEYWORDS:    web,automation,test
+#+TAGS:        :automation:test:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Web automation 
+
+
+* Why we need web automation 
+ - test during coding, too many senariao to test 
+ - test during sit
+ - test during mtp
+ - collect html pages
+ 
+
+* The difference between unit test and web automation 
+
+* Web automation concept
+
+* How to write a web automation script

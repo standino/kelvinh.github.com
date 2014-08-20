@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Database Migration - Keep going</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Will Chang" />
+    <meta name="description" content="Database Migration " />
+    <meta name="keywords" content="db2" />
+
+  <link rel="stylesheet" href="http://standino.github.io/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="http://standino.github.io/media/css/prettify.css" type="text/css">
+
+  <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+
+  <link rel="stylesheet" href="../../../media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="../../../media/css/prettify.css" type="text/css">
+
+</head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>努力超越自己！</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/html/">Html</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>Database Migration</h1>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Agenda</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>The Problems of database migration.
+</li>
+<li>How ruby on rails handle the table changes
+</li>
+<li>How our team to handle the database changes
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">A good book</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<i>databasemigration1.png</i>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">DRY---Don't Repeat Yourself</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Every piece of knowledge must have a single, unambiguous, 
+authoritative representation within a system.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Our Problems</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Agile requires us to embrace changes, but:
+</p>
+
+<ol class="org-ol">
+<li>It is difficult to get the change sets of the release.
+</li>
+<li>It is difficult to get the dependence between web and ods.
+</li>
+<li>If we need reload a table or UDF, we must drop the related UDF first.
+</li>
+<li>We can not roll back table or stored procedure easily.
+</li>
+<li>It is difficult to prepare replication change request.
+</li>
+<li>It is difficult to identify which stored procedure will be  impacted by a specific CR.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Ruby on Rails</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The design of Rails was driven by a couple of key concepts: DRY and convention over configuration.
+</p>
+
+<p>
+Rails uses the power of Ruby to bring that to life. You'll find very little duplication in a Rails application; you say what
+you need to say in one place-a place often suggested by the conventions of
+the MVC architecture-and then move on. For programmers used to other
+web frameworks, where a simple change to the schema could involve them
+in half-a-dozen or more code changes, this was a revelation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Rails---What are migrations?</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+ActiveRecordMigration allows you to use Ruby to define changes to your database schema, making it possible to use a version control system to keep things synchronized with the actual code.
+</p>
+
+<p>
+This has many uses, including:
+</p>
+
+<ul class="org-ul">
+<li>Teams of developers - if one person makes a schema change, the other developers just need to update, and run "rake db:migrate".
+</li>
+<li>Production servers - run "rake db:migrate" when you roll out a new release to bring the database up to date as well.
+</li>
+<li>Multiple machines - if you develop on both a desktop and a laptop, or in more than one location, migrations can help you keep them all synchronized.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Rails---Create the migration</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Run the generator:
+</p>
+
+<pre class="example">
+ruby script/generate migration add_a_new_table
+</pre>
+
+
+<p>
+This will create the file db/migrate/001_add_a_new_table.rb
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Rails---Edit the code to tell it what to do</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+The method self.up is used when migrating to a new version, self.down is used to roll back any changes if needed. 
+</p>
+<pre class="example">
+ class AddANewTable &lt; ActiveRecord::Migration
+   def self.up
+     create_table :users do |table|
+       table.column :name, :string
+       table.column :password, :string, :limit =&gt; 32, :null =&gt; false
+      end
+   end
+   def self.down
+     drop_table :users
+   end
+end
+</pre>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Rails---Run the migration</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+There is a table in database to track the version.
+</p>
+
+<p>
+&lt;#+BEGIN_SRC &gt;
+rake db:migrate
+#+END_SRC
+</p>
+
+<p>
+&lt;#+BEGIN_SRC &gt;
+rake db:migrate VERSION=17
+#+END_SRC
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Our solution---Improvement, Not revolution</h2>
+<div class="outline-text-2" id="text-10">
+<ol class="org-ol">
+<li><b>Change Set</b>
+</li>
+</ol>
+
+<p>
+Copy the changed files since the last release. 
+</p>
+
+<ol class="org-ol">
+<li><b>Dependence and impacted store procedure</b>
+</li>
+</ol>
+
+<p>
+Using shell script to query the catalog table to get the relationship of the DB object.
+</p>
+
+<ol class="org-ol">
+<li><b>Rollback and table changes</b>
+</li>
+</ol>
+
+<p>
+It is not very necessary to support rollback. Use alter to change the table.
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2013-12-19</span>
+        <span title="last modification date" class="post-info">2014-03-07</span>
+        <span title="tags" class="post-info"><a href="/tags/db2/">db2</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/wiki/html/databasemigration";
+          var disqus_url = "http://standino.github.io/wiki/html/databasemigration";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+      <script src="/media/js/main.js"></script>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - 2014 <a href="mailto:changewei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

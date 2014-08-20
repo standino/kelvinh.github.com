@@ -1,0 +1,3344 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>SICP学习笔记和习题解答 - Keep going</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Kelvin Hu" />
+    <meta name="description" content="learning notes of book Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content="sicp, scheme" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>个人资料</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>SICP学习笔记和习题解答</h1>
+<p>
+这里记录了我在学习SICP的过程中的一点笔记，以及作业解答，现在还正在学习中。。（因为作业太多了，读起来真慢。。）
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">构造过程抽象</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">求值模型</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>正则序求值：先将复合式代入实际参数，再逐渐展开，直到得到一个只包含基本运算符的表达式，再对其进行求值。（完全展开而后归约）
+</li>
+
+<li>应用序求值：对于复合型表达式，将能进行计算的一些子表达式求值，再对其进行展开，再求值能够进行计算的子表达式，直到求出最终结果。（展开一层归约一层）
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">练习1.2</h3>
+<div class="outline-text-3" id="text-1-2">
+<pre class="example">
+(/ (+ 5 4 (- 2 (- 3 (+ 6 (/ 4 5))))) (* 3 (- 6 2) (- 2 7)))
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">练习1.3</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #839496; font-style: italic;">the answer below is wrong!!!</span>
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sum-of-max-two</span> a b c)
+    (<span style="color: #859900;">cond</span> ((&lt; a b) (<span style="color: #859900;">if</span> (&lt; a c) (+ b c) (+ a b)))
+          (<span style="color: #859900;">else</span> (<span style="color: #859900;">if</span> (&lt; b c) (+ a c) (+ a b)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">练习1.5</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+初看到 <code>(define (p) (p))</code> 这样的定义吓了我一跳，细看其实是一个递归函数的定义，但由没有退出条件，所以一旦有 <code>(p)</code> 这样的调用，程序将陷入死循环。
+</p>
+
+<p>
+再看 <code>(test 0 (p))</code> ，如果是正则序，那么会完全展开再求值，于是会有如下过程：
+</p>
+
+<pre class="example">
+1. (if (= 0 0) 0 (p))
+2. (if #t 0 (p))
+3. return value, 0
+</pre>
+
+<p>
+如果是应用序，则会先求值 <code>(p)</code> ，于是程序陷入死循环。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5">练习1.6</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+这个题目看了半天，大概猜到是跟求值模型相关的，但在解释器racket上试，和使用原始版本的if结果一模一样。。
+</p>
+
+<p>
+于是，无奈Google之，发现<a href="http://blog.csdn.net/xuanyun/article/details/1331872">此帖</a>，讲得很详细，看来对求值模型还是理解不够，但关键是，racket解释器在实验练习1.5时明明是陷入死循环了，说明是应用序才对，但这里又工作得好好的，真让人搞不懂。。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6">练习1.7</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+另一个 <code>good-enough?</code> 函数：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">good-enough?</span> guess x)
+  (&lt; (/ (abs (- (improve guess x) guess)) guess) 0.00001))
+</pre>
+</div>
+
+<p>
+这个函数不是用绝对误差来作比较，而是用两次guess的变化率来比较，这在处理很小的数时会比较有用，比方说小数0.0000000001这种，但在处理大数时，反而会增加误差，因为计算变化率的分母很大，导致分子很大时依然能满足要求，所以在处理大数时不如先前版本的绝对误差精确。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7">练习1.8</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+牛顿法解立方根：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">3sqrt</span> guess x)
+  (<span style="color: #859900;">if</span> (good-enough? guess x)
+      guess
+      (3sqrt (improve guess x) x)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">improve</span> guess x)
+  (/ (+ (/ x (* guess guess)) (* 2 guess)) 3))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">good-enough?</span> guess x)
+  (&lt; (/ (abs (- (improve guess x) guess)) guess) 0.00001))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8">线性递归和迭代</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+作为一个递归过程，但其计算过程可能会是递归的，也可能是迭代的。以阶乘计算为例：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #839496; font-style: italic;">&#31532;&#19968;&#31181;&#23450;&#20041;</span>
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">factorial</span> n)
+  (<span style="color: #859900;">if</span> (= n 1)
+      1
+      (* n (factorial (- n 1)))))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #839496; font-style: italic;">&#31532;&#20108;&#31181;&#23450;&#20041;</span>
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">factorial</span> n)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">fact-iter</span> result counter)
+    (<span style="color: #859900;">if</span> (&gt; counter n)
+        result
+        (fact-iter (* result counter) (+ counter 1))))
+  (fact-iter 1 1))
+</pre>
+</div>
+
+<p>
+毫无疑问两种定义都使用了递归过程，但两者有些不同：第一种在计算时会导致 <code>factorial</code> 自身的展开，而且用于计算的n越大，展开的层数越多；第二种在计算时，只需要维护 <code>result</code> 以及 <code>counter</code> 两个变量即可。
+</p>
+
+<p>
+在上面的例子中，第一种定义就是递归计算过程，第二种则是迭代计算过程。由于两者都是线性的，所以都是线性过程。（所谓线性是指，第一种的展开长度对于n是线性增长的；第二种的计算步骤对于n是线性增长的）
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9">练习1.9</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+这是一个递归计算过程：
+</p>
+
+<pre class="example">
+(inc (+ 3 5))
+(inc (inc (+ 2 5)))
+(inc (inc (inc (+ 1 5))))
+(inc (inc (inc (inc (+ 0 5)))))
+(inc (inc (inc (inc 5))))
+(inc (inc (inc 6)))
+(inc (inc 7))
+(inc 8)
+9
+</pre>
+
+<p>
+这是一个迭代计算过程：
+</p>
+
+<pre class="example">
+(+ 3 6)
+(+ 2 7)
+(+ 1 8)
+(+ 0 9)
+9
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10">练习1.10</h3>
+<div class="outline-text-3" id="text-1-10">
+<pre class="example">
+(A 1 10) =&gt; 1024
+(A 2 4)  =&gt; 65536
+(A 3 3)  =&gt; 65536
+</pre>
+
+<pre class="example">
+f(n) = 2n
+g(n) = 2^n
+h(n) = 2^h(n-1)
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11">练习1.11</h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+n &lt; 3, f(n) = n; n &gt;= 3, f(n) = f(n-1) + 2f(n-2) + 3f(n-3)
+</p>
+
+<p>
+递归过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">f</span> n)
+  (<span style="color: #859900;">cond</span> ((&lt; n 3) n)
+        (<span style="color: #859900;">else</span> (+ (f (- n 1))
+                 (* 2 (f (- n 2)))
+                 (* 3 (f (- n 3)))))))
+</pre>
+</div>
+
+<p>
+迭代过程：
+</p>
+
+<p>
+a = f(2) = 2, b = f(1) = 1, c = f(0) = 0
+a &lt;= a + 2b + 3c
+b &lt;= a
+c &lt;= b
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">f2</span> n)
+  (f2-iter 2 1 0 n))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">f2-iter</span> a b c count)
+  (<span style="color: #859900;">if</span> (= count 0)
+      c
+      (f2-iter (+ a (* 2 b) (* 3 c)) a b (- count 1))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-12" class="outline-3">
+<h3 id="sec-1-12">练习1.12</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+杨辉三角的规律：f(n, 1) = f(n, n) = 1, f(n, m) = f(n-1, m-1) + f(n-1, m), 1 &lt; m &lt; n
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">pascal-triangle</span> n m)
+  (<span style="color: #859900;">if</span> (<span style="color: #859900;">or</span> (= m 1) (= m n))
+      1
+      (+ (pascal-triangle (- n 1) (- m 1))
+         (pascal-triangle (- n 1) m))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-13" class="outline-3">
+<h3 id="sec-1-13">练习1.13</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+<del>暂时跳过，现在手头只有一台电脑，草稿纸和笔都没有，无法证明。。</del>
+</p>
+
+<p>
+整个计算过程涉及到一些数学符号，如果只用文本格式写会很蛋疼，于是，只写个思路：
+</p>
+
+<ol class="org-ol">
+<li>按提示，证明 <code>Fib(n) = (φ^n - ψ^n) / √5</code> ，其中 <code>φ = (1 + √5) / 2</code> ， <code>ψ = (1 - √5) / 2</code> ，证明过程比较简单，根据数学归纳法和Fib(n)的定义即可。
+</li>
+
+<li>之后，要证明Fib(n)是最接近φ^n/√5的整数，只需要证明 <code>|Fib(n) - φ^n/√5| ≤ 0.5</code> 即可。经过化简，需要证明的不等式变成 <code>|ψ^n / √5| ≤ 0.5</code> 。
+</li>
+
+<li>经过观察， <code>|ψ^n / √5|</code> 实际上是趋于0的极限，所以只需要证明两点即可：
+
+<ol class="org-ol">
+<li><code>|ψ^n / √5| ≤ |ψ^(n-1) / √5|</code>
+</li>
+<li><code>|ψ^0 / √5| ≤ 0.5</code>
+</li>
+</ol>
+<p>
+这两点都是比较好证明的。于是再反推回到第二步，就证明了Fib(n)是离φ^n/√5最近的整数。
+</p>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-1-14" class="outline-3">
+<h3 id="sec-1-14">练习1.14</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+<b>再略过。。手头没有笔和纸，泪流满面。。</b>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-15" class="outline-3">
+<h3 id="sec-1-15">练习1.15</h3>
+<div class="outline-text-3" id="text-1-15">
+<p>
+a) 这个问题一时半会儿不知道如何作答，就直接暴力地在函数 <code>p(x)</code> 的定义中加了一个打印函数来打印x以确定被调用了几次，结果显示， <code>(sine 12.15)</code> 调用了5次 <code>p(x)</code> 函数。
+</p>
+
+<p>
+b) 对 <code>(sine a)</code> 进行展开，第一次后a变成a/3，第二次变成a/9，所以，在n次之后，a变成了a除以3的n次方。空间和步数是正比于展开次数n的，所以，n关于a的阶就是空间和步数关于a的阶。展开的终止条件是 <code>a / 3^n ≤ 0.1</code> ，可以求出 <code>n ≥ log3(10a)</code> ，即n会大于等于以3为底10a的对数。所以空间和步数关于a的增长阶是对数的。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-16" class="outline-3">
+<h3 id="sec-1-16">练习1.16</h3>
+<div class="outline-text-3" id="text-1-16">
+<p>
+题目要求：1.只能用迭代，不能递归；2.增长的阶是对数级。
+</p>
+
+<p>
+被这个题的提示给坑到了。。因为提示说维持一个附加变量a来保存计算值，于是我就按提示构造了一个状态变量a，打算用来保存每次迭代的计算值，但经过演算发现必须在第一步迭代将a从1直接给过渡到b^(n/2)，不然后面的迭代没法继续，但这肯定是不可能的。。
+</p>
+
+<p>
+无奈，去网上搜了一下，当我看到下面这两个等式的时候，我瞬间就明白了：
+</p>
+
+<ol class="org-ol">
+<li>n为偶数时：a(b^2)^(n/2) = ab^n
+</li>
+<li>n为奇数时：ab*b^(n-1) = ab^n
+</li>
+</ol>
+
+<p>
+按上面的等式写出迭代过程：
+</p>
+
+<pre class="example">
+n为偶数时：
+a &lt;= a
+b &lt;= b^2
+n &lt;= n / 2
+
+n为奇数时：
+a &lt;= a * b
+b &lt;= b
+n &lt;= n - 1
+</pre>
+
+<p>
+于是，解答如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">fast-expt</span> b n)
+  (fast-expt-iter 1 b n))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">fast-expt-iter</span> a b n)
+  (<span style="color: #859900;">cond</span> ((= n 0) a)
+        ((even? n) (fast-expt-iter a (* b b) (/ n 2)))
+        (<span style="color: #859900;">else</span> (fast-expt-iter (* a b) b (- n 1)))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">even?</span> n)
+  (= (remainder n 2) 0))
+</pre>
+</div>
+
+<p>
+这明明是a和b共同保存中间值，以2^10为例，10 =&gt; 5 =&gt; 4 =&gt; 2 =&gt; 1 =&gt; 0，大多时候a都在打酱油，而b才是保存中间值的主力。。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-17" class="outline-3">
+<h3 id="sec-1-17">练习1.17</h3>
+<div class="outline-text-3" id="text-1-17">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">my*</span> a b)
+  (<span style="color: #859900;">cond</span> ((= b 0) 0)
+        ((even? b) (my* (double a) (halve b)))
+        (<span style="color: #859900;">else</span> (+ a (my* a (- b 1))))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">double</span> a)
+  (+ a a))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">halve</span> a)
+  (/ a 2))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-18" class="outline-3">
+<h3 id="sec-1-18">练习1.18</h3>
+<div class="outline-text-3" id="text-1-18">
+<p>
+有了1.16的基础，再来这道题就好多了，这题的难点是构造类似1.16中的ab^n。和1.16不同，这里的构造等式如下（状态变量定义为s）：
+</p>
+
+<ol class="org-ol">
+<li>b为偶数：s + ab = s + a*2 * b/2
+</li>
+<li>b为奇数：s + ab = (s + a) + a * (b - 1)
+</li>
+</ol>
+
+<p>
+于是，有如下解：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">my*</span> a b)
+  (my*-iter 0 a b))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">my*-iter</span> s a b)
+  (<span style="color: #859900;">cond</span> ((= b 0) s)
+        ((even? b) (my*-iter s (double a) (halve b)))
+        (<span style="color: #859900;">else</span> (my*-iter (+ s a) a (- b 1)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-19" class="outline-3">
+<h3 id="sec-1-19">练习1.19</h3>
+<div class="outline-text-3" id="text-1-19">
+<p>
+这个题是要求p'和q'，根据T^2 = T'，可以得到两个关于p'和q'的方程，联立方程可得解。
+</p>
+
+<p>
+这两个二元一次方程本身不难，但因为项太多，还有平方，所以如果打字打出来会很蛋疼，所以就不打了，最后解出的结果是：
+</p>
+
+<pre class="example">
+p' = p^2 + q^2
+q' = q^2 + 2pq
+</pre>
+
+<p>
+吐槽：外国人真尼玛牛，一个特例斐波那契数列，能想到通用的T变换，而且，还尼玛T^2 = T'。。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-20" class="outline-3">
+<h3 id="sec-1-20">练习1.20</h3>
+<div class="outline-text-3" id="text-1-20">
+<p>
+个人觉得这个题的水平略低，因为只是按照定义对过程调用进行展开而已。关键是，如果你展开的内容少一点也可以接受，但是 <code>(gcd 206 40)</code> 的正规序展开内容太多了，我写了几层，就写不下去了。。最后看了<a href="http://www.billthelizard.com/2010/01/sicp-exercise-120-gcd.html">这里</a>的详细展开内容，那哥们真是耐得住。。其实题目的意思大概是想让我们对这两种展开方式有一个比较深刻的理解，但这样大量的重复性工作，显得没有必要，所以我没有耐得住寂寞展开到最后。。从那哥们展开的结果来看，最后的答案是18和4。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-21" class="outline-3">
+<h3 id="sec-1-21">练习1.21</h3>
+<div class="outline-text-3" id="text-1-21">
+<p>
+把书中的的 <code>smallest-divisor</code> 及相关定义照执行一遍就行了，结果如下：
+</p>
+
+<pre class="example">
+(smallest-divisor 199)    =&gt; 199
+(smallest-divisor 1999)   =&gt; 1999
+(smallest-divisor 19999)  =&gt; 7
+</pre>
+
+<p>
+PS：SICP中文翻译中错误很多啊，比方说上面跟 <code>smallest-divisor</code> 相关的 <code>divides?</code> 定义，其中对 <code>remainder</code> 过程的调用就把参数a和b写反了，坑爹。。页脚的注释d/n应该是n/d。。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-22" class="outline-3">
+<h3 id="sec-1-22">练习1.22</h3>
+<div class="outline-text-3" id="text-1-22">
+<p>
+我使用的Scheme实现是Racket，这个实现并没有包含如题目中所说的 <code>runtime</code> ，于是我Google了一下，发现有一个过程叫 <code>current-inexact-milliseconds</code> 可以达到要求，于是就用它代替了 <code>runtime</code> 。
+</p>
+
+<p>
+这个题目的实现代码如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">timed-prime-test</span> n)
+  (newline)
+  (display n)
+  (start-prime-test n (current-inexact-milliseconds)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">start-prime-test</span> n start-time)
+  (<span style="color: #859900;">if</span> (prime? n)
+      (report-time (- (current-inexact-milliseconds) start-time))
+      #f))  <span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #839496; font-style: italic;">&#36825;&#37324;&#22240;&#20026;Racket&#23454;&#29616;&#19981;&#20801;&#35768;if&#21482;&#26377;&#19968;&#20010;&#20998;&#25903;&#65292;&#25152;&#20197;&#29992;#f&#26469;&#34920;&#31034;&#21478;&#19968;&#20010;&#20998;&#25903;</span>
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">report-time</span> elapsed-time)
+  (display <span style="color: #2aa198;">" *** "</span>)
+  (display elapsed-time))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">search-for-primes</span> start count)
+  (<span style="color: #859900;">cond</span> ((= count 0) (newline))
+        ((timed-prime-test start) (search-for-primes (next-odd start) (- count 1)))
+        (<span style="color: #859900;">else</span> (search-for-primes (next-odd start) count))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">next-odd</span> n)
+  (<span style="color: #859900;">if</span> (= (remainder n 2) 0)
+      (+ 1 n)
+      (+ 2 n)))
+</pre>
+</div>
+
+<p>
+测试了几组数据，得到以下结果（不是奇数的行已删去）：
+</p>
+
+<pre class="example">
+100000000003 *** 24.06689453125
+100000000019 *** 14.223876953125
+100000000057 *** 15.403076171875
+&gt;
+1000000000039 *** 49.025146484375
+1000000000061 *** 48.720947265625
+1000000000063 *** 47.57080078125
+&gt;
+10000000000037 *** 154.43701171875
+10000000000051 *** 143.823974609375
+10000000000099 *** 147.25390625
+</pre>
+
+<p>
+取平均值除了一下，时间比值为2.706和3.066，这两个离√10还差得比较多，不过可能是受CPU，系统环境的影响，随机性较强，不过比值应该是√10这一点还是很明确的。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-23" class="outline-3">
+<h3 id="sec-1-23">练习1.23</h3>
+<div class="outline-text-3" id="text-1-23">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">next</span> n)
+  (<span style="color: #859900;">if</span> (= n 2)
+      3
+      (+ n 2)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">find-divisor</span> n test)
+  (<span style="color: #859900;">cond</span> ((&gt; (* test test) n) n)
+        ((divides? n test) test)
+        (<span style="color: #859900;">else</span> (find-divisor n (next test)))))
+</pre>
+</div>
+
+<p>
+得到结果如下（取了三组和1.22中对应的值）：
+</p>
+
+<pre class="example">
+100000000003 *** 14.049072265625
+100000000019 *** 10.261962890625
+100000000057 *** 9.14697265625
+&gt;
+1000000000039 *** 40.97705078125
+1000000000061 *** 30.837890625
+1000000000063 *** 31.4189453125
+&gt;
+10000000000037 *** 103.964111328125
+10000000000051 *** 102.067138671875
+10000000000099 *** 94.930908203125
+</pre>
+
+<p>
+分别计算平均消耗时间比值，得到三个值：1.61，1.41，1.48，这几个值是明显是小于2的。可能虽然步数是少了一半，但是在运行过程中的一些其它消耗，导致了时间比值小于2。
+</p>
+
+<p>
+然后我又试了一下，证明这多出来的时间消耗是来自 <code>next</code> 过程调用，将 <code>find-divisor</code> 以及 <code>smallest-divisor</code> 过程进行重定义为以下形式：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">find-divisor</span> n test)
+  (<span style="color: #859900;">cond</span> ((&gt; (* test test) n) n)
+        ((divides? n test) test)
+        (<span style="color: #859900;">else</span> (find-divisor n (+ test 2))))) <span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #839496; font-style: italic;">&#30452;&#25509;&#21152;2&#65292;&#19981;&#20877;&#35843;&#29992;next&#36807;&#31243;</span>
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">smallest-divisor</span> n)
+  (find-divisor n 3)) <span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #839496; font-style: italic;">&#30452;&#25509;&#20174;3&#24320;&#22987;</span>
+</pre>
+</div>
+
+<p>
+结果如下：
+</p>
+
+<pre class="example">
+100000000003 *** 13.234130859375
+100000000019 *** 8.0458984375
+100000000057 *** 7.89599609375
+&gt;
+1000000000039 *** 28.672119140625
+1000000000061 *** 25.3388671875
+1000000000063 *** 25.071044921875
+&gt;
+10000000000037 *** 78.4560546875
+10000000000051 *** 78.115966796875
+10000000000099 *** 71.85498046875
+</pre>
+
+<p>
+可以看到，这里的时间消耗确实是比1.22中减半了。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-24" class="outline-3">
+<h3 id="sec-1-24">练习1.24</h3>
+<div class="outline-text-3" id="text-1-24">
+<p>
+这个练习，将 <code>start-prime-test</code> 中的 <code>prime?</code> 换成 <code>fast-prime?</code> 即可：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">start-prime-test</span> n start-time)
+  (<span style="color: #859900;">if</span> (fast-prime? n 3)  <span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #839496; font-style: italic;">&#27979;&#35797;&#30340;&#27425;&#25968;&#21462;3</span>
+      (report-time (- (current-inexact-milliseconds) start-time))
+      #f))
+</pre>
+</div>
+
+<p>
+然后进行测试，得到以下结果（最高只能到10的9次方，因为再高的话，超过了int型的最大值，这时 <code>random</code> 函数会报错）：
+</p>
+
+<pre class="example">
+1009 *** 0.014892578125
+1013 *** 0.01611328125
+1019 *** 0.015869140625
+&gt;
+10007 *** 0.02099609375
+10009 *** 0.02099609375
+10037 *** 0.02001953125
+&gt;
+100003 *** 0.02490234375
+100019 *** 0.02392578125
+100043 *** 0.02392578125
+&gt;
+1000003 *** 0.028076171875
+1000033 *** 0.028076171875
+1000037 *** 0.029052734375
+&gt;
+10000019 *** 0.032958984375
+10000079 *** 0.033203125
+10000103 *** 0.032958984375
+&gt;
+100000007 *** 0.0380859375
+100000037 *** 0.0380859375
+100000039 *** 0.0380859375
+&gt;
+1000000007 *** 0.041015625
+1000000009 *** 0.0419921875
+1000000021 *** 0.0419921875
+</pre>
+
+<p>
+增长速度是O(log n)，所以10^6附近应该是10^3附近所消耗时间的两倍，10^9是三倍：从上面的结果来看，10^6次方的数据比较接近（0.028/0.014），但10^9则要小了不少，只有大概2.67倍左右；10^8应该是10^4的两倍，这个数据也还比较接近（0.038/0.020）。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-25" class="outline-3">
+<h3 id="sec-1-25">练习1.25</h3>
+<div class="outline-text-3" id="text-1-25">
+<p>
+其实这个问题的答案在前面的脚注46中就说了：
+</p>
+
+<blockquote>
+<p>
+这种技术非常有用，因为它意味着我们的计算中不需要去处理比m大很多的数（请与练习1.25比较）。
+</p>
+</blockquote>
+
+<p>
+原来的 <code>expmod</code> 函数是利用了以下的等式：
+</p>
+
+<pre class="example">
+(x * y) % m = [(x % m) * (y % m)] % m
+</pre>
+
+<p>
+这样，如果 <code>x*y</code> 的值很大的话，可以分解成两个小于m的数再取模，这样计算起来就要容易很多。
+</p>
+
+<p>
+而1.25中的 <code>expmod</code> 的定义也是没问题的：先算出乘方值，再取模。但是需要注意的是，这个乘方值可能很大，这样再求模，可能就会很慢，没有办法和原来版本的高效性相提并论。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-26" class="outline-3">
+<h3 id="sec-1-26">练习1.26</h3>
+<div class="outline-text-3" id="text-1-26">
+<p>
+这个题还比较好理解，在使用 <code>square</code> 的时候，只需要在 <code>expmod</code> 内部执行一次递归调用，但直接使用乘法的话，会执行两次递归调用，情况如下：
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">次数</th>
+<th scope="col" class="left">递归情况(square)</th>
+<th scope="col" class="left">递归情况(*)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">1</td>
+<td class="left">n</td>
+<td class="left">n</td>
+</tr>
+
+<tr>
+<td class="right">2</td>
+<td class="left">n/2</td>
+<td class="left">n/2 * n/2</td>
+</tr>
+
+<tr>
+<td class="right">3</td>
+<td class="left">n/4</td>
+<td class="left">n/4 * n/4 * n/4 * n/4</td>
+</tr>
+
+<tr>
+<td class="right">&#x2026;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+注：上表没有考虑 <code>n-1</code> 的情况，因为 <code>n-1</code> 作为常数级的衰减（请原谅，我自己发明了“衰减”这个词），和指数级衰减比起来可以忽略。
+</p>
+
+<p>
+可以看到，使用 <code>square</code> 的情况是指数级衰减，所以最终是Θ(log n)；直接使用乘法虽然也是指数级衰减，但是衰减的同时，递归调用数却在指数级增加，刚好和衰减抵消，于是就是Θ(n)。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-27" class="outline-3">
+<h3 id="sec-1-27">练习1.27</h3>
+<div class="outline-text-3" id="text-1-27">
+<p>
+这个题目比较简单，定义的两个函数如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">carmichael-check</span> n a)
+  (<span style="color: #859900;">cond</span> ((not (= (expmod a n n) a)) false)
+        ((&gt; a 1) (carmichael-check n (- a 1)))
+        (<span style="color: #859900;">else</span> true)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">carmichael-test</span> n)
+  (carmichael-check n (- n 1)))
+</pre>
+</div>
+
+<p>
+需要测试Carmichael数的时候，执行 <code>carmichael-test</code> 即可。这个测试有一点缺陷就是，不能把真正的质数和Carmichael数分开，不过题目是要求验证Carmichael数，而并不是求Carmichael数，所以这点缺陷也不算是缺陷。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-28" class="outline-3">
+<h3 id="sec-1-28">练习1.28</h3>
+<div class="outline-text-3" id="text-1-28">
+<p>
+这个题目是费马测试的一个变形，因为费马测试会被Carmichael数骗，所以这个Miller-Rabin检查增强了限制，Carmichael数也通不过检查。增强的条件是：如果大于1小于n - 1的一个数的平方取模n等于1，则n不是素数。这样，需要我们将费马测试中的 <code>expmod</code> 函数加以改进，所有相关的过程如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">determine-result</span> a n)
+  (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">and</span> (not (= a 1))
+              (not (= a (- n 1)))
+              (= (remainder (square a) n) 1)) 0)
+        (<span style="color: #859900;">else</span> (remainder (square a) n))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">expmod</span> base exp m)
+  (<span style="color: #859900;">cond</span> ((= exp 0) 1)
+        ((even? exp)
+         (determine-result (expmod base (/ exp 2) m) m))
+        (<span style="color: #859900;">else</span> (remainder (* base (expmod base (- exp 1) m)) m))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">miller-rabin-test</span> n)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">try-it</span> a)
+    (= (expmod a (- n 1) n) 1))
+  (try-it (+ 1 (random (- n 1)))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">miller-rabin-prime?</span> n times)
+  (<span style="color: #859900;">cond</span> ((= times 0) true)
+        ((miller-rabin-test n) (miller-rabin-prime? n (- times 1)))
+        (<span style="color: #859900;">else</span> false)))
+</pre>
+</div>
+
+<p>
+再用 <code>miller-rabin-prime?</code> 检测素数的时候，就算连561，1105等Carmichael数也无处遁形了。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-29" class="outline-3">
+<h3 id="sec-1-29">练习1.29</h3>
+<div class="outline-text-3" id="text-1-29">
+<p>
+定义两个过程如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sum-simpson-rule</span> f k n a b)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">factor</span>)
+    (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">or</span> (= k 0)
+               (= k n)) 1)
+          ((= (remainder k 2) 0) 2)
+          (<span style="color: #859900;">else</span> 4)))
+  (<span style="color: #859900;">if</span> (&gt; k n)
+      0
+      (+ (* (factor) (f (+ a (* k (/ (- b a) n)))))
+         (sum-simpson-rule f (+ 1 k) n a b))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">simpson-rule</span> f n a b)
+  (* (/ (/ (- b a) n) 3) (sum-simpson-rule f 0 n a b)))
+</pre>
+</div>
+
+<p>
+经过测试，这个辛普森规则准得过分，在测试 <code>cube</code> 函数在0到1之间的积分时，n都不用取到100或者1000，就算取成2，结果也是精确的1/4。。。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-30" class="outline-3">
+<h3 id="sec-1-30">练习1.30</h3>
+<div class="outline-text-3" id="text-1-30">
+<p>
+采用迭代进行计算的 <code>sum</code> 过程如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sum</span> term a next b)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">iter</span> a result)
+    (<span style="color: #859900;">if</span> (&gt; a b)
+        result
+        (iter (next a) (+ (term a) result))))
+  (iter a 0))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-31" class="outline-3">
+<h3 id="sec-1-31">练习1.31</h3>
+<div class="outline-text-3" id="text-1-31">
+<p>
+递归的 <code>product</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">product</span> term a next b)
+  (<span style="color: #859900;">if</span> (&gt; a b)
+      1
+      (* (term a)
+         (product term (next a) next b))))
+</pre>
+</div>
+
+<p>
+迭代的 <code>product</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">product</span> term a next b)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">iter</span> a result)
+    (<span style="color: #859900;">if</span> (&gt; a b)
+        result
+        (iter (next a) (* (term a) result))))
+  (iter a 1))
+</pre>
+</div>
+
+<p>
+<code>factorial</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">factorial</span> n)
+  (product (<span style="color: #859900;">lambda</span> (a) a) 1 (<span style="color: #859900;">lambda</span> (a) (+ 1 a)) n))
+</pre>
+</div>
+
+<p>
+求圆周率PI的过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">cal-pi</span> n)
+  (* 2.0           <span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #839496; font-style: italic;">&#20351;&#29992;2.0&#32780;&#19981;&#29992;2&#65292;&#26159;&#20026;&#20102;&#35753;&#32467;&#26524;&#23637;&#31034;&#20026;&#23567;&#25968;&#32780;&#19981;&#26159;&#20998;&#25968;</span>
+     (<span style="color: #859900;">if</span> (even? n) n (+ 1 n)) <span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #839496; font-style: italic;">&#36825;&#20010;&#19981;&#21487;&#32570;&#23569;&#65292;&#19979;&#38754;&#26377;&#35299;&#37322;</span>
+     (/
+      (product (<span style="color: #859900;">lambda</span> (a) (square a))
+               2
+               (<span style="color: #859900;">lambda</span> (a) (+ 2 a))
+               (<span style="color: #859900;">if</span> (even? n) n (+ 1 n)))
+      (product (<span style="color: #859900;">lambda</span> (a) (square a))
+               3
+               (<span style="color: #859900;">lambda</span> (a) (+ 2 a))
+               (<span style="color: #859900;">if</span> (even? n) (+ 1 n) (+ 2 n))))))
+</pre>
+</div>
+
+<p>
+书中给出的求PI公式比较tricky，将等式两边乘以2，就会发现形式比书中原来的形式要完美很多，上面的过程的基础正是乘以2后的等式。分别计算分子和分母，相除后，再乘以2，但要注意的是，这时的结果还不是圆周率，还需要乘以最后一个参加计算的分子值，为什么呢？因为我们最初为图方便（为了使用平方计算），把等式两边都乘以2，这样就硬生生把分子部分的序列给向后移了一位，所以要将原来被挤掉的分子最后一个参加计算的数字给补上。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-32" class="outline-3">
+<h3 id="sec-1-32">练习1.32</h3>
+<div class="outline-text-3" id="text-1-32">
+<p>
+递归的 <code>accumulate</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">accumulate</span> combiner null-value term a next b)
+  (<span style="color: #859900;">if</span> (&gt; a b)
+      null-value
+      (combiner (term a)
+                (accumulate combiner null-value term (next a) next b))))
+</pre>
+</div>
+
+<p>
+迭代的 <code>accumulate</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">accumulate</span> combiner null-value term a next b)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">iter</span> a result)
+    (<span style="color: #859900;">if</span> (&gt; a b)
+        result
+        (iter (next a) (combiner (term a) result))))
+  (iter a null-value))
+</pre>
+</div>
+
+<p>
+利用 <code>accumulate</code> 进行重定义的 <code>sum</code> 和 <code>product</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sum</span> term a next b)
+  (accumulate + 0 term a next b))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">product</span> term a next b)
+  (accumulate * 1 term a next b))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-33" class="outline-3">
+<h3 id="sec-1-33">练习1.33</h3>
+<div class="outline-text-3" id="text-1-33">
+<p>
+<code>filtered-accumulate</code> 过程以及根据其定义的求素数和、求互素正整数积的过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">filtered-accumulate</span> combiner null-value term a next b filter)
+  (<span style="color: #859900;">if</span> (<span style="color: #859900;">or</span> (&gt; a b) (not (filter a b)))
+      null-value
+      (combiner (term a)
+                (filtered-accumulate combiner null-value term (next a) next b filter))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sum-prime</span> a b)
+  (filtered-accumulate + 0 (<span style="color: #859900;">lambda</span> (a) a) a (<span style="color: #859900;">lambda</span> (a) (+ 1 a)) b prime?))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">product-gcd-prime</span> n)
+  (filtered-accumulate * 1 (<span style="color: #859900;">lambda</span> (a) a) 1 (<span style="color: #859900;">lambda</span> (a) (+ 1 a)) n gcd-eq1?))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-34" class="outline-3">
+<h3 id="sec-1-34">练习1.34</h3>
+<div class="outline-text-3" id="text-1-34">
+<p>
+如果求值 <code>(f f)</code> ，展开的流程如下：
+</p>
+
+<pre class="example">
+(f f) =&gt; (f 2) =&gt; (2 2)
+</pre>
+
+<p>
+因为2不是一个过程名，所以出错。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-35" class="outline-3">
+<h3 id="sec-1-35">练习1.35</h3>
+<div class="outline-text-3" id="text-1-35">
+<p>
+<code>x |-&gt; 1 + 1/x</code> 的不动点即要求满足 <code>x = 1 + 1/x</code> ，两边乘以x得到 <code>x^2 = x + 1</code> ，即黄金分割满足的方程。
+</p>
+
+<p>
+通过 <code>fixed-point</code> 来计算黄金分割率：
+</p>
+
+<pre class="example">
+(fixed-point (lambda (x) (+ 1 (/ 1 x))) 0.5)
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-1-36" class="outline-3">
+<h3 id="sec-1-36">练习1.36</h3>
+<div class="outline-text-3" id="text-1-36">
+<p>
+修改后的 <code>fixed-point</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">fixed-point</span> f first-guess)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">close-enough?</span> v1 v2)
+    (&lt; (abs (- v1 v2)) 0.0000001))
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">try</span> guess)
+    (<span style="color: #859900;">let</span> ((next (f guess)))
+      (display next)
+      (newline)
+      (<span style="color: #859900;">if</span> (close-enough? guess next)
+          next
+          (try next))))
+  (try first-guess))
+</pre>
+</div>
+
+<p>
+不使用平均阻尼：
+</p>
+
+<pre class="example">
+(fixed-point (lambda (x) (/ (log 1000) (log x))) 2)
+</pre>
+
+<p>
+使用平均阻尼：
+</p>
+
+<pre class="example">
+(fixed-point (lambda (x) (average x (/ (log 1000) (log x)))) 2)
+</pre>
+
+<p>
+允许误差为10e-7的情况下，不使用平均阻尼需要46步，使用平均阻尼只需要13步。可见使用平均阻尼能大大减少必要的计算步数。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-37" class="outline-3">
+<h3 id="sec-1-37">练习1.37</h3>
+<div class="outline-text-3" id="text-1-37">
+<p>
+递归的 <code>cont-frac</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">cont-frac</span> n d k)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">frac</span> i)
+    (<span style="color: #859900;">if</span> (&gt; i k)
+        0
+        (/ (n i)
+           (+ (d i) (frac (+ 1 i))))))
+  (frac 1))
+</pre>
+</div>
+
+<p>
+迭代的 <code>cont-frac</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">cont-frac</span> n d k)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">iter</span> i result)
+    (<span style="color: #859900;">if</span> (&lt; i 1)
+        result
+        (iter (- i 1)
+              (/ (n i)
+                 (+ (d i) result)))))
+  (iter k 0))
+</pre>
+</div>
+
+<p>
+用下面的lambda过程来确定满足条件的k：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">((<span style="color: #859900;">lambda</span> (k)
+   (&lt; (abs (- (/ 1 (cont-frac (<span style="color: #859900;">lambda</span> (i) 1.0)
+                              (<span style="color: #859900;">lambda</span> (i) 1.0)
+                              k))
+              1.61803401))
+      0.0001))
+ 11)
+</pre>
+</div>
+
+<p>
+最后确定，k取11即可保证4位的十进制精度。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-38" class="outline-3">
+<h3 id="sec-1-38">练习1.38</h3>
+<div class="outline-text-3" id="text-1-38">
+<p>
+这个题目最关键的是确定 <code>D(i)</code> 函数的值，观察规律，可以知道，序列中的3n项和3n+1项都是1，而3n+2项的值是2n+2，这里n是非负整数。所以，=D(i)= 相应的过程定义如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">d</span> i)
+  (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">or</span> (= (remainder i 3) 0)
+             (= (remainder i 3) 1)) 1)
+        (<span style="color: #859900;">else</span> (/ (* 2 (+ 1 i)) 3))))
+</pre>
+</div>
+
+<p>
+用来求e的程序：
+</p>
+
+<pre class="example">
+(+ 2
+   (cont-frac (lambda (i) 1.0) d 100000))
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-1-39" class="outline-3">
+<h3 id="sec-1-39">练习1.39</h3>
+<div class="outline-text-3" id="text-1-39">
+<p>
+<code>tan-cf</code> 过程如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">tan-cf</span> x k)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">n</span> i)
+    (<span style="color: #859900;">if</span> (= i 1) x (square x)))
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">d</span> i)
+    (- (* 2 i) 1))
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">cf</span> i)
+    (<span style="color: #859900;">if</span> (&gt; i k)
+        0
+        (/ (n i)
+           (- (d i) (cf (+ 1 i))))))
+  (cf 1))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-40" class="outline-3">
+<h3 id="sec-1-40">练习1.40</h3>
+<div class="outline-text-3" id="text-1-40">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">cubic</span> a b c)
+  (<span style="color: #859900;">lambda</span> (x)
+    (+ (cube x)
+       (* a (square x))
+       (* b x)
+       c)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-41" class="outline-3">
+<h3 id="sec-1-41">练习1.41</h3>
+<div class="outline-text-3" id="text-1-41">
+<p>
+<code>double</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">double</span> f)
+  (<span style="color: #859900;">lambda</span> (x) (f (f x))))
+</pre>
+</div>
+
+<p>
+表达式的值是21，因为两次 <code>double</code> 调用就得到4层 <code>double</code> 嵌套的过程，再对 <code>inc</code> 作用，就会得到2的4次方，即16次 <code>inc</code> 过程的调用，所以结果是5 + 16 = 21。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-42" class="outline-3">
+<h3 id="sec-1-42">练习1.42</h3>
+<div class="outline-text-3" id="text-1-42">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">compose</span> f g)
+  (<span style="color: #859900;">lambda</span> (x) (f (g x))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-43" class="outline-3">
+<h3 id="sec-1-43">练习1.43</h3>
+<div class="outline-text-3" id="text-1-43">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">repeated</span> f n)
+  (<span style="color: #859900;">if</span> (&lt;= n 1)
+      (<span style="color: #859900;">lambda</span> (x) (f x))
+      <span style="color: #93a1a1; font-style: italic;">;</span><span style="color: #839496; font-style: italic;">(repeated (compose f f) (- n 1))</span>
+      (compose f (repeated f (- n 1)))))
+</pre>
+</div>
+
+<p>
+需要注意 <code>repeated</code> 和 <code>compose</code> 的调用顺序，如果先调用 <code>compose</code> 再调用 <code>repeated</code> （如代码中注释所示），那过程 <code>f</code> 会被重复2的n-1次方（注意是次方关系）；但是反之，则 <code>f</code> 就只会被重复n次，是加和关系。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-44" class="outline-3">
+<h3 id="sec-1-44">练习1.44</h3>
+<div class="outline-text-3" id="text-1-44">
+<p>
+平滑过程 <code>smooth</code> ：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> <span style="color: #268bd2;">dx</span> 0.0000000001)
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">smooth</span> f)
+  (<span style="color: #859900;">lambda</span> (x) (/ (+ (f x) (f (- x dx)) (f (+ x dx))) 3)))
+</pre>
+</div>
+
+<p>
+n次平滑过程 <code>smooth-n</code> ：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">smooth-n</span> f n)
+  ((repeated smooth n) f))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-45" class="outline-3">
+<h3 id="sec-1-45">练习1.45</h3>
+<div class="outline-text-3" id="text-1-45">
+<p>
+经过一系列实验，有如下结果（箭头前的数字代表是几次方根，箭头后的数字是表明要做几次平均阻尼）：
+</p>
+
+<pre class="example">
+2, 3 =&gt; 1
+4, 5, 6, 7 =&gt; 2
+8, 9, 10, 11, 12, 13, 14, 15 =&gt; 3
+16 ...
+...
+</pre>
+
+<p>
+可以看到，需要做的平均阻尼的次数是对数级增长的，从2^n次方根到2^(n+1) - 1次方根需要做n次平均阻尼才可以保证不动点收敛（遗憾的是，本人无法对这一结论进行证明）。
+</p>
+
+<p>
+写出求n次方根的过程如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">nth-root</span> x n)
+  (fixed-point
+   ((repeated average-damp
+              (floor (/ (log n) (log 2))))
+    (<span style="color: #859900;">lambda</span> (y) (/ x (expt y (- n 1))))) 1.0))
+</pre>
+</div>
+
+<p>
+可以用以下的调用验证：
+</p>
+
+<pre class="example">
+(nth-root (expt 2 100) 100)
+</pre>
+
+<p>
+即先求2的100次方再求其100次方根，结果是2说明过程没有错误。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-46" class="outline-3">
+<h3 id="sec-1-46">练习1.46</h3>
+<div class="outline-text-3" id="text-1-46">
+<p>
+<code>iterative-improve</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">iterative-improve</span> good-enough? improve-guess)
+  (<span style="color: #859900;">lambda</span> (guess)
+    (<span style="color: #859900;">let</span> ((next (improve-guess guess)))
+      (<span style="color: #859900;">if</span> (good-enough? next guess)
+          next
+          ((iterative-improve good-enough? improve-guess)
+           (improve-guess guess))))))
+</pre>
+</div>
+
+<p>
+改进后的 <code>sqrt</code> 和 <code>fixed-point</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sqrt</span> x)
+  ((iterative-improve (<span style="color: #859900;">lambda</span> (v1 v2) (&lt; (abs (- v1 v2)) 0.0001))
+                      (<span style="color: #859900;">lambda</span> (y) (average y (/ x y))))
+   1.0))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">fixed-point</span> f first-guess)
+  ((iterative-improve (<span style="color: #859900;">lambda</span> (v1 v2) (&lt; (abs (- v1 v2)) 0.0001))
+                      (<span style="color: #859900;">lambda</span> (y) (f y)))
+   first-guess))
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">构造数据抽象</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">练习2.1</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-rat</span> n d)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-rat-inner</span> n d)
+    (<span style="color: #859900;">let</span> ((g (gcd n d)))
+      (cons (/ n g) (/ d g))))
+  (<span style="color: #859900;">if</span> (&lt; (/ n d) 0)
+      (make-rat-inner (- (abs n))  (abs d))
+      (make-rat-inner (abs n) (abs d))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">练习2.2</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-segment</span> point-x point-y)
+  (cons point-x point-y))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">start-segment</span> segment)
+  (car segment))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">end-segment</span> segment)
+  (cdr segment))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-point</span> x y)
+  (cons x y))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">x-point</span> point)
+  (car point))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">y-point</span> point)
+  (cdr point))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">midpoint-segment</span> segment)
+  (make-point (average (x-point (start-segment segment))
+                       (x-point (end-segment segment)))
+              (average (y-point (start-segment segment))
+                       (y-point (end-segment segment)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">练习2.3</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-rectangle</span> p-lu p-rd)
+  (cons p-lu p-rd))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">rect-left-up-point</span> rect)
+  (car rect))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">rect-right-down-point</span> rect)
+  (cdr rect))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">perimeter</span> rect)
+  (* 2 (+ (- (x-point (rect-right-down-point rect))
+             (x-point (rect-left-up-point rect)))
+          (- (y-point (rect-left-up-point rect))
+             (y-point (rect-right-down-point rect))))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">area</span> rect)
+  (* (- (x-point (rect-right-down-point rect))
+        (x-point (rect-left-up-point rect)))
+     (- (y-point (rect-left-up-point rect))
+        (y-point (rect-right-down-point rect)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">练习2.4</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">cdr</span> z)
+  (z (<span style="color: #859900;">lambda</span> (p q) q)))
+</pre>
+</div>
+
+<p>
+这三个过程充分利用了第一章讲的构造过程抽象： <code>cons</code> 返回一个过程，这个过程将一个参数过程作用于两个元素x和y上；于是，在定义 <code>car</code> 和 <code>cdr</code> 的时候，需要构造一个过程，分别返回第一个元素和第二个元素，然后把这个过程作为参数传递给 <code>cons</code> 返回的过程。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">练习2.5</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+几个过程的定义如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">cons</span> a b)
+  (* (expt 2 a) (expt 3 b)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">a</span> x n)
+  (<span style="color: #859900;">if</span> (= (remainder x n) 0)
+      (a (/ x n) n)
+      x))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">car</span> z)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">d</span> x n)
+    (<span style="color: #859900;">if</span> (= (remainder x n) 0)
+        (a (/ x n) n)
+        x))
+  (/ (log (d z 3))
+     (log 2)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">cdr</span> z)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">d</span> x n)
+    (<span style="color: #859900;">if</span> (= (remainder x n) 0)
+        (a (/ x n) n)
+        x))
+  (/ (log (d z 2))
+     (log 3)))
+</pre>
+</div>
+
+<p>
+不过这几个过程还是有缺陷的，只能用于整数，例如 <code>(car (cons 1.2 3))</code> 就会返回不正确的结果，不过这是必然的。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6">练习2.6</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+初看到这个题目的时候，我的第一反应是“我操”（原谅我的粗口，但这确实是我的下意识反应。。），已经定义好的 <b>zero</b> 是一个过程，它会返回一个过程，返回的过程里面又会返回一个过程。。
+</p>
+
+<p>
+硬着头皮看了看，后面有提示说可以按 <code>(add-1 zero)</code> 来求 <b>one</b> ，于是把这个调用展开，可以得到以下关于 <b>one</b> 的定义：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> <span style="color: #268bd2;">one</span> (<span style="color: #859900;">lambda</span> (f) (<span style="color: #859900;">lambda</span> (x) (f x))))
+</pre>
+</div>
+
+<p>
+和 <b>zero</b> 作了一下比较，第一眼发现是返回的过程的过程里面多了一个 <code>f</code> 调用，再观察 <code>add-1</code> 的定义，有理由相信接下来 <b>two</b> 的定义肯定是再多一个 <code>f</code> 调用，再利用 <code>(add-1 one)</code> 来展开一下，果然， <b>two</b> 的定义如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> <span style="color: #268bd2;">two</span> (<span style="color: #859900;">lambda</span> (f) (<span style="color: #859900;">lambda</span> (x) (f (f x)))))
+</pre>
+</div>
+
+<p>
+至此，这一切已经明确了，数字增长1，对 <code>f</code> 的调用多加一层即可。而且，根据 <code>add-1</code> 的定义，可以写出相应的 <code>+</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">+</span> a b)
+  (<span style="color: #859900;">lambda</span> (f) (<span style="color: #859900;">lambda</span> (x) ((b f) ((a f) x)))))
+</pre>
+</div>
+
+<p>
+别看这个过程只有两行，可是花了我不少时间，最初的版本我写成了 <code>b(f)(a(f))(x)</code> ，但实际的形式应该是： <code>b(f)(a(f)(x))</code> （有点绕，大致意思是，a对f作用后的返回值，作为函数对x进行作用，然后将其返回值作为参数，传递给b对f作用后的返回值）。
+</p>
+
+<p>
+另外有一点，因为这些数字的表示都是过程，所以不太好验证，所以需要构造一个 <code>f</code> 过程，能让它根据调用次数得到不同的值，本打算采用乘方，但乘方增大的过程太快；也没办法用加法，因为加法过程已经被我们给重定义了。所以选用了普通乘法，几个验证例子如下（注意把参数x的初始值置为1，以免干扰运算的结果）：
+</p>
+
+<pre class="example">
+((one (lambda (x) (* 2 x))) 1)                 =&gt; 2^1       = 2
+(((add-1 one) (lambda (x) (* 2 x))) 1)         =&gt; 2^(1+1)   = 4
+(((add-1 two) (lambda (x) (* 2 x))) 1)         =&gt; 2^(2+1)   = 8
+(((+ two two) (lambda (x) (* 2 x))) 1)         =&gt; 2^(2+2)   = 16
+(((+ (+ two two) one) (lambda (x) (* 2 x))) 1) =&gt; 2^(2+2+1) = 32
+</pre>
+
+<p>
+以我个人的意见，这个题目算是把第一章“构造过程抽象”的思想用到极致了的，第一章后面的习题跟这个相比，简直是小巫见大巫。而且，这个题目也很有意思，数字的表示不再是传统的计数方式，而是用过程调用次数来表示。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7">练习2.7</h3>
+<div class="outline-text-3" id="text-2-7">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">upper-bound</span> z)
+  (cdr z))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">lower-bound</span> z)
+  (car z))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-8" class="outline-3">
+<h3 id="sec-2-8">练习2.8</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+根据之前的 <code>add-interval</code> 和 <code>mul-interval</code> 来看，对两个区间操作的结果，是这样一个区间：其下界是两个区间分别取一个点执行相应操作的可能取的最小值，而上界则是相应的可能的最大值。
+</p>
+
+<p>
+所以，对于减操作一样，需要确定两个区间中点相减的可能最小值与最大值，这就是新区间的界。假设两个区间分别为[a1, b1]和[a2, b2]，那么，有以下结论：
+</p>
+
+<pre class="example">
+a1 - a2 &gt; a1 - b2
+b1 - a2 &gt; b1 - b2
+
+b1 - a2 &gt; a1 - a2
+b1 - b2 &gt; a1 - b2
+</pre>
+
+<p>
+所以，很容易就可以看出，新区间的下界是 <code>a1 - b2</code> ，上界是 <code>b1 - a2</code> ，于是，有以下定义：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sub-interval</span> x y)
+  (make-interval (- (lower-bound x) (upper-bound y))
+                 (- (upper-bound x) (lower-bound y))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-9" class="outline-3">
+<h3 id="sec-2-9">练习2.9</h3>
+<div class="outline-text-3" id="text-2-9">
+<p>
+对于加法和减法的证明，实在是不能再简单了，所以这里也就不写了，最后结果是，和和差的宽度都是两个操作数的宽度的算术平均值。至于乘和除，从定义上就可以看出来，其上界和下界的确定有一定的随机性（不像加和减，能完完全全推导出其上界和下界），所以，其宽度自然也不会是关于两个操作数的宽度的函数。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-10" class="outline-3">
+<h3 id="sec-2-10">练习2.10</h3>
+<div class="outline-text-3" id="text-2-10">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">div-interval</span> x y)
+  (<span style="color: #859900;">if</span> (<span style="color: #859900;">and</span> (&lt;= (lower-bound y) 0)
+           (&gt;= (upper-bound y) 0))
+      (error <span style="color: #2aa198;">"cannot divide an interval contains zero."</span>)
+      (mul-interval
+       x
+       (make-interval (/ 1.0 (upper-bound y))
+                      (/ 1.0 (lower-bound y))))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-11" class="outline-3">
+<h3 id="sec-2-11">练习2.11</h3>
+<div class="outline-text-3" id="text-2-11">
+<p>
+说实话，我个人觉得这个题目挺没意思的，原来的 <code>mul-interval</code> 的实现就是为了避免出现要区分区间边界正负的情况，而这个题目则要求把这些情况一一列出来。。
+</p>
+
+<p>
+<b>如此实现的唯一理由就是减少乘法的执行次数来提高效率，但个人认为这点效率的提升和代码的可读性及简洁程度相比根本不算什么，而且，其实也提升不了多少性能，改写之后至少也需要两次乘法，而原来的实现也只有四次乘法而已。。</b>
+</p>
+
+<p>
+所以，我就不实现了，只列出所有的可能（以a/b分别代表两个区间，L/M/R分别代表区间全在负半轴、区间跨零点，区间全在正半轴的情况）：
+</p>
+
+<pre class="example">
+aL, bL
+aL, bM
+aL, bR
+aM, bL
+aM, bM
+aM, bR
+aR, bL
+aR, bM
+aR, bR
+</pre>
+
+<p>
+其实就是简单的排列组合而已。这里并没有单独考虑区间边界正好是零点的情况，因为这种情况并没有特殊性，若左边界为零点，可将其归到R，同理，若右边界为零点，可将其归到L。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-12" class="outline-3">
+<h3 id="sec-2-12">练习2.12</h3>
+<div class="outline-text-3" id="text-2-12">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-center-percent</span> c p)
+  (make-interval (- c (* c p)) (+ c (* c p))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">percent</span> i)
+  (/ (width i) (center i)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-13" class="outline-3">
+<h3 id="sec-2-13">练习2.13</h3>
+<div class="outline-text-3" id="text-2-13">
+<p>
+这个证明还比较简单，假设两个区间的中点和误差百分比分别为c1, p1和c2, p2，所以，两个区间可以表示为：
+</p>
+
+<pre class="example">
+i1 = [c1 - c1 * p1, c1 + c1 * p1]
+i2 = [c2 - c2 * p2, c2 + c2 * p2]
+</pre>
+
+<p>
+而题目假设所有的数为正，所以，区间相乘的下界即为原来的区间的下界相乘，上界即为原来的上界相乘，新区间如下：
+</p>
+
+<pre class="example">
+i = i1 * i2 = [(c1 - c1 * p1)(c2 - c2 * p2), (c1 + c1 * p1)(c2 + c2 * p2)]
+  = [c1c2 - c1c2p1 - c1c2p2 + c1c2p1p2, c1c2 + c1c2p1 + c1c2p2 + c1c2p1p2]
+</pre>
+
+<p>
+所以，按照定义，新生成的区间的百分比误差为：
+</p>
+
+<pre class="example">
+p = width / center = (ub - lb) / (ub + lb)
+  = ...
+  = (p1 + p2) / (1 + p1 * p2)
+</pre>
+
+<p>
+上面的计算公式中， <code>width</code> 和 <code>center</code> 分别代表新生成区间宽度和中点， <code>ub</code> 和 <code>lb</code> 分别代表新生成区间的上界和下界。中间的具体计算步骤比较难用纯文字表达，所以略去，其实也不难，将相应的值代入计算即可。
+</p>
+
+<p>
+可以看到，最后的误差百分比跟原来的中点c1和c2是没有关系的，命题即得证。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-14" class="outline-3">
+<h3 id="sec-2-14">练习2.14</h3>
+<div class="outline-text-3" id="text-2-14">
+<p>
+根据给出的 <code>par1</code> 和 <code>par2</code> 过程的定义，作如下验证：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(par1 (make-center-percent 1 0.05)
+      (make-center-percent 2 0.02))
+
+(par2 (make-center-percent 1 0.05)
+      (make-center-percent 2 0.02))
+</pre>
+</div>
+
+<p>
+结果如下：
+</p>
+
+<pre class="example">
+&gt; '(0.6025889967637541 . 0.7360824742268043)
+&gt; '(0.6398625429553264 . 0.6932038834951456)
+</pre>
+
+<p>
+可以看到，两次的结果确实不同。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-15" class="outline-3">
+<h3 id="sec-2-15">练习2.15</h3>
+<div class="outline-text-3" id="text-2-15">
+<p>
+<del>个人感觉，这个说法是站不住脚的。因为，根据当前的区间四则运算定义，数据精度的损失是跟计算次数有关的，而不是跟什么非准确性变量的出现次数有关。</del>
+</p>
+
+<p>
+<del>根据 <code>par1</code> 和 <code>par2</code> 的定义可以看出，前者使用了三次区间运算，而后者使用了四次运算，所以后者的精度要比前者差。</del>
+</p>
+
+<p>
+感觉上面的想法不靠谱，于是去google了一下这个题目，才发现“真理”跟我的想法完全不同：我以为所谓的精度损失是跟计算机无法完全表示浮点数有关，在计算的过程中逐渐损失了精度，但事实上，根本就没有所谓的精度，也跟计算机的浮点计算精度没有任何关系！！
+</p>
+
+<p>
+根本原因是因为，我们的计算对象本来就是一个不确定具体值的区间，所以，在将两个区间进行相加和相乘操作的时候，无形中扩大了区间的宽度，也改变了误差百分比！！但是有一点需要注意的是，并不是所有的区间计算都会改变宽度，“元区间”（我自己起的名字） <code>[1, 1]</code> 就不会增加宽度，其它的“非准确性变量”都会改变区间宽度。所以，题目中的Eva Lu Ator的说法是对的，非准确性变量出现得越少，最后生成的区间就越紧凑。根据这个观点， <code>par2</code> 总共有四次计算，其中三次都有元区间参与而只有一次是两个非准确性变量参与；而 <code>par1</code> 的三次计算全部都是非准确性变量参与的，所以确实 <code>par2</code> 是比 <code>par1</code> 更好的程序。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-16" class="outline-3">
+<h3 id="sec-2-16">练习2.16</h3>
+<div class="outline-text-3" id="text-2-16">
+<p>
+这个题目就更进一步，让我们自行设计一套针对区间的计算法则，让在数学上等价的计算公式通过我们的计算法则能算出相同的结果。
+</p>
+
+<p>
+受练习2.13的启发，我想能否设计出针对一个区间的中点c和误差百分比p分别进行计算的四则运算法则，在分别运算完成之后，再将计算所得结果的中点C和误差百分比P组合起来得到结果区间。但后来再想了想，发现不太可行，就拿2.13的结论来说，两个区间相乘，结果的误差百分比 <code>p = (p1 + p2) / (1 + p1 * p2)</code> ，如果p1和p2足够小，上面的等式就近似等于 <code>p = p1 + p2</code> ，这就意味着，结果区间的误差百分比是两个因子区间误差百分比的和，从而必然导致区间的扩大。自然而然，通过数学上等价的公式计算的结果也不会相同。
+</p>
+
+<p>
+后来再深入地想了想，这种问题的出现，是因为区间运算的约束条件所造成的，以乘法为例，要确保约束条件满足（即结果区间必须要包含因子区间所有可能取值的乘积），就必然会导致区间的扩大。所以，只要设计出来的计算法则满足区间计算的约束条件，那么无论怎么精心设计，都会碰上这一不可避免的问题。
+</p>
+
+<p>
+PS：这个题目的后面有一个警告，说是这个问题非常难，所以，我就不再去深究了，以我目前的数学水平，还达不到深入研究这一问题的层次。。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-17" class="outline-3">
+<h3 id="sec-2-17">练习2.17</h3>
+<div class="outline-text-3" id="text-2-17">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">last-pair</span> items)
+  (<span style="color: #859900;">if</span> (<span style="color: #859900;">or</span> (null? items) (null? (cdr items)))
+      items
+      (last-pair (cdr items))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-18" class="outline-3">
+<h3 id="sec-2-18">练习2.18</h3>
+<div class="outline-text-3" id="text-2-18">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">reverse</span> items)
+  (<span style="color: #859900;">if</span> (null? items)
+      items
+      (append (reverse (cdr items)) (list (car items)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-19" class="outline-3">
+<h3 id="sec-2-19">练习2.19</h3>
+<div class="outline-text-3" id="text-2-19">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">first-denomination</span> coin-values)
+  (car coin-values))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">except-first-denomination</span> coin-values)
+  (cdr coin-values))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">no-more?</span> coin-values)
+  (null? coin-values))
+</pre>
+</div>
+
+<p>
+算法中根本就没有涉及到有关硬币顺序的内容，所以表 <code>coin-values</code> 的顺序显然不会影响最后的结果。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-20" class="outline-3">
+<h3 id="sec-2-20">练习2.20</h3>
+<div class="outline-text-3" id="text-2-20">
+<p>
+这个题目还很花了我一点时间。。主要是这货不是普通的 <code>if...else...</code> 型的简单的递归调用，而是有三个分支，而且递归终止条件也不太好控制。。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">same-parity</span> . items)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sp?</span> a b)
+    (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">and</span> (odd? a) (odd? b)) true)
+          ((<span style="color: #859900;">and</span> (even? a) (even? b)) true)
+          (<span style="color: #859900;">else</span> false)))
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sp</span> a others)
+    (<span style="color: #859900;">cond</span> ((null? others) (list a))
+          ((sp? a (car others)) (append (list a)
+                                        (sp (car others) (cdr others))))
+          (<span style="color: #859900;">else</span> (sp a (cdr others)))))
+  (<span style="color: #859900;">if</span> (null? items)
+      items
+      (sp (car items) (cdr items))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-21" class="outline-3">
+<h3 id="sec-2-21">练习2.21</h3>
+<div class="outline-text-3" id="text-2-21">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">square-list</span> items)
+  (<span style="color: #859900;">if</span> (null? items)
+      '()
+      (cons (expt (car items) 2) (square-list (cdr items)))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">square-list</span> items)
+  (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (x) (expt x 2))
+       items))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-22" class="outline-3">
+<h3 id="sec-2-22">练习2.22</h3>
+<div class="outline-text-3" id="text-2-22">
+<p>
+两种实现都是有问题的，例如对于如下调用：
+</p>
+
+<pre class="example">
+(square-list '(1 2 3))
+</pre>
+
+<p>
+两种实现的展开过程分别如下：
+</p>
+
+<pre class="example">
+;; implementation 1
+
+=&gt;  (iter '(1 2 3) nil)
+=&gt;  (iter '(2 3) '(1))
+=&gt;  (iter '(3) '(4 1))
+=&gt;  (iter '() '(9 4 1))
+=&gt;  '(9 4 1)
+</pre>
+
+<pre class="example">
+;; implementation 2
+
+=&gt;  (iter '(1 2 3) nil)
+=&gt;  (iter '(2 3) '(nil . 1))
+=&gt;  (iter '(3) '((nil . 1) . 4))
+=&gt;  (iter '() '(((nil . 1) . 4) . 9))
+=&gt;  '(((nil . 1) . 4) . 9)
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2-23" class="outline-3">
+<h3 id="sec-2-23">练习2.23</h3>
+<div class="outline-text-3" id="text-2-23">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">for-each</span> proc items)
+  (<span style="color: #859900;">if</span> (null? items)
+      '()
+      (<span style="color: #859900;">begin</span> (proc (car items))
+             (<span style="color: #859900;">for-each</span> proc (cdr items)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-24" class="outline-3">
+<h3 id="sec-2-24">练习2.24</h3>
+<div class="outline-text-3" id="text-2-24">
+<p>
+这个题目的结果是 <code>(1 (2 (3 4)))</code> ，和图2-5刚好相反，图2-5是 <code>car</code> 复杂， <code>cdr</code> 简单，这个题目是 <code>cdr</code> 复杂， =car=简单。
+</p>
+
+<p>
+这个结构图和树状图就不画了，只用纯文本画不出来，我画书上了。。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-25" class="outline-3">
+<h3 id="sec-2-25">练习2.25</h3>
+<div class="outline-text-3" id="text-2-25">
+<pre class="example">
+(car (cdr (car (cdr (cdr '(1 3 (5 7) 9))))))
+(car (car '((7))))
+(car (cdr (car (cdr (car (cdr (car (cdr (car (cdr (car (cdr '(1 (2 (3 (4 (5 (6 7))))))))))))))))))
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2-26" class="outline-3">
+<h3 id="sec-2-26">练习2.26</h3>
+<div class="outline-text-3" id="text-2-26">
+<pre class="example">
+(append x y) = (1 2 3 4 5 6)
+(cons x y)   = ((1 2 3) 4 5 6)
+(list x y)   = ((1 2 3) (4 5 6))
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2-27" class="outline-3">
+<h3 id="sec-2-27">练习2.27</h3>
+<div class="outline-text-3" id="text-2-27">
+<p>
+被这个题坑了好久才做出来。。这个题需要注意的是，假设x是 <code>((1 2) (3 4))</code> 的话，那么 <code>(car x)</code> 返回 <code>(1 2)</code> ，而 <code>(cdr x)</code> 返回 <code>((3 4))</code> ！！千万不要以为 <code>car</code> 和 <code>cdr</code> 是对等的！！前者是取元素，而后者是取剩下的表！！我就是坑在这一点上，在线性表的时候，这个坑还算比较小，如果是一棵树的话，这个坑就大了。。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">deep-reverse</span> items)
+  (<span style="color: #859900;">cond</span> ((not (pair? items)) items)
+        ((null? (cdr items)) (list (deep-reverse (car items))))
+        (<span style="color: #859900;">else</span> (append (deep-reverse (cdr items)) (list (deep-reverse (car items)))))))
+</pre>
+</div>
+
+<p>
+在上述代码中，有两个地方都对 <code>car</code> 进行了 <code>list</code> 包装处理，这是因为，按前面例子中所说的， <code>car</code> 只取出一个元素，所以，在结果中需要重新将其包装成一个表，而 <code>cdr</code> 取出的本身就是一个表，所以不需要包装。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-28" class="outline-3">
+<h3 id="sec-2-28">练习2.28</h3>
+<div class="outline-text-3" id="text-2-28">
+<p>
+这个题又是一个坑，不过有了上题的经验，这一题就好控制多了，与上一题不同的是，这一题用迭代来完成，因为要将树形的结构给转换成线性表，所以需要一个“全局”变量来存储中间转换结果，迭代是最适合的，用递归的话，可能需要 <code>let</code> 声明，而我是比较讨厌 <code>let</code> 的，能尽量不用就尽量不用。。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">fringe</span> items)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">iter</span> items result)
+    (<span style="color: #859900;">cond</span> ((null? items) result)
+          ((not (pair? items)) (append result (list items)))
+          (<span style="color: #859900;">else</span> (iter (cdr items) (iter (car items) result)))))
+  (iter items '()))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-29" class="outline-3">
+<h3 id="sec-2-29">练习2.29</h3>
+<div class="outline-text-3" id="text-2-29">
+<p>
+a) 这几个过程还是相对比较简单的，取对应元素即可，需要注意的是，在取活动体右边的部分时，要用 <code>cadr</code> 而不是 <code>cdr</code> 。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">left-branch</span> mobile)
+  (car mobile))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">right-branch</span> mobile)
+  (cadr mobile))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">branch-length</span> branch)
+  (car branch))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">branch-structure</span> branch)
+  (cadr branch))
+</pre>
+</div>
+
+<p>
+b) <code>total-weight</code> 过程如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">total-weight</span> mobile)
+  (<span style="color: #859900;">cond</span> ((null? mobile) 0)
+        ((not (pair? mobile)) mobile)
+        (<span style="color: #859900;">else</span> (+ (total-weight (branch-structure (left-branch mobile)))
+                 (total-weight (branch-structure (right-branch mobile)))))))
+</pre>
+</div>
+
+<p>
+c) 用于检查平衡的 <code>check-balance</code> 过程如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">check-balance</span> mobile)
+  (<span style="color: #859900;">cond</span> ((null? mobile) #f)
+        ((not (pair? mobile)) #t)
+        ((not (= (* (branch-length (left-branch mobile))
+                    (total-weight (branch-structure (left-branch mobile))))
+                 (* (branch-length (right-branch mobile))
+                    (total-weight (branch-structure (right-branch mobile))))))
+         #f)
+        (<span style="color: #859900;">else</span> (<span style="color: #859900;">and</span> (check-balance (branch-structure (left-branch mobile)))
+                   (check-balance (branch-structure (right-branch mobile)))))))
+</pre>
+</div>
+
+<p>
+d) 起初我以为要大修改才能达到要求，但仔细看了看，跟底层具体数据结构相关的只有在a)中定义的那几个选择过程，而b)和c)中的过程都是构建在a)中的选择过程之上，所以并不会受到影响，因此只需要简单改a)中的四个选择过程即可。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-30" class="outline-3">
+<h3 id="sec-2-30">练习2.30</h3>
+<div class="outline-text-3" id="text-2-30">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">square-tree</span> tree)
+  (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (sub-tree)
+         (<span style="color: #859900;">if</span> (pair? sub-tree)
+             (square-tree sub-tree)
+             (expt sub-tree 2)))
+       tree))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">square-tree</span> tree)
+  (<span style="color: #859900;">cond</span> ((null? tree) #nil)
+        ((not (pair? tree)) (expt tree 2))
+        (<span style="color: #859900;">else</span> (cons (square-tree (car tree))
+                    (square-tree (cdr tree))))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-31" class="outline-3">
+<h3 id="sec-2-31">练习2.31</h3>
+<div class="outline-text-3" id="text-2-31">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">tree-map</span> proc tree)
+  (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (sub-tree)
+         (<span style="color: #859900;">if</span> (pair? sub-tree)
+             (tree-map proc sub-tree)
+             (proc sub-tree)))
+       tree))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-32" class="outline-3">
+<h3 id="sec-2-32">练习2.32</h3>
+<div class="outline-text-3" id="text-2-32">
+<p>
+这个解法，就是典型的分治算法，跟第一章那个硬币换零钱有点像，把看似无处下手的大问题硬生生化成多个小问题，再逐个解决。
+</p>
+
+<p>
+思路：除空集外，一个集合的子集，必然由以下两部分组成：
+</p>
+
+<ul class="org-ul">
+<li>除第一个元素外，其它元素形成的集合的所有子集
+</li>
+<li>上一条中，所有子集再加入第一个元素所形成的所有集合
+</li>
+</ul>
+
+<p>
+有人问，那由第一个元素单独形成的集合怎么办，其实包含在第二条中了，因为第一条中的子集有空集，所以再利用第二条的规则，就可以得到只包含第一个元素的集合。
+</p>
+
+<p>
+下面的解法正是由此而来：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">subsets</span> s)
+  (<span style="color: #859900;">if</span> (null? s)
+      (list #nil)
+      (<span style="color: #859900;">let</span> ((rest (subsets (cdr s))))
+        (append rest
+                (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (set)
+                       (append set (list (car s))))
+                     rest)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-33" class="outline-3">
+<h3 id="sec-2-33">练习2.33</h3>
+<div class="outline-text-3" id="text-2-33">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">map</span> p sequence)
+  (accumulate (<span style="color: #859900;">lambda</span> (x y) (cons (p x) y)) #nil sequence))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">append</span> seq1 seq2)
+  (accumulate cons seq2 seq1))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">length</span> sequence)
+  (accumulate (<span style="color: #859900;">lambda</span> (x y) (+ y 1)) 0 sequence))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-34" class="outline-3">
+<h3 id="sec-2-34">练习2.34</h3>
+<div class="outline-text-3" id="text-2-34">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">hornor-eval</span> x coefficient-sequence)
+  (accumulate (<span style="color: #859900;">lambda</span> (this-coeff higher-terms)
+                (+ this-coeff (* x higher-terms)))
+              0
+              coefficient-sequence))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-35" class="outline-3">
+<h3 id="sec-2-35">练习2.35</h3>
+<div class="outline-text-3" id="text-2-35">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">count-leaves</span> tree)
+  (accumulate (<span style="color: #859900;">lambda</span> (x y) (+ x y))
+              0
+              (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (x) (length (enumerate-tree x)))
+                   tree)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-36" class="outline-3">
+<h3 id="sec-2-36">练习2.36</h3>
+<div class="outline-text-3" id="text-2-36">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">accumulate-n</span> op init seqs)
+  (<span style="color: #859900;">if</span> (null? (car seqs))
+      #nil
+      (cons (accumulate op init (<span style="color: #859900;">map</span> car seqs))
+            (accumulate-n op init (<span style="color: #859900;">map</span> cdr seqs)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-37" class="outline-3">
+<h3 id="sec-2-37">练习2.37</h3>
+<div class="outline-text-3" id="text-2-37">
+<p>
+关于矩阵运算基本都忘光了，这个题目中的定义又不太清楚，摸索了老半天才战战兢兢地写出答案（其实矩阵和行向量不太能相乘的，因为矩阵乘法规定第一个矩阵的列数和第二个矩阵的行数必须相等，如果矩阵乘以行向量，那这个矩阵必须是列向量才行）：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">dot-product</span> v w)
+  (accumulate + 0 (<span style="color: #859900;">map</span> * v w)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">matrix-*-vector</span> m v)
+  (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (row)
+         (dot-product v row)) m))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">transpose</span> mat)
+  (accumulate-n cons #nil mat))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">matrix-*-matrix</span> m n)
+  (<span style="color: #859900;">let</span> ((cols (transpose n)))
+    (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (row)
+           (matrix-*-vector n row)) m)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-38" class="outline-3">
+<h3 id="sec-2-38">练习2.38</h3>
+<div class="outline-text-3" id="text-2-38">
+<p>
+<code>fold-left</code> 和 <code>fold-right</code> 不相同的不仅仅是累计作用的顺序，还有两个操作数的顺序也相反：
+</p>
+
+<pre class="example">
+(fold-left list #nil '(1 2 3))   ;; -&gt; (((#nil 1) 2) 3)
+(fold-right list #nil '(1 2 3))  ;; -&gt; (1 (2 (3 #nil)))
+</pre>
+
+<p>
+前者产生的第一个序列是 <code>(#nil 1)</code> ，而后者产生的第一个序列是 <code>(3 #nil)</code> ，由此可以看出，操作数的顺序也是相反的。
+</p>
+
+<p>
+所以，要想 <code>fold-left</code> 和 <code>fold-right</code> 产生相同的结果，那么 <code>op</code> 操作只要满足交换律即可，比如 <code>+</code> 或者 <code>*</code> 。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-39" class="outline-3">
+<h3 id="sec-2-39">练习2.39</h3>
+<div class="outline-text-3" id="text-2-39">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">reverse1</span> sequence)
+  (fold-right (<span style="color: #859900;">lambda</span> (x y) (append y (list x))) #nil sequence))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">reverse2</span> sequence)
+  (fold-left (<span style="color: #859900;">lambda</span> (x y) (cons y x)) #nil sequence))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-40" class="outline-3">
+<h3 id="sec-2-40">练习2.40</h3>
+<div class="outline-text-3" id="text-2-40">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">unique-pairs</span> n)
+  (flatmap (<span style="color: #859900;">lambda</span> (i)
+             (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (j) (list i j))
+                  (enumerate-interval 1 (- i 1))))
+           (enumerate-interval 1 n)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-41" class="outline-3">
+<h3 id="sec-2-41">练习2.41</h3>
+<div class="outline-text-3" id="text-2-41">
+<p>
+在定义 <code>unique=triples</code> 的时候借用了前面的 <code>flatmap</code> ，但由于 <code>flatmap</code> 只能除去多余的一层括号，而我们的三元组有三层嵌套映射，比二元组多了一层，所以需要在外面再加上一层 <code>accumulate</code> 来去除多出来的一层括号。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">unique-triples</span> n)
+  (accumulate append
+              #nil
+              (flatmap (<span style="color: #859900;">lambda</span> (i)
+                         (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (j)
+                                (<span style="color: #859900;">map</span> (<span style="color: #859900;">lambda</span> (k) (list i j k))
+                                     (enumerate-interval 1 (- j 1))))
+                              (enumerate-interval 1 (- i 1))))
+                       (enumerate-interval 1 n))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">const-sum-triples</span> n s)
+  (filter (<span style="color: #859900;">lambda</span> (item)
+            (= s (+ (car item) (cadr item) (caddr item))))
+          (unique-triples n)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-42" class="outline-3">
+<h3 id="sec-2-42">练习2.42</h3>
+<div class="outline-text-3" id="text-2-42">
+<p>
+这个是经典的八皇后问题，题目把框架给写好了，我们只需要填好 <code>empty-board</code> 变量、 <code>adjoin-position</code> 过程以及 <code>safe?</code> 过程即可。不过这个框架抽象程度比较高，要看懂还不太容易。。
+</p>
+
+<p>
+废话少说，其实这个框架设计得是很巧妙的：它已经把数据层给我们剥离开来了，也就是说，跟数据结构相关的过程都要我们自己实现，这样，就算采用不同的数据结构来表示棋盘构造和皇后位置，只要上面的两个过程和一个变量逻辑正确，这个框架也是可以正常工作的，这就是数据抽象的威力！！
+</p>
+
+<p>
+我的数据结构：本来是打算构建一个向量，第k个元素代表第k列的皇后的行数，但是这个向量在 <code>safe?</code> 过程中操作有点麻烦，于是把这个向量给颠倒了过来，第k个元素代表第n-k+1列皇后的行数，这样在 <code>safe?</code> 过程中就好操作多了。按道理，在最后的结果中，还是要把这个向量给再颠倒过来的，但是由于对称的关系，如果存在一个解 <code>(5 2 4 7 3 8 6 1)</code> 的话，那么必然存在解 <code>(1 6 8 3 7 4 2 5)</code> ，所以没必要再给颠倒回来。
+</p>
+
+<p>
+相关的代码如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> <span style="color: #268bd2;">empty-board</span> #nil)
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">adjoin-position</span> new-row k rest-of-queens)
+  (append (list new-row) rest-of-queens))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">safe?</span> k positions)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">iter</span> k row c pos)
+    (<span style="color: #859900;">cond</span> ((null? pos) #t)
+          ((<span style="color: #859900;">or</span> (= row (car pos))
+               (= (abs (- row (car pos)))
+                  (abs (- k c)))) #f)
+          (<span style="color: #859900;">else</span> (iter k row (- c 1) (cdr pos)))))
+  (iter k (car positions) (- k 1) (cdr positions)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-43" class="outline-3">
+<h3 id="sec-2-43">练习2.43</h3>
+<div class="outline-text-3" id="text-2-43">
+<p>
+这个题目，开始看了半天没看出来为什么：假设 <code>(queen-cols k)</code> 的解有 <code>f(k)</code> 个，那么一个是内层循环n次，外层循环f(k-1)次；另一个是内层循环f(k-1)次，外层循环n次，看起来好像没有区别。。于是把这两层循环换了一下，果然慢。。
+</p>
+
+<p>
+又看了半天，终于看出点眉目了：正常的解的内层循环代价很小，但是Louis的解的内层是递归调用，所以代价很大！ <code>(queen-cols k)</code> 需要调用n次 <code>(queen-cols (- k 1))</code> ，而 <code>(queen-cols (- k 1))</code> 又需要调用n次 <code>(queen-cols (- k 2))</code> ，如此递归下去，可以推出： <code>(queen-cols k)</code> 最终调用了n的n次方次 <code>(queen-cols 0)</code> （因为到这一级才是常数级调用，所以要一直展开到这一级）！！
+</p>
+
+<p>
+所以，如果正常解的时间为T的话，那么Louis的解针对8x8的棋盘就是 <code>8^8 * T</code> 。。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-44" class="outline-3">
+<h3 id="sec-2-44">练习2.44</h3>
+<div class="outline-text-3" id="text-2-44">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">up-split</span> painter n)
+  (<span style="color: #859900;">if</span> (= n 0)
+      painter
+      (<span style="color: #859900;">let</span> ((smaller (up-split painter (- n 1))))
+        (below painter (beside smaller smaller)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-45" class="outline-3">
+<h3 id="sec-2-45">练习2.45</h3>
+<div class="outline-text-3" id="text-2-45">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">split</span> proc1 proc2)
+  (<span style="color: #859900;">lambda</span> (painter n)
+    (<span style="color: #859900;">if</span> (= n 0)
+        painter
+        (<span style="color: #859900;">let</span> ((smaller ((split proc1 proc2) painter (- n 1))))
+          (proc1 painter (proc2 smaller smaller))))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-46" class="outline-3">
+<h3 id="sec-2-46">练习2.46</h3>
+<div class="outline-text-3" id="text-2-46">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-vect</span> x y)
+  (cons x y))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">xcor-vect</span> vect)
+  (car vect))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">ycor-vect</span> vect)
+  (cdr vect))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">add-vect</span> vect1 vect2)
+  (make-vect (+ (xcor-vect vect1)
+                (xcor-vect vect2))
+             (+ (ycor-vect vect1)
+                (ycor-vect vect2))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sub-vect</span> vect1 vect2)
+  (make-vect (- (xcor-vect vect1)
+                (xcor-vect vect2))
+             (- (ycor-vect vect1)
+                (ycor-vect vect2))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">scale-vect</span> s vect)
+  (make-vect (* s (xcor-vect vect))
+             (* s (ycor-vect vect))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-47" class="outline-3">
+<h3 id="sec-2-47">练习2.47</h3>
+<div class="outline-text-3" id="text-2-47">
+<p>
+方案1：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">origin-frame</span> frame)
+  (car frame))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">edge1-frame</span> frame)
+  (cadr frame))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">edge2-frame</span> frame)
+  (caddr frame))
+</pre>
+</div>
+
+<p>
+方案2（和方案1仅仅只有 <code>edge2-frame</code> 的定义不同）：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">origin-frame</span> frame)
+  (car frame))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">edge1-frame</span> frame)
+  (cadr frame))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">edge2-frame</span> frame)
+  (cddr frame))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-48" class="outline-3">
+<h3 id="sec-2-48">练习2.48</h3>
+<div class="outline-text-3" id="text-2-48">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-segment</span> start-vect end-vect)
+  (cons start-vect end-vect))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">start-segment</span> segment)
+  (car segment))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">end-segment</span> segment)
+  (cdr segment))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-49" class="outline-3">
+<h3 id="sec-2-49">练习2.49</h3>
+<div class="outline-text-3" id="text-2-49">
+<p>
+这个题目，只需要学好高中数学的向量部分就可以做了。
+</p>
+
+<p>
+对于a)、b)、c)三个小题，基本是一样的，都需要先确定四个基本点，然后根据这四个基本点调用 <code>make-segment</code> 产生线段再交给 <code>segments-&gt;painter</code> 即可。其中a)和b)需要确定的是框架的四个顶点；c)需要确定的是框架四条边的中点。
+</p>
+
+<p>
+确定四个顶点和四个中点都是很容易的，假设三个基本向量分别为 <b>origin</b> 、 <b>edge1</b> 、 <b>edge2</b> ，那么四个顶点和四个中点分别可以表示为：
+</p>
+
+<pre class="example">
+origin
+origin + edge1
+origin + edge2
+origin + edge1 + edge2
+</pre>
+
+<pre class="example">
+origin + 0.5 * edge1
+origin + 0.5 * edge2
+origin + edge2 + 0.5 * edge1
+origin + edeg1 + 0.5 * edge2
+</pre>
+
+<p>
+所以，很容易写出前三个小题的解答：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">border-painter</span> frame)
+  (<span style="color: #859900;">let</span> ((point1 (origin-frame frame))
+        (point2 (add-vect (origin-frame frame)
+                          (edge1-frame frame)))
+        (point3 (add-vect (origin-frame frame)
+                          (edge2-frame frame)))
+        (point4 (add-vect (origin-frame frame)
+                          (edge1-frame frame)
+                          (edge2-frame frame))))
+    ((segments-&gt;painter (list (make-segment point1 point2)
+                              (make-segment point1 point3)
+                              (make-segment point2 point4)
+                              (make-segment point3 point4)))
+     frame)))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">cross-painter</span> frame)
+  (<span style="color: #859900;">let</span> ((point1 (origin-frame frame))
+        (point2 (add-vect (origin-frame frame)
+                          (edge1-frame frame)))
+        (point3 (add-vect (origin-frame frame)
+                          (edge2-frame frame)))
+        (point4 (add-vect (origin-frame frame)
+                          (edge1-frame frame)
+                          (edge2-frame frame))))
+    ((segments-&gt;painter (list (make-segment point1 point4)
+                              (make-segment point2 point3)))
+     frame)))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">middle-point-painter</span> frame)
+  (<span style="color: #859900;">let</span> ((middle-point1 (add-vect (origin-frame frame)
+                                 (scale-vect 0.5 (edge1-frame frame))))
+        (middle-point2 (add-vect (origin-frame frame)
+                                 (scale-vect 0.5 (edge2-frame frame))))
+        (middle-point3 (add-vect (origin-frame frame)
+                                 (edge2-frame frame)
+                                 (scale-vect 0.5 (edge1-frame frame))))
+        (middle-point4 (add-vect (origin-frame frame)
+                                 (edge1-frame frame)
+                                 (scale-vect 0.5 (edge2-frame frame)))))
+    ((segments-&gt;painter (list (make-segment middle-point1 middle-point2)
+                              (make-segment middle-point2 middle-point3)
+                              (make-segment middle-point3 middle-point4)
+                              (make-segment middle-point4 middle-point1)))
+     frame)))
+</pre>
+</div>
+
+<p>
+对于小题d)，我就不想再说什么了。。我数了一下，总共有17条线段。。而且，每条线段顶点的位置（注意是每条）都不是一眼能看出来的。。所以。。我们得首先拿直尺量出34个点的准确位置。。而我没有直尺。。所以。。我就不做了。。哪位有直尺、有兴趣、有闲情逸致的，可以慢慢去量。。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-50" class="outline-3">
+<h3 id="sec-2-50">练习2.50</h3>
+<div class="outline-text-3" id="text-2-50">
+<p>
+这个题目训练的就是空间想象能力（其实还不是空间，只是二维的），而这刚好是我的强项。。
+</p>
+
+<p>
+从 <code>flip-vert</code> 的定义可以看到，它是将 <i>origin</i> 变换为 <i>origin + edge2</i> ，然后 <i>edge1</i> 保持不变（看起来好像是变化了，但是因为要减去new origin，所以新的edge1和原来的edge1其实是同一个向量），再将 <i>edge2</i> 反向。所以，我们的 <code>flip-horiz</code> 要做的，就是将 <i>origin</i> 变换为 <i>origin + edge1</i> ，然后 <i>edge2</i> 保持不变，将 <i>edge1</i> 反向：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">flip-horiz</span> painter)
+  (transform-painter painter
+                     (make-vect 1.0 0.0)
+                     (make-vect 0.0 0.0)
+                     (make-vect 1.0 1.0)))
+</pre>
+</div>
+
+<p>
+<del>对于旋转变换，需要先说一点的是，书中的 <code>rotate90</code> 定义其实是顺时针旋转90度，并不是逆时针，因为它的变换为：将 <i>origin</i> 变换为 <i>origin + edge1</i> ，将 <i>edge1</i> 变换为 <i>edge2</i> ，将 <i>edge2</i> 变换为 <i>edge1</i> 反向，从直观来看，这就是顺时针旋转90度才有的结果。</del>
+</p>
+
+<p>
+后来仔细看了看，发现，我自己想象中的 <i>edge1</i> 和 <i>edge2</i> 跟书中画的那个frame的 <i>edge1</i> 和 <i>edge2</i> 位置相好相反，正因为如此，所以，才会觉得 <code>rotate90</code> 是顺时针旋转90度。。各位不妨把 <i>edge1</i> 和 <i>edge2</i> 交换个位置再试试，怎么样，是不是现在 <code>rotate90</code> 变成顺时针90度旋转了。。
+</p>
+
+<p>
+既然如此，我们就照葫芦画瓢好了，对于逆时针180度的旋转，变换如下：将 <i>origin</i> 变换为 <i>origin + edge1 + edge2</i> ，将 <i>edge1</i> 和 <i>edge2</i> 都反向，代码如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">rotate180</span> painter)
+  (transform-painter painter
+                     (make-vect 1.0 1.0)
+                     (make-vect 0.0 1.0)
+                     (make-vect 1.0 0.0)))
+</pre>
+</div>
+
+<p>
+对于逆时针270度旋转，其实等价于顺时针90度旋转，变换如下：将 <i>origin</i> 变换为 <i>origin + edge2</i> ，将 <i>edge1</i> 变换为 <i>edge2</i> 反向，将 <i>edge2</i> 变换为 <i>edge1</i> ，代码如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">rotate270</span> painter)
+  (transform-painter painter
+                     (make-vect 0.0 1.0)
+                     (make-vect 0.0 0.0)
+                     (make-vect 1.0 1.0)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-51" class="outline-3">
+<h3 id="sec-2-51">练习2.51</h3>
+<div class="outline-text-3" id="text-2-51">
+<p>
+模仿 <code>beside</code> 的定义，可以得到下面的 <code>below</code> 定义：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">below</span> painter1 painter2)
+  (<span style="color: #859900;">let</span> ((paint-bottom
+         (transform-painter painter1
+                            (make-vect 0.0 0.0)
+                            (make-vect 1.0 0.0)
+                            (make-vect 0.0 0.5)))
+        (paint-top
+         (transform-painter painter2
+                            (make-vect 0.0 0.5)
+                            (make-vect 1.0 0.5)
+                            (make-vect 0.0 1.0))))
+    (<span style="color: #859900;">lambda</span> (frame)
+      (paint-top frame)
+      (paint-bottom frame))))
+</pre>
+</div>
+
+<p>
+对于利用利用 <code>beside</code> 和 <code>rotate*</code> 函数来定义 <code>below</code> 函数，需要注意要先将两个painter顺时针旋转90度，再整体逆时针旋转90度，如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">below</span> painter1 painter2)
+  (rotate90 (beside (rotate270 painter1) (rotate270 painter2))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-52" class="outline-3">
+<h3 id="sec-2-52">练习2.52</h3>
+<div class="outline-text-3" id="text-2-52">
+<p>
+a) 在练习2.49中我们就没有做，因此，这里也略过。。
+</p>
+
+<p>
+b) 其实这个题目我不大会，实在想不出如何只用 <code>up-split</code> 的一个副本，通过Google搜索得到了一个答案，但是感觉会和原来的图不太一样，如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">corner-split</span> painter n)
+  (<span style="color: #859900;">if</span> (= n 0)
+      painter
+      (<span style="color: #859900;">let</span> ((up (up-split painter (- n 1)))
+            (right (right-split painter (- n 1)))
+            (corner (corner-split painter (- n 1))))
+        (beside (below painter up)
+                (below right corner)))))
+</pre>
+</div>
+
+<p>
+c) 这个就不多说了，代码如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">square-limit</span> painter n)
+  (<span style="color: #859900;">let</span> ((combine4 (square-of-four identity flip-horiz
+                                  flip-vert rotate180)))
+    (combine4 (corner-split painter n))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-53" class="outline-3">
+<h3 id="sec-2-53">练习2.53</h3>
+<div class="outline-text-3" id="text-2-53">
+<pre class="example">
+(a b c)
+((george))
+((y1 y2))
+(y1 y2)
+#f
+#f
+(red shoes blue socks)
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2-54" class="outline-3">
+<h3 id="sec-2-54">练习2.54</h3>
+<div class="outline-text-3" id="text-2-54">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">equal?</span> seq1 seq2)
+  (<span style="color: #859900;">if</span> (<span style="color: #859900;">and</span> (pair? seq1)
+           (pair? seq2))
+      (<span style="color: #859900;">and</span> (equal? (car seq1) (car seq2))
+           (equal? (cdr seq1) (cdr seq2)))
+      (eq? seq1 seq2)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-55" class="outline-3">
+<h3 id="sec-2-55">练习2.55</h3>
+<div class="outline-text-3" id="text-2-55">
+<p>
+<code>(car ''abracadabra)</code> 等价于 <code>(car (quote (quote abracadabra)))</code> ，这个表达式第二个元素求值的结果就是列表 <code>(quote abracadabra)</code> ，所以再通过 <code>car</code> 来取首元素的话，结果自然会是 <code>quote</code> 。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-56" class="outline-3">
+<h3 id="sec-2-56">练习2.56</h3>
+<div class="outline-text-3" id="text-2-56">
+<p>
+对于指数求导，将其符号表示定义为 <code>(** base exp)</code> ，剩下的基本也就是照葫芦画瓢，定义好相应的几个过程，在 <code>deriv</code> 过程里面再加一个分支来表示指数求导就可以了：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">exponentiation?</span> x)
+  (<span style="color: #859900;">and</span> (pair? x) (eq? (car x) '**)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">base</span> e) (cadr e))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">exponent</span> e) (caddr e))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-exponentiation</span> b e)
+  (<span style="color: #859900;">cond</span> ((=number? e 0) 1)
+        ((=number? e 1) b)
+        (<span style="color: #859900;">else</span> (list '** b e))))
+</pre>
+</div>
+
+<p>
+修改后的 <code>deriv</code> 过程：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">deriv</span> exp var)
+  (<span style="color: #859900;">cond</span> ((number? exp) 0)
+        ((variable? exp)
+         (<span style="color: #859900;">if</span> (same-variable? exp var) 1 0))
+        ((sum? exp)
+         (make-sum (deriv (addend exp) var)
+                   (deriv (augend exp) var)))
+        ((product? exp)
+         (make-sum
+          (make-product (multiplier exp)
+                        (deriv (multiplicand exp) var))
+          (make-product (deriv (multiplier exp) var)
+                        (multiplicand exp))))
+        ((exponentiation? exp)
+         (make-product (make-product (exponent exp)
+                                     (make-exponentiation (base exp)
+                                                          (- (exponent exp) 1)))
+                       (deriv (base exp) var)))
+        (<span style="color: #859900;">else</span>
+         (error <span style="color: #2aa198;">"unknown expression type -- DERIV"</span> exp))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-57" class="outline-3">
+<h3 id="sec-2-57">练习2.57</h3>
+<div class="outline-text-3" id="text-2-57">
+<p>
+开始我把这题想复杂了，将和与积相关的好多过程都重定义了一遍，结果证明这是没有必要的，例如对于表达式 <code>(+ x y z)</code> ，它会被分开成 <code>x</code> 和 <code>(+ y z)</code> 分别进行求导，再将结果利用 <code>make-sum</code> 给加起来。对于 <code>(+ y z)</code> 的求导结果来讲，它是独立的，所以 <code>make-sum</code> 过程不需要作任何修改，只需要修改 <code>augend</code> 过程，让其能产生正确的 <code>(+ y z)</code> 即可。同理， <code>multiplicand</code> 也需要作相应修改：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">augend</span> s)
+  (<span style="color: #859900;">let</span> ((a (cdr (cdr s))))
+    (<span style="color: #859900;">cond</span> ((&lt; (length a) 2) (car a))
+          (<span style="color: #859900;">else</span> (cons '+ a)))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">multiplicand</span> p)
+  (<span style="color: #859900;">let</span> ((m (cdr (cdr p))))
+    (<span style="color: #859900;">cond</span> ((&lt; (length m) 2) (car m))
+          (<span style="color: #859900;">else</span> (cons '* m)))))
+</pre>
+</div>
+
+<p>
+上面代码中引入 <code>cond</code> 进行条件判断的原因是，对于 <code>(+ x y z)</code> ，需要被拆成 <code>x</code> 和 <code>(+ y z)</code> ，但对于 <code>(+ y z)</code> ，就只需要被拆成 <code>y</code> 和 <code>z</code> ，而不是 <code>y</code> 和 <code>(+ z)</code> ，所以需要引入参数个数的条件判断。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-58" class="outline-3">
+<h3 id="sec-2-58">练习2.58</h3>
+<div class="outline-text-3" id="text-2-58">
+<p>
+a) 这个小题比较简单，之前所使用的是前缀表达式，现在要换成中缀表达式，所以，需要修改几个构造和访问表达式的过程，如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-sum</span> a1 a2)
+  (<span style="color: #859900;">cond</span> ((=number? a1 0) a2)
+        ((=number? a2 0) a1)
+        ((<span style="color: #859900;">and</span> (number? a1) (number? a2) (+ a1 a2)))
+        (<span style="color: #859900;">else</span> (list a1 '+ a2))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-product</span> m1 m2)
+  (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">or</span> (=number? m1 0) (=number? m2 0)) 0)
+        ((=number? m1 1) m2)
+        ((=number? m2 1) m1)
+        ((<span style="color: #859900;">and</span> (number? m1) (number? m2)) (* m1 m2))
+        (<span style="color: #859900;">else</span> (list m1 '* m2))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sum?</span> x)
+  (<span style="color: #859900;">and</span> (pair? x) (eq? (cadr x) '+)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">addend</span> s) (car s))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">product?</span> x)
+  (<span style="color: #859900;">and</span> (pair? x) (eq? (cadr x) '*)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">multiplier</span> p) (car p))
+</pre>
+</div>
+
+<p>
+b) 这个小题如题目中所说，确实比较难，相当于我们要实现一个小型的数学语法解析器，我写了三次，终于能正常工作了，以 <code>(x + x * y + x)</code> 为例，我第一次的实现，在遇到 <code>x * y + x</code> 的时候，没能正常处理运算符优先级，直接按从左到右的顺序解析，所以实际上解析成了 <code>x * (y + x)</code> ；第二次的实现，考虑了运算优先级，但是实际解析成了 <code>x * y</code> ，把后面的那个x漏掉了，因为虽然局部的优先级考虑了，整体的优先级还是错误的，直接导致后面的x被忽略了。经过两次坑，总结了一下，终于找到以下规则：
+</p>
+
+<ul class="org-ul">
+<li>在有加法运算符存在的时候，整个表达式必须视为加法运算，否则就会出现上面的漏掉部分表达式的问题
+</li>
+<li>乘法和加法混合的优先级不用考虑，因为在需要求乘数和被乘数的时候，整个表达式里面已经没有加法运算符了
+</li>
+</ul>
+
+<p>
+除了上面两点之外，还有一些小坑，不过都是比较常规的序列的组织问题，不一一细述。另外，我还写了两个辅助过程 <code>prefix-sub-exp</code> 和 <code>suffix-sub-exp</code> ，用来求以某个符号分隔的一个序列的前缀和后缀。前者是给我第二次的错误尝试用的，用以从类似 <code>(x * y + x)</code> 的表达式中解析出 <code>(x * y)</code> ，在正确解中实际上它并没有被用到。
+</p>
+
+<p>
+所有需要修改或者重新定义的过程如下（需要特别指出的是， <code>deriv</code> 过程本身并不需要任何修改，我想，大概这就是数据抽象的威力吧）：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">prefix-sub-exp</span> exp sep)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">iter</span> exp sub)
+    (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">or</span> (null? exp)
+               (eq? (car exp) sep))
+           sub)
+          (<span style="color: #859900;">else</span> (iter (cdr exp) (append sub (list (car exp)))))))
+  (iter exp '()))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">suffix-sub-exp</span> exp sep)
+  (<span style="color: #859900;">cond</span> ((null? exp) '())
+        ((eq? (car exp) sep) (cdr exp))
+        (<span style="color: #859900;">else</span> (suffix-sub-exp (cdr exp) sep))))
+
+<span style="color: #93a1a1; font-style: italic;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-sum</span> a1 a2)
+  (<span style="color: #859900;">cond</span> ((=number? a1 0) a2)
+        ((=number? a2 0) a1)
+        ((<span style="color: #859900;">and</span> (number? a1) (number? a2) (+ a1 a2)))
+        (<span style="color: #859900;">else</span> (<span style="color: #859900;">let</span> ((s1 (<span style="color: #859900;">if</span> (<span style="color: #859900;">or</span> (variable? a1)
+                                (number? a1))
+                            (list a1 '+)
+                            (append a1 '(+))))
+                    (s2 (<span style="color: #859900;">if</span> (<span style="color: #859900;">or</span> (variable? a2)
+                                (number? a2))
+                            (list a2)
+                            a2)))
+                (append s1 s2)))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-product</span> m1 m2)
+  (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">or</span> (=number? m1 0) (=number? m2 0)) 0)
+        ((=number? m1 1) m2)
+        ((=number? m2 1) m1)
+        ((<span style="color: #859900;">and</span> (number? m1) (number? m2)) (* m1 m2))
+        (<span style="color: #859900;">else</span> (list m1 '* m2))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">sum?</span> x)
+  (<span style="color: #859900;">and</span> (pair? x)
+       (not (null? (filter (<span style="color: #859900;">lambda</span> (e) (eq? e '+)) x)))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">addend</span> s)
+  (<span style="color: #859900;">let</span> ((r (prefix-sub-exp s '+)))
+    (<span style="color: #859900;">if</span> (&lt; (length r) 2) (car r) r)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">augend</span> s)
+  (<span style="color: #859900;">let</span> ((r (suffix-sub-exp s '+)))
+    (<span style="color: #859900;">if</span> (&lt; (length r) 2) (car r) r)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">product?</span> x)
+  (<span style="color: #859900;">and</span> (pair? x) (eq? (cadr x) '*)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">multiplier</span> p) (car p))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">multiplicand</span> p)
+  (<span style="color: #859900;">let</span> ((r (cdr (cdr p))))
+    (<span style="color: #859900;">cond</span> ((&lt; (length r) 2) (car r))
+          (<span style="color: #859900;">else</span> r))))
+</pre>
+</div>
+
+<p>
+实际上，我又对这个小程序作了第四次修改，改动源于我在测试以下调用的时候：
+</p>
+
+<pre class="example">
+(deriv '(x + (x + x) * 1 * y) 'x)
+</pre>
+
+<p>
+发现结果是：
+</p>
+
+<pre class="example">
+(1 + 2 * (1 * y))
+</pre>
+
+<p>
+这样的结果中还有多余的括号，还没有达到题目中的要求，所以需要像 <code>make-sum</code> 那样，对 <code>make-product</code> 过程再进行加工，修改后的代码如下（加入了是否需要去除多余括号的判断）：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">make-product</span> m1 m2)
+  (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">or</span> (=number? m1 0) (=number? m2 0)) 0)
+        ((=number? m1 1) m2)
+        ((=number? m2 1) m1)
+        ((<span style="color: #859900;">and</span> (number? m1) (number? m2)) (* m1 m2))
+        (<span style="color: #859900;">else</span> (<span style="color: #859900;">let</span> ((p1 (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">or</span> (variable? m1) (number? m1))
+                               (list m1 '*))
+                              ((sum? m1) (list m1 '*))
+                              (<span style="color: #859900;">else</span> (append m1 '(*)))))
+                    (p2 (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">or</span> (variable? m2) (number? m2))
+                               (list m2))
+                              ((sum? m2) (list m2))
+                              (<span style="color: #859900;">else</span> m2))))
+                (append p1 p2)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-59" class="outline-3">
+<h3 id="sec-2-59">练习2.59</h3>
+<div class="outline-text-3" id="text-2-59">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">union-set</span> set1 set2)
+  (<span style="color: #859900;">cond</span> ((null? set1) set2)
+        ((null? set2) set1)
+        ((not (element-of-set? (car set1) set2))
+         (cons (car set1)
+               (union-set (cdr set1) set2)))
+        (<span style="color: #859900;">else</span> (union-set (cdr set1) set2))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-60" class="outline-3">
+<h3 id="sec-2-60">练习2.60</h3>
+<div class="outline-text-3" id="text-2-60">
+<p>
+对于这种类型的集合，只需要重新定义 <code>adjoin-set</code> 和 <code>union-set</code> 两个过程即可：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">adjoin-set</span> x set)
+  (cons x set))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">union-set</span> set1 set2)
+  (append set1 set2))
+</pre>
+</div>
+
+<p>
+因为简化的是插入和求并集操作，所以在这两个操作比较多的时候，使用有重复元素的集合会比较好。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-61" class="outline-3">
+<h3 id="sec-2-61">练习2.61</h3>
+<div class="outline-text-3" id="text-2-61">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">adjoin-set</span> x set)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">insert</span> x head tail)
+    (<span style="color: #859900;">cond</span> ((null? tail) (append head (list x)))
+          ((&lt; x (car tail)) (append head (list x) tail))
+          (<span style="color: #859900;">else</span> (insert x (append head (list (car tail))) (cdr tail)))))
+  (<span style="color: #859900;">if</span> (element-of-set? x set)
+      set
+      (<span style="color: #859900;">cond</span> ((null? set) (list x))
+            ((&lt; x (car set)) (cons x set))
+            (<span style="color: #859900;">else</span> (insert x (list (car set)) (cdr set))))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-62" class="outline-3">
+<h3 id="sec-2-62">练习2.62</h3>
+<div class="outline-text-3" id="text-2-62">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">union-set</span> set1 set2)
+  (<span style="color: #859900;">cond</span> ((null? set1) set2)
+        ((null? set2) set1)
+        (<span style="color: #859900;">else</span>
+         (<span style="color: #859900;">let</span> ((x1 (car set1))
+               (x2 (car set2)))
+           (<span style="color: #859900;">cond</span> ((= x1 x2) (cons x1
+                                  (union-set (cdr set1)
+                                             (cdr set2))))
+                 ((&lt; x1 x2) (cons x1
+                                  (union-set (cdr set1)
+                                             set2)))
+                 ((&gt; x1 x2) (cons x2
+                                  (union-set set1
+                                             (cdr set2)))))))))
+</pre>
+</div>
+
+<p>
+由于 <code>union-set</code> 是 <code>intersection-set</code> 的反操作，所以模仿 <code>interseciont-set</code> 即可构造出 <code>union-set</code> 过程。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-63" class="outline-3">
+<h3 id="sec-2-63">练习2.63</h3>
+<div class="outline-text-3" id="text-2-63">
+<p>
+a) 本来以为这两个过程会产生不同的结果的，但试了一下，结果是一样的。。第一个过程好理解，先遍历左子树，然后访问根，再遍历右子树；第二个过程采用了两次迭代，看起来要麻烦一点，但是从整体看，还是比较好理解的：先把右子树放到 <code>result-list</code> 里面，再把根加进去放到第一个，再把左子树加进去，至于左子树加的位置，因为 <code>copy-to-list</code> 过程只有在加根结点时才会改变 <code>result-list</code> ，而根结点会被加在第一个位置，所以可以肯定，左子树的位置是在最前面，因此，第二个过程的生成的表顺序也是左子树、根、右子树，和第一个过程一样。
+</p>
+
+<p>
+b) 其实在我看来，因为两者都要遍历所有的结点，都需要n步，所以两者的消耗是一样的。。但既然书上这么问了，那肯定是不一样的。。鉴于算法分析一直是我弱项，所以我果断去Google了一下，发现了<a href="http://wiki.drewhess.com/wiki/SICP_exercise_2.63">这个解答</a>。他讲得挺清楚了，我就简单复述一下：因为第一个过程用到了 <code>append</code> ，而 <code>append</code> 的步数依赖于第一个参数的长度，这个参数恰好是左子树，对于平衡二叉树来讲，每次都访问某个子树的步数是O(log n)，所以，第一个过程的步数是O(n * log n)；第二个过程，因为每次递归只调用到了一个常量级别的 <code>cons</code> ，所以它的步数就是O(n)。（吐槽：其实我想对了，不过只想对了一半，谁能想道竟然还要去分析它们子调用的复杂度。。）
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-64" class="outline-3">
+<h3 id="sec-2-64">练习2.64</h3>
+<div class="outline-text-3" id="text-2-64">
+<p>
+a) <code>partial-tree</code> 这个函数很精妙，尤其是返回值，为了方便递归调用，将返回值定义成了两部分： <code>car</code> 是真正的转换后的平衡树， <code>cdr</code> 是表中剩下的元素。这样一来，在递归调用时，就很方便地可以取到表中剩下的元素进行操作。过程首先求值了左子树，为了保持树平衡，左子树的元素个数为 <i>(n - 1) / 2</i> 再向下取整，然后，将剩下的元素的首元素作为树的根结点，再利用再次剩下的元素求值右子树，右子树的元素个数为 <i>n - 左子树元素数 - 1</i> 。
+</p>
+
+<p>
+b) 因为要从列表中构建n个元素的树，必须访问这n个元素，所以复杂度就是O(n)，但鉴于上一个练习，所以这次学乖了，还要看看 <code>partial-tree</code> 里面有没有子调用是消耗比较大的，但实际上只有一个常量级的 <code>cons</code> 操作，所以整个步数量级就是O(n)。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-65" class="outline-3">
+<h3 id="sec-2-65">练习2.65</h3>
+<div class="outline-text-3" id="text-2-65">
+<p>
+偷懒的办法：先利用 <code>tree-&gt;list</code> 将树转换成有序表，再利用前面已经定义过的对有序表求交并集的过程得到结果，最后再利用 <code>list-&gt;tree</code> 给转换回来。。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">union-set</span> set1 set2)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">list-union-set</span> set1 set2)
+    (<span style="color: #859900;">cond</span> ((null? set1) set2)
+          ((null? set2) set1)
+          (<span style="color: #859900;">else</span>
+           (<span style="color: #859900;">let</span> ((x1 (car set1))
+                 (x2 (car set2)))
+             (<span style="color: #859900;">cond</span> ((= x1 x2) (cons x1
+                                    (list-union-set (cdr set1)
+                                                    (cdr set2))))
+                   ((&lt; x1 x2) (cons x1
+                                    (list-union-set (cdr set1)
+                                                    set2)))
+                   ((&gt; x1 x2) (cons x2
+                                    (list-union-set set1
+                                                    (cdr set2)))))))))
+  (list-&gt;tree (list-union-set (tree-&gt;list set1)
+                              (tree-&gt;list set2))))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">intersection-set</span> set1 set2)
+  (<span style="color: #859900;">define</span> (<span style="color: #268bd2;">list-intersection-set</span> set1 set2)
+    (<span style="color: #859900;">cond</span> ((<span style="color: #859900;">or</span> (null? set1) (null? set2)) '())
+          (<span style="color: #859900;">else</span>
+           (<span style="color: #859900;">let</span> ((x1 (car set1))
+                 (x2 (car set2)))
+             (<span style="color: #859900;">cond</span> ((= x1 x2) (cons x1
+                                    (list-intersection-set (cdr set1)
+                                                           (cdr set2))))
+                   ((&lt; x1 x2) (list-intersection-set (cdr set1) set2))
+                   ((&gt; x1 x2) (list-intersection-set set1
+                                                     (cdr set2))))))))
+  (list-&gt;tree (list-intersection-set (tree-&gt;list set1)
+                                     (tree-&gt;list set2))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-66" class="outline-3">
+<h3 id="sec-2-66">练习2.66</h3>
+<div class="outline-text-3" id="text-2-66">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">lookup</span> given-key tree-of-records)
+  (<span style="color: #859900;">cond</span> ((null? tree-of-records) #f)
+        ((= (key (entry tree-of-records)) given-key) (entry tree-of-records))
+        ((&gt; (key (entry tree-of-records)) given-key) (lookup (left-branch tree-of-records)))
+        (<span style="color: #859900;">else</span> (lookup (right-branch tree-of-records)))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-67" class="outline-3">
+<h3 id="sec-2-67">练习2.67</h3>
+<div class="outline-text-3" id="text-2-67">
+<p>
+这个题目的目的，就是让我们把所有的代码都敲一遍。。
+</p>
+
+<p>
+最后结果： <code>(A D A B B C A)</code>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-68" class="outline-3">
+<h3 id="sec-2-68">练习2.68</h3>
+<div class="outline-text-3" id="text-2-68">
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">symbol-on-tree?</span> symbol tree)
+  (memq symbol (symbols tree)))
+
+(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">encode-symbol</span> symbol tree)
+  (<span style="color: #859900;">cond</span> ((not (symbol-on-tree? symbol tree))
+         (error <span style="color: #2aa198;">"symbol is not on this tree"</span>))
+        ((leaf? tree) '())
+        (<span style="color: #859900;">else</span> (<span style="color: #859900;">let</span> ((left (left-branch tree))
+                    (right (right-branch tree)))
+                (<span style="color: #859900;">if</span> (symbol-on-tree? symbol left)
+                    (cons 0 (encode-symbol symbol left))
+                    (cons 1 (encode-symbol symbol right)))))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-69" class="outline-3">
+<h3 id="sec-2-69">练习2.69</h3>
+<div class="outline-text-3" id="text-2-69">
+<p>
+其实这个题目我觉得并不难，不知道为什么出题者在题目后面缀了那么大一段说明。。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> (<span style="color: #268bd2;">successive-merge</span> leaf-set)
+  (<span style="color: #859900;">if</span> (= (length leaf-set) 1)
+      (car leaf-set)
+      (successive-merge (adjoin-set (make-code-tree (cadr leaf-set)
+                                                    (car leaf-set))
+                                    (cdr (cdr leaf-set))))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-70" class="outline-3">
+<h3 id="sec-2-70">练习2.70</h3>
+<div class="outline-text-3" id="text-2-70">
+<p>
+encode消息的相关变量定义及调用：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme">(<span style="color: #859900;">define</span> <span style="color: #268bd2;">symbol-frequency-pairs</span>
+  '((A 2) (NA 16)
+    (BOOM 1) (SHA 3)
+    (GET 2) (YIP 9)
+    (JOB 2) (WAH 1)))
+
+(<span style="color: #859900;">define</span> <span style="color: #268bd2;">huffman-tree</span> (generate-huffman-tree symbol-frequency-pairs))
+
+(encode '(GET A JOB
+          SHA NA NA NA NA NA NA NA NA
+          GET A JOB
+          SHA NA NA NA NA NA NA NA NA
+          WAH YIP YIP YIP YIP YIP YIP YIP YIP YIP
+          SHA BOOM) huffman-tree)
+</pre>
+</div>
+
+<p>
+由Huffman编码后的二进制位个数为84。
+</p>
+
+<p>
+如果不用Huffman编码而使用定长编码的话，所有的符号共有15个字母，也就是需要4位来表示一个字母，而这些符号总共有89个字母，所以定长编码需要的二进制位个数为 89 * 4 = 356。这一长度是使用Huffman编码长度的四倍还多了20个二进制位。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-71" class="outline-3">
+<h3 id="sec-2-71">练习2.71</h3>
+<div class="outline-text-3" id="text-2-71">
+<p>
+对于这样权重组成的符号，因为 <code>2 ^ (n - 1) + 2 ^ n &lt; 2 ^ (n + 1)</code> ， <code>2 ^ (n - 1) + 2 ^ n + 2 ^ (n + 1) &lt; 2 ^ (n + 2)</code> ，所以，构造Huffman树的话，每一步构造出来的树的权重都是最小的，因此，具有最高权重的符号必然只需要一个二进制位，而最不频繁的符号，则需要 <code>n - 1</code> 个二进制位。
+</p>
+
+<p>
+n = 5对应的Huffman树如下图所示：
+</p>
+
+<p>
+<a href="http://www.flickr.com/photos/ini_always/9609486466/" title="Huffman Tree by kelvin_hu, on Flickr"><img src="http://farm8.staticflickr.com/7448/9609486466_29e1353ce3_o.png" alt="Huffman Tree"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-72" class="outline-3">
+<h3 id="sec-2-72">练习2.72</h3>
+<div class="outline-text-3" id="text-2-72">
+<p>
+对于这种算法复杂度的题我最讨厌了。。主要是因为我太菜了。。
+</p>
+
+<p>
+按照<a href="#sec-2-71">上一题</a>的分析，对于最频繁的符号，只需要一次搜索，即<a href="#sec-2-68">练习2.68</a>中的 <code>symbol-on-tree?</code> 只需要执行一次， <code>symbol-on-tree?</code> 中的 <code>memq</code> 函数调用的复杂度是O(n)，所以编码最频繁的符号的复杂度是O(n)；对于最不频繁的符号，需要n-1次搜索，每次调用 <code>symbol-on-tree?</code> 的复杂度都是O(n)，所以总的复杂度就是O(n ^ 2)。
+</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2012-12-10</span>
+        <span title="last modification date" class="post-info">2013-08-29</span>
+        <span title="tags" class="post-info"><a href="/tags/sicp/">SICP</a>, <a href="/tags/scheme/">Scheme</a></span>
+        <span title="author" class="post-info">Kelvin Hu</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/wiki/sicp/";
+          var disqus_url = "http://standino.github.io/wiki/sicp/";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>
+          Copyright &copy; 2012 - 2013 <a href="mailto:ini &lt;dot&gt; kelvin &lt;at&gt; gmail &lt;dot&gt; com">Kelvin Hu</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

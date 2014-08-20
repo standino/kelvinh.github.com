@@ -1,0 +1,179 @@
+#+TITLE:       go 语言
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/html/go
+#+KEYWORDS:    go,programming language
+#+TAGS:        :go:programming language:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: go 语言
+
+ - [[https://github.com/astaxie/build-web-application-with-golang/blob/master/ebook/preface.md][build-web-application-with-golang]] 这篇文章非常详细的介绍了go语言
+ - [[http://beego.me/docs/install/bee.md][go web 框架]]
+
+* 安装
+
+  - 下载 go1.2 Windows (x86 32-bit) MSI installer ： https://code.google.com/p/go/downloads/list
+
+修改windows环境变量
+
+#+BEGIN_SRC
+export GOROOT=~/go
+export GOBIN=$GOROOT/bin
+export PATH=$PATH:$GOBIN
+export GOPATH=/ideas/go
+#+END_SRC
+
+
+
+
+* SMTP
+
+ - https://github.com/brightcode/smtpd
+
+
+http://stackoverflow.com/questions/11623232/the-go-language-exec-command-method-execute-failed
+
+http://www.ibm.com/developerworks/web/library/wa-aj-consume/
+
+http://weblogs.java.net/blog/caroljmcdonald/archive/2008/07/a_dynamic_ajax.html
+
+
+http://robfig.github.io/revel/
+
+http://www.cnblogs.com/ztiandan/archive/2013/01/17/2864498.html
+
+
+
+* go easy portal
+
+  - https://github.com/beego/beedoc/blob/master/zh-CN/install/bee.md
+  - http://beego.me/docs/quickstart/model.md
+
+** DONE 安装
+   CLOSED: [2014-03-31 一 15:54]
+   - State "DONE"       from "OKTODAY"    [2014-03-31 一 15:54]
+   - State "OKTODAY"    from "STARTED"    [2014-03-31 一 15:54]
+   - State "OKTODAY"    from "STARTED"    [2014-03-31 一 14:49]
+   - State "OKTODAY"    from "STARTED"    [2014-03-31 一 14:02]
+   :LOGBOOK:
+   CLOCK: [2014-03-31 一 15:43]--[2014-03-31 一 15:54] =>  0:11
+   CLOCK: [2014-03-31 一 13:48]--[2014-03-31 一 13:56] =>  0:08
+   :END:
+
+#+BEGIN_SRC
+
+sudo yum install -y golang
+#wget -c https://go.googlecode.com/files/go1.2.1.linux-amd64.tar.gz
+
+#+END_SRC
+
+
+*** 设置gopath
+
+编辑 .bashrc 文件
+
+#+BEGIN_SRC
+export GOPATH=/home/will/mygo
+export PATH=$GOPATH/bin:$PATH
+#+END_SRC
+
+*** beego
+
+#+BEGIN_SRC
+
+go get  github.com/beego/bee
+go get -v -u github.com/mattn/go-sqlite3
+go get -v -u github.com/nsf/gocode
+#+END_SRC
+
+** DONE 创建项目
+   CLOSED: [2014-04-01 二 10:08]
+   - State "DONE"       from "OKTODAY"    [2014-04-01 二 11:20]
+   - State "OKTODAY"    from "STARTED"    [2014-04-01 二 10:08]
+   - State "OKTODAY"    from "STARTED"    [2014-04-01 二 09:31]
+   - State "OKTODAY"    from "STARTED"    [2014-04-01 二 09:03]
+   :LOGBOOK:
+   CLOCK: [2014-04-01 二 09:41]--[2014-04-01 二 10:08] =>  0:27
+   CLOCK: [2014-04-01 二 09:06]--[2014-04-01 二 09:31] =>  0:25
+   CLOCK: [2014-03-31 一 15:55]--[2014-03-31 一 16:49] =>  0:54
+   :END:
+
+#+BEGIN_SRC
+cd $GOPATH/src
+bee new go-easy-portal
+# https://help.github.com/articles/create-a-repo
+cd go-easy-portal
+git init
+[will@localhost go-easy-portal]$ git add conf
+[will@localhost go-easy-portal]$ git add controllers/
+[will@localhost go-easy-portal]$ git add main.go
+[will@localhost go-easy-portal]$ git add routers/
+[will@localhost go-easy-portal]$ git add tests/
+[will@localhost go-easy-portal]$ git add views/
+[will@localhost go-easy-portal]$ git status
+git commit -a -m "init version"
+git remote add origin https://github.com/standino/go-easy-portal
+git pull origin master
+git commit -a -m "init version"
+git push origin master
+
+git remote add -f jquery-ui-portlet https://github.com/standino/jquery-ui-portlet.git
+git subtree add --prefix=static/jquery-ui-portlet jquery-ui-portlet master --squash
+
+git remote add -f FCBKcomplete https://github.com/standino/FCBKcomplete.git
+git subtree add --prefix=static/FCBKcomplete FCBKcomplete master --squash
+
+git remote add -f bootstrap-datetimepicker https://github.com/standino/bootstrap-datetimepicker.git
+git subtree add --prefix=static/bootstrap-datetimepicker bootstrap-datetimepicker master --squash
+
+git remote add -f iCheck https://github.com/standino/iCheck.git
+git subtree add --prefix=static/iCheck iCheck master --squash
+
+git remote add -f bootstrap-calendar https://github.com/standino/bootstrap-calendar.git
+git subtree add --prefix=static/bootstrap-calendar bootstrap-calendar master --squash
+
+git remote add -f bootstrap-paginator https://github.com/standino/bootstrap-paginator.git
+git subtree add --prefix=static/bootstrap-paginator bootstrap-paginator master --squash
+
+git remote add -f bootstrap-select https://github.com/standino/bootstrap-select.git
+git subtree add --prefix=static/bootstrap-select bootstrap-select master --squash
+
+git remote add -f angular-ui-dashboard https://github.com/nickholub/angular-ui-dashboard
+git subtree add --prefix=static/angular-ui-dashboard angular-ui-dashboard master --squash
+
+
+git remote add -f angular-dashboard-app https://github.com/nickholub/angular-dashboard-app
+git subtree add --prefix=static/angular-dashboard-app angular-dashboard-app master --squash
+
+git remote add -f d3 https://github.com/standino/d3
+git subtree add --prefix=static/d3 d3 master
+
+git remote add -f angular-d3-demo https://github.com/standino/angular-d3-demo.git
+git subtree add --prefix=static/angular-d3-demo angular-d3-demo master
+
+
+#+END_SRC
+** sqlite db
+#+BEGIN_SRC
+ orm.RegisterDataBase("db2", "sqlite3", "data.db")
+#+END_SRC
+** DONE 加入angular js
+   CLOSED: [2014-04-28 一 17:53]
+   - State "DONE"       from "STARTED"    [2014-04-28 一 17:53]
+   :LOGBOOK:
+   CLOCK: [2014-04-28 一 17:10]--[2014-04-28 一 17:53] =>  0:43
+   :END:
+
+
+* 部署
+
+ - http://beego.me/docs/deploy/beego.md
+
+linux
+
+在 linux 下面部署，我们可以利用 nohup 命令，把应用部署在后端，如下所示：
+
+nohup ./beepkg &
+这样你的应用就跑在了 Linux 系统的守护进程

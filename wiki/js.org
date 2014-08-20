@@ -1,0 +1,423 @@
+#+TITLE:       javascript
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-19 Thu
+#+URI:         /wiki/html/js
+#+KEYWORDS:    js
+#+TAGS:        :js:jquery:dojo:ajax:定位元素:调试:piwik:网站统计:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION:  Javascript
+
+
+ - [[http://www.myexception.cn/javascript/407684.html][DOJO js 根本dom操作]]
+ - http://folyred.iteye.com/blog/946565
+ - https://dojotoolkit.org/reference-guide/1.7/dojo/dom-construct.html
+ - [[http://jinlong.github.io/blog/2013/08/29/devtoolsecrets/][浏览器开发工具的秘密]]
+ - [[http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html][Chrome developer tool介绍（javascript调试）]]
+ - [[http://www.jb51.net/article/18111.htm][jquery控制div下所有连接]]
+ - [[https://micate.me/debug-jquery-object-binded-events.note][获取绑定在 jQuery 对象上的事件]]
+ - [[http://www.divcss5.com/jiqiao/j497.shtml][jQuery适用技巧笔记整合]]
+ - [[http://kelvinh.github.io/blog/2011/12/17/jquery-ajax-request-and-struts2-ognl-error/][jQuery发送含有数组参数的ajax请求以及后台Struts2的OGNL解析错误]]
+ - [[http://www.gbtags.com/gb/share/3624.htm][六个前端开发工程师必备的Web设计模式/模块资源]]
+
+*  [[http://www.w3cschool.cc/bootstrap/bootstrap-intro.html][Bootstrap 简介]]
+
+  - [[https://wrapbootstrap.com/][Theme and temaplate]]
+  - http://reactiveraven.github.io/jqBootstrapValidation/
+  - http://www.html5cn.com.cn/bootstrap/docs/index.html
+Bootstrap 是一个用于快速开发 Web 应用程序和网站的前端框架。
+
+在现代 Web 开发中，有几个几乎所有的 Web 项目中都需要的组件。
+
+Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Tables、Forms、Buttons 和 Responsiveness。
+
+此外，还有大量其他有用的前端组件，比如 Dropdowns、Navigation、Modals、Typehead、Pagination、Carousal、Breadcrumb、Tab、Thumbnails、Headers 等等。
+
+有了这些，你可以搭建一个 Web 项目，并让它运行地更快速更轻松。
+
+* UI调试工具Fiddler,微软开发的。
+* 获得jquery绑定的事件an
+
+
+#+BEGIN_SRC javascript
+
+var events = $(".add").data('events');
+if (events && events.click) {
+
+
+
+    // jQuery 1.4.x+
+    $.each(events.click, function(key, handlerObject) {
+        console.info(handlerObject.handler);
+    });
+}
+
+#+END_SRC
+
+
+* $.ajax 在IE中不work
+
+#+BEGIN_SRC javascript
+        $.ajaxSetup ({
+            cache: false //关闭AJAX相应的缓存
+        });
+
+#+END_SRC
+
+* firebug
+ - [[http://mynoteweb.com/node/114][用Firebug调试JavaScript]]
+
+* Jquery 查询对象的几种方式
+
+  | 查询方式                 | 例子                                          |
+  | 按class查询              | $(".myclass")                                 |
+  | 按ID查询                 | $("#myid")                                    |
+  | 定位某个元素，查找子元素 | $(".quickMenu i").bind('click', function () { |
+  | 函数里获得this的子元素   | $(this).find('i').toggleClass("ticked");      |
+  |                          |                                               |
+
+
+* Jquery widget 编写
+
+ 1. http://bililite.com/blog/understanding-jquery-ui-widgets-a-tutorial/
+ 2. [[http://www.cnblogs.com/dc10101/archive/2012/05/03/2481004.html][编写jQueryUI插件(widget)]]
+ 3. [[http://coding-coding.com/%E4%BD%BF%E7%94%A8jquery-ui-widget-factory%E7%BC%96%E5%86%99jquery%E6%8F%92%E4%BB%B6/][使用jquery-ui-widget-factory编写jquery插件]]
+
+#+BEGIN_SRC javascript
+
+
+var Green5  = {
+        getLevel: function () { return this.options.level; },
+        setLevel: function (x) {
+                var greenlevels = this.options.greenlevels;
+                var level = Math.floor(Math.min(greenlevels.length-1, Math.max(0,x)));
+                this.options.level = level;
+                this.element.css({background: greenlevels[level]});
+                this._trigger('change', 0, level);
+        },
+        _init: function() { this.setLevel(this.getLevel()); }, // grab the default value and use it
+        darker: function() { this.setLevel(this.getLevel()-1); },
+        lighter: function() { this.setLevel(this.getLevel()+1); },
+        off: function() {
+                this.element.css({background: 'none'});
+                this._trigger('done');
+                this.destroy(); // use the predefined function
+        },
+        options: {
+                level: 15,
+                greenlevels: ['#000','#010','#020','#030','#040','#050','#060','#070','#080','#090','#0a0','#0b0','#0c0','#0d0','#0e0','#0f0', '#fff']
+        }
+};
+$.widget("ui.green5", Green5);
+#+END_SRC
+
+#+BEGIN_SRC html
+        <p class="target">This is a test paragraph with green level <span class="level">undefined</span>.</p>
+#+END_SRC
+#+BEGIN_SRC javascript
+
+//  The on button above does the following:
+$('.target').green5({
+        change: function(event, level) { $('.level', this).text(level); } // callback to handle change event
+});
+$('.target').bind('green5done', function() { $('.level', this).text('undefined');alert('bye!') }); // event handler for done event
+
+#+END_SRC
+
+** Involving the Mouse
+Now, a lot of what we want to do with widgets involves mouse tracking, so ui.core.js provides a mixin object that includes lots of
+useful methods for the mouse. All we need to do is add the $.ui.mouse widget to our widget prototype:
+
+#+BEGIN_SRC javascript
+
+
+var Green6 = {mouse-overriding function and widget-specific functions};
+$.widget ('ui.green6', $.ui.mouse, Green6);
+#+END_SRC
+And override $.ui.mouse's functions (_mouseStart, _mouseDrag, _mouseStop) to do something useful, and call this._mouseInit in your
+this._init and this._mouseDestroy in your this.destroy. The mouse defaults are automagically including in your options object; see
+the mouse code for details.
+
+Let's add some mouse control to our greenerizer:
+#+BEGIN_SRC javascript
+
+
+
+Green6 = $.extend({}, $.ui.green5.prototype, { // leave the old Green5 alone; create a new object
+        _init: function(){
+                $.ui.green5.prototype._init.call(this); // call the original function
+                this._mouseInit(); // start up the mouse handling
+        },
+        destroy: function(){
+                this._mouseDestroy();
+                $.ui.green5.prototype.destroy.call(this); // call the original function
+        },
+        // need to override the mouse functions
+        _mouseStart: function(e){
+                // keep track of where the mouse started
+                this.xStart = e.pageX; // not in the options object; this is not something that can be initialized by the user
+                this.levelStart = this.options.level;
+        },
+        _mouseDrag: function(e){
+                this.setLevel (this.levelStart +(e.pageX-this.xStart)/this.options.distance);
+        },
+        options: {
+                level: 15,
+                greenlevels: ['#000','#010','#020','#030','#040','#050','#060','#070','#080','#090','#0a0','#0b0','#0c0','#0d0','#0e0','#0f0', '#fff'],
+                distance: 10
+        }
+});
+$.widget("ui.green6", $.ui.mouse, Green6);
+#+END_SRC
+
+#+BEGIN_SRC html
+
+
+        <p class="target">This is a test paragraph with green level <span class="level">undefined</span>.</p>
+#+END_SRC
+
+The ever-alert reader will note what we've just done: subclassed green5 to make green6, including calls to "super" methods. This
+ought to be abstracted out into its own method, something like
+
+#+BEGIN_SRC javascript
+
+
+$.ui.green5.subclass("green6", $.ui.mouse, {mouseStart:function(){}, mouseDrag: function(){}})
+#+END_SRC
+
+* piwik
+
+ API: http://developer.piwik.org/api-reference/tracking-javascript#where-can-i-find-the-piwik-tracking-code
+
+* [[http://www.bootcss.com/][Bootstrap]]
+
+* SSI
+
+  http://blog.csdn.net/cpp_lzth/article/details/6167591
+
+* Node.js
+  1. 在Windows下安装Node.js、npm、express http://blog.uifanr.com/2013/03/12/472
+** [[http://getkickstrap.com/docs.html#/first-steps][kickstrap]]
+
+
+  https://www.firebase.com/tutorial/#session/va7gdy2y5s0
+
+* ajax 乱码
+encodeURIComponent(
+
+#+BEGIN_SRC
+
+
+  $.ajax({
+    url: "/contact/list?keyword="+encodeURIComponent(keyword)+"&pageNum="+page,
+    dataType : "json",
+    success : function(data) {
+#+END_SRC
+
+* 表格截断
+ 1. http://www.045d.com/post/461.html
+ 2. http://www.cftea.com/c/2010/12/UVBUCD0J888L2XPQ.asp
+
+《
+       .notice-td { overflow:hidden;white-space:nowrap;word-break:keep-all;  }
+       
+* autocompte
+
+http://jqueryui.com/autocomplete/#multiple-remote
+* min js
+  - http://yui.github.io/yuicompressor/
+  - https://github.com/yui/yuicompressor/releases
+
+#+BEGIN_SRC 
+
+java -jar yuicompressor-x.y.z.jar myfile.js -o myfile-min.js
+java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jquery.portlet.min.js
+
+java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jquery.portlet.pack.js
+
+#+END_SRC
+
+* Node js
+
+ - http://www.nodebeginner.org/index-zh-cn.html
+
+* [[https://angularjs.org/][Angular]] + meteor
+
+通过阅读文章好像Angular更好一些
+
+ 1. http://www.csdn.net/article/2013-09-09/2816880-angular-ember-javascript-frameworks
+ 2. http://blog.jobbole.com/46779/
+ 3. http://zouyesheng.com/angular.html
+ 4. http://emberjs.com/
+ 5. http://www.cnblogs.com/rush/archive/2013/04/29/3051191.html
+ 6. http://angularjs.org/
+ 7. http://developer.51cto.com/art/201308/406932_all.htm
+ 8. http://www.ng-newsletter.com/posts/beginner2expert-how_to_start.html
+ 9. http://docs.meteor.com/#livehtmltemplates
+ 10. https://github.com/angular-ui/ui-sortable
+ 11. http://angular-ui.github.io/ng-grid/
+ 12. https://github.com/angular-ui/ng-grid
+ 13. https://github.com/JimLiu/angular-ui-tree
+ 14. https://github.com/search?p=3&q=angular-ui&ref=cmdform&type=Repositories
+ 15. http://angular-ui.github.io/bootstrap/
+ 16. http://www.csdn.net/article/2013-03-14/2814486-Meteor-Web-App
+ 17. http://angular-ui.github.io/
+ 18. [[http://www.infoq.com/cn/news/2014/05/angularjs-front-end-architecture?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global][基于AngularJS的企业软件前端架构]]
+
+**Portal 
+ 1. https://github.com/nickholub/angular-ui-dashboard
+ 2. http://nickholub.github.io/angular-dashboard-app/#/
+ 3. https://github.com/flamejs/flame.js
+ 4. JQuery UI - sortable 排序插件参数详解 http://www.cnblogs.com/yoyogehei/archive/2011/07/28/2119910.html
+ 5. http://www.hongkiat.com/blog/jquery-ui-sortable/
+ 6. AngularJS入门教程 http://www.ituring.com.cn/minibook/303
+ 7. [[http://blog.pusher.com/making-angular-js-realtime-with-pusher/][Making Angular.js realtime with Websockets]]
+
+** meteor
+
+ 1. http://www.likebin.net/meteorlist.html
+
+
+In this book, we're using camelCase because it's the usual JavaScript way of doing things (after all, it's JavaScript,
+not java_script!).
+The only exceptions to this rule are file names, which will use underscores (my_file.js), and CSS classes, which
+use hyphens (.my-class). The reason for this is that in the filesystem, underscores are most common, while the
+CSS syntax itself already uses hyphens (font-family, text-align, etc.).
+
+** NPM
+
+  1. http://www.cnblogs.com/chyingp/p/npm.html
+
+#+BEGIN_SRC 
+sudo yum install -y npm 
+sudo npm install -g bower
+sudo npm install -g grunt-cli
+sudo npm install -g meteorite
+mrt create microscope
+#+END_SRC
+
+** grunt
+
+  1. http://gruntjs.com/getting-started
+
+#+BEGIN_SRC 
+
+sudo npm install -g grunt-cli
+sudo npm --proxy http://127.0.0.1:8087 install -g grunt-cli 
+
+#+END_SRC
+
+** METEOR AND METEORITE ON WINDOWS
+
+#+BEGIN_SRC
+
+
+TUE AUG 05 2014
+Both Meteor and Meteorite are unofficially supported on Windows, and these are the required steps to make it work.
+Install Node and NPM from http://nodejs.org/.
+Install the unofficial Meteor from http://win.meteor.com/.
+Install git from http://git-scm.com/downloads.
+To get Meteorite (package management for Meteor) to work on Windows, a special branch of the Meteorite project must used. Clone the Meteorite repository:
+git clone https://github.com/danielsvane/meteorite
+Step into the downloaded repo:
+cd meteorite
+Then switch the branch to the Windows supported one:
+git checkout windows-updates
+Install the branch globally with NPM:
+npm install -g
+You now have a working Meteor and Meteorite development setup on Windows. When adding a new package using Meteorite use meteorite instead of mrt, as this name is already used on Windows.
+
+#+END_SRC
+
+* CKeditor 
+
+ 1. http://www.mzone.cc/article/288.html
+ 2. http://ipc.iteye.com/blog/695393
+ 3. http://docs.ckeditor.com/
+
+代码在ideas/ckeditorPlugin目录下
+config.js
+
+#+BEGIN_SRC 
+/**
+ * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights
+ *          reserved. For licensing, see LICENSE.html or
+ *          http://ckeditor.com/license
+ */
+
+CKEDITOR.editorConfig = function(config) {
+	// Define changes to default configuration here. For example:
+	//config.language = 'cn';
+        config.font_names=' 宋体/宋体;黑体/黑体;仿宋/仿宋_GB2312;楷体/楷体_GB2312;隶书/隶书;幼圆/幼圆;微软雅黑/微软雅黑;'+ config.font_names;
+	// config.uiColor = '#AADC6E';
+        config.pasteFromWordRemoveStyles = false;
+        config.pasteFromWordRemoveFontStyles = false;
+     	config.toolbar = [
+			[ 'Source', '-', 'NewPage', '-', 'Templates' ],
+			[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-',
+					'Print', 'SpellChecker', 'Scayt' ],
+			[ 'Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll',
+					'RemoveFormat' ],
+			[ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select',
+					'Button', 'ImageButton', 'HiddenField' ],
+			'/',
+			[ 'Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript',
+					'Superscript' ],
+			[ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
+					'Blockquote' ],
+			[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
+			[ 'Link', 'Unlink', 'Anchor' ],
+			[ '__my_company_1__upload','Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
+					'SpecialChar', 'PageBreak' ], '/',
+			[ 'Styles', 'Format', 'Font', 'FontSize' ],
+			[ 'TextColor', 'BGColor' ] ];
+        config.extraPlugins += (config.extraPlugins ? ',__my_company_1__upload' : '__my_company_1__upload');
+};
+
+#+END_SRC
+
+* D3 
+
+ - Interactive Data Visualization for the Web http://chimera.labs.oreilly.com/books/1230000000345/index.html
+ - [[http://stackoverflow.com/questions/12595834/open-source-library-for-web-based-drill-down-charts][Open source library for web-based drill down charts ]]
+ - http://12devsofxmas.co.uk/2012/01/data-visualisation/
+
+* Json 在线查看工具
+
+ 1 http://jsonviewer.stack.hu/
+
+* html 缓存
+
+如下代码会禁用html缓存
+
+#+BEGIN_SRC
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="0"> 
+#+END_SRC
+
+针对ajax，需要如下设置:
+
+方法一：加时间戳 var url = BaseURL + "&timeStamp=" + new Date().getTime();
+方法二：加随机数 var url = BaseURL + "&r=" + Math.random();
+
+* 查询股票
+
+ - [[http://shenhai.zqmyw.cn/thread-2203-1-1.html][如何使用新浪股票接口获取恒生指数及美国的一些股票指数？]]
+
+
+* Backbone 
+
+  - Backbone入门指南（一）：什么是Backbone? http://yujianshenbing.iteye.com/blog/1748447
+  - 
+
+* 图表
+
+  - http://echarts.baidu.com/doc/example.html
+  - http://www.highcharts.com/studies/map-from-svg.htm
+  - 
+
+* dashboard 
+
+ - http://ehesp.github.io/Responsive-Dashboard/#

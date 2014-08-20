@@ -1,0 +1,224 @@
+#+TITLE:       我是如何开始使用redis的
+#+AUTHOR:      Will Chang
+#+EMAIL:       changwei.cn@gmail.com
+#+DATE:        2013-12-24 周二
+#+URI:         /blog/%y/%m/%d/redis
+#+KEYWORDS:    缓存, redis
+#+TAGS:        :缓存:redis:linux:NoSQL:数据结构:设计:java:mvn:mysql:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: redis学习和入门
+
+reids 基本上还是比较简单的，有人说它是面向开发者的，因此开发人员使用起来就非常简单。下面我列出几篇不错的文章。
+
+* 入门
+
+ 6. [[http://blog.nosqlfan.com/html/3139.html?ref=rediszt][Redis系统性介绍]]  这篇入门级的文章写得不错。
+
+* 结构设计
+
+Redis并不是简单的key-value存储，实际上他是一个数据结构服务器，支持不同类型的值。因此在使用redis的时候也需要像使用传统关系型数据库那样设计一下数据结构。下面两篇文章是很好的参考：
+ 1. [[http://blog.codingnow.com/2011/11/dev_note_2.html][redis 数据库结构设计]]
+ 2. [[http://blog.nosqlfan.com/html/3033.html][浅谈Redis数据库的键值设计]]
+
+可以使用下面的思路把一个关系数据库表改成 redis结构
+
+为了节约内存使用，最好的方法是使用HSET对一个mysql表进行 分表存储
+
+ hset "【表名缩写】:【第一主键】" "第二主键" "其他列的json values"
+
+其中第二主键应该能把记录划分为小于 512的记录，这样就可以使用redis里的压缩机制。Redis内部用了ziplist/intset这样的压缩结构来减少
+hash/list/set/zset的存储，默认当集合的元素少于512个且最长那个值不超过64字节时使用，可配置。 下表列出了压缩的一些配置。 你可以使用
+config get 获得配置的数值。
+
+#+BEGIN_SRC 
+
+redis 127.0.0.1:6379> config get *zip*
+ 1) "hash-max-ziplist-entries"
+ 2) "512"
+ 3) "hash-max-ziplist-value"
+ 4) "64"
+ 5) "list-max-ziplist-entries"
+ 6) "512"
+ 7) "list-max-ziplist-value"
+ 8) "64"
+ 9) "zset-max-ziplist-entries"
+10) "128"
+11) "zset-max-ziplist-value"
+12) "64"
+
+#+END_SRC
+
+建议用”:”分隔域，用”.”作为单词间的连接，如”comment:1234:reply.to”。
+
+
+** 设计中需要考虑内存占用
+
+ 1. [[http://ju.outofmemory.cn/entry/20361][关于 Redis 的几种数据库设计方案的内存占用测试]]
+ 2. [[http://blog.nosqlfan.com/html/3379.html?ref=rediszt][节约内存：Instagram的Redis实践]]
+
+** 从mysql 中导入数据
+
+  为了考察一下内存占用，我决定先从mysql中导入一个有两千多万条记录的表到redis中。虽然这篇文章 [[http://blog.nosqlfan.com/html/4144.html][从MySQL到Redis，提升数据迁移的效率]] 介
+  绍了一个很好的方法，但是在我使用的时候发现一次导入两千多万条记录花费时间还是很多的，所以我写了一个shell脚本去每次只导入1万条，
+  这样可以在十分钟内在控制台上看到一些反馈。
+
+sql 文件
+
+#+BEGIN_SRC 
+
+SELECT CONCAT(
+    "*4\r\n",
+    '$', LENGTH(redis_cmd), '\r\n',
+    redis_cmd, '\r\n',
+    '$', LENGTH(redis_key), '\r\n',
+    redis_key, '\r\n',
+    '$', LENGTH(hkey), '\r\n',
+    hkey, '\r\n',
+    '$', LENGTH(hval), '\r\n',
+    hval, '\r'
+)
+FROM (
+       SELECT distinct
+         'HSET' as redis_cmd,
+         CONCAT('warestock:',wid,':',rid) AS redis_key,
+         'purchase' AS hkey,
+         purchase AS hval
+       FROM warestock
+       limit  ##START## , ##END##
+     ) AS t
+
+#+END_SRC
+
+shell 文件
+#+BEGIN_SRC 
+
+#!/bin/sh
+
+sql_file=$1
+start=$2
+end=$3
+host=$4
+user=$5
+passwd=$6
+dbname=$7
+ADD_NUM=10000
+for (( i=${start}; i<${end};i++ ));
+do
+    cat $sql_file > tmp.sql
+    sed -i "s/##START##/$i/g"  tmp.sql
+    i=`expr $i + ${ADD_NUM}`
+    echo $i
+    sed -i "s/##END##/$i/g"  tmp.sql
+    cat tmp.sql
+    mysql -h $host -u $user -p$passwd -D$dbname --skip-column-names --raw < tmp.sql | ./redis-c --pipe
+done
+
+#+END_SRC
+
+Shell脚本需要7个参数：
+
+ 1. 需要执行的sql文件路径，该文件里需要这样使用Limit： limit  ##START## , ##END##
+ 2. 开始的记录数，例如：0
+ 3. 结束的记录数，例如: 1000000
+ 4. mysql IP
+ 5. mysql 用户
+ 6. mysql 密码
+ 7. mysql 库名称
+
+脚本每次执行前会修改sql中的Limit语句，每次递增导入一万条记录。
+
+#+BEGIN_SRC 
+
+#+END_SRC
+* 有用的命令（Linux or redis)
+
+下面的命令可以看Linux下有多少物理内存
+
+#+BEGIN_SRC sh
+
+grep MemTotal /proc/meminfo
+
+#+END_SRC
+
+使用info命令可以查看redis的内存占用等信息
+
+#+BEGIN_SRC sh
+
+redis 127.0.0.1:6379> info
+# Server
+redis_version:2.6.16
+redis_git_sha1:00000000
+....
+# Clients
+connected_clients:2
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# Memory
+used_memory:624864
+used_memory_human:610.22K
+used_memory_rss:1708032
+used_memory_peak:624280
+used_memory_peak_human:609.65K
+used_memory_lua:31744
+mem_fragmentation_ratio:2.73
+mem_allocator:libc
+
+
+#+END_SRC
+
+使用 flushdb 清空redis 数据库
+
+* 性能监控
+
+ 1. [[http://blog.nosqlfan.com/html/4166.html][Redis监控技巧]]
+
+* Java 调用
+
+** 配置pom.xml引入jedis依赖
+
+#+BEGIN_SRC xml
+<dependency>
+          <groupId>redis.clients</groupId>
+          <artifactId>jedis</artifactId>
+          <version>2.2.1</version>
+          <type>jar</type>
+          <scope>compile</scope>
+</dependency>
+#+END_SRC
+
+** Java 程序访问redis服务器
+#+BEGIN_SRC java
+
+public static void main( String[] args )
+    {
+        Jedis jedis = new Jedis("192.168.232.116");
+        jedis.set("foo", "bar");
+
+        String value = jedis.get("foo");
+        System.out.println("get from redis:"+value);
+
+        jedis.hset("ProdSort:1", "fatherid", "123");
+
+        value =  jedis.hget("ProdSort:1", "fatherid");
+
+        System.out.println("get from redis:"+value);
+
+//        for( Map i: jedis.hgetAll("ProdSort:1")) {
+//
+//        }
+    }
+
+#+END_SRC
+
+* 参考文章
+
+ 1. [[https://github.com/springside/springside4/wiki/redis][江南白衣Redis]]
+ 2. [[http://projects.spring.io/spring-data-redis/#quick-start][Spring Data Redis]]
+ 3. [[http://openmymind.net/2012/1/23/The-Little-Redis-Book/][The Little Redis Book]]
+ 4. [[http://www.javacodegeeks.com/2013/10/simple-crud-using-servlet-3-0-redisjedis-and-cdi-part-1.html][Simple CRUD using Servlet 3.0, Redis/Jedis and CDI ]]
+
+
+-------------------------------------

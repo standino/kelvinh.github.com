@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Using SQLUnit and  TDD our stored procedures - Keep going</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Will Chang" />
+    <meta name="description" content="Using SQLUnit  to test our store procedures" />
+    <meta name="keywords" content="sql,unit" />
+    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  </head>
+  <body class="container">
+    <div>
+      <header class="masthead">
+        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
+        <p>努力超越自己！</p>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="https://github.com/standino">GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+        <form method="get" id="searchform" action="http://www.google.com/search">
+          <input type="text" class="field" name="q" id="s" placeholder="Search">
+          <input type="hidden" name="q" value="site:standino.github.io">
+        </form>
+      </header>
+    </div>
+
+<div>
+<div class="post">
+<h1>Using SQLUnit and  TDD our stored procedures</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Pain Points</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Q: When I update SP code, I don't know if the new code breaks the
+ existing logic. What can help me to find the bugs introducing by the
+added code easily?
+</p>
+
+<p>
+A: TDD
+</p>
+
+
+<p>
+Q: It's difficult to unit test SP and UDF. Is there any useful tool to
+help me to do that?
+</p>
+
+<p>
+A: SQLUnit and EU4DB
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">SQLUnit  --- Get Started</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+&lt;src lang="xml"&gt;
+</p>
+
+<p>
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE sqlunit SYSTEM "../lib/sqlunit.dtd" [
+]&gt;
+</p>
+
+
+<p>
+&lt;sqlunit&gt;
+</p>
+
+<p>
+&lt;connection server-name="ibmdb2" extern="duke" /&gt;
+</p>
+
+<p>
+&lt;setup&gt;  &lt;/setup&gt;
+</p>
+
+<p>
+&lt;test name="Testing Hello World "&gt;
+  &lt;call&gt;
+    &lt;stmt&gt;{call HELLO_WORLD (?, ?)}&lt;/stmt&gt;
+              &lt;param id="1" name="piName" type="CHAR" inout="in"&gt;Will&lt;/param&gt;
+              &lt;param id="2" name="poMsg" type="CHAR" inout="out"&gt;${poMsg}&lt;/param&gt;
+        &lt;/call&gt;
+        &lt;result&gt;
+              &lt;outparam id="1" name="poMsg" type="CHAR"&gt;Hello, Will!&lt;/outparam&gt;
+    &lt;/result&gt;
+&lt;/test&gt;
+</p>
+
+<p>
+&lt;teardown&gt;  &lt;/teardown&gt;
+</p>
+
+<p>
+&lt;/sqlunit&gt;
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">SQLUnit  --- Connections</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>Some customization to make SQLUnit to support DB2. 
+&lt;src&gt;
+</li>
+</ul>
+
+<p>
+##############################################################################
+</p>
+<p>
+##############################################################################
+ibmdb2.SMALLINT.class = net.sourceforge.sqlunit.types.IntegerType
+ibmdb2.SMALLINT.type = 5
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+
+
+<ul class="org-ul">
+<li>Using connection tag to define a connection
+</li>
+</ul>
+<p>
+&lt;src&gt;   &lt;connection server-name="ibmdb2" extern="duke" /&gt; &lt;/src&gt;
+</p>
+<ul class="org-ul">
+<li>Importing a xml file to define a connection
+</li>
+</ul>
+<p>
+&lt;src lang = "xml"&gt;
+</p>
+
+<p>
+&lt;?xml version="1.0"?&gt;
+ &lt;!DOCTYPE sqlunit SYSTEM "<a href="sqlunit/lib/sqlunit.dtd">sqlunit/lib/sqlunit.dtd</a>" [
+  &lt;!ENTITY connection SYSTEM "<a href="@CONF_DIR@/sqlunitConnectionConfig.xml">@CONF_DIR@/sqlunitConnectionConfig.xml</a>"&gt;
+ ]&gt;
+</p>
+
+<p>
+&lt;sqlunit&gt;
+</p>
+
+<p>
+&amp;connection;
+&lt;setup&gt;&lt;/setup&gt;  
+</p>
+
+<p>
+...
+</p>
+
+<p>
+&lt;/src&gt;
+</p>
+
+<p>
+&lt;src&gt;
+</p>
+<p>
+sqlunit.driver = COM.ibm.db2.jdbc.app.DB2Driver
+sqlunit.url = jdbc:db2:sample
+</p>
+<p>
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">SQLUnit  --- Setup &amp; Teardown</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Set variable 
+</li>
+</ul>
+<p>
+&lt;src lang="xml"&gt;&lt;set name="${CreatorID}" value="changwei@cn.ibm.com" /&gt;&lt;/src&gt;
+</p>
+
+<ul class="org-ul">
+<li>Setup test data
+&lt;src lang="xml"&gt;
+</li>
+</ul>
+<p>
+ &lt;sql&gt;
+      &lt;stmt&gt;INSERT INTO sods2.ibm_emp_dlgtn (
+                      IBM_EMP_NUM, EMP_CNTRY_CODE, PROG_CODE, MIGRTN_CODE, REVN_STREAM_CODE,
+                        SAP_SALES_ORG_CODE, PAYER_CNTRY_CODE, PROG_MIGRTN_CODE,
+                        DLGTN_PCT, VALID_TO_DATE, VALID_FROM_DATE, EMP_NAME_FULL,
+                        INTL_PHN_NUM_FULL, INTL_FAX_NUM_FULL, EMAIL_ADR,
+                        INACT_FLAG, MOD_DATE, MOD_BY_HRCL_NAME)
+                        VALUES(?, ?, ?, ?, ?, ?,          
+                                   ?, ?, ?, ?, ?, ?,
+                                   ?, ?, ?, ?, ?, ?
+                        )
+      &lt;/stmt&gt;
+                &lt;param id="1" type="CHAR"&gt;${vIBM_EMP_NUM}&lt;/param&gt;
+                &lt;param id="2" type="CHAR"&gt;${vEMP_CNTRY_CODE}&lt;/param&gt;
+                &lt;param id="3" type="CHAR"&gt;${vPROG_CODE}&lt;/param&gt;
+                &lt;param id="4" type="CHAR"&gt;${vMIGRTN_CODE}&lt;/param&gt;
+                &lt;param id="5" type="CHAR"&gt;${vREVN_STREAM_CODE1}&lt;/param&gt;
+                &lt;param id="6" type="CHAR"&gt;${vSAP_SALES_ORG_CODE}&lt;/param&gt;
+                &lt;param id="7" type="CHAR"&gt;${vPAYER_CNTRY_CODE}&lt;/param&gt;
+                &lt;param id="8" type="CHAR"&gt;${vPROG_MIGRTN_CODE}&lt;/param&gt;
+                &lt;param id="9" type="FLOAT"&gt;${vDLGTN_PCT1}&lt;/param&gt;                        
+                &lt;param id="10" type="DATE"&gt;${vVALID_TO_DATE}&lt;/param&gt;
+                &lt;param id="11" type="DATE"&gt;${vVALID_FROM_DATE}&lt;/param&gt;
+                &lt;param id="12" type="VARCHAR"&gt;${vEMP_NAME_FULL}&lt;/param&gt;
+                &lt;param id="13" type="VARCHAR"&gt;${vINTL_PHN_NUM_FULL}&lt;/param&gt;
+                &lt;param id="14" type="VARCHAR"&gt;${vINTL_FAX_NUM_FULL}&lt;/param&gt;
+                &lt;param id="15" type="VARCHAR"&gt;${vEMAIL_ADR}&lt;/param&gt;
+                &lt;param id="16" type="SMALLINT"&gt;${vINACT_FLAG}&lt;/param&gt;
+                &lt;param id="17" type="TIMESTAMP"&gt;${vMOD_DATE}&lt;/param&gt;
+                &lt;param id="18" type="VARCHAR"&gt;${vMOD_BY_HRCL_NAME}&lt;/param&gt;
+    &lt;/sql&gt;
+&lt;/src&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">SQLUnit  --- Test</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+&lt;src&gt;
+</p>
+
+<p>
+&lt;test name="Test S_Q0_CNTRY_SLSORG"&gt; 
+&lt;call connection-id="duke"&gt;
+        &lt;stmt&gt;{call EBIZ1.S_Q0_CNTRY_SLSORG (?, ?, ?)}&lt;/stmt&gt; 
+        &lt;param id="1" name="poGenStatus" type="INTEGER" inout="out"&gt;${poGenStatus}&lt;/param&gt; 
+        &lt;param id="2" name="piPartnerCntry" type="VARCHAR" inout="in"&gt;${v_partnerCntry}&lt;/param&gt; 
+        &lt;param id="3" name="piLOBCode" type="VARCHAR" inout="in"&gt;${v_LOBCode}&lt;/param&gt; 
+&lt;/call&gt; 
+&lt;result&gt; 
+        &lt;outparam id="1" name="poGenStatus" type="INTEGER"&gt;0&lt;/outparam&gt; 
+        &lt;resultset id="1" partial="true"&gt; 
+                &lt;row id="1"&gt; 
+                        &lt;col id="1" name="CNTRY_CODE" type="CHAR"&gt;ARM&lt;/col&gt; 
+                &lt;/row&gt; 
+        &lt;/resultset&gt; 
+&lt;/result&gt; 
+&lt;/test&gt;         
+&lt;diff name="Diffing different resultset\/multiple matchers" failure-message="Diff test #3 failed"&gt;
+        &lt;match col-id="1" matcher="net.sourceforge.sqlunit.matchers.AllOrNothingMatcher"&gt;
+                &lt;arg name="match" value="true" /&gt;
+        &lt;/match&gt;
+        &lt;match col-id="2" matcher="net.sourceforge.sqlunit.matchers.RangeMatcher"&gt;
+                &lt;arg name="tolerance" value="50" /&gt;
+        &lt;/match&gt;
+        &lt;match col-id="3" matcher="net.sourceforge.sqlunit.matchers.PercentageRangeMatcher"&gt;
+                &lt;arg name="pc-tolerance" value="10" /&gt;
+        &lt;/match&gt;  
+</p>
+
+<p>
+        &lt;call connection-id="duke"&gt; 
+                &lt;stmt&gt;{call EBIZ1.S_Q0_CNTRY_SLSORG (?, ?, ?)}&lt;/stmt&gt; 
+                &lt;param id="1" name="poGenStatus" type="INTEGER" inout="out"&gt;${poGenStatus}&lt;/param&gt; 
+                &lt;param id="2" name="piPartnerCntry" type="VARCHAR" inout="in"&gt;${v_partnerCntry}&lt;/param&gt; 
+                &lt;param id="3" name="piLOBCode" type="VARCHAR" inout="in"&gt;${v_LOBCode}&lt;/param&gt; 
+        &lt;/call&gt; 
+        &lt;call connection-id="duke"&gt; 
+                &lt;stmt&gt;{call EBIZ1.S_Q0_CNTRY_SLSORG (?, ?, ?)}&lt;/stmt&gt; 
+                &lt;param id="1" name="poGenStatus" type="INTEGER" inout="out"&gt;${poGenStatus}&lt;/param&gt; 
+                &lt;param id="2" name="piPartnerCntry" type="VARCHAR" inout="in"&gt;${v_partnerCntry}&lt;/param&gt; 
+                &lt;param id="3" name="piLOBCode" type="VARCHAR" inout="in"&gt;${v_LOBCode}&lt;/param&gt; 
+        &lt;/call&gt;
+&lt;/diff&gt;        
+</p>
+
+
+<p>
+&lt;/src&gt;
+</p>
+
+
+
+
+
+
+<p>
+DB2 development pain points
+</p>
+
+<p>
+How to use SQLUnit
+</p>
+
+
+
+<p>
+TDD stored procedures 
+</p>
+
+
+<p>
+Pain Points
+Q: When I update SP code, I don't know if the new code breaks the existing logic. What can help me to find the bugs introducing by the added code easily?
+</p>
+
+<p>
+A: TDD
+</p>
+
+
+<p>
+Pain Points
+Q: It's difficult to unit test SP and UDF. Is there any useful tool to help me to do that?
+</p>
+
+
+<p>
+A: SQLUnit: <a href="http://sqlunit.sourceforge.net/book1.html">http://sqlunit.sourceforge.net/book1.html</a>
+</p>
+
+
+
+<p>
+SQLUnit
+SQLUnit is a regression and unit testing harness for testing database stored procedures. 
+The test suite is written as an XML file. 
+The SQLUnit harness itself is written in Java and uses the JUnit unit testing framework to convert the XML test specifications to JDBC calls and compare the results generated from the calls with the specified results.
+SQLUnit  Get Started
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE sqlunit SYSTEM "../lib/sqlunit.dtd" [
+]&gt;
+&lt;sqlunit&gt;
+  &lt;connection server-name="ibmdb2" extern="duke" /&gt;
+  &lt;setup&gt;  &lt;/setup&gt;
+  &lt;test name="Testing Hello World "&gt;
+    &lt;call&gt;
+      &lt;stmt&gt;{call HELLO_WORLD (?, ?)}&lt;/stmt&gt;
+        &lt;param id="1" name="piName" type="CHAR" inout="in"&gt;Will&lt;/param&gt;
+        &lt;param id="2" name="poMsg" type="CHAR" inout="out"&gt;${poMsg}&lt;/param&gt;
+      &lt;/call&gt;
+      &lt;result&gt;
+        &lt;outparam id="1" name="poMsg" type="CHAR"&gt;Hello, Will!&lt;/outparam&gt;
+      &lt;/result&gt;
+  &lt;/test&gt;
+  &lt;teardown&gt;  &lt;/teardown&gt;
+&lt;/sqlunit&gt;
+</p>
+
+<p>
+Connections
+Customization to make SQLUnit to support DB2. 
+</p>
+<p>
+ibmdb2.SMALLINT.class = net.sourceforge.sqlunit.types.IntegerType
+ibmdb2.SMALLINT.type = 5
+Using connection tag to define a connection 
+ &lt;connection server-name="ibmdb2" extern="duke" /&gt; 
+</p>
+
+<p>
+sqlunit.driver = COM.ibm.db2.jdbc.app.DB2Driver
+sqlunit.url = jdbc:db2:sample
+</p>
+<p>
+Importing a xml file to define a connection 
+&lt;?xml version="1.0"?&gt;
+ &lt;!DOCTYPE sqlunit SYSTEM "<a href="sqlunit/lib/sqlunit.dtd">sqlunit/lib/sqlunit.dtd</a>" [
+  &lt;!ENTITY connection SYSTEM "<a href="@CONF_DIR@/sqlunitConnectionConfig.xml">@CONF_DIR@/sqlunitConnectionConfig.xml</a>"&gt;
+ ]&gt;
+&lt;sqlunit&gt;
+    &amp;connection;
+    &lt;setup&gt;&lt;/setup&gt;
+  ...
+</p>
+
+
+
+<p>
+Setup Set variable 
+</p>
+
+<p>
+Setting a variable ${var} to 14
+ &lt;set name="${var}" value="14" /&gt; 
+Setting variable ${myquery.col1} from SQL
+ &lt;set name="${myquery}"&gt;
+   &lt;sql&gt;&lt;stmt&gt;select col1 from mytable where col2=45&lt;/stmt&gt;&lt;/sql&gt;
+   &lt;result&gt;
+     &lt;resultset id="1"&gt;
+       &lt;row id="1"&gt;
+         &lt;col id="1" name="c1" type="INTEGER"&gt;${col1}&lt;/col&gt;
+       &lt;/row&gt;
+     &lt;/resultset&gt;
+   &lt;/result&gt;
+ &lt;/set&gt; 
+</p>
+
+
+
+<p>
+Setup  Test data 
+ &lt;sql&gt;
+      &lt;stmt&gt;INSERT INTO sods2.ibm_emp_dlgtn (
+            IBM_EMP_NUM, EMP_CNTRY_CODE, PROG_CODE, MIGRTN_CODE, REVN_STREAM_CODE,
+            SAP_SALES_ORG_CODE, PAYER_CNTRY_CODE, PROG_MIGRTN_CODE,
+            DLGTN_PCT, VALID_TO_DATE, VALID_FROM_DATE, EMP_NAME_FULL,
+            INTL_PHN_NUM_FULL, INTL_FAX_NUM_FULL, EMAIL_ADR,
+            INACT_FLAG, MOD_DATE, MOD_BY_HRCL_NAME)
+            VALUES(?, ?, ?, ?, ?, ?,
+                   ?, ?, ?, ?, ?, ?,
+                   ?, ?, ?, ?, ?, ?
+            )
+      &lt;/stmt&gt;
+        &lt;param id="1" type="CHAR"&gt;${vIBM_EMP_NUM}&lt;/param&gt;
+        &lt;param id="2" type="CHAR"&gt;${vEMP_CNTRY_CODE}&lt;/param&gt;
+        &lt;param id="3" type="CHAR"&gt;${vPROG_CODE}&lt;/param&gt;
+</p>
+
+<p>
+    &lt;/sql&gt;
+Test Tag
+Attributes for test
+name         Specifies a human-readable name for the test, which will be printed to the log as part of SQLUnit's progress messages.         Yes
+assert         Specifies a single or comma-separated list of assertions that must be true for the test.         No, defaults to equal
+</p>
+
+<p>
+Nested Elements
+</p>
+
+<p>
+skip         Indicates whether the test should be skipped or not.         No
+match         Specifies zero or match elements that should be applied to match the result returned with that specified.         No
+prepare         Specifies SQL setup code that must be run on a per-test basis.         No
+sql         Specifies the SQL statement that must be run for this test.         Either one of sql, call, methodinvoker, dynamicsql or sub
+call         Specifies a stored procedure that must be run for the test.         Either one of sql, call, methodinvoker, dynamicsql or sub
+result         Specifies the expected result from the test.         Yes
+</p>
+
+<p>
+Test Tag
+    &lt;test name="Test S_Q0_CNTRY_SLSORG"&gt;
+    &lt;call connection-id="duke"&gt;
+        &lt;stmt&gt;{call EBIZ1.S_Q0_CNTRY_SLSORG (?, ?, ?)}&lt;/stmt&gt;
+        &lt;param id="1" name="poGenStatus" type="INTEGER" inout="out"&gt;${poGenStatus}&lt;/param&gt;
+        &lt;param id="2" name="piPartnerCntry" type="VARCHAR" inout="in"&gt;${v_partnerCntry}&lt;/param&gt;
+        &lt;param id="3" name="piLOBCode" type="VARCHAR" inout="in"&gt;${v_LOBCode}&lt;/param&gt;
+    &lt;/call&gt;
+    &lt;result&gt;
+        &lt;outparam id="1" name="poGenStatus" type="INTEGER"&gt;0&lt;/outparam&gt;
+        &lt;resultset id="1" partial="true"&gt;
+            &lt;row id="1"&gt;
+                &lt;col id="1" name="CNTRY_CODE" type="CHAR"&gt;ARM&lt;/col&gt;
+            &lt;/row&gt;
+        &lt;/resultset&gt;
+    &lt;/result&gt;
+    &lt;/test&gt;
+</p>
+</div>
+</div>
+
+</div>
+</div>
+    <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2013-12-19</span>
+        <span title="last modification date" class="post-info">2013-12-20</span>
+        <span title="tags" class="post-info"><a href="/tags/ibm/">ibm</a>, <a href="/tags/sql/">sql</a>, <a href="/tags/unit-test/">unit test</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/wiki/sqlunit";
+          var disqus_url = "http://standino.github.io/wiki/sqlunit";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46515756-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.4)</p>
+        <p>
+          Copyright &copy; 2012 - 2013 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
