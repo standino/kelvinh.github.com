@@ -10,6 +10,16 @@
 #+DESCRIPTION:  Javascript
 
 
+* 项目中使用到的技术
+
+ - jquery-ui-portlet https://github.com/standino/jquery-ui-portlet
+ - Bootstrap http://www.bootcss.com/
+ - Backbone http://yujianshenbing.iteye.com/category/256978
+ - Angular-dashboard https://github.com/DataTorrent/malhar-angular-dashboard
+ - highcharts https://github.com/highslide-software/highcharts.com
+ - D3 https://github.com/mbostock/d3
+
+* 常用链接
  - [[http://www.myexception.cn/javascript/407684.html][DOJO js 根本dom操作]]
  - http://folyred.iteye.com/blog/946565
  - https://dojotoolkit.org/reference-guide/1.7/dojo/dom-construct.html
