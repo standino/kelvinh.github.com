@@ -18,6 +18,11 @@
  - [[http://hi.baidu.com/delete_h/item/7b65023c1d9cab5f80f1a77e][Spring中使用Quartz的２种方法]]
  - [[http://docs.spring.io/spring-roo/reference/html/beginning.html][Spring roo]] [[http://it-ebooks.info/read/741/][Spring roo in action]]
 
+
+** Spring security
+ - [[http://www.blogjava.net/youxia/archive/2008/12/07/244883.html][SpringSide 3 中的安全框架]]
+ - [[http://howtodoinjava.com/2013/08/11/spring-3-security-siteminder-pre-authentication-example/][Spring 3 security siteminder pre-authentication example]]
+
 ** Spring bean
 
 *** 使用注解声明bean

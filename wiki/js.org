@@ -30,6 +30,9 @@
  - [[http://www.divcss5.com/jiqiao/j497.shtml][jQuery适用技巧笔记整合]]
  - [[http://kelvinh.github.io/blog/2011/12/17/jquery-ajax-request-and-struts2-ognl-error/][jQuery发送含有数组参数的ajax请求以及后台Struts2的OGNL解析错误]]
  - [[http://www.gbtags.com/gb/share/3624.htm][六个前端开发工程师必备的Web设计模式/模块资源]]
+ - [[http://www.cnblogs.com/html5tricks/p/3938619.html][精心挑选的HTML5/CSS3应用及源码]]
+ - [[http://www.w2bc.com/Article/5384][纯css3实现的超炫checkbox复选框和radio单选框]]
+ - [[http://www.nodenpm.com/news/18][淘宝搭建npm.taobao.org为国内用户提供npm国内镜像]]
 
 *  [[http://www.w3cschool.cc/bootstrap/bootstrap-intro.html][Bootstrap 简介]]
 
@@ -283,6 +286,9 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
  5. http://www.hongkiat.com/blog/jquery-ui-sortable/
  6. AngularJS入门教程 http://www.ituring.com.cn/minibook/303
  7. [[http://blog.pusher.com/making-angular-js-realtime-with-pusher/][Making Angular.js realtime with Websockets]]
+ 8. [[http://www.safaribooksonline.com/library/view/angularjs-up-and/9781491901939/][AngularJS: Up and Running]]
+ 9. [[http://www.safaribooksonline.com/library/view/build-a-strong/9781491905661/][Build a Strong AngularJS Foundation]]
+ 10. [[http://angularjs.cn/][Angular中文社区]]
 
 ** meteor
 
@@ -431,3 +437,4 @@ CKEDITOR.editorConfig = function(config) {
 * dashboard 
 
  - http://ehesp.github.io/Responsive-Dashboard/#
+ - [[http://angular-ui.github.io/bootstrap/][UI Bootstrap]]

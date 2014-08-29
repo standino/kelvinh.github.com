@@ -26,6 +26,8 @@ mvn archetype:generate    -DgroupId=com.stcalc   -DartifactId=business-rule -Din
 mvn archetype:generate    -DgroupId=com.stcalc   -DartifactId=sheduler -DinteractiveMode=false
 mvn archetype:generate   -DarchetypeArtifactId=maven-archetype-webapp   -DgroupId=com.stcalc   -DartifactId=web
 
+
+
 #+END_SRC
 
 ** 在 calc目录下创建pom.xml文件
