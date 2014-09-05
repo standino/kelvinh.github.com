@@ -434,7 +434,49 @@ CKEDITOR.editorConfig = function(config) {
   - http://www.highcharts.com/studies/map-from-svg.htm
   - 
 
-* dashboard 
 
- - http://ehesp.github.io/Responsive-Dashboard/#
- - [[http://angular-ui.github.io/bootstrap/][UI Bootstrap]]
+* Angular 
+  - http://angularjs.cn/A00a
+  - http://plnkr.co/edit/T9J7bz?p=preview
+  - http://plnkr.co/edit/T9J7bz?p=preview  D3 chart 
+** dashboard 
+
+  - http://ehesp.github.io/Responsive-Dashboard/#
+  - [[http://angular-ui.github.io/bootstrap/][UI Bootstrap]]
+
+** iframe 
+
+   - http://stackoverflow.com/questions/20045150/angular-js-how-to-set-an-iframe-src-attribute-from-a-variable
+   - http://jsfiddle.net/478wA/
+
+#+BEGIN_SRC html
+<div ng-app ng-controller="searchPage">
+    <div ng-repeat="page in searchResults">
+        <a ng-click="itemDetail(page._infoLink)">{{page.label}}</a>
+    </div>
+    <iframe width="500" height="400" ng-src="{{detailFrame}}"></iframe>
+</div>
+#+END_SRC
+
+#+BEGIN_SRC javascript
+function searchPage($scope){
+    $scope.searchResults = [{label:"BBC",_infoLink:"http://www.bbc.co.uk/"},{label:"CNN",_infoLink:"http://edition.cnn.com/"}];
+    
+    $scope.itemDetail = function(link){
+        $scope.detailFrame = link;
+    };
+}
+#+END_SRC
+
+** tab
+
+  http://plnkr.co/edit/IZiEskpyprh3vt9TTUNd?p=preview
+
+** select 
+
+  - http://wenzhixin.net.cn/p/multiple-select/docs/#multiple-select
+
+* less
+
+ - http://lesscss.org/
+
