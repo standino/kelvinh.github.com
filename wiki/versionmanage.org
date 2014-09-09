@@ -49,14 +49,6 @@ svn log | less
 # 合并change set. 版本号从你修改的内容的前一个版本号，到你最后一次提交的版本号
 svn merge -r 45693:46318 http://branches/sone_1_0_0/
 
-svn merge -r r48996:r49002 http://svn.360buy-develop.com/repos/ipo/retail/branches/sone_1_0_0/
-
-svn merge -r r47606:r47744  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
-
-svn merge -r r48488:r48598  http://svn.360buy-develop.com/repos/ipo/dashboard/branches/dashboard_1_0_0
-
-
-
 
 # 获得change list用于抽包
 svn st
