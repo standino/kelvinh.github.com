@@ -43,19 +43,6 @@
 
 ** saiku https://github.com/OSBI/saiku-ui
 
-  - http://blog.analytical-labs.com/
-  - http://forums.meteorite.bi/
-  - http://jira.meteorite.bi/secure/Dashboard.jspa
-  - http://docs.analytical-labs.com/
-  - http://jira.pentaho.com/browse/MONDRIAN-1584
-  - Backbone入门指南（一）：什么是Backbone? http://yujianshenbing.iteye.com/blog/1748447
-  - http://documentcloud.github.com/underscore/
-
-    /?mode=table&plugin=true#query/open/aaf.saiku
-
-   /saiku-ui/?mode=table&plugin=true#query/open/demo.saiku
-
-   /saiku-ui/?mode=view&plugin=true#query/open/demo.saiku
 
 *** OLAP 介绍
 
@@ -72,7 +59,8 @@ Online analytical processing(OLAP)即 联机分析处理 。
     3. 维的成员（Member）：维的一个取值，是数据项在某维中位置的描述。（“某年某月某日”是在时间维上位置的描述）。
     4. 度量（Measure）：多维数组的取值。（2000年1月，上海，笔记本电脑，0000）。
     5. OLAP的基本多维分析操作有钻取（Drill-up和Drill-down）、切片（Slice）和切块（Dice）、以及旋转（Pivot）等。
-    - 钻取：是改变维的层次，变换分析的粒度。它包括向下钻取（Drill-down）和向上钻取（Drill-up）/上卷(Roll-up)。Drill-up是在某一维上将低层次的细节数据概括到高层次的汇总数据，或者减少维数；而Drill-down则相反，它从汇总数据深入到细节数据进行观察或增加新维。
+    - 钻取：是改变维的层次，变换分析的粒度。它包括向下钻取（Drill-down）和向上钻取（Drill-up）/上卷(Roll-up)。Drill-up是在某一维上
+      将低层次的细节数据概括到高层次的汇总数据，或者减少维数；而Drill-down则相反，它从汇总数据深入到细节数据进行观察或增加新维。 
     - 切片和切块：是在一部分维上选定值后，关心度量数据在剩余维上的分布。如果剩余的维只有两个，则是切片；如果有三个或以上，则是切块。
     - 旋转：是变换维的方向，即在表格中重新安排维的放置（例如行列互换）。
 **** 星形结构
@@ -932,3 +920,16 @@ SaikuClient.prototype.executeMdx = function(usercall) {
  - http://docs.analytical-labs.com/
  - How to quickly add a date dimension to a Pentaho Mondrian OLAP cube http://www.freeportmetrics.com/devblog/2012/11/02/how-to-quickly-add-date-dimension-to-pentaho-mondrian-olap-cube/
  - Mondrian 文档 http://mondrian.pentaho.com/documentation/schema.php#Time_dimensions
+  - http://blog.analytical-labs.com/
+  - http://forums.meteorite.bi/
+  - http://jira.meteorite.bi/secure/Dashboard.jspa
+  - http://docs.analytical-labs.com/
+  - http://jira.pentaho.com/browse/MONDRIAN-1584
+  - Backbone入门指南（一）：什么是Backbone? http://yujianshenbing.iteye.com/blog/1748447
+  - http://documentcloud.github.com/underscore/
+
+    /?mode=table&plugin=true#query/open/aaf.saiku
+
+   /saiku-ui/?mode=table&plugin=true#query/open/demo.saiku
+
+   /saiku-ui/?mode=view&plugin=true#query/open/demo.saiku
