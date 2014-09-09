@@ -1,4 +1,4 @@
-#+TITLE:       基于saiku开发OLAP应用
+#+TITLE:       大数据下BI报表所需要的技术
 #+AUTHOR:      Will
 #+EMAIL:       will@will-K42JA
 #+DATE:        2014-06-16 一
@@ -9,42 +9,9 @@
 #+OPTIONS:     H:3 num:nil toc:t \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
 #+DESCRIPTION: 使用saiku开发OLAP系统
 
+* 基本概念
 
-* 前端
-
-** jquery-ui-portlet 
-   - https://github.com/standino/jquery-ui-portlet
-
-** Bootstrap 
-   - http://www.bootcss.com/
-
-** Backbone 
-   - http://yujianshenbing.iteye.com/category/256978
-
-** Angular-dashboard 
-   - https://github.com/DataTorrent/malhar-angular-dashboard
-
-** highcharts 
-   - https://github.com/highslide-software/highcharts.com
-
-** D3 
-   - https://github.com/mbostock/d3
-
-* 后端
-
-** mysql
- - [[http://blog.csdn.net/adparking/article/details/6676571][mysql中的load data infile用法]]
- - [[http://www.blogjava.net/qileilove/archive/2012/04/23/376353.html][定时备份mysql数据库 并删除7天前的备份 （windows linux ）]]
- - [[http://blog.csdn.net/jinkelei/article/details/6833997][mysql定时备份和删除]]
- - [[http://my.oschina.net/zimingforever/blog/91287][mysql删除大表的部分数据]]
- - [[http://www.joyofdata.de/blog/setting-up-a-time-dimension-table-in-mysql/][SQL脚本插入时间维度表数据]]
-
-** mongodb
-
-** saiku https://github.com/OSBI/saiku-ui
-
-
-*** OLAP 介绍
+** OLAP 介绍
 
 Online analytical processing(OLAP)即 联机分析处理 。
 
@@ -82,6 +49,37 @@ Online analytical processing(OLAP)即 联机分析处理 。
         事实表存放度量(measure)信息，或者称事实(fact)信息。度量是根据各个维计算出来的一些数值。比如说销售金额是个数值，我们可以按产品、安类型查看总数，可以查看任何时间段的所有总数。
         跟维表的又矮又胖相比，事实表一般显得又高又瘦。事实表很高，是因为他们拥有的记录数一般都很巨大。
 
+** MDX
+
+* 前端
+
+** jquery-ui-portlet 
+   - https://github.com/standino/jquery-ui-portlet
+
+** Bootstrap 
+   - http://www.bootcss.com/
+
+** Backbone 
+   - http://yujianshenbing.iteye.com/category/256978
+
+** Angular-dashboard 
+   - https://github.com/DataTorrent/malhar-angular-dashboard
+
+** highcharts 
+   - https://github.com/highslide-software/highcharts.com
+
+** D3 
+   - https://github.com/mbostock/d3
+
+* 后端
+
+** mysql
+ - [[http://www.joyofdata.de/blog/setting-up-a-time-dimension-table-in-mysql/][SQL脚本插入时间维度表数据]]
+
+** mongodb
+
+** saiku https://github.com/OSBI/saiku-ui
+
 *** Mondrian 介绍
 
 Mondrian是一个BI开源项目。一个用Java写成的OLAP（在线分析性处理）引擎。它用MDX语言实现查询，从关系数据库(RDBMS)中读取数据。然后经过Java API用多维的方式对结果进行展示。
@@ -93,8 +91,6 @@ Mondrian是一个BI开源项目。一个用Java写成的OLAP（在线分析性�
 
 **** 权限
 权限分为两种，一种是顶一下在Mondrian的cube中。可以设置cube，维度和度量的权限，具体例子见下节中的例子。另一种是数据权限，这个需要编写Java类实现。具体例子将在下面saiku相关小节进行介绍。
-
-
 
 **** 例子
 #+BEGIN_SRC xml
@@ -329,124 +325,19 @@ SaikuMondrianHelper.java  setRoles
 *** saiku 插件编写
 
     1. https://github.com/OSBI/saiku-ui/wiki/Plugins
-
+    2. https://github.com/brenopolanski/saiku-plugin-boilerplate
 
 
 **** SaikuChartPlus  https://github.com/it4biz/SaikuChartPlus
 
-How to install
-
-For Pentaho BA Users, please use Pentaho Marketplace
-
-For Saiku Server Users, please follow the tutorial at section "Advanced instalation"
-
-Advanced instalation
-1) Edit the file saiku-server/tomcat/webapps/ROOT/index.html, insert the code below:
+1) 编辑index.html, 插入如下代码:
 
 <!--search for this and put the files under this-->
 <script type="text/javascript" src="js/saiku/plugins/CCC_Chart/plugin.js" ></script>
 <!--start js SaikuChartPlus-->
 <script type="text/javascript" src="js/saiku/plugins/saiku-chart-plus/plugin.js" ></script>
 <!--end js SaikuChartPlus-->
-2) Download the project and extract the content of folder saiku-server on saiku-server/tomcat/webapps/ROOT/js/saiku/plugins/
-
-That's it!
-
-
-
-*** Saiku用户手册
-
-系统是基于开源项目构建的一个 OLAP BI 报表系统。它有如下优点：
-
- - 可以按照多种维度灵活查看各指标。
- - 提供筛选，排序和钻取功能，方便业务人员对数据进行分析。省去以前需要导出数据在Excel中分析的步骤。
- - 提供多种导出功能。
- - 可以生成多种图表，方便查看数据分布和趋势。
- - 增加新报表的开发工作大幅减少，开发人员可以根据业务人员提出的需求快速开发出新的报表。免去手工提数的工作。
-
-下面我们具体介绍一下如何使用改系统进行查询和分析数据。
-
-**** 选择报表
-
-在左上角的下拉列表中选择需要查看的报表。
-
-[[file:saiku1.png]]
-
-**** 添加维度
-在选择所要查看的报表后，页面会列出报表的维度和指标的选项。
-
-[[file:saiku2.png]]
-
-拖动相应的维度和指标到页面右侧的“列”，”行“或者“过滤”。指标必须放在一起，但是维度可以放在上面三处的任意一处。
-
-[[file:saiku3.png]]
-
-**** 执行查询
-
-默认情况下，当维度和指标被放置到列和行以后，系统会自动执行查询，然后在下方显示报表内容。你也可以点击下面图片中的第二个按钮关闭自动查询。通
-过下面图片中的第一个按钮手动执行。
-
-[[file:saiku4.png]]
-
-**** 交换数轴
-
-下图中的按钮是用于列和行之间的切换。
-
-[[file:saiku5.png]]
-
-**** 排序
-点击箭头可以对结果进行排序。
-[[file:sort.png]]
-
-下图显示了一个按照“已结算金额”进行降序排列的例子：
-
-[[file:saiku6.png]]
-**** 筛选
-查询按钮可以对查询结果进行筛选。
-[[file:magnify.png]]
-
-点击查询按钮后会弹出一个对话框。对话框里列出所有的可选项，用户可以选择需要显示的内容。
-
-[[file:saiku7.png]]
-
-
-**** 保存报表
-
-点击保存按钮可以把当前的查询保存下来。可以供自己或者他人使用。
-
-[[file:saiku8.png]]
-
-在弹出的保存对话框中，输入文件名称，点击保存。
-
-[[file:saiku9.png]]
-
-**** 打开已保存的报表
-点击打开按钮可以打开保存过的报表查询。
-
-[[file:saiku10.png]]
-
-在弹出框内选择保存的报表查询，点击打开。
-
-[[file:saiku11.png]]
-
-[[file:saiku12.png]]
-
-
-**** 生成图表
-
-点击右侧的“图表模式”按钮后，查询的数据就会以图表的形式显示。
-
-[[file:saiku14.png]]
-
-[[file:saiku13.png]]
-
-**** 钻取
-
-点击报表中的单元格，可以进行灵活的钻取查看。
-
-[[file:saiku15.png]]
-
-
+2) 拷贝插件代码到如下目录 /webapps/ROOT/js/saiku/plugins/
 
 *** MDX
 
@@ -894,9 +785,24 @@ SaikuClient.prototype.executeMdx = function(usercall) {
 #+END_SRC
 
 
-** optiq https://github.com/julianhyde/optiq
+** optiq 
 
-** spark SQL http://spark.apache.org/sql/
+
+  - https://github.com/julianhyde/optiq
+  - [[http://www.slideshare.net/julianhyde/optiq-a-sql-frontend-for-everything][Optiq: a SQL front-end for everything]]
+  - http://www.coderanch.com/t/621003/big-data/databases/Mondrian-Action-supported-databases
+  - http://www.slideshare.net/planetcassandra/south-bay-cassandrealtime-analytics-using-cassandra-spark-and-shark-at-ooyala
+  - https://wiki.apache.org/incubator/OptiqProposal
+  - http://incubator.apache.org/projects/optiq.html
+
+
+** spark SQL 
+  - http://spark.apache.org/sql/
+   - [[http://spark.apache.org/docs/latest/sql-programming-guide.html][Running SQL on RDDs]]
+  - [[http://aws.amazon.com/articles/Elastic-MapReduce/4926593393724923][Run Spark and Shark on Amazon Elastic MapReduce]]
+  - [[http://blog.csdn.net/wyc09/article/details/19417663][编写Java程序访问Spark环境]]
+  - [[http://spark.apache.org/docs/latest/sql-programming-guide.html][Spark SQL Programming Guide]]
+
 
 
 
@@ -927,6 +833,10 @@ SaikuClient.prototype.executeMdx = function(usercall) {
   - http://jira.pentaho.com/browse/MONDRIAN-1584
   - Backbone入门指南（一）：什么是Backbone? http://yujianshenbing.iteye.com/blog/1748447
   - http://documentcloud.github.com/underscore/
+ - [[http://blog.csdn.net/adparking/article/details/6676571][mysql中的load data infile用法]]
+ - [[http://www.blogjava.net/qileilove/archive/2012/04/23/376353.html][定时备份mysql数据库 并删除7天前的备份 （windows linux ）]]
+ - [[http://blog.csdn.net/jinkelei/article/details/6833997][mysql定时备份和删除]]
+ - [[http://my.oschina.net/zimingforever/blog/91287][mysql删除大表的部分数据]]
 
     /?mode=table&plugin=true#query/open/aaf.saiku
 
