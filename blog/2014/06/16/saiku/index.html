@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <title>基于saiku开发OLAP应用 - Keep going</title>
+  <title>大数据下BI报表所需要的技术 - Keep going</title>
   <meta charset="utf-8" />
   <meta name="author" content="Will" />
     <meta name="description" content="使用saiku开发OLAP系统" />
@@ -42,176 +42,60 @@
 
 <div>
 <div class="post">
-<h1>基于saiku开发OLAP应用</h1>
+<h1>大数据下BI报表所需要的技术</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">前端</a>
+<li><a href="#sec-1">基本概念</a>
 <ul>
-<li><a href="#sec-1-1">jquery-ui-portlet</a></li>
-<li><a href="#sec-1-2">Bootstrap</a></li>
-<li><a href="#sec-1-3">Backbone</a></li>
-<li><a href="#sec-1-4">Angular-dashboard</a></li>
-<li><a href="#sec-1-5">highcharts</a></li>
-<li><a href="#sec-1-6">D3</a></li>
+<li><a href="#sec-1-1">OLAP 介绍</a></li>
+<li><a href="#sec-1-2">MDX</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">后端</a>
+<li><a href="#sec-2">前端</a>
 <ul>
-<li><a href="#sec-2-1">mysql</a></li>
-<li><a href="#sec-2-2">mongodb</a></li>
-<li><a href="#sec-2-3">saiku </a>
-<ul>
-<li><a href="#sec-2-3-1">OLAP 介绍</a></li>
-<li><a href="#sec-2-3-2">Mondrian 介绍</a></li>
-<li><a href="#sec-2-3-3">编写 Mondrian Schema</a></li>
-<li><a href="#sec-2-3-4">Saiku介绍</a></li>
-<li><a href="#sec-2-3-5">Saiku 基本配置</a></li>
-<li><a href="#sec-2-3-6">saiku 插件编写</a></li>
-<li><a href="#sec-2-3-7">Saiku用户手册</a></li>
-<li><a href="#sec-2-3-8">MDX</a></li>
-<li><a href="#sec-2-3-9">嵌入式图表的使用</a></li>
+<li><a href="#sec-2-1">jquery-ui-portlet</a></li>
+<li><a href="#sec-2-2">Bootstrap</a></li>
+<li><a href="#sec-2-3">Backbone</a></li>
+<li><a href="#sec-2-4">Angular-dashboard</a></li>
+<li><a href="#sec-2-5">highcharts</a></li>
+<li><a href="#sec-2-6">D3</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-4">optiq </a></li>
-<li><a href="#sec-2-5">spark SQL </a></li>
-<li><a href="#sec-2-6">pig</a></li>
-<li><a href="#sec-2-7">hive</a></li>
-<li><a href="#sec-2-8">ooize</a></li>
+<li><a href="#sec-3">后端</a>
+<ul>
+<li><a href="#sec-3-1">mysql</a></li>
+<li><a href="#sec-3-2">mongodb</a></li>
+<li><a href="#sec-3-3">saiku </a>
+<ul>
+<li><a href="#sec-3-3-1">Mondrian 介绍</a></li>
+<li><a href="#sec-3-3-2">编写 Mondrian Schema</a></li>
+<li><a href="#sec-3-3-3">Saiku介绍</a></li>
+<li><a href="#sec-3-3-4">Saiku 基本配置</a></li>
+<li><a href="#sec-3-3-5">saiku 插件编写</a></li>
+<li><a href="#sec-3-3-6">MDX</a></li>
+<li><a href="#sec-3-3-7">嵌入式图表的使用</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">参考资料</a></li>
+<li><a href="#sec-3-4">optiq</a></li>
+<li><a href="#sec-3-5">spark SQL</a></li>
+<li><a href="#sec-3-6">pig</a></li>
+<li><a href="#sec-3-7">hive</a></li>
+<li><a href="#sec-3-8">ooize</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">参考资料</a></li>
 </ul>
 </div>
 </div>
-
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">前端</h2>
+<h2 id="sec-1">基本概念</h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">jquery-ui-portlet</h3>
+<h3 id="sec-1-1">OLAP 介绍</h3>
 <div class="outline-text-3" id="text-1-1">
-<ul class="org-ul">
-<li><a href="https://github.com/standino/jquery-ui-portlet">https://github.com/standino/jquery-ui-portlet</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">Bootstrap</h3>
-<div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li><a href="http://www.bootcss.com/">http://www.bootcss.com/</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3">Backbone</h3>
-<div class="outline-text-3" id="text-1-3">
-<ul class="org-ul">
-<li><a href="http://yujianshenbing.iteye.com/category/256978">http://yujianshenbing.iteye.com/category/256978</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4">Angular-dashboard</h3>
-<div class="outline-text-3" id="text-1-4">
-<ul class="org-ul">
-<li><a href="https://github.com/DataTorrent/malhar-angular-dashboard">https://github.com/DataTorrent/malhar-angular-dashboard</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1-5" class="outline-3">
-<h3 id="sec-1-5">highcharts</h3>
-<div class="outline-text-3" id="text-1-5">
-<ul class="org-ul">
-<li><a href="https://github.com/highslide-software/highcharts.com">https://github.com/highslide-software/highcharts.com</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1-6" class="outline-3">
-<h3 id="sec-1-6">D3</h3>
-<div class="outline-text-3" id="text-1-6">
-<ul class="org-ul">
-<li><a href="https://github.com/mbostock/d3">https://github.com/mbostock/d3</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">后端</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">mysql</h3>
-<div class="outline-text-3" id="text-2-1">
-<ul class="org-ul">
-<li><a href="http://blog.csdn.net/adparking/article/details/6676571">mysql中的load data infile用法</a>
-</li>
-<li><a href="http://www.blogjava.net/qileilove/archive/2012/04/23/376353.html">定时备份mysql数据库 并删除7天前的备份 （windows linux ）</a>
-</li>
-<li><a href="http://blog.csdn.net/jinkelei/article/details/6833997">mysql定时备份和删除</a>
-</li>
-<li><a href="http://my.oschina.net/zimingforever/blog/91287">mysql删除大表的部分数据</a>
-</li>
-<li><a href="http://www.joyofdata.de/blog/setting-up-a-time-dimension-table-in-mysql/">SQL脚本插入时间维度表数据</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">mongodb</h3>
-</div>
-
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3">saiku <a href="https://github.com/OSBI/saiku-ui">https://github.com/OSBI/saiku-ui</a></h3>
-<div class="outline-text-3" id="text-2-3">
-<ul class="org-ul">
-<li><a href="http://blog.analytical-labs.com/">http://blog.analytical-labs.com/</a>
-</li>
-<li><a href="http://forums.meteorite.bi/">http://forums.meteorite.bi/</a>
-</li>
-<li><a href="http://jira.meteorite.bi/secure/Dashboard.jspa">http://jira.meteorite.bi/secure/Dashboard.jspa</a>
-</li>
-<li><a href="http://docs.analytical-labs.com/">http://docs.analytical-labs.com/</a>
-</li>
-<li><a href="http://jira.pentaho.com/browse/MONDRIAN-1584">http://jira.pentaho.com/browse/MONDRIAN-1584</a>
-</li>
-<li>Backbone入门指南（一）：什么是Backbone? <a href="http://yujianshenbing.iteye.com/blog/1748447">http://yujianshenbing.iteye.com/blog/1748447</a>
-</li>
-<li><a href="http://documentcloud.github.com/underscore/">http://documentcloud.github.com/underscore/</a>
-
-<p>
-/?mode=table&amp;plugin=true#query/open/aaf.saiku
-</p>
-
-<p>
-<i>saiku-ui</i>?mode=table&amp;plugin=true#query/open/demo.saiku
-</p>
-
-<p>
-<i>saiku-ui</i>?mode=view&amp;plugin=true#query/open/demo.saiku
-</p>
-</li>
-</ul>
-</div>
-
-<div id="outline-container-sec-2-3-1" class="outline-4">
-<h4 id="sec-2-3-1">OLAP 介绍</h4>
-<div class="outline-text-4" id="text-2-3-1">
 <p>
 Online analytical processing(OLAP)即 联机分析处理 。
 </p>
@@ -223,7 +107,7 @@ Online analytical processing(OLAP)即 联机分析处理 。
 </p>
 </div>
 
-<ul class="org-ul"><li>逻辑概念<br  /><div class="outline-text-5" id="text-2-3-1-1">
+<ul class="org-ul"><li>逻辑概念<br  /><div class="outline-text-5" id="text-1-1-0-1">
 <ol class="org-ol">
 <li>维（Dimension）：是人们观察数据的特定角度，是考虑问题时的一类属性，属性集合构成一个维（时间维、地理维等）。
 </li>
@@ -235,7 +119,8 @@ Online analytical processing(OLAP)即 联机分析处理 。
 </li>
 <li>OLAP的基本多维分析操作有钻取（Drill-up和Drill-down）、切片（Slice）和切块（Dice）、以及旋转（Pivot）等。
 </li>
-<li>钻取：是改变维的层次，变换分析的粒度。它包括向下钻取（Drill-down）和向上钻取（Drill-up）/上卷(Roll-up)。Drill-up是在某一维上将低层次的细节数据概括到高层次的汇总数据，或者减少维数；而Drill-down则相反，它从汇总数据深入到细节数据进行观察或增加新维。
+<li>钻取：是改变维的层次，变换分析的粒度。它包括向下钻取（Drill-down）和向上钻取（Drill-up）/上卷(Roll-up)。Drill-up是在某一维上
+将低层次的细节数据概括到高层次的汇总数据，或者减少维数；而Drill-down则相反，它从汇总数据深入到细节数据进行观察或增加新维。 
 </li>
 <li>切片和切块：是在一部分维上选定值后，关心度量数据在剩余维上的分布。如果剩余的维只有两个，则是切片；如果有三个或以上，则是切块。
 </li>
@@ -244,7 +129,7 @@ Online analytical processing(OLAP)即 联机分析处理 。
 </ol>
 </div>
 </li>
-<li>星形结构<br  /><div class="outline-text-5" id="text-2-3-1-2">
+<li>星形结构<br  /><div class="outline-text-5" id="text-1-1-0-2">
 <p>
 事实(Fact)和维(Dimension)         当我们观察数据时，通常想察看聚合数据的某种顺序。这些数据叫做度量(measure)。度量就是可以度量和相
 加的数值。比如销售金额就是一种度量，每个订单都有销售金额。假设每天销售20个产品，每个5美元，销售总额就是100美元。销售金额就是我们想
@@ -271,35 +156,122 @@ Online analytical processing(OLAP)即 联机分析处理 。
 </li></ul>
 </div>
 
-<div id="outline-container-sec-2-3-2" class="outline-4">
-<h4 id="sec-2-3-2">Mondrian 介绍</h4>
-<div class="outline-text-4" id="text-2-3-2">
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">MDX</h3>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">前端</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">jquery-ui-portlet</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><a href="https://github.com/standino/jquery-ui-portlet">https://github.com/standino/jquery-ui-portlet</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Bootstrap</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><a href="http://www.bootcss.com/">http://www.bootcss.com/</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Backbone</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><a href="http://yujianshenbing.iteye.com/category/256978">http://yujianshenbing.iteye.com/category/256978</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">Angular-dashboard</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li><a href="https://github.com/DataTorrent/malhar-angular-dashboard">https://github.com/DataTorrent/malhar-angular-dashboard</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">highcharts</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li><a href="https://github.com/highslide-software/highcharts.com">https://github.com/highslide-software/highcharts.com</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6">D3</h3>
+<div class="outline-text-3" id="text-2-6">
+<ul class="org-ul">
+<li><a href="https://github.com/mbostock/d3">https://github.com/mbostock/d3</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">后端</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">mysql</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><a href="http://www.joyofdata.de/blog/setting-up-a-time-dimension-table-in-mysql/">SQL脚本插入时间维度表数据</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">mongodb</h3>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">saiku <a href="https://github.com/OSBI/saiku-ui">https://github.com/OSBI/saiku-ui</a></h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1">Mondrian 介绍</h4>
+<div class="outline-text-4" id="text-3-3-1">
 <p>
 Mondrian是一个BI开源项目。一个用Java写成的OLAP（在线分析性处理）引擎。它用MDX语言实现查询，从关系数据库(RDBMS)中读取数据。然后经过Java API用多维的方式对结果进行展示。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-2-3-3" class="outline-4">
-<h4 id="sec-2-3-3">编写 Mondrian Schema</h4>
-<div class="outline-text-4" id="text-2-3-3">
-</div><ul class="org-ul"><li>Cube<br  /><div class="outline-text-5" id="text-2-3-3-1">
+<div id="outline-container-sec-3-3-2" class="outline-4">
+<h4 id="sec-3-3-2">编写 Mondrian Schema</h4>
+<div class="outline-text-4" id="text-3-3-2">
+</div><ul class="org-ul"><li>Cube<br  /><div class="outline-text-5" id="text-3-3-2-1">
 <p>
 创建数据立文体（CUBE）。在Mondrian里面的cube是以XML的形式定义的，他有一个GUI工具workbench来制作cube.具体例子见下节中的例子。
 </p>
 </div>
 </li>
 
-<li>权限<br  /><div class="outline-text-5" id="text-2-3-3-2">
+<li>权限<br  /><div class="outline-text-5" id="text-3-3-2-2">
 <p>
 权限分为两种，一种是顶一下在Mondrian的cube中。可以设置cube，维度和度量的权限，具体例子见下节中的例子。另一种是数据权限，这个需要编写Java类实现。具体例子将在下面saiku相关小节进行介绍。
 </p>
 </div>
 </li>
 
-
-
-<li>例子<br  /><div class="outline-text-5" id="text-2-3-3-3">
+<li>例子<br  /><div class="outline-text-5" id="text-3-3-2-3">
 <div class="org-src-container">
 
 <pre class="src src-xml">&lt;Schema name="Sone"&gt;
@@ -431,26 +403,26 @@ Mondrian是一个BI开源项目。一个用Java写成的OLAP（在线分析性�
 </div>
 </li></ul>
 </div>
-<div id="outline-container-sec-2-3-4" class="outline-4">
-<h4 id="sec-2-3-4">Saiku介绍</h4>
-<div class="outline-text-4" id="text-2-3-4">
+<div id="outline-container-sec-3-3-3" class="outline-4">
+<h4 id="sec-3-3-3">Saiku介绍</h4>
+<div class="outline-text-4" id="text-3-3-3">
 <p>
 Saiku是一个模块化的开源分析套件，它提供轻量级的OLAP（联机分析处理），并且可嵌入、可扩展、可配置。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-2-3-5" class="outline-4">
-<h4 id="sec-2-3-5">Saiku 基本配置</h4>
-<div class="outline-text-4" id="text-2-3-5">
-</div><ul class="org-ul"><li>Schema 文件<br  /><div class="outline-text-5" id="text-2-3-5-1">
+<div id="outline-container-sec-3-3-4" class="outline-4">
+<h4 id="sec-3-3-4">Saiku 基本配置</h4>
+<div class="outline-text-4" id="text-3-3-4">
+</div><ul class="org-ul"><li>Schema 文件<br  /><div class="outline-text-5" id="text-3-3-4-1">
 <p>
 saiku/saiku-core/saiku-web-ui/src/main/resources/schema/sone.mondrian.xml
 </p>
 </div>
 </li>
 
-<li>连接数据库<br  /><div class="outline-text-5" id="text-2-3-5-2">
+<li>连接数据库<br  /><div class="outline-text-5" id="text-3-3-4-2">
 <pre class="example">
 type=OLAP
 name=saiku_sone
@@ -463,7 +435,7 @@ security.type=one2one
 </pre>
 </div>
 </li>
-<li>自定义角色<br  /><div class="outline-text-5" id="text-2-3-5-3">
+<li>自定义角色<br  /><div class="outline-text-5" id="text-3-3-4-3">
 <p>
 SaikuMondrianHelper.java  setRoles
 </p>
@@ -549,35 +521,21 @@ private void defineGrantsForCategory(Schema schema) {
 
 
 
-<div id="outline-container-sec-2-3-6" class="outline-4">
-<h4 id="sec-2-3-6">saiku 插件编写</h4>
-<div class="outline-text-4" id="text-2-3-6">
+<div id="outline-container-sec-3-3-5" class="outline-4">
+<h4 id="sec-3-3-5">saiku 插件编写</h4>
+<div class="outline-text-4" id="text-3-3-5">
 <ol class="org-ol">
 <li><a href="https://github.com/OSBI/saiku-ui/wiki/Plugins">https://github.com/OSBI/saiku-ui/wiki/Plugins</a>
+</li>
+<li><a href="https://github.com/brenopolanski/saiku-plugin-boilerplate">https://github.com/brenopolanski/saiku-plugin-boilerplate</a>
 </li>
 </ol>
 </div>
 
 
-
-<ul class="org-ul"><li>SaikuChartPlus  <a href="https://github.com/it4biz/SaikuChartPlus">https://github.com/it4biz/SaikuChartPlus</a><br  /><div class="outline-text-5" id="text-2-3-6-1">
-<p>
-How to install
-</p>
-
-<p>
-For Pentaho BA Users, please use Pentaho Marketplace
-</p>
-
-<p>
-For Saiku Server Users, please follow the tutorial at section "Advanced instalation"
-</p>
-
-<p>
-Advanced instalation
-</p>
+<ul class="org-ul"><li>SaikuChartPlus  <a href="https://github.com/it4biz/SaikuChartPlus">https://github.com/it4biz/SaikuChartPlus</a><br  /><div class="outline-text-5" id="text-3-3-5-1">
 <ol class="org-ol">
-<li>Edit the file saiku-server/tomcat/webapps/ROOT/index.html, insert the code below:
+<li>编辑index.html, 插入如下代码:
 </li>
 </ol>
 
@@ -589,234 +547,16 @@ Advanced instalation
 &lt;!--end js SaikuChartPlus--&gt;
 </p>
 <ol class="org-ol">
-<li>Download the project and extract the content of folder saiku-server on saiku-server/tomcat/webapps/ROOT/js/saiku/plugins/
+<li>拷贝插件代码到如下目录 <i>webapps/ROOT/js/saiku/plugins</i>
 </li>
 </ol>
-
-<p>
-That's it!
-</p>
 </div>
 </li></ul>
 </div>
 
-
-
-<div id="outline-container-sec-2-3-7" class="outline-4">
-<h4 id="sec-2-3-7">Saiku用户手册</h4>
-<div class="outline-text-4" id="text-2-3-7">
-<p>
-系统是基于开源项目构建的一个 OLAP BI 报表系统。它有如下优点：
-</p>
-
-<ul class="org-ul">
-<li>可以按照多种维度灵活查看各指标。
-</li>
-<li>提供筛选，排序和钻取功能，方便业务人员对数据进行分析。省去以前需要导出数据在Excel中分析的步骤。
-</li>
-<li>提供多种导出功能。
-</li>
-<li>可以生成多种图表，方便查看数据分布和趋势。
-</li>
-<li>增加新报表的开发工作大幅减少，开发人员可以根据业务人员提出的需求快速开发出新的报表。免去手工提数的工作。
-</li>
-</ul>
-
-<p>
-下面我们具体介绍一下如何使用改系统进行查询和分析数据。
-</p>
-</div>
-
-<ul class="org-ul"><li>选择报表<br  /><div class="outline-text-5" id="text-2-3-7-1">
-<p>
-在左上角的下拉列表中选择需要查看的报表。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku1.png" alt="/assets/blog/2014/06/16/saiku/saiku1.png" />
-</p>
-</div>
-</div>
-</li>
-
-<li>添加维度<br  /><div class="outline-text-5" id="text-2-3-7-2">
-<p>
-在选择所要查看的报表后，页面会列出报表的维度和指标的选项。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku2.png" alt="/assets/blog/2014/06/16/saiku/saiku2.png" />
-</p>
-</div>
-
-<p>
-拖动相应的维度和指标到页面右侧的“列”，”行“或者“过滤”。指标必须放在一起，但是维度可以放在上面三处的任意一处。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku3.png" alt="/assets/blog/2014/06/16/saiku/saiku3.png" />
-</p>
-</div>
-</div>
-</li>
-
-<li>执行查询<br  /><div class="outline-text-5" id="text-2-3-7-3">
-<p>
-默认情况下，当维度和指标被放置到列和行以后，系统会自动执行查询，然后在下方显示报表内容。你也可以点击下面图片中的第二个按钮关闭自动查询。通
-过下面图片中的第一个按钮手动执行。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku4.png" alt="/assets/blog/2014/06/16/saiku/saiku4.png" />
-</p>
-</div>
-</div>
-</li>
-
-<li>交换数轴<br  /><div class="outline-text-5" id="text-2-3-7-4">
-<p>
-下图中的按钮是用于列和行之间的切换。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku5.png" alt="/assets/blog/2014/06/16/saiku/saiku5.png" />
-</p>
-</div>
-</div>
-</li>
-
-<li>排序<br  /><div class="outline-text-5" id="text-2-3-7-5">
-<p>
-点击箭头可以对结果进行排序。
-<img src="/assets/blog/2014/06/16/saiku/sort.png" alt="/assets/blog/2014/06/16/saiku/sort.png" />
-</p>
-
-<p>
-下图显示了一个按照“已结算金额”进行降序排列的例子：
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku6.png" alt="/assets/blog/2014/06/16/saiku/saiku6.png" />
-</p>
-</div>
-</div>
-</li>
-<li>筛选<br  /><div class="outline-text-5" id="text-2-3-7-6">
-<p>
-查询按钮可以对查询结果进行筛选。
-<img src="/assets/blog/2014/06/16/saiku/magnify.png" alt="/assets/blog/2014/06/16/saiku/magnify.png" />
-</p>
-
-<p>
-点击查询按钮后会弹出一个对话框。对话框里列出所有的可选项，用户可以选择需要显示的内容。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku7.png" alt="/assets/blog/2014/06/16/saiku/saiku7.png" />
-</p>
-</div>
-</div>
-</li>
-
-
-<li>保存报表<br  /><div class="outline-text-5" id="text-2-3-7-7">
-<p>
-点击保存按钮可以把当前的查询保存下来。可以供自己或者他人使用。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku8.png" alt="/assets/blog/2014/06/16/saiku/saiku8.png" />
-</p>
-</div>
-
-<p>
-在弹出的保存对话框中，输入文件名称，点击保存。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku9.png" alt="/assets/blog/2014/06/16/saiku/saiku9.png" />
-</p>
-</div>
-</div>
-</li>
-
-<li>打开已保存的报表<br  /><div class="outline-text-5" id="text-2-3-7-8">
-<p>
-点击打开按钮可以打开保存过的报表查询。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku10.png" alt="/assets/blog/2014/06/16/saiku/saiku10.png" />
-</p>
-</div>
-
-<p>
-在弹出框内选择保存的报表查询，点击打开。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku11.png" alt="/assets/blog/2014/06/16/saiku/saiku11.png" />
-</p>
-</div>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku12.png" alt="/assets/blog/2014/06/16/saiku/saiku12.png" />
-</p>
-</div>
-</div>
-</li>
-
-
-<li>生成图表<br  /><div class="outline-text-5" id="text-2-3-7-9">
-<p>
-点击右侧的“图表模式”按钮后，查询的数据就会以图表的形式显示。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku14.png" alt="/assets/blog/2014/06/16/saiku/saiku14.png" />
-</p>
-</div>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku13.png" alt="/assets/blog/2014/06/16/saiku/saiku13.png" />
-</p>
-</div>
-</div>
-</li>
-
-<li>钻取<br  /><div class="outline-text-5" id="text-2-3-7-10">
-<p>
-点击报表中的单元格，可以进行灵活的钻取查看。
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/blog/2014/06/16/saiku/saiku15.png" alt="/assets/blog/2014/06/16/saiku/saiku15.png" />
-</p>
-</div>
-</div>
-</li></ul>
-</div>
-
-
-
-<div id="outline-container-sec-2-3-8" class="outline-4">
-<h4 id="sec-2-3-8">MDX</h4>
-<div class="outline-text-4" id="text-2-3-8">
+<div id="outline-container-sec-3-3-6" class="outline-4">
+<h4 id="sec-3-3-6">MDX</h4>
+<div class="outline-text-4" id="text-3-3-6">
 <pre class="example">
 SELECT
 NON EMPTY {Hierarchize({[Measures].[已结算金额]})} ON COLUMNS,
@@ -827,10 +567,10 @@ FROM [SalesMoneyReportv2]
 </div>
 
 
-<div id="outline-container-sec-2-3-9" class="outline-4">
-<h4 id="sec-2-3-9">嵌入式图表的使用</h4>
-<div class="outline-text-4" id="text-2-3-9">
-</div><ul class="org-ul"><li>使用保存的query<br  /><div class="outline-text-5" id="text-2-3-9-1">
+<div id="outline-container-sec-3-3-7" class="outline-4">
+<h4 id="sec-3-3-7">嵌入式图表的使用</h4>
+<div class="outline-text-4" id="text-3-3-7">
+</div><ul class="org-ul"><li>使用保存的query<br  /><div class="outline-text-5" id="text-3-3-7-1">
 <p>
 这种使用方式需要先把要展示的表格和图表保存下来，通过传入文件路径来展示。这种方式适合不需要下钻的图表。
 </p>
@@ -861,7 +601,7 @@ FROM [SalesMoneyReportv2]
 </li>
 
 
-<li>使用mdx查询<br  /><div class="outline-text-5" id="text-2-3-9-2">
+<li>使用mdx查询<br  /><div class="outline-text-5" id="text-3-3-7-2">
 <p>
 这种方式比较灵活，可以编写多种mdx查询语句从后台获得数据，进行展示。
 </p>
@@ -879,7 +619,7 @@ FROM [SalesMoneyReportv2]
 </div>
 </li>
 
-<li>相关代码<br  /><div class="outline-text-5" id="text-2-3-9-3">
+<li>相关代码<br  /><div class="outline-text-5" id="text-3-3-7-3">
 <p>
 index.js
 </p>
@@ -1296,32 +1036,66 @@ SaikuClient.prototype.executeMdx = function(usercall) {
 </div>
 
 
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4">optiq <a href="https://github.com/julianhyde/optiq">https://github.com/julianhyde/optiq</a></h3>
-</div>
-
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5">spark SQL <a href="http://spark.apache.org/sql/">http://spark.apache.org/sql/</a></h3>
-</div>
-
-
-
-<div id="outline-container-sec-2-6" class="outline-3">
-<h3 id="sec-2-6">pig</h3>
-</div>
-
-<div id="outline-container-sec-2-7" class="outline-3">
-<h3 id="sec-2-7">hive</h3>
-</div>
-
-<div id="outline-container-sec-2-8" class="outline-3">
-<h3 id="sec-2-8">ooize</h3>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">optiq</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li><a href="https://github.com/julianhyde/optiq">https://github.com/julianhyde/optiq</a>
+</li>
+<li><a href="http://www.slideshare.net/julianhyde/optiq-a-sql-frontend-for-everything">Optiq: a SQL front-end for everything</a>
+</li>
+<li><a href="http://www.coderanch.com/t/621003/big-data/databases/Mondrian-Action-supported-databases">http://www.coderanch.com/t/621003/big-data/databases/Mondrian-Action-supported-databases</a>
+</li>
+<li><a href="http://www.slideshare.net/planetcassandra/south-bay-cassandrealtime-analytics-using-cassandra-spark-and-shark-at-ooyala">http://www.slideshare.net/planetcassandra/south-bay-cassandrealtime-analytics-using-cassandra-spark-and-shark-at-ooyala</a>
+</li>
+<li><a href="https://wiki.apache.org/incubator/OptiqProposal">https://wiki.apache.org/incubator/OptiqProposal</a>
+</li>
+<li><a href="http://incubator.apache.org/projects/optiq.html">http://incubator.apache.org/projects/optiq.html</a>
+</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">参考资料</h2>
-<div class="outline-text-2" id="text-3">
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">spark SQL</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li><a href="http://spark.apache.org/sql/">http://spark.apache.org/sql/</a>
+<ul class="org-ul">
+<li><a href="http://spark.apache.org/docs/latest/sql-programming-guide.html">Running SQL on RDDs</a>
+</li>
+</ul>
+</li>
+<li><a href="http://aws.amazon.com/articles/Elastic-MapReduce/4926593393724923">Run Spark and Shark on Amazon Elastic MapReduce</a>
+</li>
+<li><a href="http://blog.csdn.net/wyc09/article/details/19417663">编写Java程序访问Spark环境</a>
+</li>
+<li><a href="http://spark.apache.org/docs/latest/sql-programming-guide.html">Spark SQL Programming Guide</a>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6">pig</h3>
+</div>
+
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7">hive</h3>
+</div>
+
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8">ooize</h3>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">参考资料</h2>
+<div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><a href="http://blog.csdn.net/leamonjxl/article/details/6681112">数据仓库的架构主要有星型和雪花型两种方式</a>
 </li>
@@ -1346,6 +1120,42 @@ SaikuClient.prototype.executeMdx = function(usercall) {
 <li>How to quickly add a date dimension to a Pentaho Mondrian OLAP cube <a href="http://www.freeportmetrics.com/devblog/2012/11/02/how-to-quickly-add-date-dimension-to-pentaho-mondrian-olap-cube/">http://www.freeportmetrics.com/devblog/2012/11/02/how-to-quickly-add-date-dimension-to-pentaho-mondrian-olap-cube/</a>
 </li>
 <li>Mondrian 文档 <a href="http://mondrian.pentaho.com/documentation/schema.php#Time_dimensions">http://mondrian.pentaho.com/documentation/schema.php#Time_dimensions</a>
+<ul class="org-ul">
+<li><a href="http://blog.analytical-labs.com/">http://blog.analytical-labs.com/</a>
+</li>
+<li><a href="http://forums.meteorite.bi/">http://forums.meteorite.bi/</a>
+</li>
+<li><a href="http://jira.meteorite.bi/secure/Dashboard.jspa">http://jira.meteorite.bi/secure/Dashboard.jspa</a>
+</li>
+<li><a href="http://docs.analytical-labs.com/">http://docs.analytical-labs.com/</a>
+</li>
+<li><a href="http://jira.pentaho.com/browse/MONDRIAN-1584">http://jira.pentaho.com/browse/MONDRIAN-1584</a>
+</li>
+<li>Backbone入门指南（一）：什么是Backbone? <a href="http://yujianshenbing.iteye.com/blog/1748447">http://yujianshenbing.iteye.com/blog/1748447</a>
+</li>
+<li><a href="http://documentcloud.github.com/underscore/">http://documentcloud.github.com/underscore/</a>
+</li>
+</ul>
+</li>
+<li><a href="http://blog.csdn.net/adparking/article/details/6676571">mysql中的load data infile用法</a>
+</li>
+<li><a href="http://www.blogjava.net/qileilove/archive/2012/04/23/376353.html">定时备份mysql数据库 并删除7天前的备份 （windows linux ）</a>
+</li>
+<li><a href="http://blog.csdn.net/jinkelei/article/details/6833997">mysql定时备份和删除</a>
+</li>
+<li><a href="http://my.oschina.net/zimingforever/blog/91287">mysql删除大表的部分数据</a>
+
+<p>
+/?mode=table&amp;plugin=true#query/open/aaf.saiku
+</p>
+
+<p>
+<i>saiku-ui</i>?mode=table&amp;plugin=true#query/open/demo.saiku
+</p>
+
+<p>
+<i>saiku-ui</i>?mode=view&amp;plugin=true#query/open/demo.saiku
+</p>
 </li>
 </ul>
 </div>
