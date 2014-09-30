@@ -4,30 +4,44 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>Wed, 10 Sep 2014 17:36:19 CST</pubDate>
-    <lastBuildDate>Wed, 10 Sep 2014 17:36:19 CST</lastBuildDate>
+    <pubDate>Tue, 30 Sep 2014 12:56:58 CST</pubDate>
+    <lastBuildDate>Tue, 30 Sep 2014 12:56:58 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>大数据</title>
+      <link>http://standino.github.io/wiki/html/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2014-09-30</pubDate>
+      <guid>http://standino.github.io/wiki/html/bigdata</guid>
+    </item>
+    <item>
+      <title>javascript</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-09-30</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>敏捷软件开发</title>
+      <link>http://standino.github.io/wiki/html/scrum</link>
+      <description>敏捷软件开发</description>
+      <pubDate>2014-09-30</pubDate>
+      <guid>http://standino.github.io/wiki/html/scrum</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-09-30</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
+    </item>
     <item>
       <title>大数据下BI报表所需要的技术</title>
       <link>http://standino.github.io./blog/2014/06/16/saiku</link>
       <description>使用saiku开发OLAP系统</description>
       <pubDate>2014-09-09</pubDate>
       <guid>http://standino.github.io./blog/2014/06/16/saiku</guid>
-    </item>
-    <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-09-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
-    </item>
-    <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-09-05</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
     <item>
       <title>JAVA</title>
@@ -42,13 +56,6 @@
       <description>mvn</description>
       <pubDate>2014-08-29</pubDate>
       <guid>http://standino.github.io/wiki/html/mvn</guid>
-    </item>
-    <item>
-      <title>敏捷软件开发</title>
-      <link>http://standino.github.io/wiki/html/scrum</link>
-      <description>敏捷软件开发</description>
-      <pubDate>2014-08-29</pubDate>
-      <guid>http://standino.github.io/wiki/html/scrum</guid>
     </item>
     <item>
       <title>使用apache cxf生成web servcie 客户端</title>
@@ -70,13 +77,6 @@
       <description>走进Emacs殿堂</description>
       <pubDate>2014-08-20</pubDate>
       <guid>http://standino.github.io/blog/2013/12/27/enterEmacs</guid>
-    </item>
-    <item>
-      <title>使用伪代码做详细设计</title>
-      <link>http://standino.github.io/blog/2014/01/09/使用伪代码做详细设计</link>
-      <description>使用伪代码做详细设计</description>
-      <pubDate>2014-08-20</pubDate>
-      <guid>http://standino.github.io/blog/2014/01/09/使用伪代码做详细设计</guid>
     </item>
   </channel>
 </rss>

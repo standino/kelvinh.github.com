@@ -482,6 +482,8 @@ svn co svn+ssh://servername/project
 </li>
 <li><a href="http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsGit.html">Work with Git from Emacs</a>
 </li>
+<li><a href="https://help.github.com/articles/fetching-a-remote">https://help.github.com/articles/fetching-a-remote</a>
+</li>
 </ul>
 
 <p>
@@ -496,7 +498,56 @@ git config --global core.quotepath false
 <p>
 git push -u new master
 </p>
+
+
+
+<p>
+14
+down vote
+accepted
+You could checkout directly the remote branch after fetching it
+</p>
+
+<p>
+git fetch origin
+git branch -f remote_branch_name origin/remote_branch_name
+git checkout remote_branch name
+or shorter:
+</p>
+
+<p>
+git checkout -b production origin/production
+You would be directly working from the fetched copy of origin/production branch (no conflict there).
+</p>
+
+<p>
+By doing
+</p>
+
+<p>
+git co -b production
+git pull origin production
+You are trying to merge the remote production branch into your master (in a local 'production' branch, which means potentially conflicts if your master has locally a different history than the remote origin/production branch.
+</p>
+
+<p>
+Pull
+</p>
+
+<p>
+git pull is a convenient shortcut for completing both git fetch and git mergein the same command:
+</p>
+
+<p>
+git pull remotename branchname
+</p>
+<p>
+Because pull performs a merge on the retrieved changes, you should ensure that your local work is committed before running the pull command. If you run into a merge conflict you cannot resolve, or if you decide to quit the merge, you can use git merge --abort to take the branch back to where it was in before you pulled.
+</p>
 </div>
+
+
+
 
 <div id="outline-container-sec-2-1" class="outline-3">
 <h3 id="sec-2-1"><a href="http://blog.csdn.net/ithomer/article/details/7529841">Git 命令简短总结</a></h3>
@@ -2236,7 +2287,7 @@ hg branchdiff .
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2013-12-19</span>
-        <span title="last modification date" class="post-info">2014-09-09</span>
+        <span title="last modification date" class="post-info">2014-09-30</span>
         <span title="tags" class="post-info"><a href="/tags/svn/">svn</a>, <a href="/tags/cvs/">cvs</a>, <a href="/tags/git/">git</a>, <a href="/tags/hg/">hg</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
