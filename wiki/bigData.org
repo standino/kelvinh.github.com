@@ -22,12 +22,10 @@
  10. [[http://mina-java.iteye.com/blog/1149452][Redis最好的Java客户端jedis入门]]
  11. [[http://projects.spring.io/spring-data-redis/][Spring redis]]
 
-* spark
+* Apache spark
 
  1. http://spark.apache.org/docs/latest/quick-start.html
-
-
- [[http://img.my.csdn.net/uploads/201212/25/1356437707_3798.jpg]]
+ 2. [[http://img.my.csdn.net/uploads/201212/25/1356437707_3798.jpg]]
 
 
 * Mahout
@@ -44,3 +42,7 @@
 * pig
 
   http://pig.apache.org/docs/r0.13.0/basic.html#null_operators
+
+* Apache drill 
+
+ -  http://blog.chinaunix.net/uid-20593827-id-4042244.html

@@ -242,6 +242,7 @@ svn co svn+ssh://servername/project
  - [[http://eagain.net/articles/git-for-computer-scientists/][Tv's cobweb: Git for Computer Scientists]]
  - [[http://github.com/][git repository hosting]]
  - [[http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsGit.html][Work with Git from Emacs]]
+ - https://help.github.com/articles/fetching-a-remote
 
 如果发现git status 发现所有的中文文件名被换成\123\223\145\333.doc文件时，可以使用
 
@@ -249,6 +250,38 @@ svn co svn+ssh://servername/project
 
 
  git push -u new master
+
+
+
+14
+down vote
+accepted
+You could checkout directly the remote branch after fetching it
+
+git fetch origin
+git branch -f remote_branch_name origin/remote_branch_name
+git checkout remote_branch name
+or shorter:
+
+git checkout -b production origin/production
+You would be directly working from the fetched copy of origin/production branch (no conflict there).
+
+By doing
+
+git co -b production
+git pull origin production
+You are trying to merge the remote production branch into your master (in a local 'production' branch, which means potentially conflicts if your master has locally a different history than the remote origin/production branch.
+
+Pull
+
+git pull is a convenient shortcut for completing both git fetch and git mergein the same command:
+
+git pull remotename branchname
+# Grabs online updates and merges them with your local work
+Because pull performs a merge on the retrieved changes, you should ensure that your local work is committed before running the pull command. If you run into a merge conflict you cannot resolve, or if you decide to quit the merge, you can use git merge --abort to take the branch back to where it was in before you pulled.
+
+
+
 
 ** [[http://blog.csdn.net/ithomer/article/details/7529841][Git 命令简短总结]]
 #+BEGIN_SRC 

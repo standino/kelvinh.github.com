@@ -10,6 +10,9 @@
 #+DESCRIPTION:  Javascript
 
 
+  - 网页前端 http://www.pengyaou.com/LegendsZ/WebList/Technology/WebTechnologyIndex.html
+  - Jq导航系列-侧边栏 http://www.pengyaou.com/LegendsZ/File/2014/09/19/20140919163107614.html
+
 * 项目中使用到的技术
 
  - jquery-ui-portlet https://github.com/standino/jquery-ui-portlet
@@ -484,4 +487,75 @@ function searchPage($scope){
 * less
 
  - http://lesscss.org/
+
+
+
+* JQuery操作iframe父页面与子页面的元素与方法
+
+JQUERY IFRAME
+下面简单使用Jquery来操作iframe的一些记录，这个使用纯JS与可以实现。
+第一、在iframe中查找父页面元素的方法：
+$('#id', window.parent.document)
+第二、在父页面中获取iframe中的元素方法：
+$(this).contents().find("#suggestBox")
+第三、在iframe中调用父页面中定义的方法和变量：
+parent.method
+parent.value
+iframe里用jquery获取父页面body
+iframe.html
+
+<html>
+<script src='jquerymin.js'>
+</script>
+<body id='1'>
+    <div>it is a iframe</div>
+</body>    
+<script>
+    $(document).ready(
+        function()
+        {
+           
+        var c = $(window.parent.document.body) //麻烦的方法： var c = $($(window).eq(0)[0].parent.document).find('body'); ，忘了可以用前面的方法了
+            
+        alert(c.html());
+        }
+    );
+    
+</script>
+</html>
+
+
+
+
+
+content.html
+
+<html>
+    <script src='jquerymin.js'>
+</script>
+<body id='fa'>
+    <iframe src='iframe.html' width='100' height='100'></iframe>
+    <br>
+        <br>
+            <br>
+            <div id='mydiv'>content iframe</div>
+</body>    
+<script>
+    function a()
+    {
+        alert(1);
+    }
+    alert($(document).text());
+    </script>
+</html>
+
+* js tree
+
+  - http://www.jstree.com/plugins/
+  - https://github.com/daredevel/jquery-tree
+  - http://www.jqueryrain.com/demo/jquery-treeview/  Treelistfilter : jQuery plugin support filtering on Hirerarchy Tree
+  - http://wwwendt.de/tech/dynatree/doc/samples.html
+  - http://htmlpreview.github.io/?https://github.com/daredevel/jquery-tree/blob/master/index.html
+  - http://mbraak.github.io/jqTree/examples/08_multiple_select.html
+
 
