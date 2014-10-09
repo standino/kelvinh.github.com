@@ -4,167 +4,461 @@
     <title>Tag Index - Keep going</title>
     <meta charset="utf-8" />
     <meta name="author" content="will" />
-    <link rel="stylesheet" href="http://standino.github.io/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="http://standino.github.io/media/css/prettify.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
-    <link rel="stylesheet" href="/media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="../../../media/css/main.css" type="text/css">
-    <link rel="stylesheet" href="../../../media/css/prettify.css" type="text/css">
+    <!-- Bootstrap Core CSS -->
+    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
   </head>
   <body class="container">
-    <div>
-      <header class="masthead">
-        <h1 class="masthead-title"><a href="/">Keep going</a></h1>
-        <p>努力超越自己！</p>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/html/">Html</a></li>
-          <li><a href="/media/">Media</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/wiki/">Wiki</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://github.com/standino">GitHub</a></li>
-          <li><a href="/rss.xml">RSS</a></li>
+    <div id="wrapper">
+      <!-- Navigation -->
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+        </div>
+        <!-- /.navbar-header -->
+        <ul class="nav navbar-top-links navbar-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-messages">
+              <li>
+                <a href="#">
+                  <div>
+                    <strong>John Smith</strong>
+                    <span class="pull-right text-muted">
+                      <em>Yesterday</em>
+                    </span>
+                  </div>
+                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <strong>John Smith</strong>
+                    <span class="pull-right text-muted">
+                      <em>Yesterday</em>
+                    </span>
+                  </div>
+                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <strong>John Smith</strong>
+                    <span class="pull-right text-muted">
+                      <em>Yesterday</em>
+                    </span>
+                  </div>
+                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="text-center" href="#">
+                  <strong>Read All Messages</strong>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+            <!-- /.dropdown-messages -->
+          </li>
+          <!-- /.dropdown -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-tasks">
+              <li>
+                <a href="#">
+                  <div>
+                    <p>
+                      <strong>Task 1</strong>
+                      <span class="pull-right text-muted">40% Complete</span>
+                    </p>
+                    <div class="progress progress-striped active">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        <span class="sr-only">40% Complete (success)</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <p>
+                      <strong>Task 2</strong>
+                      <span class="pull-right text-muted">20% Complete</span>
+                    </p>
+                    <div class="progress progress-striped active">
+                      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                        <span class="sr-only">20% Complete</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <p>
+                      <strong>Task 3</strong>
+                      <span class="pull-right text-muted">60% Complete</span>
+                    </p>
+                    <div class="progress progress-striped active">
+                      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                        <span class="sr-only">60% Complete (warning)</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <p>
+                      <strong>Task 4</strong>
+                      <span class="pull-right text-muted">80% Complete</span>
+                    </p>
+                    <div class="progress progress-striped active">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        <span class="sr-only">80% Complete (danger)</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="text-center" href="#">
+                  <strong>See All Tasks</strong>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+            <!-- /.dropdown-tasks -->
+          </li>
+          <!-- /.dropdown -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-alerts">
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-comment fa-fw"></i> New Comment
+                    <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                    <span class="pull-right text-muted small">12 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                    <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-tasks fa-fw"></i> New Task
+                    <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                    <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="text-center" href="#">
+                  <strong>See All Alerts</strong>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+            <!-- /.dropdown-alerts -->
+          </li>
+          <!-- /.dropdown -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+              </li>
+              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+              </li>
+              <li class="divider"></li>
+              <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+              </li>
+            </ul>
+            <!-- /.dropdown-user -->
+          </li>
+          <!-- /.dropdown -->
         </ul>
-        <form method="get" id="searchform" action="http://www.google.com/search">
-          <input type="text" class="field" name="q" id="s" placeholder="Search">
-          <input type="hidden" name="q" value="site:standino.github.io">
-        </form>
-      </header>
-    </div>
-    <div>
-      <div class="post">
-        <h1>Tag Index</h1>
-        <ul class="org-ul">
-          <li><a href="/tags/cxf/">cxf (1)</a></li>
-          <li><a href="/tags/web-servcie/">web servcie (1)</a></li>
-          <li><a href="/tags/插件/">插件 (1)</a></li>
-          <li><a href="/tags/bootstrap/">bootstrap (1)</a></li>
-          <li><a href="/tags/pig/">pig (1)</a></li>
-          <li><a href="/tags/nginx/">nginx (1)</a></li>
-          <li><a href="/tags/php/">php (1)</a></li>
-          <li><a href="/tags/apache/">apache (2)</a></li>
-          <li><a href="/tags/centos/">centos (1)</a></li>
-          <li><a href="/tags/文件整理/">文件整理 (1)</a></li>
-          <li><a href="/tags/project/">project (1)</a></li>
-          <li><a href="/tags/plan/">plan (1)</a></li>
-          <li><a href="/tags/goal/">goal (1)</a></li>
-          <li><a href="/tags/设计/">设计 (2)</a></li>
-          <li><a href="/tags/数据结构/">数据结构 (1)</a></li>
-          <li><a href="/tags/nosql/">NoSQL (1)</a></li>
-          <li><a href="/tags/缓存/">缓存 (1)</a></li>
-          <li><a href="/tags/saiku/">saiku (1)</a></li>
-          <li><a href="/tags/sakiu/">sakiu (1)</a></li>
-          <li><a href="/tags/find/">find (1)</a></li>
-          <li><a href="/tags/coding/">coding (1)</a></li>
-          <li><a href="/tags/sonar/">sonar (1)</a></li>
-          <li><a href="/tags/code-review/">code review (1)</a></li>
-          <li><a href="/tags/java/">Java (1)</a></li>
-          <li><a href="/tags/eclipse/">eclipse (1)</a></li>
-          <li><a href="/tags/eng/">eng (1)</a></li>
-          <li><a href="/tags/freemind/">freemind (1)</a></li>
-          <li><a href="/tags/ide/">ide (1)</a></li>
-          <li><a href="/tags/log4j/">log4j (1)</a></li>
-          <li><a href="/tags/rest/">rest (1)</a></li>
-          <li><a href="/tags/refactor/">refactor (1)</a></li>
-          <li><a href="/tags/ood/">ood (1)</a></li>
-          <li><a href="/tags/editor/">editor (2)</a></li>
-          <li><a href="/tags/scite/">scite (1)</a></li>
-          <li><a href="/tags/spark/">spark (1)</a></li>
-          <li><a href="/tags/redis/">redis (2)</a></li>
-          <li><a href="/tags/hadoop/">hadoop (2)</a></li>
-          <li><a href="/tags/big-data/">big data (1)</a></li>
-          <li><a href="/tags/car/">car (1)</a></li>
-          <li><a href="/tags/wiki/">wiki (1)</a></li>
-          <li><a href="/tags/cygwin/">cygwin (1)</a></li>
-          <li><a href="/tags/emacs/">emacs (3)</a></li>
-          <li><a href="/tags/game/">game (1)</a></li>
-          <li><a href="/tags/dashboard/">dashboard (1)</a></li>
-          <li><a href="/tags/angular/">angular (1)</a></li>
-          <li><a href="/tags/programming-language/">programming language (2)</a></li>
-          <li><a href="/tags/go/">go (2)</a></li>
-          <li><a href="/tags/gtd/">gtd (1)</a></li>
-          <li><a href="/tags/idea/">idea (1)</a></li>
-          <li><a href="/tags/portal/">portal (2)</a></li>
-          <li><a href="/tags/网站统计/">网站统计 (1)</a></li>
-          <li><a href="/tags/piwik/">piwik (2)</a></li>
-          <li><a href="/tags/调试/">调试 (1)</a></li>
-          <li><a href="/tags/定位元素/">定位元素 (1)</a></li>
-          <li><a href="/tags/ajax/">ajax (3)</a></li>
-          <li><a href="/tags/dojo/">dojo (1)</a></li>
-          <li><a href="/tags/jquery/">jquery (3)</a></li>
-          <li><a href="/tags/js/">js (4)</a></li>
-          <li><a href="/tags/采销平台/">采销平台 (1)</a></li>
-          <li><a href="/tags/__my_company_1__retail/">__my_company_1__retail (1)</a></li>
-          <li><a href="/tags/端口/">端口 (2)</a></li>
-          <li><a href="/tags/linux/">linux (4)</a></li>
-          <li><a href="/tags/velocity/">velocity (1)</a></li>
-          <li><a href="/tags/dsl/">dsl (1)</a></li>
-          <li><a href="/tags/mda/">mda (3)</a></li>
-          <li><a href="/tags/jetty/">jetty (1)</a></li>
-          <li><a href="/tags/work/">work (1)</a></li>
-          <li><a href="/tags/mvn/">mvn (2)</a></li>
-          <li><a href="/tags/emacs/">Emacs (2)</a></li>
-          <li><a href="/tags/article/">article (1)</a></li>
-          <li><a href="/tags/link/">link (1)</a></li>
-          <li><a href="/tags/lisp/">lisp (1)</a></li>
-          <li><a href="/tags/mybatis/">mybatis (1)</a></li>
-          <li><a href="/tags/mysql/">mysql (3)</a></li>
-          <li><a href="/tags/pm/">pm (1)</a></li>
-          <li><a href="/tags/programming/">programming (1)</a></li>
-          <li><a href="/tags/ruby/">ruby (1)</a></li>
-          <li><a href="/tags/scala/">scala (1)</a></li>
-          <li><a href="/tags/软件开发/">软件开发 (2)</a></li>
-          <li><a href="/tags/scrum/">scrum (1)</a></li>
-          <li><a href="/tags/shell/">shell (3)</a></li>
-          <li><a href="/tags/java/">java (7)</a></li>
-          <li><a href="/tags/sso/">sso (2)</a></li>
-          <li><a href="/tags/spring/">spring (3)</a></li>
-          <li><a href="/tags/unit-test/">unit test (2)</a></li>
-          <li><a href="/tags/sql/">sql (2)</a></li>
-          <li><a href="/tags/think/">think (1)</a></li>
-          <li><a href="/tags/ibm/">ibm (7)</a></li>
-          <li><a href="/tags/anki/">anki (1)</a></li>
-          <li><a href="/tags/sqlunit/">sqlunit (1)</a></li>
-          <li><a href="/tags/selenium/">selenium (1)</a></li>
-          <li><a href="/tags/vi/">vi (1)</a></li>
-          <li><a href="/tags/chrome/">chrome (1)</a></li>
-          <li><a href="/tags/firefox/">firefox (1)</a></li>
-          <li><a href="/tags/tool/">tool (1)</a></li>
-          <li><a href="/tags/agile/">agile (3)</a></li>
-          <li><a href="/tags/user-story/">user story (1)</a></li>
-          <li><a href="/tags/dw/">dw (1)</a></li>
-          <li><a href="/tags/db2/">db2 (9)</a></li>
-          <li><a href="/tags/hg/">hg (1)</a></li>
-          <li><a href="/tags/git/">git (1)</a></li>
-          <li><a href="/tags/cvs/">cvs (1)</a></li>
-          <li><a href="/tags/svn/">svn (1)</a></li>
-          <li><a href="/tags/test/">test (1)</a></li>
-          <li><a href="/tags/automation/">automation (1)</a></li>
-          <li><a href="/tags/ppt/">ppt (3)</a></li>
-          <li><a href="/tags/muse/">muse (1)</a></li>
-        </ul>
+        <!-- /.navbar-top-links -->
+        <div class="navbar-default sidebar" role="navigation">
+          <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+              <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                  <input type="text" class="form-control" placeholder="Search...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+                <!-- /input-group -->
+              </li>
+              <li><a href="/blog/">Blog</a></li>
+              <li><a href="/work/">Work</a></li>
+              <li><a href="/tags/">Tags</a></li>
+              <li><a href="/about/">About</a></li>
+              <li><a href="https://github.com/standino">GitHub</a></li>
+              <li><a href="/rss.xml">RSS</a></li>
+            </ul>
+          </div>
+          <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+      </nav>
+      <div>
+        <div class="post">
+          <div id="page-wrapper">
+            <div class="row">
+              <div class="col-lg-12">
+                <h1>Tag Index</h1>
+                <ul class="org-ul">
+                  <li><a href="/tags/eclipse/">eclipse (1)</a></li>
+                  <li><a href="/tags/eng/">eng (1)</a></li>
+                  <li><a href="/tags/freemind/">freemind (1)</a></li>
+                  <li><a href="/tags/ide/">ide (1)</a></li>
+                  <li><a href="/tags/log4j/">log4j (1)</a></li>
+                  <li><a href="/tags/rest/">rest (1)</a></li>
+                  <li><a href="/tags/refactor/">refactor (1)</a></li>
+                  <li><a href="/tags/ood/">ood (1)</a></li>
+                  <li><a href="/tags/scite/">scite (1)</a></li>
+                  <li><a href="/tags/spark/">spark (1)</a></li>
+                  <li><a href="/tags/big-data/">big data (1)</a></li>
+                  <li><a href="/tags/car/">car (1)</a></li>
+                  <li><a href="/tags/wiki/">wiki (1)</a></li>
+                  <li><a href="/tags/cxf/">cxf (1)</a></li>
+                  <li><a href="/tags/web-servcie/">web servcie (1)</a></li>
+                  <li><a href="/tags/cygwin/">cygwin (1)</a></li>
+                  <li><a href="/tags/editor/">editor (2)</a></li>
+                  <li><a href="/tags/emacs/">emacs (3)</a></li>
+                  <li><a href="/tags/game/">game (1)</a></li>
+                  <li><a href="/tags/dashboard/">dashboard (1)</a></li>
+                  <li><a href="/tags/angular/">angular (1)</a></li>
+                  <li><a href="/tags/programming-language/">programming language (2)</a></li>
+                  <li><a href="/tags/go/">go (2)</a></li>
+                  <li><a href="/tags/gtd/">gtd (1)</a></li>
+                  <li><a href="/tags/idea/">idea (1)</a></li>
+                  <li><a href="/tags/插件/">插件 (1)</a></li>
+                  <li><a href="/tags/bootstrap/">bootstrap (1)</a></li>
+                  <li><a href="/tags/网站统计/">网站统计 (1)</a></li>
+                  <li><a href="/tags/调试/">调试 (1)</a></li>
+                  <li><a href="/tags/定位元素/">定位元素 (1)</a></li>
+                  <li><a href="/tags/ajax/">ajax (3)</a></li>
+                  <li><a href="/tags/采销平台/">采销平台 (1)</a></li>
+                  <li><a href="/tags/__my_company_1__retail/">__my_company_1__retail (1)</a></li>
+                  <li><a href="/tags/velocity/">velocity (1)</a></li>
+                  <li><a href="/tags/dsl/">dsl (1)</a></li>
+                  <li><a href="/tags/mda/">mda (3)</a></li>
+                  <li><a href="/tags/emacs/">Emacs (2)</a></li>
+                  <li><a href="/tags/link/">link (1)</a></li>
+                  <li><a href="/tags/lisp/">lisp (1)</a></li>
+                  <li><a href="/tags/mybatis/">mybatis (1)</a></li>
+                  <li><a href="/tags/hadoop/">hadoop (2)</a></li>
+                  <li><a href="/tags/pig/">pig (1)</a></li>
+                  <li><a href="/tags/nginx/">nginx (1)</a></li>
+                  <li><a href="/tags/端口/">端口 (2)</a></li>
+                  <li><a href="/tags/php/">php (1)</a></li>
+                  <li><a href="/tags/apache/">apache (2)</a></li>
+                  <li><a href="/tags/centos/">centos (1)</a></li>
+                  <li><a href="/tags/js/">js (4)</a></li>
+                  <li><a href="/tags/piwik/">piwik (2)</a></li>
+                  <li><a href="/tags/文件整理/">文件整理 (1)</a></li>
+                  <li><a href="/tags/project/">project (1)</a></li>
+                  <li><a href="/tags/plan/">plan (1)</a></li>
+                  <li><a href="/tags/goal/">goal (1)</a></li>
+                  <li><a href="/tags/pm/">pm (1)</a></li>
+                  <li><a href="/tags/programming/">programming (1)</a></li>
+                  <li><a href="/tags/mysql/">mysql (3)</a></li>
+                  <li><a href="/tags/数据结构/">数据结构 (1)</a></li>
+                  <li><a href="/tags/nosql/">NoSQL (1)</a></li>
+                  <li><a href="/tags/redis/">redis (2)</a></li>
+                  <li><a href="/tags/缓存/">缓存 (1)</a></li>
+                  <li><a href="/tags/ruby/">ruby (1)</a></li>
+                  <li><a href="/tags/saiku/">saiku (1)</a></li>
+                  <li><a href="/tags/sakiu/">sakiu (1)</a></li>
+                  <li><a href="/tags/scala/">scala (1)</a></li>
+                  <li><a href="/tags/软件开发/">软件开发 (2)</a></li>
+                  <li><a href="/tags/scrum/">scrum (1)</a></li>
+                  <li><a href="/tags/find/">find (1)</a></li>
+                  <li><a href="/tags/shell/">shell (3)</a></li>
+                  <li><a href="/tags/coding/">coding (1)</a></li>
+                  <li><a href="/tags/sonar/">sonar (1)</a></li>
+                  <li><a href="/tags/sso/">sso (2)</a></li>
+                  <li><a href="/tags/spring/">spring (3)</a></li>
+                  <li><a href="/tags/sql/">sql (2)</a></li>
+                  <li><a href="/tags/think/">think (1)</a></li>
+                  <li><a href="/tags/anki/">anki (1)</a></li>
+                  <li><a href="/tags/sqlunit/">sqlunit (1)</a></li>
+                  <li><a href="/tags/selenium/">selenium (1)</a></li>
+                  <li><a href="/tags/vi/">vi (1)</a></li>
+                  <li><a href="/tags/chrome/">chrome (1)</a></li>
+                  <li><a href="/tags/firefox/">firefox (1)</a></li>
+                  <li><a href="/tags/tool/">tool (1)</a></li>
+                  <li><a href="/tags/unit-test/">unit test (2)</a></li>
+                  <li><a href="/tags/java/">Java (1)</a></li>
+                  <li><a href="/tags/user-story/">user story (1)</a></li>
+                  <li><a href="/tags/dw/">dw (1)</a></li>
+                  <li><a href="/tags/hg/">hg (1)</a></li>
+                  <li><a href="/tags/git/">git (1)</a></li>
+                  <li><a href="/tags/cvs/">cvs (1)</a></li>
+                  <li><a href="/tags/svn/">svn (1)</a></li>
+                  <li><a href="/tags/test/">test (1)</a></li>
+                  <li><a href="/tags/automation/">automation (1)</a></li>
+                  <li><a href="/tags/muse/">muse (1)</a></li>
+                  <li><a href="/tags/linux/">linux (5)</a></li>
+                  <li><a href="/tags/hiring/">hiring (1)</a></li>
+                  <li><a href="/tags/agile/">agile (4)</a></li>
+                  <li><a href="/tags/总结/">总结 (1)</a></li>
+                  <li><a href="/tags/设计/">设计 (3)</a></li>
+                  <li><a href="/tags/异步下载/">异步下载 (1)</a></li>
+                  <li><a href="/tags/ccp/">ccp (1)</a></li>
+                  <li><a href="/tags/devops/">devops (1)</a></li>
+                  <li><a href="/tags/dojo/">dojo (3)</a></li>
+                  <li><a href="/tags/eweek/">eweek (1)</a></li>
+                  <li><a href="/tags/home/">home (1)</a></li>
+                  <li><a href="/tags/个人/">个人 (1)</a></li>
+                  <li><a href="/tags/article/">article (2)</a></li>
+                  <li><a href="/tags/ibm;/">ibm; (1)</a></li>
+                  <li><a href="/tags/innovation/">innovation (1)</a></li>
+                  <li><a href="/tags/业务/">业务 (1)</a></li>
+                  <li><a href="/tags/ipc/">ipc (1)</a></li>
+                  <li><a href="/tags/its/">its (2)</a></li>
+                  <li><a href="/tags/jazz/">jazz (1)</a></li>
+                  <li><a href="/tags/上线/">上线 (1)</a></li>
+                  <li><a href="/tags/password/">password (2)</a></li>
+                  <li><a href="/tags/__my_company_1__/">JD (1)</a></li>
+                  <li><a href="/tags/java/">java (8)</a></li>
+                  <li><a href="/tags/促销/">促销 (1)</a></li>
+                  <li><a href="/tags/京东/">京东 (1)</a></li>
+                  <li><a href="/tags/mvn/">mvn (4)</a></li>
+                  <li><a href="/tags/jetty/">jetty (2)</a></li>
+                  <li><a href="/tags/权限管理/">权限管理 (1)</a></li>
+                  <li><a href="/tags/auth/">auth (1)</a></li>
+                  <li><a href="/tags/jquery/">jquery (4)</a></li>
+                  <li><a href="/tags/setup/">setup (1)</a></li>
+                  <li><a href="/tags/portal/">portal (3)</a></li>
+                  <li><a href="/tags/jetspeed/">jetspeed (1)</a></li>
+                  <li><a href="/tags/retail/">retail (1)</a></li>
+                  <li><a href="/tags/长尾/">长尾 (1)</a></li>
+                  <li><a href="/tags/情感/">情感 (2)</a></li>
+                  <li><a href="/tags/job/">job (2)</a></li>
+                  <li><a href="/tags/patent/">patent (1)</a></li>
+                  <li><a href="/tags/工作/">工作 (1)</a></li>
+                  <li><a href="/tags/运维/">运维 (1)</a></li>
+                  <li><a href="/tags/pbs/">pbs (3)</a></li>
+                  <li><a href="/tags/uml/">uml (1)</a></li>
+                  <li><a href="/tags/phisical/">phisical (1)</a></li>
+                  <li><a href="/tags/personal/">personal (2)</a></li>
+                  <li><a href="/tags/ppt/">ppt (4)</a></li>
+                  <li><a href="/tags/promotion/">promotion (1)</a></li>
+                  <li><a href="/tags/db2/">db2 (11)</a></li>
+                  <li><a href="/tags/简历/">简历 (1)</a></li>
+                  <li><a href="/tags/resume/">resume (2)</a></li>
+                  <li><a href="/tags/rtc/">rtc (2)</a></li>
+                  <li><a href="/tags/saas/">saas (1)</a></li>
+                  <li><a href="/tags/薪水/">薪水 (1)</a></li>
+                  <li><a href="/tags/dsw/">dsw (2)</a></li>
+                  <li><a href="/tags/sqo/">sqo (1)</a></li>
+                  <li><a href="/tags/tip/">tip (1)</a></li>
+                  <li><a href="/tags/code-review/">code review (2)</a></li>
+                  <li><a href="/tags/工作流程/">工作流程 (1)</a></li>
+                  <li><a href="/tags/vcr/">vcr (1)</a></li>
+                  <li><a href="/tags/log/">log (1)</a></li>
+                  <li><a href="/tags/__my_company_1__/">__my_company_1__ (7)</a></li>
+                  <li><a href="/tags/work/">work (10)</a></li>
+                  <li><a href="/tags/ibm/">ibm (27)</a></li>
+                  <li><a href="/tags/certification/">certification (2)</a></li>
+                  <li><a href="/tags/xml/">xml (1)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div>
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-      <script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
-      <script src="/media/js/main.js"></script>
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-46515756-1']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-      </script>
+      <!-- jQuery Version 1.11.0 -->
+      <script src="/media/js/jquery-1.11.0.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="/media/js/bootstrap.min.js"></script>
+      <!-- Metis Menu Plugin JavaScript -->
+      <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
+      <!-- Morris Charts JavaScript -->
+      <script src="/media/js/plugins/morris/raphael.min.js"></script>
+      <script src="/media/js/plugins/morris/morris.min.js"></script>
+      <script src="/media/js/plugins/morris/morris-data.js"></script>
+      <!-- Custom Theme JavaScript -->
+      <script src="/media/js/sb-admin-2.js"></script>
       <div class="footer">
         <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
-          Copyright &copy; 2012 - 2014 <a href="mailto:will &lt;at&gt; will-Vostro-270">will</a>
+          Copyright &copy; 2012 - 2015 <a href="mailto:will &lt;at&gt; will-Vostro-270">will</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
         </p>

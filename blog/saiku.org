@@ -2,7 +2,7 @@
 #+AUTHOR:      Will
 #+EMAIL:       will@will-K42JA
 #+DATE:        2014-06-16 一
-#+URI:         ./blog/%y/%m/%d/saiku
+#+URI:         /blog/%y/%m/%d/saiku
 #+KEYWORDS:    saiku
 #+TAGS:        :saiku:
 #+LANGUAGE:    en

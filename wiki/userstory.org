@@ -1,6 +1,6 @@
 #+TITLE:       User Story
 #+AUTHOR:      U-360BUYAD\changwei
-#+EMAIL:       changwei@BJXX-CHANGWEI.360buyAD.local
+#+EMAIL:       changwei@BJXX-CHANGWEI.__my_company_2__AD.local
 #+DATE:        2014-02-08 周六
 #+URI:         /wiki/html/%t
 #+TAGS:        :user story:agile:

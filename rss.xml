@@ -4,79 +4,79 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>Tue, 30 Sep 2014 12:56:58 CST</pubDate>
-    <lastBuildDate>Tue, 30 Sep 2014 12:56:58 CST</lastBuildDate>
+    <pubDate>Thu, 09 Oct 2014 09:48:49 CST</pubDate>
+    <lastBuildDate>Thu, 09 Oct 2014 09:48:49 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
       <title>大数据</title>
       <link>http://standino.github.io/wiki/html/bigdata</link>
       <description>研究互联网用到的大数据技术</description>
-      <pubDate>2014-09-30</pubDate>
+      <pubDate>2014-10-09</pubDate>
       <guid>http://standino.github.io/wiki/html/bigdata</guid>
+    </item>
+    <item>
+      <title>使用 go + angular 开发系统门户</title>
+      <link>http://standino.github.io/wiki/html/goeasyportal</link>
+      <description>go 语言</description>
+      <pubDate>2014-10-09</pubDate>
+      <guid>http://standino.github.io/wiki/html/goeasyportal</guid>
+    </item>
+    <item>
+      <title>Jquery ajax 提交和controler 定义之间的关系</title>
+      <link>http://standino.github.io/wiki/html/jqueryajaxspringmvc</link>
+      <description>ajax 提交和controler 定义之间的关系</description>
+      <pubDate>2014-10-09</pubDate>
+      <guid>http://standino.github.io/wiki/html/jqueryajaxspringmvc</guid>
+    </item>
+    <item>
+      <title>jquery, bootstrap 和它们的插件们</title>
+      <link>http://standino.github.io/blog/2014/05/30/jquerybootstrap</link>
+      <description>本文主要介绍jquery，bootstrap和它们的插件的使用</description>
+      <pubDate>2014-10-09</pubDate>
+      <guid>http://standino.github.io/blog/2014/05/30/jquerybootstrap</guid>
     </item>
     <item>
       <title>javascript</title>
       <link>http://standino.github.io/wiki/html/js</link>
       <description>Javascript</description>
-      <pubDate>2014-09-30</pubDate>
+      <pubDate>2014-10-09</pubDate>
       <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>常用链接</title>
+      <link>http://standino.github.io/wiki/html/mylinks</link>
+      <description>常用链接</description>
+      <pubDate>2014-10-09</pubDate>
+      <guid>http://standino.github.io/wiki/html/mylinks</guid>
+    </item>
+    <item>
+      <title>使用pig脚本</title>
+      <link>http://standino.github.io/blog/2014/05/26/pig</link>
+      <description>pig 脚本</description>
+      <pubDate>2014-10-09</pubDate>
+      <guid>http://standino.github.io/blog/2014/05/26/pig</guid>
+    </item>
+    <item>
+      <title>大数据下BI报表所需要的技术</title>
+      <link>http://standino.github.io/blog/2014/06/16/saiku</link>
+      <description>使用saiku开发OLAP系统</description>
+      <pubDate>2014-10-09</pubDate>
+      <guid>http://standino.github.io/blog/2014/06/16/saiku</guid>
+    </item>
+    <item>
+      <title>saiku单点登录方案</title>
+      <link>http://standino.github.io/blog/2014/06/12/saikusso</link>
+      <description>saiku单点登录方案</description>
+      <pubDate>2014-10-09</pubDate>
+      <guid>http://standino.github.io/blog/2014/06/12/saikusso</guid>
     </item>
     <item>
       <title>敏捷软件开发</title>
       <link>http://standino.github.io/wiki/html/scrum</link>
       <description>敏捷软件开发</description>
-      <pubDate>2014-09-30</pubDate>
+      <pubDate>2014-10-09</pubDate>
       <guid>http://standino.github.io/wiki/html/scrum</guid>
-    </item>
-    <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-09-30</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
-    </item>
-    <item>
-      <title>大数据下BI报表所需要的技术</title>
-      <link>http://standino.github.io./blog/2014/06/16/saiku</link>
-      <description>使用saiku开发OLAP系统</description>
-      <pubDate>2014-09-09</pubDate>
-      <guid>http://standino.github.io./blog/2014/06/16/saiku</guid>
-    </item>
-    <item>
-      <title>JAVA</title>
-      <link>http://standino.github.io/wiki/html/java</link>
-      <description>Java Tips</description>
-      <pubDate>2014-08-29</pubDate>
-      <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>mvn</title>
-      <link>http://standino.github.io/wiki/html/mvn</link>
-      <description>mvn</description>
-      <pubDate>2014-08-29</pubDate>
-      <guid>http://standino.github.io/wiki/html/mvn</guid>
-    </item>
-    <item>
-      <title>使用apache cxf生成web servcie 客户端</title>
-      <link>http://standino.github.io/blog/html/cxf</link>
-      <description>介绍如何使用cxf生成客户端</description>
-      <pubDate>2014-08-20</pubDate>
-      <guid>http://standino.github.io/blog/html/cxf</guid>
-    </item>
-    <item>
-      <title>使用Emacs开发J2EE程序</title>
-      <link>http://standino.github.io/blog/2014/03/15/emacs4java</link>
-      <description>介绍如何使用Emacs编辑J2EE程序</description>
-      <pubDate>2014-08-20</pubDate>
-      <guid>http://standino.github.io/blog/2014/03/15/emacs4java</guid>
-    </item>
-    <item>
-      <title>走进Emacs殿堂</title>
-      <link>http://standino.github.io/blog/2013/12/27/enterEmacs</link>
-      <description>走进Emacs殿堂</description>
-      <pubDate>2014-08-20</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/27/enterEmacs</guid>
     </item>
   </channel>
 </rss>

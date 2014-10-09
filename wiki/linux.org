@@ -3221,7 +3221,7 @@ sudo visudo
 
   - sip.__my_company_1__.com
 
-  - sip.360buytech.com
+  - sip.__my_company_2__tech.com
 
 * Fedora 20 SSH
 
