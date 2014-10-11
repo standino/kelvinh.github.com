@@ -360,7 +360,7 @@ The AndroMDA Team
 
 
 <p>
-maven-enforcer-plugin:1.1.1:enforce (enforce-__my_company_1__k) 
+maven-enforcer-plugin:1.1.1:enforce (enforce-jdk) 
 </p>
 
 <p>
@@ -1564,7 +1564,7 @@ The general problem is as it is well known the WebSphere requires generated stub
             &lt;artifactId&gt;maven-eclipse-plugin&lt;/artifactId&gt;
             &lt;configuration&gt;
                 &lt;classpathContainers&gt;
-                    &lt;!-- org.eclipse.__my_company_1__t.launching.JRE_CONTAINER is included by default, add a j2ee container here --&gt;
+                    &lt;!-- org.eclipse.jdt.launching.JRE_CONTAINER is included by default, add a j2ee container here --&gt;
                     &lt;classpathContainer&gt;com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60/was.base.v6&lt;/classpathContainer&gt;
                 &lt;/classpathContainers&gt;
             &lt;/configuration&gt;
@@ -2722,7 +2722,7 @@ Edit the Hsqldb configure file located at %JBoss_Home%\server\default\deploy\hsq
 uncomment:
 </p>
 <pre class="example">
-&lt;connection-url&gt;__my_company_1__bc:hsqldb:hsql://localhost:1701&lt;/connection-url&gt;
+&lt;connection-url&gt;jdbc:hsqldb:hsql://localhost:1701&lt;/connection-url&gt;
 </pre>
 <p>
 comment :
@@ -2734,7 +2734,7 @@ comment :
 uncomment
 </p>
 <pre class="example">
-&lt;mbean code="org.jboss.__my_company_1__bc.HypersonicDatabase"
+&lt;mbean code="org.jboss.jdbc.HypersonicDatabase"
     name="jboss:service=Hypersonic"&gt;
     &lt;attribute name="Port"&gt;1701&lt;/attribute&gt;
     &lt;attribute name="Silent"&gt;true&lt;/attribute&gt;
@@ -2749,7 +2749,7 @@ uncomment
 and
 </p>
 <pre class="example">
-&lt;mbean code="org.jboss.__my_company_1__bc.HypersonicDatabase"
+&lt;mbean code="org.jboss.jdbc.HypersonicDatabase"
      name="jboss:service=Hypersonic,database=localDB"&gt;
      &lt;attribute name="Database"&gt;localDB&lt;/attribute&gt;
      &lt;attribute name="InProcessMode"&gt;true&lt;/attribute&gt;

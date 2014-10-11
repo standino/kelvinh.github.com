@@ -236,4 +236,4 @@ $('#portlet-demo').portlet('option', 'add', {
 
 * 参考资料
 
- - http://jira.__my_company_2__.com/confluence/pages/viewpage.action?pageId=30154029
+ - http://jira.360buy.com/confluence/pages/viewpage.action?pageId=30154029

@@ -61,7 +61,7 @@ The AndroMDA Team
 
 
 
-maven-enforcer-plugin:1.1.1:enforce (enforce-__my_company_1__k) 
+maven-enforcer-plugin:1.1.1:enforce (enforce-jdk) 
 
 修改一下配置文件pom.xml,把1.7.0_21也加进去。
 
@@ -872,7 +872,7 @@ The general problem is as it is well known the WebSphere requires generated stub
                 <artifactId>maven-eclipse-plugin</artifactId>
                 <configuration>
                     <classpathContainers>
-                        <!-- org.eclipse.__my_company_1__t.launching.JRE_CONTAINER is included by default, add a j2ee container here -->
+                        <!-- org.eclipse.jdt.launching.JRE_CONTAINER is included by default, add a j2ee container here -->
                         <classpathContainer>com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60/was.base.v6</classpathContainer>
                     </classpathContainers>
                 </configuration>
@@ -1825,7 +1825,7 @@ The andromda's default setting is for HsqlDB, so we need not install another dat
 Edit the Hsqldb configure file located at %JBoss_Home%\server\default\deploy\hsqldb-ds.xml
 uncomment:
 #+BEGIN_SRC
-<connection-url>__my_company_1__bc:hsqldb:hsql://localhost:1701</connection-url>
+<connection-url>jdbc:hsqldb:hsql://localhost:1701</connection-url>
 #+END_SRC
 comment :
 <#+BEGIN_SRC 
@@ -1833,7 +1833,7 @@ comment :
 
 uncomment
 #+BEGIN_SRC
- <mbean code="org.jboss.__my_company_1__bc.HypersonicDatabase"
+ <mbean code="org.jboss.jdbc.HypersonicDatabase"
      name="jboss:service=Hypersonic">
      <attribute name="Port">1701</attribute>
      <attribute name="Silent">true</attribute>
@@ -1847,7 +1847,7 @@ uncomment
 
 and
 #+BEGIN_SRC
-<mbean code="org.jboss.__my_company_1__bc.HypersonicDatabase"
+<mbean code="org.jboss.jdbc.HypersonicDatabase"
      name="jboss:service=Hypersonic,database=localDB">
      <attribute name="Database">localDB</attribute>
      <attribute name="InProcessMode">true</attribute>

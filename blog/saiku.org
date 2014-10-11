@@ -141,21 +141,21 @@ FROM [SalesMoneyReportv2]
      
      只要访问下面两个url就可以展示相应的表格和图表。
      
- 1. http://sone.dev.__my_company_1__.com:8015/saiku-ui/embed/index.html#table/mon.saiku
- 2. http://sone.dev.__my_company_1__.com:8015/saiku-ui/embed/index.html#chart/mon.saiku
+ 1. http://sone.dev.jd.com:8015/saiku-ui/embed/index.html#table/mon.saiku
+ 2. http://sone.dev.jd.com:8015/saiku-ui/embed/index.html#chart/mon.saiku
     
  井号（#）后面第一个参数表示是表格还是图表，后边是保存query的文件的路径。
  
  还有一种方式显示图表，url如下。这种方式的优点是可以对表格进行过滤和查询。也可以使用saiku的插件进一步丰富其功能。
-  - http://sone.dev.__my_company_1__.com:8015/saiku-ui/newindex.html?mode=view&plugin=true#query/open/mon.saiku
+  - http://sone.dev.jd.com:8015/saiku-ui/newindex.html?mode=view&plugin=true#query/open/mon.saiku
     
     
 **** 使用mdx查询
      
      这种方式比较灵活，可以编写多种mdx查询语句从后台获得数据，进行展示。
      
- 1. http://sone.dev.__my_company_1__.com:8015/saiku-ui/embed/index.html#mdxtable/mon.saiku
- 2. http://sone.dev.__my_company_1__.com:8015/saiku-ui/embed/index.html#mdxchart/mon.saiku
+ 1. http://sone.dev.jd.com:8015/saiku-ui/embed/index.html#mdxtable/mon.saiku
+ 2. http://sone.dev.jd.com:8015/saiku-ui/embed/index.html#mdxchart/mon.saiku
     
  大家可以看看下面的代码了解一下具体实现。
  

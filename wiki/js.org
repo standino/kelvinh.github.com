@@ -387,11 +387,11 @@ CKEDITOR.editorConfig = function(config) {
 					'Blockquote' ],
 			[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
 			[ 'Link', 'Unlink', 'Anchor' ],
-			[ '__my_company_1__upload','Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
+			[ 'jdupload','Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
 					'SpecialChar', 'PageBreak' ], '/',
 			[ 'Styles', 'Format', 'Font', 'FontSize' ],
 			[ 'TextColor', 'BGColor' ] ];
-        config.extraPlugins += (config.extraPlugins ? ',__my_company_1__upload' : '__my_company_1__upload');
+        config.extraPlugins += (config.extraPlugins ? ',jdupload' : 'jdupload');
 };
 
 #+END_SRC

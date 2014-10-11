@@ -458,11 +458,11 @@ cat ~/.m2/settings.xml
     &lt;/activation&gt;
     &lt;properties&gt;
       &lt;!-- Example for MySQL--&gt;
-      &lt;sonar.__my_company_1__bc.url&gt;
-        __my_company_1__bc:h2:tcp://localhost:9092/sonar
-      &lt;/sonar.__my_company_1__bc.url&gt;
-      &lt;sonar.__my_company_1__bc.username&gt;sonar&lt;/sonar.__my_company_1__bc.username&gt;
-      &lt;sonar.__my_company_1__bc.password&gt;sonar&lt;/sonar.__my_company_1__bc.password&gt;
+      &lt;sonar.jdbc.url&gt;
+        jdbc:h2:tcp://localhost:9092/sonar
+      &lt;/sonar.jdbc.url&gt;
+      &lt;sonar.jdbc.username&gt;sonar&lt;/sonar.jdbc.username&gt;
+      &lt;sonar.jdbc.password&gt;sonar&lt;/sonar.jdbc.password&gt;
 
       &lt;!-- Optional URL to server. Default value is http://localhost:9000 --&gt;
       &lt;sonar.host.url&gt;
