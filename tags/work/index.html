@@ -250,14 +250,16 @@
           <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
               <li class="sidebar-search">
-                <div class="input-group custom-search-form">
-                  <input type="text" class="form-control" placeholder="Search...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                      <i class="fa fa-search"></i>
-                    </button>
-                  </span>
-                </div>
+                <form method="get" id="searchform" action="http://search.aol.com/aol/search">
+                  <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" name="q" id="s" value="site:standino.github.io">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </span>
+                  </div>
+                </form>
                 <!-- /input-group -->
               </li>
               <li><a href="/blog/">Blog</a></li>
@@ -280,7 +282,7 @@
                 <h1>Tag: work</h1>
                 <ul class="org-ul">
                   <li><a href="/work/html/worklog">worklog</a></li>
-                  <li><a href="/work/html/jdretail/">零售平台项目</a></li>
+                  <li><a href="/work/html/__my_company_1__retail/">零售平台项目</a></li>
                   <li><a href="/work/html/JD/">JD工作笔记</a></li>
                   <li><a href="/work/html/worknotes">Work notes</a></li>
                   <li><a href="/work/html/ibm">ibm</a></li>
