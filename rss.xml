@@ -4,10 +4,31 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>Thu, 16 Oct 2014 13:22:11 CST</pubDate>
-    <lastBuildDate>Thu, 16 Oct 2014 13:22:11 CST</lastBuildDate>
+    <pubDate>Mon, 20 Oct 2014 14:51:07 CST</pubDate>
+    <lastBuildDate>Mon, 20 Oct 2014 14:51:07 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>javascript</title>
+      <link>http://standino.github.io/wiki/html/js</link>
+      <description>Javascript</description>
+      <pubDate>2014-10-17</pubDate>
+      <guid>http://standino.github.io/wiki/html/js</guid>
+    </item>
+    <item>
+      <title>大数据下BI报表所需要的技术</title>
+      <link>http://standino.github.io/blog/2014/06/16/saiku</link>
+      <description>使用saiku开发OLAP系统</description>
+      <pubDate>2014-10-17</pubDate>
+      <guid>http://standino.github.io/blog/2014/06/16/saiku</guid>
+    </item>
+    <item>
+      <title>JD工作笔记</title>
+      <link>http://standino.github.io/work/html/JD/</link>
+      <description>JD个人工作笔记</description>
+      <pubDate>2014-10-17</pubDate>
+      <guid>http://standino.github.io/work/html/JD/</guid>
+    </item>
     <item>
       <title>GITC 2014 参会体会</title>
       <link>http://standino.github.io/blog/2014/10/14/GITC2014</link>
@@ -21,13 +42,6 @@
       <description>Agile Community </description>
       <pubDate>2014-10-14</pubDate>
       <guid>http://standino.github.io/blog/html/agiledata</guid>
-    </item>
-    <item>
-      <title>JD工作笔记</title>
-      <link>http://standino.github.io/work/html/JD/</link>
-      <description>JD个人工作笔记</description>
-      <pubDate>2014-10-14</pubDate>
-      <guid>http://standino.github.io/work/html/JD/</guid>
     </item>
     <item>
       <title>Personal</title>
@@ -63,20 +77,6 @@
       <description>ajax 提交和controler 定义之间的关系</description>
       <pubDate>2014-10-09</pubDate>
       <guid>http://standino.github.io/wiki/html/jqueryajaxspringmvc</guid>
-    </item>
-    <item>
-      <title>jquery, bootstrap 和它们的插件们</title>
-      <link>http://standino.github.io/blog/2014/05/30/jquerybootstrap</link>
-      <description>本文主要介绍jquery，bootstrap和它们的插件的使用</description>
-      <pubDate>2014-10-09</pubDate>
-      <guid>http://standino.github.io/blog/2014/05/30/jquerybootstrap</guid>
-    </item>
-    <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-10-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
     </item>
   </channel>
 </rss>
