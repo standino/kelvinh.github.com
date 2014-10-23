@@ -4,10 +4,59 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>Mon, 20 Oct 2014 14:51:07 CST</pubDate>
-    <lastBuildDate>Mon, 20 Oct 2014 14:51:07 CST</lastBuildDate>
+    <pubDate>Thu, 23 Oct 2014 18:56:26 CST</pubDate>
+    <lastBuildDate>Thu, 23 Oct 2014 18:56:26 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>GITC 2014 参会体会</title>
+      <link>http://standino.github.io/blog/2014/10/14/GITC2014</link>
+      <description>GITC 2014 参会体会</description>
+      <pubDate>2014-10-23</pubDate>
+      <guid>http://standino.github.io/blog/2014/10/14/GITC2014</guid>
+    </item>
+    <item>
+      <title>大数据</title>
+      <link>http://standino.github.io/wiki/html/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2014-10-23</pubDate>
+      <guid>http://standino.github.io/wiki/html/bigdata</guid>
+    </item>
+    <item>
+      <title>easymda.org</title>
+      <link>http://standino.github.io/wiki/html/easymda</link>
+      <description>easymda</description>
+      <pubDate>2014-10-23</pubDate>
+      <guid>http://standino.github.io/wiki/html/easymda</guid>
+    </item>
+    <item>
+      <title>mysql</title>
+      <link>http://standino.github.io/wiki/html/mysql</link>
+      <description>MySQL数据库</description>
+      <pubDate>2014-10-23</pubDate>
+      <guid>http://standino.github.io/wiki/html/mysql</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2014-10-23</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
+    </item>
+    <item>
+      <title>JD工作笔记</title>
+      <link>http://standino.github.io/work/html/JD/</link>
+      <description>JD个人工作笔记</description>
+      <pubDate>2014-10-23</pubDate>
+      <guid>http://standino.github.io/work/html/JD/</guid>
+    </item>
+    <item>
+      <title>怀念我的姥姥</title>
+      <link>http://standino.github.io/work/html/2014/mygrandma/</link>
+      <description>怀念我的姥姥</description>
+      <pubDate>2014-10-23</pubDate>
+      <guid>http://standino.github.io/work/html/2014/mygrandma/</guid>
+    </item>
     <item>
       <title>javascript</title>
       <link>http://standino.github.io/wiki/html/js</link>
@@ -23,60 +72,11 @@
       <guid>http://standino.github.io/blog/2014/06/16/saiku</guid>
     </item>
     <item>
-      <title>JD工作笔记</title>
-      <link>http://standino.github.io/work/html/JD/</link>
-      <description>JD个人工作笔记</description>
-      <pubDate>2014-10-17</pubDate>
-      <guid>http://standino.github.io/work/html/JD/</guid>
-    </item>
-    <item>
-      <title>GITC 2014 参会体会</title>
-      <link>http://standino.github.io/blog/2014/10/14/GITC2014</link>
-      <description>GITC 2014 参会体会</description>
-      <pubDate>2014-10-14</pubDate>
-      <guid>http://standino.github.io/blog/2014/10/14/GITC2014</guid>
-    </item>
-    <item>
       <title>agiledata</title>
       <link>http://standino.github.io/blog/html/agiledata</link>
       <description>Agile Community </description>
       <pubDate>2014-10-14</pubDate>
       <guid>http://standino.github.io/blog/html/agiledata</guid>
-    </item>
-    <item>
-      <title>Personal</title>
-      <link>http://standino.github.io/work/html/html/personal</link>
-      <description>My Personal information </description>
-      <pubDate>2014-10-11</pubDate>
-      <guid>http://standino.github.io/work/html/html/personal</guid>
-    </item>
-    <item>
-      <title>如何组织VCR例会</title>
-      <link>http://standino.github.io/work/2014/01/06/vcr</link>
-      <description>VCR 组织</description>
-      <pubDate>2014-10-11</pubDate>
-      <guid>http://standino.github.io/work/2014/01/06/vcr</guid>
-    </item>
-    <item>
-      <title>大数据</title>
-      <link>http://standino.github.io/wiki/html/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2014-10-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/bigdata</guid>
-    </item>
-    <item>
-      <title>使用 go + angular 开发系统门户</title>
-      <link>http://standino.github.io/wiki/html/goeasyportal</link>
-      <description>go 语言</description>
-      <pubDate>2014-10-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/goeasyportal</guid>
-    </item>
-    <item>
-      <title>Jquery ajax 提交和controler 定义之间的关系</title>
-      <link>http://standino.github.io/wiki/html/jqueryajaxspringmvc</link>
-      <description>ajax 提交和controler 定义之间的关系</description>
-      <pubDate>2014-10-09</pubDate>
-      <guid>http://standino.github.io/wiki/html/jqueryajaxspringmvc</guid>
     </item>
   </channel>
 </rss>
