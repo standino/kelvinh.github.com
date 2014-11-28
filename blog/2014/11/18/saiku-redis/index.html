@@ -341,6 +341,13 @@
 
 <pre class="example">
 ###############################################################################
+# Boolean property that controls whether the data from segments
+# is cached locally. To create custom caches, look for the
+# SegmentCache SPI.
+#
+mondrian.rolap.star.disableLocalSegmentCache=true
+
+###############################################################################
 # Property which defines which SegmentCache implementation to use.
 # Specify the value as a fully qualified class name, such as
 # org.example.SegmentCacheImpl where SegmentCacheImpl

@@ -4,10 +4,24 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>Tue, 18 Nov 2014 13:58:04 CST</pubDate>
-    <lastBuildDate>Tue, 18 Nov 2014 13:58:04 CST</lastBuildDate>
+    <pubDate>Fri, 28 Nov 2014 10:11:02 CST</pubDate>
+    <lastBuildDate>Fri, 28 Nov 2014 10:11:02 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>mvn</title>
+      <link>http://standino.github.io/wiki/html/mvn</link>
+      <description>mvn</description>
+      <pubDate>2014-11-21</pubDate>
+      <guid>http://standino.github.io/wiki/html/mvn</guid>
+    </item>
+    <item>
+      <title>JD工作笔记</title>
+      <link>http://standino.github.io/work/html/JD/</link>
+      <description>JD个人工作笔记</description>
+      <pubDate>2014-11-21</pubDate>
+      <guid>http://standino.github.io/work/html/JD/</guid>
+    </item>
     <item>
       <title>Less 简介</title>
       <link>http://standino.github.io/wiki/html/less</link>
@@ -21,13 +35,6 @@
       <description>为saiku加入缓存</description>
       <pubDate>2014-11-18</pubDate>
       <guid>http://standino.github.io/blog/2014/11/18/saiku-redis</guid>
-    </item>
-    <item>
-      <title>JD工作笔记</title>
-      <link>http://standino.github.io/work/html/JD/</link>
-      <description>JD个人工作笔记</description>
-      <pubDate>2014-11-18</pubDate>
-      <guid>http://standino.github.io/work/html/JD/</guid>
     </item>
     <item>
       <title>JAVA</title>
@@ -70,13 +77,6 @@
       <description>敏捷软件开发</description>
       <pubDate>2014-11-14</pubDate>
       <guid>http://standino.github.io/wiki/html/scrum</guid>
-    </item>
-    <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2014-11-14</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
     </item>
   </channel>
 </rss>
