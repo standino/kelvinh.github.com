@@ -274,7 +274,11 @@
           </form>
           <!-- /input-group -->
         </li>
+          <li><a href="/assets/">Assets</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
           <li><a href="/work/">Work</a></li>
         <li><a href="/tags/">Tags</a></li>
         <li><a href="/about/">About</a></li>
@@ -365,7 +369,7 @@ Online analytical processing(OLAP)即 联机分析处理 。
 </p>
 </div>
 
-<ul class="org-ul"><li>逻辑概念<br  /><div class="outline-text-5" id="text-1-1-0-1">
+<ul class="org-ul"><li><a id="sec-1-1-0-1" name="sec-1-1-0-1"></a>逻辑概念<br  /><div class="outline-text-5" id="text-1-1-0-1">
 <ol class="org-ol">
 <li>维（Dimension）：是人们观察数据的特定角度，是考虑问题时的一类属性，属性集合构成一个维（时间维、地理维等）。
 </li>
@@ -388,7 +392,7 @@ Online analytical processing(OLAP)即 联机分析处理 。
 </div>
 </li>
 
-<li>星形结构<br  /><div class="outline-text-5" id="text-1-1-0-2">
+<li><a id="sec-1-1-0-2" name="sec-1-1-0-2"></a>星形结构<br  /><div class="outline-text-5" id="text-1-1-0-2">
 <ol class="org-ol">
 <li>事实(Fact)和维(Dimension)
 </li>
@@ -431,6 +435,8 @@ Online analytical processing(OLAP)即 联机分析处理 。
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li><a href="http://msdn.microsoft.com/en-us/library/aa216767(SQL.80).aspx">MDX Overview</a>
+</li>
+<li><a href="http://msdn.microsoft.com/zh-cn/library/ms146052.aspx">MDX 中文文档</a>
 </li>
 <li><a href="http://jim19770812.blogspot.com/2009/04/mondrian-schema-workbenchmdx.html">使用Mondrian Schema Workbench调试MDX</a>
 </li>
@@ -530,14 +536,14 @@ Mondrian是一个BI开源项目。一个用Java写成的OLAP（在线分析性�
 <div id="outline-container-sec-3-1-1" class="outline-4">
 <h4 id="sec-3-1-1">编写 Mondrian Schema</h4>
 <div class="outline-text-4" id="text-3-1-1">
-</div><ul class="org-ul"><li>Cube<br  /><div class="outline-text-5" id="text-3-1-1-1">
+</div><ul class="org-ul"><li><a id="sec-3-1-1-1" name="sec-3-1-1-1"></a>Cube<br  /><div class="outline-text-5" id="text-3-1-1-1">
 <p>
 创建数据立文体（CUBE）。在Mondrian里面的cube是以XML的形式定义的，他有一个GUI工具workbench来制作cube. <a href="https://github.com/standino/saiku/blob/master/FoodMart.xml">具体例子</a>。
 </p>
 </div>
 </li>
 
-<li>权限<br  /><div class="outline-text-5" id="text-3-1-1-2">
+<li><a id="sec-3-1-1-2" name="sec-3-1-1-2"></a>权限<br  /><div class="outline-text-5" id="text-3-1-1-2">
 <p>
 权限分为两种，一种是顶一下在Mondrian的cube中。可以设置cube，维度和度量的权限，<a href="https://github.com/standino/saiku/blob/master/FoodMart.xml">具体例子</a> 。另一种是数据权限，这个需要编写Java类实现。具体例子将在下面saiku相关小节进行介绍。
 </p>
@@ -616,7 +622,7 @@ Saiku是一个模块化的开源分析套件，它提供轻量级的OLAP（联�
 <div id="outline-container-sec-3-2-4" class="outline-4">
 <h4 id="sec-3-2-4">嵌入式图表的使用</h4>
 <div class="outline-text-4" id="text-3-2-4">
-</div><ul class="org-ul"><li>使用保存的query<br  /><div class="outline-text-5" id="text-3-2-4-1">
+</div><ul class="org-ul"><li><a id="sec-3-2-4-1" name="sec-3-2-4-1"></a>使用保存的query<br  /><div class="outline-text-5" id="text-3-2-4-1">
 <p>
 这种使用方式需要先把要展示的表格和图表保存下来，通过传入文件路径来展示。这种方式适合不需要下钻的图表。
 </p>
@@ -647,7 +653,7 @@ Saiku是一个模块化的开源分析套件，它提供轻量级的OLAP（联�
 </li>
 
 
-<li>使用mdx查询<br  /><div class="outline-text-5" id="text-3-2-4-2">
+<li><a id="sec-3-2-4-2" name="sec-3-2-4-2"></a>使用mdx查询<br  /><div class="outline-text-5" id="text-3-2-4-2">
 <p>
 这种方式比较灵活，可以编写多种mdx查询语句从后台获得数据，进行展示。
 </p>
@@ -665,7 +671,7 @@ Saiku是一个模块化的开源分析套件，它提供轻量级的OLAP（联�
 </div>
 </li>
 
-<li>相关代码<br  /><div class="outline-text-5" id="text-3-2-4-3">
+<li><a id="sec-3-2-4-3" name="sec-3-2-4-3"></a>相关代码<br  /><div class="outline-text-5" id="text-3-2-4-3">
 <ul class="org-ul">
 <li><a href="https://github.com/standino/saiku-ui/blob/master/embed/index.js">index.js</a>
 </li>
@@ -844,7 +850,7 @@ Oozie is a workflow scheduler system to manage Apache Hadoop jobs.
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2014-06-16</span>
-        <span title="last modification date" class="post-info">修改日期：2014-11-17</span>
+        <span title="last modification date" class="post-info">修改日期：2014-12-17</span>
         <span title="tags" class="post-info"><a href="/tags/saiku/">saiku</a></span>
         <span title="author" class="post-info">Will</span>
       </div>
