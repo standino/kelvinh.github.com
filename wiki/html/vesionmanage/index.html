@@ -274,7 +274,10 @@
           </form>
           <!-- /input-group -->
         </li>
+          <li><a href="/assets/">Assets</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
           <li><a href="/work/">Work</a></li>
         <li><a href="/tags/">Tags</a></li>
         <li><a href="/about/">About</a></li>
@@ -730,6 +733,16 @@ svn co svn+ssh://servername/project
 <div class="outline-text-3" id="text-2-1">
 <pre class="example">
 git reset HEAD file把暂存区的修改撤回到工作区的修改。
+git fetch --all
+git merge -s recursive -X theirs upstream/master
+
+Contributing
+
+Fork it!
+Create your feature branch: git checkout -b my-new-feature
+Commit your changes: git commit -m "Add some feature"
+Push to the branch: git push origin my-new-feature
+Submit a pull request :)
 </pre>
 
 <ul class="org-ul">
@@ -761,9 +774,6 @@ git push -u new master
 
 
 <p>
-14
-down vote
-accepted
 You could checkout directly the remote branch after fetching it
 </p>
 
@@ -2557,7 +2567,7 @@ hg branchdiff .
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2013-12-19</span>
-        <span title="last modification date" class="post-info">修改日期：2014-11-14</span>
+        <span title="last modification date" class="post-info">修改日期：2015-01-19</span>
         <span title="tags" class="post-info"><a href="/tags/svn/">svn</a>, <a href="/tags/cvs/">cvs</a>, <a href="/tags/git/">git</a>, <a href="/tags/hg/">hg</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

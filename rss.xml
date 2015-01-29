@@ -4,79 +4,79 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>Fri, 28 Nov 2014 10:39:41 CST</pubDate>
-    <lastBuildDate>Fri, 28 Nov 2014 10:39:41 CST</lastBuildDate>
+    <pubDate>Wed, 28 Jan 2015 15:43:58 CST</pubDate>
+    <lastBuildDate>Wed, 28 Jan 2015 15:43:58 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>mvn</title>
-      <link>http://standino.github.io/wiki/html/mvn</link>
-      <description>mvn</description>
-      <pubDate>2014-11-21</pubDate>
-      <guid>http://standino.github.io/wiki/html/mvn</guid>
+      <title>Untitled</title>
+      <link>http://standino.github.io/wiki/html/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2015-01-28</pubDate>
+      <guid>http://standino.github.io/wiki/html/bigdata</guid>
+    </item>
+    <item>
+      <title>NightWatch 自动化测试框架 </title>
+      <link>http://standino.github.io/blog/2015/01/26/nightwatch</link>
+      <description>NightWatch</description>
+      <pubDate>2015-01-28</pubDate>
+      <guid>http://standino.github.io/blog/2015/01/26/nightwatch</guid>
     </item>
     <item>
       <title>JD工作笔记</title>
       <link>http://standino.github.io/work/html/JD/</link>
       <description>JD个人工作笔记</description>
-      <pubDate>2014-11-21</pubDate>
+      <pubDate>2015-01-28</pubDate>
       <guid>http://standino.github.io/work/html/JD/</guid>
     </item>
     <item>
-      <title>Less 简介</title>
-      <link>http://standino.github.io/wiki/html/less</link>
-      <description>less</description>
-      <pubDate>2014-11-18</pubDate>
-      <guid>http://standino.github.io/wiki/html/less</guid>
+      <title>大大数据OLAP报表系统开发白皮书</title>
+      <link>http://standino.github.io/work/2015/01/29/olapdevguide</link>
+      <description>使用saiku开发OLAP系统</description>
+      <pubDate>2015-01-28</pubDate>
+      <guid>http://standino.github.io/work/2015/01/29/olapdevguide</guid>
     </item>
     <item>
       <title>为saiku加入redis缓存</title>
       <link>http://standino.github.io/blog/2014/11/18/saiku-redis</link>
       <description>为saiku加入缓存</description>
-      <pubDate>2014-11-18</pubDate>
+      <pubDate>2015-01-21</pubDate>
       <guid>http://standino.github.io/blog/2014/11/18/saiku-redis</guid>
     </item>
     <item>
-      <title>JAVA</title>
-      <link>http://standino.github.io/wiki/html/java</link>
-      <description>Java Tips</description>
-      <pubDate>2014-11-17</pubDate>
-      <guid>http://standino.github.io/wiki/html/java</guid>
-    </item>
-    <item>
-      <title>我是如何开始使用redis的</title>
-      <link>http://standino.github.io/blog/2013/12/24/redis</link>
-      <description>redis学习和入门</description>
-      <pubDate>2014-11-17</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/24/redis</guid>
-    </item>
-    <item>
-      <title>大数据下BI报表所需要的技术</title>
+      <title>大大数据OLAP报表系统开发白皮书</title>
       <link>http://standino.github.io/blog/2014/06/16/saiku</link>
       <description>使用saiku开发OLAP系统</description>
-      <pubDate>2014-11-17</pubDate>
+      <pubDate>2015-01-21</pubDate>
       <guid>http://standino.github.io/blog/2014/06/16/saiku</guid>
     </item>
     <item>
-      <title>大数据</title>
-      <link>http://standino.github.io/wiki/html/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2014-11-14</pubDate>
-      <guid>http://standino.github.io/wiki/html/bigdata</guid>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/wiki/html/vesionmanage</link>
+      <description>Version control</description>
+      <pubDate>2015-01-19</pubDate>
+      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
     </item>
     <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-11-14</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
+      <title>常用链接</title>
+      <link>http://standino.github.io/wiki/html/mylinks</link>
+      <description>常用链接</description>
+      <pubDate>2015-01-08</pubDate>
+      <guid>http://standino.github.io/wiki/html/mylinks</guid>
     </item>
     <item>
-      <title>敏捷软件开发</title>
-      <link>http://standino.github.io/wiki/html/scrum</link>
-      <description>敏捷软件开发</description>
-      <pubDate>2014-11-14</pubDate>
-      <guid>http://standino.github.io/wiki/html/scrum</guid>
+      <title>2015年计划</title>
+      <link>http://standino.github.io/blog/2014/12/20/planning2014/</link>
+      <description>为明年做一下计划</description>
+      <pubDate>2015-01-08</pubDate>
+      <guid>http://standino.github.io/blog/2014/12/20/planning2014/</guid>
+    </item>
+    <item>
+      <title>ruby.org</title>
+      <link>http://standino.github.io/wiki/html/ruby</link>
+      <description>Learning ruby </description>
+      <pubDate>2015-01-08</pubDate>
+      <guid>http://standino.github.io/wiki/html/ruby</guid>
     </item>
   </channel>
 </rss>
