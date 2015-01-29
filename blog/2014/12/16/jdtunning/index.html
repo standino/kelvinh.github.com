@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <title>京东罗盘优化 - Keep going</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Will" />
+    <meta name="description" content="京东罗盘优化" />
+    <meta name="keywords" content="work,sql,mdx" />
+    <!-- Bootstrap Core CSS -->
+    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+  <body class="container">
+    <div id="wrapper">
+      <!-- Navigation -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+  </div>
+  <!-- /.navbar-header -->
+
+  <ul class="nav navbar-top-links navbar-right">
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-messages">
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>Read All Messages</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-messages -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-tasks">
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 1</strong>
+                <span class="pull-right text-muted">40% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                  <span class="sr-only">40% Complete (success)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 2</strong>
+                <span class="pull-right text-muted">20% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                  <span class="sr-only">20% Complete</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 3</strong>
+                <span class="pull-right text-muted">60% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                  <span class="sr-only">60% Complete (warning)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 4</strong>
+                <span class="pull-right text-muted">80% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                  <span class="sr-only">80% Complete (danger)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>See All Tasks</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-tasks -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-alerts">
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-comment fa-fw"></i> New Comment
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+              <span class="pull-right text-muted small">12 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-envelope fa-fw"></i> Message Sent
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-tasks fa-fw"></i> New Task
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-upload fa-fw"></i> Server Rebooted
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>See All Alerts</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-alerts -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-user">
+        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+        </li>
+        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+        </li>
+        <li class="divider"></li>
+        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        </li>
+      </ul>
+      <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+  </ul>
+  <!-- /.navbar-top-links -->
+
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="searchform" action="http://search.aol.com/aol/search">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" name="q" id="s" value="site:standino.github.io">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+          <!-- /input-group -->
+        </li>
+          <li><a href="/assets/">Assets</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/wiki/">Wiki</a></li>
+          <li><a href="/work/">Work</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/standino">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+  </div>
+  <!-- /.navbar-static-side -->
+</nav>
+
+      <div>
+  <div class="post">
+    <div id="page-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">京东罗盘优化</h1>
+          <p>
+京东罗盘优化：
+</p>
+
+<p>
+一．MDX优化，以“市场竞争强度”为例，有这么一段MDX（查“竞争指数”）：
+SELECT   NON EMPTY {     HIERARCHIZE({       [Measures].[竞争指数]     })   } ON COLUMNS,   NON EMPTY {     HIERARCHIZE(       {         {           [商品扩展属性.扩展属性值].<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>.<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>.<sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>         },         FILTER(           {             {               [商品扩展属性.扩展属性值].[扩展属性名称].members             }           },           (             exists(ANCESTOR([商品扩展属性.扩展属性值].currentmember,             [商品扩展属性.扩展属性值].[三级分类名称]), {             [商品扩展属性.扩展属性值].<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>.<sup><a id="fnr.2.100" name="fnr.2.100" class="footref" href="#fn.2">2</a></sup>.<sup><a id="fnr.3.100" name="fnr.3.100" class="footref" href="#fn.3">3</a></sup>}).count &gt; 0           )         ),         FILTER(           {             {     [商品扩展属性.扩展属性值].[扩展属性值名称].members             }           },           (             exists(ANCESTOR([商品扩展属性.扩展属性值].currentmember,             [商品扩展属性.扩展属性值].[三级分类名称]), {             [商品扩展属性.扩展属性值].<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>.<sup><a id="fnr.2.100" name="fnr.2.100" class="footref" href="#fn.2">2</a></sup>.<sup><a id="fnr.3.100" name="fnr.3.100" class="footref" href="#fn.3">3</a></sup>}).count &gt; 0           )         )       }     )   } ON ROWS FROM [MarketCompetStrength] WHERE CROSSJOIN(         { [时间.年季月日].<sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup>.<sup><a id="fnr.5" name="fnr.5" class="footref" href="#fn.5">5</a></sup>.<sup><a id="fnr.6" name="fnr.6" class="footref" href="#fn.6">6</a></sup>.<sup><a id="fnr.7" name="fnr.7" class="footref" href="#fn.7">7</a></sup>:[时间.年季月日].<sup><a id="fnr.4.100" name="fnr.4.100" class="footref" href="#fn.4">4</a></sup>.<sup><a id="fnr.5.100" name="fnr.5.100" class="footref" href="#fn.5">5</a></sup>.<sup><a id="fnr.6.100" name="fnr.6.100" class="footref" href="#fn.6">6</a></sup>.<sup><a id="fnr.8" name="fnr.8" class="footref" href="#fn.8">8</a></sup> },   {     [部门].<sup><a id="fnr.9" name="fnr.9" class="footref" href="#fn.9">9</a></sup>   } ) 。
+</p>
+
+<p>
+优化后的MDX为：
+SELECT   NON EMPTY {     {       [Measures].[竞争指数]     }   } ON COLUMNS,   NON EMPTY {     HIERARCHIZE(       DESCENDANTS(         [商品扩展属性.扩展属性值].<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup>.<sup><a id="fnr.2.100" name="fnr.2.100" class="footref" href="#fn.2">2</a></sup>.<sup><a id="fnr.3.100" name="fnr.3.100" class="footref" href="#fn.3">3</a></sup>,         [商品扩展属性.扩展属性值].[扩展属性名称],         self_and_after       )     )   } ON ROWS FROM [MarketCompetStrength] WHERE CROSSJOIN(         { [时间.年季月日].<sup><a id="fnr.4.100" name="fnr.4.100" class="footref" href="#fn.4">4</a></sup>.<sup><a id="fnr.5.100" name="fnr.5.100" class="footref" href="#fn.5">5</a></sup>.<sup><a id="fnr.6.100" name="fnr.6.100" class="footref" href="#fn.6">6</a></sup>.<sup><a id="fnr.7.100" name="fnr.7.100" class="footref" href="#fn.7">7</a></sup>:[时间.年季月日].<sup><a id="fnr.4.100" name="fnr.4.100" class="footref" href="#fn.4">4</a></sup>.<sup><a id="fnr.5.100" name="fnr.5.100" class="footref" href="#fn.5">5</a></sup>.<sup><a id="fnr.6.100" name="fnr.6.100" class="footref" href="#fn.6">6</a></sup>.<sup><a id="fnr.8.100" name="fnr.8.100" class="footref" href="#fn.8">8</a></sup> },   {     [部门].<sup><a id="fnr.9.100" name="fnr.9.100" class="footref" href="#fn.9">9</a></sup>   } ) 
+</p>
+
+<p>
+以现在的数据库来说，这个MDX的条件中，有三天的数据：20141031，20141104，20141105，经过saiku-ui测试，优化前每次查询时间大约在10秒左右。优化后的MDX语句，查询时间一般在6秒以内。说明我们写的MDX应该有优化的空间。
+</p>
+
+<p>
+这个优化的内容主要是：
+去除了不必要的三级分类下的值。
+用了DESCENDANTS函数，具体用法参照MSDN的：
+<a href="http://msdn.microsoft.com/zh-cn/library/ms146075.aspx">http://msdn.microsoft.com/zh-cn/library/ms146075.aspx</a> 
+</p>
+
+<p>
+通过两次日志比较，分析性能提升的原因。（主要就是时间、事实表、扩展属性值关联查询时，第二个MDX取了更少的信息，带上了条件）。
+</p>
+
+<p>
+MDX优化的方法，需要对MDX不断的学习，并且不断的通过看日志进行分析。可以参照在群已经共享的“MDX解决方案.pdf”一书和网上资料。
+</p>
+
+<p>
+二．Mysql优化：以上面优化过的MDX中产生的一个SQL为例：
+</p>
+
+<p>
+SELECT `dim_categories_ext`.`ext_attr_cd`   AS `c0`,        `dim_categories_ext`.`ext_attr_name` AS `c1` FROM   (SELECT department_id,                dept_id,                dept_name,                department_full,                dept_id_1,                dept_level_1,                dept_id_2,                dept_level_2,                dept_id_3,                dept_level_3         FROM   dim_department_market t1         WHERE  -1 = 35                 OR dept_id = 35                 OR dept_id_1 = 35                 OR dept_id_2 = 35                 OR dept_id_3 = 35) AS `view_dim_department`,        `fact_market_compet_strength_attr` AS `fact_market_compet_strength_attr`,        `dim_time_v2` AS `dim_time_v2`,        `dim_categories_ext` AS `dim_categories_ext` WHERE  `fact_market_compet_strength_attr`.`dept_id_3` =        `view_dim_department`.`dept_id`        AND `view_dim_department`.`dept_id_1` = '35.0'        AND `fact_market_compet_strength_attr`.`data_date` =            `dim_time_v2`.`dim_date`        AND `dim_time_v2`.`dim_year` = 2014        AND `dim_time_v2`.`dim_month` IN ( 10, 11 )        AND `dim_time_v2`.`quarter` = 4        AND `dim_time_v2`.`dim_day` IN ( 5, 6, 7, 8,                                         9, 10, 11, 12,                                         13, 14, 15, 16,                                         17, 18, 19, 20,                                         21, 22, 23, 24,                                         25, 26, 27, 28,                                         29, 30, 31, 1,                                         2, 3, 4, 5,                                         6, 7, 8, 9,                                         10, 11, 12, 13,                                         14, 15, 16, 17,                                         18, 19, 20, 21,                                         22, 23, 24, 25,                                         26, 27, 28, 29, 30 )        AND `fact_market_compet_strength_attr`.`categories_full` =            `dim_categories_ext`.`categories_full`        AND `dim_categories_ext`.`code_level_1` = '737'        AND `dim_categories_ext`.`code_level_2` = '794'        AND `dim_categories_ext`.`code_level_3` = '870' GROUP  BY `dim_categories_ext`.`ext_attr_cd`,           `dim_categories_ext`.`ext_attr_name` ORDER  BY Isnull(`dim_categories_ext`.`ext_attr_cd`) ASC,           `dim_categories_ext`.`ext_attr_cd` ASC 
+</p>
+
+<p>
+有索引没有用上（演示一下执行计划）。
+</p>
+
+<p>
+根据执行计划的分析，可以看到有两个查询没有用到索引，从网上查询的资料以及分析，发现：Mysql中“子查询”后索引就失效了，可以用JOIN的表连接的方式解决这个问题：
+</p>
+
+<p>
+SELECT `dim_categories_ext`.`ext_attr_cd`   AS `c0`,        `dim_categories_ext`.`ext_attr_name` AS `c1` FROM   `dim_department_market` AS `view_dim_department`,        `fact_market_compet_strength_attr` AS `fact_market_compet_strength_attr`,        `dim_time_v2` AS `dim_time_v2`,        `dim_categories_ext` AS `dim_categories_ext` WHERE  `fact_market_compet_strength_attr`.`dept_id_3` =        `view_dim_department`.`dept_id`        AND `view_dim_department`.`dept_id_1` = '35.0'        AND ( dept_id = 35               OR `view_dim_department`.dept_id_1 = 35               OR `view_dim_department`.dept_id_2 = 35               OR `view_dim_department`.dept_id_3 = 35 )        AND `fact_market_compet_strength_attr`.`data_date` =            `dim_time_v2`.`dim_date`        AND `dim_time_v2`.`dim_year` = 2014        AND `dim_time_v2`.`dim_month` IN ( 10, 11 )        AND `dim_time_v2`.`quarter` = 4        AND `dim_time_v2`.`dim_day` IN ( 5, 6, 7, 8,                                         9, 10, 11, 12,                                         13, 14, 15, 16,                                         17, 18, 19, 20,                                         21, 22, 23, 24,                                         25, 26, 27, 28,                                         29, 30, 31, 1,                                         2, 3, 4, 5,                                         6, 7, 8, 9,                                         10, 11, 12, 13,                                         14, 15, 16, 17,                                         18, 19, 20, 21,                                         22, 23, 24, 25,                                         26, 27, 28, 29, 30 )        AND `fact_market_compet_strength_attr`.`categories_full` =            `dim_categories_ext`.`categories_full`        AND `dim_categories_ext`.`code_level_1` = '737'        AND `dim_categories_ext`.`code_level_2` = '794'        AND `dim_categories_ext`.`code_level_3` = '870' GROUP  BY `dim_categories_ext`.`ext_attr_cd`,           `dim_categories_ext`.`ext_attr_name` ORDER  BY Isnull(`dim_categories_ext`.`ext_attr_cd`) ASC,           `dim_categories_ext`.`ext_attr_cd` ASC 
+</p>
+
+<p>
+再看一下这个SQL的执行计划。
+</p>
+
+<p>
+根据测试，优化前查询时间差不多需要2秒左右，优化后查询时间在0.25秒左右。
+</p>
+
+<p>
+那么，问题来了：是不是问题已经解决了？再试试二级部门，三给部门。发现子查询里，如果数据量很小，也会很快，甚至到了3级部门，比优化后的还要快。但是优化后（用表连接的方式）的性能是一个比较平衡的方式，所以还是应该使用表连接的方式。（除非子查询的条目一定非常少）
+</p>
+
+<p>
+注意：一个表的索引是有长度限制的，不能超过767 bytes。所以之前这个表的定义：
+</p>
+
+<p>
+中，长度设置为500，所以索引是会失效的。根据数据观察，考虑是否将长度设为100？（测试数据库中为了演示，已经将长度改成100了，包括事实表的字段长度。线上的库和代码还没有改）
+</p>
+
+<p>
+下面看的几个比较好的Mysql优化介绍：
+<a href="http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html">http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html</a> （雪楠推荐）
+<a href="http://www.cnitblog.com/aliyiyi08/archive/2008/09/09/48878.html">http://www.cnitblog.com/aliyiyi08/archive/2008/09/09/48878.html</a>  （执行计划说明）
+<a href="http://tech.meituan.com/mysql-index.html">http://tech.meituan.com/mysql-index.html</a> （美团网一个技术人员写的，个人觉得写的非常好）
+</p>
+
+<p>
+总结：
+优化数据库性能，最有效也是也简单的就是建立索引。但是建立最合适的索引，也是最难的。索引不是越多越好，到底是组合索引，还是多个索引的问题，一直有点迷惑。在26万数据下，没有测出来组合索引的明显优势或劣势。以后有时间再深入研究。
+测试中，尝试了使用MyISAM数据库引擎（fact_market_compet_strength_attr），在26万左右的数据量下，没发现有明显的性能提升，故而没有使用。时间关系，也没有特意去深研。
+Mysql对于子查询的优化做的不是很好，会使一些索引失效，考虑用表连接的方式进行优化。（即李涛之前提到过的加了子查询索引就失效的问题）。
+因为Mondrian的权限控制并不是很强，Mysql的优化机制也不如Oracle那么强，所以才导致很容易出现mondrian拼出的sql性能很差。这也是为什么我们直接写sql的性能比Mondrian高很多的原因。（我们的sql也要做优化，不要再用子查询，全部用表连接）
+</p>
+
+<p>
+三．Mondrian多学习，使用退化维、聚合表等特性。
+退化维：<a href="http://mondrian.pentaho.com/documentation/schema.php#Degenerate_dimensions">http://mondrian.pentaho.com/documentation/schema.php#Degenerate_dimensions</a> 
+聚合表：<a href="http://mondrian.pentaho.com/documentation/aggregate_tables.php">http://mondrian.pentaho.com/documentation/aggregate_tables.php</a>                                                         
+</p>
+
+<p>
+建议：如果我们想基于Mondrian做一个优秀的产品（或项目），建议把Mondrian的文档和MDX语言系统的学习一下，明白其它原理和细节。（Saiku生成的MDX谨做参考）。                                                                                                                     
+</p>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.5" name="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.6" name="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.7" name="fn.7" class="footnum" href="#fnr.7">7</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.8" name="fn.8" class="footnum" href="#fnr.8">8</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.9" name="fn.9" class="footnum" href="#fnr.9">9</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+    </div>
+        <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">创建日期：2014-12-16</span>
+        <span title="last modification date" class="post-info">修改日期：2014-12-18</span>
+        <span title="tags" class="post-info"><a href="/tags/work/">work</a>, <a href="/tags/sql/">sql</a>, <a href="/tags/mdx/">mdx</a></span>
+        <span title="author" class="post-info">Will</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/2014/12/16/jdtunning";
+          var disqus_url = "http://standino.github.io/blog/2014/12/16/jdtunning";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+    <!-- jQuery Version 1.11.0 -->
+    <script src="/media/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/media/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/media/js/plugins/morris/raphael.min.js"></script>
+    <script src="/media/js/plugins/morris/morris.min.js"></script>
+    <script src="/media/js/plugins/morris/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/media/js/sb-admin-2.js"></script>
+
+
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - 2015 <a href="mailto:will &lt;at&gt; will-ThinkPad-Edge-E431">Will</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
