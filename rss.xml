@@ -4,79 +4,79 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>Wed, 24 Dec 2014 08:54:35 CST</pubDate>
-    <lastBuildDate>Wed, 24 Dec 2014 08:54:35 CST</lastBuildDate>
+    <pubDate>Mon, 16 Feb 2015 14:56:58 CST</pubDate>
+    <lastBuildDate>Mon, 16 Feb 2015 14:56:58 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/wiki/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2014-12-24</pubDate>
-      <guid>http://standino.github.io/wiki/html/js</guid>
+      <title>HowtoWork</title>
+      <link>http://standino.github.io/work/html/howtowork</link>
+      <description>How to work</description>
+      <pubDate>2015-02-16</pubDate>
+      <guid>http://standino.github.io/work/html/howtowork</guid>
     </item>
     <item>
-      <title>2014年计划</title>
-      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
-      <description>为明年做一下计划</description>
-      <pubDate>2014-12-24</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
+      <title>零售平台项目</title>
+      <link>http://standino.github.io/work/html/jdretail</link>
+      <description>零售平台项目</description>
+      <pubDate>2015-02-16</pubDate>
+      <guid>http://standino.github.io/work/html/jdretail</guid>
     </item>
     <item>
       <title>JD工作笔记</title>
       <link>http://standino.github.io/work/html/JD/</link>
       <description>JD个人工作笔记</description>
-      <pubDate>2014-12-24</pubDate>
+      <pubDate>2015-02-12</pubDate>
       <guid>http://standino.github.io/work/html/JD/</guid>
     </item>
     <item>
-      <title>Untitled</title>
-      <link>http://standino.github.io/blog/html/2014/12/24/untitled/</link>
-      <description>No Description</description>
-      <pubDate>2014-12-24</pubDate>
-      <guid>http://standino.github.io/blog/html/2014/12/24/untitled/</guid>
-    </item>
-    <item>
-      <title>京东罗盘优化</title>
-      <link>http://standino.github.io/blog/2014/12/16/jdtunning</link>
-      <description>京东罗盘优化</description>
-      <pubDate>2014-12-18</pubDate>
-      <guid>http://standino.github.io/blog/2014/12/16/jdtunning</guid>
-    </item>
-    <item>
-      <title>大数据下BI报表所需要的技术</title>
-      <link>http://standino.github.io/blog/2014/06/16/saiku</link>
+      <title>大数据OLAP报表系统开发白皮书</title>
+      <link>http://standino.github.io/work/2015/01/29/olapdevguide</link>
       <description>使用saiku开发OLAP系统</description>
-      <pubDate>2014-12-17</pubDate>
-      <guid>http://standino.github.io/blog/2014/06/16/saiku</guid>
+      <pubDate>2015-02-12</pubDate>
+      <guid>http://standino.github.io/work/2015/01/29/olapdevguide</guid>
     </item>
     <item>
-      <title>重大贡献/合理化建议描述</title>
-      <link>http://standino.github.io/blog/2014/12/04/jd2014</link>
-      <description>重大贡献/合理化建议描述</description>
-      <pubDate>2014-12-16</pubDate>
-      <guid>http://standino.github.io/blog/2014/12/04/jd2014</guid>
+      <title>NightWatch 自动化测试框架 </title>
+      <link>http://standino.github.io/blog/2015/01/26/nightwatch</link>
+      <description>NightWatch</description>
+      <pubDate>2015-02-06</pubDate>
+      <guid>http://standino.github.io/blog/2015/01/26/nightwatch</guid>
     </item>
     <item>
-      <title>myresume</title>
-      <link>http://standino.github.io/work/html/myresume</link>
-      <description>常伟的简历</description>
-      <pubDate>2014-12-16</pubDate>
-      <guid>http://standino.github.io/work/html/myresume</guid>
+      <title>Untitled</title>
+      <link>http://standino.github.io/wiki/html/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2015-02-04</pubDate>
+      <guid>http://standino.github.io/wiki/html/bigdata</guid>
     </item>
     <item>
-      <title>mysql</title>
-      <link>http://standino.github.io/wiki/html/mysql</link>
-      <description>MySQL数据库</description>
-      <pubDate>2014-12-04</pubDate>
-      <guid>http://standino.github.io/wiki/html/mysql</guid>
+      <title>使用pig脚本</title>
+      <link>http://standino.github.io/blog/2014/05/26/pig</link>
+      <description>pig 脚本</description>
+      <pubDate>2015-02-04</pubDate>
+      <guid>http://standino.github.io/blog/2014/05/26/pig</guid>
     </item>
     <item>
-      <title>Saiku 连接 mongodb</title>
-      <link>http://standino.github.io/blog/2014/11/28/Saiku_mongodb</link>
-      <description>使用saiku连接mongodb提高olap查询速度</description>
-      <pubDate>2014-12-04</pubDate>
-      <guid>http://standino.github.io/blog/2014/11/28/Saiku_mongodb</guid>
+      <title>Eclipse</title>
+      <link>http://standino.github.io/wiki/html/eclipse</link>
+      <description>eclipse</description>
+      <pubDate>2015-02-02</pubDate>
+      <guid>http://standino.github.io/wiki/html/eclipse</guid>
+    </item>
+    <item>
+      <title>English</title>
+      <link>http://standino.github.io/wiki/html/eng</link>
+      <description>English</description>
+      <pubDate>2015-02-02</pubDate>
+      <guid>http://standino.github.io/wiki/html/eng</guid>
+    </item>
+    <item>
+      <title>FreeMind</title>
+      <link>http://standino.github.io/wiki/html/freemind</link>
+      <description>freemind</description>
+      <pubDate>2015-02-02</pubDate>
+      <guid>http://standino.github.io/wiki/html/freemind</guid>
     </item>
   </channel>
 </rss>

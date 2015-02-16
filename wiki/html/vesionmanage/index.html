@@ -274,11 +274,7 @@
           </form>
           <!-- /input-group -->
         </li>
-          <li><a href="/assets/">Assets</a></li>
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/media/">Media</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/wiki/">Wiki</a></li>
           <li><a href="/work/">Work</a></li>
         <li><a href="/tags/">Tags</a></li>
         <li><a href="/about/">About</a></li>
@@ -328,41 +324,45 @@
 <li><a href="#sec-2">Git</a>
 <ul>
 <li><a href="#sec-2-1">我常用操作</a></li>
-<li><a href="#sec-2-2">git flow</a></li>
-<li><a href="#sec-2-3">Git 命令简短总结</a></li>
-<li><a href="#sec-2-4">github 不需要用户名密码push</a></li>
-<li><a href="#sec-2-5">如何使用 github</a></li>
-<li><a href="#sec-2-6">git submodule</a></li>
-<li><a href="#sec-2-7">git subtree</a></li>
-<li><a href="#sec-2-8">git 常用操作</a></li>
-<li><a href="#sec-2-9">SKIP GIT SSL VERIFICATION</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">hg</a>
+<li><a href="#sec-3">彻底删除远程文件</a>
 <ul>
-<li><a href="#sec-3-1">MercurialEclipse</a>
-<ul>
-<li><a href="#sec-3-1-1">Big file！</a></li>
-<li><a href="#sec-3-1-2">How to manage my files with hg</a></li>
-<li><a href="#sec-3-1-3">Branch and tags</a></li>
+<li><a href="#sec-3-1">git flow</a></li>
+<li><a href="#sec-3-2">Git 命令简短总结</a></li>
+<li><a href="#sec-3-3">github 不需要用户名密码push</a></li>
+<li><a href="#sec-3-4">如何使用 github</a></li>
+<li><a href="#sec-3-5">git submodule</a></li>
+<li><a href="#sec-3-6">git subtree</a></li>
+<li><a href="#sec-3-7">git 常用操作</a></li>
+<li><a href="#sec-3-8">SKIP GIT SSL VERIFICATION</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-2">hgsvn</a></li>
-<li><a href="#sec-3-3">2个命令创建一个Mercuria仓库，</a></li>
-<li><a href="#sec-3-4">方便的分布式功能</a></li>
-<li><a href="#sec-3-5">便捷的本地提交</a></li>
-<li><a href="#sec-3-6">离线操作</a></li>
-<li><a href="#sec-3-7">速度优势</a></li>
-<li><a href="#sec-3-8">基于patch的管理</a></li>
-<li><a href="#sec-3-9">更多的便捷操作</a></li>
-<li><a href="#sec-3-10">My setup</a></li>
-<li><a href="#sec-3-11">How to use Emacs to work with Mercurial</a>
+<li><a href="#sec-4">hg</a>
 <ul>
-<li><a href="#sec-3-11-1">revert files</a></li>
-<li><a href="#sec-3-11-2">4.2. How to declare trust</a></li>
+<li><a href="#sec-4-1">MercurialEclipse</a>
+<ul>
+<li><a href="#sec-4-1-1">Big file！</a></li>
+<li><a href="#sec-4-1-2">How to manage my files with hg</a></li>
+<li><a href="#sec-4-1-3">Branch and tags</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-12">比较两个 branch</a></li>
+<li><a href="#sec-4-2">hgsvn</a></li>
+<li><a href="#sec-4-3">2个命令创建一个Mercuria仓库，</a></li>
+<li><a href="#sec-4-4">方便的分布式功能</a></li>
+<li><a href="#sec-4-5">便捷的本地提交</a></li>
+<li><a href="#sec-4-6">离线操作</a></li>
+<li><a href="#sec-4-7">速度优势</a></li>
+<li><a href="#sec-4-8">基于patch的管理</a></li>
+<li><a href="#sec-4-9">更多的便捷操作</a></li>
+<li><a href="#sec-4-10">My setup</a></li>
+<li><a href="#sec-4-11">How to use Emacs to work with Mercurial</a>
+<ul>
+<li><a href="#sec-4-11-1">revert files</a></li>
+<li><a href="#sec-4-11-2">4.2. How to declare trust</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-12">比较两个 branch</a></li>
 </ul>
 </li>
 </ul>
@@ -734,6 +734,16 @@ svn co svn+ssh://servername/project
 <div class="outline-text-3" id="text-2-1">
 <pre class="example">
 git reset HEAD file把暂存区的修改撤回到工作区的修改。
+git fetch --all
+git merge -s recursive -X theirs upstream/master
+
+Contributing
+
+Fork it!
+Create your feature branch: git checkout -b my-new-feature
+Commit your changes: git commit -m "Add some feature"
+Push to the branch: git push origin my-new-feature
+Submit a pull request :)
 </pre>
 
 <ul class="org-ul">
@@ -765,9 +775,6 @@ git push -u new master
 
 
 <p>
-14
-down vote
-accepted
 You could checkout directly the remote branch after fetching it
 </p>
 
@@ -809,21 +816,29 @@ Because pull performs a merge on the retrieved changes, you should ensure that y
 </p>
 </div>
 </div>
+</div>
 
 
-
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">git flow</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">彻底删除远程文件</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+git filter-branch --force --index-filter 'git rm -rf -r --cached --ignore-unmatch work/2015'  --prune-empty --tag-name-filter cat -- --all
+git push origin master --force
+</pre>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">git flow</h3>
+<div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><a href="http://danielkummer.github.io/git-flow-cheatsheet/">http://danielkummer.github.io/git-flow-cheatsheet/</a>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><a href="http://blog.csdn.net/ithomer/article/details/7529841">Git 命令简短总结</a></h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><a href="http://blog.csdn.net/ithomer/article/details/7529841">Git 命令简短总结</a></h3>
+<div class="outline-text-3" id="text-3-2">
 <pre class="example">
 一、 Git 常用命令速查
 git branch 查看本地所有分支
@@ -1865,9 +1880,9 @@ git remote add origin git@github.com:daixu/WebApp.git   增加一个远程服务
 
 
 
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4">github 不需要用户名密码push</h3>
-<div class="outline-text-3" id="text-2-4">
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">github 不需要用户名密码push</h3>
+<div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li><a href="https://help.github.com/articles/generating-ssh-keys">https://help.github.com/articles/generating-ssh-keys</a>
 </li>
@@ -1907,9 +1922,9 @@ $ ssh -T git@github.com
 
 
 
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5">如何使用 github</h3>
-<div class="outline-text-3" id="text-2-5">
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">如何使用 github</h3>
+<div class="outline-text-3" id="text-3-4">
 <ul class="org-ul">
 <li><a href="https://help.github.com/articles/fork-a-repo">Fork A Repo</a>
 </li>
@@ -1941,9 +1956,9 @@ git merge upstream/master
 </div>
 </div>
 
-<div id="outline-container-sec-2-6" class="outline-3">
-<h3 id="sec-2-6">git submodule</h3>
-<div class="outline-text-3" id="text-2-6">
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">git submodule</h3>
+<div class="outline-text-3" id="text-3-5">
 <p>
 git push --recurse-submodules=on-demand
 </p>
@@ -1973,9 +1988,9 @@ That will iterate through all initialized submodules and run the given commands.
 </div>
 </div>
 
-<div id="outline-container-sec-2-7" class="outline-3">
-<h3 id="sec-2-7">git subtree</h3>
-<div class="outline-text-3" id="text-2-7">
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6">git subtree</h3>
+<div class="outline-text-3" id="text-3-6">
 <ol class="org-ol">
 <li><a href="http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html">http://ruleant.blogspot.com/2013/06/git-subtree-module-with-gittrees-config.html</a>
 </li>
@@ -2016,9 +2031,9 @@ even if there is nothing to merge in/pull it should simply return without doing 
 </div>
 
 
-<div id="outline-container-sec-2-8" class="outline-3">
-<h3 id="sec-2-8">git 常用操作</h3>
-<div class="outline-text-3" id="text-2-8">
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7">git 常用操作</h3>
+<div class="outline-text-3" id="text-3-7">
 <ol class="org-ol">
 <li><a href="http://blog.csdn.net/jackystudio/article/details/12271839">【Git入门之六】远程仓库</a>
 </li>
@@ -2026,9 +2041,9 @@ even if there is nothing to merge in/pull it should simply return without doing 
 </div>
 </div>
 
-<div id="outline-container-sec-2-9" class="outline-3">
-<h3 id="sec-2-9">SKIP GIT SSL VERIFICATION</h3>
-<div class="outline-text-3" id="text-2-9">
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8">SKIP GIT SSL VERIFICATION</h3>
+<div class="outline-text-3" id="text-3-8">
 <pre class="example">
 export GIT_SSL_NO_VERIFY=1
 </pre>
@@ -2036,9 +2051,9 @@ export GIT_SSL_NO_VERIFY=1
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">hg</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">hg</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 <a href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide by Bryan O'Sullivan</a>
 </p>
@@ -2052,9 +2067,9 @@ export GIT_SSL_NO_VERIFY=1
 </p>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><a href="http://www.javaforge.com/project/HGE">MercurialEclipse</a></h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><a href="http://www.javaforge.com/project/HGE">MercurialEclipse</a></h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 MercurialEclipse is a plugin providing support for the highly popular Mercurial distributed version control system within the Eclipse IDE.
 </p>
@@ -2086,9 +2101,9 @@ MercurialEclipse supports:
 </div>
 
 
-<div id="outline-container-sec-3-1-1" class="outline-4">
-<h4 id="sec-3-1-1">Big file！</h4>
-<div class="outline-text-4" id="text-3-1-1">
+<div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1">Big file！</h4>
+<div class="outline-text-4" id="text-4-1-1">
 <p>
 <a href="http://mercurial.selenic.com/wiki/html/BigfilesExtension">http://mercurial.selenic.com/wiki/html/BigfilesExtension</a>
 </p>
@@ -2151,9 +2166,9 @@ repo = path/to/versions/dir
 </div>
 </div>
 
-<div id="outline-container-sec-3-1-2" class="outline-4">
-<h4 id="sec-3-1-2">How to manage my files with hg</h4>
-<div class="outline-text-4" id="text-3-1-2">
+<div id="outline-container-sec-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2">How to manage my files with hg</h4>
+<div class="outline-text-4" id="text-4-1-2">
 <p>
 home  with branch cygwin and ubuntu
 </p>
@@ -2182,9 +2197,9 @@ backup the data.
 </div>
 </div>
 
-<div id="outline-container-sec-3-1-3" class="outline-4">
-<h4 id="sec-3-1-3">Branch and tags</h4>
-<div class="outline-text-4" id="text-3-1-3">
+<div id="outline-container-sec-4-1-3" class="outline-4">
+<h4 id="sec-4-1-3">Branch and tags</h4>
+<div class="outline-text-4" id="text-4-1-3">
 <p>
 hg clone myproject myproject-merge
 </p>
@@ -2205,9 +2220,9 @@ hg branch foo
 
 
 
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><a href="http://pypi.python.org/pypi/hgsvn">hgsvn</a></h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><a href="http://pypi.python.org/pypi/hgsvn">hgsvn</a></h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
 &lt;#+BEGIN_SRC &gt;
 $ mkdir nose &amp;&amp; cd nose
@@ -2228,9 +2243,9 @@ $ hgpullsvn
 </div>
 
 
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3">2个命令创建一个Mercuria仓库，</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">2个命令创建一个Mercuria仓库，</h3>
+<div class="outline-text-3" id="text-4-3">
 <p>
 &gt; hg init
 &gt; hg serve，
@@ -2239,9 +2254,9 @@ $ hgpullsvn
 </div>
 </div>
 
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4">方便的分布式功能</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">方便的分布式功能</h3>
+<div class="outline-text-3" id="text-4-4">
 <p>
 上一次在印度我想在一台新电脑上安装源代码，无奈网络速度太慢，于是乎，我找到一个存有源码的机器，hg serve，这样我得到了一个本地服务器，通过它，我在1分钟内拿到了代码，然后将hgrc(一个mercurial的配置文件)的URL指向在中国的服务器，继续更新后面的几个patch。 将一个1个小时的操作变成2分钟的操作。
 </p>
@@ -2256,9 +2271,9 @@ $ hgpullsvn
 </div>
 </div>
 
-<div id="outline-container-sec-3-5" class="outline-3">
-<h3 id="sec-3-5">便捷的本地提交</h3>
-<div class="outline-text-3" id="text-3-5">
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5">便捷的本地提交</h3>
+<div class="outline-text-3" id="text-4-5">
 <p>
 使用Mercurial，你可以在没有网络的情况下通过
 &gt; hg ci
@@ -2267,36 +2282,36 @@ $ hgpullsvn
 </div>
 </div>
 
-<div id="outline-container-sec-3-6" class="outline-3">
-<h3 id="sec-3-6">离线操作</h3>
-<div class="outline-text-3" id="text-3-6">
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6">离线操作</h3>
+<div class="outline-text-3" id="text-4-6">
 <p>
 不论是Mercurial的提交或者是diff，rollback，strip, merge都可以在没有网络的情况下进行，想像一下在中国开发，服务器在美国的痛苦：那缓慢爬行的小乌龟。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-7" class="outline-3">
-<h3 id="sec-3-7">速度优势</h3>
-<div class="outline-text-3" id="text-3-7">
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7">速度优势</h3>
+<div class="outline-text-3" id="text-4-7">
 <p>
 Mercurial是增量存储，并且它会每隔一段时间进行对整个Repository打一个快照，这样当你去clone repository(相当于svn checkout)的时候，它可以找到最近的一个快照，并在它的基础上应用后续的patch。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-8" class="outline-3">
-<h3 id="sec-3-8">基于patch的管理</h3>
-<div class="outline-text-3" id="text-3-8">
+<div id="outline-container-sec-4-8" class="outline-3">
+<h3 id="sec-4-8">基于patch的管理</h3>
+<div class="outline-text-3" id="text-4-8">
 <p>
 Mercurial将你的提交作为一个patch管理， 你可以很容易拿到别人的patch，通过hg客户端或者linux上的 patch命令将别人最新的修正打在你的工作目录里面。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-9" class="outline-3">
-<h3 id="sec-3-9">更多的便捷操作</h3>
-<div class="outline-text-3" id="text-3-9">
+<div id="outline-container-sec-4-9" class="outline-3">
+<h3 id="sec-4-9">更多的便捷操作</h3>
+<div class="outline-text-3" id="text-4-9">
 <p>
 你想将本地的某些提交取消? hg strip
 你想将server上的某些changeset取消？hg backout
@@ -2424,9 +2439,9 @@ Good Luck.
 </div>
 </div>
 
-<div id="outline-container-sec-3-10" class="outline-3">
-<h3 id="sec-3-10">My setup</h3>
-<div class="outline-text-3" id="text-3-10">
+<div id="outline-container-sec-4-10" class="outline-3">
+<h3 id="sec-4-10">My setup</h3>
+<div class="outline-text-3" id="text-4-10">
 <p>
 hg clone <a href="http://changweilaptop.dyn.webahead.ibm.com:8000/">http://changweilaptop.dyn.webahead.ibm.com:8000/</a> ideas
 </p>
@@ -2438,18 +2453,18 @@ hg clone <a href="http://9.186.119.53:8000/">http://9.186.119.53:8000/</a> ideas
 </div>
 </div>
 
-<div id="outline-container-sec-3-11" class="outline-3">
-<h3 id="sec-3-11">How to use Emacs to work with Mercurial</h3>
-<div class="outline-text-3" id="text-3-11">
+<div id="outline-container-sec-4-11" class="outline-3">
+<h3 id="sec-4-11">How to use Emacs to work with Mercurial</h3>
+<div class="outline-text-3" id="text-4-11">
 <p>
 <a href="http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html">http://xtalk.msk.su/~ott/en/writings/emacs-vcs/EmacsMercurial.html</a>
 </p>
 </div>
 
 
-<div id="outline-container-sec-3-11-1" class="outline-4">
-<h4 id="sec-3-11-1">revert files</h4>
-<div class="outline-text-4" id="text-3-11-1">
+<div id="outline-container-sec-4-11-1" class="outline-4">
+<h4 id="sec-4-11-1">revert files</h4>
+<div class="outline-text-4" id="text-4-11-1">
 <p>
 hg revert .amsn/ -r 385
 </p>
@@ -2462,9 +2477,9 @@ hg revert .amsn/ -r 385
 </div>
 
 
-<div id="outline-container-sec-3-11-2" class="outline-4">
-<h4 id="sec-3-11-2">4.2. How to declare trust</h4>
-<div class="outline-text-4" id="text-3-11-2">
+<div id="outline-container-sec-4-11-2" class="outline-4">
+<h4 id="sec-4-11-2">4.2. How to declare trust</h4>
+<div class="outline-text-4" id="text-4-11-2">
 <p>
 Users can add settings to their $HOME/.hgrc to tell Mercurial to trust other users. For instance, if Bob has decided he can trust Alice not to try to delete his files when he looks at her repository, he could add:
 </p>
@@ -2487,9 +2502,9 @@ groups = dev-team
 </div>
 
 
-<div id="outline-container-sec-3-12" class="outline-3">
-<h3 id="sec-3-12">比较两个 branch</h3>
-<div class="outline-text-3" id="text-3-12">
+<div id="outline-container-sec-4-12" class="outline-3">
+<h3 id="sec-4-12">比较两个 branch</h3>
+<div class="outline-text-3" id="text-4-12">
 <p>
 <a href="http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial">http://stackoverflow.com/questions/4731190/how-to-show-the-diff-specific-to-a-named-branch-in-mercurial</a>
 </p>
@@ -2561,7 +2576,7 @@ hg branchdiff .
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2013-12-19</span>
-        <span title="last modification date" class="post-info">修改日期：2014-11-14</span>
+        <span title="last modification date" class="post-info">修改日期：2015-02-02</span>
         <span title="tags" class="post-info"><a href="/tags/svn/">svn</a>, <a href="/tags/cvs/">cvs</a>, <a href="/tags/git/">git</a>, <a href="/tags/hg/">hg</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>

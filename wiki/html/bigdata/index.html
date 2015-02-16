@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-  <title>大数据 - Keep going</title>
+  <title>Untitled - Keep going</title>
   <meta charset="utf-8" />
   <meta name="author" content="Will Chang" />
     <meta name="description" content="研究互联网用到的大数据技术" />
@@ -274,11 +274,7 @@
           </form>
           <!-- /input-group -->
         </li>
-          <li><a href="/assets/">Assets</a></li>
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/media/">Media</a></li>
-          <li><a href="/tags/">Tags</a></li>
-          <li><a href="/wiki/">Wiki</a></li>
           <li><a href="/work/">Work</a></li>
         <li><a href="/tags/">Tags</a></li>
         <li><a href="/about/">About</a></li>
@@ -296,8 +292,11 @@
     <div id="page-wrapper">
       <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">大数据</h1>
-          
+            <h1 class="page-header">Untitled</h1>
+          <p>
++TITLE:       大数据
+</p>
+
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">redis</h2>
 <div class="outline-text-2" id="text-1">
@@ -397,7 +396,74 @@ sudo su - root
 </li>
 <li><a href="http://www.troubleshooters.com/linux/docker/docker_newbie.htm">http://www.troubleshooters.com/linux/docker/docker_newbie.htm</a>
 </li>
+<li><a href="http://wiselyman.iteye.com/blog/2147757">http://wiselyman.iteye.com/blog/2147757</a>
+</li>
+<li><a href="http://www.21ops.com/linux/13512.html">15 分钟掌握 15 个 Docker 小窍门</a>
+</li>
+<li><a href="http://dockerpool.com/article/1413354591">dock 命令参数</a>
+</li>
+<li><a href="https://docs.docker.com/reference/commandline/cli/#import">docker command ref</a>
+</li>
 </ol>
+</div>
+
+
+<div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1">离线安装 docker</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<pre class="example">
+docker save sequenceiq/kylin &gt;kylin.tar
+3.超-超-超级用户
+
+你可能需要一直用超级用户来操作docker，就像早期示例里一直提示的：
+# 添加docker用户组
+$ sudo groupadd docker
+# 把自己加到docker用户组中
+$ sudo gpasswd -a will docker
+# 重启docker后台服务
+$ sudo service docker restart
+# 注销，然后再登陆
+$ exit
+
+Wow！连续三个sudo！三次化身“超级用户”，真可谓是“超-超-超级用户”啊！别担心，设置完毕，以后你就再也不用打那么多sudo了！
+
+
+$ wget https://get.docker.com/builds/Linux/x86_64/docker-latest -O docker
+$ chmod +x docker
+$ mv docker /usr/bin
+$ docker -d #启动docker
+</pre>
+<p>
+因为众所周知的原因，在线获取docker的镜像可能有问题，比如说我现在使用cloud focker PaaS，代理也不好使，无法下载镜像。
+</p>
+
+<p>
+解决方案：
+</p>
+
+<p>
+通过代理下载镜像
+</p>
+
+<p>
+<a href="https://s3.amazonaws.com/blob.cfblob.com/fee97b71-17d7-4fab-a5b0-69d4112521e6">https://s3.amazonaws.com/blob.cfblob.com/fee97b71-17d7-4fab-a5b0-69d4112521e6</a>
+</p>
+
+
+
+<p>
+本地通过以下命令安装镜像
+</p>
+
+
+<p>
+Java代码  收藏代码
+</p>
+
+<p>
+cat fee97b71-17d7-4fab-a5b0-69d4112521e6 | docker import - cloudfocker-base  
+</p>
+
 
 <pre class="example">
 sudo apt-get install docker.io
@@ -420,11 +486,11 @@ sudo docker ps -l
 
 
 !connect jdbc:hive2://localhost:10000
-
 beeline&gt; !connect jdbc:hive2://localhost:10000
 scan complete in 22ms
 Connecting to jdbc:hive2://localhost:10000
 Enter username for jdbc:hive2://localhost:10000: root
+!connect jdbc:hive2://192.168.192.30:10000
 Enter password for jdbc:hive2://localhost:10000: 
 14/10/23 06:28:38 INFO cli.CLIService: SessionHandle [dce9fd44-877f-414b-b2c0-9950f8080392]: openSession()
 14/10/23 06:28:38 INFO cli.CLIService: SessionHandle [dce9fd44-877f-414b-b2c0-9950f8080392]: getInfo()
@@ -442,6 +508,7 @@ LOAD DATA LOCAL INPATH '/home/will/saiku/util/dimgender.data' INTO TABLE dimGend
 
 LOAD DATA LOCAL INPATH '/home/will/saiku/util/factuserinfo.data' INTO TABLE factUserInfo;
 </pre>
+</div>
 </div>
 </div>
 
@@ -552,7 +619,42 @@ Use admin/admin to login. Make sure HBase is running.
 <p>
 #Kylin Dashboard
 <a href="http://">http://</a>&lt;container_ip&gt;:9080
-The default credentials to login are: admin:KADMIN. </p>
+The default credentials to login are: admin:KADMIN.
+</p>
+
+<p>
+docker rm -f $(docker ps -a -q)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">hadoop</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+<a href="http://tecadmin.net/setup-hadoop-2-4-single-node-cluster-on-linux/">http://tecadmin.net/setup-hadoop-2-4-single-node-cluster-on-linux/</a>
+<a href="http://abloz.com/hbase/book.html">http://abloz.com/hbase/book.html</a>
+<a href="http://tecadmin.net/install-apache-hive-on-centos-rhel/">http://tecadmin.net/install-apache-hive-on-centos-rhel/</a>
+<a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-InstallingHivefromaStableRelease">https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-InstallingHivefromaStableRelease</a>
+ source ambari-functions&amp;&amp;docker rm -f $(docker ps -a -q) &amp;&amp; kylin-deploy-cluster 1 
+emacs-snapshot &amp;
+</p>
+
+<p>
+source ambari-functions&amp;&amp;docker rm -f $(docker ps -a -q) 
+</p>
+
+<p>
+http_proxy=<a href="http://127.0.0.1:8087">http://127.0.0.1:8087</a> kylin-deploy-cluster 1 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Presto</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li><a href="http://prestodb.io/docs/current/">http://prestodb.io/docs/current/</a>
+</li>
+</ul>
 </div>
 </div>
 
@@ -563,7 +665,7 @@ The default credentials to login are: admin:KADMIN. </p>
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2013-12-20</span>
-        <span title="last modification date" class="post-info">修改日期：2014-11-14</span>
+        <span title="last modification date" class="post-info">修改日期：2015-02-02</span>
         <span title="tags" class="post-info"><a href="/tags/big-data/">big data</a>, <a href="/tags/hadoop/">hadoop</a>, <a href="/tags/redis/">redis</a>, <a href="/tags/spark/">spark</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
