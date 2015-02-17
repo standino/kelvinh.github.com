@@ -4,9 +4,8 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-<<<<<<< HEAD
-    <pubDate>Mon, 16 Feb 2015 14:56:58 CST</pubDate>
-    <lastBuildDate>Mon, 16 Feb 2015 14:56:58 CST</lastBuildDate>
+    <pubDate>Mon, 16 Feb 2015 18:09:21 CST</pubDate>
+    <lastBuildDate>Mon, 16 Feb 2015 18:09:21 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
@@ -22,31 +21,11 @@
       <description>零售平台项目</description>
       <pubDate>2015-02-16</pubDate>
       <guid>http://standino.github.io/work/html/jdretail</guid>
-=======
-    <pubDate>Wed, 28 Jan 2015 15:43:58 CST</pubDate>
-    <lastBuildDate>Wed, 28 Jan 2015 15:43:58 CST</lastBuildDate>
-    <docs>http://www.rssboard.org/rss-specification</docs>
-    <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
-    <item>
-      <title>Untitled</title>
-      <link>http://standino.github.io/wiki/html/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2015-01-28</pubDate>
-      <guid>http://standino.github.io/wiki/html/bigdata</guid>
-    </item>
-    <item>
-      <title>NightWatch 自动化测试框架 </title>
-      <link>http://standino.github.io/blog/2015/01/26/nightwatch</link>
-      <description>NightWatch</description>
-      <pubDate>2015-01-28</pubDate>
-      <guid>http://standino.github.io/blog/2015/01/26/nightwatch</guid>
->>>>>>> 2ff04cdc22e5a6a72106d4a55b7501b84b683edf
     </item>
     <item>
       <title>JD工作笔记</title>
       <link>http://standino.github.io/work/html/JD/</link>
       <description>JD个人工作笔记</description>
-<<<<<<< HEAD
       <pubDate>2015-02-12</pubDate>
       <guid>http://standino.github.io/work/html/JD/</guid>
     </item>
@@ -98,59 +77,6 @@
       <description>freemind</description>
       <pubDate>2015-02-02</pubDate>
       <guid>http://standino.github.io/wiki/html/freemind</guid>
-=======
-      <pubDate>2015-01-28</pubDate>
-      <guid>http://standino.github.io/work/html/JD/</guid>
-    </item>
-    <item>
-      <title>大大数据OLAP报表系统开发白皮书</title>
-      <link>http://standino.github.io/work/2015/01/29/olapdevguide</link>
-      <description>使用saiku开发OLAP系统</description>
-      <pubDate>2015-01-28</pubDate>
-      <guid>http://standino.github.io/work/2015/01/29/olapdevguide</guid>
-    </item>
-    <item>
-      <title>为saiku加入redis缓存</title>
-      <link>http://standino.github.io/blog/2014/11/18/saiku-redis</link>
-      <description>为saiku加入缓存</description>
-      <pubDate>2015-01-21</pubDate>
-      <guid>http://standino.github.io/blog/2014/11/18/saiku-redis</guid>
-    </item>
-    <item>
-      <title>大大数据OLAP报表系统开发白皮书</title>
-      <link>http://standino.github.io/blog/2014/06/16/saiku</link>
-      <description>使用saiku开发OLAP系统</description>
-      <pubDate>2015-01-21</pubDate>
-      <guid>http://standino.github.io/blog/2014/06/16/saiku</guid>
-    </item>
-    <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/wiki/html/vesionmanage</link>
-      <description>Version control</description>
-      <pubDate>2015-01-19</pubDate>
-      <guid>http://standino.github.io/wiki/html/vesionmanage</guid>
-    </item>
-    <item>
-      <title>常用链接</title>
-      <link>http://standino.github.io/wiki/html/mylinks</link>
-      <description>常用链接</description>
-      <pubDate>2015-01-08</pubDate>
-      <guid>http://standino.github.io/wiki/html/mylinks</guid>
-    </item>
-    <item>
-      <title>2015年计划</title>
-      <link>http://standino.github.io/blog/2014/12/20/planning2014/</link>
-      <description>为明年做一下计划</description>
-      <pubDate>2015-01-08</pubDate>
-      <guid>http://standino.github.io/blog/2014/12/20/planning2014/</guid>
-    </item>
-    <item>
-      <title>ruby.org</title>
-      <link>http://standino.github.io/wiki/html/ruby</link>
-      <description>Learning ruby </description>
-      <pubDate>2015-01-08</pubDate>
-      <guid>http://standino.github.io/wiki/html/ruby</guid>
->>>>>>> 2ff04cdc22e5a6a72106d4a55b7501b84b683edf
     </item>
   </channel>
 </rss>
