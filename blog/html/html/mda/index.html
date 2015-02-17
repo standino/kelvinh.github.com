@@ -1,0 +1,3828 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <title>使用MDA方式开发软件 - Keep going</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Will Chang" />
+    <meta name="description" content="mda" />
+    <meta name="keywords" content="mda" />
+    <!-- Bootstrap Core CSS -->
+    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+  <body class="container">
+    <div id="wrapper">
+      <!-- Navigation -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+  </div>
+  <!-- /.navbar-header -->
+
+  <ul class="nav navbar-top-links navbar-right">
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-messages">
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>Read All Messages</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-messages -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-tasks">
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 1</strong>
+                <span class="pull-right text-muted">40% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                  <span class="sr-only">40% Complete (success)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 2</strong>
+                <span class="pull-right text-muted">20% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                  <span class="sr-only">20% Complete</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 3</strong>
+                <span class="pull-right text-muted">60% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                  <span class="sr-only">60% Complete (warning)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 4</strong>
+                <span class="pull-right text-muted">80% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                  <span class="sr-only">80% Complete (danger)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>See All Tasks</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-tasks -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-alerts">
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-comment fa-fw"></i> New Comment
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+              <span class="pull-right text-muted small">12 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-envelope fa-fw"></i> Message Sent
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-tasks fa-fw"></i> New Task
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-upload fa-fw"></i> Server Rebooted
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>See All Alerts</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-alerts -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-user">
+        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+        </li>
+        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+        </li>
+        <li class="divider"></li>
+        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        </li>
+      </ul>
+      <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+  </ul>
+  <!-- /.navbar-top-links -->
+
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="searchform" action="http://search.aol.com/aol/search">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" name="q" id="s" value="site:standino.github.io">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+          <!-- /input-group -->
+        </li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/work/">Work</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/standino">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+  </div>
+  <!-- /.navbar-static-side -->
+</nav>
+
+      <div>
+  <div class="post">
+    <div id="page-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">使用MDA方式开发软件</h1>
+          
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><a href="http://appfuse.org/display/APF/AppFuse+QuickStart+-+Chinese">AppFuse</a></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+mvn archetype:generate -B -DarchetypeGroupId=org.appfuse.archetypes -DarchetypeArtifactId=appfuse-basic-spring-archetype
+-DarchetypeVersion=2.2.2-SNAPSHOT -DgroupId=com.mycompany -DartifactId=WillTestProject
+-DarchetypeRepository=<a href="http://oss.sonatype.org/content/repositories/appfuse">http://oss.sonatype.org/content/repositories/appfuse</a> 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Andromda</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a href="http://www.andromda.org/">http://www.andromda.org/</a>
+</p>
+</div>
+
+<div id="outline-container-sec-2-0-1" class="outline-4">
+<h4 id="sec-2-0-1">Andromda hosted at Sonatype repository</h4>
+<div class="outline-text-4" id="text-2-0-1">
+<p>
+Andromda maven2 repository is now hosted on the Sonatype repository.
+</p>
+
+<p>
+You can access all artifacts on <a href="http://oss.sonatype.org/content/groups/public">http://oss.sonatype.org/content/groups/public</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-0-2" class="outline-4">
+<h4 id="sec-2-0-2">Checkout source code</h4>
+<div class="outline-text-4" id="text-2-0-2">
+<p>
+You can access new repository here: <a href="http://andromda.svn.sourceforge.net/viewvc/andromda">http://andromda.svn.sourceforge.net/viewvc/andromda</a>
+</p>
+
+
+<pre class="example">
+svn checkout  https://svn.code.sf.net/p/andromda/svn/trunk andromda
+
+Read Me
+This directory is useful only in the context of the SVN module andromda.
+If you want to build the entire andromda project then issue a 'svn checkout  https://svn.code.sf.net/p/andromda/svn/trunk andromda'
+and it will contain this directory's contents.
+
+1) Install the latest version of Maven 3.0.4 (http://maven.apache.org) and add two environment variables
+2) Set M2_HOME to the install directory and add $M2_HOME/bin to your $PATH.
+3) Set MAVEN_OPTS: "export MAVEN_OPTS=-XX:MaxPermSize=256m\ -Xmx512m"
+4) cd to andromda-all/maven/maven-config, run 'mvn install'
+5) cd to andromda-all/maven/model-archiver, run 'mvn install'
+   (NOTE: these steps only need to be performed the first time you build with a fresh release version).
+4) cd to andromda-all, type "mvn". This will build the entire distribution, which can be found in the
+   directory: andromda-distribution/target
+5) Or call "mvn -Pandromda-full" to build and install the entire distribution including all sources and javadocs.
+6) Use "mvn deploy -Pandromda-full,server" to build and deploy everything to the sonatype repository
+7) Use "mvn site -Pandromda-site" or "mvn site -Pandromda-site-lite" to build site-documentation.
+You deploy it with "mvn site:deploy -Pandromda-site,local" or "mvn site:deploy -Pandromda-site,server".
+
+Good luck!
+
+The AndroMDA Team
+</pre>
+
+
+
+<p>
+maven-enforcer-plugin:1.1.1:enforce (enforce-__my_company_1__k) 
+</p>
+
+<p>
+修改一下配置文件pom.xml,把1.7.0_21也加进去。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">ArgoUML</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<a href="http://www.argouml-users.net/index.php?title=Main_Page">http://www.argouml-users.net/index.php?title=Main_Page</a>
+</p>
+
+
+
+<p>
+<a href="http://www.highcharts.com/">http://www.highcharts.com/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><a href="http://www.cnitblog.com/yemoo/archive/2007/10/22/35190.html">IE debug</a></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+做web开发的朋友都清楚，js程序的调试是相当郁闷的，因为首先这种语言语法比较灵活，它是一种弱类型的脚本语言，很多错误是无法控制的，这些不谈，最痛苦的是没有什么好的调试工具，现在的情况比以前稍好，在Firefox下还有firebug，这的确是一个不错的js调试工具，但在IE下使用就很麻烦，而且效果很不好，鄙人一直苦于寻找一个很好的IE下的js调试工具，能够自动捕获错误，并定位位置和原因，没想到今天竟在无意中寻找到了这么个好工具，不敢私藏，共享出来，希望能为各位web开发者带来方便
+</p>
+
+<p>
+这个工具的名字叫Companion.JS，请注意，这可不是一个js文件，而是一个名字，它是作为ie的插件来安装使用的，而且需要结合Microsoft Script Debugger使用，通过安装这个工具，但页面出现错误时会在左上角弹出一个小错误提示，点击会在IE下面显示出一个错误控制台，就如FF下的 firebug控制台一样。错误信息提示很详细。
+</p>
+
+<p>
+如下是官网的一个错误提示示例图：
+点击在新窗口中浏览此图片
+</p>
+
+<p>
+官网地址：<a href="http://www.my-debugbar.com/wiki/html/CompanionJS/HomePage">http://www.my-debugbar.com/wiki/html/CompanionJS/HomePage</a>
+</p>
+
+<p>
+具体使用方法为：
+1、先下载Companion.JS安装文件，然后安装。
+2、下载安装Microsoft Script Debugger，如果您的机器已经安装过了就可以免过这一步。
+3、打开IE菜单“工具”--“Internet选项”--“高级”，找到“禁用脚本调试(Internet Explorer)”和“禁用脚本调试(在Internet Explorer之外)”，将两个选项前面的对钩都去掉，然后重启IE。
+4、在Ie中输入：<a href="http://www.my-debugbar.com/wiki/html/uploads/CompanionJS/dummy.htm%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BBclick">http://www.my-debugbar.com/wiki/html/uploads/CompanionJS/dummy.htm%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BBclick</a> me链接，如果左上角弹出一个小错误提示或下面控制台出现了错误信息提示，就说明您已经安装成功了。
+</p>
+
+<p>
+提示：Microsoft Script Debugger下载可到MS官网(需要经过MS的操作系统正版验证)：<a href="http://www.microsoft.com/downloads/details.aspx?displaylang=zh-cn&FamilyID=E606E71F-BA7F-471E-A57D-F2216D81EC3D#filelist%E6%88%96%E5%88%B0baidu%E9%87%8C%E8%BE%93%E5%85%A5%E2%80%9CMicrosoft">http://www.microsoft.com/downloads/details.aspx?displaylang=zh-cn&FamilyID=E606E71F-BA7F-471E-A57D-F2216D81EC3D#filelist%E6%88%96%E5%88%B0baidu%E9%87%8C%E8%BE%93%E5%85%A5%E2%80%9CMicrosoft</a> Script Debugger 下载”寻找一下。 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">AppEngine</h2>
+<div class="outline-text-2" id="text-5">
+<pre class="example">
+cd ideas/googleapp/
+
+~/tools/google_appengine/appcfg.py  update helloworld/
+</pre>
+<p>
+<a href="http://code.google.com/p/appengine-jruby/wiki/html/GettingStarted">http://code.google.com/p/appengine-jruby/wiki/html/GettingStarted</a> 
+</p>
+
+<p>
+<a href="http://rails-primer.appspot.com/">http://rails-primer.appspot.com/</a>
+</p>
+
+<p>
+<a href="http://appengine-jruby.googlecode.com/svn/trunk/rdoc/appengine-apis/classes/AppEngine/Users.html">http://appengine-jruby.googlecode.com/svn/trunk/rdoc/appengine-apis/classes/AppEngine/Users.html</a>
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Getting started</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Here’s how to get rolling:
+</p>
+
+<ol class="org-ol">
+<li>      Install the gems
+
+<p>
+$ sudo gem install google-appengine
+</p>
+</li>
+
+<li>      Assign an app identifier
+
+<p>
+Simply create an application at appspot.com,
+we'll refer to that as my-app in this document.
+</p>
+</li>
+<li>      Generate your rails app
+
+<p>
+$ rails my-app; cd my-app;
+</p>
+</li>
+
+<li>      Generate a rackup file
+
+<p>
+In the same folder, save this as config.ru.
+</p>
+</li>
+</ol>
+<pre class="example">
+require 'appengine-rack'
+AppEngine::Rack.configure_app(
+  :application =&gt; 'my-app',
+  :version =&gt; 1 )
+
+%w{R db/ doc/ log/ script/ test/ tmp/}.each do |x|
+  AppEngine::Rack.app.resource_files.exclude "/#{x}**"
+end
+ENV['RAILS_ENV'] = AppEngine::Rack.environment
+require 'config/environment'
+
+run ActionController::Dispatcher.new
+</pre>
+<ol class="org-ol">
+<li>      Check gem sources for datamapper
+
+<p>
+$ gem sources
+</p>
+
+<p>
+Only when missing, add it like this...
+$ sudo gem source -a <a href="http://gems.datamapper.org">http://gems.datamapper.org</a>
+</p>
+</li>
+<li>      Install gems into your app
+
+<p>
+$ appcfg.rb gem install rails \
+  dm-appengine rails_datamapper
+</p>
+</li>
+
+<li>      Generate a model
+
+<p>
+$ ./script/generate dm_model book         title:string summary:text image_url:string         available:boolean pages:integer         -f --skip-timestamps --skip-migration
+</p>
+</li>
+
+<li>      Modify the Rails Initializer
+
+<p>
+Add the following to your config/environment.rb.
+</p>
+</li>
+</ol>
+<pre class="example">
+# Set DataMapper to use dm-appengine adapter
+require 'dm-core'
+DataMapper.setup(:default, "appengine://auto")
+
+# Set Logger from appengine-apis, all environments
+require 'appengine-apis/logger'
+config.logger = AppEngine::Logger.new
+
+# Skip frameworks you're not going to use.
+config.frameworks -= [ :active_record ]
+</pre>
+<ol class="org-ol">
+<li>      Run your app locally
+
+<p>
+$ dev_appserver.rb .
+</p>
+</li>
+
+<li>      Open up the console
+
+<p>
+$ appcfg.rb run -S irb
+&gt; require 'config/environment'
+</p>
+</li>
+
+<li>      Deploy to App Engine
+
+<p>
+$ appcfg.rb update .
+</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Eclipse MTP</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<a href="http://www.eclipse.org/modeling/mdt/?project=uml2">http://www.eclipse.org/modeling/mdt/?project=uml2</a>
+</p>
+
+<p>
+<a href="http://galaxy.andromda.org/forum/viewtopic.php?t=6587&highlight">http://galaxy.andromda.org/forum/viewtopic.php?t=6587&highlight</a>=
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Eclipse plugin</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+<a href="http://m2eclipse.codehaus.org/">http://m2eclipse.codehaus.org/</a>
+</p>
+
+<p>
+<a href="http://subclipse.tigris.org/servlets/ProjectProcess;jsessionid=5C0A5772D590E00CC76D174801DA8F9A?pageID=p4wYuA">http://subclipse.tigris.org/servlets/ProjectProcess;jsessionid=5C0A5772D590E00CC76D174801DA8F9A?pageID=p4wYuA</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">10个专为模版设计的免费图标</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+<a href="http://enjoyweb20.cn/index.php/2009/06/10-free-icon-sets-for-theme-design/">http://enjoyweb20.cn/index.php/2009/06/10-free-icon-sets-for-theme-design/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">ArgoUML</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+<a href="http://argopno.tigris.org/documentation/tutoriel/new_module.html">Making a new module for ArgoUML</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Create a module</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Popup menu 
+</p>
+</div>
+
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1">pattern wizard</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Main class : ActionOpenPatternWizard
+</p>
+
+<p>
+CoreFactory can create class and association 
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Installation</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Download files from <a href="http://argouml-downloads.tigris.org/devrel.html">http://argouml-downloads.tigris.org/devrel.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">Creating a Custom Stereotype</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Just like create a attribute.
+</p>
+</div>
+
+<div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1">5.12.1. The TargetManager</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+Located in org.argouml.ui.targetmanager.
+</p>
+
+<p>
+The purpose of the targetmanager is to have a central spot to manage the list of current targets.
+</p>
+
+<p>
+The target of ArgoUML is the element currently selected by the user. This can either be a UML element (an Interface or a Class for example) but it can also be a diagram or anything that is shown on a diagram.
+</p>
+
+<p>
+There can be multiple targets in case someone selected multiple items in the explorer or on the diagram. This can be done by shift-clicking or Ctrl-clicking items, or by drawing a box on the diagram around the items to select.
+</p>
+
+<p>
+In case multiple targets are selected, the target manager will add each target to the beginning of the list of targets. This way, the first item of the list is the last selected item. Most functions in ArgoUML work on all selected items. However, a few (intentionally) only work on one target, such as the properties panels.
+</p>
+
+<p>
+Thanks to the architecture of ArgoUML of Modelelements and Figs, one rule has been decided upon: The list of targets shall not contain any Fig that has an owner. Instead, the owner is enlisted.
+</p>
+
+<p>
+The TargetManager is also the manager of the history of targets. Every time the user (or the program) selects a new target, this is recorded in the history. Via navigateBack and navigateForward, the user can browse through the history just like in an ordinary internet browser.
+</p>
+
+<p>
+Via an event mechanism this manager makes sure that all objects interested in knowing whether the selection changed are notified.
+</p>
+
+<p>
+The TargetManager does not depend on the org.argouml.ui package, nor any of its sub-packages. Hence, it can be used by all of these to modify the target, or get it.
+</p>
+
+<p>
+In a discussion on the dev list, it has been decided that the TargetManager is GUI state, and hence shall be a part of the GUI subsystem, and should not be used anywhere outside the GUI subsystem. However, currently the TargetManager is used in other subsystems, e.g. the Project. Hence, this needs refactoring. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12-2" class="outline-3">
+<h3 id="sec-12-2">5.1.2. Factories</h3>
+<div class="outline-text-3" id="text-12-2">
+</div><div id="outline-container-sec-12-2-1" class="outline-4">
+<h4 id="sec-12-2-1">5.1.2.1. Create and Build</h4>
+<div class="outline-text-4" id="text-12-2-1">
+<p>
+The factories contain in most cases a create method for each model element. Example: createClass resides in CoreFactory-interface.
+</p>
+
+<p>
+Besides that, there are several build methods to build classes. The build methods have a signature like public Object buildMODELELEMENTNAME(params);.
+</p>
+
+<p>
+Each build method is intended to follow the wellformedness rules as defined in the UML spec. The reason for having extra build methods, is that the model repository does not enforce the wellformedness rules even though, in some cases, non-well-formed UML can lead to non-well-formed XMI which leads to saving/loading issues and all kinds of illegal states of ArgoUML.
+</p>
+
+<p>
+If you want to create an element you shall use the build or create methods in the factories. You are strongly advised to use a build method or, if there is none that suits your needs, to write a new one reusing the already existing build methods and utility methods in the helpers. The reason for this is that the event listeners for the newly created model element are setup correctly.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-12-2-2" class="outline-4">
+<h4 id="sec-12-2-2">5.1.2.2. Copy and DoCopy</h4>
+<div class="outline-text-4" id="text-12-2-2">
+<p>
+The factories also contain methods that deal with copying modelelements. They are not supposed to be called directly from outside the model-subsystem, but only from the CopyHelper-implementation. The CopyHelper has one method that copies any modelelement into a new "location" (mostly a namespace). This method determines the type of element to copy, and then dispatches the call to the appropriate method of a Factory that is named in a similar way to copyClass.
+</p>
+
+<p>
+The responsibility of the copyModelElement method is to create the new element (with createModelElement) and set the containment. Then, if necessary, sub-elements are to be created. E.g. the CoreFactoryMDRImpl. copyEnumeration method also creates EnumerationLiterals, with the createEnumerationLiteral method.
+</p>
+
+<p>
+Then a next method is called to copy all the attributes from the old element to the newly created one: doCopyModelElement. This type of method shall only set attributes and lay associations, but not create any more elements.
+</p>
+
+<p>
+The implementation of these copy related methods is far from complete. Only the CoreFactory already has the most important functions.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-12-2-3" class="outline-4">
+<h4 id="sec-12-2-3">5.1.2.3. Multi-threading</h4>
+<div class="outline-text-4" id="text-12-2-3">
+<p>
+Question: Am I allowed to call the factories from any thread? Answer: The current checks are not written to allow for multiple threads so don't!
+</p>
+</div>
+</div>
+<div id="outline-container-sec-12-2-4" class="outline-4">
+<h4 id="sec-12-2-4">5.1.3. Helpers</h4>
+<div class="outline-text-4" id="text-12-2-4">
+<p>
+The helpers contain all utility methods for manipulating model elements. For example, they contain methods to get all model elements of a certain class out of the model (see getAllModelelementsOfKind in ModelManagementHelper).
+</p>
+
+<p>
+To find a utility method you need to know where it is. As a rule of thumb, a utility method for some model element is defined in the helper that corresponds with the section in the UML specification. For example, all utility methods for manipulating classes are defined in CoreHelper.
+</p>
+
+<p>
+There are a few exceptions to this rule, mainly if the utility method deals with two model elements that correspond to different sections in the UML specification. Then you have to look in both corresponding helpers and you will probably find what you are searching for.
+</p>
+
+<p>
+Question: Am I allowed to call the helpers from any thread? Answer: The current checks are not written to allow for multiple threads so don't! 
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">Andromda</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+<a href="https://andromda.svn.sourceforge.net/svnroot/andromda/trunk/">https://andromda.svn.sourceforge.net/svnroot/andromda/trunk/</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">Setup JBoss</h2>
+<div class="outline-text-2" id="text-14">
+</div><div id="outline-container-sec-14-1" class="outline-3">
+<h3 id="sec-14-1">Start jboss</h3>
+<div class="outline-text-3" id="text-14-1">
+<p>
+The following cmd will allow accessing jboss from remote machine.
+</p>
+
+<pre class="example">
+./run.sh -b 0.0.0.0
+</pre>
+
+<p>
+The andromda's default setting is for HsqlDB, so we need not install
+another database. We only need download the JBoss <a href="http://www.jboss.org">http://www.jboss.org</a> 
+Edit the Hsqldb configure file located at 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-14-2" class="outline-3">
+<h3 id="sec-14-2">Installation</h3>
+<div class="outline-text-3" id="text-14-2">
+<ul class="org-ul">
+<li>run <b>install.sh jboss</b> to install jboss
+</li>
+<li>Set JBOSS_HOME variable : <b>sudo gedit /etc/environment</b>
+</li>
+<li>Copy <a href="../etc/hsqldb-ds.xml">../etc/hsqldb-ds.xml</a> to %JBoss_Home%\server\default\deploy\hsqldb-ds.xml
+</li>
+<li>run the follow command to uninstall jboss.
+</li>
+</ul>
+
+<p>
+This line will delete all files copied by the JEMS Installer:
+</p>
+
+<p>
+#+BEGIN_SRC java -jar $JBOSS_HOME/Uninstaller/uninstaller.jar -c#+END_SRC
+</p>
+
+
+<p>
+This line will delete the whole $JBOSS_HOME folder includeing all log files, deployed applications and anything else inside it:
+</p>
+
+<p>
+#+BEGIN_SRC java -jar $JBOSS_HOME/Uninstaller/uninstaller.jar -c -f#+END_SRC
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">Date</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+org.apache.axis2.databinding.typemapping.SimpleTypeMapper.makeCalenda r(SimpleTypeMapper.java:318)
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">Transaction</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+<a href="http://galaxy.andromda.org/forum/viewtopic.php?t=2438">http://galaxy.andromda.org/forum/viewtopic.php?t=2438</a>
+</p>
+
+<p>
+Jippiee, i found the solution and it is very elegant. If anybody have a similar Situation like mine (want to do a large amount of work on the backend and wants to have control about transaction boundaries) ... here is the HowTo:
+</p>
+
+<p>
+1.) Make sure to have enabled Spring transactions when ejb enabled in your andromda.xml:
+Code:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java">* Date 
+
+org.apache.axis2.databinding.typemapping.SimpleTypeMapper.makeCalenda r(SimpleTypeMapper.java:318)
+
+* Transaction 
+
+http://galaxy.andromda.org/forum/viewtopic.php?t=2438
+
+Jippiee, i found the solution and it is very elegant. If anybody have a similar Situation like mine (want to do a large amount of work on the backend and wants to have control about transaction boundaries) ... here is the HowTo:
+
+1.) Make sure to have enabled Spring transactions when ejb enabled in your andromda.xml:
+Code:
+
+#+BEGIN_SRC
+&lt;property name="enableSpringTransactionsWhenEjbsEnabled"&gt;true&lt;/property&gt;
+</pre>
+</div>
+
+<p>
+Notice that the defaultvalue of this namespace property is true, so you can omit this property.
+</p>
+
+<p>
+2.) Use the following tagged values on the method(s) you want to have encapsuled in own transaction:
+</p>
+
+<pre class="example">
+@andromda.ejb.transaction.type = RequiresNew
+@andromda.spring.transaction.type = PROPAGATION_REQUIRES_NEW
+</pre>
+<p>
+3.) Call the inner method by getting a Service Object from the generated ServiceLocator and call the method on this Service Object
+</p>
+
+<p>
+example:
+</p>
+
+<p>
+Code:
+</p>
+
+<pre class="example">
+// outer method which is doing the whole import fo thowsands of data records
+protected NahImportStats handleImportAll(ImportParam params) throws Exception
+    {
+        ImportStats stats = new ImportStats();
+        initializeStats(stats);
+
+        // first get the records to process...large list
+        List data = this.getImportDao().executeQuery(query_selectData);
+
+        // process each data record in the large list for it's own
+        // get a new reference of the Service class... this can be the same or
+        // anothe service class as the current one
+        ImportService srv = ServiceLocator.instance().getImportService();
+
+        for(Iterator i = nahEinsaetze.iterator(); iCnt &lt; 30 &amp;&amp; i.hasNext();)
+        {
+            Map colAtts = (Map)i.next();
+            try{
+                boolean ret = srv.importOneRecord(colAtts);
+                stats.setAnzOk(stats.getAnzOk() + 1);
+                }
+            catch(Exception e){
+                stats.setAnzNok(stats.getAnzNok() + 1);
+                }         
+            stats.setAnzVerarbeitet(stats.getAnzVerarbeitet() + 1);
+            }
+        return stats;
+    }
+
+// inner method which is called to do the import of each data record
+// entering the method a new transaction is created
+// leaving the method regularly hibernate session is flushing and the transaction is committed
+// leaving the method with an exception a rollback is performed
+protected boolean handleImportOneRecord(final Map colAtts)
+   {
+        .... bla bla....
+        ....do the importing stuff ....
+        ... including create, remove, update your data in the database ...
+        ... do NOT add any transactional stuff like flush hibernate session,....
+
+        ... if you want to get the work in this method rolled back throw a exception...
+
+        return true;
+   }
+</pre>
+
+<p>
+LG
+Michael
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17">Developing a Cartridge</h2>
+<div class="outline-text-2" id="text-17">
+<ol class="org-ol">
+<li><a href="http://www.aliabdelaziz.org/Custom_Cartridge">http://www.aliabdelaziz.org/Custom_Cartridge</a>
+</li>
+<li><a href="http://galaxy.andromda.org/docs/andromda-cartridges/developing.html">http://galaxy.andromda.org/docs/andromda-cartridges/developing.html</a>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-sec-17-1" class="outline-3">
+<h3 id="sec-17-1">Steps To Building Your Own Cartridge</h3>
+<div class="outline-text-3" id="text-17-1">
+<ol class="org-ol">
+<li>Write your andromda-cartridge.xml file.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-17-2" class="outline-3">
+<h3 id="sec-17-2">Cartridge Descriptor</h3>
+<div class="outline-text-3" id="text-17-2">
+<p>
+Each cartridge descriptor must comply with the following XSD Schema .
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-17-3" class="outline-3">
+<h3 id="sec-17-3">Writing templates for your cartridges</h3>
+<div class="outline-text-3" id="text-17-3">
+<p>
+AndroMDA currently comes with multiple cartridges (i.e. BPM4Struts, Hibernate, EJB, etc.) if these cartridge don't fit your needs, you'll need to write your own and thats where understanding how to write cartridges comes into play.
+</p>
+
+<p>
+The template scripting language
+</p>
+
+<p>
+Apache's Velocity is the default Template Engine of AndroMDA, and for that we use the Velocity Template Language (VTL). You can find a reference of this language here .
+</p>
+
+<p>
+The scripting object model
+</p>
+
+<p>
+Different from AndroMDA 2.x, AndroMDA 3.x no longer places any model elements in a template context. You define the names of elements to make available to the template in your cartridge's andromda-cartridge.xml, like so:
+</p>
+<pre class="example">
+&lt;template
+path="templates/MetafacadeLogic.vsl"
+outputPattern="$generatedFile"
+outlet="facade-logics"
+overwrite="true"&gt;
+    &lt;modelElements variable= "metafacade"&gt;
+        &lt;modelElement stereotype="metafacade"/&gt;
+    &lt;/modelElements&gt;
+&lt;/template&gt;
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18">MDA Introduction</h2>
+<div class="outline-text-2" id="text-18">
+</div><div id="outline-container-sec-18-1" class="outline-3">
+<h3 id="sec-18-1">Mvn</h3>
+<div class="outline-text-3" id="text-18-1">
+</div><div id="outline-container-sec-18-1-1" class="outline-4">
+<h4 id="sec-18-1-1">Introduction</h4>
+<div class="outline-text-4" id="text-18-1-1">
+<p>
+Maven, a Yiddish word meaning accumulator of knowledge , was originally started as an attempt to simplify the build processes in the Jakarta Turbine project. There were several projects each with their own Ant build files that were all slightly different and JARs were checked into CVS. We wanted a standard way to build the projects, a clear definition of what the project consisted of, an easy way to publish project information and a way to share JARs across several projects.
+</p>
+
+<p>
+The result is a tool that can now be used for building and managing any Java-based project. We hope that we have created something that will make the day-to-day work of Java developers easier and generally help with the comprehension of any Java-based project.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-18-1-2" class="outline-4">
+<h4 id="sec-18-1-2">Maven's Objectives</h4>
+<div class="outline-text-4" id="text-18-1-2">
+<p>
+Maven's primary goal is to allow a developer to comprehend the complete state of a development effort in the shortest period of time. In order to attain this goal there are several areas of concern that Maven attempts to deal with:
+</p>
+
+<ul class="org-ul">
+<li>Making the build process easy
+</li>
+<li>Providing a uniform build system
+</li>
+<li>Providing quality project information
+</li>
+<li>Providing guidelines for best practices development
+</li>
+<li>Allowing transparent migration to new features
+</li>
+</ul>
+
+<p>
+<a href="http://maven.apache.org/">http://maven.apache.org/</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-18-2" class="outline-3">
+<h3 id="sec-18-2">Ruby</h3>
+<div class="outline-text-3" id="text-18-2">
+<p>
+<a href="http://www.ruby-lang.org/en/">http://www.ruby-lang.org/en/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-18-3" class="outline-3">
+<h3 id="sec-18-3">Rails</h3>
+<div class="outline-text-3" id="text-18-3">
+<p>
+<a href="http://www.rubyonrails.org/">http://www.rubyonrails.org/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-18-4" class="outline-3">
+<h3 id="sec-18-4">DSL</h3>
+<div class="outline-text-3" id="text-18-4">
+<p>
+<a href="http://www.martinfowler.com/dslwip/">http://www.martinfowler.com/dslwip/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-18-5" class="outline-3">
+<h3 id="sec-18-5">Velocity</h3>
+<div class="outline-text-3" id="text-18-5">
+<p>
+<a href="http://velocity.apache.org/">http://velocity.apache.org/</a>
+</p>
+
+<p>
+Velocity is a simple yet powerful Java-based template engine that
+renders data from plain Java objects to text, xml, email, SQL, Post
+Script, HTML etc. The template syntax and rendering engine are both
+easy to understand and quick to learn and implement.
+</p>
+
+<pre class="example">
+----------------------------------------------------------------------------------
+--
+--  Table Name:     ${table.getSchema()}.${table.getName()}
+--  File Name:      ${table.getName()}.SQL
+--  Author:         TODO
+--  Date:
+--
+--  Abstract:
+--
+--
+--  MAINTENANCE LOG
+--  who  date        comment
+--  ---  --------    ---------------------------------------------------------------
+--  TODO             Initial Version
+-----------------------------------------------------------------------------------
+DROP TABLE ${table.getSchema()}.${table.getName()}
+@
+
+CREATE TABLE ${table.getSchema()}.${table.getName()}
+(
+
+#foreach($col in ${table.getColumns()})
+    , ${col.getColumnDef()}
+#end
+
+)
+    IN ${table.getSchema()}_DATA_01
+    INDEX IN ${table.getSchema()}_INDX_01
+@
+--Primary Key
+ALTER TABLE ${table.getSchema()}.${table.getName()}
+    ADD     CONSTRAINT ${table.getName()}_PK
+    PRIMARY KEY (
+#foreach($col in $table.getCollumn())
+    $col.getName(),
+#end
+
+    )
+@
+
+--Indexes
+CREATE INDEX ${table.getSchema()}.${table.getName()}_I1
+    ON ${table.getSchema()}.${table.getName()}(
+#foreach($col in $table.getCollumn())
+    $col.getName(),
+#end
+    )
+@
+
+
+-- Access privs
+GRANT SELECT  ON ${table.getSchema()}.${table.getName()} TO GROUP WEB_GRP
+@
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-18-6" class="outline-3">
+<h3 id="sec-18-6">Difference between MDA and DSL</h3>
+<div class="outline-text-3" id="text-18-6">
+<p>
+<a href="http://www.martinfowler.com/dslwip/MDDview.html">http://www.martinfowler.com/dslwip/MDDview.html</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19">J2EE User Management</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+<a href="http://www.onjava.com/pub/a/onjava/2002/06/12/form.html">J2EE Form-based Authentication</a>
+</p>
+
+<p>
+<a href="../etc/form.html">J2EE Form-based Authentication</a>
+</p>
+
+
+<p>
+<a href="../etc/index.php.html">Integrating with Acegi Security System</a>
+</p>
+
+<p>
+<a href="http://galaxy.andromda.org/index.php?option=com_content&task=view&id=173&Itemid=89">Integrating with Acegi Security System </a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20">Profile</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+I did some experiment with profiles in argouml 0.25.5, I referenced profiles in andromda by adding these lines in andromda.xml :
+</p>
+
+<p>
+Code:
+</p>
+<pre class="example">
+&lt;repositories&gt;
+  &lt;repository name="netBeansMDR"&gt;
+    &lt;models&gt;
+      &lt;model&gt;
+        &lt;uri&gt;${model.uri}&lt;/uri&gt;
+        &lt;moduleSearchLocations&gt;
+          &lt;location patterns="**/*.xml.zip"&gt;${settings.localRepository}/org/andromda/profiles/uml14&lt;/location&gt;
+          &lt;location patterns="**/*.xmi"&gt;${project.basedir}/#+BEGIN_SRC &gt;
+        &lt;/moduleSearchLocations&gt;
+      &lt;/model&gt;
+    &lt;/models&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21">Create Project</h2>
+<div class="outline-text-2" id="text-21">
+</div><div id="outline-container-sec-21-1" class="outline-3">
+<h3 id="sec-21-1">Generate</h3>
+<div class="outline-text-3" id="text-21-1">
+<pre class="example">
+mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.3:generate
+
+
+Please choose the type of application to generate [richclient, j2ee]
+j2ee
+
+Please enter the location in which your new application will be created (i.e. f:/java/development): 
+/home/will/ideas/logistics/3.3
+
+Please enter your first and last name (i.e. Chad Brandon): 
+Will Chang
+
+Which kind of modeling tool will you use? [uml1.4, uml2, emf-uml2]: 
+uml1.4
+
+Please enter the name of your J2EE project (i.e. Animal Quiz): 
+New Logistics
+
+Please enter an id for your J2EE project (i.e. animalquiz): 
+logistics
+
+Please enter a version for your project (i.e. 1.0-SNAPSHOT): 
+0.2
+
+Please enter the root package name for your J2EE project (i.e. org.andromda.samples.animalquiz): 
+com.logistics
+
+Would you like an EAR or standalone WAR? [ear, war]: 
+ear
+
+Please enter the type of transactional/persistence cartridge to use (enter 'none' if you don't want to use one) [hibernate, ejb, ejb3, spring, none]: 
+ejb3
+
+Please enter the database backend for the persistence layer [hypersonic, mysql, oracle, db2, informix, mssql, pointbase, postgres, sybase, sabdb, progress, derby]: 
+hypersonic
+
+Will your project need workflow engine capabilities? (it uses jBPM and Hibernate3)? [yes, no]: 
+no
+
+Will your project have a web user interface? [yes, no]: 
+yes
+
+Would you like your web user interface to use JSF or Struts? [jsf, struts]: 
+struts
+
+Would you like to be able to expose your services as web services? [yes, no]: 
+yes
+
+Would you like to use the JSR181 (webservice defined by annotations) EJB3 cartridge specific implementation? [yes, no]: 
+yes
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-21-2" class="outline-3">
+<h3 id="sec-21-2">compare mda folder to find what need to be updated or copy</h3>
+</div>
+
+<div id="outline-container-sec-21-3" class="outline-3">
+<h3 id="sec-21-3">Copy core #+BEGIN_SRC</h3>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22">Mvn</h2>
+<div class="outline-text-2" id="text-22">
+<ol class="org-ol">
+<li><a href="http://books.sonatype.com/maven-book/reference_zh/public-book.html">Maven权威指南</a>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-sec-22-1" class="outline-3">
+<h3 id="sec-22-1">Setup local repository</h3>
+<div class="outline-text-3" id="text-22-1">
+<p>
+<a href="http://archiva.apache.org/docs/1.2.2/quick-start.html">http://archiva.apache.org/docs/1.2.2/quick-start.html</a>
+</p>
+
+
+<p>
+<a href="http://blog.csdn.net/calvinxiu/archive/2007/07/28/1713323.aspx">http://blog.csdn.net/calvinxiu/archive/2007/07/28/1713323.aspx</a>
+</p>
+
+<p>
+<a href="http://www.jroller.com/sjivan/entry/using_maven_proxy_to_setup">http://www.jroller.com/sjivan/entry/using_maven_proxy_to_setup</a>
+</p>
+
+<p>
+Mirror :
+<a href="http://public.www.planetmirror.com/pub/sf/a/ar/artifactory/?sort=date&order=asc">http://public.www.planetmirror.com/pub/sf/a/ar/artifactory/?sort=date&order=asc</a>
+</p>
+
+<p>
+create JavaEE with maven 2. <a href="http://maven.apache.org/plugins/maven-archetype-plugin/examples/j2ee-simple.html">http://maven.apache.org/plugins/maven-archetype-plugin/examples/j2ee-simple.html</a>
+</p>
+
+
+<p>
+<a href="http://mojo.codehaus.org/was6-maven-plugin/examples/installing-ears.html">http://mojo.codehaus.org/was6-maven-plugin/examples/installing-ears.html</a>
+</p>
+
+<p>
+<a href="http://www.mvnrepository.com/artifact/org.apache.velocity/velocity">http://www.mvnrepository.com/artifact/org.apache.velocity/velocity</a>
+</p>
+
+<p>
+<a href="http://www.theserverside.com/tt/articles/article.tss?track=NL-461&ad=647742HOUSE&l=Introductiontom2eclipse&asrc=EM_NLN_4036411&uid=2715702">Introduction to m2eclipse</a>
+</p>
+
+<p>
+<a href="http://www.theserverside.com/tt/articles/article.tss?l=SettingUpMavenRepository">Setting up a Maven repository</a>
+</p>
+
+<p>
+<a href="http://maven.apache.org/">http://maven.apache.org/</a>
+</p>
+
+<p>
+<a href="http://maven.apache.org/guides/getting-started/index.html">http://maven.apache.org/guides/getting-started/index.html</a>
+</p>
+
+<pre class="example">
+        &lt;dependency&gt;
+            &lt;groupId&gt;${pom.groupId}&lt;/groupId&gt;
+            &lt;artifactId&gt;quoteBase&lt;/artifactId&gt;
+            &lt;version&gt;${pom.version}&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.velocity&lt;/groupId&gt;
+    &lt;artifactId&gt;velocity&lt;/artifactId&gt;
+    &lt;version&gt;1.5&lt;/version&gt;
+&lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt; 
+
+
+
+
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+	&lt;dependency&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23">WAS 6</h2>
+<div class="outline-text-2" id="text-23">
+<p>
+Maven 2 and WebSphere - automated build and deployment of J2EE applications
+After long search on different solutions on automated building and deployment of J2EE applications with maven that can work for WebSphere few posts were found. Some of them (big thanks to Peter Pilgrim) cover ways to build EJB modules that could be 'understood' by websphere (that is build websphere specific stubs and skeletons). Some posts show how to configure maven (including maven-eclipse-plugin) so that maven could work with RAD-6 and vice versa.
+All we have to do is put it all together, automate deployment of EAR (remember cargo plugin doesn't support websphere yet) to websphere and hook functional tests (using selenium) into the integration test phase.
+So the project consists of an ejb, war, ear, functional testing and a parent modules, like this:
+</p>
+
+<pre class="example">
+parent_project
+             |-ejb_module
+             |
+             |-war_module
+             |
+             |-ear_module
+             |
+             |-test_module
+</pre>
+
+
+<p>
+Looks like a complete set? Let's go through all the modules.
+</p>
+
+
+
+
+
+<p>
+The EJB module.
+</p>
+
+<p>
+The general problem is as it is well known the WebSphere requires generated stubs and skeletons packaged in ejb jar before the deployment which maven-ejb-plugin can't do. But IBM does offer java api to generate them via ant tasks. All we need to do is to 'silently' generate the server-specific files with ant tasks and repackage the ejb jar as a part of maven build cycle (usually generated by RAD during deployment in the IDE). In short this is how the pom may look like:
+</p>
+<pre class="example">
+&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;your_group&lt;/ins&gt;&lt;/groupId&gt;
+  &lt;artifactId&gt;ejb_module&lt;/artifactId&gt;
+  &lt;packaging&gt;ejb&lt;/packaging&gt;
+  &lt;name&gt;ejb_module&lt;/name&gt;
+  &lt;parent&gt;
+        &lt;groupId&gt;your_group&lt;/groupId&gt;
+        &lt;artifactId&gt;parent_project&lt;/artifactId&gt;
+        &lt;version&gt;0.1-SNAPSHOT&lt;/version&gt;
+  &lt;/parent&gt;
+
+  &lt;dependencies&gt;
+        ...
+        Your dependencies
+        ...
+        &lt;dependency&gt;
+            &lt;!-- provided by the container --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;j2ee&lt;/artifactId&gt;
+            &lt;version&gt;1.4&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;!-- websphere specific dependency, available in own repository --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;ivjejb35&lt;/artifactId&gt;
+            &lt;version&gt;6&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;!-- websphere specific dependency, available in own repository --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;webservices&lt;/artifactId&gt;
+            &lt;version&gt;6&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;!-- websphere specific dependency, available in own repository --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;webservices&lt;/artifactId&gt;
+            &lt;version&gt;6&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;!-- websphere specific dependency, available in own repository --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;ejbcontainer&lt;/artifactId&gt;
+            &lt;version&gt;6&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;!-- websphere specific dependency, available in own repository --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;ejbcontainerImpl&lt;/artifactId&gt;
+            &lt;version&gt;6&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;!-- websphere specific dependency, available in own repository --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;ecutils&lt;/artifactId&gt;
+            &lt;version&gt;6&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;!-- websphere specific dependency, available in own repository --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;ras&lt;/artifactId&gt;
+            &lt;version&gt;6&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;!-- websphere specific dependency, available in own repository --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;ejbportable&lt;/artifactId&gt;
+            &lt;version&gt;6&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;!-- websphere specific dependency, available in own repository --&gt;
+            &lt;groupId&gt;websphere&lt;/groupId&gt;
+            &lt;artifactId&gt;utils&lt;/artifactId&gt;
+            &lt;version&gt;6&lt;/version&gt;
+        &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+
+  &lt;build&gt;
+
+        &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;
+
+        &lt;!-- RAD-default source tree --&gt;
+        &lt;sourceDirectory&gt;ejbModule&lt;/sourceDirectory&gt;
+        &lt;resources&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;ejbModule&lt;/directory&gt;
+                &lt;excludes&gt;
+                    &lt;exclude&gt;**/*.java&lt;/exclude&gt;
+                    &lt;exclude&gt;**/CVS/**&lt;/exclude&gt;
+                &lt;/excludes&gt;
+            &lt;/resource&gt;
+        &lt;/resources&gt;
+
+
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-ejb-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;ejbVersion&gt;2.1&lt;/ejbVersion&gt;
+                &lt;generateClient&gt;true&lt;/generateClient&gt;
+               &lt;clientExcludes&gt;
+                  &lt;clientExclude&gt;**/ejbserver/*EJB.class&lt;/clientExclude&gt;
+               &lt;/clientExcludes&gt;
+                &lt;archive&gt;
+                    &lt;manifest&gt;
+                         &lt;!-- generate manifest file properly --&gt;
+                        &lt;addClasspath&gt;true&lt;/addClasspath&gt;
+                    &lt;/manifest&gt;
+                &lt;/archive&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+
+        &lt;plugin&gt;
+            &lt;!-- Configuration of RAD specific JRE containers --&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-eclipse-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;classpathContainers&gt;
+                    &lt;!-- org.eclipse.__my_company_1__t.launching.JRE_CONTAINER is included by default, add a j2ee container here --&gt;
+                    &lt;classpathContainer&gt;com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60/was.base.v6&lt;/classpathContainer&gt;
+                &lt;/classpathContainers&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+
+        &lt;!-- Maven Ant run plugin to run ejb-deploy automatically to simulate websphere's generation of stubs and skeletons --&gt;
+        &lt;plugin&gt;
+            &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+            &lt;executions&gt;
+                &lt;execution&gt;
+                    &lt;phase&gt;verify&lt;/phase&gt;
+                    &lt;configuration&gt;
+                        &lt;tasks&gt;
+                            &lt;echo&gt;was6.home: ${was6.home}&lt;/echo&gt;
+
+                            &lt;!-- Default path to use for WAS test version (inside RAD), override this with -D parameter if needed --&gt;
+                            &lt;property name="was6.home"
+                                value="c:/Program Files/IBM/Rational/SDP/6.0/runtimes/base_v6" /&gt;
+
+                            &lt;ant antfile="ejbdeploy.xml" inheritRefs="true" inheritAll="true"&gt;
+                                &lt;property name="project.name" value="${project.name}"/&gt;
+                                &lt;property name="project.artifactId" value="${project.artifactId}"/&gt;
+                                &lt;property name="project.groupId" value="${project.groupId}"/&gt;
+                                &lt;property name="project.version" value="${project.version}"/&gt;
+                                &lt;property name="project.packaging" value="${project.packaging}"/&gt;
+                                &lt;property name="project.description" value="${project.description}"/&gt;
+                                &lt;property name="project.parent.name" value="${project.parent.name}"/&gt;
+                                &lt;property name="project.parent.artifactId" value="${project.parent.artifactId}"/&gt;
+                                &lt;property name="project.parent.groupId" value="${project.parent.groupId}"/&gt;
+                                &lt;property name="project.parent.version" value="${project.parent.version}"/&gt;
+                                &lt;property name="project.build.directory" value="${project.build.directory}"/&gt;
+
+                                       &lt;!--
+                                            This is to enable to override the was6.home by providing -Dwas6.home=&lt;WAS home dir&gt;.
+                                            Use this to override the default path for the development environment (such as if you use standalone server
+                                            and it has a different location than in the called ant file)
+                                        --&gt;
+                                &lt;property name="was6.home" value="${was6.home}"/&gt;
+                            &lt;/ant&gt;
+                        &lt;/tasks&gt;
+                    &lt;/configuration&gt;
+                    &lt;goals&gt;
+                        &lt;goal&gt;run&lt;/goal&gt;
+                    &lt;/goals&gt;
+                &lt;/execution&gt;
+            &lt;/executions&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+
+  &lt;/build&gt;
+
+&lt;/project&gt;
+</pre>
+
+<p>
+This pom is self explanatory for the most part (and I've tried to put some comments there as well). Text in bold is to be noticed, I will just stop on most important parts:
+</p>
+
+
+<ul class="org-ul">
+<li>The header (down to dependencies) is pretty much clear I think, no magic here...
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>Dependencies. The dependencies I've put there is what I had to find out to resolve some vendor specific dependencies (which the project unfortunately already had). If your project already happened to have some WebSphere-specific dependencies that you would most likely need to define them too... I would recommend setting up an enterprise repository (for example Artifactory) as you won't find most of those those jar's on open source repositories (those jars can be found at websphere location, mostly under lib directory). Another recommendation is to start from no websphere dependencies in the list and start adding them only if you start having compile errors due to classes not being resolved. The reason behind adding those besides specifying the classpathContainer is that classpathContainer doesn't help when you compile under maven but only adds a classpath container entry in your .classpath file for compiling in RAD (we use RAD 6).
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>The next one is &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;. The reason behind this is because module names in the vendor-specific deployment descriptors are based on RAD project names which means that having your project names having 0.1-SNAPSHOT (or whatever version you have) appended at the end is not very handy (you wont be able to release that easily). So we override the artifact name instead...
+</li>
+
+<li>maven-ejb-plugin is there mostly to generate ejb jar manifest file properly (and to filter stuff for ejb the generated client).
+</li>
+
+<li>maven-eclipse-plugin is configured to generate J2EE container in the .classpath which is needed for hot-deployment and compiling J2EE projects in RAD (for compiling in maven we have dependencies as described above).
+</li>
+
+<li>And finally maven-antrun-plugin which is configured to kick in at verify phase which executes right before install phase. The maven-antrun-plugin is capable of executing ant scripts from maven at a specified time. To keep things a bit more clean we just call an external ant file from here
+</li>
+</ul>
+
+
+
+
+
+
+
+<p>
+The WEB module.
+</p>
+
+
+
+<p>
+This one is much easier, although with RAD-6 there are some 'tips&amp;tricks'.
+</p>
+
+<pre class="example">
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;your_group&lt;/groupId&gt;
+  &lt;artifactId&gt;web_module&lt;/artifactId&gt;
+  &lt;packaging&gt;war&lt;/packaging&gt;
+  &lt;name&gt;web_module&lt;/name&gt;
+
+      &lt;parent&gt;
+        &lt;groupId&gt;your_group&lt;/groupId&gt;
+        &lt;artifactId&gt;parent_project&lt;/artifactId&gt;
+        &lt;version&gt;0.1-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+
+    &lt;dependencies&gt;
+        ...
+            Your dependencies
+            ...
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;
+
+        &lt;!-- RAD-default source tree --&gt;
+        &lt;sourceDirectory&gt;${basedir}/JavaSource&lt;/sourceDirectory&gt;
+
+        &lt;!--
+            customizng resources location so that only needed files are archived in jar files
+        --&gt;
+        &lt;resources&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;${basedir}/JavaSource&lt;/directory&gt;
+                &lt;excludes&gt;
+                    &lt;exclude&gt;**/*.java&lt;/exclude&gt;
+                    &lt;exclude&gt;**/*.class&lt;/exclude&gt;
+                &lt;/excludes&gt;
+            &lt;/resource&gt;
+        &lt;/resources&gt;
+
+            &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+                &lt;configuration&gt;
+                    &lt;warSourceDirectory&gt;${basedir}/#+BEGIN_SRC &gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;!--
+            customizing classes folder for RAD to pick it classes for hot deployment of exploded archive up - doesn't work with the default one (target)
+        --&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-eclipse-plugin&lt;/artifactId&gt;
+                &lt;configuration&gt;
+                    &lt;buildOutputDirectory&gt;${basedir}/#+BEGIN_SRC &gt;
+                    &lt;!-- Customizing context root if needed --&gt;
+                    &lt;warContextRoot&gt;your_context_root&lt;/warContextRoot&gt;
+                    &lt;additionalBuildcommands&gt;
+                        &lt;!-- Needed by RAD in a typical web project --&gt;
+                        &lt;buildcommand&gt;com.ibm.etools.ctc.serviceprojectbuilder&lt;/buildcommand&gt;
+                    &lt;/additionalBuildcommands&gt;
+                    &lt;!-- Configuration of RAD specific JRE containers --&gt;
+                    &lt;classpathContainers&gt;
+                        &lt;classpathContainer&gt;com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60/was.base.v6&lt;/classpathContainer&gt;
+                    &lt;/classpathContainers&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+&lt;/project&gt;
+</pre>
+
+<p>
+Let's go through it piece-by-piece... The beginning is pretty much standard for any web module. Don't forget to specify dependencies that are provided by the container in the same way as it is done in the ejb module, also don't forget to use excludes (and there are lots of exclusions for websphere!) or disable transitive dependencies alltogether.
+The next interesting part is:
+</p>
+
+<pre class="example">
+&lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;
+</pre>
+
+<p>
+Which is needed in order to keep consistency between the maven-generated artifacts and RAD-generated vendor specific deployment desciptors.
+</p>
+
+<p>
+The following piece:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-<sourceDirectory>${basedir}/JavaSource</sourceDirectory>#+END_SRC">is there to (still) allow to use default RAD source tree (however if you can afford moving whole source tree in your project or creating it from scratch I'd advice to use the maven default settings and not to use this one).
+
+If we 'fall' for the above we would probably want to use the resource folder in 'RAD' way (that source with the resource files together):
+
+#+BEGIN_SRC
+            &lt;!--
+                customizing resources location so that only needed files are archived in jar files
+            --&gt;
+            &lt;resources&gt;
+                &lt;resource&gt;
+                    &lt;directory&gt;${basedir}/JavaSource&lt;/directory&gt;
+                    &lt;excludes&gt;
+                        &lt;exclude&gt;**/*.java&lt;/exclude&gt;
+                        &lt;exclude&gt;**/*.class&lt;/exclude&gt;
+                    &lt;/excludes&gt;
+                &lt;/resource&gt;
+            &lt;/resources&gt;
+</pre>
+</div>
+<p>
+Source and compiled classes are excluded so they don't get in the resulting .war file.
+</p>
+
+
+<p>
+For the current version of maven (2.0.7 at the time of writing) the webapp root dir should match the default one of maven (${basedir}/#+BEGIN_SRC :
+</p>
+<pre class="example">
+&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+    &lt;configuration&gt;
+        &lt;warSourceDirectory&gt;${basedir}/#+BEGIN_SRC &gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;
+</pre>
+<p>
+Keep in mind it needs to be in 'sync' with &lt;buildOutputDirectory&gt;...&lt;/buildOutputDirectory&gt; (or better yet - make it a property in order not to repeat yourself - DRY). And here we go:
+</p>
+
+<pre class="example">
+&lt;!--
+    customizing classes folder for RAD to pick it classes for hot deployment of exploded archive up - doesn't work with the default one (target)
+--&gt;
+    &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-eclipse-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+            &lt;buildOutputDirectory&gt;${basedir}/#+BEGIN_SRC &gt;
+            &lt;!-- Customizing context root if needed --&gt;
+            &lt;warContextRoot&gt;your_context_root&lt;/warContextRoot&gt;
+            &lt;additionalBuildcommands&gt;
+                &lt;!-- Needed by RAD in a typical web project --&gt;
+                &lt;buildcommand&gt;com.ibm.etools.ctc.serviceprojectbuilder&lt;/buildcommand&gt;
+            &lt;/additionalBuildcommands&gt;
+            &lt;!-- Configuration of RAD specific JRE containers --&gt;
+            &lt;classpathContainers&gt;
+                &lt;classpathContainer&gt;com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60/was.base.v6&lt;/classpathContainer&gt;
+            &lt;/classpathContainers&gt;
+        &lt;/configuration&gt;
+    &lt;/plugin&gt;
+</pre>
+
+<p>
+Here, buildOutputDirectory points at the same tree branch as the warSourceDirectory.
+warContextRoot is here just in case you want to customize the context root. com.ibm.etools.ctc.serviceprojectbuilder in additionalBuildcommands is needed because RAD usually generates it in .project file for eclipse for web-enabled projects. And of course the &lt;classpathContainer/&gt; which generates a reference required libraries for work in RAD (although you wouldn't need it if you use the enterprise repository with the vendor specific dependencies - just like in case with the ejb module).
+</p>
+
+<p>
+This was the WEB project.
+</p>
+
+
+
+<p>
+The EAR module.
+</p>
+
+
+
+<p>
+There is really nothing special about it except this little configuration:
+</p>
+
+
+<pre class="example">
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-ear-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;modules&gt; &lt;!-- Configuring names of artifacts in EAR --&gt;
+                    &lt;webModule&gt;
+                        &lt;groupId&gt;${project.groupId}&lt;/groupId&gt;
+                        &lt;artifactId&gt;web_module&lt;/artifactId&gt;
+                        &lt;contextRoot&gt;/your_context_root&lt;/contextRoot&gt;
+                        &lt;bundleFileName&gt;web_module.war&lt;/bundleFileName&gt;
+                    &lt;/webModule&gt;
+                    &lt;ejbModule&gt;
+                        &lt;groupId&gt;${project.groupId}&lt;/groupId&gt;
+                        &lt;artifactId&gt;ejb_module&lt;/artifactId&gt;
+                        &lt;bundleFileName&gt;ejb_module.jar&lt;/bundleFileName&gt;
+                    &lt;/ejbModule&gt;
+                &lt;/modules&gt;
+                &lt;earSourceDirectory&gt;${basedir}&lt;/earSourceDirectory&gt;
+                &lt;earSourceIncludes&gt;
+                    **/ibmconfig/**
+                &lt;/earSourceIncludes&gt;
+                &lt;earSourceExcludes&gt;**/target/**&lt;/earSourceExcludes&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</pre>
+
+
+<p>
+Here we have configuration of the application.xml where we have hardcoded (not nice but have to...) names of modules and the resulting artifacts that are packaged in the resulting ear (remember we have to have the same artifact names as the ones hardcoded in the IBM-specific deployment descriptors).
+And then there is some extra configuration telling to include the vendor specific deployment descriptors (we would need to create them in RAD) and extra configuration not to include the target directory in the resulting EAR.
+</p>
+
+
+
+<p>
+Functional tests module
+</p>
+
+
+
+<p>
+Functional test module (a separate maven module) is responsible for automated deployment to websphere and running the functional tests on the deployed application by using selenium).
+</p>
+
+<p>
+In general, enabling fully automated integration tests for a j2ee application under websphere in this case consists of two parts: enabling selenium (a lot of info on this can be found here) and automated deployment of the application EAR to WAS before the selenium tests kick-in. Because we don't have a cargo plug-in for WAS-6 ready yet we use the ant scripts from websphere and plug them into the maven build lifecycle.
+</p>
+
+<p>
+In short, running selenium tests and automated deployment of the application EAR can be done in the following steps:
+</p>
+
+
+<ol class="org-ol">
+<li>Define selenium repository (or have your enterprise repository take care of that)
+</li>
+
+<li>Define dependencies to be able to run selenium
+</li>
+
+<li>Automatically start selenium server just before the integration-test phase
+</li>
+
+<li>Force Surefire plugin to run in integration-test phase and not in test phase (this is a dedicated integration test module and doesn't need to run the test phase).
+</li>
+
+<li>Prepare EAR for the deployment script
+</li>
+
+<li>Call websphere deployment scripts in pre-integration test phase to deploy the EAR we prepared
+</li>
+
+<li>Run the tests (Surefire plug-in)
+</li>
+
+<li>Call websphere deployment scripts in post-integration test phase to undeploy the EAR (cleanup)
+</li>
+</ol>
+
+
+
+<p>
+Let's go through all the steps:
+</p>
+
+
+<ol class="org-ol">
+<li>Define selenium repository (or have your enterprise repository take care of that). We can define it either in our pom (see below) or let artifactory take care of that:
+</li>
+</ol>
+
+<pre class="example">
+&lt;repositories&gt;
+    &lt;repository&gt;
+        &lt;id&gt;openqa&lt;/id&gt;
+        &lt;name&gt;OpenQA Repository&lt;/name&gt;
+        &lt;url&gt;http://maven.openqa.org&lt;/url&gt;
+        &lt;layout&gt;default&lt;/layout&gt;
+        &lt;snapshots&gt;
+            &lt;enabled&gt;false&lt;/enabled&gt;
+        &lt;/snapshots&gt;
+        &lt;releases&gt;
+            &lt;enabled&gt;true&lt;/enabled&gt;
+        &lt;/releases&gt;
+    &lt;/repository&gt;
+&lt;/repositories&gt;
+</pre>
+
+<ol class="org-ol">
+<li>Define dependencies to be able to run selenium. This is also pretty straight forward:
+</li>
+</ol>
+
+<pre class="example">
+&lt;dependency&gt;
+    &lt;groupId&gt;junit&lt;/groupId&gt;
+    &lt;artifactId&gt;junit&lt;/artifactId&gt;
+    &lt;version&gt;3.8.1&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.openqa.selenium.client-drivers&lt;/groupId&gt;
+    &lt;artifactId&gt;selenium-java-client-driver&lt;/artifactId&gt;
+    &lt;version&gt;0.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.openqa.selenium.server&lt;/groupId&gt;
+    &lt;artifactId&gt;selenium-server&lt;/artifactId&gt;
+    &lt;version&gt;0.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+</pre>
+
+<p>
+Here we have defined dependencies on JUnit in order to be run the selenium tests converted to JUnit, then we have client drivers to use the selenium client api in our JUnit tests and we have dependency on server which runs the selenium server to execute the tests.
+</p>
+
+
+
+<ol class="org-ol">
+<li>Automatically start selenium server just before the integration-test phase. This is defined in build/plugins section:
+</li>
+</ol>
+
+<pre class="example">
+&lt;!-- Start the Selenium server --&gt;
+&lt;plugin&gt;
+    &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+    &lt;artifactId&gt;selenium-maven-plugin&lt;/artifactId&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;phase&gt;pre-integration-test&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;start-server&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+                &lt;background&gt;true&lt;/background&gt;
+                &lt;logOutput&gt;true&lt;/logOutput&gt;
+                &lt;multiWindow&gt;true&lt;/multiWindow&gt;
+                &lt;debug&gt;true&lt;/debug&gt;
+            &lt;/configuration&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;
+</pre>
+
+<p>
+Notice that it starts in pre-integration phase, that is just before the integration phase starts.
+</p>
+
+
+<ol class="org-ol">
+<li>Force Surefire plugin to run in integration-test phase and not in test phase. This belongs to build/plugins section as well:
+</li>
+</ol>
+<pre class="example">
+    &lt;!--
+Forcing test phase in integration-test phase
+    --&gt;
+    &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+            &lt;!-- Skip the normal tests, we'll run them in the integration-test phase --&gt;
+            &lt;skip&gt;true&lt;/skip&gt;
+        &lt;/configuration&gt;
+        &lt;executions&gt;
+            &lt;execution&gt;
+                &lt;phase&gt;integration-test&lt;/phase&gt;
+                &lt;goals&gt;
+                    &lt;goal&gt;test&lt;/goal&gt;
+                &lt;/goals&gt;
+                &lt;configuration&gt;
+        &lt;skip&gt;false&lt;/skip&gt;
+                &lt;/configuration&gt;
+            &lt;/execution&gt;
+        &lt;/executions&gt;
+    &lt;/plugin&gt;
+</pre>
+
+<p>
+Notice the part with &lt;skip&gt;true&lt;/skip&gt; - it tells maven to skip the test phase for this plugin otherwise test will fail because we haven't deployed the application yet. And then for the integration phase we enforce this plugin (also notice the part with &lt;skip&gt;false&lt;/skip&gt; there)
+</p>
+
+
+<ol class="org-ol">
+<li>Prepare EAR for the deployment script. This is an interesting one... Because we don't have cargo plugin for WAS-6 that could seamlessly deploy the EAR to the server we need to prepare the EAR at a specific location so that 3rd party scripts could pickup the archive for deployment. This is how this can be done (also in the same build/plugins section):
+</li>
+</ol>
+
+<pre class="example">
+&lt;plugin&gt;
+    &lt;!--
+        This goal allows us to get the EAR from the repository for deployment and install it locally
+    --&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;id&gt;copy&lt;/id&gt;
+            &lt;phase&gt;package&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;copy&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+                &lt;artifactItems&gt;
+                    &lt;artifactItem&gt;
+                        &lt;!-- same group --&gt;
+                        &lt;groupId&gt;${project.groupId}&lt;/groupId&gt;
+                        &lt;artifactId&gt;your_artifact_name&lt;/artifactId&gt;
+                        &lt;type&gt;ear&lt;/type&gt;
+                        &lt;overWrite&gt;true&lt;/overWrite&gt;
+                        &lt;destFileName&gt;your_artifact_name.ear&lt;/destFileName&gt;
+                    &lt;/artifactItem&gt;
+                &lt;/artifactItems&gt;
+                &lt;outputDirectory&gt;${project.build.directory}&lt;/outputDirectory&gt;
+                &lt;overWriteReleases&gt;true&lt;/overWriteReleases&gt;
+                &lt;overWriteSnapshots&gt;true&lt;/overWriteSnapshots&gt;
+            &lt;/configuration&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;
+</pre>
+<p>
+The preparation of EAR for deployment is done by forcing the maven-dependency-plugin to copy resources (our EAR in this case) from local repository in package phase. Because the copying is done from the local repository we would need to use at least install (or later) phase in our parent module which would guarantee placement of our EAR in a local repository. The plugin takes the artifactId and type to identify the resource to copy, we also use the destFileName and outputDirectory to configure the final name and the location of the EAR. As a result of this configuration we get the archive we want to deploy in the target directory of this module.
+</p>
+
+
+<ol class="org-ol">
+<li>Call websphere deployment scripts in pre-integration test phase to deploy the EAR we prepared above to our websphere server (this can be both the websphere test environment integrated with the IDE or a dedicated server). Because we can't use cargo plugin we have to do something else - in this case we can use deployment scripts from websphere to deploy our artifacts. We configure both deploy and undeploy operations here. This is done with the help of maven antrun plugin by calling our ant scripts (they'll follow later):
+</li>
+</ol>
+
+<pre class="example">
+&lt;!-- Maven Ant run plugin to run deploy the EAR automatically to WebSphere--&gt;
+&lt;plugin&gt;
+    &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+    &lt;executions&gt;
+        &lt;!--
+            Deployment to the server
+        --&gt;
+        &lt;execution&gt;
+            &lt;id&gt;deployment&lt;/id&gt;
+            &lt;phase&gt;pre-integration-test&lt;/phase&gt;
+            &lt;configuration&gt;
+                &lt;tasks&gt;
+
+                    &lt;!-- default path to use for WAS test version (inside RAD), override this with -D parameter if needed --&gt;
+                    &lt;property name="was6.home"
+                        value="c:/Program Files/IBM/Rational/SDP/6.0/runtimes/base_v6" /&gt;
+                    &lt;ant antfile="eardeploy.xml" inheritRefs="true" inheritAll="true"&gt;
+                        &lt;property name="project.name" value="${project.name}"/&gt;
+                        &lt;property name="project.artifactId" value="${final.artifact.name}"/&gt;
+                        &lt;property name="project.groupId" value="${project.groupId}"/&gt;
+                        &lt;property name="project.version" value="${project.version}"/&gt;
+                        &lt;property name="project.packaging" value="${project.packaging}"/&gt;
+                        &lt;property name="project.description" value="${project.description}"/&gt;
+                        &lt;property name="project.parent.name" value="${project.parent.name}"/&gt;
+                        &lt;property name="project.parent.artifactId" value="${project.parent.artifactId}"/&gt;
+                        &lt;property name="project.parent.groupId" value="${project.parent.groupId}"/&gt;
+                        &lt;property name="project.parent.version" value="${project.parent.version}"/&gt;
+                        &lt;property name="project.build.directory" value="${project.build.directory}"/&gt;
+
+                        &lt;!--
+                            This is to enable to override the was6.home by providing -Dwas6.home=&lt;WAS home dir&gt;.
+                            Use this to override the default path for the development environment (such as if you use standalone server
+                            and it has a different location than in the called ant file)
+                            --&gt;
+                        &lt;property name="was6.home" value="${was6.home}"/&gt;
+                        &lt;!--
+                            Override the user.install.root by providing -Duser.install.root=&lt;WAS profile dir&gt;.
+                            Use this to override the default path for the development environment (such as if you use standalone server
+                            and it has a different location than in the called ant file)
+                            --&gt;
+                        &lt;property name="user.install.root" value="${user.install.root}"/&gt;
+                    &lt;/ant&gt;
+                &lt;/tasks&gt;
+            &lt;/configuration&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;run&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+        &lt;!--
+            Undeploy from the server after the tests are done
+        --&gt;
+        &lt;execution&gt;
+            &lt;id&gt;undeployment&lt;/id&gt;
+            &lt;phase&gt;post-integration-test&lt;/phase&gt;
+            &lt;configuration&gt;
+                &lt;tasks&gt;
+                        &lt;ant antfile="eardeploy.xml" target="undeploy" inheritRefs="true" inheritAll="true"&gt;
+                        &lt;property name="project.name" value="${project.name}"/&gt;
+                        &lt;property name="project.artifactId" value="${final.artifact.name}"/&gt;
+                        &lt;property name="project.groupId" value="${project.groupId}"/&gt;
+                        &lt;property name="project.version" value="${project.version}"/&gt;
+                        &lt;property name="project.packaging" value="${project.packaging}"/&gt;
+                        &lt;property name="project.description" value="${project.description}"/&gt;
+                        &lt;property name="project.parent.name" value="${project.parent.name}"/&gt;
+                        &lt;property name="project.parent.artifactId" value="${project.parent.artifactId}"/&gt;
+                        &lt;property name="project.parent.groupId" value="${project.parent.groupId}"/&gt;
+                        &lt;property name="project.parent.version" value="${project.parent.version}"/&gt;
+                        &lt;property name="project.build.directory" value="${project.build.directory}"/&gt;
+                        &lt;/ant&gt;
+                &lt;/tasks&gt;
+            &lt;/configuration&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;run&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;
+</pre>
+
+<p>
+The deployment to the server is done in the pre-integration-test phase. Because maven runs goals in order that plugins are configured in build/plugins section we have the EAR file prepared for deployment properly.
+In the configuration section of antrun plugin we defined was6.homewhich points to default location of WAS for development environment but this can be easily overridden by using -Dwas6.home=&lt;your WAS home&gt; in the command line.
+We could put ant calls right here in the same place but it's better to separate ant from maven to get a 'cleaner' solution.
+Undeployment is performed by specifying second execution section and calling script that performs undeploy in post-integration-test phase which happens after the integration-test phase where our tests run. In this case it is the same script eardeploy.xml only a different target (undeploy). You can also notice we define properties such as project.artifactId inside the antcall target because antcall doesn't automatically passes all variables to the ant script from withiin the maven runtime environment (so we specify them explicitly).
+</p>
+
+
+
+
+<p>
+And of course the ant script that performs the deployment and undeployment. It's quite big but fortunately it's not dependent on file system and thus can be easily reused across projects 'as is':
+</p>
+
+<pre class="example">
+&lt;?xml version="1.0"?&gt;
+&lt;project name="was-deployment" default="deploy" basedir="."&gt;
+
+    &lt;property file="deploy.properties" /&gt;
+
+    &lt;path id="was.classpath"&gt;
+        &lt;fileset dir="${was6.home}/lib"&gt;
+            &lt;include name="*.jar" /&gt;
+            &lt;include name="wsanttasks.jar" /&gt;
+            &lt;include name="webservices.jar" /&gt;
+            &lt;include name="wsprofile.jar" /&gt;
+            &lt;include name="j2ee.jar" /&gt;
+            &lt;include name="ffdc.jar" /&gt;
+            &lt;include name="wsdl4j.jar" /&gt;
+            &lt;include name="bootstrap.jar" /&gt;
+            &lt;include name="commons-logging-api.jar" /&gt;
+            &lt;include name="commons-discovery.jar" /&gt;
+            &lt;include name="ras.jar" /&gt;
+            &lt;include name="wsexception.jar" /&gt;
+            &lt;include name="emf.jar" /&gt;
+            &lt;include name="classloader.jar" /&gt;
+        &lt;/fileset&gt;
+        &lt;fileset dir="${was6.home}/java/jre/lib"&gt;
+            &lt;include name="xml.jar" /&gt;
+            &lt;include name="ibmorb.jar" /&gt;
+            &lt;include name="ibmorbapi.jar" /&gt;
+        &lt;/fileset&gt;
+    &lt;/path&gt;
+
+
+    &lt;target name="init-tasks"&gt;
+        &lt;taskdef name="wsInstallApp" classname="com.ibm.websphere.ant.tasks.InstallApplication"&gt;
+        &lt;/taskdef&gt;
+        &lt;taskdef name="wsUninstallApp" classname="com.ibm.websphere.ant.tasks.UninstallApplication"&gt;
+        &lt;/taskdef&gt;
+        &lt;taskdef name="wsStartApp" classname="com.ibm.websphere.ant.tasks.StartApplication"&gt;
+        &lt;/taskdef&gt;
+    &lt;/target&gt;
+
+    &lt;target name="ws-exec"&gt;
+          &lt;exec executable="${user.install.root}/bin/ws_ant.bat" failonerror="true"&gt;
+            &lt;arg value="-f"/&gt;
+            &lt;arg value="eardeploy.xml"/&gt; &lt;!-- this is this own build file name but to be restarted with IBM implementation of ant --&gt;
+            &lt;arg value="-Dwas6.home=${was6.home}"/&gt;
+            &lt;arg value="${wasTarget}"/&gt;
+            &lt;arg value="-Dear.path=${ear.path}"/&gt;
+            &lt;arg value="-Dproject.artifactId=${project.artifactId}"/&gt;
+        &lt;/exec&gt;
+    &lt;/target&gt;
+
+
+    &lt;target name="deploy" description="Deploys EARs to the WAS"&gt;
+        &lt;echo&gt;
+            FYI
+
+            project.name=${project.name}
+            project.artifactId=${project.artifactId}
+            project.groupId=${project.groupId}
+            project.version=${project.version}
+            project.packaging=${project.packaging}
+            project.description=${project.description}
+
+            project.parent.name=${project.parent.name}
+            project.parent.artifactId=${project.parent.artifactId}
+            project.parent.groupId=${project.parent.groupId}
+            project.parent.version=${project.parent.version}
+
+            ear.path=${ear.path}
+            was6.home=${was6.home}
+        &lt;/echo&gt;
+
+        &lt;antcall target="ws-exec"&gt;
+              &lt;param name="wasTarget" value="deploy-ear" /&gt;
+        &lt;/antcall&gt;
+
+    &lt;/target&gt;
+
+    &lt;target name="undeploy" description="Undeploys the application fromthe server"&gt;
+        &lt;antcall target="ws-exec"&gt;
+              &lt;param name="wasTarget" value="undeploy-ear" /&gt;
+        &lt;/antcall&gt;
+    &lt;/target&gt;
+
+
+    &lt;target name="deploy-ear" depends="init-tasks, undeploy-ear"&gt;
+        &lt;echo&gt;Deploying ear ${ear.path} to websphere via ws_ant&lt;/echo&gt;
+        &lt;echo&gt;Host: ${host}, port: ${port}&lt;/echo&gt;
+
+        &lt;wsInstallApp wasHome="${was6.home}"
+            ear="${ear.path}"
+            options="-usedefaultbindings -verbose true"
+            conntype="SOAP"
+            host="${host}"
+            port="${port}"
+            /&gt;
+
+        &lt;antcall target="start-app" /&gt;
+
+    &lt;/target&gt;
+
+    &lt;target name="start-app"&gt;
+        &lt;wsStartApp wasHome="${was6.home}"
+            application="${project.artifactId}"
+            conntype="SOAP"
+            host="${host}"
+            port="${port}"/&gt;
+    &lt;/target&gt;
+
+    &lt;target name="undeploy-ear" depends="init-tasks" &gt;
+        &lt;wsUninstallApp wasHome="${was6.home}"
+            application="${project.artifactId}"
+            conntype="SOAP"
+            host="${host}"
+            port="${port}"/&gt;
+    &lt;/target&gt;
+&lt;/project&gt;
+</pre>
+
+<p>
+This ant script uses ant tasks wsInstallApp, wsUninstallApp and wsStartApp provided by websphere. They are all needed to deploy (wsInstallApp target) the application and start it wsStartApp (separate action in webpshere) and then to undeploy the application (wsUninstallApp target). To protect this script from often changes we have was.classpath which provides classpath for those targets and deploy.properties file provides properties that you're likely to customize per application (or environment).
+Then we have a 'strange' ws-exec target which basically runs the same script again but this time passes it through ${user.install.root}/bin/ws_ant.bat which is an own implementation of ant from IBM. We do this mostly because those ant tasks we described require a lot of system and environment variables setup. And since this is a proprietary solution of IBM it's easier to let those scripts to do the initialization job and then return to our deploy.xml. We also pass the required properties (as command line arguments) through this script which in this case are:
+</p>
+
+
+<ul class="org-ul">
+<li>eardeploy.xml - the same script to run (in command line this is usually "-f &lt;script name&gt;")
+</li>
+<li>-Dwas6.home=${was6.home} - passing the location of websphere home dir location as system variable (as you can see it's used all across the script)
+</li>
+<li>${wasTarget} - the next ant target in this script to run
+</li>
+<li>-Dear.path=${ear.path} - path of the ear file for deployment
+</li>
+<li>-Dproject.artifactId=${project.artifactId} - name of the application for undeployment (I recommend to configure EAR name as artifact name with '.ear' extension appended - for example artifactId.ear, you can also see across the scripts that we have final artifact name defined which also serves this purpose)
+</li>
+</ul>
+
+
+
+<p>
+The rest is pretty straight forward, we have deploy target which calls IBM version of ant implementation which in turn calls deploy-ear which actually calls the corresponding ant task. The same is valid for undeploy target. With the exception that deploy-ear target includes call to start-app target which starts the application as soon as it is deployed (those operations are synchronous). In short for deployment we have the following workflow:
+</p>
+
+<p>
+deploy target --&gt; ws_ant (WAS environment initialization) --&gt; deploy-ear --&gt; start_ear
+</p>
+
+
+
+<p>
+and for undeployment:
+</p>
+
+<p>
+undeploy target --&gt; ws_ant (WAS environment initialization) --&gt; undeploy-ear
+</p>
+
+
+
+
+<p>
+Another thing to notice is that deploy also includes call for undeployment - this is provided in case if integration tests failed (which cause all later maven phases including undeployment being aborted) so that next deployment operation cleans up before its own execution. In case if the application is not deployed the undeployment fails silently without aborting the whole workflow (unfortunately if deployment fails its also silent but then our integration test also will fail because there is no application to test :) ).
+</p>
+
+<p>
+And finally we have deploy-ear, start-app and undeploy-ear which call websphere tasks directly. We also have host and port configured in deploy.properties file:
+</p>
+
+
+<p>
+host=localhost
+</p>
+<p>
+port=8880
+</p>
+
+
+
+
+
+
+<p>
+One last side-note, if you want to have a source directory in generated RAD project when you run mvn eclipse:rad you woudl want to use packaging type jar (&lt;packaging&gt;jar&lt;/packaging&gt;)
+</p>
+
+
+
+
+<p>
+Parent module
+</p>
+
+
+
+<p>
+This is the last module which serves as an orchestration assembly module for the whole application. It also defines a functional tests profile which allows developers to work on the application and build without invoking system integration tests (they can be slow depending on your application complexity). We can invoke the funstional test profile, for example, on our continuous integration server (continuum is used in this case). This a typical parent module with packaging type pom (&lt;packaging&gt;pom&lt;/packaging&gt;). It has only two 'specific' for this whole task sections: the module and profile definition and compiler settings.
+</p>
+
+<p>
+The module definition is pretty simple:
+</p>
+<pre class="example">
+&lt;modules&gt;
+    &lt;module&gt;ejb_module&lt;/module&gt;
+    &lt;module&gt;war_module&lt;/module&gt;
+    &lt;module&gt;ear_module&lt;/module&gt;
+&lt;/modules&gt;
+&lt;!--
+    Functional test, activation can be done by adding '-P functional-test' (no quotes) at the end of the command line e.g.:&gt; mvn install -P functional-test
+--&gt;
+&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;id&gt;functional-test&lt;/id&gt;
+        &lt;activation&gt;
+            &lt;property&gt;
+                &lt;name&gt;enableCiProfile&lt;/name&gt;
+                &lt;value&gt;true&lt;/value&gt;
+            &lt;/property&gt;
+        &lt;/activation&gt;
+        &lt;modules&gt;
+            &lt;module&gt;test_module&lt;/module&gt;
+        &lt;/modules&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;
+</pre>
+
+<p>
+According to the configuration above the default execution of build wont include the building of functional (integration) tests module. If we want to include integration tests as part of our build we can append "-P functional-test" at the command line, e.g. mvn install -P functional-test. There are also other ways of triggering this profile.
+</p>
+
+<p>
+And the last section of the parent module forces compiler to compile all java classes to java 1.4 compatible bytecode across all modules (because WAS-6 supports bytecode upto java 1.4):
+</p>
+
+<pre class="example">
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.4&lt;/source&gt;
+                &lt;target&gt;1.4&lt;/target&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</pre>
+
+<p>
+Because all other modules declare this module as parent one they all use this setting so we don't have to specify it at every module that compiles java code.
+</p>
+
+<p>
+Now, in order to generate RAD projects from our maven files we can use the following command:
+</p>
+
+<p>
+mvn eclipse:rad
+</p>
+
+<p>
+and maven eclipse plugin takes care of the rest. Now, to build the entire project we can invoke the following command:
+</p>
+
+<p>
+mvn install -Duser.install.root="path to your WAS profile dir"
+</p>
+
+
+
+<p>
+Where you can specify the path to your websphere profile dir which is needed to build stubs and sceletons for your EJBs (as specified in the EJB module section).
+And finally, if we want to have a complete build including the integration tests that also deploy the application to the server we can issue the following command:
+</p>
+
+<p>
+mvn install -P functional-test -Duser.install.root="path to your WAS profile dir"
+</p>
+
+
+
+<p>
+This line looks pretty long so we can put in a command line script.
+</p>
+
+
+<p>
+If there are any questions or constructive comments you are welcome to send them in! :)
+Posted by Siarhei Dudzin at 3:41 PM
+13 comments:
+</p>
+
+<p>
+Anonymous said...
+</p>
+
+<p>
+    Maybe <a href="http://mojo.codehaus.org/was6-maven-plugin">http://mojo.codehaus.org/was6-maven-plugin</a> can be of use for you?
+    March 16, 2008 4:37 PM 
+Siarhei Dudzin said...
+</p>
+
+<p>
+    This definitely looks interesting! At the time of writing there were no plugins available.
+    March 16, 2008 5:04 PM 
+Anonymous said...
+</p>
+
+<p>
+    it is really a great article.although i got this article after i was done with maven with same approach. i was thinking to document it,but i dont need to do so. it is more than enough. he has done a gre8 work. just gre8888888888888888
+    May 8, 2008 10:37 AM 
+Anonymous said...
+</p>
+
+<p>
+Would you include the ejbDeploy.xml code as well, as this is missing from your post.
+</p>
+
+<p>
+    Thanx
+    May 31, 2008 7:24 PM 
+Siarhei Dudzin said...
+</p>
+
+<p>
+    It is not missing, it is just before the "Parent module" section :)
+    June 1, 2008 1:48 PM 
+netslow said...
+</p>
+
+<p>
+    Do you know is there any possibility to set automatic redeploy after server starts? Maybe there is an option to set auto redeploy after (for example) 60 seconds?
+    July 3, 2008 6:33 AM 
+Siarhei Dudzin said...
+</p>
+
+<p>
+    You could try Hot deployment and dynamic reloading
+    July 3, 2008 10:28 AM 
+subhas said...
+</p>
+
+<p>
+I am very new in Maven world.I want to develop J2EE project(EJB,WEB) using RAD 6 and Maven.After generate the RAD related file when I import WebModule(in eclipse way , in eclipse works fine) into RAD I got some build error and it's not allowed to deploy because it's not part of valid j2ee project.So I tried to import Enterprise module and it's imported properly but war included into the EAR.So I can't change the code.
+Can any body give any clue how you are debug and fix in RAD of maven project.
+</p>
+
+<p>
+    Subhas
+    July 15, 2008 2:14 PM 
+Siarhei Dudzin said...
+</p>
+
+<p>
+    For rad use eclipse:rad and eclipse:rad-clean goals. Do <b>not</b> put WTP 2.0 property in maven-eclipse-plugin configuration.
+    July 15, 2008 4:24 PM 
+subhas said...
+</p>
+
+<p>
+Thank you very much for quick reply.I used maven eclipse plugin for create RAD specific .project and others file.As you describe I put the following entry in my pom.xml
+</p>
+
+<p>
+plugin
+groupId::org.apache.maven.plugins
+artifactId::maven-eclipse-plugin
+configuration:
+buildOutputDirectory :: ${basedir}/#+BEGIN_SRC 
+</p>
+
+<p>
+additionalBuildcommands
+buildcommand::com.ibm.etools.ctc.serviceprojectbuilder
+additionalBuildcommands
+</p>
+
+<p>
+classpathContainers
+classpathContainer::com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60/was.base.v6
+</p>
+
+<p>
+classpathContainers
+configuration
+plugin
+</p>
+
+
+<p>
+But after creating the project related file When I tried to import into the RAD 6 it's not build properly , I got some popuup with not build properly ..
+</p>
+
+
+<p>
+Can you provide some details how you import this project(maven project) into RAD 6 workspace.I used import -&gt; import from exting project -&gt; select path -&gt; FiNISH
+</p>
+
+<p>
+    After build fail when I try to deploy into Test Server it's gave message like not valid J2EE project.
+    July 15, 2008 6:11 PM 
+Siarhei Dudzin said...
+</p>
+
+<p>
+This is exactly how I import the projects.
+</p>
+
+<p>
+    If you use web services I recommend to use default RAD directory layout (it can't always deal 'customized' source and web folders).
+    July 18, 2008 4:05 PM 
+Dev_Chennai said...
+</p>
+
+<p>
+    Hi,
+    I want to install my project in Both WebSphere &amp; Weblogic Servers.So I want to creat a server based maven build.Is it possible to create this.For example,If i want to build for WebSphere,I need ejbDeploy process &amp; for Weblogic I don't need.Any one has any documents or ideas..?
+    September 10, 2008 9:37 PM 
+Dev_Chennai said...
+</p>
+
+<p>
+Hi,
+I want to install my project in Both WebSphere &amp; Weblogic Servers.So I want to creat a server based maven build.Is it possible to create this.For example,If i want to build for WebSphere,I need ejbDeploy process &amp; for Weblogic I don't need.Any one has any documents or ideas
+September 10, 2008 9:38 PM 
+</p>
+
+<p>
+Post a Comment
+Newer Post Older Post 
+</p>
+
+
+<p>
+Ran mvn -Dmaven.test.skip  will skip test, this will speed the install process. 
+</p>
+
+
+<p>
+remove xercer jars from ear file to avoid the cast exception. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24">Grails 1.1.1正式支持Google App Engine</h2>
+<div class="outline-text-2" id="text-24">
+<p>
+<a href="http://www.infoq.com/cn/news/2009/05/grails-gae">http://www.infoq.com/cn/news/2009/05/grails-gae</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25">Check  box image</h2>
+<div class="outline-text-2" id="text-25">
+<p>
+<a href="http://images.google.cn/images?as_q=checkbox&gbv=2&hl=zh-CN&newwindow=1&btnG=Google+%E6%90%9C%E7%B4%A2&as_epq=&as_oq=&as_eq=&imgtype=&imgsz=icon&imgw=16&imgh=16&as_filetype=&imgc=&as_sitesearch=&as_st=y">google
+search</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-26" class="outline-2">
+<h2 id="sec-26">add new template</h2>
+<div class="outline-text-2" id="text-26">
+<ol class="org-ol">
+<li>update the file /home/will/newlogistics/mda/#+BEGIN_SRC 
+</li>
+</ol>
+
+<pre class="example">
+ &lt;mapping&gt;
+     &lt;from&gt;&lt;![CDATA[&lt;!-- cartridge-template merge-point --&gt;]]&gt;&lt;/from&gt;
+     &lt;to&gt;
+         &lt;![CDATA[
+
+&lt;template
+     path="templates/bpm4struts/pages/crud/dojo.jsp.vsl"
+     outputPattern="{0}/{1}dojo.jsp"
+     outlet="pages"
+     overwrite="true"&gt;
+     &lt;modelElements variable="manageable"&gt;
+         &lt;modelElement&gt;
+             &lt;type name="org.andromda.cartridges.bpm4struts.metafacades.StrutsManageableEntity"/&gt;
+         &lt;/modelElement&gt;
+     &lt;/modelElements&gt;
+ &lt;/template&gt;
+         ]]&gt;
+     &lt;/to&gt;
+ &lt;/mapping&gt;
+</pre>
+
+<ol class="org-ol">
+<li>create file: /home/will/newlogistics/mda/#+BEGIN_SRC 
+</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-27" class="outline-2">
+<h2 id="sec-27">SCHEMA names in persistent tables</h2>
+<div class="outline-text-2" id="text-27">
+<p>
+<a href="http://galaxy.andromda.org/forum/viewtopic.php?t=1204">http://galaxy.andromda.org/forum/viewtopic.php?t=1204</a>
+</p>
+
+<p>
+@andromda.persistence.table
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-28" class="outline-2">
+<h2 id="sec-28">Install HsqlDB</h2>
+<div class="outline-text-2" id="text-28">
+<p>
+ Install a database
+The andromda's default setting is for HsqlDB, so we need not install another database. We only need download the JBoss <a href="http://www.jboss.org">http://www.jboss.org</a>
+Edit the Hsqldb configure file located at %JBoss_Home%\server\default\deploy\hsqldb-ds.xml
+uncomment:
+</p>
+<pre class="example">
+&lt;connection-url&gt;__my_company_1__bc:hsqldb:hsql://localhost:1701&lt;/connection-url&gt;
+</pre>
+<p>
+comment :
+&lt;#+BEGIN_SRC 
+</p>
+
+
+<p>
+uncomment
+</p>
+<pre class="example">
+&lt;mbean code="org.jboss.__my_company_1__bc.HypersonicDatabase"
+    name="jboss:service=Hypersonic"&gt;
+    &lt;attribute name="Port"&gt;1701&lt;/attribute&gt;
+    &lt;attribute name="Silent"&gt;true&lt;/attribute&gt;
+    &lt;attribute name="Database"&gt;default&lt;/attribute&gt;
+    &lt;attribute name="Trace"&gt;false&lt;/attribute&gt;
+    &lt;attribute name="No_system_exit"&gt;true&lt;/attribute&gt;
+  &lt;/mbean&gt;
+</pre>
+
+
+<p>
+and
+</p>
+<pre class="example">
+&lt;mbean code="org.jboss.__my_company_1__bc.HypersonicDatabase"
+     name="jboss:service=Hypersonic,database=localDB"&gt;
+     &lt;attribute name="Database"&gt;localDB&lt;/attribute&gt;
+     &lt;attribute name="InProcessMode"&gt;true&lt;/attribute&gt;
+   &lt;/mbean&gt;
+</pre>
+<p>
+OK, HsqlDB is ready to use.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-29" class="outline-2">
+<h2 id="sec-29">Customize web service</h2>
+<div class="outline-text-2" id="text-29">
+<p>
+Using the following code to get the association. 
+</p>
+
+<pre class="example">
+&lt;!--
+
+## Generate the relation methods.
+#foreach ($associationEnd in $service.associationEnds)
+#set ($target = $associationEnd.otherEnd)
+#if ($target.navigable)
+    private $target.getterSetterTypeName $target.name;
+
+    /**
+     * Get the $target.name
+$target.getDocumentation("     * ")
+     */
+    public $target.getterSetterTypeName ${target.getterName}()
+    {
+        return this.${target.name};
+    }
+
+## - always have as public, having read-only causes too many issues when attempting to
+##   use in other cartridges
+    /**
+     * Sets the $target.name
+     */
+    public void ${target.setterName}($target.getterSetterTypeName $target.name)
+    {
+        this.${target.name} = ${target.name};
+    }
+
+#end
+#end
+
+--&gt;
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-30" class="outline-2">
+<h2 id="sec-30">Javascript</h2>
+</div>
+
+<div id="outline-container-sec-31" class="outline-2">
+<h2 id="sec-31">* delete cookie</h2>
+<div class="outline-text-2" id="text-31">
+<pre class="example">
+&lt;input type="submit" /&gt;
+
+&lt;input type ="Button" name="clear" value="Clear Cookies" onclick="deleteAllCookies();"/&gt;
+&lt;div id="cookieinfo"&gt;
+Here.
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;script&gt;
+function deleteAllCookies() {
+   	delete_cookie();
+	
+	show_cookie();
+}
+
+
+
+function delete_cookie (  ){
+  	document.cookie = "stCookie=;expires=Thu, 01-Jan-70 00:00:01 GMT;path=/;domain=ibm.com";
+  	document.cookie = "wbac=;expires=Thu, 01-Jan-70 00:00:01 GMT;path=/;domain=ibm.com";
+	document.cookie = "wbac1=;expires=Thu, 01-Jan-70 00:00:01 GMT;path=/;domain=ibm.com";
+	document.cookie = "JSESSIONID=;expires=Thu, 01-Jan-70 00:00:01 GMT;path=/";
+}
+
+
+
+function show_cookie(){
+	var cookies = document.cookie.split(";");
+    var str=""
+    for (var i = 0; i &lt; cookies.length; i++) {
+        var cookie = cookies[i];
+        str+=cookie+"&lt;br&gt;"
+    }
+	document.getElementById('cookieinfo').innerHTML = str;
+}
+
+	show_cookie();
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+</pre>
+</div>
+
+<div id="outline-container-sec-31-1" class="outline-3">
+<h3 id="sec-31-1">mydb2 online</h3>
+<div class="outline-text-3" id="text-31-1">
+<p>
+<a href="http://docs.dojocampus.org/dojo/xhrPost?highlight=(dojo\.xhrPost)">http://docs.dojocampus.org/dojo/xhrPost?highlight=(dojo\.xhrPost)</a>
+</p>
+
+<pre class="example">
+function moreParamsToUrl(){
+	var params = {};
+	var moreParams = document.getElementById("moreparams");
+	if((moreParams != null) &amp;&amp; (moreParams.value!="")) {
+		//alert(moreParams.value);
+		var paramsArray = moreParams.value.split('&amp;');
+		for( var i=0; i&lt;paramsArray.length; i++ ){
+			var param = paramsArray[i].split('=');
+			params[param[0]] = param[1];
+		}
+	}
+	//alert(dojo.toJson(params));
+	return params;
+}
+
+function loadTreeFromUrl(nodeItem){
+			var url = nodeItem.url.toString();
+			var xhrArgs = {
+			url: url,
+			sync : false,
+			postData : dojo.toJson(moreParamsToUrl()),
+			headers: {"Content-Type": "application/json"},
+			handleAs: "text",
+			preventCache : true,
+			load: function(data){
+				try{
+				//alert(data);
+				var treeNodeID = getRequestParam(url,'nodeID');
+				var treeNodes = dojo.fromJson(data);
+				if( !treeNodes.nodes.length ){
+					treeNodes.nodes.push({id:'',desc:treeNodes.messages['No.Result.Msg'],loaded:true});
+				}
+				
+				if( !treeNodeID.length ){
+					var treeName = unescape(getRequestParam(url,'treeName'));
+					if("ProdTypePartTree"==treeName){
+						url += '&amp;nodeID=0';
+					}
+					var items = handleNode(treeNodes.nodes,'0',url);		
+					createTree(treeName,items);
+					dojo.connect(tree, "_onExpandoClick", function(message){
+							asyncLoadNodesData(message);
+					});
+					if(unescape(getRequestParam(addMoreParamsToUrl(url),'dataRetrievalType'))!='browse'){
+						dojo.byId('switch_collapse_expand').style.display = "";
+					}
+					return;
+				}
+				var childItems = handleNode(treeNodes.nodes,nodeItem.nodeId,url);	
+				//alert(dojo.toJson(childItems));
+				for( var i in childItems ){
+					tree.store.newItem(childItems[i],{parent: nodeItem, attribute:"children"});
+				}
+				expand_all(tree._itemNodeMap[tree.model.getIdentity(nodeItem)]);
+				}catch(e){
+					alert(e.message);
+				}
+			},
+			error: function(error){
+				tree.store.setValue(nodeItem, "loaded",false);
+				alert(error);
+			},
+			handle : function(resultContent){
+				tree._itemNodeMap[tree.model.getIdentity(nodeItem)].unmarkProcessing();
+			}
+		}
+		var deferred = dojo.xhrPost(xhrArgs);
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-32" class="outline-2">
+<h2 id="sec-32"><a href="http://www.cnblogs.com/leadzen/archive/2008/09/07/1285764.html">JavaScript判断浏览器类型及版本</a></h2>
+<div class="outline-text-2" id="text-32">
+<pre class="example">
+&lt;script type="text/javascript"&gt;
+    var Sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    window.ActiveXObject ? Sys.ie = ua.match(/msie ([\d.]+)/)[1] :
+    document.getBoxObjectFor ? Sys.firefox = ua.match(/firefox\/([\d.]+)/)[1] :
+    window.MessageEvent &amp;&amp; !document.getBoxObjectFor ? Sys.chrome = ua.match(/chrome\/([\d.]+)/)[1] :
+    window.opera ? Sys.opera = ua.match(/opera.([\d.]+)/)[1] :
+    window.openDatabase ? Sys.safari = ua.match(/version\/([\d.]+)/)[1] : 0;
+
+    //以下进行测试
+    if(Sys.ie) document.write('IE: '+Sys.ie);
+    if(Sys.firefox) document.write('Firefox: '+Sys.firefox);
+    if(Sys.chrome) document.write('Chrome: '+Sys.chrome);
+    if(Sys.opera) document.write('Opera: '+Sys.opera);
+    if(Sys.safari) document.write('Safari: '+Sys.safari);
+&lt;/script&gt;
+</pre>
+</div>
+
+<div id="outline-container-sec-32-1" class="outline-3">
+<h3 id="sec-32-1">Popup Calendar used in DSW</h3>
+<div class="outline-text-3" id="text-32-1">
+<p>
+<a href="http://www.dynarch.com/static/jscalendar-1.0/simple-1.html">http://www.dynarch.com/static/jscalendar-1.0/simple-1.html</a>
+</p>
+
+<pre class="example">
+&lt;p&gt;&lt;b&gt;Hidden field, display area.&lt;/b&gt; Very much like the previous
+examples,
+but we now disable some dates (all weekends, that is, Saturdays and
+Sundays).&lt;/p&gt;
+
+&lt;form action="#" method="get" style="visibility: hidden;"&gt;
+&lt;input name="date" id="f_date_f" type="hidden"&gt;
+&lt;/form&gt;
+
+&lt;p&gt;Your birthday:
+   &lt;span style="background-color: rgb(255, 255, 136); cursor:
+default;" onmouseover="this.style.backgroundColor='#ff0';"
+onmouseout="this.style.backgroundColor='#ff8';" id="show_f"&gt;Click to
+open date selector&lt;/span&gt;.&lt;/p&gt;
+
+&lt;script type="text/javascript"&gt;
+    Calendar.setup({
+            inputField     :    "f_date_f",     // id of the input field
+	            ifFormat       :    "%Y/%d/%m",     // format of
+the input field (even if hidden, this format will be honored)
+        displayArea    :    "show_f",       // ID of the span where
+the date is to be shown
+        daFormat       :    "%A, %B %d, %Y",// format of the displayed
+date
+        align          :    "Tl",           // alignment (defaults to
+"Bl")
+        dateStatusFunc :    function (date) { // disable weekend days
+(Saturdays == 6 and Subdays == 0)
+                              return (date.getDay() == 6 ||
+date.getDay() == 0) ? true : false;
+                            }
+			        });
+				&lt;/script&gt;
+</pre>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-32-2" class="outline-3">
+<h3 id="sec-32-2">Javascript debugger</h3>
+<div class="outline-text-3" id="text-32-2">
+<p>
+Just started using <a href="http://www.billyreisinger.com/jash/">Jash</a> for debugging my JavaScript.  It is a
+JavaScript shell that you can dynamically startup and directly execute
+JavaScript functions within another webpage.  So when I am developing,
+I can try out new JavaScript or execute debug statements right in the
+page without having to edit server side code or reload.  Very easy to
+use, zero install, very impressive tool. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-32-3" class="outline-3">
+<h3 id="sec-32-3">REX</h3>
+<div class="outline-text-3" id="text-32-3">
+<p>
+3）match  得到查询数组
+</p>
+<pre class="example">
+var data = "123123,213,12312,312,3,Cat,cat,dsfsdfs,";
+var reCat = /cat/gi;
+var arrMactches = data.match(reCat)
+
+for (var i=0;i &lt; arrMactches.length ; i++)
+{
+     alert(arrMactches[i]);   //Cat  cat
+}
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-32-4" class="outline-3">
+<h3 id="sec-32-4">Dojo</h3>
+<div class="outline-text-3" id="text-32-4">
+<p>
+<a href="https://bespin.mozilla.com/">https://bespin.mozilla.com/</a>
+</p>
+
+<p>
+<a href="http://dev.aol.com/dojo">http://dev.aol.com/dojo</a>
+</p>
+</div>
+
+<div id="outline-container-sec-32-4-1" class="outline-4">
+<h4 id="sec-32-4-1">build</h4>
+<div class="outline-text-4" id="text-32-4-1">
+<p>
+build.sh profile=standard action=release
+</p>
+
+<p>
+in the jsp, include the dojo.js and mydojo.js in the release folder. Then you need not "require the dojo package"
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-32-4-2" class="outline-4">
+<h4 id="sec-32-4-2"><a href="http://sitepen.com/labs/guides/?guide=DojoQuickStart">Getting the Code</a></h4>
+<div class="outline-text-4" id="text-32-4-2">
+<p>
+Download the newest released version of the Dojo Toolkit from: <a href="http://download.dojotoolkit.org/current-stable/">http://download.dojotoolkit.org/current-stable/</a> 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-32-4-3" class="outline-4">
+<h4 id="sec-32-4-3">Manual</h4>
+<div class="outline-text-4" id="text-32-4-3">
+<p>
+<a href="http://docs.dojocampus.org/manual">dojo manual</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-32-4-4" class="outline-4">
+<h4 id="sec-32-4-4">i18n</h4>
+<div class="outline-text-4" id="text-32-4-4">
+<p>
+<a href="http://www.dojotoolkit.org/book/book-dojo/part-1-life-dojo-dojo-and-dijit-application-examples/example-1-why-doesnt-anyone-fi-0">Internationalization (i18n)</a>
+<a href="http://www.dojotoolkit.org/book/dojo-book-0-9/part-3-programmatic-dijit-and-dojo/i18n/encoding-considerations">Encoding considerations</a>
+</p>
+
+<p>
+This is the sample /home/will/logic.war/demo/JavaScriptSOAPClient_demo/test_grid.html
+</p>
+
+<p>
+dojo.query <a href="http://redesign.dojotoolkit.org/jsdoc/dojo/HEAD/dojo.query">http://redesign.dojotoolkit.org/jsdoc/dojo/HEAD/dojo.query</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-32-4-5" class="outline-4">
+<h4 id="sec-32-4-5">Test page</h4>
+<div class="outline-text-4" id="text-32-4-5">
+<p>
+<a href="http://125.96.95.6:8080/logic/cost/wlCostCrud.html">http://125.96.95.6:8080/logic/cost/wlCostCrud.html</a>
+</p>
+
+<p>
+<a href="http://125.96.95.6:8080/logic/cost/wlCostCrud.html">http://125.96.95.6:8080/logic/cost/wlCostCrud.html</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-32-4-6" class="outline-4">
+<h4 id="sec-32-4-6">Internationalization (i18n)  javascript partprice.js</h4>
+<div class="outline-text-4" id="text-32-4-6">
+<p>
+<i>Notes://D01DBL35/8525721300181EEE/477C010BD75EC87C85256A2D006A582E/52B949983525B8B3852575530024AEDE</i>
+</p>
+
+
+<p>
+There are two options to move the display text from js file to properties file :
+</p>
+
+
+<p>
+Here is the reference for dojo.i18n <a href="http://www.dojotoolkit.org/book/book-dojo/part-1-life-dojo-dojo-and-dijit-application-examples/example-1-why-doesnt-anyone-fi-0">http://www.dojotoolkit.org/book/book-dojo/part-1-life-dojo-dojo-and-dijit-application-examples/example-1-why-doesnt-anyone-fi-0</a>.
+</p>
+
+<p>
+Below is the instruction to update pratprice.js file.
+</p>
+
+<p>
+To use dojo.i18n, we need create some "javascript properties" files. 
+</p>
+
+
+
+<p>
+The partpricemsg.js files(in the picture above) are  "javascript properties" files. They are put in different folders according to the locale.
+</p>
+
+<p>
+{
+</p>
+
+<p>
+no_future_maint_start_date: "Start date of this part cannot be in the future.",
+earlier_than_current_date:"Start date may not be earlier than current date.Please update the start date."
+</p>
+
+
+<p>
+}
+</p>
+
+<p>
+Update partprice.js
+dojo.require("dojo.i18n");
+dojo.registerModulePath("quote.web", "../../");
+dojo.requireLocalization("quote.web","partpricemsg");
+var i18nStr = dojo.i18n.getLocalization("quote.web", "partpricemsg");
+</p>
+
+<p>
+....
+</p>
+
+<p>
+function validateDates(isFTL,startDateYear,startDateMonth,startDateDay,endDateYear,
+                          endDateMonth,endDateDay, backDatingAllowed, isLicencePart,
+                          stdStartDate, stdEndDate, pastYearLimit, currentYear, currentMonth, currentDay) {
+ //check whether start date/end date is earlier than today
+ var today = getDate(currentYear, currentMonth, currentDay);
+ var startDate = getDate(startDateYear, startDateMonth-1, startDateDay);
+ var endDate = getDate(endDateYear, endDateMonth-1, endDateDay);
+</p>
+
+<p>
+ //special trade for licence part, because it's start date should never be in the future
+ if(isLicencePart &amp;&amp; (startDate &gt; today)){
+  //alert("Start date of this part cannot be in the future.");
+  alert(i18nStr["no_future_maint_start_date"]);
+      return false;
+ }
+Update JSPs files
+We need include the dojo.js file and set the value of locale.
+&lt;script  language="javascript"  type="text/javascript" 
+   djConfig="parseOnLoad:true, isDebug: false, locale: 'en'" 
+</p>
+<p>
+   #+BEGIN_SRC "&gt;
+&lt;/script&gt;
+</p>
+
+
+
+
+
+
+
+<p>
+Below is the instruction to update pratprice.js file.
+</p>
+
+<p>
+Rname partprice.js to partprice.jsp
+</p>
+
+<p>
+In order to use jade tags, we need rname partprice.js to partprice.jsp.
+&lt;%@ taglib uri="<i>jadetags.tld" prefix="jade"%&gt;
+/</i> partprice.js
+</p>
+
+<p>
+....
+</p>
+
+<p>
+function validateDates(isFTL,startDateYear,startDateMonth,startDateDay,endDateYear,
+                          endDateMonth,endDateDay, backDatingAllowed, isLicencePart,
+                          stdStartDate, stdEndDate, pastYearLimit, currentYear, currentMonth, currentDay) {
+ //check whether start date/end date is earlier than today
+ var today = getDate(currentYear, currentMonth, currentDay);
+ var startDate = getDate(startDateYear, startDateMonth-1, startDateDay);
+ var endDate = getDate(endDateYear, endDateMonth-1, endDateDay);
+</p>
+
+<p>
+//special trade for licence part, because it's start date should never be in the future
+if(isLicencePart &amp;&amp; (startDate &gt; today)){
+ alert("&lt;jade:i18nContext key="no_future_maint_start_date" basename="appl.i18n.partprice" /&gt;");
+     return false;
+}
+</p>
+
+<p>
+....
+</p>
+
+<p>
+Update JSPs
+ &lt;script language="javascript" type="text/javascript" #+BEGIN_SRC &gt;
+</p>
+
+
+
+
+<ol class="org-ol">
+<li>Discussion pros and cons
+</li>
+</ol>
+
+<p>
+Options ||    Pros    || Cons
+</p>
+<ol class="org-ol">
+<li>Using dojo.i18n |     It is an elegant way. |          Dojo is not bug free. Using dojo.i18n may introduce some bugs which we can
+</li>
+</ol>
+<p>
+not fix.         We need efforts to synchronizing "java properties" and "javascript properties".
+</p>
+<ol class="org-ol">
+<li>Using jade i18n tag |     Use the same java properties.     We are familiar with jade tags. |    It is not an elegant way.
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-32-5" class="outline-3">
+<h3 id="sec-32-5">Dialog</h3>
+</div>
+</div>
+
+
+<div id="outline-container-sec-33" class="outline-2">
+<h2 id="sec-33">EasyMDA 3.4</h2>
+<div class="outline-text-2" id="text-33">
+</div><div id="outline-container-sec-33-1" class="outline-3">
+<h3 id="sec-33-1">papyrus</h3>
+<div class="outline-text-3" id="text-33-1">
+<p>
+Indigo (3.7)
+</p>
+
+<p>
+<a href="http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/indigo">http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/indigo</a>
+</p>
+
+<p>
+<a href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a>
+</p>
+
+<p>
+<a href="http://www.andromda.org/andromda-documentation/getting-started-java/resources/uml-tools/papyrus/install.html">Papyrus Insallation</a>
+</p>
+
+<p>
+Follow the instructions below to install Papyrus.
+</p>
+
+<p>
+Documentation is on the Papyrus site <a href="http://www.eclipse.org/modeling/mdt/papyrus">http://www.eclipse.org/modeling/mdt/papyrus</a>
+Add the update site for Papyrus to Eclipse as specified in <a href="http://www.eclipse.org/modeling/mdt/papyrus/updates/index.php">http://www.eclipse.org/modeling/mdt/papyrus/updates/index.php</a> Install Papyrus from Eclipse by Help -&gt; Install New Software...
+After generating the starter project with the EMF-UML2 modeling option. This creates the project .uml and profile.uml files in the mda\#+BEGIN_SRC .
+Import the starter .uml model into Papyrus to create a papyrus 'diagram', following the instructions at <a href="http://wiki.eclipse.org/Papyrus_User_Guide#Create_a_diagram_from_an_existing_uml_file">http://wiki.eclipse.org/Papyrus_User_Guide#Create_a_diagram_from_an_existing_uml_file</a> Create a diagram from an existing uml file (New -&gt; Initialize Papyrus Diagram).
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-33-2" class="outline-3">
+<h3 id="sec-33-2">UML 2</h3>
+<div class="outline-text-3" id="text-33-2">
+<p>
+<a href="http://www.eclipse.org/modeling/mdt/downloads/?project=uml2">http://www.eclipse.org/modeling/mdt/downloads/?project=uml2</a>
+</p>
+</div>
+
+<div id="outline-container-sec-33-2-1" class="outline-4">
+<h4 id="sec-33-2-1">Install steps</h4>
+<div class="outline-text-4" id="text-33-2-1">
+<ol class="org-ol">
+<li><a href="http://download.eclipse.org/e4/sdk/drops/R-4.1-201106201631/index.php">http://download.eclipse.org/e4/sdk/drops/R-4.1-201106201631/index.php</a>
+</li>
+<li>Update manager
+<ul class="org-ul">
+<li><a href="http://download.eclipse.org/modeling/mdt/updates/releases/">http://download.eclipse.org/modeling/mdt/updates/releases/</a>
+</li>
+<li><a href="http://download.eclipse.org/modeling/emf/updates/releases/">http://download.eclipse.org/modeling/emf/updates/releases/</a>
+</li>
+<li><a href="http://download.eclipse.org/modeling/mdt/uml2tools/updates/interim/">http://download.eclipse.org/modeling/mdt/uml2tools/updates/interim/</a>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-33-3" class="outline-3">
+<h3 id="sec-33-3">Get started</h3>
+<div class="outline-text-3" id="text-33-3">
+<ol class="org-ol">
+<li>edit /etc/envirment to add m2_repo
+
+<p>
+<a href="http://www.andromda.org/docs/andromda-documentation/getting-started-java/env-setup.html">http://www.andromda.org/docs/andromda-documentation/getting-started-java/env-setup.html</a>
+</p>
+</li>
+
+<li>mvn archetype:create -DgroupId=testapp -DartifactId=testapp
+
+<p>
+cd testapp
+</p>
+</li>
+
+<li>Edit pom.xml in this directory to add the following content: 
+</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-">">&lt;/script&gt;
+
+
+
+
+
+
+
+Below is the instruction to update pratprice.js file.
+
+Rname partprice.js to partprice.jsp
+
+In order to use jade tags, we need rname partprice.js to partprice.jsp.
+&lt;%@ taglib uri="/jadetags.tld" prefix="jade"%&gt;
+// partprice.js
+
+....
+
+function validateDates(isFTL,startDateYear,startDateMonth,startDateDay,endDateYear,
+                          endDateMonth,endDateDay, backDatingAllowed, isLicencePart,
+                          stdStartDate, stdEndDate, pastYearLimit, currentYear, currentMonth, currentDay) {
+ //check whether start date/end date is earlier than today
+ var today = getDate(currentYear, currentMonth, currentDay);
+ var startDate = getDate(startDateYear, startDateMonth-1, startDateDay);
+ var endDate = getDate(endDateYear, endDateMonth-1, endDateDay);
+
+ //special trade for licence part, because it's start date should never be in the future
+ if(isLicencePart &amp;&amp; (startDate &gt; today)){
+  alert("&lt;jade:i18nContext key="no_future_maint_start_date" basename="appl.i18n.partprice" /&gt;");
+      return false;
+ }
+
+....
+
+Update JSPs
+ &lt;script language="javascript" type="text/javascript" #+BEGIN_SRC &gt;
+
+
+
+
+3) Discussion pros and cons
+
+Options ||  Pros    || Cons
+1) Using dojo.i18n |    It is an elegant way. |         Dojo is not bug free. Using dojo.i18n may introduce some bugs which we can
+not fix.        We need efforts to synchronizing "java properties" and "javascript properties".
+2) Using jade i18n tag |    Use the same java properties.   We are familiar with jade tags. |   It is not an elegant way.
+
+
+** Dialog
+
+
+* EasyMDA 3.4
+
+**  papyrus
+
+  Indigo (3.7)
+
+ http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/indigo
+
+  http://www.eclipse.org/downloads/
+
+  [[http://www.andromda.org/andromda-documentation/getting-started-java/resources/uml-tools/papyrus/install.html][Papyrus Insallation]]
+
+Follow the instructions below to install Papyrus.
+
+Documentation is on the Papyrus site http://www.eclipse.org/modeling/mdt/papyrus
+Add the update site for Papyrus to Eclipse as specified in http://www.eclipse.org/modeling/mdt/papyrus/updates/index.php Install Papyrus from Eclipse by Help -&gt; Install New Software...
+After generating the starter project with the EMF-UML2 modeling option. This creates the project .uml and profile.uml files in the mda\#+BEGIN_SRC .
+Import the starter .uml model into Papyrus to create a papyrus 'diagram', following the instructions at http://wiki.eclipse.org/Papyrus_User_Guide#Create_a_diagram_from_an_existing_uml_file Create a diagram from an existing uml file (New -&gt; Initialize Papyrus Diagram).
+
+** UML 2
+
+ http://www.eclipse.org/modeling/mdt/downloads/?project=uml2
+
+*** Install steps
+
+  1. http://download.eclipse.org/e4/sdk/drops/R-4.1-201106201631/index.php
+  2. Update manager
+    - http://download.eclipse.org/modeling/mdt/updates/releases/
+    - http://download.eclipse.org/modeling/emf/updates/releases/
+    - http://download.eclipse.org/modeling/mdt/uml2tools/updates/interim/
+
+** Get started
+
+1) edit /etc/envirment to add m2_repo
+
+  http://www.andromda.org/docs/andromda-documentation/getting-started-java/env-setup.html
+
+2)  mvn archetype:create -DgroupId=testapp -DartifactId=testapp
+
+    cd testapp
+
+3) Edit pom.xml in this directory to add the following content: 
+
+#+BEGIN_SRC
+
+&lt;repositories&gt;
+    &lt;repository&gt;
+        &lt;id&gt;sonatype&lt;/id&gt;
+        &lt;name&gt;Sonatype Repository&lt;/name&gt;
+        &lt;url&gt;http://oss.sonatype.org/content/groups/public&lt;/url&gt;
+       &lt;snapshots&gt;
+          &lt;enabled&gt;true&lt;/enabled&gt;
+       &lt;/snapshots&gt;
+    &lt;/repository&gt;
+    &lt;repository&gt;
+        &lt;id&gt;jboss&lt;/id&gt;
+        &lt;name&gt;JBoss Repository&lt;/name&gt;
+        &lt;url&gt;http://repository.jboss.org/nexus/content/groups/public-jboss/&lt;/url&gt;
+    &lt;/repository&gt;
+  &lt;/repositories&gt;
+  &lt;pluginRepositories&gt;
+    &lt;pluginRepository&gt;
+        &lt;id&gt;sonatype&lt;/id&gt;
+        &lt;name&gt;Sonatype Repository&lt;/name&gt;
+        &lt;url&gt;http://oss.sonatype.org/content/groups/public&lt;/url&gt;
+       &lt;snapshots&gt;
+          &lt;enabled&gt;true&lt;/enabled&gt;
+       &lt;/snapshots&gt;
+    &lt;/pluginRepository&gt;
+  &lt;/pluginRepositories&gt;
+&lt;build&gt;
+    &lt;defaultGoal&gt;compile&lt;/defaultGoal&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.andromda.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;andromdapp-maven-plugin&lt;/artifactId&gt;
+            &lt;version&gt;3.5-SNAPSHOT&lt;/version&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</pre>
+</div>
+
+
+<ol class="org-ol">
+<li>mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.5-SNAPSHOT:generate
+</li>
+</ol>
+
+<pre class="example">
+INFO  [AndroMDA] discovered andromdapp type --&gt; 'j2ee'
+INFO  [AndroMDA] discovered andromdapp type --&gt; 'richclient'
+
+Please choose the type of application to generate [j2ee, richclient]
+j2ee
+
+Please enter the parent directory of your new application directory (i.e. C:/Workspaces): 
+/home/will/ideas/easymda3.5
+
+Please enter your first and last name (i.e. Chad Brandon): 
+Will Chang
+
+Which kind of modeling tool will you use?
+(uml1.4 or uml2 for .xml.zip/.xml/.xmi/.zargo files,
+emf-uml22 for .uml files, rsm7 for .emx files) [uml1.4, uml2, emf-uml22, rsm7]: 
+emf-uml22
+
+Please enter the name (maven project description) of your J2EE project (i.e. Animal Quiz): 
+easymda
+
+Please enter an id (maven artifactId) for your J2EE project (i.e. animalquiz): 
+easymda
+
+Please enter a version for your project (i.e. 1.0-SNAPSHOT): 
+
+
+Please enter a version for your project (i.e. 1.0-SNAPSHOT): 
+1.0-SNAPSHOT
+
+Please enter the root package name (maven groupId) for your J2EE project (i.e. org.andromda.samples.animalquiz): 
+com.standino
+
+Would you like an EAR or standalone WAR? [ear, war]: 
+ear
+
+Please enter the type of transactional/persistence cartridge to use (enter 'none' if you don't want to use one) [hibernate, ejb, ejb3, spring, none]: 
+spring
+
+Please enter the programming language to be used in service and dao implementations [java, groovy]: 
+java
+
+Please enter the database backend for the persistence layer [h2, hypersonic, mysql, oracle, db2, informix, mssql, pointbase, postgres, sybase, sabdb, progress, derby, javadb]: 
+db2
+
+Will your project need workflow engine capabilities? (it uses jBPM and Hibernate3)? [yes, no]: 
+yes
+
+Will your project have a web user interface? [yes, no]: 
+yes
+
+Would you like your web user interface to use JSF or Struts? [jsf, struts]: 
+jsf
+
+Would you like a standalone or portlet JSF application (Note: Liferay is the only currently supported portlet container)? [standalone, portlet]: 
+standalone
+
+Would you like to be able to expose your services as web services? [yes, no]: 
+yes
+
+Would you like to use Axis, XFire, CXF, or Sun's Jax-WS as your SOAP Stack? [axis, xfire, cxf, jaxws]: 
+jaxws
+
+Would you like to use the embedded Jetty web server (Maven plugin)? [yes, no]: 
+yes
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-34" class="outline-2">
+<h2 id="sec-34">Working timetracker</h2>
+<div class="outline-text-2" id="text-34">
+<p>
+<a href="http://forum.andromda.org/viewtopic.php?f=9&t=7088&p=29982&hilit=papyrus#p29982">http://forum.andromda.org/viewtopic.php?f=9&t=7088&p=29982&hilit=papyrus#p29982</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-35" class="outline-2">
+<h2 id="sec-35">Struts 2与Dojo</h2>
+<div class="outline-text-2" id="text-35">
+<p>
+<a href="http://www.blogjava.net/max/archive/2007/06/12/123682.html">http://www.blogjava.net/max/archive/2007/06/12/123682.html</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-36" class="outline-2">
+<h2 id="sec-36">KissMDA</h2>
+<div class="outline-text-2" id="text-36">
+<p>
+<a href="https://github.com/crowdcode-de/kissmda">https://github.com/crowdcode-de/kissmda</a>
+</p>
+
+
+<p>
+mvn archetype:generate    -DarchetypeGroupId=de.crowdcode.kissmda.maven   -DarchetypeArtifactId=kissmda-maven-app-archetype
+-DarchetypeVersion=1.0.0   -DgroupId="com.mytest"   -DartifactId="mytestapp"  -DprojectName="mytestapp"
+-DprojectDescription="This is my first project with KissMDA"
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-37" class="outline-2">
+<h2 id="sec-37">RTC plugin Restful web service</h2>
+<div class="outline-text-2" id="text-37">
+</div><div id="outline-container-sec-37-1" class="outline-3">
+<h3 id="sec-37-1">Env and tool setup</h3>
+<div class="outline-text-3" id="text-37-1">
+<p>
+wget -c <a href="http://mirror.bit.edu.cn/eclipse/modeling/mdt/papyrus/downloads/drops/0.10.1/S201308210442/Papyrus-Update-0.10.1RC1.zip">http://mirror.bit.edu.cn/eclipse/modeling/mdt/papyrus/downloads/drops/0.10.1/S201308210442/Papyrus-Update-0.10.1RC1.zip</a> &amp;
+</p>
+
+
+
+<p>
+安装 eclipse mvn 插件 
+</p>
+
+<p>
+Latest m2e release (recommended)
+<a href="http://download.eclipse.org/technology/m2e/releases">http://download.eclipse.org/technology/m2e/releases</a>
+</p>
+
+<p>
+SVN 插件更新站点
+</p>
+
+<p>
+<a href="http://download.eclipse.org/technology/subversive/1.1/update-site/">http://download.eclipse.org/technology/subversive/1.1/update-site/</a>
+</p>
+
+<p>
+UML tool 
+</p>
+
+<p>
+<a href="http://argouml-users.net/index.php?title=AndroMDA">http://argouml-users.net/index.php?title=AndroMDA</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-37-2" class="outline-3">
+<h3 id="sec-37-2">Create project</h3>
+<div class="outline-text-3" id="text-37-2">
+<p>
+mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.4:generate
+</p>
+
+<p>
+/home/will/ideas/RTCPlugin
+</p>
+
+<pre class="example">
+will@will RTCPlugin$ mvn org.andromda.maven.plugins:andromdapp-maven-plugin:3.4:generate
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- andromdapp-maven-plugin:3.4:generate (default-cli) @ standalone-pom ---
+INFO  [AndroMDA] discovered andromdapp type --&gt; 'j2ee'
+INFO  [AndroMDA] discovered andromdapp type --&gt; 'richclient'
+
+Please choose the type of application to generate [j2ee, richclient]
+j2ee
+
+Please enter the parent directory of your new application directory (i.e. C:/Workspaces): 
+/home/will/ideas/RTCPlugin
+
+Please enter your first and last name (i.e. Chad Brandon): 
+Will Chang
+
+Which kind of modeling tool will you use?
+(uml1.4 or uml2 for .xml.zip/.xml/.xmi/.zargo files,
+emf-uml22 for .uml files, rsm7 for .emx files) [uml1.4, uml2, emf-uml22, rsm7]: 
+uml1.4
+
+Please enter the name (maven project description) of your J2EE project (i.e. Animal Quiz): 
+RTC plugin Restful web service 
+
+Please enter an id (maven artifactId) for your J2EE project (i.e. animalquiz): 
+rtcpluginrestfulws
+
+Please enter a version for your project (i.e. 1.0-SNAPSHOT): 
+
+
+Please enter a version for your project (i.e. 1.0-SNAPSHOT): 
+1.0-SNAPSHOT
+
+Please enter the root package name (maven groupId) for your J2EE project (i.e. org.andromda.samples.animalquiz): 
+com.ibm.dsw.rtc.plugin.rest
+
+Would you like an EAR or standalone WAR? [ear, war]: 
+ear
+
+Please enter the type of transactional/persistence cartridge to use (enter 'none' if you don't want to use one) [hibernate, ejb, ejb3, spring, none]: 
+spring
+
+Please enter the programming language to be used in service and dao implementations [java, groovy]: 
+java
+
+Please enter the database backend for the persistence layer [h2, hypersonic, mysql, oracle, db2, informix, mssql, pointbase, postgres, sybase, sabdb, progress, derby, javadb]: 
+h2
+
+Will your project need workflow engine capabilities? (it uses jBPM and Hibernate3)? [yes, no]: 
+no
+
+Will your project have a web user interface? [yes, no]: 
+yes
+
+Would you like your web user interface to use JSF or Struts? [jsf, struts]: 
+struts
+
+Would you like to be able to expose your services as web services? [yes, no]: 
+yes
+
+Would you like to use Axis, XFire, CXF, or Sun's Jax-WS as your SOAP Stack? [axis, xfire, cxf, jaxws]: 
+cxf
+
+What is your JAX-WS REST provider/consumer media type?
+(none for JAX-WS only, xml for JAX-RS only, or appxml, json, atom, plain, multipart, fastinfoset, yaml) [none, xml, appxml, json, atom, plain, fastinfoset, yaml, multipart]: 
+json
+
+Would you like to use the embedded Jetty web server (Maven plugin)? [yes, no]: 
+no
+-----
+</pre>
+
+
+<p>
+修改app/pom.xml 设置jboos7新的部署目录 ${jboss.home}/standalone/deployments/
+</p>
+
+
+<p>
+需要找到一种方式来编辑uml,最好是可以使用eclipse papyrus. 现在需要使用3.5来试一试。
+</p>
+</div>
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+        <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">创建日期：2013-12-19</span>
+        <span title="last modification date" class="post-info">修改日期：2015-02-17</span>
+        <span title="tags" class="post-info"><a href="/tags/mda/">mda</a>, <a href="/tags/velocity/">velocity</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/html/html/mda";
+          var disqus_url = "http://standino.github.io/blog/html/html/mda";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+    <!-- jQuery Version 1.11.0 -->
+    <script src="/media/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/media/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/media/js/plugins/morris/raphael.min.js"></script>
+    <script src="/media/js/plugins/morris/morris.min.js"></script>
+    <script src="/media/js/plugins/morris/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/media/js/sb-admin-2.js"></script>
+
+
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - 2015 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

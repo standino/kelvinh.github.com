@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <title>Using mydb2 script to automatic db2 deployment - Keep going</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Will Chang" />
+    <meta name="description" content="Using mydb2 script to automatic db2 deployment" />
+    <meta name="keywords" content="db2,ppt" />
+    <!-- Bootstrap Core CSS -->
+    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+  <body class="container">
+    <div id="wrapper">
+      <!-- Navigation -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+  </div>
+  <!-- /.navbar-header -->
+
+  <ul class="nav navbar-top-links navbar-right">
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-messages">
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>Read All Messages</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-messages -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-tasks">
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 1</strong>
+                <span class="pull-right text-muted">40% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                  <span class="sr-only">40% Complete (success)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 2</strong>
+                <span class="pull-right text-muted">20% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                  <span class="sr-only">20% Complete</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 3</strong>
+                <span class="pull-right text-muted">60% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                  <span class="sr-only">60% Complete (warning)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 4</strong>
+                <span class="pull-right text-muted">80% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                  <span class="sr-only">80% Complete (danger)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>See All Tasks</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-tasks -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-alerts">
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-comment fa-fw"></i> New Comment
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+              <span class="pull-right text-muted small">12 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-envelope fa-fw"></i> Message Sent
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-tasks fa-fw"></i> New Task
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-upload fa-fw"></i> Server Rebooted
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>See All Alerts</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-alerts -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-user">
+        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+        </li>
+        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+        </li>
+        <li class="divider"></li>
+        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        </li>
+      </ul>
+      <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+  </ul>
+  <!-- /.navbar-top-links -->
+
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="searchform" action="http://search.aol.com/aol/search">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" name="q" id="s" value="site:standino.github.io">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+          <!-- /input-group -->
+        </li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/work/">Work</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/standino">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+  </div>
+  <!-- /.navbar-static-side -->
+</nav>
+
+      <div>
+  <div class="post">
+    <div id="page-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Using mydb2 script to automatic db2 deployment</h1>
+          
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Problems</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+&lt;slide title=" Why need automation"&gt;
+</p>
+<ul class="org-ul">
+<li>Agile development need automatic as many as possible tasks.
+</li>
+<li>We must find out which table and SPs were changed and only deploy the changed DB objects.
+</li>
+</ul>
+<p>
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide title=" Difficulty"&gt;
+</p>
+<ol class="org-ol">
+<li>To get the change sets of the release.
+</li>
+<li>To get the dependence between web and ods.
+</li>
+<li>Must drop the related UDF before reload a table or UDF
+</li>
+<li>We can not roll back stored procedure easily.
+</li>
+<li>To prepare replication change request.
+</li>
+<li>To identify which stored procedure will be impacted by a specific CR.
+</li>
+</ol>
+<p>
+&lt;/slide&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Solution --- mydb2 script</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">FVT</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+&lt;slide title=" FVT Deployment"&gt;
+</p>
+
+<p>
+<b>Input:</b>
+</p>
+
+<ul class="org-ul">
+<li>Source code folder
+</li>
+<li>FVT database name
+</li>
+</ul>
+
+<p>
+<b>Logic:</b>
+</p>
+
+<ul class="org-ul">
+<li>Compare the source code
+</li>
+<li>Get change list
+</li>
+<li>Get the source code of the db2 objects which depend on the db2 objects in the change list
+</li>
+<li>Generate CR
+</li>
+</ul>
+
+<p>
+&lt;/slide&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">UAT &amp; MTP</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+&lt;slide title=" UAT or Production deployment"&gt;
+</p>
+
+<p>
+<b>Input:</b>
+</p>
+
+<ul class="org-ul">
+<li>FVT database name
+</li>
+<li>UAT or Production database name
+</li>
+</ul>
+
+<p>
+<b>Logic:</b>
+</p>
+
+<ul class="org-ul">
+<li>Compare the source code
+</li>
+<li>Get change list
+</li>
+<li>Get the source code of the db2 objects which depend on the db2 objects in the change list
+</li>
+<li>Generate CR
+</li>
+</ul>
+
+<p>
+&lt;/slide&gt;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">How to use mydb2 script</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Introduction</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+&lt;slide title="Introduction"&gt;
+</p>
+
+<ul class="org-ul">
+<li>With mydb2 you can get the difference between database or cvs.
+</li>
+<li>mydb2 is written in bash, You can run it on cygwin/windows or Linux os
+</li>
+</ul>
+
+<p>
+&lt;/slide&gt;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Commands</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+&lt;slide title="Commands"&gt;
+</p>
+
+<ol class="org-ol">
+<li>conn [dbname]  -- connect to a database
+</li>
+<li>listconn       -- list all connections
+</li>
+<li>view  [spname] -- view the source code of SP or UDF
+</li>
+<li>check [spname]                -- call the sample call in the source code of SP or UDF
+</li>
+<li>rebindall                     -- rebind all invalid SP
+</li>
+<li>table [schema] [table name]   -- view the definition of table
+</li>
+</ol>
+
+<p>
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide title="Commands"&gt;
+</p>
+
+<ol class="org-ol">
+<li>dep [schema] [table name]                              -- view the dependence
+</li>
+<li>diffsp [sourcedb] [targetdb] [list file path]           -- compare SPs between two databases
+</li>
+<li>difftab [sourcedb] [targetdb] [list_file_path]          -- compare tables/views between two databases
+</li>
+<li>diffcvs [dbname] [local_cvs_path] [list_file_path]            -- compare scripts between db and localcvs
+</li>
+<li>move [sourcedb] [targetdb] [the path of project] (date)       -- Example: move duke rod c:/dsw/quote/head/quoteSQL 200810010000
+</li>
+</ol>
+
+<p>
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide title="Commands"&gt;
+</p>
+
+<ol class="org-ol">
+<li>exp [sql file]                                                -- explain the sql in the sql file
+</li>
+<li>exf [sql file]              -- explain the sql in the sql file with the cost detail
+</li>
+<li>editor                      -- set your text editor to open file generated by mydb2
+</li>
+<li>quit                        -- exit
+</li>
+</ol>
+
+<p>
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide title="传统思维的误区"&gt;
+</p>
+
+<p>
+<img src="file:///home/will/ideas/dsw/presentation/ThinkingWays/BacoDiscussionsBlob.jpeg" alt="BacoDiscussionsBlob.jpeg" />
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide title="传统思维的误区"&gt;
+</p>
+
+<ul class="org-ul">
+<li>局限性思维
+</li>
+<li>从自身的角度去考虑
+</li>
+<li>从片面的角度去考虑
+</li>
+<li>情绪会影响思维的效率
+</li>
+
+<li>对抗性思维
+</li>
+<li>指出错误，有利于进一步提高
+</li>
+<li>容易引起争论，破坏关系
+</li>
+<li>缺乏计划性，建设性和创新
+</li>
+</ul>
+
+
+<p>
+&lt;/slide&gt;
+&lt;slide title="六顶思维帽方法"&gt;
+</p>
+
+<p>
+六顶思考帽是英国学者爱德华·德·波诺(Edward de Bono)博士开发的一种思维训练模式，或者说是一个全面思考问题的模型。它提供了“平行思维”的
+工具，避免将时间浪费在互相争执上。强调的是“能够成为什么”，而非 “本身是什么”，是寻求一条向前发展的路，而不是争论谁对谁错。运用波诺
+的六顶思考帽，将会使混乱的思考变得更清晰，使团体中无意义的争论变成集思广益的创造，使每个人变得富有创造性。  
+&lt;/slide&gt;
+&lt;slide title="六顶思维帽方法"&gt;
+<img src="file:///home/will/ideas/dsw/presentation/ThinkingWays/sixthinking.png" alt="sixthinking.png" />
+</p>
+
+<p>
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide title="黑色思考帽"&gt;
+　黑色思考帽：黑色是逻辑上的否定，象征着谨慎、批评以及对于风险的评估，使用黑帽思维的主要目的有两个：发现缺点，做出评价。思考中有什
+么错误？这件事可能的结果是什么？黑帽思维有许多检查的功能，我们可以用它来检查证据、逻辑、可能性、影响、适用性和缺点。 
+</p>
+
+<p>
+　　思考的真谛：通过黑色思维也可以让你做出最佳决策；指出遇到的困难；对所有的问题给出合乎逻辑的理由；当用在黄色思维之后，它是一个强
+效有力的评估工具；在绿色思维之前使用黑色思维，可以提供改进和解决问题的方法。总而言之，黑帽子问的是“哪里有问题”。 
+</p>
+
+<p>
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide&gt;
+　　白色思考帽：白色是中立而客观的，代表信息、事实和数据；努力发现信息和增强信息基础是思维的关键部分；使用白帽思维时将注意力集中在
+平行地排列信息上，要牢记三个问题：我们现在有什么信息？我们还需要什么信息？我们怎么得到所需要的信息？这些信息的种类包括确凿的事实、
+需要验证的问题，也包括坊间的传闻以及个人的观点等等。如果出现了意见不一致的情况，可以简单地将不同的观点平行排列在一起。如果说这个有
+冲突的问题尤其重要，也可以在稍后对它进行检验。 
+</p>
+
+<p>
+　　思考的真谛：白色思维可以帮助你做到像电脑那样提出事实和数据；用事实和数据支持一种观点；为某种观点搜寻事实和数据；信任事实和检验
+事实；处理两种观点提供的信息冲突；评估信息的相关性和准确性；区分事实和推论；明确弥补事实和推论两者差距所需的行为。 
+&lt;/slide&gt;
+&lt;slide&gt;
+</p>
+
+<p>
+　　红色思考帽：红色的火焰，使人想到热烈与情绪。是对某种事或某种观点的预感、直觉和印象；它既不是事实也不是逻辑思考；它与不偏不倚的、
+客观的、不带感情色彩的白帽思维相反。红帽思维就像一面镜子，反射人们的一切感受。 
+</p>
+
+<p>
+　　思考的真谛：使用红色思维时无须给出证明，无须提出理由和根据。红色思维可以帮你做到：你的情感与直觉是什么样，你就怎么样将它们表达
+出来。在使用红帽思维时，将思考时间限制在30秒内就给出答案。红帽的问题是：我对此的感觉是什么？ 
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide&gt;
+</p>
+
+<p>
+　　黄色思考帽：黄色代表阳光和乐观，代表事物合乎逻辑性、积极性的一面；黄色思维追求的是利益和价值，是寻求解决问题的可能性。在使用黄
+色思维时，要时刻想到以下问题：有哪些积极因素？存在哪些有价值的方面？这个理念有没有什么特别吸引人的地方？这样可行吗？ 
+</p>
+
+<p>
+　　思考的真谛：通过黄色思维的帮助，可以让我们做到深思熟虑，强化创造性方法和新的思维方向。当说明为什么一个主意是有价值的或者是可行的，必须给出理由。黄帽的问题是“优点是什么”或“利益是什么”。
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide&gt;
+</p>
+
+<p>
+　　蓝色思考帽：蓝色是天空的颜色，有纵观全局的气概。蓝色思维是“控制帽”，掌握思维过程本身，被视为“过程控制”；蓝色思维常在思维的开始、
+中间和结束是使用。我们能够用蓝帽来定义目的、制定思维计划，观察和做结论，决定下一步。使用蓝色思维时，要时刻想到下列问题：我们的议程
+是怎样的？我们下一步怎么办？我们现在使用的是哪一种帽子？我们怎样总结现有的讨论？我们的决定是什么？ 
+</p>
+
+<p>
+　　思考的真谛：蓝色思维可以让你发挥思维促进者的作用；集中和再次集中思考；处理对特殊种类思考的需求；指出不合适的意见；按需要对思考
+进行总结；促进团对做出决策。用蓝帽提问的是“需要什么样的思维”、“下一步是什么”、“已经做了什么思维”。 
+&lt;/slide&gt;
+</p>
+
+<p>
+&lt;slide&gt;
+</p>
+
+<p>
+　　绿色思考帽：绿色是有生命的颜色，是充满生机的，绿色思维不需要以逻辑性为基础；允许人们做出多种假设。使用绿色思维时，要时刻想到下
+列问题：我们还有其他方法来做这件事吗？我们还能做其他什么事情吗？有什么可能发生的事情吗？什么方法可以克服我们遇到的困难？绿色思维可
+以帮助寻求新方案和备选方案，修改和去除现存方法的错误；为创造力的尝试提供时间和空间。 
+</p>
+
+<p>
+　　思考的真谛：绿色思维激发行动的指导思想，提出解释，预言结果和新的设计。使用绿色思维，我们寻找各种可供选择的方案以及新颖的念头。
+用一句话来说，与绿色思维密切相关的就是“可能性”。“可能性”也许就是思维领域中最重要的词语。可能性包括了在科学领域使用假设的工具。可能
+性为人类感知的形成、观点与信息的排列提供了一个框架，包括了不确定性的存在，可能性也允许想象力的发挥。绿色思维提出了“我们有什么样的
+想法”的问题。  
+</p>
+
+
+<p>
+&lt;slide title="六顶思考帽团队在实际中的应用步骤"&gt;
+</p>
+
+<p>
+1、陈述问题事实（白帽） 
+</p>
+
+<p>
+2、提出如何解决问题的建议（绿帽） 
+</p>
+
+<p>
+3、评估建议的优缺点：列举优点（黄帽）；列举缺点（黑帽） 
+</p>
+
+<p>
+4、对各项选择方案进行直觉判断（红帽） 
+</p>
+
+<p>
+5、总结陈述，得出方案（蓝帽） 
+</p>
+
+<p>
+&lt;/slide&gt;
+</p>
+</div>
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+        <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">创建日期：2013-12-19</span>
+        <span title="last modification date" class="post-info">修改日期：2015-02-17</span>
+        <span title="tags" class="post-info"><a href="/tags/db2/">db2</a>, <a href="/tags/ppt/">ppt</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/html/usingmydb2";
+          var disqus_url = "http://standino.github.io/blog/html/usingmydb2";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+    <!-- jQuery Version 1.11.0 -->
+    <script src="/media/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/media/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/media/js/plugins/morris/raphael.min.js"></script>
+    <script src="/media/js/plugins/morris/morris.min.js"></script>
+    <script src="/media/js/plugins/morris/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/media/js/sb-admin-2.js"></script>
+
+
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - 2015 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

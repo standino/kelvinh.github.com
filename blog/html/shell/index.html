@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <title>shell Notes - Keep going</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Will Chang" />
+    <meta name="description" content="shell notes" />
+    <meta name="keywords" content="shell" />
+    <!-- Bootstrap Core CSS -->
+    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+  <body class="container">
+    <div id="wrapper">
+      <!-- Navigation -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+  </div>
+  <!-- /.navbar-header -->
+
+  <ul class="nav navbar-top-links navbar-right">
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-messages">
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <strong>John Smith</strong>
+              <span class="pull-right text-muted">
+                <em>Yesterday</em>
+              </span>
+            </div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>Read All Messages</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-messages -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-tasks">
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 1</strong>
+                <span class="pull-right text-muted">40% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                  <span class="sr-only">40% Complete (success)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 2</strong>
+                <span class="pull-right text-muted">20% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                  <span class="sr-only">20% Complete</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 3</strong>
+                <span class="pull-right text-muted">60% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                  <span class="sr-only">60% Complete (warning)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <p>
+                <strong>Task 4</strong>
+                <span class="pull-right text-muted">80% Complete</span>
+              </p>
+              <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                  <span class="sr-only">80% Complete (danger)</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>See All Tasks</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-tasks -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-alerts">
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-comment fa-fw"></i> New Comment
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+              <span class="pull-right text-muted small">12 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-envelope fa-fw"></i> Message Sent
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-tasks fa-fw"></i> New Task
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <div>
+              <i class="fa fa-upload fa-fw"></i> Server Rebooted
+              <span class="pull-right text-muted small">4 minutes ago</span>
+            </div>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="text-center" href="#">
+            <strong>See All Alerts</strong>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- /.dropdown-alerts -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-user">
+        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+        </li>
+        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+        </li>
+        <li class="divider"></li>
+        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        </li>
+      </ul>
+      <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+  </ul>
+  <!-- /.navbar-top-links -->
+
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="searchform" action="http://search.aol.com/aol/search">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" name="q" id="s" value="site:standino.github.io">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+          <!-- /input-group -->
+        </li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/work/">Work</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/standino">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+  </div>
+  <!-- /.navbar-static-side -->
+</nav>
+
+      <div>
+  <div class="post">
+    <div id="page-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">shell Notes</h1>
+          <p>
+<a href="http://www.ibm.com/developerworks/library/l-bash.html">http://www.ibm.com/developerworks/library/l-bash.html</a>
+</p>
+
+<p>
+<a href="http://fanqiang.chinaunix.net/program/shell/index.shtml">http://fanqiang.chinaunix.net/program/shell/index.shtml</a>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">ksh</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="http://kornshell.com/doc/">http://kornshell.com/doc/</a>
+</p>
+
+<p>
+<a href="http://www.bolthole.com/solaris/ksh.html">http://www.bolthole.com/solaris/ksh.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">awk</h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+ cat test.txt  | awk '{ if ($1=="memory") my=$3; else {if ($1=="pg") my=my" "$4}; if($1=="pg") print my  }' 
+
+
+#!/bin/ksh
+
+#checklog https://etlgdswuat02.etl.ibm.com/waslogs/sqo/
+
+#index.html
+#&lt;img #+BEGIN_SRC   
+#&lt;img #+BEGIN_SRC   
+#&lt;img #+BEGIN_SRC   
+#&lt;img #+BEGIN_SRC   
+#&lt;img #+BEGIN_SRC   
+
+filelist=`grep 'quote.log*' index.html | awk -F\" '  { if ( $6&gt;="quote.log.2011-05-23" &amp;&amp;  $6 &lt;= "quote.log.2011-05-31" )  print  $6 }'` ;
+
+for i in $filelist ; do
+    echo "$i ---" 
+done 
+
+ ps -f -A | grep java | grep CVT-DSW-SQO2 
+
+kill -9  `ps -f -A | grep java | grep CVT-DSW-SQO2 | awk '{print $2}'`
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">delete duplicate lines from a file and keep the order of the other lines from Command-Line-Fu</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+$ awk '!x[$0]++' FILE
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Create a zip file ignoring .svn files</h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+zip -r foo.zip DIR -x "*/.svn/*"
+
+find . -not \( -name .svn -prune \) -type f | xargs zip XXXXX.zip
+
+tar -cvf wid7.tar  **/.classpath **/.project
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">count a specify word</h2>
+<div class="outline-text-2" id="text-5">
+<pre class="example">
+'&lt;hgtxt.txt tr -cs '[:alnum:]' '[\n*]'  | sort | uniq -c
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">SED</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<a href="http://www.ibm.com/developerworks/linux/library/l-sed3.html">http://www.ibm.com/developerworks/linux/library/l-sed3.html</a>
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">用sed写循环处理</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+对sed的使用一直紧限于 s//; <i><i>s/</i></i>;  <i>/,//s//</i> 稍复杂一点就用awk，可是有时候awk写起来也太长了
+</p>
+
+<p>
+最近碰到一个处理跨行xml节点的问题，终于激发了进一步学习sed的愿望，并学会了使用b label写循环
+</p>
+
+<pre class="example">
+&lt;tag id="0" attr2 = "val2" attr3 = "val3" attr4 = "val4" /&gt;
+&lt;tag id="1" attr2 = "val2"
+        attr3 = "val3"
+        attr4 = "val4"/&gt;
+</pre>
+<p>
+替换指定xml节点中的attr4属性名
+#+BEGIN_SRC
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2">sed add line</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+#+BEGIN_SRC
+</p>
+
+<p>
+zhyfly@zhyfly:~/bash$ sed -e '/music/a\this line will be added to the end of the matching line!oooooooooo' test.txt
+The honeysuckle band played all night long for only $90.
+It was an evening of splendid music and company.
+this line will be added to the end of the matching line!oooooooooo
+Too bad the disco floor fell through at 23:00.
+The local nurse Miss P.Neave was in attendance.
+</p>
+
+<p>
+#+BEGIN_SRC
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">line count</h2>
+<div class="outline-text-2" id="text-7">
+<pre class="example">
+find . -type f -iname "*.java" -exec cat {} \; | wc -l
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">scp</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+#+BEGIN_SRC
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">ln</h2>
+</div>
+
+
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Basic</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+The sha-bang ( #!) <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup> at the head of a script tells your system that this file is a set of commands to be fed to
+the command interpreter indicated.
+</p>
+
+<pre class="example">
+#!/bin/sh
+#!/bin/bash
+#!/usr/bin/perl
+#!/usr/bin/tcl
+#!/bin/sed -f
+#!/usr/awk -f
+</pre>
+
+<pre class="example">
+Either:
+chmod 555 scriptname (gives everyone read/execute permission) [13]
+or
+chmod +rx scriptname (gives everyone read/execute permission)
+chmod u+rx scriptname (gives only the script owner read/execute permission)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">tar</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+tar zxvf 
+</p>
+</div>
+
+<div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1">Unix 下的查找文件的工具 find</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+#find
+</p>
+<ul class="org-ul">
+<li>在某个目录下所有子目录中搜索某个名字文件
+</li>
+</ul>
+
+<pre class="example">
+find /some/dir -iname "*.txt"
+find /some/dir -name "*.txt"
+find /some/dir -iregex "*.txt"
+find /some/dir -regex "*.txt"
+</pre>
+
+<p>
+   iname 表示不区分大小写， name 表示区分大小写。他们都是按照 shell 的文件名称扩展方式扩展 * 和 ? 的。 
+   如果使用 regexp 那么表示用正则表达式来匹配文件名称。 iregexp 表示不区分大小写的正则表达式。
+在某个目录下所有子目录中搜索某个名字，某种类型的文件
+</p>
+
+
+<pre class="example">
+find /some/dir -iname "*.txt" -type d
+find /some/dir -name "*.txt" -type f
+</pre>
+
+<p>
+type 后面的字母表示文件类型。
+b |    block (buffered) special
+c |    character (unbuffered) special
+d |    directory
+p |    named pipe (FIFO)
+f |    regular file
+l |    symbolic link
+s |    socket
+D |    door (Solaris)
+</p>
+
+<p>
+find 命令和 bash 结合可以有很多用处
+</p>
+
+<p>
+例如，把所有以 txt 文件结尾的文件，改名成为以doc 结尾的文件，包括所有子目录。
+</p>
+
+<pre class="example">
+for i in $(find -iname "*.txt"); do
+   mv "$i" "${i%%.txt}.doc" ;
+done
+</pre>
+
+<p>
+例如，删除所有以 bak 为扩展名称的文件。
+</p>
+
+<pre class="example">
+find . -iname "*.bak" | xargs rm
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2">emacs wiki shell</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+#emacswikishell
+</p>
+<pre class="example">
+#! /bin/bash
+
+# Copyright (C) 2007, 2008  Alex Schroeder &lt;alex@emacswiki.org&gt;
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+
+# Start with svn co https://svn.rizoma.cl/svn/emacswiki emacswikipages
+
+# Avoid SVN localization errors?
+export LANG=en_US.UTF8
+# Source: http://cvs.savannah.nongnu.org/viewvc/oddmuse/raw.pl?root=oddmuse&amp;view=log
+perl ~/oddmuse/raw.pl --page ~/emacs/page --dir ~/emacswikipages
+cd ~/emacswikipages
+# Find files starting with a dot, but not ..
+FILES=`find -maxdepth 1 -type f`
+# Convert files containing uploaded pages
+# Source: http://cvs.savannah.nongnu.org/viewvc/oddmuse/mimedecode.pl?root=oddmuse&amp;view=log
+perl ~/oddmuse/mimedecode.pl $FILES &gt; /dev/null
+# svn update is not necessary since we never accept changes from upstream
+# add new files
+for f in `svn stat $FILES | sed -n 's/^?      //p'`; do
+    svn --quiet add $f
+done
+# delete files that no longer exist (skip ., .., and .svn)
+TMP=`tempfile`
+find . -maxdepth 1 -type f|cut -c 3- &gt; $TMP
+perl -e '%h=split(/ /,&lt;STDIN&gt;);print join("\n",keys %h), "\n";' &lt; ~/emacs/pageidx &gt;&gt; $TMP
+for f in `sort &lt; $TMP | uniq -u`; do
+    rm $f
+    svn --quiet remove $f
+done
+rm $TMP
+# commit changes
+svn --quiet commit -m updates
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">Delete a folder</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+rm -rf &lt;folder name&gt; this also can delete soft link and will not delete the real folder which the softlink point to.    
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">Check if a file exists</h2>
+<div class="outline-text-2" id="text-13">
+<pre class="example">
+ 1. #!/bin/sh
+ 2.  
+ 3. myPath="/var/log/httpd/"
+ 4. myFile="/var /log/httpd/access.log"
+ 5.  
+ 6. #这里的-x 参数判断$myPath是否存在并且是否具有可执行权限
+ 7. if [ ! -x "$myPath"]; then
+ 8.     mkdir "$myPath"
+ 9. fi
+10.  
+11. #这里的-d 参数判断$myPath是否存在
+12. if [ ! -d "$myPath"]; then
+13.     mkdir "$myPath"
+14. fi
+15.  
+16.  
+17. #这里的-f参数判断$myFile是否存在
+18. if [ ! -f "$myFile" ]; then
+19.     touch "$myFile"
+20. fi
+21.  
+22. #其他参数还有-n,-n是判断一个变量是否是否有值
+23. if [ ! -n "$myVar" ]; then
+24.     echo "$myVar is empty"
+25.     exit 0
+26. fi
+27.  
+28. #两个变量判断是否相等
+29. if [ "$var1" = "$var2" ]; then
+30.     echo '$var1 eq $var2'
+31. else
+32.     echo '$var1 not eq $var2'
+33. fi
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">Getopts</h2>
+</div>
+
+
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">Shell 参数</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+几个需要记住的特殊参数：
+</p>
+
+<ul class="org-ul">
+<li>$0      = shell 名称或 shel 脚本名称
+</li>
+<li>$1      = 第一个(1)shell 参数
+</li>
+<li>$9      = 第九个(9)shell 参数
+</li>
+<li>$#      = 位置参数的个数
+</li>
+<li>"$*"    = "$1 $2 $3 $4 ... $n"
+</li>
+<li>"$@"    = "$1" "$2" "$3" "$4" ... "$n"
+</li>
+<li>$?      = 最近执行的命令的退出状态
+</li>
+<li>$$      = 当前 shell 脚本的 PID
+</li>
+<li>$!      = 最近启动的后台作业的 PID
+</li>
+</ul>
+
+<p>
+需要记住的基本扩展参数：
+</p>
+
+<p>
+    形式       |  如果设置了 var  |     如果没有设置 var
+${var:-string} |  $var            |     string
+${var:+string} |  string          |     null
+${var:=string} |  $var            |     string   (并且执行 var=string)
+${var:?string} |  $var            |     (返回 string 然后退出)
+</p>
+
+<p>
+在此，冒号“:”在所有运算表达式中事实上均是可选的。
+</p>
+
+<ul class="org-ul">
+<li>有“:” = 运算表达式测试“存在”和“非空”。
+</li>
+<li>没有“:” = 运算表达式仅测试“存在”。
+</li>
+</ul>
+
+<p>
+需要记住的替换参数：
+</p>
+
+<p>
+    形式       |      结果
+${var%suffix}  |  删除位于 var 结尾的 suffix 最小匹配模式
+${var%%suffix} |  删除位于 var 结尾的 suffix 最大匹配模式
+${var#prefix}  |  删除位于 var 开头的 prefix 最小匹配模式
+${var##prefix} |  删除位于 var 开头的 prefix 最大匹配模式
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">Diff</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+<a href="../etc/983888.shtml">../etc/983888.shtml</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17"><a href="../etc/ABS_Guide_cn.txt">Shell Ref Doc</a></h2>
+</div>
+
+
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18">Split words</h2>
+<div class="outline-text-2" id="text-18">
+<pre class="example">
+will@will-laptop:~$ mytest="ebiz1.web_quote"
+will@will-laptop:~$ echo ${mytest##*.}
+web_quote
+will@will-laptop:~$ echo ${mytest%%.*}
+ebiz1
+will@will-laptop:~$
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19">Programing Style</h2>
+<div class="outline-text-2" id="text-19">
+<ul class="org-ul">
+<li>Uppercase global variant 
+</li>
+<li>Lowercase local variant and separate by "_"
+</li>
+<li>Mixed case works well for a function.
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20">Table 33-1. Operator Precedence</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+#+BEGIN_SRC
+Operator                        Meaning                   Comments
+                                                          HIGHEST PRECEDENCE
+                                post-increment,           C-style operators
+var++ var--
+                                post-decrement
+                                pre-increment,
+++var --var
+                                pre-decrement
+                                negation                  logical / bitwise, inverts sense of following
+! ~
+                                                          operator
+                                exponentiation            arithmetic operation
+**
+                                multiplication, division, arithmetic operation
+</p>
+</div>
+</div>
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21">/ %</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+modulo
+addition, subtraction     arithmetic operation
+</p>
+<ul class="org-ul">
+<li>-
+left, right shift         bitwise
+</li>
+</ul>
+<p>
+<a id="" name=""></a>
+                                unary comparison          string is/is-not null
+-z -n
+                                unary comparison          files
+-e -f -t -x, etc.
+                                compound comparison       string and integer
+&lt; -lt &gt; -gt &lt;= -le &gt;= -ge
+                                compound comparison       files
+-nt -ot -ef
+                                equality / inequality     test operators, string and integer
+<code>= -eq !</code> -ne
+</p>
+
+<p>
+                       AND                    bitwise
+&amp;
+                       XOR                    exclusive OR, bitwise
+^
+                       OR                     bitwise
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<p>
+                       AND                    logical, compound comparison
+&amp;&amp; -a
+                       OR                     logical, compound comparison
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">-o</td>
+</tr>
+</tbody>
+</table>
+<p>
+                       trinary operator       C-style
+?:
+                       assignment             (do not confuse with equality test)
+=
+                       combination assignment times-equal, divide-equal, mod-equal, etc.
+*= /= %= += -= <a id="" name=""></a>=
+&amp;= !=
+                       comma                  links a sequence of operations
+,
+#+END_SRC
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22">System Variables</h2>
+<div class="outline-text-2" id="text-22">
+<pre class="example">
+$HOME
+
+$OSTYPE
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23">folder of the scirpt</h2>
+<div class="outline-text-2" id="text-23">
+<p>
+%~dp0 is the folder of the bat.
+</p>
+
+<p>
+$(cd "$(dirname "$0")"; pwd)
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24">Delete folders under windows</h2>
+<div class="outline-text-2" id="text-24">
+<pre class="example">
+rd /S /Q folder
+</pre>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25">KSH</h2>
+<div class="outline-text-2" id="text-25">
+<pre class="example">
+ ksh -o emacs : use emacs key 
+
+./checklog4sap_remote  -s PROD  -w 0002155019 -d /tmp/quotelogtool/testprod -f 2011-07-20 -t 2011-07-20 -c PRICING -u changwei@cn.ibm.com -p lenovot60
+
+/home/fvtoper/quotelogtool/checklog4sap3  -s PROD  -w 0002155019 -d /tmp/quotelogtool/PROD_changwei@cn.ibm.com_test -f 2011-07-20 -t 2011-07-20 -c PRICING 
+
+http://www2.research.att.com/sw/download/man/man1/ksh.html
+
+
+
+if [ -z "$var" ]; then
+   echo "Null String"
+else
+   echo "$var"
+fi
+
+#or use: if [ "$var" = "" ]; then ......
+</pre>
+
+<p>
+问题解决如下
+方法一
+大小 &lt;#+BEGIN_SRC }'`
+if [ $Count -gt 1 ]; then
+echo "$unix_time" | mutt -s "$unix_time" -a /a/a/Error.log l@1.com
+fi
+#+END_SRC
+</p>
+
+
+<p>
+更方便的字符串操作
+</p>
+
+<p>
+程序员日常工作中是经常遇到的操作之一就是字符串操作，ksh93 自然不会放过这方面的增强。
+</p>
+
+<p>
+表 1 总结了 ksh93 在字符串处理方面的加强，假设 string 等于 abc123abc 。
+</p>
+
+<p>
+表 1. 更强的字符串处理
+功能     语法     样例
+求起始位置为 index 的子串    ${param:offset}    &gt; echo ${string:3}
+123abc
+求起始位置为 index 和长度 num 的子串    ${param:offset:num}    &gt; echo ${string:1:3}
+bc1
+替换第一个出现的 pattern为 repl    ${parm/pattern/repl}    &gt; echo ${string/abc/def}
+def123abc
+替换所有出现的 pattern 为 repl    ${parm//pattern/repl}    &gt; echo ${string//abc/def}
+def123def
+替换开头的 pattern     ${parm/#pattern/repl}    &gt; echo ${string/#abc/def}
+def123abc
+替换结尾的 pattern     ${parm/%pattern/repl}    &gt; echo ${string/%abc/def}
+abc123def
+</p>
+
+<p>
+注：上述的 pattern 是正则表达式
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-26" class="outline-2">
+<h2 id="sec-26">Add jsp name to jsp file</h2>
+<div class="outline-text-2" id="text-26">
+<pre class="example">
+find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/w3:body&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
+find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:body&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
+find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/w3:popupBody&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
+find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:popupBody&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-27" class="outline-2">
+<h2 id="sec-27">shell数组</h2>
+<div class="outline-text-2" id="text-27">
+<ul class="org-ul">
+<li><a href="http://www.cnblogs.com/chengmo/archive/2010/09/30/1839632.html">http://www.cnblogs.com/chengmo/archive/2010/09/30/1839632.html</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+    </div>
+        <div>
+      <div class="post-meta">
+        <span title="post date" class="post-info">创建日期：2013-12-19</span>
+        <span title="last modification date" class="post-info">修改日期：2015-02-17</span>
+        <span title="tags" class="post-info"><a href="/tags/shell/">shell</a></span>
+        <span title="author" class="post-info">Will Chang</span>
+      </div>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          //var disqus_developer = 1;
+          var disqus_identifier = "/blog/html/shell";
+          var disqus_url = "http://standino.github.io/blog/html/shell";
+          var disqus_shortname = 'standino';
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </section>
+    <!-- jQuery Version 1.11.0 -->
+    <script src="/media/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/media/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/media/js/plugins/morris/raphael.min.js"></script>
+    <script src="/media/js/plugins/morris/morris.min.js"></script>
+    <script src="/media/js/plugins/morris/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/media/js/sb-admin-2.js"></script>
+
+
+      <div class="footer">
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>
+          Copyright &copy; 2012 - 2015 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
+        </p>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
