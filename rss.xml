@@ -4,79 +4,79 @@
     <title>Keep going</title>
     <link>http://standino.github.io/</link>
     <description>努力超越自己！</description>
-    <pubDate>Mon, 16 Feb 2015 18:09:21 CST</pubDate>
-    <lastBuildDate>Mon, 16 Feb 2015 18:09:21 CST</lastBuildDate>
+    <pubDate>Tue, 17 Feb 2015 11:14:14 CST</pubDate>
+    <lastBuildDate>Tue, 17 Feb 2015 11:14:14 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
-      <title>HowtoWork</title>
-      <link>http://standino.github.io/work/html/howtowork</link>
-      <description>How to work</description>
-      <pubDate>2015-02-16</pubDate>
-      <guid>http://standino.github.io/work/html/howtowork</guid>
-    </item>
-    <item>
-      <title>零售平台项目</title>
-      <link>http://standino.github.io/work/html/jdretail</link>
-      <description>零售平台项目</description>
-      <pubDate>2015-02-16</pubDate>
-      <guid>http://standino.github.io/work/html/jdretail</guid>
-    </item>
-    <item>
-      <title>JD工作笔记</title>
-      <link>http://standino.github.io/work/html/JD/</link>
-      <description>JD个人工作笔记</description>
-      <pubDate>2015-02-12</pubDate>
-      <guid>http://standino.github.io/work/html/JD/</guid>
-    </item>
-    <item>
-      <title>大数据OLAP报表系统开发白皮书</title>
-      <link>http://standino.github.io/work/2015/01/29/olapdevguide</link>
-      <description>使用saiku开发OLAP系统</description>
-      <pubDate>2015-02-12</pubDate>
-      <guid>http://standino.github.io/work/2015/01/29/olapdevguide</guid>
-    </item>
-    <item>
-      <title>NightWatch 自动化测试框架 </title>
-      <link>http://standino.github.io/blog/2015/01/26/nightwatch</link>
-      <description>NightWatch</description>
-      <pubDate>2015-02-06</pubDate>
-      <guid>http://standino.github.io/blog/2015/01/26/nightwatch</guid>
-    </item>
-    <item>
-      <title>Untitled</title>
-      <link>http://standino.github.io/wiki/html/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2015-02-04</pubDate>
-      <guid>http://standino.github.io/wiki/html/bigdata</guid>
-    </item>
-    <item>
-      <title>使用pig脚本</title>
-      <link>http://standino.github.io/blog/2014/05/26/pig</link>
-      <description>pig 脚本</description>
-      <pubDate>2015-02-04</pubDate>
-      <guid>http://standino.github.io/blog/2014/05/26/pig</guid>
-    </item>
-    <item>
       <title>Eclipse</title>
-      <link>http://standino.github.io/wiki/html/eclipse</link>
+      <link>http://standino.github.io/blog/html/eclipse</link>
       <description>eclipse</description>
-      <pubDate>2015-02-02</pubDate>
-      <guid>http://standino.github.io/wiki/html/eclipse</guid>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/eclipse</guid>
     </item>
     <item>
       <title>English</title>
-      <link>http://standino.github.io/wiki/html/eng</link>
+      <link>http://standino.github.io/blog/html/eng</link>
       <description>English</description>
-      <pubDate>2015-02-02</pubDate>
-      <guid>http://standino.github.io/wiki/html/eng</guid>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/eng</guid>
     </item>
     <item>
       <title>FreeMind</title>
-      <link>http://standino.github.io/wiki/html/freemind</link>
+      <link>http://standino.github.io/blog/html/freemind</link>
       <description>freemind</description>
-      <pubDate>2015-02-02</pubDate>
-      <guid>http://standino.github.io/wiki/html/freemind</guid>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/freemind</guid>
+    </item>
+    <item>
+      <title>IBM产品的使用</title>
+      <link>http://standino.github.io/blog/html/ibm</link>
+      <description>ibm</description>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/ibm</guid>
+    </item>
+    <item>
+      <title>JAVA</title>
+      <link>http://standino.github.io/blog/html/java</link>
+      <description>Java Tips</description>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/java</guid>
+    </item>
+    <item>
+      <title>Scite.org</title>
+      <link>http://standino.github.io/blog/html/scite</link>
+      <description>scite</description>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/scite</guid>
+    </item>
+    <item>
+      <title>利用mydb2脚本实现数据库的敏捷开发</title>
+      <link>http://standino.github.io/blog/html/agilemydb2</link>
+      <description>本文主要讨论使用 Shell 脚本与 DB2 交互的一些常用技巧和方法。介绍了利用 Shell 脚本帮助我们进行存储过程调优和部署。同时通过一个演示项目的开发过程的介绍来展示如何使用文中的脚本进行开发。</description>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/agilemydb2</guid>
+    </item>
+    <item>
+      <title>Untitled</title>
+      <link>http://standino.github.io/blog/html/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/bigdata</guid>
+    </item>
+    <item>
+      <title>汽车</title>
+      <link>http://standino.github.io/blog/html/car</link>
+      <description>汽车</description>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/car</guid>
+    </item>
+    <item>
+      <title>confluence.org</title>
+      <link>http://standino.github.io/blog/html/html/confluence</link>
+      <description>Confluence </description>
+      <pubDate>2015-02-17</pubDate>
+      <guid>http://standino.github.io/blog/html/html/confluence</guid>
     </item>
   </channel>
 </rss>
