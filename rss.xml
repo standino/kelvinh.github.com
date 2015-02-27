@@ -1,13 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
   <channel>
-    <title>Keep going</title>
+    <title>简单</title>
     <link>http://standino.github.io/</link>
-    <description>努力超越自己！</description>
-    <pubDate>Tue, 17 Feb 2015 16:17:32 CST</pubDate>
-    <lastBuildDate>Tue, 17 Feb 2015 16:17:32 CST</lastBuildDate>
+    <description>让生活更精彩。</description>
+    <pubDate>Fri, 27 Feb 2015 10:16:40 CST</pubDate>
+    <lastBuildDate>Fri, 27 Feb 2015 10:16:40 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>2015年计划</title>
+      <link>http://standino.github.io/blog/html/2014/12/20/2015年计划/</link>
+      <description>为明年做一下计划</description>
+      <pubDate>2015-02-27</pubDate>
+      <guid>http://standino.github.io/blog/html/2014/12/20/2015年计划/</guid>
+    </item>
+    <item>
+      <title>使用 IBM Data Studio 开发存储过程</title>
+      <link>http://standino.github.io/blog/html/usingIDS</link>
+      <description>使用 IBM Data Studio 开发存储过程</description>
+      <pubDate>2015-02-27</pubDate>
+      <guid>http://standino.github.io/blog/html/usingIDS</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/blog/html/2013/12/19/版本管理工具/</link>
+      <description>Version control</description>
+      <pubDate>2015-02-27</pubDate>
+      <guid>http://standino.github.io/blog/html/2013/12/19/版本管理工具/</guid>
+    </item>
+    <item>
+      <title>JD工作笔记</title>
+      <link>http://standino.github.io/work/html/JD/</link>
+      <description>JD个人工作笔记</description>
+      <pubDate>2015-02-27</pubDate>
+      <guid>http://standino.github.io/work/html/JD/</guid>
+    </item>
+    <item>
+      <title>大数据</title>
+      <link>http://standino.github.io/blog/html/bigdata</link>
+      <description>研究互联网用到的大数据技术</description>
+      <pubDate>2015-02-25</pubDate>
+      <guid>http://standino.github.io/blog/html/bigdata</guid>
+    </item>
     <item>
       <title>Eclipse</title>
       <link>http://standino.github.io/blog/html/eclipse</link>
@@ -42,41 +77,6 @@
       <description>Java Tips</description>
       <pubDate>2015-02-17</pubDate>
       <guid>http://standino.github.io/blog/html/java</guid>
-    </item>
-    <item>
-      <title>Scite.org</title>
-      <link>http://standino.github.io/blog/html/scite</link>
-      <description>scite</description>
-      <pubDate>2015-02-17</pubDate>
-      <guid>http://standino.github.io/blog/html/scite</guid>
-    </item>
-    <item>
-      <title>利用mydb2脚本实现数据库的敏捷开发</title>
-      <link>http://standino.github.io/blog/html/agilemydb2</link>
-      <description>本文主要讨论使用 Shell 脚本与 DB2 交互的一些常用技巧和方法。介绍了利用 Shell 脚本帮助我们进行存储过程调优和部署。同时通过一个演示项目的开发过程的介绍来展示如何使用文中的脚本进行开发。</description>
-      <pubDate>2015-02-17</pubDate>
-      <guid>http://standino.github.io/blog/html/agilemydb2</guid>
-    </item>
-    <item>
-      <title>Untitled</title>
-      <link>http://standino.github.io/blog/html/bigdata</link>
-      <description>研究互联网用到的大数据技术</description>
-      <pubDate>2015-02-17</pubDate>
-      <guid>http://standino.github.io/blog/html/bigdata</guid>
-    </item>
-    <item>
-      <title>汽车</title>
-      <link>http://standino.github.io/blog/html/car</link>
-      <description>汽车</description>
-      <pubDate>2015-02-17</pubDate>
-      <guid>http://standino.github.io/blog/html/car</guid>
-    </item>
-    <item>
-      <title>confluence.org</title>
-      <link>http://standino.github.io/blog/html/html/confluence</link>
-      <description>Confluence </description>
-      <pubDate>2015-02-17</pubDate>
-      <guid>http://standino.github.io/blog/html/html/confluence</guid>
     </item>
   </channel>
 </rss>

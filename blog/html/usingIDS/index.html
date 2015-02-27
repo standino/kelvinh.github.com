@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-  <title>使用 IBM Data Studio 开发存储过程 - Keep going</title>
+  <title>使用 IBM Data Studio 开发存储过程 - 简单</title>
   <meta charset="utf-8" />
   <meta name="author" content="Will Chang" />
     <meta name="description" content="使用 IBM Data Studio 开发存储过程" />
@@ -44,14 +44,14 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+    <a class="navbar-brand" href="index.html">简单 --- 让生活更精彩。 </a>
   </div>
   <!-- /.navbar-header -->
 
   <!-- /.navbar-top-links -->
   <script>
    function goSearch(){
-     $('#s').val($('#s').val()+'site:standino.github.io');
+     $('#s').val($('#s').val()+' site:standino.github.io');
    }
   </script>
   <div class="navbar-default sidebar" role="navigation">
@@ -155,7 +155,7 @@ Item 的信息。User Story 就是以用户的角度编写的业务需求，是�
 </p>
 
 <p>
-<i>图一 数据结构</i>
+<a href="http://www.ibm.com/developerworks/cn/data/library/techarticles/dm-0902changwei/ids01.jpg">图一 数据结构</a>
 </p>
 
 <p>
@@ -315,7 +315,7 @@ secondaryStaff | VARCHAR | 结对的开发人员 Email 地址
 </p>
 
 <p>
-<i>ids04.jpg</i>]
+<i>ids04.jpg</i>
 </p>
 
 <p>
@@ -335,16 +335,10 @@ secondaryStaff | VARCHAR | 结对的开发人员 Email 地址
 <li>Create table
 </li>
 </ul>
-<p>
-&lt;#+BEGIN_SRC &gt;
-</p>
-
-<p>
+<pre class="example">
 DROP TABLE ${table_name}
 @
-</p>
-<hr  />
-<p>
+----------------------------------------------------------------------------------
 --
 --  Table_Name:     ${table_name}
 --  File Name:      ${table_name}.SQL
@@ -357,18 +351,14 @@ DROP TABLE ${table_name}
 --  MAINTENANCE LOG
 --  who  date        comment
 --  ---  --------    ---------------------------------------------------------------
-</p>
 
-<hr  />
+-----------------------------------------------------------------------------------
 
 
-<p>
 CREATE TABLE ${table_name}
 (
-</p>
 
-
-<p>
+    
 )
 @
 --Primary Key
@@ -376,20 +366,16 @@ ALTER TABLE ${table_name}
     ADD     CONSTRAINT ${table_name}_PK
     PRIMARY KEY (${pk} )
 @
-#+END_SRC
-</p>
+</pre>
 
 <ul class="org-ul">
 <li>Create stored procedure 
 </li>
 </ul>
-<p>
-&lt;#+BEGIN_SRC &gt;
+<pre class="example">
 DROP SPECIFIC PROCEDURE ${spName}
 @
-</p>
 
-<p>
 CREATE PROCEDURE ${spName} (
     OUT  poGenStatus      INTEGER 
     , IN ${piArgu}  VARCHAR(8)
@@ -397,9 +383,7 @@ CREATE PROCEDURE ${spName} (
 SPECIFIC ${spName}
 RESULT SETS 0
 LANGUAGE SQL
-</p>
-<hr  />
-<p>
+------------------------------------------------------------------------------
 --
 --  Procedure Name : ${spName}
 --  Specific Name:   ${spName}
@@ -418,139 +402,96 @@ LANGUAGE SQL
 --  ---  --------  ------------------------------------------------------------
 --  ${user}   ${date}  Initial version
 --                            
-</p>
-<hr  />
-<p>
+------------------------------------------------------------------------------- 
 BEGIN NOT ATOMIC
-</p>
 
-<hr  />
-<p>
--- Variables declarations
-</p>
-<hr  />
-<p>
--- Generic Variables
-DECLARE SQLCODE             INTEGER         DEFAULT 0;
-DECLARE SQLSTATE            CHAR(5)         DEFAULT '00000';
-</p>
+    -------------------------------------------------------------
+    -- Variables declarations
+    -------------------------------------------------------------
+    -- Generic Variables
+    DECLARE SQLCODE             INTEGER         DEFAULT 0;
+    DECLARE SQLSTATE            CHAR(5)         DEFAULT '00000';
 
-<p>
--- Generic handler variables
-DECLARE hSqlcode            INTEGER         DEFAULT 0;
-DECLARE hSqlstate           CHAR(5)         DEFAULT '00000';
-</p>
+    -- Generic handler variables
+    DECLARE hSqlcode            INTEGER         DEFAULT 0;
+    DECLARE hSqlstate           CHAR(5)         DEFAULT '00000';
 
-<p>
--- error variables
-DECLARE ERR_MISSING_INPUT     INTEGER DEFAULT 34100;
-DECLARE ERR_GENERAL_SQL       INTEGER DEFAULT 1;
-DECLARE ERR_RECORD_EXISTS     INTEGER DEFAULT 4;
-DECLARE ERR_ROW_NOT_FOUND     INTEGER DEFAULT 5000;
-</p>
+    -- error variables
+    DECLARE ERR_MISSING_INPUT     INTEGER DEFAULT 34100;
+    DECLARE ERR_GENERAL_SQL       INTEGER DEFAULT 1;
+    DECLARE ERR_RECORD_EXISTS     INTEGER DEFAULT 4;
+    DECLARE ERR_ROW_NOT_FOUND     INTEGER DEFAULT 5000;
+  
+    -- Local Variables
+    DECLARE vCurrentTimestamp   TIMESTAMP;
 
-<p>
--- Local Variables
-DECLARE vCurrentTimestamp   TIMESTAMP;
-</p>
+    -------------------------------------------------------------
+    -- CONDITION declaration
+    -------------------------------------------------------------
+    -- (80100~80199) SQLCODE &amp; SQLSTATE
+    DECLARE sqlReset CONDITION FOR SQLSTATE '80100';
 
-<hr  />
-<p>
--- CONDITION declaration
-</p>
-<hr  />
-<p>
--- (80100~80199) SQLCODE &amp; SQLSTATE
-DECLARE sqlReset CONDITION FOR SQLSTATE '80100';
-</p>
+    -------------------------------------------------------------
+    -- CURSOR declaration
+    -------------------------------------------------------------
 
-<hr  />
-<p>
--- CURSOR declaration
-</p>
-<hr  />
+    -------------------------------------------------------------
+    -- EXCEPTION HANDLER declaration
+    -------------------------------------------------------------
+    -- Handy Handler
+    DECLARE CONTINUE HANDLER FOR sqlReset
+    BEGIN NOT ATOMIC
+      SET hSqlcode   = 0;
+      SET hSqlstate  = '00000';
+      SET poGenStatus = 0;
+    END;
 
-<hr  />
-<p>
--- EXCEPTION HANDLER declaration
-</p>
-<hr  />
-<p>
--- Handy Handler
-DECLARE CONTINUE HANDLER FOR sqlReset
-BEGIN NOT ATOMIC
-  SET hSqlcode   = 0;
-  SET hSqlstate  = '00000';
-  SET poGenStatus = 0;
-END;
-</p>
+    -- Generic Handler
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION, SQLWARNING, NOT FOUND
+    BEGIN NOT ATOMIC
+    -- Capture SQLCODE &amp; SQLSTATE
+        SELECT  SQLCODE, SQLSTATE
+        INTO    hSqlcode, hSqlstate
+        FROM    SYSIBM.SYSDUMMY1;
 
-<p>
--- Generic Handler
-DECLARE CONTINUE HANDLER FOR SQLEXCEPTION, SQLWARNING, NOT FOUND
-BEGIN NOT ATOMIC
--- Capture SQLCODE &amp; SQLSTATE
-    SELECT  SQLCODE, SQLSTATE
-    INTO    hSqlcode, hSqlstate
-    FROM    SYSIBM.SYSDUMMY1;
-</p>
+        -- Use the poGenStatus variable to tell the procedure what type
+        -- of error occurred.  In some cases, it can be assigned to the
+        -- poGenStatus variable to be returned to the client.
+        CASE hSqlstate
+        WHEN '02000' THEN  --row not found
+          SET poGenStatus=5000;
+        WHEN '42724' THEN  --missing llsp
+          SET poGenStatus=3;
+        ELSE
+          IF (hSqlCode &lt; 0) THEN  --trap only errors, not warnings   
+            SET poGenStatus=2;
+          END IF;
+        END CASE;
+    END;
 
-<p>
-    -- Use the poGenStatus variable to tell the procedure what type
-    -- of error occurred.  In some cases, it can be assigned to the
-    -- poGenStatus variable to be returned to the client.
-    CASE hSqlstate
-    WHEN '02000' THEN  --row not found
-      SET poGenStatus=5000;
-    WHEN '42724' THEN  --missing llsp
-      SET poGenStatus=3;
-    ELSE
-      IF (hSqlCode &lt; 0) THEN  --trap only errors, not warnings   
-        SET poGenStatus=2;
-      END IF;
-    END CASE;
-END;
-</p>
-
-<hr  />
-<p>
--- Initialization
-</p>
-<hr  />
-<p>
--- reset all output parameters to NULL
-SET poGenStatus = 0;
-</p>
-
-<p>
-SET ${piArgu} = RTRIM(COALESCE(${piArgu}, ''));
-</p>
-
-<hr  />
-<p>
--- data validation
-</p>
-<hr  />
-<p>
-IF (${piArgu}  = '') THEN
-    SET poGenStatus = ERR_MISSING_INPUT;
+    -------------------------------------------------------------
+    -- Initialization
+    -------------------------------------------------------------
+    -- reset all output parameters to NULL
+    SET poGenStatus = 0;
+   
+    SET ${piArgu} = RTRIM(COALESCE(${piArgu}, ''));
+  
+    --------------------
+    -- data validation
+    --------------------
+    IF (${piArgu}  = '') THEN
+        SET poGenStatus = ERR_MISSING_INPUT;
+        RETURN poGenStatus;
+    END IF;
+           
+    SET vCurrentTimestamp = CURRENT TIMESTAMP;
+        
     RETURN poGenStatus;
-END IF;
-</p>
 
-<p>
-SET vCurrentTimestamp = CURRENT TIMESTAMP;
-</p>
-
-<p>
-RETURN poGenStatus;
-</p>
-
-<p>
 END
 @
-#+END_SRC
-</p>
+</pre>
 
 
 <p>
@@ -563,17 +504,11 @@ END
 修改后的代码如下：
 </p>
 
-<p>
-&lt;#+BEGIN_SRC &gt;
-</p>
-
-<p>
+<pre class="example">
 -- &lt;ScriptOptions statementTerminator="@" /&gt;
 DROP TABLE USER_STORY
 @
-</p>
-<hr  />
-<p>
+----------------------------------------------------------------------------------
 --
 --  Table_Name:     USER_STORY
 --  File Name:      USER_STORY.SQL
@@ -586,18 +521,16 @@ DROP TABLE USER_STORY
 --  MAINTENANCE LOG
 --  who  date        comment
 --  ---  --------    ---------------------------------------------------------------
-</p>
 
-<hr  />
+-----------------------------------------------------------------------------------
 
 
-<p>
 CREATE TABLE USER_STORY
 (
-  id          INTEGER NOT NULL,    --表主键。
-  author     VARCHAR(80),    --编写人的Email地址。
-  status     CHAR(10),       --表示User Story的状态，可以是草拟，完成等值。
-  txt         VARCHAR(500)    --User Story的具体内容
+  id  	    INTEGER NOT NULL,    --表主键。
+  author 	VARCHAR(80),    --编写人的Email地址。
+  status 	CHAR(10),       --表示User Story的状态，可以是草拟，完成等值。
+  txt 	    VARCHAR(500)    --User Story的具体内容
 )
 @
 --Primary Key
@@ -605,8 +538,7 @@ ALTER TABLE USER_STORY
     ADD     CONSTRAINT USER_STORY_PK
     PRIMARY KEY (ID )
 @
-#+END_SRC
-</p>
+</pre>
 
 <p>
 编写完建表文件后，我们需要把它装载到数据库中。
@@ -639,9 +571,11 @@ Content Assist。哦，IBM Data Studio 把所有以 U 开头的表都列在了�
 Procedures。右键单击存储过程，在弹出菜单中选择 Open-&gt;With SQL Editor。然后存储过程的源代码就在 IBM Data Studio 中打开了。
 </p>
 
-<p>
-<i>ids05.jpg</i>
+
+<div class="figure">
+<p><img src="http://www.ibm.com/developerworks/cn/data/library/techarticles/dm-0902changwei/ids05.jpg" alt="ids05.jpg" />
 </p>
+</div>
 </div>
 </div>
 
@@ -671,9 +605,11 @@ Procedures。右键单击存储过程，在弹出菜单中选择 Open-&gt;With S
 </li>
 </ol>
 
-<p>
-<i>ids06.jpg</i>
+
+<div class="figure">
+<p><img src="http://www.ibm.com/developerworks/cn/data/library/techarticles/dm-0902changwei/ids06.jpg" alt="ids06.jpg" />
 </p>
+</div>
 
 <p>
 存储过程被部署到数据库中后，我们就可以设置断点进行调试了。
@@ -683,30 +619,23 @@ Procedures。右键单击存储过程，在弹出菜单中选择 Open-&gt;With S
  4.在调试视图中，我们可以点击 Debug 窗口中的 step into，step over 进行单步调试，可以在 Variables 窗口看到当前所有变量的值。
 </p>
 
-<p>
-<i>newids6.jpg</i>
+
+<div class="figure">
+<p><img src="http://www.ibm.com/developerworks/cn/data/library/techarticles/dm-0902changwei/newids6.jpg" alt="newids6.jpg" />
 </p>
+</div>
 
 <p>
 通过单步执行，我们很快的就找到了出错的代码：
 </p>
 
-<p>
-&lt;#+BEGIN_SRC &gt;
-</p>
-
-<p>
+<pre class="example">
 DECLARE vMaxId              SMALLINT;
-</p>
 
-<p>
 ...
-</p>
 
-<p>
 SELECT MAX(ID)+1 INTO vMaxId FROM USER_STORY;
-#+END_SRC
-</p>
+</pre>
 
 <p>
 原来，我们把 vMaxId 声明成 SMALLINT， 然而随着表 USER_STORY 中数据的增加，MAX(ID) 很快就超过了 SMALLINT 的最大值，这时我们再把
@@ -734,9 +663,11 @@ explain 可以帮助我们编写出高效率的 SQL 语句。这对于存储过�
 然后我们就得到了似乎下图所示的 SQL 执行计划。
 </p>
 
-<p>
-<i>ids07.jpg</i>
+
+<div class="figure">
+<p><img src="http://www.ibm.com/developerworks/cn/data/library/techarticles/dm-0902changwei/ids07.jpg" alt="ids07.jpg" />
 </p>
+</div>
 
 <p>
 通过查看 Visual Explain，我们得出结论：由于 WORK_ITEM 表中的数据太多，对全表扫描花费太多的时间，我们应该建立合适的索引来提高性能。建立
@@ -776,9 +707,11 @@ Service，以方便其业务系统的访问。
 这样一个 Web Service 就构建完成了。
 </p>
 
-<p>
-<i>ids08.jpg</i>
+
+<div class="figure">
+<p><img src="http://www.ibm.com/developerworks/cn/data/library/techarticles/dm-0902changwei/ids08.jpg" alt="ids08.jpg" />
 </p>
+</div>
 
 <p>
 下面我们把这个 Web Service 到出为 war 包。
@@ -791,9 +724,11 @@ Service，以方便其业务系统的访问。
 </li>
 </ul>
 
-<p>
-<i>ids09.jpg</i>
+
+<div class="figure">
+<p><img src="http://www.ibm.com/developerworks/cn/data/library/techarticles/dm-0902changwei/ids09.jpg" alt="ids09.jpg" />
 </p>
+</div>
 </div>
 </div>
 
@@ -818,8 +753,8 @@ IBM Data Studio 还提供了很多有用的功能，例如：通过图形方式�
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2013-12-19</span>
-        <span title="last modification date" class="post-info">修改日期：2015-02-17</span>
-        <span title="tags" class="post-info"><a href="/tags/db2/">db2</a>, <a href="/tags/dw/">dw</a></span>
+        <span title="last modification date" class="post-info">修改日期：2015-02-27</span>
+        <span title="tags" class="post-info"><a href="/tags/db2/">db2</a> <a href="/tags/dw/">dw</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
       <section>
