@@ -4,15 +4,50 @@
     <title>简单</title>
     <link>http://standino.github.io/</link>
     <description>让生活更精彩。</description>
-    <pubDate>Fri, 27 Feb 2015 10:16:40 CST</pubDate>
-    <lastBuildDate>Fri, 27 Feb 2015 10:16:40 CST</lastBuildDate>
+    <pubDate>Fri, 20 Mar 2015 16:28:34 CST</pubDate>
+    <lastBuildDate>Fri, 20 Mar 2015 16:28:34 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>Personal</title>
+      <link>http://standino.github.io/work/html/html/personal</link>
+      <description>My Personal information </description>
+      <pubDate>2015-03-20</pubDate>
+      <guid>http://standino.github.io/work/html/html/personal</guid>
+    </item>
+    <item>
+      <title>JD工作笔记</title>
+      <link>http://standino.github.io/work/html/JD/</link>
+      <description>JD个人工作笔记</description>
+      <pubDate>2015-03-20</pubDate>
+      <guid>http://standino.github.io/work/html/JD/</guid>
+    </item>
+    <item>
+      <title>大数据OLAP报表系统开发白皮书</title>
+      <link>http://standino.github.io/work/2015/01/29/olapdevguide</link>
+      <description>使用saiku开发OLAP系统</description>
+      <pubDate>2015-03-20</pubDate>
+      <guid>http://standino.github.io/work/2015/01/29/olapdevguide</guid>
+    </item>
+    <item>
+      <title>JAVA</title>
+      <link>http://standino.github.io/blog/html/java</link>
+      <description>Java Tips</description>
+      <pubDate>2015-03-05</pubDate>
+      <guid>http://standino.github.io/blog/html/java</guid>
+    </item>
+    <item>
+      <title>linux</title>
+      <link>http://standino.github.io/blog/html/linux</link>
+      <description>linux</description>
+      <pubDate>2015-03-05</pubDate>
+      <guid>http://standino.github.io/blog/html/linux</guid>
+    </item>
     <item>
       <title>2015年计划</title>
       <link>http://standino.github.io/blog/html/2014/12/20/2015年计划/</link>
       <description>为明年做一下计划</description>
-      <pubDate>2015-02-27</pubDate>
+      <pubDate>2015-03-05</pubDate>
       <guid>http://standino.github.io/blog/html/2014/12/20/2015年计划/</guid>
     </item>
     <item>
@@ -30,13 +65,6 @@
       <guid>http://standino.github.io/blog/html/2013/12/19/版本管理工具/</guid>
     </item>
     <item>
-      <title>JD工作笔记</title>
-      <link>http://standino.github.io/work/html/JD/</link>
-      <description>JD个人工作笔记</description>
-      <pubDate>2015-02-27</pubDate>
-      <guid>http://standino.github.io/work/html/JD/</guid>
-    </item>
-    <item>
       <title>大数据</title>
       <link>http://standino.github.io/blog/html/bigdata</link>
       <description>研究互联网用到的大数据技术</description>
@@ -49,34 +77,6 @@
       <description>eclipse</description>
       <pubDate>2015-02-17</pubDate>
       <guid>http://standino.github.io/blog/html/eclipse</guid>
-    </item>
-    <item>
-      <title>English</title>
-      <link>http://standino.github.io/blog/html/eng</link>
-      <description>English</description>
-      <pubDate>2015-02-17</pubDate>
-      <guid>http://standino.github.io/blog/html/eng</guid>
-    </item>
-    <item>
-      <title>FreeMind</title>
-      <link>http://standino.github.io/blog/html/freemind</link>
-      <description>freemind</description>
-      <pubDate>2015-02-17</pubDate>
-      <guid>http://standino.github.io/blog/html/freemind</guid>
-    </item>
-    <item>
-      <title>IBM产品的使用</title>
-      <link>http://standino.github.io/blog/html/ibm</link>
-      <description>ibm</description>
-      <pubDate>2015-02-17</pubDate>
-      <guid>http://standino.github.io/blog/html/ibm</guid>
-    </item>
-    <item>
-      <title>JAVA</title>
-      <link>http://standino.github.io/blog/html/java</link>
-      <description>Java Tips</description>
-      <pubDate>2015-02-17</pubDate>
-      <guid>http://standino.github.io/blog/html/java</guid>
     </item>
   </channel>
 </rss>
