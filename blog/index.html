@@ -5,17 +5,17 @@
     <meta charset="utf-8" />
     <meta name="author" content="Will" />
     <!-- Bootstrap Core CSS -->
-    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
-    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
     <!-- Timeline CSS -->
-    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/timeline.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
-    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/morris.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://standino.github.io/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,22 +40,31 @@
         <!-- /.navbar-top-links -->
         <script>
           function goSearch(){
-          $('#s').val($('#s').val()+' site:standino.github.io');
+          if($('#searchInSite').is(':checked')){
+          $('#s').val($('#s').val()+'   site:standino.github.io');
+          }
           }
         </script>
         <div class="navbar-default sidebar" role="navigation">
           <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
               <li class="sidebar-search">
-                <form method="get" id="searchform" onsubmit="goSearch()" action="http://search.aol.com/aol/search">
-                  <div class="input-group custom-search-form">
+                <form method="get" class="form-inline" id="searchform" onsubmit="goSearch()" target="_blank" action="http://search.aol.com/aol/search">
+                  <div class="form-group">
+                    <label class="sr-only" for="s">Search inputbox</label>
                     <input type="text" class="form-control" name="q" id="s" value="">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="submit">
-                        <i class="fa fa-search"></i>
-                      </button>
-                    </span>
                   </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="searchInSite"> 本站搜索
+                    </label>
+                  </div>
+                  <!-- <span class="input-group-btn">
+                       <button class="btn btn-default" type="submit">
+                         <i class="fa fa-search"></i>
+                       </button>
+                  </span>
+                  -->
                 </form>
                 <!-- /input-group -->
               </li>
@@ -79,6 +88,8 @@
                 <h1>Blog Index</h1>
                 <ul class="org-ul">
                   <li>2016-12-12&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/html/mylinks">常用链接</a></li>
+                  <li>2015-08-28&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/html/2015/08/28/untitled/">Untitled</a></li>
+                  <li>2015-08-28&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/html/2015/08/28/untitled/">Untitled</a></li>
                   <li>2015-01-26&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/2015/01/26/nightwatch">NightWatch 自动化测试框架 </a></li>
                   <li>2014-12-28&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/html/js">javascript</a></li>
                   <li>2014-12-20&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/html/2014/12/20/2015年计划/">2015年计划</a></li>
@@ -150,7 +161,6 @@
                   <li>2013-12-19&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/html/xmlcertification">xmlcertification</a></li>
                   <li>2013-12-19&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/html/muse">Emacs publish</a></li>
                   <li>2012-12-13&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/html/emacs/">关于Emacs的一些使用心得</a></li>
-                  <li>2012-11-27&nbsp;&nbsp;»&nbsp;&nbsp;<a href="/blog/html/html/myemacs/">Emacs 使用笔记</a></li>
                 </ul>
               </div>
             </div>
@@ -160,17 +170,11 @@
     </div>
     <div>
       <!-- jQuery Version 1.11.0 -->
-      <script src="/media/js/jquery-1.11.0.js"></script>
+      <script src="http://standino.github.io/media/js/jquery-1.11.0.js"></script>
       <!-- Bootstrap Core JavaScript -->
-      <script src="/media/js/bootstrap.min.js"></script>
-      <!-- Metis Menu Plugin JavaScript -->
-      <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
-      <!-- Morris Charts JavaScript -->
-      <script src="/media/js/plugins/morris/raphael.min.js"></script>
-      <script src="/media/js/plugins/morris/morris.min.js"></script>
-      <script src="/media/js/plugins/morris/morris-data.js"></script>
+      <script src="http://standino.github.io/media/js/bootstrap.min.js"></script>
       <!-- Custom Theme JavaScript -->
-      <script src="/media/js/sb-admin-2.js"></script>
+      <script src="http://standino.github.io/media/js/sb-admin-2.js"></script>
       <div class="footer">
         <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>

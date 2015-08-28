@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-  <title>javascript - Keep going</title>
+  <title>javascript - 简单</title>
   <meta charset="utf-8" />
   <meta name="author" content="Will Chang" />
     <meta name="description" content="Javascript" />
     <meta name="keywords" content="js" />
     <!-- Bootstrap Core CSS -->
-    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Timeline CSS -->
-    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/timeline.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://standino.github.io/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,6 +33,7 @@
 
 
 </head>
+
   <body class="container">
     <div id="wrapper">
       <!-- Navigation -->
@@ -44,30 +45,39 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+    <a class="navbar-brand" href="index.html">简单 --- 让生活更精彩。 </a>
   </div>
   <!-- /.navbar-header -->
 
   <!-- /.navbar-top-links -->
   <script>
    function goSearch(){
-     $('#s').val($('#s').val()+'site:standino.github.io');
+       if($('#searchInSite').is(':checked')){
+           $('#s').val($('#s').val()+'   site:standino.github.io');
+       }
    }
   </script>
   <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-      <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <form method="get" id="searchform" onsubmit="goSearch()" action="http://search.aol.com/aol/search">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control" name="q" id="s" value="">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
+      <div class="sidebar-nav navbar-collapse">
+          <ul class="nav" id="side-menu">
+              <li class="sidebar-search">
+                  <form method="get" class="form-inline" id="searchform" onsubmit="goSearch()" target="_blank" action="http://search.aol.com/aol/search">
+                      <div class="form-group">
+                          <label class="sr-only" for="s">Search inputbox</label>
+                          <input type="text" class="form-control" name="q" id="s" value="">
+                      </div>
+                      <div class="checkbox">
+                          <label>
+                              <input type="checkbox" id="searchInSite"> 本站搜索
+                          </label>
+                      </div>
+                      <!-- <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                      <i class="fa fa-search"></i>
+                      </button>
+                      </span>
+                      -->
+                  </form>
           <!-- /input-group -->
         </li>
           <li><a href="/blog/">Blog</a></li>
@@ -93,79 +103,86 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">项目中使用到的技术</a></li>
-<li><a href="#sec-2">常用链接</a></li>
-<li><a href="#sec-3">Bootstrap 简介</a></li>
-<li><a href="#sec-4">UI调试工具Fiddler,微软开发的。</a></li>
-<li><a href="#sec-5">获得jquery绑定的事件an</a></li>
-<li><a href="#sec-6">$.ajax 在IE中不work</a></li>
-<li><a href="#sec-7">firebug</a></li>
-<li><a href="#sec-8">Jquery 查询对象的几种方式</a></li>
-<li><a href="#sec-9">Jquery widget 编写</a>
+<li><a href="#sec-1">ES6 </a></li>
+<li><a href="#sec-2">require js</a></li>
+<li><a href="#sec-3">React</a>
 <ul>
-<li><a href="#sec-9-1">Involving the Mouse</a></li>
+<li><a href="#sec-3-1">通讯</a></li>
 </ul>
 </li>
-<li><a href="#sec-10">piwik</a></li>
-<li><a href="#sec-11">Bootstrap</a></li>
-<li><a href="#sec-12">SSI</a></li>
-<li><a href="#sec-13">Node.js</a>
+<li><a href="#sec-4">项目中使用到的技术</a></li>
+<li><a href="#sec-5">常用链接</a></li>
+<li><a href="#sec-6">Bootstrap 简介</a></li>
+<li><a href="#sec-7">UI调试工具Fiddler,微软开发的。</a></li>
+<li><a href="#sec-8">获得jquery绑定的事件an</a></li>
+<li><a href="#sec-9">$.ajax 在IE中不work</a></li>
+<li><a href="#sec-10">firebug</a></li>
+<li><a href="#sec-11">Jquery 查询对象的几种方式</a></li>
+<li><a href="#sec-12">Jquery widget 编写</a>
 <ul>
-<li><a href="#sec-13-1">kickstrap</a></li>
+<li><a href="#sec-12-1">Involving the Mouse</a></li>
 </ul>
 </li>
-<li><a href="#sec-14">ajax 乱码</a></li>
-<li><a href="#sec-15">表格截断</a></li>
-<li><a href="#sec-16">autocompte</a></li>
-<li><a href="#sec-17">min js</a></li>
-<li><a href="#sec-18">Node js</a></li>
-<li><a href="#sec-19">Angular + meteor</a>
+<li><a href="#sec-13">piwik</a></li>
+<li><a href="#sec-14">Bootstrap</a></li>
+<li><a href="#sec-15">SSI</a></li>
+<li><a href="#sec-16">Node.js</a>
 <ul>
-<li><a href="#sec-19-1">meteor</a></li>
-<li><a href="#sec-19-2">NPM</a></li>
-<li><a href="#sec-19-3">grunt</a></li>
-<li><a href="#sec-19-4">METEOR AND METEORITE ON WINDOWS</a></li>
+<li><a href="#sec-16-1">kickstrap</a></li>
 </ul>
 </li>
-<li><a href="#sec-20">CKeditor</a></li>
-<li><a href="#sec-21">Raphaël</a></li>
-<li><a href="#sec-22">D3</a></li>
-<li><a href="#sec-23">Json 在线查看工具</a></li>
-<li><a href="#sec-24">html 缓存</a></li>
-<li><a href="#sec-25">查询股票</a></li>
-<li><a href="#sec-26">Backbone</a></li>
-<li><a href="#sec-27">图表</a></li>
-<li><a href="#sec-28">Angular</a>
+<li><a href="#sec-17">ajax 乱码</a></li>
+<li><a href="#sec-18">表格截断</a></li>
+<li><a href="#sec-19">autocompte</a></li>
+<li><a href="#sec-20">min js</a></li>
+<li><a href="#sec-21">Node js</a></li>
+<li><a href="#sec-22">Angular + meteor</a>
 <ul>
-<li><a href="#sec-28-1">dashboard</a></li>
-<li><a href="#sec-28-2">iframe</a></li>
-<li><a href="#sec-28-3">tab</a></li>
-<li><a href="#sec-28-4">select</a></li>
+<li><a href="#sec-22-1">meteor</a></li>
+<li><a href="#sec-22-2">NPM</a></li>
+<li><a href="#sec-22-3">grunt</a></li>
+<li><a href="#sec-22-4">METEOR AND METEORITE ON WINDOWS</a></li>
 </ul>
 </li>
-<li><a href="#sec-29">less</a></li>
-<li><a href="#sec-30">JQuery操作iframe父页面与子页面的元素与方法</a></li>
-<li><a href="#sec-31">js tree</a></li>
-<li><a href="#sec-32">YO</a></li>
-<li><a href="#sec-33">Component</a></li>
-<li><a href="#sec-34">bower</a></li>
-<li><a href="#sec-35">gulp</a></li>
-<li><a href="#sec-36">生成图片</a></li>
-<li><a href="#sec-37">css 新框架</a></li>
-<li><a href="#sec-38">HTML5 学习小组规划</a>
+<li><a href="#sec-23">CKeditor</a></li>
+<li><a href="#sec-24">Raphaël</a></li>
+<li><a href="#sec-25">D3</a></li>
+<li><a href="#sec-26">Json 在线查看工具</a></li>
+<li><a href="#sec-27">html 缓存</a></li>
+<li><a href="#sec-28">查询股票</a></li>
+<li><a href="#sec-29">Backbone</a></li>
+<li><a href="#sec-30">图表</a></li>
+<li><a href="#sec-31">Angular</a>
 <ul>
-<li><a href="#sec-38-1">背景</a></li>
-<li><a href="#sec-38-2">目标</a></li>
-<li><a href="#sec-38-3">团队组建</a></li>
-<li><a href="#sec-38-4">HTML5学习路线图</a>
-<ul>
-<li><a href="#sec-38-4-1">HTML5教程</a></li>
-<li><a href="#sec-38-4-2">CSS教程</a></li>
-<li><a href="#sec-38-4-3">JavaScript教程</a></li>
-<li><a href="#sec-38-4-4">HTML5其它的核心技术</a></li>
+<li><a href="#sec-31-1">dashboard</a></li>
+<li><a href="#sec-31-2">iframe</a></li>
+<li><a href="#sec-31-3">tab</a></li>
+<li><a href="#sec-31-4">select</a></li>
 </ul>
 </li>
-<li><a href="#sec-38-5">使用 H5 编写微信宣传页</a></li>
+<li><a href="#sec-32">less</a></li>
+<li><a href="#sec-33">JQuery操作iframe父页面与子页面的元素与方法</a></li>
+<li><a href="#sec-34">js tree</a></li>
+<li><a href="#sec-35">YO</a></li>
+<li><a href="#sec-36">Component</a></li>
+<li><a href="#sec-37">bower</a></li>
+<li><a href="#sec-38">gulp</a></li>
+<li><a href="#sec-39">生成图片</a></li>
+<li><a href="#sec-40">css 新框架</a></li>
+<li><a href="#sec-41">HTML5 学习小组规划</a>
+<ul>
+<li><a href="#sec-41-1">背景</a></li>
+<li><a href="#sec-41-2">目标</a></li>
+<li><a href="#sec-41-3">团队组建</a></li>
+<li><a href="#sec-41-4">HTML5学习路线图</a>
+<ul>
+<li><a href="#sec-41-4-1">HTML5教程</a></li>
+<li><a href="#sec-41-4-2">CSS教程</a></li>
+<li><a href="#sec-41-4-3">JavaScript教程</a></li>
+<li><a href="#sec-41-4-4">HTML5其它的核心技术</a></li>
+</ul>
+</li>
+<li><a href="#sec-41-5">使用 H5 编写微信宣传页</a></li>
 </ul>
 </li>
 </ul>
@@ -180,10 +197,120 @@
 </li>
 <li><a href="https://c9.io/standino">https://c9.io/standino</a> 在线编辑器
 </li>
+<li></li>
 </ul>
+
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">项目中使用到的技术</h2>
+<h2 id="sec-1">ES6 <a href="http://es6-features.org/#PromiseUsage">http://es6-features.org/#PromiseUsage</a></h2>
 <div class="outline-text-2" id="text-1">
+<p>
+<a href="http://es6.ruanyifeng.com/">http://es6.ruanyifeng.com/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">require js</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="http://www.requirejs.cn/">http://www.requirejs.cn/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">React</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><a href="http://aeflash.com/2015-02/react-tips-and-best-practices.htm">http://aeflash.com/2015-02/react-tips-and-best-practices.htm</a>
+</li>
+<li><a href="http://blog.andrewray.me/flux-for-stupid-people/">http://blog.andrewray.me/flux-for-stupid-people/</a>
+<ul class="org-ul">
+<li><a href="http://tylermcginnis.com/reactjs-tutorial-pt-3-architecting-react-js-apps-with-flux/">http://tylermcginnis.com/reactjs-tutorial-pt-3-architecting-react-js-apps-with-flux/</a>
+</li>
+<li>17 DataTable Examples  <a href="http://react.rocks/tag/DataTable">http://react.rocks/tag/DataTable</a>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="example">
+render : function() {
+    var rows;
+    for (var i = 0; i &lt; this.state.data.length; i++) {
+      var item = this.state.data[i];
+
+      rows.push(
+        &lt;tr&gt;
+          &lt;td&gt;{item.name}&lt;/td&gt;
+          &lt;td&gt;{item.age}&lt;/td&gt;
+          &lt;td&gt;{item.dob}&lt;/td&gt;
+          &lt;td&gt;{item.score}&lt;/td&gt;
+        &lt;/tr&gt;
+      );
+    }
+
+    return (
+        &lt;table&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th onClick={this.sortData.bind(null, 'name')}&gt;Name&lt;/th&gt;
+              &lt;th onClick={this.sortData.bind(null, 'age')}&gt;Age&lt;/th&gt;
+              &lt;th onClick={this.sortData.bind(null, 'dob')}&gt;D.O.B&lt;/th&gt;
+              &lt;th onClick={this.sortData.bind(null, 'score')}&gt;Score&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            {rows}
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+    );
+  }
+</pre>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">通讯</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><a href="http://maketea.co.uk/2014/03/05/building-robust-web-apps-with-react-part-1.html">http://maketea.co.uk/2014/03/05/building-robust-web-apps-with-react-part-1.html</a>
+</li>
+</ul>
+
+<p>
+For further reaching notifications a publish/subscribe system will be more flexible and easier to maintain. This can be done
+simply with native events or a library such PubSubJS, binding and unbinding with a components lifecycle methods. 
+</p>
+
+<pre class="example">
+var Parent = React.createClass({
+  handleMyEvent: function(e) {...},
+  componentWillMount: function() {
+    window.addEventListener("my-event", this.handleMyEvent, false);
+  },
+  componentWillUnmount: function() {
+    window.removeEventListener("my-event", this.handleMyEvent, false);
+  },
+  render: function() {...}
+});
+
+var Grandchild = React.createClass({
+  handleClick: function(e) {
+    var customEvent = new CustomEvent("my-event",  {
+      detail: { ... },
+      bubbles: true
+    });
+    this.refs.link.getDOMNode().dispatchEvent(customEvent);
+  },
+  render: function() {
+    return &lt;a ref="link" onClick={this.handleClick}&gt;Click me&lt;/a&gt;;
+  }
+});
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">项目中使用到的技术</h2>
+<div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>jquery-ui-portlet <a href="https://github.com/standino/jquery-ui-portlet">https://github.com/standino/jquery-ui-portlet</a>
 </li>
@@ -201,9 +328,9 @@
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">常用链接</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">常用链接</h2>
+<div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li><a href="http://www.myexception.cn/javascript/407684.html">DOJO js 根本dom操作</a>
 </li>
@@ -235,9 +362,9 @@
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><a href="http://www.w3cschool.cc/bootstrap/bootstrap-intro.html">Bootstrap 简介</a></h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><a href="http://www.w3cschool.cc/bootstrap/bootstrap-intro.html">Bootstrap 简介</a></h2>
+<div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><a href="https://wrapbootstrap.com/">Theme and temaplate</a>
 </li>
@@ -268,12 +395,12 @@ Bootstrap 为您提供了所有这些基本的模块 - Grid、Typography、Table
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">UI调试工具Fiddler,微软开发的。</h2>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">UI调试工具Fiddler,微软开发的。</h2>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">获得jquery绑定的事件an</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">获得jquery绑定的事件an</h2>
+<div class="outline-text-2" id="text-8">
 <div class="org-src-container">
 
 <pre class="src src-javascript">var events = $(".add").data('events');
@@ -292,9 +419,9 @@ if (events &amp;&amp; events.click) {
 </div>
 
 
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">$.ajax 在IE中不work</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">$.ajax 在IE中不work</h2>
+<div class="outline-text-2" id="text-9">
 <div class="org-src-container">
 
 <pre class="src src-javascript">$.ajaxSetup ({
@@ -305,9 +432,9 @@ if (events &amp;&amp; events.click) {
 </div>
 </div>
 
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">firebug</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">firebug</h2>
+<div class="outline-text-2" id="text-10">
 <ul class="org-ul">
 <li><a href="http://mynoteweb.com/node/114">用Firebug调试JavaScript</a>
 </li>
@@ -315,56 +442,22 @@ if (events &amp;&amp; events.click) {
 </div>
 </div>
 
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">Jquery 查询对象的几种方式</h2>
-<div class="outline-text-2" id="text-8">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="left">查询方式</td>
-<td class="left">例子</td>
-</tr>
-
-<tr>
-<td class="left">按class查询</td>
-<td class="left">$(".myclass")</td>
-</tr>
-
-<tr>
-<td class="left">按ID查询</td>
-<td class="left">$("#myid")</td>
-</tr>
-
-<tr>
-<td class="left">定位某个元素，查找子元素</td>
-<td class="left">$(".quickMenu i").bind('click', function () {</td>
-</tr>
-
-<tr>
-<td class="left">函数里获得this的子元素</td>
-<td class="left">$(this).find('i').toggleClass("ticked");</td>
-</tr>
-
-<tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Jquery 查询对象的几种方式</h2>
+<div class="outline-text-2" id="text-11">
+<pre class="example">
+| 查询方式                 | 例子                                          |
+| 按class查询              | $(".myclass")                                 |
+| 按ID查询                 | $("#myid")                                    |
+| 定位某个元素，查找子元素 | $(".quickMenu i").bind('click', function () { |
+| 函数里获得this的子元素   | $(this).find('i').toggleClass("ticked");      |
+|                          |                                               |
+</pre>
 </div>
 </div>
-
-
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">Jquery widget 编写</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">Jquery widget 编写</h2>
+<div class="outline-text-2" id="text-12">
 <ol class="org-ol">
 <li><a href="http://bililite.com/blog/understanding-jquery-ui-widgets-a-tutorial/">http://bililite.com/blog/understanding-jquery-ui-widgets-a-tutorial/</a>
 </li>
@@ -418,9 +511,9 @@ $('.target').bind('green5done', function() { $('.level', this).text('undefined')
 </div>
 </div>
 
-<div id="outline-container-sec-9-1" class="outline-3">
-<h3 id="sec-9-1">Involving the Mouse</h3>
-<div class="outline-text-3" id="text-9-1">
+<div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1">Involving the Mouse</h3>
+<div class="outline-text-3" id="text-12-1">
 <p>
 Now, a lot of what we want to do with widgets involves mouse tracking, so ui.core.js provides a mixin object that includes lots of
 useful methods for the mouse. All we need to do is add the $.ui.mouse widget to our widget prototype:
@@ -491,31 +584,31 @@ ought to be abstracted out into its own method, something like
 </div>
 </div>
 
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">piwik</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">piwik</h2>
+<div class="outline-text-2" id="text-13">
 <p>
 API: <a href="http://developer.piwik.org/api-reference/tracking-javascript#where-can-i-find-the-piwik-tracking-code">http://developer.piwik.org/api-reference/tracking-javascript#where-can-i-find-the-piwik-tracking-code</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11"><a href="http://www.bootcss.com/">Bootstrap</a></h2>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><a href="http://www.bootcss.com/">Bootstrap</a></h2>
 </div>
 
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">SSI</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">SSI</h2>
+<div class="outline-text-2" id="text-15">
 <p>
 <a href="http://blog.csdn.net/cpp_lzth/article/details/6167591">http://blog.csdn.net/cpp_lzth/article/details/6167591</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">Node.js</h2>
-<div class="outline-text-2" id="text-13">
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">Node.js</h2>
+<div class="outline-text-2" id="text-16">
 <ol class="org-ol">
 <li>在Windows下安装Node.js、npm、express <a href="http://blog.uifanr.com/2013/03/12/472">http://blog.uifanr.com/2013/03/12/472</a>
 </li>
@@ -525,9 +618,9 @@ API: <a href="http://developer.piwik.org/api-reference/tracking-javascript#where
 ubutnu sudo add-apt-repository ppa:chris-lea/node.js
 </p>
 </div>
-<div id="outline-container-sec-13-1" class="outline-3">
-<h3 id="sec-13-1"><a href="http://getkickstrap.com/docs.html#/first-steps">kickstrap</a></h3>
-<div class="outline-text-3" id="text-13-1">
+<div id="outline-container-sec-16-1" class="outline-3">
+<h3 id="sec-16-1"><a href="http://getkickstrap.com/docs.html#/first-steps">kickstrap</a></h3>
+<div class="outline-text-3" id="text-16-1">
 <p>
 <a href="https://www.firebase.com/tutorial/#session/va7gdy2y5s0">https://www.firebase.com/tutorial/#session/va7gdy2y5s0</a>
 </p>
@@ -535,9 +628,9 @@ ubutnu sudo add-apt-repository ppa:chris-lea/node.js
 </div>
 </div>
 
-<div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14">ajax 乱码</h2>
-<div class="outline-text-2" id="text-14">
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17">ajax 乱码</h2>
+<div class="outline-text-2" id="text-17">
 <p>
 encodeURIComponent(
 </p>
@@ -551,9 +644,9 @@ $.ajax({
 </div>
 </div>
 
-<div id="outline-container-sec-15" class="outline-2">
-<h2 id="sec-15">表格截断</h2>
-<div class="outline-text-2" id="text-15">
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18">表格截断</h2>
+<div class="outline-text-2" id="text-18">
 <ol class="org-ol">
 <li><a href="http://www.045d.com/post/461.html">http://www.045d.com/post/461.html</a>
 </li>
@@ -568,17 +661,17 @@ $.ajax({
 </div>
 </div>
 
-<div id="outline-container-sec-16" class="outline-2">
-<h2 id="sec-16">autocompte</h2>
-<div class="outline-text-2" id="text-16">
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19">autocompte</h2>
+<div class="outline-text-2" id="text-19">
 <p>
 <a href="http://jqueryui.com/autocomplete/#multiple-remote">http://jqueryui.com/autocomplete/#multiple-remote</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-17" class="outline-2">
-<h2 id="sec-17">min js</h2>
-<div class="outline-text-2" id="text-17">
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20">min js</h2>
+<div class="outline-text-2" id="text-20">
 <ul class="org-ul">
 <li><a href="http://yui.github.io/yuicompressor/">http://yui.github.io/yuicompressor/</a>
 </li>
@@ -595,9 +688,9 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 </div>
 </div>
 
-<div id="outline-container-sec-18" class="outline-2">
-<h2 id="sec-18">Node js</h2>
-<div class="outline-text-2" id="text-18">
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21">Node js</h2>
+<div class="outline-text-2" id="text-21">
 <ul class="org-ul">
 <li><a href="http://www.nodebeginner.org/index-zh-cn.html">http://www.nodebeginner.org/index-zh-cn.html</a>
 </li>
@@ -605,9 +698,9 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 </div>
 </div>
 
-<div id="outline-container-sec-19" class="outline-2">
-<h2 id="sec-19"><a href="https://angularjs.org/">Angular</a> + meteor</h2>
-<div class="outline-text-2" id="text-19">
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22"><a href="https://angularjs.org/">Angular</a> + meteor</h2>
+<div class="outline-text-2" id="text-22">
 <p>
 通过阅读文章好像Angular更好一些
 </p>
@@ -678,9 +771,9 @@ java -jar /home/will/JD/tools/yuicompressor-2.4.8.jar  jquery.portlet.js -o  jqu
 </ol>
 </div>
 
-<div id="outline-container-sec-19-1" class="outline-3">
-<h3 id="sec-19-1">meteor</h3>
-<div class="outline-text-3" id="text-19-1">
+<div id="outline-container-sec-22-1" class="outline-3">
+<h3 id="sec-22-1">meteor</h3>
+<div class="outline-text-3" id="text-22-1">
 <ol class="org-ol">
 <li><a href="http://www.likebin.net/meteorlist.html">http://www.likebin.net/meteorlist.html</a>
 </li>
@@ -697,9 +790,9 @@ CSS syntax itself already uses hyphens (font-family, text-align, etc.).
 </div>
 </div>
 
-<div id="outline-container-sec-19-2" class="outline-3">
-<h3 id="sec-19-2">NPM</h3>
-<div class="outline-text-3" id="text-19-2">
+<div id="outline-container-sec-22-2" class="outline-3">
+<h3 id="sec-22-2">NPM</h3>
+<div class="outline-text-3" id="text-22-2">
 <ol class="org-ol">
 <li><a href="http://www.cnblogs.com/chyingp/p/npm.html">http://www.cnblogs.com/chyingp/p/npm.html</a>
 </li>
@@ -715,9 +808,9 @@ mrt create microscope
 </div>
 </div>
 
-<div id="outline-container-sec-19-3" class="outline-3">
-<h3 id="sec-19-3">grunt</h3>
-<div class="outline-text-3" id="text-19-3">
+<div id="outline-container-sec-22-3" class="outline-3">
+<h3 id="sec-22-3">grunt</h3>
+<div class="outline-text-3" id="text-22-3">
 <ol class="org-ol">
 <li><a href="http://gruntjs.com/getting-started">http://gruntjs.com/getting-started</a>
 </li>
@@ -730,9 +823,9 @@ sudo npm --proxy http://127.0.0.1:8087 install -g grunt-cli
 </div>
 </div>
 
-<div id="outline-container-sec-19-4" class="outline-3">
-<h3 id="sec-19-4">METEOR AND METEORITE ON WINDOWS</h3>
-<div class="outline-text-3" id="text-19-4">
+<div id="outline-container-sec-22-4" class="outline-3">
+<h3 id="sec-22-4">METEOR AND METEORITE ON WINDOWS</h3>
+<div class="outline-text-3" id="text-22-4">
 <pre class="example">
 TUE AUG 05 2014
 Both Meteor and Meteorite are unofficially supported on Windows, and these are the required steps to make it work.
@@ -753,9 +846,9 @@ You now have a working Meteor and Meteorite development setup on Windows. When a
 </div>
 </div>
 
-<div id="outline-container-sec-20" class="outline-2">
-<h2 id="sec-20">CKeditor</h2>
-<div class="outline-text-2" id="text-20">
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23">CKeditor</h2>
+<div class="outline-text-2" id="text-23">
 <ol class="org-ol">
 <li><a href="http://www.mzone.cc/article/288.html">http://www.mzone.cc/article/288.html</a>
 </li>
@@ -809,9 +902,9 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 </div>
 
-<div id="outline-container-sec-21" class="outline-2">
-<h2 id="sec-21"><a href="http://raphaeljs.com/">Raphaël</a></h2>
-<div class="outline-text-2" id="text-21">
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24"><a href="http://raphaeljs.com/">Raphaël</a></h2>
+<div class="outline-text-2" id="text-24">
 <ul class="org-ul">
 <li><a href="http://webmonarch.github.io/d34raphael/">http://webmonarch.github.io/d34raphael/</a>
 </li>
@@ -821,9 +914,9 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 </div>
 
-<div id="outline-container-sec-22" class="outline-2">
-<h2 id="sec-22">D3</h2>
-<div class="outline-text-2" id="text-22">
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25">D3</h2>
+<div class="outline-text-2" id="text-25">
 <ul class="org-ul">
 <li>Interactive Data Visualization for the Web <a href="http://chimera.labs.oreilly.com/books/1230000000345/index.html">http://chimera.labs.oreilly.com/books/1230000000345/index.html</a>
 </li>
@@ -835,18 +928,18 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 </div>
 
-<div id="outline-container-sec-23" class="outline-2">
-<h2 id="sec-23">Json 在线查看工具</h2>
-<div class="outline-text-2" id="text-23">
+<div id="outline-container-sec-26" class="outline-2">
+<h2 id="sec-26">Json 在线查看工具</h2>
+<div class="outline-text-2" id="text-26">
 <p>
 1 <a href="http://jsonviewer.stack.hu/">http://jsonviewer.stack.hu/</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-24" class="outline-2">
-<h2 id="sec-24">html 缓存</h2>
-<div class="outline-text-2" id="text-24">
+<div id="outline-container-sec-27" class="outline-2">
+<h2 id="sec-27">html 缓存</h2>
+<div class="outline-text-2" id="text-27">
 <p>
 如下代码会禁用html缓存
 </p>
@@ -868,9 +961,9 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 </div>
 
-<div id="outline-container-sec-25" class="outline-2">
-<h2 id="sec-25">查询股票</h2>
-<div class="outline-text-2" id="text-25">
+<div id="outline-container-sec-28" class="outline-2">
+<h2 id="sec-28">查询股票</h2>
+<div class="outline-text-2" id="text-28">
 <ul class="org-ul">
 <li><a href="http://shenhai.zqmyw.cn/thread-2203-1-1.html">如何使用新浪股票接口获取恒生指数及美国的一些股票指数？</a>
 </li>
@@ -879,9 +972,9 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 
 
-<div id="outline-container-sec-26" class="outline-2">
-<h2 id="sec-26">Backbone</h2>
-<div class="outline-text-2" id="text-26">
+<div id="outline-container-sec-29" class="outline-2">
+<h2 id="sec-29">Backbone</h2>
+<div class="outline-text-2" id="text-29">
 <ul class="org-ul">
 <li>Backbone入门指南（一）：什么是Backbone? <a href="http://yujianshenbing.iteye.com/blog/1748447">http://yujianshenbing.iteye.com/blog/1748447</a>
 </li>
@@ -893,9 +986,9 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 </div>
 
-<div id="outline-container-sec-27" class="outline-2">
-<h2 id="sec-27">图表</h2>
-<div class="outline-text-2" id="text-27">
+<div id="outline-container-sec-30" class="outline-2">
+<h2 id="sec-30">图表</h2>
+<div class="outline-text-2" id="text-30">
 <ul class="org-ul">
 <li><a href="http://echarts.baidu.com/doc/example.html">http://echarts.baidu.com/doc/example.html</a>
 </li>
@@ -907,9 +1000,9 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 
 
-<div id="outline-container-sec-28" class="outline-2">
-<h2 id="sec-28">Angular</h2>
-<div class="outline-text-2" id="text-28">
+<div id="outline-container-sec-31" class="outline-2">
+<h2 id="sec-31">Angular</h2>
+<div class="outline-text-2" id="text-31">
 <ul class="org-ul">
 <li><a href="http://angularjs.cn/A00a">http://angularjs.cn/A00a</a>
 </li>
@@ -919,9 +1012,9 @@ CKEDITOR.editorConfig = function(config) {
 </li>
 </ul>
 </div>
-<div id="outline-container-sec-28-1" class="outline-3">
-<h3 id="sec-28-1">dashboard</h3>
-<div class="outline-text-3" id="text-28-1">
+<div id="outline-container-sec-31-1" class="outline-3">
+<h3 id="sec-31-1">dashboard</h3>
+<div class="outline-text-3" id="text-31-1">
 <ul class="org-ul">
 <li><a href="http://ehesp.github.io/Responsive-Dashboard/">http://ehesp.github.io/Responsive-Dashboard/</a>#
 </li>
@@ -931,9 +1024,9 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 </div>
 
-<div id="outline-container-sec-28-2" class="outline-3">
-<h3 id="sec-28-2">iframe</h3>
-<div class="outline-text-3" id="text-28-2">
+<div id="outline-container-sec-31-2" class="outline-3">
+<h3 id="sec-31-2">iframe</h3>
+<div class="outline-text-3" id="text-31-2">
 <ul class="org-ul">
 <li><a href="http://stackoverflow.com/questions/20045150/angular-js-how-to-set-an-iframe-src-attribute-from-a-variable">http://stackoverflow.com/questions/20045150/angular-js-how-to-set-an-iframe-src-attribute-from-a-variable</a>
 </li>
@@ -966,18 +1059,18 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 </div>
 
-<div id="outline-container-sec-28-3" class="outline-3">
-<h3 id="sec-28-3">tab</h3>
-<div class="outline-text-3" id="text-28-3">
+<div id="outline-container-sec-31-3" class="outline-3">
+<h3 id="sec-31-3">tab</h3>
+<div class="outline-text-3" id="text-31-3">
 <p>
 <a href="http://plnkr.co/edit/IZiEskpyprh3vt9TTUNd?p=preview">http://plnkr.co/edit/IZiEskpyprh3vt9TTUNd?p=preview</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-28-4" class="outline-3">
-<h3 id="sec-28-4">select</h3>
-<div class="outline-text-3" id="text-28-4">
+<div id="outline-container-sec-31-4" class="outline-3">
+<h3 id="sec-31-4">select</h3>
+<div class="outline-text-3" id="text-31-4">
 <ul class="org-ul">
 <li><a href="http://wenzhixin.net.cn/p/multiple-select/docs/#multiple-select">http://wenzhixin.net.cn/p/multiple-select/docs/#multiple-select</a>
 </li>
@@ -986,9 +1079,9 @@ CKEDITOR.editorConfig = function(config) {
 </div>
 </div>
 
-<div id="outline-container-sec-29" class="outline-2">
-<h2 id="sec-29">less</h2>
-<div class="outline-text-2" id="text-29">
+<div id="outline-container-sec-32" class="outline-2">
+<h2 id="sec-32">less</h2>
+<div class="outline-text-2" id="text-32">
 <ul class="org-ul">
 <li><a href="http://lesscss.org/">http://lesscss.org/</a>
 </li>
@@ -1000,9 +1093,9 @@ CKEDITOR.editorConfig = function(config) {
 
 
 
-<div id="outline-container-sec-30" class="outline-2">
-<h2 id="sec-30">JQuery操作iframe父页面与子页面的元素与方法</h2>
-<div class="outline-text-2" id="text-30">
+<div id="outline-container-sec-33" class="outline-2">
+<h2 id="sec-33">JQuery操作iframe父页面与子页面的元素与方法</h2>
+<div class="outline-text-2" id="text-33">
 <p>
 JQUERY IFRAME
 下面简单使用Jquery来操作iframe的一些记录，这个使用纯JS与可以实现。
@@ -1076,9 +1169,9 @@ content.html
 </div>
 </div>
 
-<div id="outline-container-sec-31" class="outline-2">
-<h2 id="sec-31">js tree</h2>
-<div class="outline-text-2" id="text-31">
+<div id="outline-container-sec-34" class="outline-2">
+<h2 id="sec-34">js tree</h2>
+<div class="outline-text-2" id="text-34">
 <ul class="org-ul">
 <li><a href="http://www.jstree.com/plugins/">http://www.jstree.com/plugins/</a>
 </li>
@@ -1098,9 +1191,9 @@ content.html
 
 
 
-<div id="outline-container-sec-32" class="outline-2">
-<h2 id="sec-32">YO</h2>
-<div class="outline-text-2" id="text-32">
+<div id="outline-container-sec-35" class="outline-2">
+<h2 id="sec-35">YO</h2>
+<div class="outline-text-2" id="text-35">
 <pre class="example">
 npm install -g yo
 
@@ -1112,9 +1205,9 @@ npm install -g browserify
 </div>
 </div>
 
-<div id="outline-container-sec-33" class="outline-2">
-<h2 id="sec-33">Component</h2>
-<div class="outline-text-2" id="text-33">
+<div id="outline-container-sec-36" class="outline-2">
+<h2 id="sec-36">Component</h2>
+<div class="outline-text-2" id="text-36">
 <ul class="org-ul">
 <li><a href="http://blog.benmcmahen.com/post/55280740882/using-component-js">Using Component.js</a>
 </li>
@@ -1127,9 +1220,9 @@ sudo npm install -g component
 </div>
 </div>
 
-<div id="outline-container-sec-34" class="outline-2">
-<h2 id="sec-34">bower</h2>
-<div class="outline-text-2" id="text-34">
+<div id="outline-container-sec-37" class="outline-2">
+<h2 id="sec-37">bower</h2>
+<div class="outline-text-2" id="text-37">
 <p>
 git config --global url.<a href="https://.insteadOf">https://.insteadOf</a> git://
 </p>
@@ -1147,9 +1240,9 @@ bower install https://github.com/jquery/jquery-ui.git#1.11.0  --save
 </div>
 </div>
 
-<div id="outline-container-sec-35" class="outline-2">
-<h2 id="sec-35">gulp</h2>
-<div class="outline-text-2" id="text-35">
+<div id="outline-container-sec-38" class="outline-2">
+<h2 id="sec-38">gulp</h2>
+<div class="outline-text-2" id="text-38">
 <ul class="org-ul">
 <li><a href="http://www.w3ctech.com/topic/74">Gulp挑战Grunt，背后的哲学</a>
 </li>
@@ -1157,9 +1250,9 @@ bower install https://github.com/jquery/jquery-ui.git#1.11.0  --save
 </div>
 </div>
 
-<div id="outline-container-sec-36" class="outline-2">
-<h2 id="sec-36">生成图片</h2>
-<div class="outline-text-2" id="text-36">
+<div id="outline-container-sec-39" class="outline-2">
+<h2 id="sec-39">生成图片</h2>
+<div class="outline-text-2" id="text-39">
 <ul class="org-ul">
 <li><a href="http://placeholder.qiniudn.com/184x37/f60/fff">http://placeholder.qiniudn.com/184x37/f60/fff</a>
 </li>
@@ -1168,9 +1261,9 @@ bower install https://github.com/jquery/jquery-ui.git#1.11.0  --save
 </div>
 
 
-<div id="outline-container-sec-37" class="outline-2">
-<h2 id="sec-37">css 新框架</h2>
-<div class="outline-text-2" id="text-37">
+<div id="outline-container-sec-40" class="outline-2">
+<h2 id="sec-40">css 新框架</h2>
+<div class="outline-text-2" id="text-40">
 <ul class="org-ul">
 <li><a href="http://zh.semantic-ui.com/">http://zh.semantic-ui.com/</a>
 </li>
@@ -1179,12 +1272,12 @@ bower install https://github.com/jquery/jquery-ui.git#1.11.0  --save
 </div>
 </div>
 
-<div id="outline-container-sec-38" class="outline-2">
-<h2 id="sec-38">HTML5 学习小组规划</h2>
-<div class="outline-text-2" id="text-38">
-</div><div id="outline-container-sec-38-1" class="outline-3">
-<h3 id="sec-38-1">背景</h3>
-<div class="outline-text-3" id="text-38-1">
+<div id="outline-container-sec-41" class="outline-2">
+<h2 id="sec-41">HTML5 学习小组规划</h2>
+<div class="outline-text-2" id="text-41">
+</div><div id="outline-container-sec-41-1" class="outline-3">
+<h3 id="sec-41-1">背景</h3>
+<div class="outline-text-3" id="text-41-1">
 <p>
 HTML5 的标准已经发布。作为互联网公司的开发人员的我们，需要跟进技术潮流，使用新技术开发出更好的系统来服务于客户。因此我们筹划组建
 HTML5 学习小组。
@@ -1192,9 +1285,9 @@ HTML5 学习小组。
 </div>
 </div>
 
-<div id="outline-container-sec-38-2" class="outline-3">
-<h3 id="sec-38-2">目标</h3>
-<div class="outline-text-3" id="text-38-2">
+<div id="outline-container-sec-41-2" class="outline-3">
+<h3 id="sec-41-2">目标</h3>
+<div class="outline-text-3" id="text-41-2">
 <ul class="org-ul">
 <li>组织多次 HTML5 相关技术的讲座，向全部门开发人员普及 HTML5 技术。
 </li>
@@ -1206,9 +1299,9 @@ HTML5 学习小组。
 </div>
 </div>
 
-<div id="outline-container-sec-38-3" class="outline-3">
-<h3 id="sec-38-3">团队组建</h3>
-<div class="outline-text-3" id="text-38-3">
+<div id="outline-container-sec-41-3" class="outline-3">
+<h3 id="sec-41-3">团队组建</h3>
+<div class="outline-text-3" id="text-41-3">
 <ul class="org-ul">
 <li>以目前UI标准化小组成员为基础创立 HTML5 学习小组。
 </li>
@@ -1222,9 +1315,9 @@ HTML5 学习小组。
 </div>
 </div>
 
-<div id="outline-container-sec-38-4" class="outline-3">
-<h3 id="sec-38-4"><a href="https://creately.com/diagram/i30ui51j1/Bsbu2qDjAWyIUUaHy1YuDvfpY=">HTML5学习路线图</a></h3>
-<div class="outline-text-3" id="text-38-4">
+<div id="outline-container-sec-41-4" class="outline-3">
+<h3 id="sec-41-4"><a href="https://creately.com/diagram/i30ui51j1/Bsbu2qDjAWyIUUaHy1YuDvfpY=">HTML5学习路线图</a></h3>
+<div class="outline-text-3" id="text-41-4">
 
 <div class="figure">
 <p><img src="http://standino.github.io/wiki/HTML5%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%9B%BE.png" alt="HTML5%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%9B%BE.png" />
@@ -1232,9 +1325,9 @@ HTML5 学习小组。
 </div>
 </div>
 
-<div id="outline-container-sec-38-4-1" class="outline-4">
-<h4 id="sec-38-4-1">HTML5教程</h4>
-<div class="outline-text-4" id="text-38-4-1">
+<div id="outline-container-sec-41-4-1" class="outline-4">
+<h4 id="sec-41-4-1">HTML5教程</h4>
+<div class="outline-text-4" id="text-41-4-1">
 <p>
 主要学习HTML标签、属性和事件。
 参考：<a href="http://www.w3school.com.cn/html5/index.asp">http://www.w3school.com.cn/html5/index.asp</a>
@@ -1242,9 +1335,9 @@ HTML5 学习小组。
 </div>
 </div>
 
-<div id="outline-container-sec-38-4-2" class="outline-4">
-<h4 id="sec-38-4-2">CSS教程</h4>
-<div class="outline-text-4" id="text-38-4-2">
+<div id="outline-container-sec-41-4-2" class="outline-4">
+<h4 id="sec-41-4-2">CSS教程</h4>
+<div class="outline-text-4" id="text-41-4-2">
 <p>
 主要学习使用CSS来控制网页的样式和布局。
 参考：<a href="http://www.w3school.com.cn/css/index.asp">http://www.w3school.com.cn/css/index.asp</a>
@@ -1253,9 +1346,9 @@ HTML5 学习小组。
 </div>
 
 
-<div id="outline-container-sec-38-4-3" class="outline-4">
-<h4 id="sec-38-4-3">JavaScript教程</h4>
-<div class="outline-text-4" id="text-38-4-3">
+<div id="outline-container-sec-41-4-3" class="outline-4">
+<h4 id="sec-41-4-3">JavaScript教程</h4>
+<div class="outline-text-4" id="text-41-4-3">
 <p>
 做HTML5开发，主要使用JS语言。所以要学习JS语言。必要时还要学习一些JS库，方便开发。
 JS教程：<a href="http://www.w3school.com.cn/js/index.asp">http://www.w3school.com.cn/js/index.asp</a>
@@ -1264,9 +1357,9 @@ JQuery教程：<a href="http://www.w3school.com.cn/jquery/index.asp">http://www.
 </div>
 </div>
 
-<div id="outline-container-sec-38-4-4" class="outline-4">
-<h4 id="sec-38-4-4">HTML5其它的核心技术</h4>
-<div class="outline-text-4" id="text-38-4-4">
+<div id="outline-container-sec-41-4-4" class="outline-4">
+<h4 id="sec-41-4-4">HTML5其它的核心技术</h4>
+<div class="outline-text-4" id="text-41-4-4">
 <p>
 1）WebWorker
 可以在浏览器中运行多个JS脚本。可以用于需要后台执行某种耗时工作的场合。API可以参考：<a href="http://www.w3.org/TR/workers/">http://www.w3.org/TR/workers/</a>
@@ -1285,9 +1378,9 @@ JQuery教程：<a href="http://www.w3school.com.cn/jquery/index.asp">http://www.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-38-5" class="outline-3">
-<h3 id="sec-38-5">使用 H5 编写微信宣传页</h3>
-<div class="outline-text-3" id="text-38-5">
+<div id="outline-container-sec-41-5" class="outline-3">
+<h3 id="sec-41-5">使用 H5 编写微信宣传页</h3>
+<div class="outline-text-3" id="text-41-5">
 <ul class="org-ul">
 <li><a href="http://srsgores.github.io/less-boilerplate/">html 5 webpages</a>
 </li>
@@ -1333,6 +1426,9 @@ $(document).ready(function(){
     });
 });
 </pre>
+<p>
+jQuery("#ajaxjson").detach().insertBefore("#news")
+</p>
 </div>
 </div>
 </div>
@@ -1352,7 +1448,7 @@ $(document).ready(function(){
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2014-12-28</span>
-        <span title="last modification date" class="post-info">修改日期：2015-02-17</span>
+        <span title="last modification date" class="post-info">修改日期：2015-08-28</span>
         <span title="tags" class="post-info"><a href="/tags/js/">js</a>, <a href="/tags/jquery/">jquery</a>, <a href="/tags/dojo/">dojo</a>, <a href="/tags/ajax/">ajax</a>, <a href="/tags/定位元素/">定位元素</a>, <a href="/tags/调试/">调试</a>, <a href="/tags/piwik/">piwik</a>, <a href="/tags/网站统计/">网站统计</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
@@ -1375,21 +1471,13 @@ $(document).ready(function(){
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
     <!-- jQuery Version 1.11.0 -->
-    <script src="/media/js/jquery-1.11.0.js"></script>
+    <script src="http://standino.github.io/media/js/jquery-1.11.0.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/media/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="/media/js/plugins/morris/raphael.min.js"></script>
-    <script src="/media/js/plugins/morris/morris.min.js"></script>
-    <script src="/media/js/plugins/morris/morris-data.js"></script>
+    <script src="http://standino.github.io/media/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="/media/js/sb-admin-2.js"></script>
+    <script src="http://standino.github.io/media/js/sb-admin-2.js"></script>
 
 
       <div class="footer">
@@ -1403,5 +1491,6 @@ $(document).ready(function(){
     </div>
 
     
+
   </body>
 </html>

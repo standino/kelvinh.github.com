@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-  <title>go 语言 - Keep going</title>
+  <title>go 语言 - 简单</title>
   <meta charset="utf-8" />
   <meta name="author" content="Will Chang" />
     <meta name="description" content="go 语言" />
     <meta name="keywords" content="go,programming language" />
     <!-- Bootstrap Core CSS -->
-    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Timeline CSS -->
-    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/timeline.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://standino.github.io/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,6 +33,7 @@
 
 
 </head>
+
   <body class="container">
     <div id="wrapper">
       <!-- Navigation -->
@@ -44,30 +45,39 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+    <a class="navbar-brand" href="index.html">简单 --- 让生活更精彩。 </a>
   </div>
   <!-- /.navbar-header -->
 
   <!-- /.navbar-top-links -->
   <script>
    function goSearch(){
-     $('#s').val($('#s').val()+'site:standino.github.io');
+       if($('#searchInSite').is(':checked')){
+           $('#s').val($('#s').val()+'   site:standino.github.io');
+       }
    }
   </script>
   <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-      <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <form method="get" id="searchform" onsubmit="goSearch()" action="http://search.aol.com/aol/search">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control" name="q" id="s" value="">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
+      <div class="sidebar-nav navbar-collapse">
+          <ul class="nav" id="side-menu">
+              <li class="sidebar-search">
+                  <form method="get" class="form-inline" id="searchform" onsubmit="goSearch()" target="_blank" action="http://search.aol.com/aol/search">
+                      <div class="form-group">
+                          <label class="sr-only" for="s">Search inputbox</label>
+                          <input type="text" class="form-control" name="q" id="s" value="">
+                      </div>
+                      <div class="checkbox">
+                          <label>
+                              <input type="checkbox" id="searchInSite"> 本站搜索
+                          </label>
+                      </div>
+                      <!-- <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                      <i class="fa fa-search"></i>
+                      </button>
+                      </span>
+                      -->
+                  </form>
           <!-- /input-group -->
         </li>
           <li><a href="/blog/">Blog</a></li>
@@ -97,15 +107,14 @@
 <li><a href="#sec-2">SMTP</a></li>
 <li><a href="#sec-3">go easy portal</a>
 <ul>
-<li><a href="#sec-3-1"><span class="done DONE">DONE</span> 安装</a>
+<li><a href="#sec-3-1">安装</a>
 <ul>
 <li><a href="#sec-3-1-1">设置gopath</a></li>
 <li><a href="#sec-3-1-2">beego</a></li>
 </ul>
 </li>
-<li><a href="#sec-3-2"><span class="done DONE">DONE</span> 创建项目</a></li>
+<li><a href="#sec-3-2">创建项目</a></li>
 <li><a href="#sec-3-3">sqlite db</a></li>
-<li><a href="#sec-3-4"><span class="done DONE">DONE</span> 加入angular js</a></li>
 </ul>
 </li>
 <li><a href="#sec-4">部署</a></li>
@@ -189,7 +198,7 @@ export GOPATH=/ideas/go
 </div>
 
 <div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="done DONE">DONE</span> 安装</h3>
+<h3 id="sec-3-1">安装</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>State "DONE"       from "OKTODAY"    <span class="timestamp-wrapper"><span class="timestamp">[2014-03-31 一 15:54]</span></span>
@@ -235,7 +244,7 @@ go get -v -u github.com/nsf/gocode
 </div>
 
 <div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="done DONE">DONE</span> 创建项目</h3>
+<h3 id="sec-3-2">创建项目</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>State "DONE"       from "OKTODAY"    <span class="timestamp-wrapper"><span class="timestamp">[2014-04-01 二 11:20]</span></span>
@@ -310,18 +319,7 @@ orm.RegisterDataBase("db2", "sqlite3", "data.db")
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="done DONE">DONE</span> 加入angular js</h3>
-<div class="outline-text-3" id="text-3-4">
-<ul class="org-ul">
-<li>State "DONE"       from "STARTED"    <span class="timestamp-wrapper"><span class="timestamp">[2014-04-28 一 17:53]</span></span>
-</li>
-</ul>
 </div>
-</div>
-</div>
-
-
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">部署</h2>
 <div class="outline-text-2" id="text-4">
@@ -352,7 +350,7 @@ nohup ./beepkg &amp;
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2013-12-19</span>
-        <span title="last modification date" class="post-info">修改日期：2015-02-17</span>
+        <span title="last modification date" class="post-info">修改日期：2015-08-28</span>
         <span title="tags" class="post-info"><a href="/tags/go/">go</a>, <a href="/tags/programming-language/">programming language</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
@@ -375,21 +373,13 @@ nohup ./beepkg &amp;
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
     <!-- jQuery Version 1.11.0 -->
-    <script src="/media/js/jquery-1.11.0.js"></script>
+    <script src="http://standino.github.io/media/js/jquery-1.11.0.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/media/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="/media/js/plugins/morris/raphael.min.js"></script>
-    <script src="/media/js/plugins/morris/morris.min.js"></script>
-    <script src="/media/js/plugins/morris/morris-data.js"></script>
+    <script src="http://standino.github.io/media/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="/media/js/sb-admin-2.js"></script>
+    <script src="http://standino.github.io/media/js/sb-admin-2.js"></script>
 
 
       <div class="footer">
@@ -403,5 +393,6 @@ nohup ./beepkg &amp;
     </div>
 
     
+
   </body>
 </html>
