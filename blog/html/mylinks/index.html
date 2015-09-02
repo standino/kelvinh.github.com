@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-  <title>常用链接 - Keep going</title>
+  <title>常用链接 - 简单</title>
   <meta charset="utf-8" />
   <meta name="author" content="standino" />
     <meta name="description" content="常用链接" />
     <meta name="keywords" content="link," />
     <!-- Bootstrap Core CSS -->
-    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Timeline CSS -->
-    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/timeline.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://standino.github.io/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,6 +33,7 @@
 
 
 </head>
+
   <body class="container">
     <div id="wrapper">
       <!-- Navigation -->
@@ -44,30 +45,39 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+    <a class="navbar-brand" href="index.html">简单 --- 让生活更精彩。 </a>
   </div>
   <!-- /.navbar-header -->
 
   <!-- /.navbar-top-links -->
   <script>
    function goSearch(){
-     $('#s').val($('#s').val()+'site:standino.github.io');
+       if($('#searchInSite').is(':checked')){
+           $('#s').val($('#s').val()+'   site:standino.github.io');
+       }
    }
   </script>
   <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-      <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <form method="get" id="searchform" onsubmit="goSearch()" action="http://search.aol.com/aol/search">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control" name="q" id="s" value="">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
+      <div class="sidebar-nav navbar-collapse">
+          <ul class="nav" id="side-menu">
+              <li class="sidebar-search">
+                  <form method="get" class="form-inline" id="searchform" onsubmit="goSearch()" target="_blank" action="http://search.aol.com/aol/search">
+                      <div class="form-group">
+                          <label class="sr-only" for="s">Search inputbox</label>
+                          <input type="text" class="form-control" name="q" id="s" value="">
+                      </div>
+                      <div class="checkbox">
+                          <label>
+                              <input type="checkbox" id="searchInSite"> 本站搜索
+                          </label>
+                      </div>
+                      <!-- <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                      <i class="fa fa-search"></i>
+                      </button>
+                      </span>
+                      -->
+                  </form>
           <!-- /input-group -->
         </li>
           <li><a href="/blog/">Blog</a></li>
@@ -118,19 +128,11 @@
 </li>
 <li><a href="http://www.theserverside.com/">The server side</a>
 </li>
-<li><a href="http://www.goosh.org">goosh</a> <a href="http://115.com">http://115.com</a>
-</li>
-<li><a href="http://hi.baidu.com/standino">我的博客</a>
-</li>
-<li><a href="http://dingzhi.bjbus.com/index.php">定制公交</a>
-</li>
 <li><a href="http://blog.jobbole.com/5886/">国外程序员推荐：每个程序员都应读的书</a>
 </li>
 <li><a href="http://stackoverflow.com/">开发问题论坛</a>
 </li>
 <li><a href="http://www.douban.com/people/2263327/">豆瓣读书</a> <a href="http://www.ppurl.com/">http://www.ppurl.com/</a>
-</li>
-<li><a href="http://changewithyourpassword.com/">挑一个好密码</a>
 </li>
 <li><a href="http://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=203236251&idx=1&sn=2982f4ab69a1589c89c9d7a4084f6cbc#rd">实用的计算机技能</a>
 </li>
@@ -156,7 +158,7 @@
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2016-12-12</span>
-        <span title="last modification date" class="post-info">修改日期：2015-02-17</span>
+        <span title="last modification date" class="post-info">修改日期：2015-09-02</span>
         <span title="tags" class="post-info"><a href="/tags/link/">link</a></span>
         <span title="author" class="post-info">standino</span>
       </div>
@@ -179,21 +181,13 @@
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
     <!-- jQuery Version 1.11.0 -->
-    <script src="/media/js/jquery-1.11.0.js"></script>
+    <script src="http://standino.github.io/media/js/jquery-1.11.0.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/media/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="/media/js/plugins/morris/raphael.min.js"></script>
-    <script src="/media/js/plugins/morris/morris.min.js"></script>
-    <script src="/media/js/plugins/morris/morris-data.js"></script>
+    <script src="http://standino.github.io/media/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="/media/js/sb-admin-2.js"></script>
+    <script src="http://standino.github.io/media/js/sb-admin-2.js"></script>
 
 
       <div class="footer">
@@ -207,5 +201,6 @@
     </div>
 
     
+
   </body>
 </html>
