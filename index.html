@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-  <title>首页 - Keep going</title>
+  <title>首页 - 简单</title>
   <meta charset="utf-8" />
   <meta name="author" content="Will Chang" />
     <meta name="description" content="个人站点的首页" />
     <meta name="keywords" content="Lisp,  Emacs, Linux,  Java,  Org-page, Programming, Blog, 博客, 编程, 生活" />
     <!-- Bootstrap Core CSS -->
-    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Timeline CSS -->
-    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/timeline.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://standino.github.io/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,6 +33,7 @@
 
 
 </head>
+
   <body class="container">
     <div id="wrapper">
       <!-- Navigation -->
@@ -44,30 +45,39 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+    <a class="navbar-brand" href="index.html">简单 --- 让生活更精彩。 </a>
   </div>
   <!-- /.navbar-header -->
 
   <!-- /.navbar-top-links -->
   <script>
    function goSearch(){
-     $('#s').val($('#s').val()+'site:standino.github.io');
+       if($('#searchInSite').is(':checked')){
+           $('#s').val($('#s').val()+'   site:standino.github.io');
+       }
    }
   </script>
   <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-      <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <form method="get" id="searchform" onsubmit="goSearch()" action="http://search.aol.com/aol/search">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control" name="q" id="s" value="">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
+      <div class="sidebar-nav navbar-collapse">
+          <ul class="nav" id="side-menu">
+              <li class="sidebar-search">
+                  <form method="get" class="form-inline" id="searchform" onsubmit="goSearch()" target="_blank" action="http://search.aol.com/aol/search">
+                      <div class="form-group">
+                          <label class="sr-only" for="s">Search inputbox</label>
+                          <input type="text" class="form-control" name="q" id="s" value="">
+                      </div>
+                      <div class="checkbox">
+                          <label>
+                              <input type="checkbox" id="searchInSite"> 本站搜索
+                          </label>
+                      </div>
+                      <!-- <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                      <i class="fa fa-search"></i>
+                      </button>
+                      </span>
+                      -->
+                  </form>
           <!-- /input-group -->
         </li>
           <li><a href="/blog/">Blog</a></li>
@@ -89,19 +99,233 @@
       <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">首页</h1>
-          <p>
-感觉读书和写作越来越重要了。但是如何读书和写作却还不得要领。很久就开始有做笔记和编写博客的习惯。但是总觉得这些东西只能自己看得懂。
-今天是春节前的最后一个工作日。办公室里没有几个人了。这个时候刚好可以整理一下我的笔记和博客。
-</p>
-
+          
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">联系方式</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-本人忘性大，技术学的快忘得更快。因此在面试的时候总是很吃亏。想想也许是自己对用过的技术没有深入研究理解和总结的缘故。新的一年还是需
-要加强锻炼啊。
+st6 AT foxmail DOT com 
 </p>
+</div>
+</div>
 
-<p>
-现在越来越觉得软技能更需要加强。书上说，凡事要从正面来看，生活是一面镜子，你开心的对它，它也会开心的对你。
-</p>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">个人简介</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>善于学习，工作勤奋
+</li>
+<li>精通 Java 和 J2EE 相关技术
+</li>
+<li>拥有超过十年的 J2EE 开发经验
+</li>
+<li>拥有2年的 DB2 存储过程开发经验
+</li>
+<li>熟悉使用 Scrum 敏捷开发方式管理团队
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">工作经验</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">9/2013 - 今， 某电子商务公司</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><ul class="org-ul"><li><a id="sec-3-1-0-1" name="sec-3-1-0-1"></a>工作内容：<br  /><div class="outline-text-5" id="text-3-1-0-1">
+<ul class="org-ul">
+<li>多维分析系统架构设计和升级
+</li>
+</ul>
+</div>
+</li>
+<li><a id="sec-3-1-0-2" name="sec-3-1-0-2"></a>技术贡献：<br  /><div class="outline-text-5" id="text-3-1-0-2">
+<ul class="org-ul">
+<li>构建了多维分析报表开发平台
+</li>
+<li>基于React 报表开发平台
+</li>
+</ul>
+</div>
+</li></ul>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">7/2005 - 9/2013，IBM 公司</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1">9/2007 - 9/2013, 项目组长</h4>
+<div class="outline-text-4" id="text-3-2-1">
+</div><ul class="org-ul"><li><a id="sec-3-2-1-1" name="sec-3-2-1-1"></a>工作内容：<br  /><div class="outline-text-5" id="text-3-2-1-1">
+<ul class="org-ul">
+<li>与美国需求分析人员讨论和分析需求
+</li>
+<li>与美国架构师讨论和分析系统设计
+</li>
+<li>根据需求和系统设计文档与开发人员一起分解任务，对任务进行评估和计划
+</li>
+<li>使用 Scrum 敏捷开发技术管理团队
+</li>
+<li>研究和开发新技术或新工具来提高团队的开发效率
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-3-2-1-2" name="sec-3-2-1-2"></a>技术贡献：<br  /><div class="outline-text-5" id="text-3-2-1-2">
+<ul class="org-ul">
+<li>带领一个实验小组研究如何使用 RTC（IBM Rational Team Concert）这个工具进行敏捷开发。把该小组的研究成果应用到了整个 IBM DSW 项目。使得
+DSW 开发模式从使用 CVS 管理源代码和使用普通文档管理开发任务的模式转换为使用 RTC Jazz SCM 管理源代码和使用 RTC Work Item 管理开
+发任务的模式。这种开发模式的改变带来的主要好处是： 1）代码的改动和相应的任务关联在一起，更便于对代码的理解和管理；2）RTC Work
+Item 中记录了任务的预计完成时间，实际完成时间，任务的开发状态以及是否依赖其他的任务等等信息。使用 RTC 有利于项目组使用 Scrum 的
+敏捷开发方式；3）RTC 提供了丰富的报告和图表，这些报告对监督项目的进度和风险非常有帮助；4) RTC 同时提供了 Restful web service,
+我们可以编写插件来进一步提高项目组的开发效率。
+</li>
+<li>使用 Selenium 2 进行自动化功能测试。基于 Selenium 2 编写了一套自动化功能测试的框架。该框架可以使用不同的输入方式（配置文件或者
+数据库）获得测试数据，可以定时执行冒烟测试。同时，这些自动化脚本还可以用来验证系统在不同环境中的可用性，或者获得系统中 Web 页面的HTML源
+代码对其进行 W3C 标准的验证。这些工作在以前都是由人来手动执行，不仅花费大量的人工而且准确度也不是非常高。通过把这些任务的自
+动化，不仅节省的人力而且提高了准确度。
+</li>
+<li>使用 ruby，perl 和 shell 编写了一些脚本来提高项目组的开发效率。这些脚本用于日志分析，代码转换等等。
+</li>
+</ul>
+</div>
+</li></ul>
+</div>
+
+<div id="outline-container-sec-3-2-2" class="outline-4">
+<h4 id="sec-3-2-2">7/2005 - 9/2007, 数据库开发组组长</h4>
+<div class="outline-text-4" id="text-3-2-2">
+</div><ul class="org-ul"><li><a id="sec-3-2-2-1" name="sec-3-2-2-1"></a>工作内容：<br  /><div class="outline-text-5" id="text-3-2-2-1">
+<ul class="org-ul">
+<li>分析需求，编写设计文档，分配任务
+</li>
+<li>参与并带领小组进行数据库开发工作
+</li>
+<li>数据库数据维护，创建修改数据库表结构和编写存储过程
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-3-2-2-2" name="sec-3-2-2-2"></a>技术贡献：<br  /><div class="outline-text-5" id="text-3-2-2-2">
+<ul class="org-ul">
+<li>编写了名叫 Mydb2 的用于 DB2 数据库开发的工具。该工具提供脚本方式和 Web 方式。它可以用来执行 SQL 语句，查看数据库对象的定义，比
+较不同数据库之间的差异。还可以用来在不同开发人员之间分享 SQL 语句。
+</li>
+<li>利用 SQLUnit 开源工具对存储过程进行单元测试。我们系统中有大量的存储过程，存储过程里有复杂的业务逻辑。为了提高我们的代码质量，我
+们编写了大量的 SQLUnit 测试用例来测试存储过程。并且，编写了一个 Eclipse 插件来帮助我们编写测试用例。
+</li>
+</ul>
+</div>
+</li></ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">7/2001 - 7/2005，中科院软件中心</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><ul class="org-ul"><li><a id="sec-3-3-0-1" name="sec-3-3-0-1"></a>工作内容：<br  /><div class="outline-text-5" id="text-3-3-0-1">
+<ul class="org-ul">
+<li>公司工作流平台开发和维护工作
+</li>
+</ul>
+</div>
+</li>
+<li><a id="sec-3-3-0-2" name="sec-3-3-0-2"></a>技术贡献：<br  /><div class="outline-text-5" id="text-3-3-0-2">
+<ul class="org-ul">
+<li>基于工作流平台编写了一套模板来加速项目开发
+</li>
+<li>编写了一些 taglib 用于界面的显示
+</li>
+</ul>
+</div>
+</li></ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">技术</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>熟悉 OLAP BI系统构建。
+</li>
+<li>熟练使用 Java, Spring MVC 和 SQL。
+</li>
+<li>熟练使用 Javascript, Jquery, React。
+</li>
+<li>熟练使用 Ruby 和 Shell。
+</li>
+<li>熟悉UML,面向对象设计和编程, 设计模式。
+</li>
+<li>熟悉 Windows 和 Linux 开发环境。
+</li>
+<li>熟悉流行的开发环境，中间件和数据库。Emacs, Eclipse, IBM RSA, IBM Websphere, JBoss, Oracle DB, IBM DB2 等。
+</li>
+<li>熟练使用 IBM RTC 进行项目管理。
+</li>
+<li>熟悉 MDA 工具。
+</li>
+<li>了解使用 IBM Appscan 进行网站安全的扫描。
+</li>
+<li>了解使用 IBM Worklight 进行手机应用开发。
+</li>
+<li>了解 Eclipse 插件开发。
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">发表文章</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>《DB2 存储过程开发最佳实践》，IBM DeveloperWorks， 2006
+</li>
+<li>《使用脚本加速 DB2 存储过程的开发》，IBM DeveloperWorks， 2007
+</li>
+<li>《使用 IBM Data Studio 开发调试 DB2 存储过程》，IBM DeveloperWorks， 2009
+</li>
+<li>《利用 Shell 脚本实现 DB2 数据库的敏捷开发》，IBM DeveloperWorks， 2010
+</li>
+<li>《Using RTC for development in a globally distributed team》， IBM QSE， 2011
+</li>
+<li>《使用 Rational Team Concert 进行代码合并》，IBM DeveloperWorks， 2012
+</li>
+<li>《使用 Rational Team Concert 进行敏捷开发的每日例会》，IBM DeveloperWorks， 2012
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">认证</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Sun certified Java Programmer
+</li>
+<li>DB2 V8.1 Family Fundamentals
+</li>
+<li>Architectural Design of SOA Solutions
+</li>
+<li>IBM Certified IT Specialist
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">社区</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>IBM Agile 社区： 致力于在 IBM 内部推广敏捷开发和评选优秀的敏捷开发项目。
+</li>
+<li>IBM e-Week 社区： 邀请大学生来公司参观或到学校里进行讲座来介绍工程师职业，使同学们对工程师和计算机技术产生兴趣。
+</li>
+</ul>
+</div>
+</div>
 
         </div>
       </div>
@@ -127,21 +351,13 @@
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
     <!-- jQuery Version 1.11.0 -->
-    <script src="/media/js/jquery-1.11.0.js"></script>
+    <script src="http://standino.github.io/media/js/jquery-1.11.0.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/media/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="/media/js/plugins/morris/raphael.min.js"></script>
-    <script src="/media/js/plugins/morris/morris.min.js"></script>
-    <script src="/media/js/plugins/morris/morris-data.js"></script>
+    <script src="http://standino.github.io/media/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="/media/js/sb-admin-2.js"></script>
+    <script src="http://standino.github.io/media/js/sb-admin-2.js"></script>
 
 
       <div class="footer">
@@ -155,5 +371,6 @@
     </div>
 
     
+
   </body>
 </html>
