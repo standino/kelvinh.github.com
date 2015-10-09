@@ -4,16 +4,51 @@
     <title>简单</title>
     <link>http://standino.github.io/</link>
     <description>让生活更精彩。</description>
-    <pubDate>五, 09 10月 2015 17:53:21 CST</pubDate>
-    <lastBuildDate>五, 09 10月 2015 17:53:21 CST</lastBuildDate>
+    <pubDate>五, 09 10月 2015 17:57:02 CST</pubDate>
+    <lastBuildDate>五, 09 10月 2015 17:57:02 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
+      <title>javascript</title>
+      <link>http://standino.github.io/blog/html/js</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-10-09</pubDate>
+      <guid>http://standino.github.io/blog/html/js</guid>
+    </item>
+    <item>
+      <title>2014年计划</title>
+      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-10-09</pubDate>
+      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
+    </item>
+    <item>
+      <title>2015年计划</title>
+      <link>http://standino.github.io/blog/html/2014/12/20/2015年计划/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-10-09</pubDate>
+      <guid>http://standino.github.io/blog/html/2014/12/20/2015年计划/</guid>
+    </item>
+    <item>
+      <title>Personal</title>
+      <link>http://standino.github.io/work/html/html/personal</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-10-09</pubDate>
+      <guid>http://standino.github.io/work/html/html/personal</guid>
+    </item>
+    <item>
       <title>JD工作笔记</title>
       <link>http://standino.github.io/work/html/JD/</link>
-      <description><![CDATA[JD个人工作笔记]]></description>
-      <pubDate>2015-09-30</pubDate>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-10-09</pubDate>
       <guid>http://standino.github.io/work/html/JD/</guid>
+    </item>
+    <item>
+      <title>零售平台项目</title>
+      <link>http://standino.github.io/work/html/jdretail</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-10-09</pubDate>
+      <guid>http://standino.github.io/work/html/jdretail</guid>
     </item>
     <item>
       <title>changepw</title>
@@ -21,34 +56,6 @@
       <description><![CDATA[]]></description>
       <pubDate>2015-09-25</pubDate>
       <guid>http://standino.github.io/work/html/changpw</guid>
-    </item>
-    <item>
-      <title>javascript</title>
-      <link>http://standino.github.io/blog/html/js</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2015-09-18</pubDate>
-      <guid>http://standino.github.io/blog/html/js</guid>
-    </item>
-    <item>
-      <title>2014年计划</title>
-      <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2015-09-18</pubDate>
-      <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
-    </item>
-    <item>
-      <title>2015年计划</title>
-      <link>http://standino.github.io/blog/html/2014/12/20/2015年计划/</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2015-09-18</pubDate>
-      <guid>http://standino.github.io/blog/html/2014/12/20/2015年计划/</guid>
-    </item>
-    <item>
-      <title>Personal</title>
-      <link>http://standino.github.io/work/html/html/personal</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2015-09-18</pubDate>
-      <guid>http://standino.github.io/work/html/html/personal</guid>
     </item>
     <item>
       <title>Untitled</title>
@@ -70,13 +77,6 @@
       <description><![CDATA[]]></description>
       <pubDate>2015-09-11</pubDate>
       <guid>http://standino.github.io/blog/html/2013/12/19/版本管理工具/</guid>
-    </item>
-    <item>
-      <title>大数据OLAP报表系统开发白皮书</title>
-      <link>http://standino.github.io/work/2015/01/29/olapdevguide</link>
-      <description><![CDATA[]]></description>
-      <pubDate>2015-09-11</pubDate>
-      <guid>http://standino.github.io/work/2015/01/29/olapdevguide</guid>
     </item>
   </channel>
 </rss>
