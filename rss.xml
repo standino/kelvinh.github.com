@@ -4,79 +4,79 @@
     <title>简单</title>
     <link>http://standino.github.io/</link>
     <description>让生活更精彩。</description>
-    <pubDate>五, 11  9月 2015 09:38:04 CST</pubDate>
-    <lastBuildDate>五, 11  9月 2015 09:38:04 CST</lastBuildDate>
+    <pubDate>五, 09 10月 2015 17:53:21 CST</pubDate>
+    <lastBuildDate>五, 09 10月 2015 17:53:21 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
+      <title>JD工作笔记</title>
+      <link>http://standino.github.io/work/html/JD/</link>
+      <description><![CDATA[JD个人工作笔记]]></description>
+      <pubDate>2015-09-30</pubDate>
+      <guid>http://standino.github.io/work/html/JD/</guid>
+    </item>
+    <item>
+      <title>changepw</title>
+      <link>http://standino.github.io/work/html/changpw</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-09-25</pubDate>
+      <guid>http://standino.github.io/work/html/changpw</guid>
+    </item>
+    <item>
       <title>javascript</title>
       <link>http://standino.github.io/blog/html/js</link>
-      <description>Javascript</description>
-      <pubDate>2015-09-11</pubDate>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-09-18</pubDate>
       <guid>http://standino.github.io/blog/html/js</guid>
     </item>
     <item>
       <title>2014年计划</title>
       <link>http://standino.github.io/blog/2013/12/20/planning2014/</link>
-      <description>为明年做一下计划</description>
-      <pubDate>2015-09-11</pubDate>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-09-18</pubDate>
       <guid>http://standino.github.io/blog/2013/12/20/planning2014/</guid>
     </item>
     <item>
       <title>2015年计划</title>
       <link>http://standino.github.io/blog/html/2014/12/20/2015年计划/</link>
-      <description>为明年做一下计划</description>
-      <pubDate>2015-09-11</pubDate>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-09-18</pubDate>
       <guid>http://standino.github.io/blog/html/2014/12/20/2015年计划/</guid>
-    </item>
-    <item>
-      <title>使用 Saiku 开发 OLAP 系统 </title>
-      <link>http://standino.github.io/blog/html/2015/09/11/使用-saiku-开发-olap-系统-/</link>
-      <description>使用 Saiku 开发 OLAP 系统</description>
-      <pubDate>2015-09-11</pubDate>
-      <guid>http://standino.github.io/blog/html/2015/09/11/使用-saiku-开发-olap-系统-/</guid>
-    </item>
-    <item>
-      <title>版本管理工具</title>
-      <link>http://standino.github.io/blog/html/2013/12/19/版本管理工具/</link>
-      <description>Version control</description>
-      <pubDate>2015-09-11</pubDate>
-      <guid>http://standino.github.io/blog/html/2013/12/19/版本管理工具/</guid>
     </item>
     <item>
       <title>Personal</title>
       <link>http://standino.github.io/work/html/html/personal</link>
-      <description>My Personal information </description>
-      <pubDate>2015-09-11</pubDate>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-09-18</pubDate>
       <guid>http://standino.github.io/work/html/html/personal</guid>
-    </item>
-    <item>
-      <title>JD工作笔记</title>
-      <link>http://standino.github.io/work/html/JD/</link>
-      <description>JD个人工作笔记</description>
-      <pubDate>2015-09-11</pubDate>
-      <guid>http://standino.github.io/work/html/JD/</guid>
-    </item>
-    <item>
-      <title>大数据OLAP报表系统开发白皮书</title>
-      <link>http://standino.github.io/work/2015/01/29/olapdevguide</link>
-      <description>使用saiku开发OLAP系统</description>
-      <pubDate>2015-09-11</pubDate>
-      <guid>http://standino.github.io/work/2015/01/29/olapdevguide</guid>
     </item>
     <item>
       <title>Untitled</title>
       <link>http://standino.github.io/work/untitled/</link>
-      <description>No Description</description>
-      <pubDate>2015-09-11</pubDate>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-09-18</pubDate>
       <guid>http://standino.github.io/work/untitled/</guid>
     </item>
     <item>
-      <title>常用链接</title>
-      <link>http://standino.github.io/blog/html/mylinks</link>
-      <description>常用链接</description>
-      <pubDate>2015-09-02</pubDate>
-      <guid>http://standino.github.io/blog/html/mylinks</guid>
+      <title>使用 Saiku 开发 OLAP 系统 </title>
+      <link>http://standino.github.io/blog/html/2015/10/09/使用-saiku-开发-olap-系统-/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-09-11</pubDate>
+      <guid>http://standino.github.io/blog/html/2015/10/09/使用-saiku-开发-olap-系统-/</guid>
+    </item>
+    <item>
+      <title>版本管理工具</title>
+      <link>http://standino.github.io/blog/html/2013/12/19/版本管理工具/</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-09-11</pubDate>
+      <guid>http://standino.github.io/blog/html/2013/12/19/版本管理工具/</guid>
+    </item>
+    <item>
+      <title>大数据OLAP报表系统开发白皮书</title>
+      <link>http://standino.github.io/work/2015/01/29/olapdevguide</link>
+      <description><![CDATA[]]></description>
+      <pubDate>2015-09-11</pubDate>
+      <guid>http://standino.github.io/work/2015/01/29/olapdevguide</guid>
     </item>
   </channel>
 </rss>
