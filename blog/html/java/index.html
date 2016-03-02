@@ -45,7 +45,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">简单 --- 让生活更精彩。 </a>
+    <a class="navbar-brand" href="index.html">简单 --- 多想，多做，多总结。不要怕吃亏。 </a>
   </div>
   <!-- /.navbar-header -->
 
@@ -61,7 +61,7 @@
       <div class="sidebar-nav navbar-collapse">
           <ul class="nav" id="side-menu">
               <li class="sidebar-search">
-                  <form method="get" class="form-inline" id="searchform" onsubmit="goSearch()" target="_blank" action="http://search.aol.com/aol/search">
+                  <form method="get" class="form-inline" id="searchform" onsubmit="goSearch()" target="_blank" action="http://cn.bing.com/search">
                       <div class="form-group">
                           <label class="sr-only" for="s">Search inputbox</label>
                           <input type="text" class="form-control" name="q" id="s" value="">
@@ -103,200 +103,129 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">目录&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TOC">TOC</span></span></a></li>
-<li><a href="#sec-2">Spring</a>
+<li><a href="#orgheadline1">Spring</a>
 <ul>
-<li><a href="#sec-2-1">Spring security</a></li>
-<li><a href="#sec-2-2">Spring bean</a>
+<li><a href="#orgheadline2">Spring security</a></li>
+<li><a href="#orgheadline6">Spring bean</a>
 <ul>
-<li><a href="#sec-2-2-1">使用注解声明bean</a></li>
-<li><a href="#sec-2-2-2">使用propertes</a></li>
-<li><a href="#sec-2-2-3">运行worker</a></li>
+<li><a href="#orgheadline3">使用注解声明bean</a></li>
+<li><a href="#orgheadline4">使用propertes</a></li>
+<li><a href="#orgheadline5">运行worker</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-3">SpringMVC概要</a>
+<li><a href="#orgheadline9">SpringMVC概要</a>
 <ul>
-<li><a href="#sec-2-3-1">Controler 一个方法对应多个url</a></li>
-<li><a href="#sec-2-3-2">Spring MVC的总控：DispatcherServlet</a></li>
+<li><a href="#orgheadline7">Controler 一个方法对应多个url</a></li>
+<li><a href="#orgheadline8">Spring MVC的总控：DispatcherServlet</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-4">Restful MVC</a>
+<li><a href="#orgheadline12">Restful MVC</a>
 <ul>
-<li><a href="#sec-2-4-1">URL规划</a></li>
-<li><a href="#sec-2-4-2">拦截器，</a></li>
+<li><a href="#orgheadline10">URL规划</a></li>
+<li><a href="#orgheadline11">拦截器，</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-5">Ajax 调用</a></li>
-<li><a href="#sec-2-6">事务控制</a></li>
+<li><a href="#orgheadline13">Ajax 调用</a></li>
+<li><a href="#orgheadline14">事务控制</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">Copy files from a jar</a></li>
-<li><a href="#sec-4">Google App Engine</a></li>
-<li><a href="#sec-5">J2EE User Management</a></li>
-<li><a href="#sec-6">在Eclipse中设置中文JavaDOC</a></li>
-<li><a href="#sec-7">Java decompiler</a></li>
-<li><a href="#sec-8">Grails</a></li>
-<li><a href="#sec-9">Java core dump</a></li>
-<li><a href="#sec-10">Automation test</a></li>
-<li><a href="#sec-11">AIO</a></li>
-<li><a href="#sec-12">log4j</a></li>
-<li><a href="#sec-13">beanshell</a></li>
-<li><a href="#sec-14">mybatis</a></li>
-<li><a href="#sec-15"><span class="todo TODO">TODO</span> Joda Time</a></li>
-<li><a href="#sec-16"><span class="todo TODO">TODO</span> jmockit vs  Hamcrest和Mockito</a></li>
-<li><a href="#sec-17"><span class="todo TODO">TODO</span> DropWizard</a></li>
-<li><a href="#sec-18"><span class="todo TODO">TODO</span> REST API的框架，比如用Jersey加上Jackson。</a></li>
-<li><a href="#sec-19"><span class="todo TODO">TODO</span> SLF4J</a></li>
-<li><a href="#sec-20"><span class="todo TODO">TODO</span> Gradle</a></li>
-<li><a href="#sec-21">Jetty</a></li>
-<li><a href="#sec-22">Tomcat redirect illegel state issue</a></li>
-<li><a href="#sec-23">InvalidKeyException Illegal key size</a></li>
-<li><a href="#sec-24">使用ehcache-spring-annotations开启ehcache的注解功能</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">目录&#xa0;&#xa0;&#xa0;<span class="tag"><span class="TOC">TOC</span></span></h2>
-<div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li><i>Spring</i>
-<ul class="org-ul">
-<li><i>Spring security</i>
-</li>
-<li><i>Spring bean</i>
-</li>
-<li><i>SpringMVC概要</i>
-</li>
-<li><i>Restful MVC</i>
-</li>
-<li><i>Ajax 调用</i>
-</li>
-<li><i>事务控制</i>
-</li>
-</ul>
-</li>
-<li><i>Copy files from a jar</i>
-</li>
-<li><i>Google App Engine </i>
-</li>
-<li><i>J2EE User Management </i>
-</li>
-<li><i>在Eclipse中设置中文JavaDOC</i>
-</li>
-<li><i>Java decompiler</i>
-<ul class="org-ul">
-<li><i>Grails</i>
-</li>
-</ul>
-</li>
-<li><i>Java core dump</i>
-</li>
-<li><i>Automation test</i>
-</li>
-<li><i>AIO</i>
-</li>
-<li><i>log4j</i>
-</li>
-<li><i>beanshell</i>
-</li>
-<li><i>mybatis </i>
-</li>
-<li>[[#c-joda-time][[#C] Joda Time]]
-</li>
-<li>[[#c-jmockit-vs--hamcrest和mockito][[#C] jmockit vs  Hamcrest和Mockito]]
-</li>
-<li>[[#c-dropwizard][[#C] DropWizard]]
-</li>
-<li>[[#c-rest-api的框架，比如用jersey加上jackson。][[#C] REST API的框架，比如用Jersey加上Jackson。]]
-</li>
-<li>[[#c-slf4j][[#C] SLF4J]]
-</li>
-<li>[[#c-gradle][[#C] Gradle]]
-</li>
-<li><i>Jetty</i>
-</li>
-<li><i>Tomcat redirect illegel state issue</i>
-</li>
-<li><i>InvalidKeyException Illegal key size</i>
-</li>
-<li><i>使用ehcache-spring-annotations开启ehcache的注解功能</i>
-</li>
+<li><a href="#orgheadline15">Copy files from a jar</a></li>
+<li><a href="#orgheadline16">Google App Engine</a></li>
+<li><a href="#orgheadline17">J2EE User Management</a></li>
+<li><a href="#orgheadline18">在Eclipse中设置中文JavaDOC</a></li>
+<li><a href="#orgheadline19">Java decompiler</a></li>
+<li><a href="#orgheadline20">Grails</a></li>
+<li><a href="#orgheadline21">Java core dump</a></li>
+<li><a href="#orgheadline22">Automation test</a></li>
+<li><a href="#orgheadline23">AIO</a></li>
+<li><a href="#orgheadline24">log4j</a></li>
+<li><a href="#orgheadline25">beanshell</a></li>
+<li><a href="#orgheadline26">mybatis</a></li>
+<li><a href="#orgheadline27"><span class="done nilDONE">DONE</span> Joda Time</a></li>
+<li><a href="#orgheadline28"><span class="done nilDONE">DONE</span> jmockit vs  Hamcrest和Mockito</a></li>
+<li><a href="#orgheadline29"><span class="done nilDONE">DONE</span> DropWizard</a></li>
+<li><a href="#orgheadline30"><span class="done nilDONE">DONE</span> REST API的框架，比如用Jersey加上Jackson。</a></li>
+<li><a href="#orgheadline31"><span class="done nilDONE">DONE</span> SLF4J</a></li>
+<li><a href="#orgheadline32"><span class="done nilDONE">DONE</span> Gradle</a></li>
+<li><a href="#orgheadline33">Jetty</a></li>
+<li><a href="#orgheadline34">Tomcat redirect illegel state issue</a></li>
+<li><a href="#orgheadline35">InvalidKeyException Illegal key size</a></li>
+<li><a href="#orgheadline36">使用ehcache-spring-annotations开启ehcache的注解功能</a></li>
+<li><a href="#orgheadline37">使用数组批量替换String中的?</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Spring</h2>
-<div class="outline-text-2" id="text-2">
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Spring</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <ul class="org-ul">
-<li><a href="http://www.blogjava.net/freeman1984/archive/2007/12/07/166112.html">ibatis学习（三）---ibatis与spring的整合</a>
-</li>
-<li><a href="http://hi.baidu.com/delete_h/item/7b65023c1d9cab5f80f1a77e">Spring中使用Quartz的２种方法</a>
-</li>
-<li><a href="http://docs.spring.io/spring-roo/reference/html/beginning.html">Spring roo</a> <a href="http://it-ebooks.info/read/741/">Spring roo in action</a>
-</li>
+<li><a href="http://www.blogjava.net/freeman1984/archive/2007/12/07/166112.html">ibatis学习（三）---ibatis与spring的整合</a></li>
+<li><a href="http://hi.baidu.com/delete_h/item/7b65023c1d9cab5f80f1a77e">Spring中使用Quartz的２种方法</a></li>
+<li><a href="http://docs.spring.io/spring-roo/reference/html/beginning.html">Spring roo</a> <a href="http://it-ebooks.info/read/741/">Spring roo in action</a></li>
 </ul>
 </div>
 
 
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">Spring security</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Spring security</h3>
+<div class="outline-text-3" id="text-orgheadline2">
 <ul class="org-ul">
-<li><a href="http://www.blogjava.net/youxia/archive/2008/12/07/244883.html">SpringSide 3 中的安全框架</a>
-</li>
-<li><a href="http://howtodoinjava.com/2013/08/11/spring-3-security-siteminder-pre-authentication-example/">Spring 3 security siteminder pre-authentication example</a>
-</li>
+<li><a href="http://www.blogjava.net/youxia/archive/2008/12/07/244883.html">SpringSide 3 中的安全框架</a></li>
+<li><a href="http://howtodoinjava.com/2013/08/11/spring-3-security-siteminder-pre-authentication-example/">Spring 3 security siteminder pre-authentication example</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">Spring bean</h3>
-<div class="outline-text-3" id="text-2-2">
-</div><div id="outline-container-sec-2-2-1" class="outline-4">
-<h4 id="sec-2-2-1">使用注解声明bean</h4>
-<div class="outline-text-4" id="text-2-2-1">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Spring bean</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+</div><div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3">使用注解声明bean</h4>
+<div class="outline-text-4" id="text-orgheadline3">
 <p>
 applicationContext.xml
 </p>
 
-<pre class="example">
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-	"&gt;
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+  "&gt;
 
-	&lt;!-- 使Spring支持自动检测组件，如注解的Controller --&gt;
-	&lt;context:annotation-config /&gt;
+  &lt;!-- 使Spring支持自动检测组件，如注解的Controller --&gt;
+  &lt;context:annotation-config /&gt;
 
-	&lt;context:component-scan base-package="com.mycompany.pbs"/&gt;
+  &lt;context:component-scan base-package="com.mycompany.pbs"/&gt;
 
-	&lt;import resource="applicationContext-datasource.xml"/&gt;
-	&lt;import resource="applicationContext-service.xml"/&gt;
-	&lt;import resource="applicationContext-schedule.xml" /&gt;
-	&lt;import resource="spring-monitor.xml" /&gt;
+  &lt;import resource="applicationContext-datasource.xml"/&gt;
+  &lt;import resource="applicationContext-service.xml"/&gt;
+  &lt;import resource="applicationContext-schedule.xml" /&gt;
+  &lt;import resource="spring-monitor.xml" /&gt;
 &lt;/beans&gt;
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-2-2-2" class="outline-4">
-<h4 id="sec-2-2-2">使用propertes</h4>
-<div class="outline-text-4" id="text-2-2-2">
-<pre class="example">
-&lt;bean id="propertyConfigurer"
-	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
-	&lt;property name="locations"&gt;
-		&lt;list&gt;
-			&lt;value&gt;classpath:mycompanybc.properties&lt;/value&gt;
-			&lt;value&gt;classpath:important.properties&lt;/value&gt;
-			&lt;value&gt;classpath:app.properties&lt;/value&gt;
-		&lt;/list&gt;
-	&lt;/property&gt;
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">使用propertes</h4>
+<div class="outline-text-4" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;bean id="propertyConfigurer"
+  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+  &lt;property name="locations"&gt;
+    &lt;list&gt;
+      &lt;value&gt;classpath:mycompanybc.properties&lt;/value&gt;
+      &lt;value&gt;classpath:important.properties&lt;/value&gt;
+      &lt;value&gt;classpath:app.properties&lt;/value&gt;
+    &lt;/list&gt;
+  &lt;/property&gt;
 &lt;/bean&gt;
 
   &lt;bean id="jedis" class="redis.clients.jedis.Jedis"&gt;
@@ -305,12 +234,14 @@ applicationContext.xml
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-2-2-3" class="outline-4">
-<h4 id="sec-2-2-3">运行worker</h4>
-<div class="outline-text-4" id="text-2-2-3">
-<pre class="example">
-@Scheduled(cron = "${data.sync.cron.expression}")
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">运行worker</h4>
+<div class="outline-text-4" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-java">@Scheduled(cron = "${data.sync.cron.expression}")
     public void syncData() {
 
     }
@@ -322,15 +253,17 @@ applicationContext.xml
 </div>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3">SpringMVC概要</h3>
-<div class="outline-text-3" id="text-2-3">
-</div><div id="outline-container-sec-2-3-1" class="outline-4">
-<h4 id="sec-2-3-1">Controler 一个方法对应多个url</h4>
-<div class="outline-text-4" id="text-2-3-1">
-<pre class="example">
-@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">SpringMVC概要</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+</div><div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7">Controler 一个方法对应多个url</h4>
+<div class="outline-text-4" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-java">@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
     public String index(
             @RequestParam(value = "locale", required = false) Locale locale,
             HttpServletRequest request,
@@ -342,15 +275,17 @@ applicationContext.xml
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-2-3-2" class="outline-4">
-<h4 id="sec-2-3-2">Spring MVC的总控：DispatcherServlet</h4>
-<div class="outline-text-4" id="text-2-3-2">
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8">Spring MVC的总控：DispatcherServlet</h4>
+<div class="outline-text-4" id="text-orgheadline8">
 <p>
 web.xml中的声明：
 </p>
-<pre class="example">
-   &lt;context-param&gt;
+<div class="org-src-container">
+
+<pre class="src src-xml">   &lt;context-param&gt;
       &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
       &lt;param-value&gt;classpath:spring/app-*.xml&lt;/param-value&gt;
   &lt;/context-param&gt;
@@ -359,19 +294,20 @@ web.xml中的声明：
   &lt;/listener&gt;
 
 &lt;servlet&gt;
-	&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-	&lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-	&lt;init-param&gt;
-		&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-		&lt;param-value&gt;classpath:spring/springmvc-servlet.xml&lt;/param-value&gt;
-	&lt;/init-param&gt;
+  &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+    &lt;param-value&gt;classpath:spring/springmvc-servlet.xml&lt;/param-value&gt;
+  &lt;/init-param&gt;
       &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
 &lt;/servlet&gt;
 &lt;servlet-mapping&gt;
-	&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-	&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
 &lt;/servlet-mapping&gt;
 </pre>
+</div>
 
 <p>
 1、ContextLoaderListener创建root webApplicationContext 
@@ -386,9 +322,11 @@ web.xml中的声明：
 <p>
 {servletName}-servlet.xml配置, 初始化默认的框架级别的bean。
 </p>
-<pre class="example">
-&lt;mvc:annotation-driven /&gt;
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;mvc:annotation-driven /&gt;
 </pre>
+</div>
 
 
 
@@ -396,53 +334,58 @@ web.xml中的声明：
 spring 3.1 mvc默认实现变化：
 HandlerMapping和HandlerAdapter ，spring3.1的这两个接口的默认实现：
 </p>
-<pre class="example">
-	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+<div class="org-src-container">
+
+<pre class="src src-html">  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
 Creates RequestMappingInfo instances from type and method-level @RequestMapping annotations in  @Controller classes.
-	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
+  org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
 An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature -- method argument and  return types, defined in @RequestMapping.
 </pre>
+</div>
 <p>
 多了几个接口：HandlerMethodArgumentResolver/HandlerMethodReturnValueHandler，因此MVC XML Namespace下的配置有些变化，可扩展点更多。暂时只需了解即可。
 </p>
-<pre class="example">
-&lt;beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
     "&gt;
 
-	&lt;mvc:annotation-driven conversion-service="conversionService"&gt;
-		&lt;mvc:argument-resolvers&gt;
-			&lt;bean/&gt;
-			&lt;bean/&gt;
-		&lt;/mvc:argument-resolvers&gt;
-		&lt;mvc:message-converters register-defaults="true"&gt;
+  &lt;mvc:annotation-driven conversion-service="conversionService"&gt;
+    &lt;mvc:argument-resolvers&gt;
+      &lt;bean/&gt;
+      &lt;bean/&gt;
+    &lt;/mvc:argument-resolvers&gt;
+    &lt;mvc:message-converters register-defaults="true"&gt;
             &lt;bean/&gt;
-		&lt;/mvc:message-converters&gt;
-		&lt;mvc:return-value-handlers&gt;
+    &lt;/mvc:message-converters&gt;
+    &lt;mvc:return-value-handlers&gt;
             &lt;bean/&gt;
-		&lt;/mvc:return-value-handlers&gt;
-	&lt;/mvc:annotation-driven&gt;
+    &lt;/mvc:return-value-handlers&gt;
+  &lt;/mvc:annotation-driven&gt;
 </pre>
 </div>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4">Restful MVC</h3>
-<div class="outline-text-3" id="text-2-4">
-</div><div id="outline-container-sec-2-4-1" class="outline-4">
-<h4 id="sec-2-4-1">URL规划</h4>
-<div class="outline-text-4" id="text-2-4-1">
-<pre class="example">
-| URL                     | HTTP方法 | MIME             | 含义       |
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12">Restful MVC</h3>
+<div class="outline-text-3" id="text-orgheadline12">
+</div><div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">URL规划</h4>
+<div class="outline-text-4" id="text-orgheadline10">
+<div class="org-src-container">
+
+<pre class="src src-html">| URL                     | HTTP方法 | MIME             | 含义       |
 | /return/order           | GET      | text/html        | 退货单首页 |
 | /return/order/new       | GET      | text/html        | 显示新增页 |
 | /return/order           | POST     |                  | 创建退货单 |
@@ -453,28 +396,25 @@ An AbstractHandlerMethodAdapter that supports HandlerMethods with the signature 
 | /return/order/query     | GET      | text/html        | 查询结果   |
 | /return/order/query     | GET      | application/json | 查询结果   |
 </pre>
+</div>
 <p>
 HTTP方法，表达了针对资源的动作
 </p>
 <ul class="org-ul">
-<li>GET：检索资源。具有幂等性，可以充分使用客户端的缓存。
-</li>
-<li>POST：创建一个新资源，不具有幂等性（多次操作会产生多个新资源）。建议使用Post/Redirect/Get模式。
-</li>
-<li>PUT：更新资源数据，如果资源不存在的话，则可根据此URI创建一个新的资源。具有幂等性。
-</li>
-<li>DELETE，删除一个资源。具有幂等性，可以多次操作它，直到得出结果，删除不存在的东西没有任何问题。
-</li>
-<li>HEAD/OPTIONS，略。
-</li>
+<li>GET：检索资源。具有幂等性，可以充分使用客户端的缓存。</li>
+<li>POST：创建一个新资源，不具有幂等性（多次操作会产生多个新资源）。建议使用Post/Redirect/Get模式。</li>
+<li>PUT：更新资源数据，如果资源不存在的话，则可根据此URI创建一个新的资源。具有幂等性。</li>
+<li>DELETE，删除一个资源。具有幂等性，可以多次操作它，直到得出结果，删除不存在的东西没有任何问题。</li>
+<li>HEAD/OPTIONS，略。</li>
 </ul>
 
 <p>
 ajax框架可指定http方法，浏览器一般只能GET/POST，spring通过一个表单隐藏域来模拟其他方法。
 </p>
 
-<pre class="example">
-&lt;form action="#springUrl('')/return/order/$id" method="POST"&gt;
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;form action="#springUrl('')/return/order/$id" method="POST"&gt;
 ...
 &lt;input name="_method" type="hidden" value="PUT" /&gt;
 &lt;input type="submit" value="保存修改"/&gt;
@@ -485,13 +425,13 @@ ajax框架可指定http方法，浏览器一般只能GET/POST，spring通过一�
 web.xml
 
     &lt;filter&gt;
-		&lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
-		&lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;
-	&lt;/filter&gt;
-	&lt;filter-mapping&gt;
-		&lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
-		&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-	&lt;/filter-mapping&gt;
+    &lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;
+    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+  &lt;/filter-mapping&gt;
 
 Controller
 使用注解编写Restful Controller：
@@ -513,37 +453,33 @@ public class ReturnOrderController {
     ...
 }
 </pre>
+</div>
 <p>
 spring扫描并管理：
 </p>
-<pre class="example">
-&lt;context:component-scan  base-package="com.mycompany.bluedragon.web.controller" /&gt;
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;context:component-scan  base-package="com.mycompany.bluedragon.web.controller" /&gt;
 </pre>
+</div>
 <p>
 controller类声明：
 </p>
 
 <ol class="org-ol">
-<li>@Controller注解bean，由spring ioc管理，默认为单例。其value属性可指定bean name，默认为首字母小写的类名。
-</li>
-<li>@RequestMapping("/return/order")，将http请求限定到类，映射资源url的起始路径。
-</li>
+<li>@Controller注解bean，由spring ioc管理，默认为单例。其value属性可指定bean name，默认为首字母小写的类名。</li>
+<li>@RequestMapping("/return/order")，将http请求限定到类，映射资源url的起始路径。</li>
 </ol>
 
 <p>
 controller类方法签名：
 </p>
 <ul class="org-ul">
-<li>1、@RequestMapping注解，将http请求限定到类方法：映射从起始路径开始的url路径，http方法, http头、请求参数等等。
-</li>
-<li>2、方法名，无特殊规定，建议有意义的命名。
-</li>
-<li>3、允许的方法参数，详尽@RequestMapping的API文档，稍后举例。
-</li>
-<li>4、允许的返回值，详见@RequestMapping的API文档，稍后举例。
-</li>
-<li>5、异常，无特殊规定。
-</li>
+<li>1、@RequestMapping注解，将http请求限定到类方法：映射从起始路径开始的url路径，http方法, http头、请求参数等等。</li>
+<li>2、方法名，无特殊规定，建议有意义的命名。</li>
+<li>3、允许的方法参数，详尽@RequestMapping的API文档，稍后举例。</li>
+<li>4、允许的返回值，详见@RequestMapping的API文档，稍后举例。</li>
+<li>5、异常，无特殊规定。</li>
 </ul>
 
 
@@ -712,8 +648,7 @@ controller类方法签名：允许的返回值类型
 /**
 </p>
 <ul class="org-ul">
-<li>DTO (or VO, or else), demonstrate JSR 303 validation in spring mvc.
-</li>
+<li>DTO (or VO, or else), demonstrate JSR 303 validation in spring mvc.</li>
 </ul>
 <p>
  */
@@ -789,7 +724,7 @@ public static class ReturnOrderDTO {
 
 <p>
 2、  使用自定义的线程安全的对象方法：
-#set($pageUrl = $homeModule.forPath('/return/order/query').put({"id":$!id}))
+#set($pageUrl = \(homeModule.forPath('/return/order/query').put({"id":\)!id}))
 </p>
 
 <p>
@@ -912,19 +847,21 @@ public class IndexController {
 
 
 
-<div id="outline-container-sec-2-4-2" class="outline-4">
-<h4 id="sec-2-4-2">拦截器，</h4>
-<div class="outline-text-4" id="text-2-4-2">
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11">拦截器，</h4>
+<div class="outline-text-4" id="text-orgheadline11">
 <p>
 静态资源映射，不使用拦截器：{servletName}-servlet.xml
 </p>
-<pre class="example">
-&lt;mvc:default-servlet-handler /&gt;
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;mvc:default-servlet-handler /&gt;
 
 &lt;!-- static resources --&gt;
 &lt;mvc:resources location="/static/" mapping="/static/**"
-	cache-period="864000"/&gt;&lt;!-- 24 * 3600 * 10 --&gt;
+  cache-period="864000"/&gt;&lt;!-- 24 * 3600 * 10 --&gt;
 </pre>
+</div>
 <p>
 使用servlet容器默认的servlet，而不使用spring的DispatcherServlet来处理，快速，还可加缓存时间。在生产环境中，有可能被前端的proxy给拦截掉。
 </p>
@@ -937,25 +874,28 @@ spring mvc的拦截器，类似于servlet的filter。
 <p>
 URL映射和拦截器配置:{servletName}-servlet.xml
 </p>
-<pre class="example">
-  &lt;!-- url mapping with interceptor --&gt;
+<div class="org-src-container">
+
+<pre class="src src-xml">  &lt;!-- url mapping with interceptor --&gt;
 &lt;mvc:interceptors&gt;
 
-	&lt;mvc:interceptor&gt;
+  &lt;mvc:interceptor&gt;
           &lt;mvc:mapping path="/index/**" /&gt;
           &lt;mvc:mapping path="/return/**" /&gt;
-		&lt;ref bean="_tLoginContextInterceptor" /&gt;
-	&lt;/mvc:interceptor&gt;
+    &lt;ref bean="_tLoginContextInterceptor" /&gt;
+  &lt;/mvc:interceptor&gt;
 
 &lt;/mvc:interceptors&gt;
 </pre>
+</div>
 
 <p>
 权限相关：在controller方法上加上自定义的注解
 </p>
 
-<pre class="example">
-@HrmPrivilege("ceo,cto")
+<div class="org-src-container">
+
+<pre class="src src-java">@HrmPrivilege("ceo,cto")
 @RequestMapping(value = "/access-denied", method = RequestMethod.GET)
 public void denied() {
     // throw in interceptor
@@ -964,12 +904,14 @@ public void denied() {
 </div>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5">Ajax 调用</h3>
-<div class="outline-text-3" id="text-2-5">
-<pre class="example">
-@RequestMapping(method = RequestMethod.POST )
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13">Ajax 调用</h3>
+<div class="outline-text-3" id="text-orgheadline13">
+<div class="org-src-container">
+
+<pre class="src src-java">@RequestMapping(method = RequestMethod.POST )
 @ResponseStatus(HttpStatus.CREATED)
 public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
                                 BindingResult bindingResult, ModelMap view) {
@@ -979,9 +921,11 @@ public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
     return quickMenu;
 }
 </pre>
+</div>
 
-<pre class="example">
-#set($layout = "/layout/empty.vm")
+<div class="org-src-container">
+
+<pre class="src src-html">#set($layout = "/layout/empty.vm")
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -1166,45 +1110,48 @@ public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-2-6" class="outline-3">
-<h3 id="sec-2-6">事务控制</h3>
-<div class="outline-text-3" id="text-2-6">
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14">事务控制</h3>
+<div class="outline-text-3" id="text-orgheadline14">
 <p>
 下面的配置里，只有insert,update, add, mod,del和move开头的servcie方法有数据库commit权限。
 </p>
-<pre class="example">
-&lt;tx:advice id="txAdvice" transaction-manager="transactionManager"&gt;
-		&lt;tx:attributes&gt;
-			&lt;tx:method name="insert*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
-			&lt;tx:method name="update*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;tx:advice id="txAdvice" transaction-manager="transactionManager"&gt;
+    &lt;tx:attributes&gt;
+      &lt;tx:method name="insert*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
+      &lt;tx:method name="update*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
             &lt;tx:method name="add*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
             &lt;tx:method name="mod*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
             &lt;tx:method name="del*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
             &lt;tx:method name="move*" rollback-for="Throwable" propagation="REQUIRED" isolation="READ_COMMITTED"/&gt;
-			&lt;tx:method name="*"   isolation="READ_COMMITTED" read-only="true"/&gt;
-		&lt;/tx:attributes&gt;
-	&lt;/tx:advice&gt;
+      &lt;tx:method name="*"   isolation="READ_COMMITTED" read-only="true"/&gt;
+    &lt;/tx:attributes&gt;
+  &lt;/tx:advice&gt;
 
     &lt;aop:config proxy-target-class="true"&gt;
-		&lt;aop:advisor pointcut="execution(* com.retail.*.service.*.*(..))" advice-ref="txAdvice" /&gt;
-	&lt;/aop:config&gt;
+    &lt;aop:advisor pointcut="execution(* com.retail.*.service.*.*(..))" advice-ref="txAdvice" /&gt;
+  &lt;/aop:config&gt;
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Copy files from a jar</h2>
-<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgheadline15" class="outline-2">
+<h2 id="orgheadline15">Copy files from a jar</h2>
+<div class="outline-text-2" id="text-orgheadline15">
 <p>
 <a href="http://stackoverflow.com/questions/1386809/copy-a-directory-from-a-jar-file">http://stackoverflow.com/questions/1386809/copy-a-directory-from-a-jar-file</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Google App Engine</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16">Google App Engine</h2>
+<div class="outline-text-2" id="text-orgheadline16">
 <p>
 <a href="http://code.google.com/intl/zh-CN/appengine/docs/python/gettingstarted/uploading.html">http://code.google.com/intl/zh-CN/appengine/docs/python/gettingstarted/uploading.html</a>
 </p>
@@ -1213,9 +1160,9 @@ public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
 
 
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">J2EE User Management</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17">J2EE User Management</h2>
+<div class="outline-text-2" id="text-orgheadline17">
 <p>
 <a href="http://www.onjava.com/pub/a/onjava/2002/06/12/form.html">J2EE Form-based Authentication</a>
 </p>
@@ -1226,9 +1173,9 @@ public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
 </div>
 </div>
 
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">在Eclipse中设置中文JavaDOC</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="orgheadline18">在Eclipse中设置中文JavaDOC</h2>
+<div class="outline-text-2" id="text-orgheadline18">
 <p>
 <a href="http://www.cnblogs.com/kay/archive/2008/05/26/1207956.html">在Eclipse中设置中文JavaDOC</a>
 </p>
@@ -1272,9 +1219,9 @@ public @ResponseBody QuickMenu addMenuFromForm(QuickMenu quickMenu,
 </div>
 </div>
 
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">Java decompiler</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgheadline19" class="outline-2">
+<h2 id="orgheadline19">Java decompiler</h2>
+<div class="outline-text-2" id="text-orgheadline19">
 <p>
 Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geocities.com/kpdus/jad.html</a>
 </p>
@@ -1285,9 +1232,9 @@ Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geoc
 </div>
 </div>
 
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">Grails</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-orgheadline20" class="outline-2">
+<h2 id="orgheadline20">Grails</h2>
+<div class="outline-text-2" id="text-orgheadline20">
 <p>
 <a href="http://grails.org/plugin/app-engine">http://grails.org/plugin/app-engine</a>
 </p>
@@ -1295,9 +1242,9 @@ Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geoc
 </div>
 
 
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">Java core dump</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-orgheadline21" class="outline-2">
+<h2 id="orgheadline21">Java core dump</h2>
+<div class="outline-text-2" id="text-orgheadline21">
 <p>
 <a href="http://www.alphaworks.ibm.com/tech/jca">IBM Thread and Monitor Dump Analyzer for Java</a>
 </p>
@@ -1305,9 +1252,9 @@ Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geoc
 </div>
 
 
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">Automation test</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="orgheadline22">Automation test</h2>
+<div class="outline-text-2" id="text-orgheadline22">
 <p>
 <a href="http://www.ibm.com/developerworks/java/library/j-ap03137/index.html">http://www.ibm.com/developerworks/java/library/j-ap03137/index.html</a>
 </p>
@@ -1315,9 +1262,9 @@ Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geoc
 </div>
 
 
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11">AIO</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-orgheadline23" class="outline-2">
+<h2 id="orgheadline23">AIO</h2>
+<div class="outline-text-2" id="text-orgheadline23">
 <p>
 连接数多且长的需要使用AIO, AIO使用的时候需要使用多线程。
 </p>
@@ -1329,8 +1276,9 @@ Jad home page: <a href="http://www.geocities.com/kpdus/jad.html">http://www.geoc
 *正则表达式
 </p>
 
-<pre class="example">
-String splitReqString = "uid=923933544/sid=DFS32DSFS";
+<div class="org-src-container">
+
+<pre class="src src-java">String splitReqString = "uid=923933544/sid=DFS32DSFS";
 String uid = getMatcher("uid=([\\d]+)", splitReqString);
 String sid = getMatcher("sid=([0-9a-zA-Z]+)", splitReqString);
 
@@ -1351,42 +1299,39 @@ return result;
 </pre>
 </div>
 </div>
+</div>
 
 
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">log4j</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-orgheadline24" class="outline-2">
+<h2 id="orgheadline24">log4j</h2>
+<div class="outline-text-2" id="text-orgheadline24">
 <ol class="org-ol">
-<li><a href="http://yuguanyin.iteye.com/blog/226549">http://yuguanyin.iteye.com/blog/226549</a>
-</li>
-<li><a href="http://wiki.alfresco.com/wiki/Log4J_Configuration">http://wiki.alfresco.com/wiki/Log4J_Configuration</a>
-</li>
+<li><a href="http://yuguanyin.iteye.com/blog/226549">http://yuguanyin.iteye.com/blog/226549</a></li>
+<li><a href="http://wiki.alfresco.com/wiki/Log4J_Configuration">http://wiki.alfresco.com/wiki/Log4J_Configuration</a></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">beanshell</h2>
+<div id="outline-container-orgheadline25" class="outline-2">
+<h2 id="orgheadline25">beanshell</h2>
 </div>
 
-<div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14">mybatis</h2>
-<div class="outline-text-2" id="text-14">
+<div id="outline-container-orgheadline26" class="outline-2">
+<h2 id="orgheadline26">mybatis</h2>
+<div class="outline-text-2" id="text-orgheadline26">
 <ol class="org-ol">
-<li><a href="http://blog.csdn.net/liaoxiaohua1981/article/details/6862764">http://blog.csdn.net/liaoxiaohua1981/article/details/6862764</a>
-</li>
-<li><a href="http://my.oschina.net/linuxred/blog/38802">http://my.oschina.net/linuxred/blog/38802</a>
-</li>
-<li>MyBatis中出现Mapped Statements collection does not contain value异常解决方案
-</li>
+<li><a href="http://blog.csdn.net/liaoxiaohua1981/article/details/6862764">http://blog.csdn.net/liaoxiaohua1981/article/details/6862764</a></li>
+<li><a href="http://my.oschina.net/linuxred/blog/38802">http://my.oschina.net/linuxred/blog/38802</a></li>
+<li>MyBatis中出现Mapped Statements collection does not contain value异常解决方案</li>
 </ol>
 <p>
 <a href="http://blog.csdn.net/wikiwang/article/details/7571108">http://blog.csdn.net/wikiwang/article/details/7571108</a>  
 </p>
 
 
-<pre class="example">
-另外MyBatis还提供了一个使用注解来参入多个参数的方式。这种方式需要在接口的参数上添加@Param注解
+<div class="org-src-container">
+
+<pre class="src src-java">另外MyBatis还提供了一个使用注解来参入多个参数的方式。这种方式需要在接口的参数上添加@Param注解
 示例：
 接口方法
 [java] view plaincopy
@@ -1400,33 +1345,53 @@ XML文件
 </pre>
 </div>
 </div>
-
-<div id="outline-container-sec-15" class="outline-2">
-<h2 id="sec-15"><span class="todo TODO">TODO</span> Joda Time</h2>
 </div>
 
-<div id="outline-container-sec-16" class="outline-2">
-<h2 id="sec-16"><span class="todo TODO">TODO</span> jmockit vs  Hamcrest和Mockito</h2>
-<div class="outline-text-2" id="text-16">
-</div>
-</div>
-
-<div id="outline-container-sec-17" class="outline-2">
-<h2 id="sec-17"><span class="todo TODO">TODO</span> DropWizard</h2>
-</div>
-
-<div id="outline-container-sec-18" class="outline-2">
-<h2 id="sec-18"><span class="todo TODO">TODO</span> REST API的框架，比如用Jersey加上Jackson。</h2>
-</div>
-
-<div id="outline-container-sec-19" class="outline-2">
-<h2 id="sec-19"><span class="todo TODO">TODO</span> SLF4J</h2>
-<div class="outline-text-2" id="text-19">
+<div id="outline-container-orgheadline27" class="outline-2">
+<h2 id="orgheadline27"><span class="done DONE">DONE</span> Joda Time</h2>
+<div class="outline-text-2" id="text-orgheadline27">
 <ul class="org-ul">
-<li><a href="http://www.oschina.net/translate/why-use-sl4j-over-log4j-for-logging">http://www.oschina.net/translate/why-use-sl4j-over-log4j-for-logging</a>
-</li>
-<li><a href="http://zhaoming.iteye.com/blog/266996">http://zhaoming.iteye.com/blog/266996</a>
-</li>
+<li><a href="http://persevere.iteye.com/blog/1755237">http://persevere.iteye.com/blog/1755237</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline28" class="outline-2">
+<h2 id="orgheadline28"><span class="done DONE">DONE</span> jmockit vs  Hamcrest和Mockito</h2>
+<div class="outline-text-2" id="text-orgheadline28">
+</div>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-2">
+<h2 id="orgheadline29"><span class="done DONE">DONE</span> DropWizard</h2>
+<div class="outline-text-2" id="text-orgheadline29">
+<ul class="org-ul">
+<li>30 天学习 30 种新技术系列 <a href="https://segmentfault.com/a/1190000000349384">https://segmentfault.com/a/1190000000349384</a></li>
+<li>Dropwizard —— 非常棒的Java REST服务器栈 <a href="https://segmentfault.com/a/1190000000359827">https://segmentfault.com/a/1190000000359827</a></li>
+<li><a href="https://github.com/dropwizard/dropwizard">https://github.com/dropwizard/dropwizard</a></li>
+<li><a href="https://www.quora.com/Which-is-a-better-REST-Java-Framework-Jersey-vs-Dropwizard-vs-Play">https://www.quora.com/Which-is-a-better-REST-Java-Framework-Jersey-vs-Dropwizard-vs-Play</a></li>
+<li><a href="https://dzone.com/articles/dropwizard-vs-spring-boot">https://dzone.com/articles/dropwizard-vs-spring-boot</a></li>
+</ul>
+
+<p>
+Jersey is just a framework, while Dropwizard and Play are full stacks.
+Dropwizard uses Jersey for REST management, see Dropwizard Core | Dropwizard.
+So it's mainly a comparison between Dropwizard and Play. For the raw REST performances, Dropwizard is faster than Play, see TechEmpower Web Framework Performance Comparison, but Play is more oriented to Web applications, while Dropwizard is most a microserver for web services.
+So if your only need is to provide data, Play could be an overkill. If you need to provide a Web GUI too, Dropwizard doesn't offer too much.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline30" class="outline-2">
+<h2 id="orgheadline30"><span class="done DONE">DONE</span> REST API的框架，比如用Jersey加上Jackson。</h2>
+<div class="outline-text-2" id="text-orgheadline30">
+</div>
+</div>
+
+<div id="outline-container-orgheadline31" class="outline-2">
+<h2 id="orgheadline31"><span class="done DONE">DONE</span> SLF4J</h2>
+<div class="outline-text-2" id="text-orgheadline31">
+<ul class="org-ul">
+<li><a href="http://www.oschina.net/translate/why-use-sl4j-over-log4j-for-logging">http://www.oschina.net/translate/why-use-sl4j-over-log4j-for-logging</a></li>
+<li><a href="http://zhaoming.iteye.com/blog/266996">http://zhaoming.iteye.com/blog/266996</a></li>
 </ul>
 
 <p>
@@ -1439,49 +1404,51 @@ Log4jLoggerAdapter.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-20" class="outline-2">
-<h2 id="sec-20"><span class="todo TODO">TODO</span> Gradle</h2>
+<div id="outline-container-orgheadline32" class="outline-2">
+<h2 id="orgheadline32"><span class="done DONE">DONE</span> Gradle</h2>
+<div class="outline-text-2" id="text-orgheadline32">
+</div>
 </div>
 
-<div id="outline-container-sec-21" class="outline-2">
-<h2 id="sec-21">Jetty</h2>
-<div class="outline-text-2" id="text-21">
+<div id="outline-container-orgheadline33" class="outline-2">
+<h2 id="orgheadline33">Jetty</h2>
+<div class="outline-text-2" id="text-orgheadline33">
 <ul class="org-ul">
-<li><a href="https://gist.github.com/naaman/1053217">https://gist.github.com/naaman/1053217</a>
-</li>
+<li><a href="https://gist.github.com/naaman/1053217">https://gist.github.com/naaman/1053217</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-22" class="outline-2">
-<h2 id="sec-22">Tomcat redirect illegel state issue</h2>
-<div class="outline-text-2" id="text-22">
+<div id="outline-container-orgheadline34" class="outline-2">
+<h2 id="orgheadline34">Tomcat redirect illegel state issue</h2>
+<div class="outline-text-2" id="text-orgheadline34">
 <p>
 需要在sendRedirect后，加入return
 </p>
-<pre class="example">
-try {
-	((HttpServletResponse) response).sendRedirect(this.loginUrl());
-	return;
+<div class="org-src-container">
+
+<pre class="src src-java">try {
+  ((HttpServletResponse) response).sendRedirect(this.loginUrl());
+  return;
 } catch (IOException e) {
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-23" class="outline-2">
-<h2 id="sec-23">InvalidKeyException Illegal key size</h2>
-<div class="outline-text-2" id="text-23">
+</div>
+<div id="outline-container-orgheadline35" class="outline-2">
+<h2 id="orgheadline35">InvalidKeyException Illegal key size</h2>
+<div class="outline-text-2" id="text-orgheadline35">
 <p>
 从oracle 网站上下载JCE,拷贝到jdk_home/jre/lib/security 目录下。
 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html">http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-sec-24" class="outline-2">
-<h2 id="sec-24">使用ehcache-spring-annotations开启ehcache的注解功能</h2>
-<div class="outline-text-2" id="text-24">
+<div id="outline-container-orgheadline36" class="outline-2">
+<h2 id="orgheadline36">使用ehcache-spring-annotations开启ehcache的注解功能</h2>
+<div class="outline-text-2" id="text-orgheadline36">
 <ul class="org-ul">
-<li><a href="http://blog.csdn.net/glarystar/article/details/6637962">http://blog.csdn.net/glarystar/article/details/6637962</a>
-</li>
+<li><a href="http://blog.csdn.net/glarystar/article/details/6637962">http://blog.csdn.net/glarystar/article/details/6637962</a></li>
 </ul>
 
 <p>
@@ -1517,6 +1484,27 @@ public boolean editDepart(String depno, String depName) {
 </p>
 </div>
 </div>
+<div id="outline-container-orgheadline37" class="outline-2">
+<h2 id="orgheadline37">使用数组批量替换String中的?</h2>
+<div class="outline-text-2" id="text-orgheadline37">
+<div class="org-src-container">
+
+<pre class="src src-java">tring testString = "The ? ? was ? his ?";
+
+String[] values = new String[]{"brown", "dog", "eating", "food"};
+
+String needle = "?";
+
+String result = replaceNeedlesWithValues(testString,needle,values);
+public static String replaceNeedlesWithValues(String subject, String needle, String[] values) {
+    return String.format(subject.replace("%", "%%")
+                                .replace(needle, "%s"),
+                         values);
+}
+</pre>
+</div>
+</div>
+</div>
 
         </div>
       </div>
@@ -1525,7 +1513,7 @@ public boolean editDepart(String depno, String depName) {
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2013-12-19</span>
-        <span title="last modification date" class="post-info">修改日期：2015-08-28</span>
+        <span title="last modification date" class="post-info">修改日期：2016-02-06</span>
         <span title="tags" class="post-info"><a href="/tags/java/">java</a>, <a href="/tags/rest/">rest</a>, <a href="/tags/spring/">spring</a>, <a href="/tags/ajax/">ajax</a>, <a href="/tags/log4j/">log4j</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
@@ -1568,6 +1556,15 @@ public boolean editDepart(String depno, String depName) {
     </div>
 
     
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4e4b6d75d523917f122e5069de3426a9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
   </body>
 </html>

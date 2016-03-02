@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-  <title>shell Notes - Keep going</title>
+  <title>shell Notes - 简单</title>
   <meta charset="utf-8" />
   <meta name="author" content="Will Chang" />
     <meta name="description" content="shell notes" />
     <meta name="keywords" content="shell" />
     <!-- Bootstrap Core CSS -->
-    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Timeline CSS -->
-    <link href="/media/css/plugins/timeline.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/timeline.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/media/css/sb-admin-2.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="/media/css/plugins/morris.css" rel="stylesheet">
+    <link href="http://standino.github.io/media/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://standino.github.io/media/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,6 +33,7 @@
 
 
 </head>
+
   <body class="container">
     <div id="wrapper">
       <!-- Navigation -->
@@ -44,30 +45,39 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Keep going --- 努力超越自己！ </a>
+    <a class="navbar-brand" href="index.html">简单 --- 多想，多做，多总结。不要怕吃亏。 </a>
   </div>
   <!-- /.navbar-header -->
 
   <!-- /.navbar-top-links -->
   <script>
    function goSearch(){
-     $('#s').val($('#s').val()+'site:standino.github.io');
+       if($('#searchInSite').is(':checked')){
+           $('#s').val($('#s').val()+'   site:standino.github.io');
+       }
    }
   </script>
   <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-      <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <form method="get" id="searchform" onsubmit="goSearch()" action="http://search.aol.com/aol/search">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control" name="q" id="s" value="">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
+      <div class="sidebar-nav navbar-collapse">
+          <ul class="nav" id="side-menu">
+              <li class="sidebar-search">
+                  <form method="get" class="form-inline" id="searchform" onsubmit="goSearch()" target="_blank" action="http://cn.bing.com/search">
+                      <div class="form-group">
+                          <label class="sr-only" for="s">Search inputbox</label>
+                          <input type="text" class="form-control" name="q" id="s" value="">
+                      </div>
+                      <div class="checkbox">
+                          <label>
+                              <input type="checkbox" id="searchInSite"> 本站搜索
+                          </label>
+                      </div>
+                      <!-- <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                      <i class="fa fa-search"></i>
+                      </button>
+                      </span>
+                      -->
+                  </form>
           <!-- /input-group -->
         </li>
           <li><a href="/blog/">Blog</a></li>
@@ -96,10 +106,17 @@
 <p>
 <a href="http://fanqiang.chinaunix.net/program/shell/index.shtml">http://fanqiang.chinaunix.net/program/shell/index.shtml</a>
 </p>
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">ksh</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">zsh</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+模板 Soliah 比较好
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">ksh</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 <a href="http://kornshell.com/doc/">http://kornshell.com/doc/</a>
 </p>
@@ -110,11 +127,12 @@
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">awk</h2>
-<div class="outline-text-2" id="text-2">
-<pre class="example">
- cat test.txt  | awk '{ if ($1=="memory") my=$3; else {if ($1=="pg") my=my" "$4}; if($1=="pg") print my  }' 
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">awk</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<div class="org-src-container">
+
+<pre class="src src-html"> cat test.txt  | awk '{ if ($1=="memory") my=$3; else {if ($1=="pg") my=my" "$4}; if($1=="pg") print my  }' 
 
 
 #!/bin/ksh
@@ -122,11 +140,11 @@
 #checklog https://etlgdswuat02.etl.ibm.com/waslogs/sqo/
 
 #index.html
-#&lt;img #+BEGIN_SRC   
-#&lt;img #+BEGIN_SRC   
-#&lt;img #+BEGIN_SRC   
-#&lt;img #+BEGIN_SRC   
-#&lt;img #+BEGIN_SRC   
+#&lt;img SRC
+#&lt;img SRC
+#&lt;img SRC
+#&lt;img SRC
+#&lt;img SRC
 
 filelist=`grep 'quote.log*' index.html | awk -F\" '  { if ( $6&gt;="quote.log.2011-05-23" &amp;&amp;  $6 &lt;= "quote.log.2011-05-31" )  print  $6 }'` ;
 
@@ -140,20 +158,24 @@ kill -9  `ps -f -A | grep java | grep CVT-DSW-SQO2 | awk '{print $2}'`
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">delete duplicate lines from a file and keep the order of the other lines from Command-Line-Fu</h2>
-<div class="outline-text-2" id="text-3">
-<pre class="example">
-$ awk '!x[$0]++' FILE
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">delete duplicate lines from a file and keep the order of the other lines from Command-Line-Fu</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-html">$ awk '!x[$0]++' FILE
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Create a zip file ignoring .svn files</h2>
-<div class="outline-text-2" id="text-4">
-<pre class="example">
-zip -r foo.zip DIR -x "*/.svn/*"
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">Create a zip file ignoring .svn files</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+<div class="org-src-container">
+
+<pre class="src src-html">zip -r foo.zip DIR -x "*/.svn/*"
 
 find . -not \( -name .svn -prune \) -type f | xargs zip XXXXX.zip
 
@@ -161,26 +183,29 @@ tar -cvf wid7.tar  **/.classpath **/.project
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">count a specify word</h2>
-<div class="outline-text-2" id="text-5">
-<pre class="example">
-'&lt;hgtxt.txt tr -cs '[:alnum:]' '[\n*]'  | sort | uniq -c
+</div>
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">count a specify word</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+<div class="org-src-container">
+
+<pre class="src src-html">'&lt;hgtxt.txt tr -cs '[:alnum:]' '[\n*]'  | sort | uniq -c
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">SED</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">SED</h2>
+<div class="outline-text-2" id="text-orgheadline7">
 <p>
 <a href="http://www.ibm.com/developerworks/linux/library/l-sed3.html">http://www.ibm.com/developerworks/linux/library/l-sed3.html</a>
 </p>
 </div>
 
-<div id="outline-container-sec-6-1" class="outline-3">
-<h3 id="sec-6-1">用sed写循环处理</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">用sed写循环处理</h3>
+<div class="outline-text-3" id="text-orgheadline8">
 <p>
 对sed的使用一直紧限于 s//; <i><i>s/</i></i>;  <i>/,//s//</i> 稍复杂一点就用awk，可是有时候awk写起来也太长了
 </p>
@@ -189,84 +214,77 @@ tar -cvf wid7.tar  **/.classpath **/.project
 最近碰到一个处理跨行xml节点的问题，终于激发了进一步学习sed的愿望，并学会了使用b label写循环
 </p>
 
-<pre class="example">
-&lt;tag id="0" attr2 = "val2" attr3 = "val3" attr4 = "val4" /&gt;
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;tag id="0" attr2 = "val2" attr3 = "val3" attr4 = "val4" /&gt;
 &lt;tag id="1" attr2 = "val2"
         attr3 = "val3"
         attr4 = "val4"/&gt;
 </pre>
+</div>
 <p>
 替换指定xml节点中的attr4属性名
-#+BEGIN_SRC
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-6-2" class="outline-3">
-<h3 id="sec-6-2">sed add line</h3>
-<div class="outline-text-3" id="text-6-2">
-<p>
-#+BEGIN_SRC
-</p>
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">sed add line</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<div class="org-src-container">
 
-<p>
-zhyfly@zhyfly:~/bash$ sed -e '/music/a\this line will be added to the end of the matching line!oooooooooo' test.txt
+<pre class="src src-html">zhyfly@zhyfly:~/bash$ sed -e '/music/a\this line will be added to the end of the matching line!oooooooooo' test.txt
 The honeysuckle band played all night long for only $90.
 It was an evening of splendid music and company.
 this line will be added to the end of the matching line!oooooooooo
 Too bad the disco floor fell through at 23:00.
 The local nurse Miss P.Neave was in attendance.
-</p>
-
-<p>
-#+BEGIN_SRC
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">line count</h2>
-<div class="outline-text-2" id="text-7">
-<pre class="example">
-find . -type f -iname "*.java" -exec cat {} \; | wc -l
 </pre>
 </div>
 </div>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">line count</h2>
+<div class="outline-text-2" id="text-orgheadline10">
+<div class="org-src-container">
 
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">scp</h2>
-<div class="outline-text-2" id="text-8">
+<pre class="src src-html">find . -type f -iname "*.java" -exec cat {} \; | wc -l
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11">scp</h2>
+</div>
+
+
+
+
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12">Basic</h2>
+<div class="outline-text-2" id="text-orgheadline12">
 <p>
-#+BEGIN_SRC
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">ln</h2>
-</div>
-
-
-
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">Basic</h2>
-<div class="outline-text-2" id="text-10">
-<p>
-The sha-bang ( #!) <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup> at the head of a script tells your system that this file is a set of commands to be fed to
+The sha-bang ( #!) <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> at the head of a script tells your system that this file is a set of commands to be fed to
 the command interpreter indicated.
 </p>
 
-<pre class="example">
-#!/bin/sh
+<div class="org-src-container">
+
+<pre class="src src-html">#!/bin/sh
 #!/bin/bash
 #!/usr/bin/perl
 #!/usr/bin/tcl
 #!/bin/sed -f
 #!/usr/awk -f
 </pre>
+</div>
 
-<pre class="example">
-Either:
+<div class="org-src-container">
+
+<pre class="src src-html">Either:
 chmod 555 scriptname (gives everyone read/execute permission) [13]
 or
 chmod +rx scriptname (gives everyone read/execute permission)
@@ -274,32 +292,34 @@ chmod u+rx scriptname (gives only the script owner read/execute permission)
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11">tar</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13">tar</h2>
+<div class="outline-text-2" id="text-orgheadline13">
 <p>
 tar zxvf 
 </p>
 </div>
 
-<div id="outline-container-sec-11-1" class="outline-3">
-<h3 id="sec-11-1">Unix 下的查找文件的工具 find</h3>
-<div class="outline-text-3" id="text-11-1">
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14">Unix 下的查找文件的工具 find</h3>
+<div class="outline-text-3" id="text-orgheadline14">
 <p>
 #find
 </p>
 <ul class="org-ul">
-<li>在某个目录下所有子目录中搜索某个名字文件
-</li>
+<li>在某个目录下所有子目录中搜索某个名字文件</li>
 </ul>
 
-<pre class="example">
-find /some/dir -iname "*.txt"
+<div class="org-src-container">
+
+<pre class="src src-html">find /some/dir -iname "*.txt"
 find /some/dir -name "*.txt"
 find /some/dir -iregex "*.txt"
 find /some/dir -regex "*.txt"
 </pre>
+</div>
 
 <p>
    iname 表示不区分大小写， name 表示区分大小写。他们都是按照 shell 的文件名称扩展方式扩展 * 和 ? 的。 
@@ -308,21 +328,23 @@ find /some/dir -regex "*.txt"
 </p>
 
 
-<pre class="example">
-find /some/dir -iname "*.txt" -type d
+<div class="org-src-container">
+
+<pre class="src src-html">find /some/dir -iname "*.txt" -type d
 find /some/dir -name "*.txt" -type f
 </pre>
+</div>
 
 <p>
 type 后面的字母表示文件类型。
-b |    block (buffered) special
-c |    character (unbuffered) special
-d |    directory
-p |    named pipe (FIFO)
-f |    regular file
-l |    symbolic link
-s |    socket
-D |    door (Solaris)
+b |  block (buffered) special
+c |  character (unbuffered) special
+d |  directory
+p |  named pipe (FIFO)
+f |  regular file
+l |  symbolic link
+s |  socket
+D |  door (Solaris)
 </p>
 
 <p>
@@ -333,29 +355,34 @@ find 命令和 bash 结合可以有很多用处
 例如，把所有以 txt 文件结尾的文件，改名成为以doc 结尾的文件，包括所有子目录。
 </p>
 
-<pre class="example">
-for i in $(find -iname "*.txt"); do
+<div class="org-src-container">
+
+<pre class="src src-html">for i in $(find -iname "*.txt"); do
    mv "$i" "${i%%.txt}.doc" ;
 done
 </pre>
+</div>
 
 <p>
 例如，删除所有以 bak 为扩展名称的文件。
 </p>
 
-<pre class="example">
-find . -iname "*.bak" | xargs rm
+<div class="org-src-container">
+
+<pre class="src src-html">find . -iname "*.bak" | xargs rm
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-11-2" class="outline-3">
-<h3 id="sec-11-2">emacs wiki shell</h3>
-<div class="outline-text-3" id="text-11-2">
+</div>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15">emacs wiki shell</h3>
+<div class="outline-text-3" id="text-orgheadline15">
 <p>
 #emacswikishell
 </p>
-<pre class="example">
-#! /bin/bash
+<div class="org-src-container">
+
+<pre class="src src-html">#! /bin/bash
 
 # Copyright (C) 2007, 2008  Alex Schroeder &lt;alex@emacswiki.org&gt;
 #
@@ -404,21 +431,23 @@ svn --quiet commit -m updates
 </div>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">Delete a folder</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16">Delete a folder</h2>
+<div class="outline-text-2" id="text-orgheadline16">
 <p>
 rm -rf &lt;folder name&gt; this also can delete soft link and will not delete the real folder which the softlink point to.    
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">Check if a file exists</h2>
-<div class="outline-text-2" id="text-13">
-<pre class="example">
- 1. #!/bin/sh
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17">Check if a file exists</h2>
+<div class="outline-text-2" id="text-orgheadline17">
+<div class="org-src-container">
+
+<pre class="src src-html"> 1. #!/bin/sh
  2.  
  3. myPath="/var/log/httpd/"
  4. myFile="/var /log/httpd/access.log"
@@ -454,38 +483,30 @@ rm -rf &lt;folder name&gt; this also can delete soft link and will not delete th
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14">Getopts</h2>
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="orgheadline18">Getopts</h2>
 </div>
 
 
-<div id="outline-container-sec-15" class="outline-2">
-<h2 id="sec-15">Shell 参数</h2>
-<div class="outline-text-2" id="text-15">
+<div id="outline-container-orgheadline19" class="outline-2">
+<h2 id="orgheadline19">Shell 参数</h2>
+<div class="outline-text-2" id="text-orgheadline19">
 <p>
 几个需要记住的特殊参数：
 </p>
 
 <ul class="org-ul">
-<li>$0      = shell 名称或 shel 脚本名称
-</li>
-<li>$1      = 第一个(1)shell 参数
-</li>
-<li>$9      = 第九个(9)shell 参数
-</li>
-<li>$#      = 位置参数的个数
-</li>
-<li>"$*"    = "$1 $2 $3 $4 ... $n"
-</li>
-<li>"$@"    = "$1" "$2" "$3" "$4" ... "$n"
-</li>
-<li>$?      = 最近执行的命令的退出状态
-</li>
-<li>$$      = 当前 shell 脚本的 PID
-</li>
-<li>$!      = 最近启动的后台作业的 PID
-</li>
+<li>$0      = shell 名称或 shel 脚本名称</li>
+<li>$1      = 第一个(1)shell 参数</li>
+<li>$9      = 第九个(9)shell 参数</li>
+<li>$#      = 位置参数的个数</li>
+<li>"$*"    = "$1 $2 $3 $4 ... $n"</li>
+<li>"$@"    = "$1" "$2" "$3" "$4" ... "$n"</li>
+<li>$?      = 最近执行的命令的退出状态</li>
+<li>$$      = 当前 shell 脚本的 PID</li>
+<li>$!      = 最近启动的后台作业的 PID</li>
 </ul>
 
 <p>
@@ -505,10 +526,8 @@ ${var:?string} |  $var            |     (返回 string 然后退出)
 </p>
 
 <ul class="org-ul">
-<li>有“:” = 运算表达式测试“存在”和“非空”。
-</li>
-<li>没有“:” = 运算表达式仅测试“存在”。
-</li>
+<li>有“:” = 运算表达式测试“存在”和“非空”。</li>
+<li>没有“:” = 运算表达式仅测试“存在”。</li>
 </ul>
 
 <p>
@@ -516,7 +535,7 @@ ${var:?string} |  $var            |     (返回 string 然后退出)
 </p>
 
 <p>
-    形式       |      结果
+    形式       |    结果
 ${var%suffix}  |  删除位于 var 结尾的 suffix 最小匹配模式
 ${var%%suffix} |  删除位于 var 结尾的 suffix 最大匹配模式
 ${var#prefix}  |  删除位于 var 开头的 prefix 最小匹配模式
@@ -525,9 +544,9 @@ ${var##prefix} |  删除位于 var 开头的 prefix 最大匹配模式
 </div>
 </div>
 
-<div id="outline-container-sec-16" class="outline-2">
-<h2 id="sec-16">Diff</h2>
-<div class="outline-text-2" id="text-16">
+<div id="outline-container-orgheadline20" class="outline-2">
+<h2 id="orgheadline20">Diff</h2>
+<div class="outline-text-2" id="text-orgheadline20">
 <p>
 <a href="../etc/983888.shtml">../etc/983888.shtml</a>
 </p>
@@ -535,16 +554,17 @@ ${var##prefix} |  删除位于 var 开头的 prefix 最大匹配模式
 </div>
 
 
-<div id="outline-container-sec-17" class="outline-2">
-<h2 id="sec-17"><a href="../etc/ABS_Guide_cn.txt">Shell Ref Doc</a></h2>
+<div id="outline-container-orgheadline21" class="outline-2">
+<h2 id="orgheadline21"><a href="../etc/ABS_Guide_cn.txt">Shell Ref Doc</a></h2>
 </div>
 
 
-<div id="outline-container-sec-18" class="outline-2">
-<h2 id="sec-18">Split words</h2>
-<div class="outline-text-2" id="text-18">
-<pre class="example">
-will@will-laptop:~$ mytest="ebiz1.web_quote"
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="orgheadline22">Split words</h2>
+<div class="outline-text-2" id="text-orgheadline22">
+<div class="org-src-container">
+
+<pre class="src src-html">will@will-laptop:~$ mytest="ebiz1.web_quote"
 will@will-laptop:~$ echo ${mytest##*.}
 web_quote
 will@will-laptop:~$ echo ${mytest%%.*}
@@ -553,27 +573,25 @@ will@will-laptop:~$
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-19" class="outline-2">
-<h2 id="sec-19">Programing Style</h2>
-<div class="outline-text-2" id="text-19">
+<div id="outline-container-orgheadline23" class="outline-2">
+<h2 id="orgheadline23">Programing Style</h2>
+<div class="outline-text-2" id="text-orgheadline23">
 <ul class="org-ul">
-<li>Uppercase global variant 
-</li>
-<li>Lowercase local variant and separate by "_"
-</li>
-<li>Mixed case works well for a function.
-</li>
+<li>Uppercase global variant</li>
+<li>Lowercase local variant and separate by "_"</li>
+<li>Mixed case works well for a function.</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-sec-20" class="outline-2">
-<h2 id="sec-20">Table 33-1. Operator Precedence</h2>
-<div class="outline-text-2" id="text-20">
+<div id="outline-container-orgheadline24" class="outline-2">
+<h2 id="orgheadline24">Table 33-1. Operator Precedence</h2>
+<div class="outline-text-2" id="text-orgheadline24">
 <p>
-#+BEGIN_SRC
+#+BEGIN_SRC html
 Operator                        Meaning                   Comments
                                                           HIGHEST PRECEDENCE
                                 post-increment,           C-style operators
@@ -591,20 +609,19 @@ var++ var--
 </p>
 </div>
 </div>
-<div id="outline-container-sec-21" class="outline-2">
-<h2 id="sec-21">/ %</h2>
-<div class="outline-text-2" id="text-21">
+<div id="outline-container-orgheadline25" class="outline-2">
+<h2 id="orgheadline25">/ %</h2>
+<div class="outline-text-2" id="text-orgheadline25">
 <p>
 modulo
 addition, subtraction     arithmetic operation
 </p>
 <ul class="org-ul">
 <li>-
-left, right shift         bitwise
-</li>
+left, right shift         bitwise</li>
 </ul>
 <p>
-<a id="" name=""></a>
+&lt;&lt; &gt;&gt;
                                 unary comparison          string is/is-not null
 -z -n
                                 unary comparison          files
@@ -641,14 +658,14 @@ left, right shift         bitwise
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">-o</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">-o</td>
 </tr>
 </tbody>
 </table>
@@ -658,7 +675,7 @@ left, right shift         bitwise
                        assignment             (do not confuse with equality test)
 =
                        combination assignment times-equal, divide-equal, mod-equal, etc.
-*= /= %= += -= <a id="" name=""></a>=
+*= /= %= += -= &lt;&lt;= &gt;&gt;=
 &amp;= !=
                        comma                  links a sequence of operations
 ,
@@ -667,49 +684,54 @@ left, right shift         bitwise
 </div>
 </div>
 
-<div id="outline-container-sec-22" class="outline-2">
-<h2 id="sec-22">System Variables</h2>
-<div class="outline-text-2" id="text-22">
-<pre class="example">
-$HOME
+<div id="outline-container-orgheadline26" class="outline-2">
+<h2 id="orgheadline26">System Variables</h2>
+<div class="outline-text-2" id="text-orgheadline26">
+<div class="org-src-container">
+
+<pre class="src src-html">$HOME
 
 $OSTYPE
 </pre>
 </div>
 </div>
+</div>
 
 
-<div id="outline-container-sec-23" class="outline-2">
-<h2 id="sec-23">folder of the scirpt</h2>
-<div class="outline-text-2" id="text-23">
+<div id="outline-container-orgheadline27" class="outline-2">
+<h2 id="orgheadline27">folder of the scirpt</h2>
+<div class="outline-text-2" id="text-orgheadline27">
 <p>
 %~dp0 is the folder of the bat.
 </p>
 
 <p>
-$(cd "$(dirname "$0")"; pwd)
+\((cd "\)(dirname "$0")"; pwd)
 </p>
 </div>
 </div>
 
 
-<div id="outline-container-sec-24" class="outline-2">
-<h2 id="sec-24">Delete folders under windows</h2>
-<div class="outline-text-2" id="text-24">
-<pre class="example">
-rd /S /Q folder
+<div id="outline-container-orgheadline28" class="outline-2">
+<h2 id="orgheadline28">Delete folders under windows</h2>
+<div class="outline-text-2" id="text-orgheadline28">
+<div class="org-src-container">
+
+<pre class="src src-html">rd /S /Q folder
 </pre>
 </div>
 </div>
+</div>
 
 
 
 
-<div id="outline-container-sec-25" class="outline-2">
-<h2 id="sec-25">KSH</h2>
-<div class="outline-text-2" id="text-25">
-<pre class="example">
- ksh -o emacs : use emacs key 
+<div id="outline-container-orgheadline29" class="outline-2">
+<h2 id="orgheadline29">KSH</h2>
+<div class="outline-text-2" id="text-orgheadline29">
+<div class="org-src-container">
+
+<pre class="src src-html"> ksh -o emacs : use emacs key 
 
 ./checklog4sap_remote  -s PROD  -w 0002155019 -d /tmp/quotelogtool/testprod -f 2011-07-20 -t 2011-07-20 -c PRICING -u changwei@cn.ibm.com -p lenovot60
 
@@ -727,11 +749,12 @@ fi
 
 #or use: if [ "$var" = "" ]; then ......
 </pre>
+</div>
 
 <p>
 问题解决如下
 方法一
-大小 &lt;#+BEGIN_SRC }'`
+大小 &lt;#+BEGIN_SRC html }'`
 if [ $Count -gt 1 ]; then
 echo "$unix_time" | mutt -s "$unix_time" -a /a/a/Error.log l@1.com
 fi
@@ -753,18 +776,18 @@ fi
 
 <p>
 表 1. 更强的字符串处理
-功能     语法     样例
-求起始位置为 index 的子串    ${param:offset}    &gt; echo ${string:3}
+功能   语法   样例
+求起始位置为 index 的子串  ${param:offset}  &gt; echo ${string:3}
 123abc
-求起始位置为 index 和长度 num 的子串    ${param:offset:num}    &gt; echo ${string:1:3}
+求起始位置为 index 和长度 num 的子串  ${param:offset:num}  &gt; echo ${string:1:3}
 bc1
-替换第一个出现的 pattern为 repl    ${parm/pattern/repl}    &gt; echo ${string/abc/def}
+替换第一个出现的 pattern为 repl  ${parm/pattern/repl}  &gt; echo ${string/abc/def}
 def123abc
-替换所有出现的 pattern 为 repl    ${parm//pattern/repl}    &gt; echo ${string//abc/def}
+替换所有出现的 pattern 为 repl  ${parm//pattern/repl}  &gt; echo ${string//abc/def}
 def123def
-替换开头的 pattern     ${parm/#pattern/repl}    &gt; echo ${string/#abc/def}
+替换开头的 pattern   ${parm/#pattern/repl}  &gt; echo ${string/#abc/def}
 def123abc
-替换结尾的 pattern     ${parm/%pattern/repl}    &gt; echo ${string/%abc/def}
+替换结尾的 pattern   ${parm/%pattern/repl}  &gt; echo ${string/%abc/def}
 abc123def
 </p>
 
@@ -776,33 +799,42 @@ abc123def
 
 
 
-<div id="outline-container-sec-26" class="outline-2">
-<h2 id="sec-26">Add jsp name to jsp file</h2>
-<div class="outline-text-2" id="text-26">
-<pre class="example">
-find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/w3:body&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
+<div id="outline-container-orgheadline30" class="outline-2">
+<h2 id="orgheadline30">Add jsp name to jsp file</h2>
+<div class="outline-text-2" id="text-orgheadline30">
+<div class="org-src-container">
+
+<pre class="src src-html">find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/w3:body&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:body&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/w3:popupBody&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
 find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:popupBody&gt;/i\&lt;!--  JSP file :'{}' --&gt;' '{}' \;
 </pre>
 </div>
 </div>
+</div>
 
 
-<div id="outline-container-sec-27" class="outline-2">
-<h2 id="sec-27">shell数组</h2>
-<div class="outline-text-2" id="text-27">
+<div id="outline-container-orgheadline31" class="outline-2">
+<h2 id="orgheadline31">shell数组</h2>
+<div class="outline-text-2" id="text-orgheadline31">
 <ul class="org-ul">
-<li><a href="http://www.cnblogs.com/chengmo/archive/2010/09/30/1839632.html">http://www.cnblogs.com/chengmo/archive/2010/09/30/1839632.html</a>
-</li>
+<li><a href="http://www.cnblogs.com/chengmo/archive/2010/09/30/1839632.html">http://www.cnblogs.com/chengmo/archive/2010/09/30/1839632.html</a></li>
 </ul>
+
+<p>
+Footnotes:
+</p>
 </div>
 </div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Makefile.defs.default 两个文件都可以，你可以拷贝
+Makefile.defs.default 成 Makefile.defs，这样修改后者可以防止错误修改文
+件中的参数
+</p></div></div>
 
 
 </div>
@@ -814,7 +846,7 @@ find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:popupBody&gt;/i\&lt
         <div>
       <div class="post-meta">
         <span title="post date" class="post-info">创建日期：2013-12-19</span>
-        <span title="last modification date" class="post-info">修改日期：2015-02-17</span>
+        <span title="last modification date" class="post-info">修改日期：2016-02-06</span>
         <span title="tags" class="post-info"><a href="/tags/shell/">shell</a></span>
         <span title="author" class="post-info">Will Chang</span>
       </div>
@@ -837,25 +869,17 @@ find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:popupBody&gt;/i\&lt
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </section>
     <!-- jQuery Version 1.11.0 -->
-    <script src="/media/js/jquery-1.11.0.js"></script>
+    <script src="http://standino.github.io/media/js/jquery-1.11.0.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/media/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/media/js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="/media/js/plugins/morris/raphael.min.js"></script>
-    <script src="/media/js/plugins/morris/morris.min.js"></script>
-    <script src="/media/js/plugins/morris/morris-data.js"></script>
+    <script src="http://standino.github.io/media/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="/media/js/sb-admin-2.js"></script>
+    <script src="http://standino.github.io/media/js/sb-admin-2.js"></script>
 
 
       <div class="footer">
-        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+        <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
           Copyright &copy; 2012 - 2015 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
@@ -865,5 +889,15 @@ find . -type f -name  "*.jsp" -execdir sed -i -e '/&lt;\/www:popupBody&gt;/i\&lt
     </div>
 
     
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4e4b6d75d523917f122e5069de3426a9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
   </body>
 </html>
