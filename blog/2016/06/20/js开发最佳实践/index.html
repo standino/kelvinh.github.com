@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-  <title>2016年计划 - 简单</title>
+  <title>JS开发最佳实践 - 简单</title>
   <meta charset="utf-8" />
-  <meta name="author" content="Will Chang" />
-    <meta name="description" content="为明年做一下计划" />
-    <meta name="keywords" content="goal,plan" />
+  <meta name="author" content="will" />
+    <meta name="description" content="总结js开发中用到的技巧" />
+    <meta name="keywords" content="js,实践" />
     <!-- Bootstrap Core CSS -->
     <link href="http://standino.github.io/media/css/bootstrap.min.css" rel="stylesheet">
 
@@ -98,94 +98,158 @@
     <div id="page-wrapper">
       <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">2016年计划</h1>
-          <div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline4">架构设计能力提升</a>
-<ul>
-<li><a href="#orgheadline1">读《思考软件，创新设计：A段架构师的思考技术》</a></li>
-<li><a href="#orgheadline2">读《架软件架构设计：程序员向架构师转型必备（第2版》</a></li>
-<li><a href="#orgheadline3">读《软件架构师的12项修炼》</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline7">报表开发技术 </a>
-<ul>
-<li><a href="#orgheadline5">Mondrian</a></li>
-<li><a href="#orgheadline6">Presto</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline9">UI技术</a>
-<ul>
-<li><a href="#orgheadline8">React</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline12">编程语言</a>
-<ul>
-<li><a href="#orgheadline10">Rust </a></li>
-<li><a href="#orgheadline11">Scala</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline13">数据分析（经分）</a></li>
-<li><a href="#orgheadline14">数据挖掘/机器学习</a></li>
-</ul>
-</div>
-</div>
-
-
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">架构设计能力提升</h2>
-<div class="outline-text-2" id="text-orgheadline4">
+            <h1 class="page-header">JS开发最佳实践</h1>
+          
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">JS</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 </div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">读《思考软件，创新设计：A段架构师的思考技术》</h3>
+<h3 id="orgheadline1">刷新页面</h3>
+<div class="outline-text-3" id="text-orgheadline1">
+<div class="org-src-container">
+
+<pre class="src src-javascript">window.location.reload(true);
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">读《架软件架构设计：程序员向架构师转型必备（第2版》</h3>
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">JQuery</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+</div><div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">元素定位</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<div class="org-src-container">
+
+<pre class="src src-js">按class查询 :               $(".myclass")
+按ID查询 :                 $("#myid")
+定位某个元素，查找子元素 : $(".quickMenu i").bind('click', function () {
+函数里获得this的子元素  :  $(this).find('i').toggleClass("ticked");
+</pre>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">读《软件架构师的12项修炼》</h3>
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">Ajax 调用</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-js">jQuery.each( [ "put", "delete" ], function( i, method ) {
+  jQuery[ method ] = function( url, data, callback, type )
+{
+    if ( jQuery.isFunction( data ) ) {
+      type = type || callback;
+      callback = data;
+      data = undefined;
+    }
+
+    return jQuery.ajax({
+      url: url,
+      type: method,
+      dataType: type,
+      data: data,
+      success: callback
+    });
+  };
+});
+
+$.put('http://stackoverflow.com/posts/22786755/edit', {text:'new text'}, function(result){
+   console.log(result);
+})
+</pre>
+</div>
+
+<p>
+对应的spring mvc 代码
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java">@RequestMapping(value = "resubmit/{id}", method = RequestMethod.PUT)
+@ResponseStatus(HttpStatus.CREATED)
+@ResponseBody
+public String reSubmitVMApply(@PathVariable("id") Long id, HttpServletRequest request, HttpServletResponse response)
+        throws BindException {
+</pre>
+</div>
+
+
+<div class="org-src-container">
+
+<pre class="src src-js">$('#submitBtn').click(function () {
+        //alert($('#reason').val());
+        if( $('#reason').val() == undefined  ||  $('#reason').val() == null ||  $('#reason').val() == ""){
+            $("#alertNull").css("color","red");
+            return false;
+        }
+        return submitApply();
+    });
+
+    function submitApply() {
+        var formParam = $("#vmApplyForm").serialize();//序列化表格内容为字符串
+        $.ajax({
+            type: 'post',
+            url: '/air/vms',
+            data: formParam,
+            cache: false,
+           // dataType: 'json',
+            success: function (data) {
+                //alert("data:"+data);
+                 $("#alertNull").css("color","#3a87ad");
+                 $("#alertSuccess").css("display","block");//delete
+                if(data.toString().equals("草稿")){
+                    $("#alertFail").css("display","block");
+                }else{
+                    $("#alertSuccess").css("display","block");
+                }
+            }
+        });
+        return false;
+    }
+</pre>
+</div>
+
+
+<p>
+对应java 代码
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-java">@RequestMapping(method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public String createVMApply(@Valid VMApply vmApply,
+                         BindingResult result, HttpServletRequest request, HttpServletResponse response)
+            throws BindException {
+</pre>
 </div>
 </div>
+</div>
+
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">jqgrid</h3>
+</div>
+</div>
+
+
 <div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7">报表开发技术 <a href="https://github.com/obobd">https://github.com/obobd</a></h2>
-<div class="outline-text-2" id="text-orgheadline7">
-</div><div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">Mondrian</h3>
+<h2 id="orgheadline7">React</h2>
 </div>
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">Presto</h3>
+
+
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">NPM</h2>
 </div>
-</div>
+
 
 <div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9">UI技术</h2>
-<div class="outline-text-2" id="text-orgheadline9">
-</div><div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">React</h3>
-</div>
-</div>
-
-
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">编程语言</h2>
-<div class="outline-text-2" id="text-orgheadline12">
-</div><div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">Rust <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+lang/rust">https://github.com/syl20bnr/spacemacs/tree/master/layers/+lang/rust</a></h3>
-</div>
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11">Scala</h3>
-</div>
-</div>
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13">数据分析（经分）</h2>
-</div>
-<div id="outline-container-orgheadline14" class="outline-2">
-<h2 id="orgheadline14">数据挖掘/机器学习</h2>
-<div class="outline-text-2" id="text-orgheadline14">
-</div>
+<h2 id="orgheadline9">Webpack</h2>
 </div>
 
         </div>
@@ -194,18 +258,18 @@
     </div>
         <div>
       <div class="post-meta">
-        <span title="post date" class="post-info">创建日期：2016-01-04</span>
+        <span title="post date" class="post-info">创建日期：2016-06-20</span>
         <span title="last modification date" class="post-info">修改日期：2016-06-20</span>
-        <span title="tags" class="post-info"><a href="/tags/goal/">goal</a>, <a href="/tags/plan/">plan</a>, <a href="/tags/project/">project</a>, <a href="/tags/文件整理/">文件整理</a></span>
-        <span title="author" class="post-info">Will Chang</span>
+        <span title="tags" class="post-info"><a href="/tags/js/">js</a>, <a href="/tags/实践/">实践</a></span>
+        <span title="author" class="post-info">will</span>
       </div>
       <section>
         <h1>Comments</h1>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
           //var disqus_developer = 1;
-          var disqus_identifier = "/blog/html/2016/01/04/2016年计划/";
-          var disqus_url = "http://standino.github.io/blog/html/2016/01/04/2016年计划/";
+          var disqus_identifier = "/blog/2016/06/20/js开发最佳实践";
+          var disqus_url = "http://standino.github.io/blog/2016/06/20/js开发最佳实践";
           var disqus_shortname = 'standino';
           /* * * DON'T EDIT BELOW THIS LINE * * */
           (function() {
@@ -230,7 +294,7 @@
       <div class="footer">
         <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.x (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
         <p>
-          Copyright &copy; 2012 - 2015 <a href="mailto:changwei &lt;dot&gt; cn &lt;at&gt; gmail &lt;dot&gt; com">Will Chang</a>
+          Copyright &copy; 2012 - 2015 <a href="mailto:will &lt;at&gt; will-OptiPlex-3020">will</a>
           &nbsp;&nbsp;-&nbsp;&nbsp;
           Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a>
         </p>
